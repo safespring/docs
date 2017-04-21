@@ -1,0 +1,21 @@
+site_name: "docs.safespring.com"
+docs_dir: "content"
+
+repo_name: "safespring/docs"
+repo_url: "https://github.com/safespring/docs"
+
+theme: "material"
+theme_dir: "theme"
+
+extra:
+  logo: "images/logo.png"
+  font:
+    text: "Hind"
+    code: "Ubuntu Mono"
+
+extra_css:
+  - "color.css"
+
+pages:
+  - docs.safespring.com: "index.md"
+
