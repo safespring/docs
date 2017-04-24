@@ -1,4 +1,4 @@
-site_name: "docs.safespring.com"
+site_name: "Safespring documentation"
 docs_dir: "content"
 
 repo_name: "safespring/docs"
@@ -7,17 +7,20 @@ repo_url: "https://github.com/safespring/docs"
 theme: "material"
 
 extra:
-  logo: "assets/images/logo.png"
+  logo: "safespring.png"
   font:
     text: "Hind"
     code: "Ubuntu Mono"
 
 extra_css:
-  - "assets/stylesheets/palette.css"
+  - "safespring.css"
 
 pages:
   - Overview: "index.md"
-  - Safespring Backup: "backup.md"
-  - Safespring Compute: "compute.md"
-  - Safespring Storage: "storage.md"
+  - Backup: "backup/backup.md"
+  - Compute: "compute/compute.md"
+  - Storage: "storage/storage.md"
+  - Status information: "status.md"
+  - Support: "support.md"
+  - Contributing: "contribute.md"
 
