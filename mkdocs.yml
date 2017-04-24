@@ -5,17 +5,19 @@ repo_name: "safespring/docs"
 repo_url: "https://github.com/safespring/docs"
 
 theme: "material"
-theme_dir: "theme"
 
 extra:
-  logo: "images/logo.png"
+  logo: "assets/images/logo.png"
   font:
     text: "Hind"
     code: "Ubuntu Mono"
 
 extra_css:
-  - "color.css"
+  - "assets/stylesheets/palette.css"
 
 pages:
-  - docs.safespring.com: "index.md"
+  - Overview: "index.md"
+  - Safespring Backup: "backup.md"
+  - Safespring Compute: "compute.md"
+  - Safespring Storage: "storage.md"
 
