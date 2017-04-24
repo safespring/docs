@@ -1,6 +1,8 @@
 # Contributing to the documentation
 
-To contribute, please consider the following:
+## Basic requirements
+
+If you want to contribute, please consider the following:
 
 * An [account on GitHub.com][gh] is needed in order to fork this repository and
   make changes to it.
@@ -18,12 +20,27 @@ To contribute, please consider the following:
 
 ## Fast GitHub-based workflow
 
-If you're making a relatively small change - like fixing a typo or rewording
-something - the easiest way to contribute is directly on GitHub!
+For quick, small changes - like fixing a typo or rewording something - the
+easiest way to contribute is directly on GitHub!
 
-1. Test
-1. Test2
-1. Test3
+1. Click the pencil to the right of the header on the page. This will open the
+   page in GitHub's online editor.
+
+1. Edit the contents, describe your changes and click on the *Propose file
+   change* button.
+
+1. GitHub will now create a branch and a commit for your changes (forking the
+   repository first if this is your first contribution) and it will also
+   display a preview of your changes. If everything is correct, click on the
+   *Create pull request* button.
+
+1. GitHub will display a new page where you can do some last-minute changes to
+   your pull request before creating it. For simple contributions, you can
+   safely ignore these options and just click on the *Create pull request*
+   button again.
+
+This creates a pull request and will notify Safespring to review it, possibly
+suggesting further tweaks or edits. Thank you very much :-)
 
 ## Larger contributions
 
