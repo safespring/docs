@@ -21,9 +21,12 @@ extra:
 pages:
   - Overview: "index.md"
   - Backup: "backup.md"
-  - Compute: "compute.md"
+  - Compute:
+    - Getting started: "compute.md"
+    - Image service: "compute/image.md"
+    - Network service: "compute/network.md"
   - Storage: "storage.md"
-  - Status information: "status.md"
+  - Service status: "status.md"
   - Support: "support.md"
   - Contributing: "contribute.md"
 
