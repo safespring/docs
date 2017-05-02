@@ -17,9 +17,11 @@ extra:
     text: "Hind"
     code: "Ubuntu Mono"
 
-# Markdown extensions as close to GFM as possible, ref
-# https://squidfunk.github.io/mkdocs-material/extensions/pymdown
+# https://squidfunk.github.io/mkdocs-material/getting-started/#extensions
 markdown_extensions:
+  - admonition
+  - codehilite(guess_lang=false)
+  - toc(permalink=true)
   - pymdownx.arithmatex
   - pymdownx.betterem(smart_enable=all)
   - pymdownx.caret
