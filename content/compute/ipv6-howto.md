@@ -13,12 +13,12 @@ There are mainly three ways to get an IPv6 address:
 In this guide, we will use the third option above: DHCPv6.
 
 1. Set up an instance in the Horizon dashboard. In this example, we will use an Ubuntu 16.04 image. We also set it up with a keypair so that we can SSH to the host later. In this demonstration, the b.tiny flavor will do. We also connect it to an IPv4 network and the public-ipv6 network. We will use the IPv4 network for IPv4 traffic and management.
-![Network list](https://github.com/safespring/docs/tree/master/content/images/ipv6_image1.png)
+![Network list](../images/ipv6_image1.png)
 2. We can see that we have gotten two IP-addresses, one IPv4 and one IPv6 in two different network. We also assign a floating IP-address to the instance to be able to SSH to it as described [here](https://docs.cloud.ipnett.com/intro/gettingstarted.html).
 3. Before we can SSH to our new floating IP we will need to update our security groups to open port 22. This is done from “Edit Security Groups” in the “Create Snapshot”drop-down if you did not do it at instance creation. Security groups are described [here](https://docs.cloud.ipnett.com/intro/gettingstarted.html).
 4. Now you can log into you instance with SSH. If you are using the vanilla Ubuntu 16.04 image with no extra configuration you log in with the user “ubuntu” and provide the password, you have set on your key (which you also must provide in able to log in).  
 5. Run “sudo -s” to gain root rights and then “ip address show” to find the interface apart from your IPv4 interface. This other interface should be down:  
-![Interface list](https://github.com/safespring/docs/tree/master/content/images/ipv6_image2.png)
+![Interface list](../images/ipv6_image2.png)
 In this case we see that the interface that is down is named ens4.
 6. Go to the folder “/etc/network/interfaces.d” and create a file called “ens4.cfg” and fill it with the following contents:  
 	auto ens4
