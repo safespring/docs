@@ -25,6 +25,7 @@ pages:
     - Getting started: "compute.md"
     - Image service: "compute/image.md"
     - Network service: "compute/network.md"
+    - Using Keypairs: "compute/Keypairs.md"
   - Storage: "storage.md"
   - Service status: "status.md"
   - Support: "support.md"
