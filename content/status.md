@@ -1,4 +1,4 @@
-= Service status =
+# Service status
 
 A status page is under development at https://status.safespring.com - for now,
 the page contains (manual) annoucement of downtime and maintenace windows. It
