@@ -1,24 +1,19 @@
-Network service
-===============
+# Network service
 
-Site-to-site layer 3 VPN
-------------------------
+## Site-to-site layer 3 VPN
 
 ### The server
 
-> **tip**
->
-> This is a working example of how to bring up a openVPN-server with Cloud-Init. This example
->
-> :   is made for Ubuntu 16.04. It is not made with all security, bells
->     and whissles that you might would like to have in production but
->     it is a good starting point.
->
-To start, copy the cloud-config file below and edit it to suit your
-environment . This file is in yaml syntax and you can read more here,
-<http://cloudinit.readthedocs.io/en/latest/topics/examples.html>.
+This is a working example of how to bring up a openVPN-server with Cloud-Init.
+This example is made for Ubuntu 16.04. It is not made with all security, bells
+and whistles that you might would like to have in production but it is a good
+starting point.
 
-``` {.sourceCode .shell}
+To start, copy the cloud-config file below and edit it to suit your
+environment . This file is in yaml syntax and you can read more at
+http://cloudinit.readthedocs.io/en/latest/topics/examples.html
+
+```shell
 #cloud-config
 output: {all: '| tee -a /var/log/cloud-init-output.log'}
 password: mypassword
@@ -127,12 +122,12 @@ runcmd:
 Then paste your file into the "Configuration section", "Customization
 Script" or upload it "Load script from a file".
 
-![image](/_static/dash-cloud-init.png)
+![image](/images/cloud-init.png)
 
 You could also use the Openstack cli and input the file as "user-data"
 when creating the server.
 
-``` {.sourceCode .shell}
+```shell
 openstack$ openstack server create --wait \
 --image ubuntu-16.04 \
 --flavor b.small \
@@ -145,7 +140,7 @@ vpnserver01
 When the server is ready to run a message will be sent to log and to the
 console.
 
-``` {.sourceCode .shell}
+```shell
 + echo -e '\nYour server is now ready!\n'
 + echo -e '\nYour client1 files are here: /etc/openvpn/ccd/client1.files.tar\n'
 + echo -e 'neutron port-update 08c66eba-6a6c-4ca8-811e-68006d8b24f5 --allowed-address-pair ip_address=10.8.0.0/24  --allowed-address-pair ip_address=192.168.34.0/24\n'
@@ -156,7 +151,7 @@ cloud network. Either you enter it by yourself or you send a request to
 us and we'll do it for you if you don't have cli access. The output is
 tailored from the installation and is unique for each server.
 
-``` {.sourceCode .shell}
+```shell
 $ neutron port-update 08c66eba-6a6c-4ca8-811e-68006d8b24f5 --allowed-address-pair ip_address=192.168.34.0/24 --allowed-address-pair ip_address=10.8.0.0/24
 
 $ openstack port show 08c66eba-6a6c-4ca8-811e-68006d8b24f5
@@ -207,7 +202,7 @@ default-gateway, "Alt 2".
 At the "cloud network" side all clients/servers must have a route back
 to the "Home network" with a next-hop to the vpn-server.
 
-![image](/_static/network-vpn.png)
+![image](/images/network-vpn.png)
 
 ### Troubleshoot
 
