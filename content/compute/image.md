@@ -1,14 +1,10 @@
-Image service
-=============
+# Image service
 
 > **note**
->
 > Some of these instructions require use of Openstack command line
->
-> :   tools.
->
-Uploading an image
-------------------
+> tools.
+
+## Uploading an image
 
 ### Size limit using the web interface
 
@@ -33,8 +29,7 @@ is booted images need to be uploaded in raw format only.
 We have plans to mitigate and better work around some of these
 limitations.
 
-Downloading an image based on an existing instance
---------------------------------------------------
+## Downloading an image based on an existing instance
 
 Downloading an image based on an existing instance currently requires
 running Openstack cli commands and cannot solely be done through the
@@ -46,10 +41,9 @@ Horizon webui.
 > **note**
 >
 > Creating a snapshot takes some time since the whole instance disk image
->
-> :   will be uploaded to the Glance image service over a
->     network connection. This will be the time to get some coffee.
->
+> will be uploaded to the Glance image service over a
+> network connection. This will be the time to get some coffee.
+
 2.  From the command line, list the all images in the project and verify
     that the snapshot is visible:
 
@@ -61,8 +55,7 @@ Horizon webui.
             --file <where-you-want-to-store-the-image-file-in-raw-format> \
             --progress
 
-Launching a new instance based on an uploaded custom image
-----------------------------------------------------------
+## Launching a new instance based on an uploaded custom image
 
 Uploading a raw image can be done through the command line:
 
@@ -84,3 +77,4 @@ The uploaded image can now be used to launch new instances. In the
 Horizon webui, navigate to "Compute" -&gt; "Images". The uploaded image
 should now be visible in the list. Click the "Launch" button to the
 right of the uploaded image and fill in instance information as usual.
+
