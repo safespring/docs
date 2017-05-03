@@ -181,16 +181,63 @@ $ openstack port show 08c66eba-6a6c-4ca8-811e-68006d8b24f5
 
 ### The client
 
-> **warning**
->
-> In order for packets to go from your "Home network" through the
-> vpn-client you must enable forwarding in your vpn-client too. I.E.
-> "ip\_forward=1".
+This example can be used in the same way as the server example through Horizon or with cli. Please observe the note below the example. 
 
-The second last line provides you with the path to one clients
-configuration files. Theses files must be copied to the openvpn client
-and will allow the client to connect to the server and set up the
-correct routes.
+```shell
+#cloud-config
+output: {all: '| tee -a /var/log/cloud-init-output.log'}
+password: mypassword
+chpasswd: { expire: False }
+ssh_pwauth: True
+manage_etc_hosts: true
+#
+apt_update: true
+packages:
+   - openvpn
+#
+write_files:
+ - path: /root/setup-openvpn.sh
+   content: |
+    #!/bin/bash
+    # Built for OpenVPN 2.3.2 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [EPOLL] [PKCS11] [eurephia] [MH] [IPv6] built on Dec  1 2014
+    set -x -e
+    openvpn_dir=/etc/openvpn
+    client=client1
+    #
+    echo 1 > /proc/sys/net/ipv4/ip_forward #runtime
+    sed -i.orig -e 's|#*net/ipv4/ip_forward=.*|net/ipv4/ip_forward=1|' /etc/ufw/sysctl.conf #permanent
+    #
+    # Ubuntu 16.04 fix, http://unix.stackexchange.com/questions/292091/ubuntu-server-16-04-openvpn-seems-not-to-start-no-logs-get-written
+    mkdir -p /lib/systemd/system/openvpn\@.service.d
+    echo [Unit] > /lib/systemd/system/openvpn\@.service.d/local-after-ifup.conf
+    echo Requires=networking.service >> /lib/systemd/system/openvpn\@.service.d/local-after-ifup.conf
+    echo After=networking.service >> /lib/systemd/system/openvpn\@.service.d/local-after-ifup.conf
+    # End fix.
+
+    if [ -f /tmp/$client.files.tar ]; then
+      cd $openvpn_dir
+      tar xvf /tmp/$client.files.tar
+      mv $client.conf client.conf
+    else
+      echo -e "\nYour client configuration files are missing! Please copy them from the server to /tmp/client1.files.tar.\n" > /dev/tty0
+    fi
+
+    systemctl enable openvpn@client.service
+    systemctl start openvpn@client.service
+    systemctl status openvpn@client.service
+    echo -e "\nYour client is now ready!\n" > /dev/tty0
+runcmd:
+ - bash /root/setup-openvpn.sh
+```
+
+
+> **Note**
+> In order to fully automate you must use some method to transfer the client files from the VPN-server to the VPN-client.
+> This can be made in several ways, ex. "scp /etc/openvpn/ccd/client1.files.tar ubuntu@10.0.0.1:/tmp", from the server
+> to the client.
+> This script doesn't provide that step so you need to manually transfer the file and rerun the script on the clientside again.
+> "bash /root/setup-openvpn.sh"
+
 
 ### Routing
 
@@ -210,7 +257,7 @@ You can easily follow packets with tcpdump even on the "tun" interfaces.
 
 ### Notes
 
-> **note**
+> **Note**
 >
 > It is recommended to update the OS and reboot the server as part of
 > the setup.
