@@ -42,6 +42,7 @@ pages:
   - Backup: "backup.md"
   - Compute:
     - Getting started: "compute.md"
+    - API access: "compute/api.md"
     - Image service: "compute/image.md"
     - Network service: "compute/network.md"
     - Using Keypairs: "compute/keypairs.md"
