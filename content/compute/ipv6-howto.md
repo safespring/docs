@@ -20,12 +20,15 @@ In this guide, we will use the third option above: DHCPv6.
 5. Run “sudo -s” to gain root rights and then “ip address show” to find the interface apart from your IPv4 interface. This other interface should be down:  
 ![Interface list](../images/ipv6_image2.png)
 In this case we see that the interface that is down is named ens4.
-6. Go to the folder “/etc/network/interfaces.d” and create a file called “ens4.cfg” and fill it with the following contents:  
-	auto ens4
-	iface ens4 inet6 dhcp
-		accept_ra 1
-Save and close the file.
+6. Go to the folder “/etc/network/interfaces.d” and create a file called “ens4.cfg” and fill it with the following contents:   
+  
+    auto ens4  
+
+    iface ens4 inet6 dhcp  
+        accept_ra 1  
+
+Save and close the file.  
+
 7. Run the command “/etc/init.d/networking restart” to bring up your IPv6 interface. Run “ip address show” to ensure that your instance has gotten the same IPv6-address as stated in the IaaS Dashboard.
-8. Try and ping with the command “ping6 -n ping.sunet.se” to see that it works:  
-![Image 1](image3)  
+8. Try and ping with the command “ping6 -n ping.sunet.se” to see that it works.
 
