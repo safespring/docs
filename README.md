@@ -5,6 +5,10 @@ https://docs.safespring.com
 
 The content is written by Safespring and community contributors.
 
+## Building
+
+To view a build of the site, run `docker run --rm -it -p 8008:8000 -v $PWD:/docs:z squidfunk/mkdocs-material` and open http://localhost:8008 in your favorite browser
+
 ## Contributions
 
 We're open to contributions from anyone. If you need help trying to add or
