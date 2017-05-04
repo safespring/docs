@@ -28,7 +28,6 @@ In this case we see that the interface that is down is named ens4.
         accept_ra 1  
 
 Save and close the file.  
-
 7. Run the command “/etc/init.d/networking restart” to bring up your IPv6 interface. Run “ip address show” to ensure that your instance has gotten the same IPv6-address as stated in the IaaS Dashboard.
 8. Try and ping with the command “ping6 -n ping.sunet.se” to see that it works.
 
