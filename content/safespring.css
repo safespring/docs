@@ -1,25 +1,26 @@
 /*
 primary color #417da5
+     or #195F8C
 */
 
 .md-typeset a {
-  color: #417da5;
+  color: #195f8c;
 }
 
 .md-header {
-  background-color: #417da5;
+  background-color: #195f8c;
 }
 
 .md-nav--secondary {
-  border-left: .4rem solid #417da5
+  border-left: .4rem solid #195f8c
 }
 
 .md-nav--secondary .md-nav__link--active {
-  color: #417da5
+  color: #195f8c
 }
 
 .md-nav__item--active>.md-nav__link, .md-nav__link:active {
-  color: #417da5
+  color: #195f8c
 }
 
 .md-tabs {
@@ -27,12 +28,12 @@ primary color #417da5
 }
 
 .md-tabs[data-md-state=hidden] {
-  background: #417da5;
+  background: #195f8c;
 }
 
 @media only screen and (max-width:76.1875em) {
   html .md-nav--primary .md-nav__title--site {
-    background-color: #417da5;
+    background-color: #195f8c;
   }
 }
 
