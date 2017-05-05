@@ -1,4 +1,4 @@
-# IPv6 in Sunet IaaS
+# Enable IPv6
 This document describes how to enable IPv6 on an instance in the IaaS platform.
 ##Background
 There are mainly three ways to get an IPv6 address:
