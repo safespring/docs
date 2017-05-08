@@ -1,30 +1,50 @@
-# Overview
+# System performance tuning
 
-There are a couple of primary parameters that limit the performance clients can achieve with backup and restore with the Backup service.
+There are a couple of primary parameters that limit the performance clients can
+achieve with backup and restore with the Backup service.
 
 These include:
-* Host CPU
-  * Available CPU cycles on the client host
-  * Available AES-acceleration on the client host's CPU
-* Host RAM
-  * Available RAM on client host
-* Network IO
-  * Available underlying network bandwidth between the client host and the server
-  * Available network throughput (TCP/IP) between the client host and the server
-* Disk IO
-  * Available underlying disk system ~random IOPS
-  * Available underlying disk system streaming throughput
 
-In order to determine the limit to how fast a current system can perform, the performance of these factors can be baselined.  It may also interest the designer of a new system, to factor for the parameters given in this guide.
+* Host CPU
+    - Available CPU cycles on the client host
+    - Available AES-acceleration on the client host's CPU
+* Host RAM
+    - Available RAM on client host
+* Network IO
+    - Available underlying network bandwidth between the client host and the server
+    - Available network throughput (TCP/IP) between the client host and the server
+* Disk IO
+    - Available underlying disk system ~random IOPS
+    - Available underlying disk system streaming throughput
+
+In order to determine the limit to how fast a current system can perform, the
+performance of these factors can be baselined. It may also interest the
+designer of a new system, to factor for the parameters given in this guide.
 
 ## File backup vs. Image backup
 
-When working with file backups, TSM will store each individual file as it changes over time, on the backup server. With image backups, an entire raw device can be backed up.  Raw image backup is much faster since the underlying storage can deliver basically streaming sequential IO to service the read requests. 
-  But there is a trade-off in recovery time, since a users restore request for a single email or word document implies the backup administrator must restore and mount the image in order to restore the document, which can take time.  Thus, image backups optimizes for minimizing speed of doing a backup at the expense of time to restore an individual file, which is the typical backup restore request to an IT department.
-  Conversely, file backups have a much less streaming sequential IO pattern from the client host, and optimize more towards more simply restoring a simple file, than the restore of an entire block device. Restoring from a file backup implies to work on top of a file system, which has a bit less sequential IO pattern than simply writing to the underlying block device from start to finish.
+When working with file backups, TSM will store each individual file as it
+changes over time, on the backup server. With image backups, an entire raw
+device can be backed up.  Raw image backup is much faster since the underlying
+storage can deliver basically streaming sequential IO to service the read
+requests.  But there is a trade-off in recovery time, since a users restore
+request for a single email or word document implies the backup administrator
+must restore and mount the image in order to restore the document, which can
+take time.  Thus, image backups optimizes for minimizing speed of doing a
+backup at the expense of time to restore an individual file, which is the
+typical backup restore request to an IT department.
 
-File backups is the normal mode of operation on typical servers including file servers, and what we recommend.
-Image backups may be a fit virtual environments where the VM in itself is a functional unit and does not necessarily contain individualized data.
+Conversely, file backups have a much less streaming sequential IO pattern
+from the client host, and optimize more towards more simply restoring a simple
+file, than the restore of an entire block device. Restoring from a file backup
+implies to work on top of a file system, which has a bit less sequential IO
+pattern than simply writing to the underlying block device from start to
+finish.
+
+File backups is the normal mode of operation on typical servers including file
+servers, and what we recommend.  Image backups may be a fit virtual
+environments where the VM in itself is a functional unit and does not
+necessarily contain individualized data.
 
 # Host CPU / RAM on the client host
 
@@ -43,21 +63,27 @@ Image backups may be a fit virtual environments where the VM in itself is a func
 # Disk IO
 
 Reference system (a year 2010 system):
+
 * Host OS: Debian GNU/Linux, version Wheezy
 * Kernel version: 3.2.0-4-amd64 (standard)
 * Drive systems:
-  * SATA (4x1TB 7200 RPM) Linux software RAID-5
-  * PATA (10x300GB 7200 RPM) Linux software RAID-5
+    - SATA (4x1TB 7200 RPM) Linux software RAID-5
+    - PATA (10x300GB 7200 RPM) Linux software RAID-5
 * Logical storage construct:
-  * Both RAID volumes in one LVM2 volume, 
-  * dmcrypt block level AES-256 encryption per individual logical volumes
-  * Filesystem:  EXT4
+    - Both RAID volumes in one LVM2 volume
+    - dmcrypt block level AES-256 encryption per individual logical volumes
+    - Filesystem:  EXT4
 * CPU: AMD Phenom(tm) II X4 965 Processor - Quad-core 3.4 GHz
 * RAM: 16 GB
 
 ## Underlying disk system ~random IOPS
 
-A regular backup run on a file system backed up with the service involves iterating over all files of the protected file system(s) and performing `stat()` on them, in order to compare with what the backup server has stored.  The comparisons are made on file's attributes such as modify-time, size, etc. Since the change pattern of files approach random, and all files need to be accessed, it is relevant to base-line a storage systems 
+A regular backup run on a file system backed up with the service involves
+iterating over all files of the protected file system(s) and performing
+`stat()` on them, in order to compare with what the backup server has stored.
+The comparisons are made on file's attributes such as modify-time, size, etc.
+Since the change pattern of files approach random, and all files need to be
+accessed, it is relevant to base-line a storage systems
 
 ### Base-lining the random IOPS of a storage system
 
@@ -97,9 +123,13 @@ Using the file IO tester `fio`, we can base-line a storage system:
     Fio was written by Jens Axboe <jens.axboe@oracle.com>
                      Jens Axboe <jaxboe@fusionio.com>
 
-It's required to A) locate a directory where tests can be done, as it uses files to perform its tests, and B) define a test description to the program.
+It's required to A) locate a directory where tests can be done, as it uses
+files to perform its tests, and B) define a test description to the program.
 
-Fio is very versatile, so we decide to benchmark on random reads, using 4k block size, 1G test files, 1 job running, and a couple of different IO queue depths to check how a presumed increased concurrency of the backup client may affect performance:
+Fio is very versatile, so we decide to benchmark on random reads, using 4k
+block size, 1G test files, 1 job running, and a couple of different IO queue
+depths to check how a presumed increased concurrency of the backup client may
+affect performance:
 
     [global]
     write_bw_log
@@ -146,9 +176,13 @@ Now prepare and launch Fio:
     root@system:/usr/local/src/fio-tests/# cd system/randread-4k
     root@system:/usr/local/src/fio-tests/system/randread-4k# fio --latency-log --bandwidth-log --output system-randread-4k.log ../../system-randread-4k.ini
 
-Fio will now run and create 8x2GiB files to test against, and then perform the tests in sequence with queue depths according to the test configuration file above.  Direct IO means to bypass the Linux kernel's memory page cache, and perform each IO operation directly against the underlying storage.
+Fio will now run and create 8x2GiB files to test against, and then perform the
+tests in sequence with queue depths according to the test configuration file
+above.  Direct IO means to bypass the Linux kernel's memory page cache, and
+perform each IO operation directly against the underlying storage.
 
-Once completed, Fio will have generated a log file, `system-randread-4k.log`, which contains information about the jobs run:
+Once completed, Fio will have generated a log file, `system-randread-4k.log`,
+which contains information about the jobs run:
 
     1: (g=0): rw=randread, bs=4K-4K/4K-4K, ioengine=libaio, iodepth=1
     2: (g=1): rw=randread, bs=4K-4K/4K-4K, ioengine=libaio, iodepth=2
@@ -181,34 +215,28 @@ And then much more detailed information about each run:
          complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
          issued    : total=r=4006/w=0/d=0, short=r=0/w=0/d=0
 
-Fio will also have generated log files that on a system with gnuplot and some font libraries installed, you can run `fio_generate_plot` to get some gnuplot images of the test traces such as:
- * IO Bandwidth
- * IO Operations
- * IO Latency
- * IO Submission Latency
- * IO Completion Latency
+Fio will also have generated log files that on a system with gnuplot and some
+font libraries installed, you can run `fio_generate_plot` to get some gnuplot
+images of the test traces such as:
 
-**IO Bandwidth**
-![BW randread 4k](http://cloud.ipnett.se/static/png/system-randread-4k-bw.png)
+* IO Bandwidth
 
-**IOPS**
-![IOPS randread 4k](http://cloud.ipnett.se/static/png/system-randread-4k-IOPS.png)
+* IO Operations
 
-**IO Latency**
-![Latency randread 4k](http://cloud.ipnett.se/static/png/system-randread-4k-lat.png)
+* IO Latency
 
-**IO Submission Latency**
-![Submission Latency randread 4k](http://cloud.ipnett.se/static/png/system-randread-4k-slat.png)
+* IO Submission Latency
 
-**IO Submission Latency**
-![Completion Latency randread 4k](http://cloud.ipnett.se/static/png/system-randread-4k-clat.png)
+* IO Completion Latency
 
-For more Fio test examples, check out https://github.com/axboe/fio/tree/master/examples .
-The Fio HOWTO manual is at https://github.com/axboe/fio/blob/master/HOWTO .
+For more Fio test examples, check out
+https://github.com/axboe/fio/tree/master/examples The Fio HOWTO manual is at
+https://github.com/axboe/fio/blob/master/HOWTO
 
 ### Base-lining time to stat() a file system with many files
 
-The file system /mnt/backups on the reference host is 394 GiB large, out of which 388 GiB are used, and there are ~2M files on it.
+The file system /mnt/backups on the reference host is 394 GiB large, out of
+which 388 GiB are used, and there are ~2M files on it.
 
 First, get and compile the recursive-stat program:
 
@@ -224,15 +252,18 @@ First, get and compile the recursive-stat program:
     gcc -O2 -o recursive-stat recursive-stat.c
     root@system:/usr/local/src/cloud-BaaS/unix/baselining/recursive-stat
 
-Second, get IOPS values from the underlying disk system before running the test:
+Second, get IOPS values from the underlying disk system before running the
+test:
 
     root@system:/usr/local/src/cloud-BaaS/unix/baselining/recursive-stat# grep 'md.' /proc/diskstats
        9       2 md2 4663599 0 155657288 0 2888861 0 116705128 0 0 0 0  
        9       3 md3 17369972 0 791542623 0 177633 0 1382800 0 0 0 0
 
-This shows that there have been `4663599 + 17369972 = 22033571` read IO ops on this system until now.
+This shows that there have been `4663599 + 17369972 = 22033571` read IO ops on
+this system until now.
 
-Third, empty the Linux dentry cache to make sure there are no cached direntries etc.
+Third, empty the Linux dentry cache to make sure there are no cached direntries
+etc.
 
     root@system:~# echo 3 > /proc/sys/vm/drop_caches
 
@@ -250,9 +281,17 @@ Fifth, get the after-test IO ops values from the underlying disk system:
        9       2 md2 4718083 0 156093160 0 2888861 0 116705128 0 0 0 0
        9       3 md3 17658828 0 793853471 0 177633 0 1382800 0 0 0 0
 
-Apparently, now after the run (other background activity at an absolute minimum), there are `4718083 + 17658828 = 22376911` read IO ops registered by the kernel.  This implies that `22376911 - 22033571 = 343340` read IOPS were issued in order to traverse all folders on the path (there are ~many) and run stat() in them, or `1999531 / 343340 = 5.82` files stat()'ed per read IO op.  This also means an average of `343340 / 409.54 = 838.4` read IOPS were delivered from the underlying disk system.  `XXX: COMPARE WITH fio random read test.`
+Apparently, now after the run (other background activity at an absolute
+minimum), there are `4718083 + 17658828 = 22376911` read IO ops registered by
+the kernel.  This implies that `22376911 - 22033571 = 343340` read IOPS were
+issued in order to traverse all folders on the path (there are ~many) and run
+stat() in them, or `1999531 / 343340 = 5.82` files stat()'ed per read IO op.
+This also means an average of `343340 / 409.54 = 838.4` read IOPS were
+delivered from the underlying disk system.  `XXX: COMPARE WITH fio random read
+test.`
 
-Sixth, run the benchmark once again to view the impact of a dentry cache on the file server:
+Sixth, run the benchmark once again to view the impact of a dentry cache on the
+file server:
 
     root@system:/usr/local/src/cloud-BaaS/unix/baselining/recursive-stat# ./recursive-stat /mnt/backups/
     Files stat()'ed: 1999531
@@ -264,6 +303,12 @@ Sixth, run the benchmark once again to view the impact of a dentry cache on the 
        9       2 md2 4718083 0 156093160 0 2888861 0 116705128 0 0 0 0
        9       3 md3 17658828 0 793853471 0 177633 0 1382800 0 0 0 0
 
-Not a single read request were issued to the underlying disk system, and the CPU time involved in iterating through all directories, stat()'ing all files and hitting the dentry cache as well as progress updating the terminal, is at a minimum.
+Not a single read request were issued to the underlying disk system, and the
+CPU time involved in iterating through all directories, stat()'ing all files
+and hitting the dentry cache as well as progress updating the terminal, is at a
+minimum.
 
 ## Underlying disk system streaming throughput
+
+TBD ...
+
