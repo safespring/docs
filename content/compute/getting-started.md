@@ -1,12 +1,12 @@
-#Getting Started
+# Getting Started
 
-##I just got an IaaS account, what now?
+## I just got an IaaS account, what now?
 
 Start by logging into the portal, at <https://dashboard.cloud.sunet.se> for the Swedish University portal, and <https://portal.cloud.ipnett.no> for the Norwegian portal.
 
 You will be greeted with an overview of the project/account statistics. It usually starts off rather empty, but as machines are added, resources will be summarized there.
 
-### Virtual Machines
+## Virtual Machines
 
 Openstack calls VMs "instances" so in order to start running a few machines, you go to to the Instances category, and use Launch Instance(s) to get your first VM up.
 
@@ -20,7 +20,7 @@ It is normally not necessary to create a (new) volume for a new instance, answer
 
 Before we go into starting VMs, let's take a quick look at the concepts and names used in this cloud implementation.
 
-### Volumes and Images
+## Volumes and Images
 
 Whenever a disk is created in Openstack, it will be a volume. A volume may be snapshot:ed and the snapshot may later be reused on the same instance or on other instances.
 
@@ -32,7 +32,7 @@ Also, while we try to keep the public images up-to-date when publishing them, ke
 
 Using snapshots to freeze volumes is a useful technique for being able to back out of tests, but do mind to clean out unused snapshots when they are no longer of interest, since they count against your storage quota.
 
-### Networks
+## Networks
 
 All tenants (be it test accounts or projects) need to have some kind of network made available to it. If you are testing out, there may already be a demo-network or something similar set up for your instances, otherwise you need to create a network for your machines to start in.
 
@@ -44,7 +44,7 @@ In order to be able to reach out, you associate a Floating IP to your machine. S
 
 Before going into network creation, just a short notice about..
 
-### Security Groups
+## Security Groups
 
 Security groups is the name for the basic network packet filtering option built in to the Openstack/Contrail setup in use in the IPnett/Safespring cloud. Security groups allow you to create lists of rules that can be applied to instances.
 
@@ -54,7 +54,7 @@ Before being able to reach outside networks, a floating ip needs to be associate
 
 ![image](/images/dash-security-groups.png)
 
-### Floating IPs
+## Floating IPs
 
 Floating IPs are taken from a global pool of network addresses that we currently have allocated to the cloud services. Each instance that needs to interact directly with the outside will need to associate a floating ip. If you intend to make a VPN connection in order to stretch your home network into the cloud, the gateway machine would be the only one for which you would do this, the rest would talk to it for outside communications.
 
@@ -66,7 +66,7 @@ You machine could now be reachable from the outside, rules permitting.
 
 ![image](/images/dash-float-ip.png)
 
-### Cloud Init
+## Cloud Init
 
 Even though the web dashboard has the ability to show you a HTML5-based remote console interface for your instance, using SSH, remote desktop or something similar is usually preferred. The console is ok for rescue operations, but may not be comfortable enough for long time work.
 
