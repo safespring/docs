@@ -54,6 +54,10 @@ Before being able to reach outside networks, a floating ip needs to be associate
 
 ![image](/images/dash-security-groups.png)
 
+## Creating your own security groups
+
+
+
 ## Floating IPs
 
 Floating IPs are taken from a global pool of network addresses that we currently have allocated to the cloud services. Each instance that needs to interact directly with the outside will need to associate a floating ip. If you intend to make a VPN connection in order to stretch your home network into the cloud, the gateway machine would be the only one for which you would do this, the rest would talk to it for outside communications.
