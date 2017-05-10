@@ -40,7 +40,7 @@ When you have the program installed and a config file in place, you can make a b
 The multipart chunk size is tunable, it's there for people with shaky internet connections and mean that files larger than 16MB will be uploaded in pieces.
 After all pieces are completed, an MD5 of the whole file will be compared against the checksum of the local file, to ensure the file was correctly uploaded.
 
-We have uploaded lots of files of sizes above 1G without issues, and using larger chunks will allow s3cmd reach higher speeds at the cost of larger resends in case anything does happen during transport.
+We have uploaded lots of files of sizes above 1G without issues, and using larger chunks will allow s3cmd reach higher speeds at the cost of larger resends in case anything does happen during transport. The upper limit seems to be somewhere above 2G.
 
 We will not allow unencrypted access, so the https and ssl options should be left as is.
 
