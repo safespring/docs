@@ -56,7 +56,15 @@ Before being able to reach outside networks, a floating ip needs to be associate
 
 ## Creating your own security groups
 
+First create a group, and give it a descriptive name. Security groups are per project, so you may name them as you like, they will not be visible to other projects.
 
+![image](/images/create-security-group.png)
+
+then add rules to it. Some of the common protocols have pregenerated defaults, and specifically SSH is at the bottom of the list, so it might require scrolling for it to be visible. If the program or protocol you want to open for isn't in that list, you will have to start by specifying TCP/UDP/ICMP manually and set which port(s) it uses. If you want to have it reachable from any IP, leave the CIDR field blank, even though the "?" help popup might suggest that "-1" indicates any. Otherwise, if you want to make the rule dependent on a certain source network or even a single IP, just add it with an appropriate netmask in the CIDR field.
+
+![image](/images/Manage-security-group.png)
+
+As soon as you apply the security group to an instance, it will take effect, no restart or rebuild will be necessary. Do note that the Default ruleset usually prevents all traffic, and that new security groups you place on instances should add permissions for only those protocols you want to allow.
 
 ## Floating IPs
 
