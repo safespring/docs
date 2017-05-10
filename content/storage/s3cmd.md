@@ -54,5 +54,4 @@ In order to prevent s3cmd from re-calculating the local MD5 sums on every run, a
 
     s3cmd --list-md5 ls s3://unique-bucket-name
 
-will show the server side checksums, which are also stored alongside with each file.
-MD5 is not a 100% perfect checksum and intentionally crafted files having the same checksum has been created, so people needing more certainty are encouraged to run other algorithms and store the results alongside with the files for added confidence.
+will show the server side checksums, which are also stored alongside with each file. MD5 is not a 100% perfect checksum and intentionally crafted files having the same checksum has been created, so people needing more certainty are encouraged to run other algorithms and store the results alongside with the files for added confidence.
