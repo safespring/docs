@@ -67,7 +67,8 @@ pages:
     - Network service: "compute/network.md"
     - Using Keypairs: "compute/keypairs.md"
     - Enabling IPv6: "compute/ipv6-howto.md"
-  - Storage: "storage.md"
+  - Storage:
+    - Example s3cmd config: "storage/s3cmd.md"
   - Service status: "status.md"
   - Support: "support.md"
   - Contributing: "contribute.md"
