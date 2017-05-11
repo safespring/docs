@@ -11,6 +11,8 @@ The main window will show "bookmarks" unless you are connected
 to somewhere, and in the lower left corner, press the + sign
 to add yet another one.
 
+![Add config](/images/cyberduckadd.png)
+
 Enter URL and access_key. The secret_key will be asked on first
 connect and stored in the system keyring (for Mac at least).
 
