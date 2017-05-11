@@ -3,7 +3,7 @@
 The CloudBerry Explorer for S3 can be downloaded from:
 https://www.cloudberrylab.com/explorer/amazon-s3.aspx
 
-## Creating a config for our S3 gateway
+## Creating a config
 
 Start with adding an "S3 compatible gateway" config,
 

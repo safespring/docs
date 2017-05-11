@@ -11,7 +11,7 @@ s3cmd can be told to output a file containing all options in their current state
 $HOME/.s3cfg:
 
     [default]
-    access_key = REDACTED
+    access_key = Access_key_goes_here
     secret_key = REDACTED
     check_ssl_certificate = True
     guess_mime_type = True
