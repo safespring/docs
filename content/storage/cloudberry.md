@@ -10,7 +10,7 @@ Start with adding an "S3 compatible gateway" config,
 ![Create config](/images/cloudberry1.png)
 
 and in the next menu, give it a name, add endpoint URL
-https://s3-archive.cloud.ipnett.se and the access_key
+https://s3-archive.api.cloud.ipnett.se and the access_key
 and secret_key you got while enrolling for the service.
 
 ![Options](/images/cloudberry2.png)
