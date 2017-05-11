@@ -2,7 +2,7 @@
 
 ## Getting s3cmd
 
-Most linux distributions will have s3cmd in their repos, so a simple "apt-get install s3cmd" or "yum install s3cmd" (perhaps after adding the RH/CentOS EPEL repos) should suffice.
+Most linux distributions will have s3cmd in their repos, so a simple "apt-get install s3cmd" or "yum install s3cmd" (perhaps after adding the RH/CentOS EPEL repos) should suffice. Otherwise, the project website is http://s3tools.org/s3cmd
 
 ## Creating a config file
 
