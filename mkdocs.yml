@@ -69,6 +69,7 @@ pages:
     - Enabling IPv6: "compute/ipv6-howto.md"
   - Storage:
     - Example s3cmd config: "storage/s3cmd.md"
+    - Example CloudBerry config: "storage/cloudberry.md"
   - Service status: "status.md"
   - Support: "support.md"
   - Contributing: "contribute.md"
