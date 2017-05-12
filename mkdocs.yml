@@ -68,6 +68,7 @@ pages:
     - Using Keypairs: "compute/keypairs.md"
     - Enabling IPv6: "compute/ipv6-howto.md"
   - Storage:
+    - General S3 Info: "storage/generalinfo.md"
     - Example s3cmd config: "storage/s3cmd.md"
     - Example CloudBerry config: "storage/cloudberry.md"
     - Example CyberDuck config: "storage/cyberduck.md"
