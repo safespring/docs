@@ -18,7 +18,7 @@ Click "Create Router" and you will be presented with the following dialogue:
 
 ![Create router dialogue](/images/create-router-dia.png)
 
-Name your router anything unique and make sure to pick "public_v4" under the "External Network" dropdown. Click "Create Router".
+Name your router anything unique and make sure to pick "public_v4" under the "External Network" drop-down. Click "Create Router".
 
 ## Create a network
 Navigate to Network->Networks in the navigation menu and click "Create Network"
