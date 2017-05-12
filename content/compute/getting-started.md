@@ -34,6 +34,8 @@ Using snapshots to freeze volumes is a useful technique for being able to back o
 
 ## Networks
 
+For a thorough tutorial on how to set up networking the first time, go [here](network.md).
+
 All tenants (be it test accounts or projects) need to have some kind of network made available to it. If you are testing out, there may already be a demo-network or something similar set up for your instances, otherwise you need to create a network for your machines to start in.
 
 ![image](/images/dash-select-net.png)
