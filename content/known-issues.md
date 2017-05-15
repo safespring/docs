@@ -15,7 +15,7 @@ In the drop-down menu in the instance listing there are some operations which ar
 ![Create Network Tab 3](/images/instance-dropdown.png)
 
 "Resize" works if you shutdown the instance first. It is prioritized function to get working properly even for running instances.
-"Shelve" shutdowns the instance and takes a snapshot of it. It works for smaller instances but takes very long time for larger instances so should be used with caution.
+"Shelve" shutdowns the instance and takes a snapshot of it. It works for smaller instances but takes very long time for larger instances and should be used with caution.
 
 ##SNAT-networks in the network listing and Topology view
 For every network you create which is connected to a router with an external gateway another network also will show up in the network listing and network topolgy view:
