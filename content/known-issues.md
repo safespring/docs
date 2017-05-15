@@ -9,7 +9,7 @@ The built in resolver in the platform has some issues in the current version. It
 In the picture above we picked Googles resolver but any external resolver would work. Please note that this setting can only set when creating the network in the GUI. In order to update this setting on an existing network - the API must be used.
 
 ##Instance operations
-In the drop-down menu in the instance listing there are some operations which are unsupported at the moment. It does not mean that they fail - but they could lead to data-loss and therefore not recommended for use. Problems with using "Suspend" and "Resize" while you have a volume attached to the instance have been reported.
+In the drop-down menu in the instance listing there are some operations which are unsupported at the moment. It does not mean that they fail - but they could lead to data-loss and therefore not recommended for use. Problems with using "Suspend" and "Resize" while a volume was attached to the instance have been reported.
 
 
 ![Create Network Tab 3](/images/instance-dropdown.png)
