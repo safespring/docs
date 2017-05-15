@@ -1,4 +1,4 @@
-#Knows Issues
+#Known Issues
 There are some currently known issues in the platform. This page describes the most common pitfalls.
 
 ##DNS Resolver
