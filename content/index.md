@@ -6,5 +6,5 @@ This site documents Safespring services and user resources.
     Please review our list of [known issues][ki] to avoid spending time on issues
     we are already aware of.
 
-[ki]:status/#known-issues
+[ki]:known-issues.md
 
