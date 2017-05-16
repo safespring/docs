@@ -2,7 +2,7 @@
 There are some currently known issues in the platform. This page describes the most common pitfalls.
 
 ##DNS Resolver
-The built in resolver in the platform has some issues in the current version. It has been reported to be slow and not to respond to queries in timely manner. The best work around is to provide another resolver when creating the network to which you connect your instances. It is done in the third tab in the "Create Network" dialogue:
+The built in resolver in the platform has some issues in the current version. It has been reported to be slow and not to respond to queries in a timely manner. The best work around is to provide another resolver when creating the network to which you connect your instances. It is done in the third tab in the "Create Network" dialogue:
 
 ![Create Network Tab 3](/images/create-network-dia2.png)
 
