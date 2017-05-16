@@ -1,11 +1,13 @@
-# Auto installation
+ Auto installation
 
 This installer installs the TSM BA Client and services and the TBMR client and licenses. It detects 32-bit or 64-bit platforms and contains both versions. Administative priviledges is required for all installations.  
 
 It can be run in two modes. The first mode requires that the administrator of the service has created a node and checked out the config file, dsm-nodenamexyz.zip, and have the password this node.
 Any user with administrative permissions can then install the services on their computer using the installer, zip and password.
 
-The second mode includes the process of creating a new node and therefore requires API credentials and more settings. It is recommended to use credentials with limited numbers nodes and not your fully administrative credentials. If credentials with unlimited permissions is used it is advised to delete all files in Windows `%TEMP%` directory after installation or failure to install since it may disclose secrets. The installer makes it best to remove them but in some scenarios they might be left behind.
+The second mode includes the process of creating a new node and therefore requires API credentials and more settings. It is recommended to use credentials with limited numbers nodes and not your fully administrative credentials.
+If credentials with unlimited permissions is used it is advised to delete all files in Windows `%TEMP%` directory after installation or failure to install since it may disclose secrets.
+The installer makes it best to remove them but in some scenarios they might be left behind.
 To see options and rules to run simply run `"safespring-baas.2.3.2.exe -help"`. All installer parameters must be in CAPITAL letters. Flags can be in lower case.
 
 ![help](../../images/help.png)
@@ -25,11 +27,12 @@ Latest URL is `https://api.cloud.ipnett.se/dist/installer/latest-win`
 A demo of the autoinstaller can be found [here](https://api.cloud.ipnett.se/dist/media/IPnett-BaaS-Installation.avi).  
 
 ## Space requirements  
-It is recommended to have at least **4 to 5 GB** of free space available for these services. Space is depening on TBMR driver collection and may vary between different hardware/platforms. The installer pauses for 20 seconds if free space is < 5000000000 bytes. If `cancel` is pressed or timeout is reached the installer will abort. If `OK` is pressed, then will the installation continue and make a try.  
+It is recommended to have at least **4 to 5 GB** of free space available for these services. Space is depending on TBMR driver collection and may vary between different hardware/platforms.
+The installer pauses for 20 seconds if free space is < 5000000000 bytes. If `cancel` is pressed or timeout is reached the installer will abort. If `OK` is pressed, then will the installation continue and make an attempt.
 ![Space Dialogue](../../images/spacecheck.png)
  
 ### Mode 1
-To run in mode one, put the installer and the `dsm-nodename.zip` in the same directory and run as follows.
+To run in mode 1, place the installer and the `dsm-nodename.zip` in the same directory and run as follows.
 
 **Example:**  
 `safespring-baas.2.3.2.exe PASS=<password> (-passive | -silent)`
@@ -37,7 +40,9 @@ To run in mode one, put the installer and the `dsm-nodename.zip` in the same dir
 The installer can be run in either manually, passive or silent mode. Passive shows the GUI and progress and silent runs without output in background. `PASS` is the node's current password.
 
 ### Mode 2
-In order to use the fully automated install you must generate your secret token based on your access keys. The access token only needs to be generated once and on any machine with openssl or PowerShell. How to get your access-key and secret key can be read here, https://github.com/IPnett/cloud-BaaS/wiki/FAQ-and-Known-Issues.   
+In order to use the fully automated install you must generate your secret token based on your access keys.
+The access token only needs to be generated once and on any machine with openssl or PowerShell.
+How to get your access-key and secret key can be read here, https://github.com/IPnett/cloud-BaaS/wiki/FAQ-and-Known-Issues.
 
 Download and install openssl from here, https://slproweb.com/products/Win32OpenSSL.html
 and run  
@@ -49,12 +54,12 @@ or run this in PowerShell,
 If run in bash for Windows10, do this,
 `echo -n "<access-key>:<secret-key>" | openssl enc -base64 -e`  
 
-Mode two requires a few more parameters in order to create the node. `TOKEN` is the credential for the API, `FQDN` is a unique name for the node within your organisation, `MAIL` to a mailbox that is read and `COST` is the node costcenter.  
+Mode two requires a few more parameters in order to create the node. `TOKEN` is the credential for the API, `FQDN` is a unique name for the node within your organisation, `MAIL` to a mailbox that is read and `COST` is the node costcenter.
 `DEDUP` and `COMP` is default enabled but can be disabled by setting them `"=0"`. `ENCR` can be set but not in combination with `DEDUP=1`.
 For updates when already running UPDATE=1 can be used. It is not possible to downgrade.
 To rerun the TBMR part only and because of TBMR license failures you can run with TBMRONLY=1.
 
-Put the safespring-baas.2.3.2.exe in a directory where you have write permissions since it will write the `dsm-<nodename>.zip` file in the current directory.  
+Put the safespring-baas.2.3.2.exe in a directory where you have write permissions since it will write the `dsm-<nodename>.zip` file in the current directory.
 
 **Example:**  
 `safespring-baas.2.3.2.exe TOKEN=<secrettoken> FQDN=<uniquename> MAIL=<mailaddress> COST=<costcenter> (-silent | -passive)`  
@@ -63,11 +68,11 @@ The installer can be run in either manually, passive or silent mode. Passive sho
 `PLATFORM` is read from the system and cannot be specified.  
 
 **Noteworthy**  
-All possibly measures are taken to prevent reboot but runtime libraries can cause unpredictable results. To add extra safety measures an additional flag can be used, `-norestart`. 
+All possible measures have been taken to prevent reboot but runtime libraries can cause unpredictable results. To add extra safety measures an additional flag can be used, `-norestart`. 
 
 ### Updates
 The installation can be updated and completed with both new TSM and TBMR version if the installer is run with the UPDATE argument. `safespring-baas.2.3.2.exe UPDATE=1`.
-Then the same nodename and configuration is kept and all components is updated if required. If only TBMR should be installed or updated it can be run with the TBMRONLY argument. `safespring-baas.2.3.2.exe TBMRONLY=1`. This method can also be used to license TBMR if it is trail or unlicensed for some reason.
+Then the same nodename and configuration is kept and all components is updated if required. If only TBMR should be installed or updated it can be run with the TBMRONLY argument. `safespring-baas.2.3.2.exe TBMRONLY=1`. This method can also be used to license TBMR if it is trial or unlicensed for some reason.
 
 #### Revision history
 * 1.0 Initial version for Windows 8, 8.1 and 2012.
