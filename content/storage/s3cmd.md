@@ -16,7 +16,7 @@ $HOME/.s3cfg:
     check_ssl_certificate = True
     guess_mime_type = True
     host_base = s3-archive.api.cloud.ipnett.se
-    multipart_chunk_size_mb = 16
+    multipart_chunk_size_mb = 256
     use_https = True
 
 and nothing else.
@@ -37,8 +37,7 @@ When you have the program installed and a config file in place, you can make a b
 
 ## About the options
 
-The multipart chunk size is tunable, it's there for people with shaky internet connections and mean that files larger than 16MB will be uploaded in pieces.
-After all pieces are completed, an MD5 of the whole file will be compared against the checksum of the local file, to ensure the file was correctly uploaded.
+The multipart chunk size is tunable, it's there for people with shaky internet connections and mean that files larger than 256MB will be uploaded in pieces. If you see issues with resends, you can try lower sizes like 16MB. After all pieces are completed, an MD5 of the whole file will be compared against the checksum of the local file, to ensure the file was correctly uploaded.
 
 We have uploaded lots of files of sizes above 1G without issues, and using larger chunks will allow s3cmd reach higher speeds at the cost of larger resends in case anything does happen during transport. The upper limit seems to be somewhere above 2G.
 
