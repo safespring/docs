@@ -66,5 +66,60 @@ When you start the TSM client for the first time, you will be prompted for your 
     dsmc query session
 
 ## 7. Enable TSM autostart
+The provided init script from IBM does not work on Debian or Ubuntu:
+Replace the /etc/init.d/dsmcad file with the a file with these contents instead:
 
-    # Edit the IBM-supplied /etc/init.d/dsmcad to work on your system. It seems to not-support non-RH/Suse systems, but the basics is just "start or stop dsmcad", so it should be easily edited to work on any kind of Linux system.
+```shell
+#!/bin/sh
+# kFreeBSD do not accept scripts as interpreters, using #!/bin/sh and sourcing.
+if [ true != "$INIT_D_SCRIPT_SOURCED" ] ; then
+    set "$0" "$@"; INIT_D_SCRIPT_SOURCED=true . /lib/init/init-d-script
+fi
+### BEGIN INIT INFO
+# Provides:          dsmcad
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: DSMCAD initscript
+# Description:       This script replaces the /etc/init.d/dsmcad script
+#                       from IBM that only works on Red Hat variants
+#                       to start the dmscad service on Debian variants
+### END INIT INFO
+
+# Author: Gabriel Paues <gabriel.paues@safespring.com>
+#
+
+DESC="DSMCAD Start Script"
+DSMCAD_DIR=/opt/tivoli/tsm/client/ba/bin
+DAEMON=$DSMCAD_DIR/dsmcad
+PIDFILE=/var/run/dsmcad.pid
+
+test -x $DAEMON || exit 0
+
+. /lib/lsb/init-functions
+
+case "$1" in
+  start)
+        log_daemon_msg "Starting dsmcad" "dsmcad"
+        start_daemon -p $PIDFILE $DAEMON
+        log_end_msg $?
+    ;;
+  stop)
+        log_daemon_msg "Stopping dsmcad" "dsmcad"
+        killproc -p $PIDFILE $DAEMON
+        log_end_msg $?
+    ;;
+  force-reload|restart)
+    $0 stop
+    $0 start
+    ;;
+  status)
+    status_of_proc -p $PIDFILE $DAEMON atd && exit 0 || exit $?
+    ;;
+  *)
+    echo "Usage: /etc/init.d/dsmcad {start|stop|restart|force-reload|status}"
+    exit 1
+    ;;
+esac
+```
