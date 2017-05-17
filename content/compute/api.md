@@ -29,6 +29,7 @@ $ pip install python-openstackclient python-cinderclient python-glanceclient pyt
 $ cat - >> openstackrc << EOF
 <contents of rc-file from template below>
 EOF
+$ source openstackrc
 $ openstack token issue 
 ```
 Whenever you like to go back to the virtual environment use the command:
