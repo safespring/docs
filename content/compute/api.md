@@ -9,6 +9,34 @@ To do this, contact support to make sure you get an API-enabled
 user account created for you. A federated user account from e.g SWAMID
 or Dataporten can't be used in this case.
 
+##Installation of OpenStack CLI clients
+Instructions on how to install the clients can be found [here](https://docs.openstack.org/user-guide/common/cli-install-openstack-command-line-clients.html).
+
+A safer way is to install the clients in a Python Virtual Environment:
+
+```shell
+$ sudo apt-get install python-pip virtualenv virtualenvwrapper build-essential
+$ mkdir ~/PythonProjects
+$ cat - >> ~/.bashrc << EOF
+export WORKON_HOME=~/Envs
+export PROJECT_HOME=~/PythonProjects
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+EOF
+$ . ~/.bashrc
+$ mkproject os
+$ pip install --upgrade pip
+$ pip install python-openstackclient python-cinderclient python-glanceclient python-keystoneclient python-neutronclient python-novaclient
+$ cat - >> openstackrc << EOF
+<contents of rc-file from template below>
+EOF
+$ openstack token issue 
+```
+Whenever you like to go back to the virtual environment use the command:
+```shell
+$ workon os
+```
+
+
 ## Example rc files
 
 These are example rc files (settings) for accessing our Norwegian and
