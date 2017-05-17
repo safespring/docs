@@ -21,11 +21,13 @@ In this guide, we will use the third option above: DHCPv6.
 ![Interface list](../images/ipv6_image2.png)
 In this case we see that the interface that is down is named ens4.
 * Go to the folder “/etc/network/interfaces.d” and create a file called “ens4.cfg” and fill it with the following contents:   
-  
+
+```shell  
     auto ens4  
 
     iface ens4 inet6 dhcp  
         accept_ra 1  
+```
 
 Save and close the file.  
   
