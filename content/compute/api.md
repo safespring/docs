@@ -32,6 +32,11 @@ EOF
 $ source openstackrc
 $ openstack token issue 
 ```
+Whenever you like to go back to the system installed Python:
+```shell
+(os) $ deactivate
+```
+
 Whenever you like to go back to the virtual environment use the command:
 ```shell
 $ workon os
