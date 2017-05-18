@@ -94,6 +94,9 @@ DESC="DSMCAD Start Script"
 DSMCAD_DIR=/opt/tivoli/tsm/client/ba/bin
 DAEMON=$DSMCAD_DIR/dsmcad
 PIDFILE=/var/run/dsmcad.pid
+WORKING_DIR=/var/log/tsm
+
+mkdir -p $WORKING_DIR
 
 test -x $DAEMON || exit 0
 
@@ -102,6 +105,7 @@ test -x $DAEMON || exit 0
 case "$1" in
   start)
         log_daemon_msg "Starting dsmcad" "dsmcad"
+        cd $WORKING_DIR
         start_daemon -p $PIDFILE $DAEMON
         log_end_msg $?
     ;;
@@ -122,4 +126,5 @@ case "$1" in
     exit 1
     ;;
 esac
+
 ```
