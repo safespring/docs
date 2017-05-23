@@ -41,6 +41,6 @@ as you see fit.
 There is an addition called Mountainduck (mountainduck.io) which
 uses your Cyberduck preferences and allows you to mount one or
 more of the configured endpoints as a mounted drive. (In my case,
-the DC1-SE 'drive' on the left)
+the DC1-S3 'drive' on the left)
 
 ![Drives](/images/mountainduck1.png)
