@@ -27,4 +27,3 @@ These network should be neglected, but never deleted as the NAT-functionality fo
 
 ##Network operations in the GUI
 Right now the operations to change admin state and to change name of a network does not work in the GUI. We recommend our users to use (API Access)[/compute/API] to perform these operations. 
-Right now it is not possible to change the admin-state or change a networks name in the GUI. We recommend the users that need to do this to use API-access instead: [/compute/api/](
