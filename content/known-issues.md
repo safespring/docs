@@ -24,3 +24,7 @@ For every network you create which is connected to a router with an external gat
 ![Network Listing](/images/snat-network.png)
 
 These network should be neglected, but never deleted as the NAT-functionality for floating IPs will stop working if they are deleted. This extra information (which only confuses the user) is planned to go away in newer releases of the platform.
+
+##Network operations in the GUI
+Right now the operations to change admin state and to change name of a network does not work in the GUI. We recommend our users to use (API Access)[/compute/API] to perform these operations. 
+Right now it is not possible to change the admin-state or change a networks name in the GUI. We recommend the users that need to do this to use API-access instead: [/compute/api/](
