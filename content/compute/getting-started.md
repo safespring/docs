@@ -2,7 +2,7 @@
 
 ## I just got an IaaS account, what now?
 
-Start by logging into the portal, at <https://dashboard.cloud.sunet.se> for the Swedish University portal, and <https://portal.cloud.ipnett.no> for the Norwegian portal.
+Start by logging into the portal, at <https://dashboard.cloud.sunet.se> for the Swedish portal, and <https://portal.cloud.ipnett.no> for the Norwegian portal.
 
 You will be greeted with an overview of the project/account statistics. It usually starts off rather empty, but as machines are added, resources will be summarized there.
 
