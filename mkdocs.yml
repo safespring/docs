@@ -67,6 +67,7 @@ pages:
     - Network service: "compute/network.md"
     - Using Keypairs: "compute/keypairs.md"
     - Enabling IPv6: "compute/ipv6-howto.md"
+    - Connecting to Safespring: "compute/connecting.md"
   - Storage:
     - General S3 Info: "storage/generalinfo.md"
     - Example s3cmd config: "storage/s3cmd.md"
