@@ -1,6 +1,6 @@
 #Connecting your virtual servers to your infrastructure
 The instances you have set up in Safespring Compute will get floating IP 
-addresses from the SUNET IP pool and are the way of contact for the clients
+addresses from the SUNET/UNINETT IP pool and are the way of contact for the clients
 connecting to you services. By setting up Security Groups you will be able
 to control which clients (based on IP) that can connect to your servers.
 Many applications today support encryption in transit so you come a long way
@@ -9,7 +9,7 @@ with tools like [LetsEncrypt](https://letsencrypt.org/) to uphold secure access 
 Sometimes application encryption is not enough for secure transport and in
 those cases Safespring offers two solutions:
 1. Site-to-site layer 3 VPN - SSLVPN based tunnel
-2. Saferoute - dedicated MPLS VRF in SUNETs network
+2. Saferoute - dedicated MPLS VRF in SUNETs/UNINETTs network
 
 ![Connecting to Safespring](/images/connect.png)
 
@@ -24,8 +24,8 @@ the IPs (hosts or networks) that you virtual machines should be able to
 communicate to the endpoint at Safespring.
 
 Saferoute is somewhat more work to set up but will give you a separate routing
-instance (VRF) in the SUNET network effectively giving you a port in your 
-edge router to SUNET where all the traffic to your servers will be served.
+instance (VRF) in the SUNET/UNINETT MPLS network effectively giving you a port in your 
+edge router to SUNET/UNINETT where all the traffic to your servers will be served.
 This is especially good if you have security policies at your site which
 enforces infrastrucure to be behind a central firewall. You will also be able
 to pick which IP-addresses you want to use for your virtual machines in the 
@@ -298,6 +298,6 @@ You can easily follow packets with tcpdump even on the "tun" interfaces.
 ##Dedicated Access with Saferoute
 ![Connecting to Safespring](/images/connect.png)
 
-The second option to set up connectivity is by using Saferoute where a dedicated MPLS IPVPN is set up through SUNETs network. The advantages is that that the virtual servers in the infrastructure will logically be placed behind the firewall at the campus site. This makes managing the firewall rules for the virtual infrastructure no different from managing the servers at the site since traffic to both environments will go through the firewall at the campus site. All traffic between servers at the campus and the Safespring infrastructure will also go through this private channel.
+The second option to set up connectivity is by using Saferoute where a dedicated MPLS IPVPN is set up through SUNETs/UNINETTs network. The advantages is that that the virtual servers in the infrastructure will logically be placed behind the firewall at the campus site. This makes managing the firewall rules for the virtual infrastructure no different from managing the servers at the site since traffic to both environments will go through the firewall at the campus site. All traffic between servers at the campus and the Safespring infrastructure will also go through this private channel.
 
-To set this up a part of the Campus IP-range must be reserved for the infrastructure at Safespring. Depending on the need of addresses in the virtual infrastructure the size of the range might vary but it is better to reserve some extra addresses since the administrative work for setting this up includes work both at SUNET, Safespring and the central IT at campus. To order Saferoute - contact Safespring and fill in the form at [here](https://goo.gl/forms/usCnl6T8nEIZmAJW2).  
+To set this up a part of the Campus IP-range must be reserved for the infrastructure at Safespring. Depending on the need of addresses in the virtual infrastructure the size of the range might vary but it is better to reserve some extra addresses since the administrative work for setting this up includes work both at SUNET/UNINETT, Safespring and the central IT at campus. To order Saferoute - contact Safespring and fill in the form at [here](https://goo.gl/forms/usCnl6T8nEIZmAJW2).  
