@@ -9,6 +9,10 @@ The built in resolver in the platform has some issues in the current version. It
 In the picture above we picked Googles resolver but any external resolver would work. Please note that this setting can only set when creating the network in the GUI. In order to update this setting on an existing network - the API must be used.
 
 ##Instance operations
+"Create Snapshot" only works for smaller instances at the moment. This has to do
+with some compability issues with OpenStack and the Ceph backend. With the coming
+upgrade of OpenStack, this is prioritized to get working for all kinds of instances.
+
 In the drop-down menu in the instance listing there are some operations which are unsupported at the moment. It does not mean that they fail - but they could lead to data-loss and therefore not recommended for use. Problems with using "Suspend" and "Resize" while a volume was attached to the instance have been reported. To ensure that the attached volume persists after the operation it should be detached from the instance before the "Suspend" or "Resize" command is issued.
 
 
