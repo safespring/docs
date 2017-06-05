@@ -80,17 +80,22 @@ Then the same nodename and configuration is kept and all components is updated i
 * **1.0** Initial version for Windows 8, 8.1 and 2012.
 * **1.1** Initial version for Windows 7, 2008.
 * **1.1.1** Bugfix version for Windows 7, 2008.  *  Handle cleanup when running RDP with per session temporary folders.
-* **1.0.1** Bugfix version for Windows 8, 8.1 and 2012.
+* **1.0.1**
+    * Bugfix version for Windows 8, 8.1 and 2012.
     *  Handle cleanup when running RDP with per session temporary folders.
-* **1.2** Bugfix, really surpress reboot on vcredist update.
+* **1.2**
+    * Bugfix, really surpress reboot on vcredist update.
     * New TSM client, 7.1.2.0
     * Oneforall installer for all MS.
-* **1.2.2** Bugfix, correctly exit if node creation or config checkout fails when running mode 2.
+* **1.2.2**
+    * Bugfix, correctly exit if node creation or config checkout fails when running mode 2.
     * Extended checking and logging for troubleshooting.
-* **1.3.0** New TBMR version, 7.2.2.
+* **1.3.0**
+    * New TBMR version, 7.2.2.
     * New TBMR trial license valid to 2015-11-01. 
     * Internal: API call for new node in mode 2 changed to JSON format.
-* **1.3.1** Accepts node configfile from portal and API.
+* **1.3.1**
+    * Accepts node configfile from portal and API.
     * Better errorhandling and cleanup on failures.
     * Space requirement check and dialogue to force install if requirement not met. (5000000000 bytes)
     * Unique exitcodes from each step for faster troubleshoting.
@@ -110,7 +115,8 @@ Then the same nodename and configuration is kept and all components is updated i
     * Stays in ARP to handle updates.
     * Warns if TBMR licensing fails.
     * Hides secrets in logfiles natively.
-* **2.0.2** Fix for PRESCHEDULECMD failing scheduled backups.
+* **2.0.2**
+    * Fix for PRESCHEDULECMD failing scheduled backups.
     * Fix for expired TBMR maintenance date.
 * **2.0.3** Fix for TBMR license failure.
 * **2.1.1**
@@ -136,8 +142,6 @@ Then the same nodename and configuration is kept and all components is updated i
 * **2.3.3**
     * New TSM x32 version, 7.1.6.5. 
     * New TSM x64 version, 8.1.0.2.
-
-
 
 ## Pitfalls
 * Make sure you have no spaces in the path from where you run the installer. The path cannot be escaped by the Wix installer so it will be an offset in the input paramters.
