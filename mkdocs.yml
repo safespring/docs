@@ -1,6 +1,7 @@
 # Site and content
 site_name: "Safespring documentation"
 docs_dir: "content"
+site_favicon: 'images/favicon.ico'
 
 # Github integration
 repo_name: "safespring/docs"

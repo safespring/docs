@@ -1,4 +1,5 @@
- Auto installation
+# Windows installation
+## Auto installation
 
 This installer installs the TSM BA Client and services and the TBMR client and licenses. It detects 32-bit or 64-bit platforms and contains both versions. Administative priviledges is required for all installations.  
 
@@ -14,7 +15,7 @@ To see options and rules to run simply run `"safespring-baas.2.3.3.exe -help"`. 
 
 **The installation process may take up to 25 minutes to complete. Especially "TBMR Installation" may take quite a long time.**  
 
-### Download  
+## Download  
 For Windows 8.1, 10, 2012 and 2016 please use this installer, [https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.3.3.exe](https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.3.3.exe). 
 
 For older Windows versions please use this installer, [https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.2.1.exe](https://api.cloud.ipnett.se/dist/installer/ipnett-baas.2.2.1.exe). 
@@ -29,8 +30,9 @@ A demo of the autoinstaller can be found [here](https://api.cloud.ipnett.se/dist
 ## Space requirements  
 It is recommended to have at least **4 to 5 GB** of free space available for these services. Space is depending on TBMR driver collection and may vary between different hardware/platforms.
 The installer pauses for 20 seconds if free space is < 5000000000 bytes. If `cancel` is pressed or timeout is reached the installer will abort. If `OK` is pressed, then will the installation continue and make an attempt.
+
 ![Space Dialogue](../../images/spacecheck.png)
- 
+## Modes 
 ### Mode 1
 To run in mode 1, place the installer and the `dsm-nodename.zip` in the same directory and run as follows.
 
@@ -70,74 +72,74 @@ The installer can be run in either manually, passive or silent mode. Passive sho
 **Noteworthy**  
 All possible measures have been taken to prevent reboot but runtime libraries can cause unpredictable results. To add extra safety measures an additional flag can be used, `-norestart`. 
 
-### Updates
+## Updates
 The installation can be updated and completed with both new TSM and TBMR version if the installer is run with the UPDATE argument. `safespring-baas.2.3.3.exe UPDATE=1`.
 Then the same nodename and configuration is kept and all components is updated if required. If only TBMR should be installed or updated it can be run with the TBMRONLY argument. `safespring-baas.2.3.3.exe TBMRONLY=1`. This method can also be used to license TBMR if it is trial or unlicensed for some reason.
 
-#### Revision history
-* 1.0 Initial version for Windows 8, 8.1 and 2012.
-* 1.1 Initial version for Windows 7, 2008.
-* 1.1.1 Bugfix version for Windows 7, 2008.  *  Handle cleanup when running RDP with per session temporary folders.
-* 1.0.1 Bugfix version for Windows 8, 8.1 and 2012.
-  *  Handle cleanup when running RDP with per session temporary folders.
-* 1.2 Bugfix, really surpress reboot on vcredist update.
-  * New TSM client, 7.1.2.0
-  * Oneforall installer for all MS.
-* 1.2.2 Bugfix, correctly exit if node creation or config checkout fails when running mode 2.
-  * Extended checking and logging for troubleshooting.
-* 1.3.0 New TBMR version, 7.2.2.
-  * New TBMR trial license valid to 2015-11-01. 
-  * Internal: API call for new node in mode 2 changed to JSON format.
-* 1.3.1 Accepts node configfile from portal and API.
-  * Better errorhandling and cleanup on failures.
-  * Space requirement check and dialogue to force install if requirement not met. (5000000000 bytes)
-  * Unique exitcodes from each step for faster troubleshoting.
-  * Dialogue for node config failures on file and credentail problems.  
-* 1.3.2 Fix for overwriting dsm.opt if it already exists.  
-* 1.3.3 Fix for more robust handling of configuration zip file. Can be run from shared and read-only media.
-* 2.0.1
-  * RESTinTBMR license API used handle TBMR license.
-  * Allow update of old installations and without cretentials, UPDATE=1.
-  * Allow running TBMR only through modify/repair, TBMRONLY=1.
-  * Modifies dsm.opt, adding a PRESCHEDULECMD
-  * Creates and updates C:\Program Files\Cristie\TBMR\TBMRcfgWrapper.cmd script to secure running tbmr BEFORE each backup by above PRESCHEDULECMD.
-  * Leaves a binary file, C:\Program Files\Cristie\TBMR\wget.exe for future use to report missing drivers.
+## Revision history
+* **1.0** Initial version for Windows 8, 8.1 and 2012.
+* **1.1** Initial version for Windows 7, 2008.
+* **1.1.1** Bugfix version for Windows 7, 2008.  *  Handle cleanup when running RDP with per session temporary folders.
+* **1.0.1** Bugfix version for Windows 8, 8.1 and 2012.
+    *  Handle cleanup when running RDP with per session temporary folders.
+* **1.2** Bugfix, really surpress reboot on vcredist update.
+    * New TSM client, 7.1.2.0
+    * Oneforall installer for all MS.
+* **1.2.2** Bugfix, correctly exit if node creation or config checkout fails when running mode 2.
+    * Extended checking and logging for troubleshooting.
+* **1.3.0** New TBMR version, 7.2.2.
+    * New TBMR trial license valid to 2015-11-01. 
+    * Internal: API call for new node in mode 2 changed to JSON format.
+* **1.3.1** Accepts node configfile from portal and API.
+    * Better errorhandling and cleanup on failures.
+    * Space requirement check and dialogue to force install if requirement not met. (5000000000 bytes)
+    * Unique exitcodes from each step for faster troubleshoting.
+    * Dialogue for node config failures on file and credentail problems.  
+* **1.3.2** Fix for overwriting dsm.opt if it already exists.  
+* **1.3.3** Fix for more robust handling of configuration zip file. Can be run from shared and read-only media.
+* **2.0.1**
+    * RESTinTBMR license API used handle TBMR license.
+    * Allow update of old installations and without cretentials, UPDATE=1.
+    * Allow running TBMR only through modify/repair, TBMRONLY=1.
+    * Modifies dsm.opt, adding a PRESCHEDULECMD
+    * Creates and updates C:\Program Files\Cristie\TBMR\TBMRcfgWrapper.cmd script to secure running tbmr BEFORE each backup by above PRESCHEDULECMD.
+    * Leaves a binary file, C:\Program Files\Cristie\TBMR\wget.exe for future use to report missing drivers.
    GNU Wget 1.11.4  http://gnuwin32.sourceforge.net/packages/wget.htm
-  * Not forced to do passive or silent mode.
-  * New TSM version, 7.1.3.0
-  * Stays in ARP to handle updates.
-  * Warns if TBMR licensing fails.
-  * Hides secrets in logfiles natively.
-* 2.0.2 Fix for PRESCHEDULECMD failing scheduled backups.
-  * Fix for expired TBMR maintenance date.
-* 2.0.3 Fix for TBMR license failure.
-* 2.1.1
-  * New TSM versions, 32-bit 7.1.3.2, 64-bit 7.1.4.2. 
-  * New TBMR version, 7.3.1.
-  * Certificates bundled for all wget requests.
-  * Improved logging for easier troubleshooting.
-  * Warns and aborts if space in path from where the installer is run. See Pitfalls.
-* 2.2.0
-  * New TSM version, 7.1.6.0.
-  * New TBMR version, 7.5.1.
-  * Internal API call change.
-* 2.2.1
-  * New TSM x64 version, 7.1.6.2.
-  * Fixed a flag to prevent reboot.
-* 2.3.1
-  * New TSM x32 version, 7.1.6.4. 
-  * New TSM x64 version, 8.1.0.0.
-  * New TBMR version, 8.1.1.
-* 2.3.2
-  * Prevent installation on non-suppported Windows versions.
-  * Logname typo.
-* 2.3.3
-  * New TSM x32 version, 7.1.6.5. 
-  * New TSM x64 version, 8.1.0.2.
+    * Not forced to do passive or silent mode.
+    * New TSM version, 7.1.3.0
+    * Stays in ARP to handle updates.
+    * Warns if TBMR licensing fails.
+    * Hides secrets in logfiles natively.
+* **2.0.2** Fix for PRESCHEDULECMD failing scheduled backups.
+    * Fix for expired TBMR maintenance date.
+* **2.0.3** Fix for TBMR license failure.
+* **2.1.1**
+    * New TSM versions, 32-bit 7.1.3.2, 64-bit 7.1.4.2. 
+    * New TBMR version, 7.3.1.
+    * Certificates bundled for all wget requests.
+    * Improved logging for easier troubleshooting.
+    * Warns and aborts if space in path from where the installer is run. See Pitfalls.
+* **2.2.0**
+    * New TSM version, 7.1.6.0.
+    * New TBMR version, 7.5.1.
+    * Internal API call change.
+* **2.2.1**
+    * New TSM x64 version, 7.1.6.2.
+    * Fixed a flag to prevent reboot.
+* **2.3.1**
+    * New TSM x32 version, 7.1.6.4. 
+    * New TSM x64 version, 8.1.0.0.
+    * New TBMR version, 8.1.1.
+* **2.3.2**
+    * Prevent installation on non-suppported Windows versions.
+    * Logname typo.
+* **2.3.3**
+    * New TSM x32 version, 7.1.6.5. 
+    * New TSM x64 version, 8.1.0.2.
 
 
 
-### Pitfalls
+## Pitfalls
 * Make sure you have no spaces in the path from where you run the installer. The path cannot be escaped by the Wix installer so it will be an offset in the input paramters.
 * When installing with Anti-Malware program running it may delete installer files since they are wrapped with 7-Zip SFX maker. This may trigger false positve on anti malware. Solution, temporary disable your AM software.
 * If a faulty node configuration zip is detected or lack of credentials the installer will abort with this message. The installer will accept zip's from both the API and the portal.  
@@ -145,13 +147,13 @@ Then the same nodename and configuration is kept and all components is updated i
 * If the licensing of TBMR fails you can be asked to rerun the installer again with TBMRONLY=1.  
 ![License fail dialogue](../../images/TBMRfail.png)
 
-### Report problems
+## Report problems
 In case of reporting a problem please include ALL logfiles from %TEMP% named IPnett*.*, BaaS*.* and Cristie*.*.
   
-###Simple launch script
+## Simple launch script
 This script will start a incremental backup and keep the window open until it's manually closed. This makes it possible to verify a successful backup. Feel free to modify to your own needs. (Right click and 'Save target as...') [Download here](https://api.cloud.ipnett.se/dist/installer/RunBaaS.cmd).    
 
-# Manual installation
+## Manual installation
 
 ## Microsoft Windows (64-bit)
 
