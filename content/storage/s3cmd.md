@@ -16,7 +16,7 @@ $HOME/.s3cfg:
     check_ssl_certificate = True
     guess_mime_type = True
     host_base = s3-archive.api.cloud.ipnett.se
-		host_bucket = %(bucket).s3-archive.api.cloud.ipnett.se
+	host_bucket = %(bucket).s3-archive.api.cloud.ipnett.se
     multipart_chunk_size_mb = 256
     use_https = True
 
