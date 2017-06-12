@@ -19,6 +19,13 @@ This will get you the access-key and secret-key that can be used to create your 
 
 IBMs official stance on the issue is that they will have a working client "within 6 months of the release", but it usually is faster than that.
 
+## What ports need to be opened in the firewall?
+
+During the installation, platforms with TBMR will want to make a https call to get a license for TBMR, so tcp/443 needs to be open until
+the installation is done, then during backups and schedule calls, only tcp/1600 outwards.
+All TSM communication is always initiated by the client to our server,
+no inbound ports need to be configured, so installation and operations behind NAT are ok.
+
 ## What known issues are there with the clients and the services on top of TSM?
 
 * You currently can't take backups of files with dates outside 1970-Jan-1 00:00 and 2105-Feb-07. TSM uses 0 to represent both the date 1970-Jan-1 00:00 but also to mark expired files in the inventory, so files before that have undefined date stamps.
