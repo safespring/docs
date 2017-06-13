@@ -19,4 +19,8 @@ This is fairly straight forward: if using a system that uses OpenSSH you only co
 If using PuTTY you start PuTTYgen and copy the public part of the key from the text-field at the top (once you have loaded you key).
 
 ##Once the key is installed
-If you start PuTTY you now will be able to go to SSH->Auth in the session configuration dialogue and use the file picking window under "Private key for authentication" to point to you converted key. If you also give the Floating IP that you have assigned (and updated the security groups to allow SSH-traffic) you now should be able to log in to you instance with you key and password that you set in the convert procedure.
+If you start PuTTY you now will be able to go to SSH->Auth in the session configuration dialogue and use the file picking window under "Private key for authentication" to point to you converted key. 
+
+![Putty key dialogue](/images/putty-key.png)
+
+If you also give the Floating IP that you have assigned (and updated the security groups to allow SSH-traffic) you now should be able to log in to you instance with you key and password that you set in the convert procedure.
