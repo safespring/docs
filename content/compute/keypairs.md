@@ -10,7 +10,7 @@ By pressing "Create Key Pair" you will be presented with a dialogue where you ca
 
 If you are using an operating system which runs OpenSSH you will be able to use the pem-file directly with the -i flag to the ssh command. If you are using PuTTY on Windows you will need to convert the pem-file to a format Putty understands. This is done with the PuTTYgen-program (that is installed alongside PuTTY if you are using the installer for PuTTY).
 
-When Puttygen has started go to the menu entry File->Load private key. Since files ending with .pem is not recognized you pick "All files *.*" in the open dialogue and then open the key you downloaded from the dashboard. You should get a notification that PuTTYgen has imported the key. You are recommended to set a password for the key - otherwise anyone with access to your computer will be able to log in to you instance. Now you press "Save private key" and name file.
+When Puttygen has started go to the menu entry File->Load private key. Since files ending with .pem is not recognized you pick "All files *.*" in the open dialogue and then open the key you downloaded from the dashboard. You should get a notification that PuTTYgen has imported the key. You are recommended to set a password for the key - otherwise anyone with access to your key file will be able to log in to you instance. Now you press "Save private key" and name file.
 
 
 ## Import already existing key
