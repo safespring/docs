@@ -1,5 +1,5 @@
 #Known Issues
-There are some currently known issues in the platform. This page describes the most common pitfalls.
+There are some currently known issues in the Compute platform. This page describes the most common pitfalls. Known issues for Backup is under the Backup FAQ page.
 
 ##DNS Resolver
 The built in resolver in the platform has some issues in the current version. It has been reported to be slow and not to respond to queries in a timely manner. The best work around is to provide another resolver when creating the network to which you connect your instances. It is done in the third tab in the "Create Network" dialogue:

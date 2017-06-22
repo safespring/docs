@@ -38,4 +38,6 @@ no inbound ports need to be configured, so installation and operations behind NA
 
 * There is a known issue with the local deduplication cache if you run exactly Linux kernel 2.6.32 and TSM client version 7.1.0.2. If you have this combination, either upgrade the client (preferred, this is verified to help as a single action), or increase the DEDUPCACHESIZE in dsm.sys (which may workaround the problem).
 
+* The 8.1 TSM client (not 8.1.0.2 or later) will fail if you have 1400+ directories in a single directory. The error will be something like this: "ANS6718E The path contains too many nested subdirectories. The maximum number of nested  directories is 1400". The solution is to either upgrade to 8.1.0.2 or later, or edit the dsm.opt to include this line: "TESTFLAGS threadstacksize:2048" if you can't upgrade.
+
 
