@@ -18,5 +18,5 @@ when you email us.
 We publish information about our [currently known issues][ki]. Please review it
 to avoid spending time on them.
 
-[ki]:https://docs.safespring.com/status/#known-issues
+[ki]:status/#known-issues
 

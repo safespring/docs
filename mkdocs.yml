@@ -75,7 +75,6 @@ pages:
     - Example CloudBerry config: "storage/cloudberry.md"
     - Example CyberDuck config: "storage/cyberduck.md"
   - Service status: "status.md"
-  - Known issues: "known-issues.md"
   - Support: "support.md"
   - Contributing: "contribute.md"
 
