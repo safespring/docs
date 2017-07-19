@@ -173,7 +173,7 @@ Then the same nodename and configuration is kept and all components is updated i
 ![License fail dialogue](../../images/TBMRfail.png)
 
 ## Report problems
-In case of reporting a problem please include ALL logfiles from %TEMP% named IPnett*.*, BaaS*.* and Cristie*.*.
+In case of reporting a problem please include ALL logfiles from %TEMP% named Safespring*.*, BaaS*.* and Cristie*.*.
   
 ## Simple launch script
 This script will start a incremental backup and keep the window open until it's manually closed. This makes it possible to verify a successful backup. Feel free to modify to your own needs. (Right click and 'Save target as...') [Download here](https://api.cloud.ipnett.se/dist/installer/RunBaaS.cmd).    
