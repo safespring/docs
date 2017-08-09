@@ -13,8 +13,8 @@ validation against the Openstack API.
 ## Known Issues
 
 There are some currently known issues in the Compute platform. This page
-describes the most common pitfalls. Known issues for Backup is under the Backup
-FAQ page.
+describes the most common pitfalls. Known issues for Backup is under the [Backup
+FAQ page][/backup/faq].
 
 ### DNS Resolver
 
