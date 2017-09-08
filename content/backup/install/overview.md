@@ -12,9 +12,9 @@ Download TSM client software from the following repos. IPnett mirrors the softwa
 
 ## Manual Installation Instructions
 
-- [Windows](Installation-Windows)
-- [Redhat Linux](Installation-RHEL)
-- [Debian/Ubuntu 64-bit](Installation-Debian-or-Ubuntu)
+- [Windows](windows)
+- [Redhat Linux](rhel)
+- [Debian/Ubuntu 64-bit](debian-ubuntu)
 
 ## Links to IBMs client installation guides
 
