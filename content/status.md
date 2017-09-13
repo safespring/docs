@@ -72,3 +72,11 @@ Right now the operations to change admin state and to change name of a network
 does not work in the GUI. We recommend our users to use [API
 Access](/compute/api/) to perform these operations.
 
+
+### Backup client incompatibility with local Windows NTFS deduplication enabled
+
+Some users have reported performance issues when running the backup client on
+volumes with NTFS deduplication enabled since the deduplication in the backup
+client conflicts with the deduplication in the filesystem. The recommended solution
+is to turn off deduplication either on the filesystem or local deduplication
+in the backup client.
