@@ -93,7 +93,7 @@ write_files:
     #
     # openvpn server #
     gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz > $openvpn_dir/server.conf
-    mkdir $openvpn_dir/ccd
+    mkdir -p $openvpn_dir/ccd
     sed -i.orig -e 's|;client-config-dir ccd|client-config-dir ccd|' $openvpn_dir/server.conf
     sed -i.orig -e 's|;log-append  openvpn.log|log-append  /var/log/openvpn.log|' $openvpn_dir/server.conf
     echo route $home_netaddr $home_netmask >> $openvpn_dir/server.conf
