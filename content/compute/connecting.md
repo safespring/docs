@@ -96,6 +96,8 @@ write_files:
     mkdir -p $openvpn_dir/ccd
     sed -i.orig -e 's|;client-config-dir ccd|client-config-dir ccd|' $openvpn_dir/server.conf
     sed -i.orig -e 's|;log-append  openvpn.log|log-append  /var/log/openvpn.log|' $openvpn_dir/server.conf
+		sed -i.orig -e "s/server.crt/$NAME.crt/g" $openvpn_dir/server.conf
+		sed -i.orig -e "s/server.key/$NAME.key/g" $openvpn_dir/server.conf
     echo route $home_netaddr $home_netmask >> $openvpn_dir/server.conf
     # system #
     echo 1 > /proc/sys/net/ipv4/ip_forward #runtime
