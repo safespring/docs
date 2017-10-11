@@ -117,8 +117,8 @@ write_files:
     ./clean-all
     ./build-ca --batch
     ./build-key-server --batch $NAME
-    cp $easy_rsa_dir/keys/server.crt $openvpn_dir
-    cp $easy_rsa_dir/keys/server.key $openvpn_dir
+    cp $easy_rsa_dir/keys/$NAME.crt $openvpn_dir
+    cp $easy_rsa_dir/keys/$NAME.key $openvpn_dir
     cp $easy_rsa_dir/keys/ca.crt $openvpn_dir
     #
     # build client files
