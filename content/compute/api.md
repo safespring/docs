@@ -16,7 +16,7 @@ A safer way is to install the clients in a Python virtual environment. First,
 prepare a requirements.txt file that specifies the correct versions of the
 client components needed for programmatic access:
 
-```
+```shell
 cat - > requirements.txt <<EOF
 python-keystoneclient>=2.0.0,!=2.1.0,<=3.6.0           # Mitaka, Newton
 python-novaclient>=2.29.0,!=2.33.0,<=6.0.0             # Liberty, Mitaka, Newton
