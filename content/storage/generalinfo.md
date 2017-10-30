@@ -3,7 +3,9 @@
 ## Minimum required info for S3 access
 
 Many clients will assume you are talking to AWS S3, in which case they might want you to add region and country and other information. This information isn't used by our endpoint, so you should be able to get many clients going with only access_key, secret_key and the https URL to the service:
-    https://s3-archive.api.cloud.ipnett.se
+
++ Swedish site - https://s3-archive.api.cloud.ipnett.se
++ Norwegian site - https://s3-archive.api.cloud.ipnett.no
 
 ## Buckets, directories, files and objects
 
