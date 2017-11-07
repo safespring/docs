@@ -222,15 +222,15 @@ On Windows x64, *all* of the below packages are required to install.
 
     :: Start command prompt
     :: To avoid UAC questions, run the prompt as administrator.
-    c:
-    cd C:\tsm_images\TSM_BA_Client\ISSetupPrerequisites
-    :: vcredist-x86 C++ 2010 v 10.0.40219.1
-    "{270b0954-35ca-4324-bbc6-ba5db9072dae}\vcredist_x86.exe" /q /c:"msiexec /i vcredist.msi /qn"
-    :: if command prompt wasn't run as administrator, accept the UAC question that pops up
-    :: vcredist-x86 C++ 2012 v 11.0.51106
-    "{270b0954-35ca-4324-bbc6-ba5db9072dae}\vcredist_x86.exe" /q /c:"msiexec /i vcredist.msi /qn"
-    :: if command prompt wasn't run as administrator, accept the UAC question that pops up
-    :: vcredist_x64 C++ 2012 v 11.0.51106
-    {7f66a156-bc3b-479d-9703-65db354235cd}\vcredist_x64.exe /q /c:"msiexec /i vcredist.msi /qn"
-    :: if command prompt wasn't run as administrator, accept the UAC question that pops up
-    :: close the command prompt and return to the installation procedure above
+    :: Files are extracted to the directory where the installer is executed.
+    TSMClient\ISSetupPrerequisites\{270b0954-35ca-4324-bbc6-ba5db9072dad}
+    :: (contains MS 2010 x86 C++ Runtime - vcredist_x86.exe)
+    TSMClient\ISSetupPrerequisites\{BF2F04CD-3D1F-444e-8960-D08EBD285C3F}
+    :: (contains MS 2012 x86 C++ Runtime - vcredist_x86.exe)
+    TSMClient\iSSetupPrerequisites\{7f66a156-bc3b-479d-9703-65db354235cc}
+    :: (contains MS 2010 x64 C++ Runtime - vcredist_x64.exe)
+    TSMClient\ISSetupPrerequisites\{3A3AF437-A9CD-472f-9BC9-8EEDD7505A02}
+    :: (contains MS 2012 x64 C++ Runtime - vcredist_x64.exe)
+    
+    Run each of them with these flags, 
+    "vcredist_x(86|64).exe /install /quiet /norestart /log logfilename"
