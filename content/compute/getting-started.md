@@ -32,6 +32,16 @@ Also, while we try to keep the public images up-to-date when publishing them, ke
 
 Using snapshots to freeze volumes is a useful technique for being able to back out of tests, but do mind to clean out unused snapshots when they are no longer of interest, since they count against your storage quota.
 
+All flavors in Safesprings platform comes with 40 GB root disk. In the case you would want another size on the root disk you first create a volume under "Volumes" and pick Volume Source as Image and  then pick the image that corresponds to the operating system you want to run on the instance. 
+
+![image](../../images/create_volume.png)
+
+
+After creating the volume you head to the "Launch instance" dialogue. Under "Source" you pick "Volume" from the pick-list and then press the plus sign for the volume you created in the former step. You can also choose whether the volume should be persistent or not by switching the "Delete Volume on Instance Delete" option.
+
+ 
+![image](../../images/launch_with_volume.png)
+
 ## Networks
 
 All tenants (be it test accounts or projects) need to have some kind of network
