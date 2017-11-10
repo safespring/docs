@@ -65,6 +65,7 @@ pages:
     - Getting started: "compute/getting-started.md"
     - API access: "compute/api.md"
     - Image service: "compute/image.md"
+    - Volume service: "compute/volume.md"
     - Network service: "compute/network.md"
     - Using Keypairs: "compute/keypairs.md"
     - Enabling IPv6: "compute/ipv6-howto.md"
