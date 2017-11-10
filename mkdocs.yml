@@ -72,6 +72,7 @@ pages:
   - Storage:
     - General S3 Info: "storage/generalinfo.md"
     - Example s3cmd config: "storage/s3cmd.md"
+    - Example s3fs config: "storage/s3fs.md"
     - Example CloudBerry config: "storage/cloudberry.md"
     - Example CyberDuck config: "storage/cyberduck.md"
   - Service status: "status.md"
