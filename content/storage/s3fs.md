@@ -12,8 +12,8 @@ This file must have the permissions 0600. It is also possible to put the content
 
 To mount the S3-storage (and to set up cache in order to increase performance:
 
-`mkdir /tmp/cache
-mkdir /s3mnt
-chmod 777 /tmp/cache /s3mnt
-chmod 600 ~/.passwd-s3fs
-sudo s3fs <bucket_name> -o use_cache=/tmp/cache -o sigv2 -o use_path_request_style -o url=https://s3-archive.api.cloud.ipnett.se -o allow_other -o multireq_max=5  /s3mnt`
+`mkdir /tmp/cache`
+`mkdir /s3mnt`
+`chmod 777 /tmp/cache /s3mnt`
+`chmod 600 ~/.passwd-s3fs`
+`sudo s3fs <bucket_name> -o use_cache=/tmp/cache -o sigv2 -o use_path_request_style -o url=https://s3-archive.api.cloud.ipnett.se -o allow_other -o multireq_max=5  /s3mnt`
