@@ -43,5 +43,6 @@ For some reason it seems impossible to set the password for the "admin" user usi
 
 Basically anything that a user in the Administrators group can do via powershell should be able to run via this method.
 
-also: ***BE WARNED THAT ANYTHING ENTERED IN THIS DIALOG BOX CAN END UP STORED IN LOG FILES ETC AND AS SUCH IF USED TO SET PASSWORDS THESE SHOULD ONLY BE FOR VERY TEMPORARY USAGE***
+!!! warning
+    Anything entered in the Customization Script dialog box can end up stored in log files etc and as such if used to set passwords these should only be for very temporary usage
 ![Launch Instance Powershell](../images/launch-instance-powershell.png) 
