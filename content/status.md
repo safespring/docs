@@ -80,3 +80,10 @@ volumes with NTFS deduplication enabled since the deduplication in the backup
 client conflicts with the deduplication in the filesystem. The recommended solution
 is to turn off deduplication either on the filesystem or local deduplication
 in the backup client.
+
+### Too recent version of shade results in images not showing
+
+We have had an instance where a newer (1.24.0) version of shade caused some
+images to become unavailable for provisioning when using ansible.
+
+The solution was to downgrade shade to a known good (1.12.1) version.
