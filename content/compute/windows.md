@@ -2,13 +2,19 @@
 
 ## Cloudbase
 
-We use a system called [cloudbase](https://cloudbase.it/) for initial set up of windows instances. This is similar to the cloud-init system we use for linux-based instances.
+We use windows images from  [cloudbase](https://cloudbase.it/windows-cloud-images/). The image comes configured with [cloudbase-init](https://cloudbase.it/cloudbase-init/). This is similar to the cloud-init system we use for linux-based instances. The images also comes with RDP enabled.
 
-## Cloudbase admin user
+## Password for Administrator user
 
-Cloudbase generates an admin user it uses for configuration of the instance. The admin user is added to the Administrators group.
+The images comes with the Windows _Administrator_ user. In order to enable this user, the password must be changed by accessing the instance console (e.g. from the Horizon dashboard).
 
-The admin user is assigned a random password on installation, which can be retrieved by the following method:
+## Cloudbase-init admin user
+
+Generally, we recommend leaving the _Administrator_ user disabled, and instead using Cloudbase-init to generate an admin user.
+
+Cloudbase-init generates an user named _Admin_. The _Admin_ user is added to the Administrators group.
+
+The _Admin_ user is assigned a random password on installation, which can be retrieved by the following method:
 
 ### Generating a key pair for admin user password retrieval
 
@@ -42,6 +48,8 @@ Cloudbase can run powershell scripts under instance creation. This can for insta
 For some reason it seems impossible to set the password for the "admin" user using this method, although setting it for "Administrator" seems to work just fine.
 
 Basically anything that a user in the Administrators group can do via powershell should be able to run via this method.
+
+The full [cloudbase documentation](http://cloudbase-init.readthedocs.io/en/latest/) is available online.
 
 !!! warning
     Anything entered in the Customization Script dialog box can end up stored in log files etc and as such if used to set passwords these should only be for very temporary usage
