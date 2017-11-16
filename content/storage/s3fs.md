@@ -1,4 +1,4 @@
-# How to setup s3fs towards Safesprings S3
+# How to setup s3fs for use with Safesprings S3
 
 ## Ubuntu 16.04
 
