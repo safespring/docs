@@ -136,3 +136,11 @@ resource "openstack_compute_instance_v2" "terraform-test-instance" {
 }
 ```
 
+```shell
+export OS_DEBUG=1
+export TF_LOG=DEBUG
+terraform plan
+terraform apply
+terraform destroy
+```
+
