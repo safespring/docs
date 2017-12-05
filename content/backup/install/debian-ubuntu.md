@@ -47,8 +47,8 @@ With root privileges:
 
 ## 4. Add the IPnett BaaS CA to the TSM Trust database
 
-    wget https://raw.githubusercontent.com/IPnett/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA.sh
-    wget https://raw.githubusercontent.com/IPnett/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA.pem
+    wget https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA.sh
+    wget https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA.pem
     sh ./IPnett-Cloud-Root-CA.sh
 
 ## 5. Install TSM configuration files
