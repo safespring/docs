@@ -10,17 +10,17 @@ In both cases, the software is distributed through RPM repositories and the firs
 
 ## 1. Configure the repository
 
-The original instructions on the repositories are found at [Github](https://github.com/IPnett/cloud-BaaS/tree/master/unix/rpm). They are replicated here for simplicity.
+The original instructions on the repositories are found at [Github](https://github.com/safespring/cloud-BaaS/tree/master/unix/rpm). They are replicated here for simplicity.
 The repositories are located at https://repo.cloud.ipnett.com/rpm/ (though this page is currently not indexed).
 
 ### EL6
 CentOS 6.7 and RedHat EL 6.7 are tested.
 
     curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-IPnett \
-      https://raw.githubusercontent.com/IPnett/cloud-BaaS/master/unix/rpm/RPM-GPG-KEY-IPnett
+      https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/rpm/RPM-GPG-KEY-IPnett
     rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-IPnett
     curl -o /etc/yum.repos.d/ipnett-el6.repo \
-      https://raw.githubusercontent.com/IPnett/cloud-BaaS/master/unix/rpm/ipnett-el6.repo
+      https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/rpm/ipnett-el6.repo
     
 The commands will:
 
@@ -32,10 +32,10 @@ The commands will:
 CentOS 7 and RedHat EL 7 are tested.
 
     curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-IPnett \
-      https://raw.githubusercontent.com/IPnett/cloud-BaaS/master/unix/rpm/RPM-GPG-KEY-IPnett
+      https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/rpm/RPM-GPG-KEY-IPnett
     rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-IPnett
     curl -o /etc/yum.repos.d/ipnett-el7.repo \
-      https://raw.githubusercontent.com/IPnett/cloud-BaaS/master/unix/rpm/ipnett-el7.repo
+      https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/rpm/ipnett-el7.repo
     
 
 The commands will:
@@ -108,7 +108,7 @@ The manual routine for node registration is thus described below.
 
 #### 2.b.1) Create a node in the BaaS Portal
 
-You must first create a node (backup client entitlement) in the BaaS Portal (or using the [API](https://github.com/IPnett/cloud-BaaS/blob/master/API.md)).
+You must first create a node (backup client entitlement) in the BaaS Portal (or using the [API](https://github.com/safespring/cloud-BaaS/blob/master/API.md)).
 When you create a node, you receive both a `nodename` and a `password`. Keep these for the duration of the installation.
 
 #### 2.b.2) Retrieve and install TSM configuration files

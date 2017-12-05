@@ -47,7 +47,7 @@ The installer can be run in either manually, passive or silent mode. Passive sho
 ### Mode 2
 In order to use the fully automated install you must generate your secret token based on your access keys.
 The access token only needs to be generated once and on any machine with openssl or PowerShell.
-How to get your access-key and secret key can be read here, https://github.com/IPnett/cloud-BaaS/wiki/FAQ-and-Known-Issues.
+How to get your access-key and secret key can be read here, https://github.com/safespring/cloud-BaaS/wiki/FAQ-and-Known-Issues.
 
 Download and install openssl from here, https://slproweb.com/products/Win32OpenSSL.html
 and run
@@ -187,7 +187,7 @@ _This document describes how to **manually** install IBM TSM on Windows Windows 
 
 Required files - (Right click and 'Save as...'):
  - [7.1.1.0-TIV-TSMBAC-WinX64.exe](https://api.cloud.ipnett.se/dist/tsm/mirror/maintenance/storage/tivoli-storage-management/maintenance/client/v7r1/Windows/x64/v711/7.1.1.0-TIV-TSMBAC-WinX64.exe)
- - [IPnett Root CA installer](https://raw.githubusercontent.com/IPnett/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA-win64.bat)
+ - [IPnett Root CA installer](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA-win64.bat)
 
 ### Procedure
 
@@ -214,7 +214,7 @@ Required files - (Right click and 'Save as...'):
 7. E.g invoke client: `dsmc`.  Then to do full incremental on entire system: `i` for incremental.
 
 8. Setup scheduling: Go to the portal, select Update on the node you are installing, choose a schedule and a retention period you want to have.
-   For API users, https://github.com/IPnett/cloud-BaaS/blob/master/API.md documents the various calls, including scheduling.
+   For API users, https://github.com/safespring/cloud-BaaS/blob/master/API.md documents the various calls, including scheduling.
 
 ### Circumventing reboot during install
 
