@@ -1,7 +1,6 @@
 # Site and content
 site_name: "Safespring documentation"
 docs_dir: "content"
-site_favicon: 'images/favicon.ico'
 
 # Github integration
 repo_name: "safespring/docs"
@@ -9,7 +8,11 @@ repo_url: "https://github.com/safespring/docs"
 edit_uri: "edit/master/content/"
 
 # Safespring theme
-theme: "material"
+theme:
+  name: "material"
+  feature:
+    tabs: false
+  favicon: "favicon.ico"
 extra_css:
   - "safespring.css"
 extra:
