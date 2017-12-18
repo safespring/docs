@@ -1,7 +1,7 @@
 # Windows installation
 ## Auto installation
 
-This installer installs the TSM BA Client and services and the TBMR client and licenses. It detects 32-bit or 64-bit platforms and contains both versions. Administative priviledges is required for all installations.  
+This installer installs the TSM BA Client and services and the TBMR client and licenses. It detects 32-bit or 64-bit platforms and contains both versions. Administative priviledges is required for all installations.
 
 It can be run in two modes. The first mode requires that the administrator of the service has created a node and checked out the config file, dsm-nodenamexyz.zip, and have the password to this node.
 Any user with administrative permissions can then install the services on their computer using the installer, zip and password.
@@ -13,28 +13,35 @@ To see options and rules to run simply run `"safespring-baas.2.3.5.exe -help"`. 
 
 ![help](../../images/help.png)
 
-!!! warning ""
-    **The installation process may take up to 25 minutes to complete. Especially "TBMR Installation" may take quite a long time.**  
+!!! tip "PRO tip"
+	**The installation process may take up to 25 minutes to complete. Especially the "TBMR Installation" may take quite a long time.**  
+	If you are running "Windows Defender" on Windows Server 2016 or Windows 10 you can speed up things by disable the realtime scan for the TBMR process. This can be done with a powershell command before you start the installer. From the command prompt, run as Administrator, do
 
-## Download  
+	`powershell -Command Add-MpPreference -ExclusionProcess {C:\Program Files\Cristie\TBMR\TbmrCfg.exe}`
+
+	To check the result, do
+
+	`powershell -Command Get-MpPreference | findstr ExclusionProcess`
+
+## Download
 For Windows 8.1, 10, 2012 and 2016 please use this installer,
-[https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.3.5.exe](https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.3.5.exe). 
+[https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.3.5.exe](https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.3.5.exe).
 
-For older Windows versions please use this installer, [https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.2.1.exe](https://api.cloud.ipnett.se/dist/installer/ipnett-baas.2.2.1.exe). 
+For older Windows versions please use this installer, [https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.2.1.exe](https://api.cloud.ipnett.se/dist/installer/ipnett-baas.2.2.1.exe).
 
-md5: de9c4820f4f10c70a42cefc79d114c35 safespring-baas.2.3.5.exe  
+md5: de9c4820f4f10c70a42cefc79d114c35 safespring-baas.2.3.5.exe
 md5: 9d019492bdb3cb80e8a19a6f45933b00 ipnett-baas.2.2.1.exe
 
 Latest URL is `https://api.cloud.ipnett.se/dist/installer/latest-win`
 
-A demo of the autoinstaller can be found [here](https://api.cloud.ipnett.se/dist/media/IPnett-BaaS-Installation.avi).  
+A demo of the autoinstaller can be found [here](https://api.cloud.ipnett.se/dist/media/IPnett-BaaS-Installation.avi).
 
-## Space requirements  
+## Space requirements
 It is recommended to have at least **4 to 5 GB** of free space available for these services. Space is depending on TBMR driver collection and may vary between different hardware/platforms.
 The installer pauses for 20 seconds if free space is < 5000000000 bytes. If `cancel` is pressed or timeout is reached the installer will abort. If `OK` is pressed, then will the installation continue and make an attempt.
 
 ![Space Dialogue](../../images/spacecheck.png)
-## Modes 
+## Modes
 ### Mode 1
 To run in mode 1, place the installer and the `dsm-nodename.zip` in the same directory and run as follows.
 
@@ -48,23 +55,23 @@ The installer can be run in either manually, passive or silent mode. Passive sho
 ### Mode 2
 In order to use the fully automated install you must generate your secret token based on your access keys.
 The access token only needs to be generated once and on any machine with openssl or PowerShell.
-How to get your access-key and secret key can be read here, https://github.com/safespring/cloud-BaaS/wiki/FAQ-and-Known-Issues.
+How to get your access-key and secret key can be read here, https://docs.safespring.com/backup/faq/#how-do-i-get-keys-to-generate-my-api-token.
 
 Download and install openssl from here, https://slproweb.com/products/Win32OpenSSL.html
 and run
 !!! note ""
     `echo <access-key>:<secret-key> | <\path\to\>openssl enc -base64 -e`
-    
+
 or run this in PowerShell,
 
 !!! note ""
-    `$b = [System.Text.Encoding]::UTF8.GetBytes("<access-key>:<secret-key>")`  
-    `[System.Convert]::ToBase64String($b)`  
+    `$b = [System.Text.Encoding]::UTF8.GetBytes("<access-key>:<secret-key>")`
+    `[System.Convert]::ToBase64String($b)`
 
 If run in bash for Windows10, do this,
 
 !!! note ""
-    `echo -n "<access-key>:<secret-key>" | openssl enc -base64 -e`  
+    `echo -n "<access-key>:<secret-key>" | openssl enc -base64 -e`
 
 Mode two requires a few more parameters in order to create the node. `TOKEN` is the credential for the API, `FQDN` is a unique name for the node within your organisation, `MAIL` to a mailbox that is read and `COST` is the node costcenter.
 `DEDUP` and `COMP` is default enabled but can be disabled by setting them `"=0"`. `ENCR` can be set but not in combination with `DEDUP=1`.
@@ -76,16 +83,16 @@ Put the safespring-baas.2.3.5.exe in a directory where you have write permission
 **Example:**
 
 !!! note ""
-    `safespring-baas.2.3.5.exe TOKEN=<secrettoken> FQDN=<uniquename> MAIL=<mailaddress> COST=<costcenter> (-silent | -passive)`  
+    `safespring-baas.2.3.5.exe TOKEN=<secrettoken> FQDN=<uniquename> MAIL=<mailaddress> COST=<costcenter> (-silent | -passive)`
 
-The installer can be run in either manually, passive or silent mode. Passive shows the GUI and progress and silent runs without output in background.  
+The installer can be run in either manually, passive or silent mode. Passive shows the GUI and progress and silent runs without output in background.
 
-`PLATFORM` is read from the system and cannot be specified.  
+`PLATFORM` is read from the system and cannot be specified.
 
 **Noteworthy**
 
 !!! tip ""
-    All possible measures have been taken to prevent reboot but runtime libraries can cause unpredictable results. To add extra safety measures an additional flag can be used, `-norestart`. 
+    All possible measures have been taken to prevent reboot but runtime libraries can cause unpredictable results. To add extra safety measures an additional flag can be used, `-norestart`.
 
 ## Updates
 The installation can be updated and completed with both new TSM and TBMR
@@ -111,15 +118,15 @@ TBMRONLY argument. `safespring-baas.2.3.5.exe TBMRONLY=1`. This method can also 
     * Extended checking and logging for troubleshooting.
 * **1.3.0**
     * New TBMR version, 7.2.2.
-    * New TBMR trial license valid to 2015-11-01. 
+    * New TBMR trial license valid to 2015-11-01.
     * Internal: API call for new node in mode 2 changed to JSON format.
 * **1.3.1**
     * Accepts node configfile from portal and API.
     * Better errorhandling and cleanup on failures.
     * Space requirement check and dialogue to force install if requirement not met. (5000000000 bytes)
     * Unique exitcodes from each step for faster troubleshoting.
-    * Dialogue for node config failures on file and credentail problems.  
-* **1.3.2** Fix for overwriting dsm.opt if it already exists.  
+    * Dialogue for node config failures on file and credentail problems.
+* **1.3.2** Fix for overwriting dsm.opt if it already exists.
 * **1.3.3** Fix for more robust handling of configuration zip file. Can be run from shared and read-only media.
 * **2.0.1**
     * RESTinTBMR license API used handle TBMR license.
@@ -139,7 +146,7 @@ TBMRONLY argument. `safespring-baas.2.3.5.exe TBMRONLY=1`. This method can also 
     * Fix for expired TBMR maintenance date.
 * **2.0.3** Fix for TBMR license failure.
 * **2.1.1**
-    * New TSM versions, 32-bit 7.1.3.2, 64-bit 7.1.4.2. 
+    * New TSM versions, 32-bit 7.1.3.2, 64-bit 7.1.4.2.
     * New TBMR version, 7.3.1.
     * Certificates bundled for all wget requests.
     * Improved logging for easier troubleshooting.
@@ -152,18 +159,18 @@ TBMRONLY argument. `safespring-baas.2.3.5.exe TBMRONLY=1`. This method can also 
     * New TSM x64 version, 7.1.6.2.
     * Fixed a flag to prevent reboot.
 * **2.3.1**
-    * New TSM x32 version, 7.1.6.4. 
+    * New TSM x32 version, 7.1.6.4.
     * New TSM x64 version, 8.1.0.0.
     * New TBMR version, 8.1.1.
 * **2.3.2**
     * Prevent installation on non-suppported Windows versions.
     * Logname typo.
 * **2.3.3**
-    * New TSM x32 version, 7.1.6.5. 
+    * New TSM x32 version, 7.1.6.5.
     * New TSM x64 version, 8.1.0.2.
 * **2.3.4**
     * Bugfix for Mode 1 installations where TSM was used before.
-    * New TBMR version, 8.1.3.   
+    * New TBMR version, 8.1.3.
 * **2.3.5**
     * New TSM x64 version, 8.1.2.0.
     * New TBMR version, 8.1.4.
@@ -176,9 +183,9 @@ TBMRONLY argument. `safespring-baas.2.3.5.exe TBMRONLY=1`. This method can also 
 
 * Make sure you have no spaces in the path from where you run the installer. The path cannot be escaped by the Wix installer so it will be an offset in the input paramters.
 * When installing with Anti-Malware program running it may delete installer files since they are wrapped with 7-Zip SFX maker. This may trigger false positve on anti malware. Solution, temporary disable your AM software.
-* If a faulty node configuration zip is detected or lack of credentials the installer will abort with this message. The installer will accept zip's from both the API and the portal.  
+* If a faulty node configuration zip is detected or lack of credentials the installer will abort with this message. The installer will accept zip's from both the API and the portal.
 ![dsm.opt Dialogue](../../images/dsm.opt.png)
-* If the licensing of TBMR fails you can be asked to rerun the installer again with TBMRONLY=1.  
+* If the licensing of TBMR fails you can be asked to rerun the installer again with TBMRONLY=1.
 ![License fail dialogue](../../images/TBMRfail.png)
 * If TBMR fails to find mandatory files you may need to run SFC to check your
 system files.
@@ -186,9 +193,9 @@ system files.
 
 ## Report problems
 In case of reporting a problem please include ALL logfiles from %TEMP% named Safespring*.*, BaaS*.* and Cristie*.*.
-  
+
 ## Simple launch script
-This script will start a incremental backup and keep the window open until it's manually closed. This makes it possible to verify a successful backup. Feel free to modify to your own needs. (Right click and 'Save target as...') [Download here](https://api.cloud.ipnett.se/dist/installer/RunBaaS.cmd).    
+This script will start a incremental backup and keep the window open until it's manually closed. This makes it possible to verify a successful backup. Feel free to modify to your own needs. (Right click and 'Save target as...') [Download here](https://api.cloud.ipnett.se/dist/installer/RunBaaS.cmd).
 
 ## Manual installation
 
@@ -205,7 +212,7 @@ Required files - (Right click and 'Save as...'):
 
 1. Download the required files according to above into a temporary folder
 
-2. Run 7.1.1.0-TIV-TSMBAC-WinX64.exe to install the program and *hold* at the following point: 
+2. Run 7.1.1.0-TIV-TSMBAC-WinX64.exe to install the program and *hold* at the following point:
 ![Tivoli Storage Manager Client - InstallShield Wizard](../../images/TSMBAC_ISWizard.png)
 
     2a. The installation process will by default require a reboot, due to the installation of a couple of VC redistributables.
@@ -243,6 +250,6 @@ On Windows x64, *all* of the below packages are required to install.
     :: (contains MS 2010 x64 C++ Runtime - vcredist_x64.exe)
     TSMClient\ISSetupPrerequisites\{3A3AF437-A9CD-472f-9BC9-8EEDD7505A02}
     :: (contains MS 2012 x64 C++ Runtime - vcredist_x64.exe)
-    
-    Run each of them with these flags, 
+
+    Run each of them with these flags,
     "vcredist_x(86|64).exe /install /quiet /norestart /log logfilename"
