@@ -12,11 +12,11 @@ theme:
   name: "material"
   feature:
     tabs: false
+  logo: "safespring.png"
   favicon: "favicon.ico"
 extra_css:
   - "safespring.css"
 extra:
-  logo: "safespring.png"
   font:
     text: "Hind"
     code: "Ubuntu Mono"
