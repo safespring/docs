@@ -16,7 +16,7 @@ to the service:
 (New URLs)
 
 + Norwegian site - https://s3.osl1.safedc.net
-<!-- + Swedish site   - https://s3.sto1.safedc.net -->
++ Swedish site   - https://s3.sto1.safedc.net
 
 The URL change is due to the rename from IPNett to Safespring of our
 company.  The old URLs will continue to work for a long time, but new
