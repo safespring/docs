@@ -68,7 +68,7 @@ Extra steps needed to use method 2
   When installing the TSM BA-client use the "custom install" and add "VMware vStorage API runtime files"
 * Use the normal BaaS dsm.opt  (from portal/API) and start the GUI BackupArchive-client.
 * Click "Edit" - "Client preferences" and choose "VM backup". 
-* Insert the vCenter host name and the userid and password for vSpehere.  
+* Insert the vCenter host name and the userid and password for vSphere.
 * click OK
 * Now you can backup any VM within your cluster (not the vCenter or the machine that you are running the BA-client on).
   In the GUI there is meny on the top  "Actions" - "Backup VM".
