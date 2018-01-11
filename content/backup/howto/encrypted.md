@@ -104,5 +104,20 @@ the database to be able to selectively make single file restores, but
 the contents of encrypted files will be unavailable until the correct
 key has been supplied.
 
+Output from a backup run
+------------------------
+
+From a run with some files matching INCLUDE.encrypt:
+
+    Total number of objects inspected:           24
+    Total number of objects backed up:            5
+    Total number of objects updated:             19
+    Total number of objects rebound:              0
+    Total number of objects deleted:              0
+    Total number of objects expired:              0
+    Total number of objects failed:               0
+    Total number of objects encrypted:            4
+    Data encryption type:               256-bit AES
+    ...
 
 
