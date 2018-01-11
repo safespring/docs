@@ -39,7 +39,10 @@ encrypted, selecting
   * Encryption
 
 will make sure neither client nor server will attempt dedup or
-compression to prevent waste of computing resources.
+compression to prevent waste of computing resources. It is not a hard
+requirement and if you want to encrypt only parts of it, select
+deduplication and compression as normal, then use options (described
+below) to point out the specific folders to encrypt.
 Note: It will not make encryption choices for your node in other regards.
 
 If you want to let the IBM client do the encryption you have to select
@@ -49,7 +52,7 @@ if and how to store the encryption key. The choices are:
    every backup and restore operation. Very cumbersome but ultimately
    the safest option if you decide not to trust the backup operators
    at all, or want the same level as using a completely separate
-   enryption program manually.
+   encryption program manually.
 
    Enabled with
 
@@ -73,11 +76,11 @@ if and how to store the encryption key. The choices are:
 
 3) Generate a key and store it in the backup server database.  Sounds
    a bit weird, but is meant to protect situations similar to having
-   backup tapes sent via untrusted couriers to cold storage. In this
-   case a lost/stolen tape will be unreadable for anyone not in
-   control of the running backup server. Not very applicable to our
-   service, and our encryption-at-rest should cover the risk of
-   someone stealing a disk from us with your backups on.
+   backup tapes sent via untrusted couriers to external cold
+   storage. In this case a lost/stolen tape will be unreadable for
+   anyone not in control of the running backup server. Not very
+   applicable to our service, and our encryption-at-rest should cover
+   the risk of someone stealing a disk from us with your backups on.
  
    Enabled with
 
@@ -108,6 +111,21 @@ Also, this will still store directory and file names in clear text in
 the database to be able to selectively make single file restores, but
 the contents of encrypted files will be unavailable until the correct
 key has been supplied.
+
+Encrypting selected folders
+---------------------------
+
+If you want to selectively encrypt a subset of the data, add
+something along the lines of this to your dsm.opt / dsm.sys
+file:
+
+    INCLUDE.ENCRYPT "/Users/username/secret2/.../*" 
+    INCLUDE.ENCRYPT "/Users/username/secret/.../*" 
+    INCLUDE.ENCRYPT "/Users/username/private/.../*" 
+
+which means most of the files can get the normal deduplication and
+compression gains, but when the backup client passes by files in
+these three folders and their subfolders, they will be encrypted.
 
 Output from a backup run
 ------------------------
