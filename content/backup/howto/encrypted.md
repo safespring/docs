@@ -10,17 +10,22 @@ but the inner encryption is something you will have full control over.
 
 Options mentioned below go into
 
-  /opt/tivoli/tsm/client/ba/bin/dsm.sys
+    /opt/tivoli/tsm/client/ba/bin/dsm.sys
 
 on Linux/Unix machines, in
 
-  C:\Program Files\tivoli\tsm\baclient\dsm.opt
+    C:\Program Files\tivoli\tsm\baclient\dsm.opt
 
 on Windows and
 
-  /Library/Application Support/tivoli/tsm/client/ba/bin/dsm.sys
+    /Library/Application Support/tivoli/tsm/client/ba/bin/dsm.sys
 
 on MacOS X.
+
+If you are going to use encryption, you will probably want to
+move from the default AES128 to AES256 with this option:
+
+    Encryptiontype aes256
 
 How to handle keys
 ------------------
@@ -121,3 +126,11 @@ From a run with some files matching INCLUDE.encrypt:
     ...
 
 
+Read more on IBMs site
+----------------------
+
+Include options:
+https://www.ibm.com/support/knowledgecenter/SSEQVQ_8.1.4/client/r_opt_include.html
+
+Encryptkey options:
+https://www.ibm.com/support/knowledgecenter/SSEQVQ_8.1.4/client/r_opt_encryptkey.html
