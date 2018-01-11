@@ -71,8 +71,11 @@ if and how to store the encryption key. The choices are:
 
      "PASSWORDACCESS generate"
 
-   which means the key is stashed encrypted on disk, accessible by
-   the program but not readable by humans.
+   which means the key is stashed encrypted on disk, accessible by the
+   program but not readable by humans. If your machine in turn has an
+   encrypted root disk which requires password entry at boot, it will
+   still be protected from "evil maid" scenarios where someone copies
+   your drive when it is turned off and tries to use the data offline.
 
 3) Generate a key and store it in the backup server database.  Sounds
    a bit weird, but is meant to protect situations similar to having
