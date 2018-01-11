@@ -59,6 +59,7 @@ pages:
     - Howtos:
       - Alternate restore: "backup/howto/restore-alternate.md"
       - vSphere: "backup/howto/vsphere.md"
+      - Encryption: "backup/howto/encrypted.md"
       - Performance tuning: "backup/howto/performance-tuning.md"
       - Bare metal recovery: "backup/howto/bare-metal-tbmr.md"
       - Virtual environments single file restore: "backup/howto/virtual-enviroments-single-file-restore.md"
