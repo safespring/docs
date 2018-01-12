@@ -19,9 +19,17 @@ several steps in order to achieve single-dir backup like the above
 example.
 
 Below is an example for windows, where you first specify a single file
-system using the ``DOMAIN C:`` specifier to say that out of all
-connected disks and filesystems it might find, only take C: into
-consideration. The default for DOMAIN is called ALL-LOCAL.
+system using the
+
+``DOMAIN C:``
+
+specifier to say that out of all connected disks and filesystems it
+might find, only take C: into consideration. The default for DOMAIN is
+called ALL-LOCAL and is a global option meant to only be listed once
+in the file with the disks one wants to consider, if ALL-LOCAL is not
+suitable for you.  It also only applies to invocations like "dsmc inc"
+where you do not specify any path, or when dsmcad starts backup on a
+schedule.
 
 Then follows an EXCLUDE to match all files in all possible
 subdirectories under C:, and lastly an INCLUDE-statement to add back
@@ -116,13 +124,14 @@ selections, returning something like this:
     Default Mgmt Class Name   : 30DAYS
     Grace Period Backup Retn. : 3655 day(s)
     Grace Period Archive Retn.: 3655 day(s)
-    MgmtClass Name            : *180DAYS*
+    MgmtClass Name            : 180DAYS
     Description               : Files are saved for 180 days
-    MgmtClass Name            : *30DAYS*
+    MgmtClass Name            : 30DAYS
     Description               : Files are saved 30 days
     ...
 
-where the names of the MgmtClass are what we are looking for.
+where the names of the MgmtClass are what we are looking for
+( *30DAYS* and *180DAYS* in that example list)
 
 To set different retentions for OS files and personal files on a unix
 machine, something like this can be set:
@@ -135,12 +144,19 @@ applied to the current (and future) version of the files, something
 the client will call rebinding, which means a new class gets set on
 each file covered by the new non-default retention policy.
 
+For unknown reasons, rebinding does not work on files being Archived
+using "dsmc archive ...", only on backups. In order to actually change
+MgmtClass on archive files, you need to pull them back with "dsmc
+retrieve" and then archive them again.
+
 Links
 -----
 
 All details on includes and excludes on the IBM website:
 https://www.ibm.com/support/knowledgecenter/en/SSEQVQ_8.1.4/client/r_opt_include.html
 
+Details on the DOMAIN option:
+https://www.ibm.com/support/knowledgecenter/en/SSEQVQ_8.1.4/client/r_opt_domain.html
 
 
 
