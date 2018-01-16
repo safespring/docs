@@ -87,3 +87,49 @@ We have had an instance where a newer (1.24.0) version of shade caused some
 images to become unavailable for provisioning when using ansible.
 
 The solution was to downgrade shade to a known good (1.12.1) version.
+
+### Unstable ipv6 connectivity
+
+If you experiance flapping ipv6 connectivity it could be resolved either by
+setting a static default route and not depend on RA.
+Remove the "accept_ra 1" if it exists in you network configuration file or
+any sysctl settings for accept_ra.
+
+!!! note "Set static default route."
+
+This is an example, check your instance network address and change accordingly.
+
+`# ip -6 route add default via 2001:6b0:5a:4017::1`
+
+You may need to delete the RA route first if it exists.
+
+`# ip -6 route delete default`
+
+Alternative configure all ipv6 settings static.
+
+!!! note "Set static ipv6."
+
+Find your ipv6 address from Horizon or by CLI and insert it as "ipv6_address"
+and set "ipv6_gateway" to the same subnet but ::1 at the end. No quotes.
+
+####Debian or Ubuntu
+
+```
+iface ens6 inet6 static
+  address "ipv6_address"
+  netmask 64
+  gateway "ipv6_gateway"
+  autoconf 0
+  dns-nameservers 2001:4860:4860::8844 2001:4860:4860::8888
+```
+
+####CentOS and Fedora
+
+```
+IPV6INIT=yes
+IPV6ADDR="ipv6_address"/64
+IPV6_DEFAULTGW="ipv6_gateway"
+IPV6_AUTOCONF=no
+DNS1=2001:4860:4860::8844
+DNS2=2001:4860:4860::8888
+```
