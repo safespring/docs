@@ -82,6 +82,7 @@ pages:
     - Example s3fs config: "storage/s3fs.md"
     - Example CloudBerry config: "storage/cloudberry.md"
     - Example CyberDuck config: "storage/cyberduck.md"
+    - Tips and Tricks: "storage/tips-n-tricks.md"
   - Service status: "status.md"
   - Support: "support.md"
   - Contributing: "contribute.md"
