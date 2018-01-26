@@ -12,13 +12,13 @@ then these intructions aren't enough.
 
 **Prerequisite 2**:   Installation and configuration of the file client, a.k.a. baclient has to be completed prior to this installation.  Among other things the file client installs/configures the SSL certificates and the TSM API.
 
-Step 1:
--------
+Step 1 Download
+---------------
 
 Download the TDP for SQL media https://api.cloud.ipnett.se/dist/tsm/db/mssql/TSM_DB_7.1.1_DP_MS_SQL_ML.exe and save it in a local directory.  In this example C:\TSM-media is used. Execute the .exe file and it will unpack the files.
 
-Step 2:
--------
+Step 2 Support files
+--------------------
 
 Download the support files to the same directory. 
 
@@ -28,8 +28,8 @@ Download the support files to the same directory.
 
   https://api.cloud.ipnett.se/dist/tsm/db/mssql/install_sched.bat
 
-Step 3:
--------
+Step 3 Installation
+-------------------
 
 Install the TDP for SQL the following commands. 
 
@@ -45,8 +45,8 @@ Use default answers on all questions.
 
 Use default answers on all questions.
 
-Step 4:
--------
+Step 4 Script files
+-------------------
 
 Copy the script files to the baclient directory.
 
@@ -55,14 +55,14 @@ Copy the script files to the baclient directory.
 
 The name and location of these files are important, since they are scheduled from the TSM server. The content of the files can be adapted to fit local needs.  For example the number of days to keep log files is set to 30 as default, but can be increased/reduced.
 
-Step 5:
--------
+Step 5 Create node
+------------------
 
 Request a new tsm nodename from the API (or web portal).  Make sure to specify application=mssql when doing this.   This option can only be set during creation.  If you forget this option you have to delete the node and create a new.
 The SQL backup is always done using a separate TSM nodename.
 
-Step 6:
--------
+Step 6 Configuration file
+-------------------------
 
 Download the configuration file from the API.   Unzip the file and a dsm.opt will appear.
 Edit the dsm.opt and add the following two lines  (In the next release this will be done by default - until then do it manually)
@@ -76,8 +76,8 @@ Save the file and copy it to C:\Program Files\tivoli\tsm\TDPSql\
 
 _Note:  The configuration files for the file client goes into the baclient directory and the configuration files for TDP SQL is in the TDPsql directory.  Now you may wonder why the db_full.bat and db_incr.bat went into the baclient dir.  This is because the bat files are executed by the baclient, but inside the bat-files the TDP SQL is called._
 
-Step 7:
--------
+Step 7 Services for TDP SQL
+---------------------------
 
 Install the services needed for the TDP SQL.  This is done using the script install_sql_sched.bat The parameters are
 
@@ -93,13 +93,13 @@ Example
 
 In many cases the tsm scheduler has to be run as a local/domain user.  This is depending on the security settings in SQL.  Make sure to specify an account that can access SQL.
 
-Step 8:
--------
+Step 8 Associate node
+---------------------
 
 Associate the TDP node with one or more schedules in the TSM server – using the API or the web portal.
 
-Step 9:
--------
+Step 9 Exclude DB files
+-----------------------
 
 (optional) Exclude the database files from the file backup.  Since we are backing up the SQL server using the TDP for SQL agent it is unnecessary to back up the same files with the file client.
 Add the correct exclude lines to C:\program files\tivoli\tsm\baclient\dsm.opt.   Example:
