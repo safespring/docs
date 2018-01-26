@@ -64,6 +64,7 @@ pages:
       - Performance tuning: "backup/howto/performance-tuning.md"
       - Bare metal recovery: "backup/howto/bare-metal-tbmr.md"
       - Virtual environments single file restore: "backup/howto/virtual-enviroments-single-file-restore.md"
+      - Handling changing files: "backup/howto/changing-files.md"
     - API: "backup/api.md"
     - FAQ: "backup/faq.md"
   - Compute:
