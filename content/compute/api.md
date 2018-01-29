@@ -44,7 +44,7 @@ EOF
 . ~/.bashrc
 mkproject os
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r ~/requirements.txt
 ```
 
 Create a openstackrc file with your environment information and credentials:
