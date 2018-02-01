@@ -42,8 +42,13 @@ will make sure neither client nor server will attempt dedup or
 compression to prevent waste of computing resources. It is not a hard
 requirement and if you want to encrypt only parts of it, select
 deduplication and compression as normal, then use options (described
-below) to point out the specific folders to encrypt.
-Note: It will not make encryption choices for your node in other regards.
+below) to point out the specific folders to encrypt. Selecting
+encryption while creating the node will push server config to the
+client going
+
+    "INCLUDE.ENCRYPT /.../*"
+
+to make sure all files are secure at first run.
 
 If you want to let the IBM client do the encryption you have to select
 if and how to store the encryption key. The choices are:

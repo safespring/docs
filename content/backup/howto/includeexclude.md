@@ -157,6 +157,3 @@ https://www.ibm.com/support/knowledgecenter/en/SSEQVQ_8.1.4/client/r_opt_include
 
 Details on the DOMAIN option:
 https://www.ibm.com/support/knowledgecenter/en/SSEQVQ_8.1.4/client/r_opt_domain.html
-
-
-

@@ -63,3 +63,11 @@ other more "real" errors if they occur, you should add specific
 EXCLUDE rules to your dsm.sys/dsm.opt files for files. Read more on
 
 [Includes and Excludes](/backup/howto/includeexclude.md)
+
+In the above example, the offending file is also getting rotated by
+the operating system, so we are getting good backups of the
+already-rotated audit files, which can be a hint to add a small script
+to PRESCHEDCOMMAND in the dsm.opt/sys file to force rotation just
+before the scheduled backup is running, which means you get all data
+upto that point in files which will then not be moving while the
+backup runs.
