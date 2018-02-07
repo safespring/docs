@@ -7,6 +7,7 @@ In order to migrate an instance from one project to another please perform the f
 ![image](../../images/create-volume.png)
 3. Create a "Volume Transfer" in the source project.
 ![image](../../images/create-transfer.png)
+
 Name the transfer something:
 ![image](../../images/create-transfer-diag1.png)
 You will be given back a transfer ID and an authorization key. Please write those down somewhere. 
