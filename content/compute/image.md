@@ -78,3 +78,40 @@ Horizon webui, navigate to "Compute" -&gt; "Images". The uploaded image
 should now be visible in the list. Click the "Launch" button to the
 right of the uploaded image and fill in instance information as usual.
 
+## Changing disk type on an image
+
+If your disk image comes from an existing installation of another
+virtualization kit, the OS on the inside might have a limited amount
+of drivers and specifically might be lacking the virtio drivers which
+are generally considered the most performing ones.
+
+Booting without correct drivers will mostly end up in some kind of
+recovery mode in early boot at best, so changing the disk-type of an
+image is sometimes vital during import.
+
+You will need the image ID, either by looking at the web portal or
+running ``glance image-list``. Then change the bus type to something
+you expect will work.
+
+IDE would be the safest for older OSes, but least performant since IDE
+never can have multiple I/Os in flight so a guest using IDE will never
+issue them in parallel even if our underlying storage would handle
+it. The other alternatives include "scsi", "usb" and the default
+"virtio".
+
+    glance image-update \
+        --property hw_disk_bus=ide \
+        abcd-defg-12345678-901234-abcd
+
+Migrations could be made with a changed bus type on an imported disk
+image from another system, then from within the instance you update
+and/or install virtio drivers and shutdown the instance, then make a
+new image from the virtio-capable volume and then start a normal
+virtio-only instance using the second image and lastly delete the
+first instance.
+
+This can also be used to change the network card type, using the
+property ``hw_vif_model``. Default is "virtio" but the list also has
+"e1000", "ne2k_pci", "pcnet", "rtl8139" where e1000 emulates an Intel
+Pro gigabit ethernet card, and the others are different versions of
+old chipsets almost never used nowadays. This is rarely needed.
