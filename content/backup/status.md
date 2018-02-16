@@ -52,6 +52,5 @@ service quality for all users. This work is currently ongoing. As the migration
 process will be incremental we expect full mitigation to take time in the order
 of several days. Our goal is to better the sitatuion as quickly as possible.
 
-Updates will be communciated on https://status.safespring.com and this web
-page.
+Updates will be communciated on this web page.
 
