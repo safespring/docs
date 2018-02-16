@@ -12,6 +12,9 @@ validation against the Openstack API.
 
 ## Known Issues
 
+The Backup service is currently running in a degraded state. We are [updating
+a dedicated page](/backup/status) with information on this.
+
 There are some currently known issues in the Compute platform. This page
 describes the most common pitfalls. Known issues for Backup is under the [Backup
 FAQ page](/backup/faq).
