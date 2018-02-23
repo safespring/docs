@@ -87,6 +87,7 @@ pages:
     - Example CyberDuck config: "storage/cyberduck.md"
     - Tips and Tricks: "storage/tips-n-tricks.md"
   - Service status: "status.md"
+  - Domain changes: "domain-changes.md"
   - Support: "support.md"
   - Contributing: "contribute.md"
 
