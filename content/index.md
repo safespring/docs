@@ -2,8 +2,8 @@
 
 This site documents Safespring services and user resources.
 
-!!! bug "Backup service degration"
-    We're currently working to mitigate a [degration of the Backup service][de].
+!!! bug "Backup service degradation"
+    We're currently working to mitigate a [degradation of the Backup service][de].
 
 [de]:backup/status
 

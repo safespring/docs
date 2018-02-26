@@ -1,6 +1,6 @@
-## Backup service degration
+## Backup service degradation
 
-This page documents progress on mitigating the Backup service degration
+This page documents progress on mitigating the Backup service degradation
 problems some customers currently experience. The inital description has been
 moved to the bottom of this page.
 
