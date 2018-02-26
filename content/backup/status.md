@@ -1,9 +1,37 @@
 ## Backup service degration
 
-### Document history
+This page documents progress on mitigating the Backup service degration
+problems some customers currently experience. The inital description has been
+moved to the bottom of this page.
 
-* 26.02.2019 at 14:00 - status update
-* 16.02.2019 at 12:00 - initial description and mitigation plans
+* 26.02.2019 at 14:00 - Status update
+* 16.02.2019 at 12:00 - Initial description and mitigation plans
+
+### Work towards mitigation
+
+Safespring is currently working at our highest priority to add resources to the
+service. We believe this will bring the problem under control and resume normal
+service quality for all users. This work is currently ongoing. As the migration
+process will be incremental we expect full mitigation to take time in the order
+of several days.
+
+As of Monday 26.2.2018 14:00 the following is current:
+
+* New hardware has been put in place and verified
+
+* A PKI infrastructure to expand the service to X new nodes has been
+  verified.
+
+* New versions of backup clients have been developed, adding a required new CA
+  certificate. Early releases of updated clients are available for select
+  customers. We do not yet recommend all users to upgrade.
+
+* A first batch of nodes has been replicated, verified and successfully moved
+  to the new server. We work with select customers in this process, focusing on
+  relieving load on the main server as quickly as possible.
+
+* As we mature the replication process we expect to be able to move much larger
+  batches of nodes, speeding up the migration considerably.
 
 ### Description
 
@@ -32,7 +60,7 @@ the client node did backup everything it wanted to back up and
 then executed a clean exit, which means the nightly report will consider this
 run a full success.
 
-### Impact
+#### How do you know if you are impacted or not?
 
 We believe the chance of being impacted is related to scheduling of backups.
 Currently known instances of the problem occurs in periods with high to very
@@ -45,31 +73,4 @@ To check if this might have occured to a node you control, run:
 For Linux/Unix machines, you might use the file /var/log/cron. For Windows
 machines, some other local log file like C:\Windows\WindowsUpdate.log
 
-### Work towards mitigation
-
-Safespring is currently working at our highest priority to add resources to the
-service. We believe this will bring the problem under control and resume normal
-service quality for all users. This work is currently ongoing. As the migration
-process will be incremental we expect full mitigation to take time in the order
-of several days.
-
-As of Monday 26.2.2018 14:00 the following is current:
-
-* New hardware has been put in place and verified
-
-* A PKI infrastructure to expand the service to X new nodes has been
-  verified.
-
-* New versions of backup clients have been developed, adding a required new CA
-  certificate. Early releases of updated clients are available for select
-  customers. We do not yet recommend all users to upgrade.
-
-* A first batch of nodes has been replicated, verified and successfully moved
-  to the new server. We work with select customers in this process, focusing on
-  relieving load on the main server as quickly as possible.
-
-* As we mature the replication process we expect to be able to move larger
-  batches of nodes, speeding up the migration considerably.
-
-Updates will be communciated on this web page.
 
