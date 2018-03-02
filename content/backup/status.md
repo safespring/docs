@@ -4,6 +4,7 @@ This page documents progress on mitigating the Backup service degradation
 problems some customers currently experience. The inital description has been
 moved to the bottom of this page.
 
+* 02.03.2019 at 15:00 - Status update
 * 26.02.2019 at 14:00 - Status update
 * 16.02.2019 at 12:00 - Initial description and mitigation plans
 
@@ -11,11 +12,27 @@ moved to the bottom of this page.
 
 Safespring is currently working at our highest priority to add resources to the
 service. We believe this will bring the problem under control and resume normal
-service quality for all users. This work is currently ongoing. As the migration
-process will be incremental we expect full mitigation to take time in the order
-of several days.
+service quality for all users. As the migration process will be incremental we
+expect full mitigation to take time. The service will remain operational while
+this work happens.
 
-As of Monday 26.2.2018 14:00 the following is current:
+#### Worklog Firday 2.3.2108 15:00
+
+* We've successfully developed and used a migration process that will allow us
+  to spread the load on the service.
+
+* Together with our largest customer we've migrated around ~40 nodes and their
+  complete backup data and history. As of today, no data loss or unexpected
+  side issues has arised.
+
+* We're seeing data migration speeds at around 500mb/s which is good considered
+  the service has and still will be fully operational while the migrations take
+  place.
+
+* No further customer reports of missed backing up of files has been reported.
+  If you want to check if you might be affected, read the rest of this page.
+
+#### Worklog Monday 26.2.2018 14:00
 
 * New hardware has been put in place and verified
 
