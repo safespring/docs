@@ -16,16 +16,16 @@ service quality for all users. As the migration process will be incremental we
 expect full mitigation to take time. The service will remain operational while
 this work happens.
 
-#### Worklog Firday 2.3.2108 15:00
+#### Worklog Friday 2.3.2108 15:00
 
-* We've successfully developed and used a migration process that will allow us
-  to spread the load on the service.
+* We've successfully developed and started using a migration process
+  that will allow us to spread the load on the service.
 
 * Together with our largest customer we've migrated around ~40 nodes and their
   complete backup data and history. As of today, no data loss or unexpected
   side issues has arised.
 
-* We're seeing data migration speeds at around 500mb/s which is good considered
+* We're seeing data migration speeds at around 500MB/s which is good considered
   the service has and still will be fully operational while the migrations take
   place.
 
