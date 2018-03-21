@@ -20,8 +20,8 @@ $HOME/.s3cfg:
     secret_key = REDACTED
     check_ssl_certificate = True
     guess_mime_type = True
-    host_base = s3-archive.api.cloud.ipnett.se
-    host_bucket = %(bucket)s.s3-archive.api.cloud.ipnett.se
+    host_base = s3.sto1.safedc.net
+    host_bucket = s3.sto1.safedc.net
     use_https = True
 
 and nothing else.
