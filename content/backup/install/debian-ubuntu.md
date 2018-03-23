@@ -37,8 +37,8 @@ With root privileges:
 
 Edit `/etc/ld.so.conf.d/tsm.conf` and add, for a 64-bit system:
 
-    sudo nano /opt/tivoli/tsm/client/api/bin64/
-    sudo nano /usr/local/ibm/gsk8_64/lib64/
+    /opt/tivoli/tsm/client/api/bin64/
+    /usr/local/ibm/gsk8_64/lib64/
 
 With root privileges:
 
