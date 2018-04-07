@@ -4,9 +4,10 @@ This page documents progress on mitigating the Backup service degradation
 problems some customers currently experience. The inital description has been
 moved to the bottom of this page.
 
-* 02.03.2019 at 15:00 - Status update
-* 26.02.2019 at 14:00 - Status update
-* 16.02.2019 at 12:00 - Initial description and mitigation plans
+* 07.04.2018 at 10:00 - Status update
+* 02.03.2018 at 15:00 - Status update
+* 26.02.2018 at 14:00 - Status update
+* 16.02.2018 at 12:00 - Initial description and mitigation plans
 
 ### Work towards mitigation
 
@@ -15,6 +16,21 @@ service. We believe this will bring the problem under control and resume normal
 service quality for all users. As the migration process will be incremental we
 expect full mitigation to take time. The service will remain operational while
 this work happens.
+
+#### Worklog Saturday 9.4.2018 10:00
+
+* Migration of data is still ongoing. No data loss or unexpected side issues
+  have been reported during this work.
+
+* Max load on the main server is still high but under control. We've not had
+  further reports of the original problem where backup sessions were
+  incomplete.
+
+* Customers might still experience slow response during certain operations
+  using the portal at peak load times - 20 to 60 seconds is not unusual. If
+  this happens, the portal might seem stuck, but please wait to let it
+  complete. Our experience is that the requests will eventually complete
+  successfully.
 
 #### Worklog Friday 2.3.2108 15:00
 
