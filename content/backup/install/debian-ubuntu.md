@@ -25,13 +25,13 @@ In this example, files are fetched from the IPnett TSM mirror.
 Make sure you have `alien`and `rpm` installed first.
 With root privileges, run
 
-    for rpm in gsk*.rpm TIVsm-API64*.rpm TIVsm-BA.x86_64.rpm ; do alien -c -d $rpm ; done
+    for rpm in gsk*.rpm TIVsm-API64*.rpm TIVsm-BA.x86_64.rpm ; do sudo alien -c -d $rpm ; done
 
 ## 3b. Install IBM GSKIT and TSM
 
 With root privileges:
 
-    dpkg -i *.deb
+    sudo dpkg -i *.deb
 
 ## 3c. Setup ldconfig
 
@@ -42,7 +42,7 @@ Edit `/etc/ld.so.conf.d/tsm.conf` and add, for a 64-bit system:
 
 With root privileges:
 
-   ldconfig
+   sudo ldconfig
 
 
 ## 4. Add the IPnett BaaS CA to the TSM Trust database

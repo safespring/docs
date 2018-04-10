@@ -16,20 +16,20 @@ to the service:
 (New URLs)
 
 + Norwegian site - https://s3.osl1.safedc.net
-<!-- + Swedish site   - https://s3.sto1.safedc.net -->
++ Swedish site   - https://s3.sto1.safedc.net
 
 The URL change is due to the rename from IPNett to Safespring of our
 company.  The old URLs will continue to work for a long time, but new
 client configurations should point to the new name.
 
-Also, the safedc.net S3 URLs also contain wildcard subdomain
-certificates so clients/libraries/frameworks who insist on accessing
-the domain with:
+The new safedc.net S3 URLs contain wildcard subdomain certificates so that
+clients/libraries/frameworks who insist on accessing the domain with
 
     https://BUCKETNAME.URL/dir/object
 
-for an object named https://URL/BUCKETNAME/dir/object will work as
-expected.
+for an object named https://URL/BUCKETNAME/dir/object will work as expected.
+This feature is not yet fully tested but we'll update this documentation when
+it is.
 
 ## Buckets, directories, files and objects
 

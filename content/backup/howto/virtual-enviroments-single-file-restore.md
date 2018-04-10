@@ -1,4 +1,8 @@
-# Installation
+TSM4VE single file restore
+==========================
+
+Installation
+------------
 
 Since the software used for file level restore doesn't support SSL we have to use stunnel to encrypt the traffic to/from the TSM server.
 
@@ -38,7 +42,8 @@ Since the software used for file level restore doesn't support SSL we have to us
 
 * Start the service, either the normal windows way, or by running the app "stunnel Service Start".  The service will start automatically after reboots.
 
-# Usage
+Usage
+-----
 
 The restore process is a 2-step processs.  
 
@@ -46,7 +51,7 @@ The restore process is a 2-step processs.
 
 * The virtual machine will then mount the ISCSI disk from the server above.
 
-You can see the physical host as an disk array and the VM as a server that uses the disk. The steps to make this happen are:
+* You can see the physical host as an disk array and the VM as a server that uses the disk. The steps to make this happen are:
 
 * On the Tivoli Storage Manager recovery agent system (most cases the physical host), open port 3260 in the Windows client firewall.
 

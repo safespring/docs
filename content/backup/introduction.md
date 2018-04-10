@@ -1,6 +1,6 @@
 # Introduction to TSM
 
-_This page will (soon) cover the following topics:_
+_This page covers the following topics:_
 
 * Installing TSM
 * Adding trust to the IPnett PKI

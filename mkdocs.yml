@@ -1,7 +1,6 @@
 # Site and content
 site_name: "Safespring documentation"
 docs_dir: "content"
-site_favicon: 'images/favicon.ico'
 
 # Github integration
 repo_name: "safespring/docs"
@@ -9,11 +8,15 @@ repo_url: "https://github.com/safespring/docs"
 edit_uri: "edit/master/content/"
 
 # Safespring theme
-theme: "material"
+theme:
+  name: "material"
+  feature:
+    tabs: false
+  logo: "safespring.png"
+  favicon: "favicon.ico"
 extra_css:
   - "safespring.css"
 extra:
-  logo: "safespring.png"
   font:
     text: "Hind"
     code: "Ubuntu Mono"
@@ -42,6 +45,7 @@ markdown_extensions:
 pages:
   - Overview: "index.md"
   - Backup:
+    - Status: "backup/status.md"
     - Getting started: "backup/getting-started.md"
     - Introduction: "backup/introduction.md"
     - Installation:
@@ -56,9 +60,12 @@ pages:
     - Howtos:
       - Alternate restore: "backup/howto/restore-alternate.md"
       - vSphere: "backup/howto/vsphere.md"
+      - Encryption: "backup/howto/encrypted.md"
+      - Includes & Excludes: "backup/howto/includeexclude.md"
       - Performance tuning: "backup/howto/performance-tuning.md"
       - Bare metal recovery: "backup/howto/bare-metal-tbmr.md"
       - Virtual environments single file restore: "backup/howto/virtual-enviroments-single-file-restore.md"
+      - Handling changing files: "backup/howto/changing-files.md"
     - API: "backup/api.md"
     - FAQ: "backup/faq.md"
   - Compute:
@@ -72,13 +79,17 @@ pages:
     - Connecting to Safespring: "compute/connecting.md"
     - Windows images: "compute/windows.md"
     - VMware import: "compute/vmware-import.md"
+    - Migrate instance to another project: "compute/migrate-between-projects.md"
   - Storage:
     - General S3 Info: "storage/generalinfo.md"
     - Example s3cmd config: "storage/s3cmd.md"
     - Example s3fs config: "storage/s3fs.md"
     - Example CloudBerry config: "storage/cloudberry.md"
     - Example CyberDuck config: "storage/cyberduck.md"
+    - Example Duck CLI config: "storage/duck-cli.md"
+    - Tips and Tricks: "storage/tips-n-tricks.md"
   - Service status: "status.md"
+    #  - Domain changes: "domain-changes.md"
   - Support: "support.md"
   - Contributing: "contribute.md"
 

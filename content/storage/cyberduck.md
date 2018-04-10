@@ -13,9 +13,9 @@ to add yet another one.
 
 ![Add config](/images/cyberduckadd.png)
 
-Enter the URL s3-archive.api.cloud.ipnett.se and your access_key.
-The secret_key will be asked on first connect and stored in the system
-keyring (for Mac at least).
+Enter the host part of the [URL for your account](generalinfo.md) in the Server
+field and fill in your access_key. CyberDuck will prompt for the secret_key at
+first connect and store it in the system keyring.
 
 ![Create config](/images/cyberduck1.png)
 
