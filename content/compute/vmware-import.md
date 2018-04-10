@@ -19,12 +19,12 @@ The reason we copy the image before we make driver modifications is to preserve 
 ### Prerequisites
 
   * A CentOS (7 preferred) "datamover" server VM setup in the VMware cluster, with EPEL repository and `pigz`, `pv`, `screen` installed. Give it 4-8 GB RAM and 2-4 vCPUs.
-  * Another Linux server, "libvirt-host", accessible using SSH from above CentOS host, prepared with Openstack CLI, libvirt/KVM and a several hundred GB large storage volume (HDD performance (100+ MB/s) is sufficient). **Do not connect its network adapter to a working network** (for safety).
+  * Another Linux server, "libvirt host", accessible using SSH from above CentOS host, prepared with Openstack CLI, libvirt/KVM and a several hundred GB large storage volume (HDD performance (100+ MB/s) is sufficient). **Do not connect its network adapter to a working network** (for safety).
   * Credentials to access the OpenStack Project using CLI -- not explained in this guide.
   * If Windows among VM OS' to be transferred, download `virtio-win.iso` from https://fedoraproject.org/wiki/Windows_Virtio_Drivers
 
 
-## 1. Image transfer to "libvirt-host"
+## 1. Image transfer to "libvirt host"
 
 In vCenter / vSphere:
 
@@ -46,7 +46,7 @@ dd if=/dev/sdb bs=16M | pigz -c -1 | pv | \
   ssh -c chacha20-poly1305@openssh.com -p 22 $username@$hostname \
   "pigz -cd | dd of=/mnt/bigstoragedevice/imagename.raw bs=16M"
 ```
-(where `$username` is the username at and `$hostname` the hostname or IP address of the "libvirt-host".)
+(where `$username` is the username at and `$hostname` the hostname or IP address of the "libvirt host".)
 
 ## 2. Image driver preparation
 
@@ -177,41 +177,64 @@ Probably quite similar to [the Windows 2008 R2 (x64) guide](#windows-2008-r2-x64
 
 **Upload to Safespring Compute**
 
-Once the image preparation process above is complete, you should have a Safespring Compute bootable image.
+Once the image preparation process above is complete, you should have a Safespring Compute bootable image on the "libvirt host".
 
 Now it's time to:
 
-  * Upload image
-  * Create volume from image
-  * Boot server
-  * Associate floating IP to server
-  * Configure security groups on server
+  1. Upload image
+  2. Create volume from image
+  3. Boot server
+  4. Associate floating IP to server
+  5. Configure security groups on server
 
-**Upload image**
+### Upload image
+
 In your Openstack CLI shell, run:
-`openstack image create --min-disk 100 --file $imagename.raw $imagename` -- replace image name and min-disk as necessary. `min-disk` should be equal to the drive size. Unit is GB. Round up. :)
 
-This command creates an image in Openstacks Image Service, Glance. The upload takes a while and there is no progress bar. Check your network transfer rate.
+```
+openstack image create --min-disk $mindisk --file $imagename.raw $imagename
+```
 
-**Create volume from image**
-`openstack volume create --size 10 --type fast --image $imagename $volumename`
+Replace `$imagename` and `$mindisk` as necessary. `$mindisk` should be equal to the drive size. Unit is GB. Round up. :)
 
-This creates an SSD-based image (`fast`). There is also a HDD-based option (`large`). This operation is pretty instant.
-`$volumename == $imagename` seems like a good choice.
+This command creates an image in Openstack's Image Service, Glance. The upload takes a while and there is no progress bar. Check your network transfer rate.
 
-**Get network UUID**
+### Create volume from image
 
-`openstack network list` -- copy the UUID of the network you wish to boot the server in, to variable `$net_uuid` below.
+In your Openstack CLI shell, run:
 
-**Boot server**
-`openstack server create --volume $imagename --flavor b.large --nic net-id=$net_uuid --wait $vmname`
+```
+openstack volume create --size 10 --type fast --image $imagename $volumename
+```
+
+This creates an SSD-based image (volume type `fast`). There is also a HDD-based option (volume type `large`).
+This operation is pretty instant. `$volumename == $imagename` seems like a good choice.
+
+### Get network UUID
+
+In your Openstack CLI shell, run:
+
+```
+openstack network list
+```
+
+Copy the UUID of the network you wish to boot the server in, to variable `$net_uuid` below.
+
+### Boot server
+
+In your Openstack CLI shell, run:
+
+```
+openstack server create --volume $imagename --flavor b.large \
+--nic net-id=$net_uuid --wait $vmname
+```
 
 There are several flavors to choose from. Consult the other documentation.
 
-**Associate floating IP to server**
+### Associate floating IP to server
 
-Login using the web interface to associate a floating IP to the server.
+Login using the web interface to associate a floating IP to the server. See the network documentation.
 
-**Set security groups to server**
+### Set security groups to server
 
-Set security groups to the server.
+Set security groups to the server, easiest done using the web interface. See the network documentation.
