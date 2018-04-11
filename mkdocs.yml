@@ -78,6 +78,7 @@ pages:
     - Enabling IPv6: "compute/ipv6-howto.md"
     - Connecting to Safespring: "compute/connecting.md"
     - Windows images: "compute/windows.md"
+    - VMware import: "compute/vmware-import.md"
     - Migrate instance to another project: "compute/migrate-between-projects.md"
   - Storage:
     - General S3 Info: "storage/generalinfo.md"
