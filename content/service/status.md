@@ -1,19 +1,11 @@
-# Support
+# Service status
 
-## How to get support
+## Status page
 
-Primarily we support our services by using dedicated email addresses:
+A status page is available at https://status.safespring.com - the page contains
+(manual) annoucement of downtime and maintenace windows.
 
-* Backup baas@cloud.ipnett.se
-
-* Compute iaas@cloud.ipnett.se
-
-* Storage (TBA)
-
-Please indicate how you want to be contacted, if needed, contact information
-when you email us.
-
-## Mailing lists with status announcements
+## Mailing lists
 
 All customers should subscribe to our service-specific mailing lists to be
 notified about service maintenance windows, known problems or other important
@@ -41,5 +33,5 @@ questions or messages from customers are appreciated.
 We publish information about our [currently known issues][ki]. Please review it
 to avoid spending time on them.
 
-[ki]:status/#known-issues
+[ki]:known_issues/
 
