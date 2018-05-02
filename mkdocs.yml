@@ -88,6 +88,7 @@ pages:
     - Example CyberDuck config: "storage/cyberduck.md"
     - Example Duck CLI config: "storage/duck-cli.md"
     - Tips and Tricks: "storage/tips-n-tricks.md"
+    - Other Backends: "storage/other-backends.md"
   - Status and support:
     - Status information: "service/status.md"
     - Known issues: "service/known_issues.md"
