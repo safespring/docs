@@ -10,10 +10,13 @@ The most reliable instructions to install certbot can be found here: https://cer
 Start with going to Settings under the account menu up in the right corner.
 In the Settings view - click "External Storages" under "Administation":
 ![External storage](/images/nextcloud-s3-1.png)
+
 Click the "Add storage" drop-down and choose "Amazon S3".
 ![Add dropdown](/images/nextcloud-s3-2.png)
+
 In the settings dialogue fill in name, bucket name (which you need to create beforehand), Storage-URL, portnumber (443). You do not need to fill anything into the "Region" field. Check "Enable SSL" and "Enable Path Style" and at last enter your access key and secret key.
 ![Setting dialogue](/images/nextcloud-s3-3.png)
+
 When all the fields are filled in click the tick box symbol at the very right and make sure that the symbol in the dialogue in front Name-field turns green.
 ![Accept settings](/images/nextcloud-s3-4.png)
 
