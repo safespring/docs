@@ -53,8 +53,9 @@ deactivate
 
 ### Windows
 
-!!! note "These instructions aren't well tested or perhaps even incomplete.
-Please let us know if you need help or know how to improve them!"
+!!! note
+    These instructions aren't well tested or perhaps even incomplete.
+    Please let us know if you need help or know how to improve them!"
 
 To be able to use the Openstack client from Windows you need [Python 2.7].
 After the installation is finished, open a command prompt:
