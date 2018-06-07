@@ -9,29 +9,30 @@ To do this, contact support to make sure you get an API-enabled
 user account created for you. A federated user account from e.g SWAMID
 or Dataporten can't be used directly in this case.
 
-## Installation of OpenStack CLI clients
-Openstack.org instructions on how to install the client can be found
-[here](https://docs.openstack.org/user-guide/common/cli-install-openstack-command-line-clients.html).
+## Install the Openstack command line client
 
-Safespring recommends installing the client in a Python virtual environment.
+Openstack.org instructions on how to install the client can be found
+[here]. We recommend installing the client in a Python virtual environment.
+
+[here]: https://docs.openstack.org/user-guide/common/cli-install-openstack-command-line-clients.html
 
 ### Linux
 
 First install the neccessary OS packages depending on what distribution you are
 using.
 
-_Red Hat Enterprise Linux, CentOS or Fedora_
+#### Red Hat Enterprise Linux, CentOS or Fedora
 
 If the _python-virtualenvwrapper_ package is not available you might have to
 install _epel-release_ first.
 
     yum install python-devel python-pip python-virtualenvwrapper gcc
 
-_Ubuntu or Debian_
+#### Ubuntu or Debian
 
     apt-get install python-dev python-pip virtualenvwrapper build-essential
 
-_Installing the client_
+#### Installing the client using virtualenvwrapper and pip
 
 Restart your shell. Create a virtualenv and install the client into it.
 
@@ -52,8 +53,11 @@ deactivate
 
 ### Windows
 
+!!! note "These instructions aren't well tested or perhaps even incomplete.
+Please let us know if you need help or know how to improve them!"
+
 To be able to use the Openstack client from Windows you need [Python 2.7].
-After the installation is finished, open a command prompt
+After the installation is finished, open a command prompt:
 
 ```shell
 C:
