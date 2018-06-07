@@ -2,72 +2,97 @@
 
 ## Requirements
 
-For advanced use cases or automation it is neccessary to use the
+For advanced use cases and automation it is neccessary to use the
 Openstack API endpoints directly.
 
 To do this, contact support to make sure you get an API-enabled
 user account created for you. A federated user account from e.g SWAMID
-or Dataporten can't be used in this case.
+or Dataporten can't be used directly in this case.
 
 ## Installation of OpenStack CLI clients
-Instructions on how to install the clients can be found [here](https://docs.openstack.org/user-guide/common/cli-install-openstack-command-line-clients.html).
+Openstack.org instructions on how to install the client can be found
+[here](https://docs.openstack.org/user-guide/common/cli-install-openstack-command-line-clients.html).
 
-A safer way is to install the clients in a Python virtual environment. First,
-prepare a requirements.txt file that specifies the correct versions of the
-client components needed for programmatic access:
+Safespring recommends installing the client in a Python virtual environment.
+
+### Linux
+
+First install the neccessary OS packages depending on what distribution you are
+using.
+
+_Red Hat Enterprise Linux, CentOS or Fedora_
+
+If the _python-virtualenvwrapper_ package is not available you might have to
+install _epel-release_ first.
+
+    yum install python-devel python-pip python-virtualenvwrapper gcc
+
+_Ubuntu or Debian_
+
+    apt-get install python-dev python-pip virtualenvwrapper build-essential
+
+_Installing the client_
+
+Restart your shell. Create a virtualenv and install the client into it.
 
 ```shell
-cat - > requirements.txt <<EOF
-python-keystoneclient>=2.0.0,!=2.1.0,<=3.6.0           # Mitaka, Newton
-python-novaclient>=2.29.0,!=2.33.0,<=6.0.0             # Liberty, Mitaka, Newton
-python-neutronclient>=5.1.0,<=6.0.0                    # Newton
-python-glanceclient==2.5.0                             # Newton
-python-heatclient==1.5.0                               # Newton
-python-cinderclient>=1.6.0,!=1.7.0,!=1.7.1,<=1.9.0     # Mitaka, Newton
-python-swiftclient>=2.2.0,<=3.1.0                      # Liberty, Mitaka, Newton
-python-ceilometerclient>=2.5.0,<=2.6.1                 # Newton
-python-openstackclient==2.3.0                          # Mitaka, Newton
-EOF
-```
-
-Next, create the Python virtual environment, using the file above in the last
-step:
-
-```shell
-sudo apt-get install python-pip virtualenv virtualenvwrapper build-essential
-mkdir ~/PythonProjects
-cat - >> ~/.bashrc <<EOF
-export WORKON_HOME=~/Envs
-export PROJECT_HOME=~/PythonProjects
-source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-EOF
-. ~/.bashrc
-mkproject os
-mv ~/requirements.txt ./requirements.txt
+mkvirtualenv oscli
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install python-openstackclient
 ```
 
-Create a openstackrc file with your environment information and credentials:
+To stop or start using this virtual Python environment, type
 
 ```shell
+# to activate it
+workon oscli
+# to exit, when finished
+deactivate
+```
+
+### Windows
+
+To be able to use the Openstack client from Windows you need [Python 2.7].
+After the installation is finished, open a command prompt
+
+```shell
+C:
+cd C:\Python27\Scripts
+```
+
+Use `easy_install` to install _pip_
+
+```shell
+C:\Python27\Scripts>easy_install pip
+```
+
+Then install _python-openstackclient_ using pip
+```shell
+C:\Python27\Scripts>pip install python-openstackclient
+```
+
+[Python 2.7]: https://www.python.org/downloads/
+
+### Configuration and credentials
+
+Create a openstackrc file with your environment information and API account
+credentials. On Linux, you could do it like this:
+
+```shell
+# create a config file
 $ cat - >> openstackrc << EOF
-<contents of rc-file from template below>
+<paste of rc-file from template below>
 EOF
+# edit it to include real credentials
+vi openstackrc
+# then activate it
 source openstackrc
+```
+
+Run a command to see if it works , this command tests authentication only
+
+```shell
 openstack token issue
-```
-
-Whenever you like to go back to the system installed Python:
-
-```shell
-(os) $ deactivate
-```
-
-Whenever you like to go back to the virtual environment use the command:
-
-```shell
-workon os
 ```
 
 ## Example rc files
