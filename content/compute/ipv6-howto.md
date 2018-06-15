@@ -40,7 +40,7 @@ Now it is time to time to set the address and default router given from DHCPv6 s
 ### Start IPV6 static configuration
 iface ens4 inet6 static
 address <IPv6 address from the ip address show command>
-netmask 128
+netmask 64
 gateway <IPv6 address from the ip -6 route show command> 
 ### END IPV6 configuration
 ```
