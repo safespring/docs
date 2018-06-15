@@ -14,12 +14,13 @@ In this guide, we will use a combination of the first and third options: static 
 
 * Set up an instance in the Horizon dashboard. In this example, we will use an Ubuntu 16.04 image. We also set it up with a keypair so that we can SSH to the host later. In this demonstration, the b.tiny flavor will do. We also connect it to an IPv4 network and the public-ipv6 network. We will use the IPv4 network for IPv4 traffic and management.
 ![Network list](../images/ipv6_image1.png)
-* We can see that we have gotten two IP-addresses, one IPv4 and one IPv6 in two different network. We also assign a floating IP-address to the instance to be able to SSH to it as described [here](https://docs.cloud.ipnett.com/intro/gettingstarted.html).
-* Before we can SSH to our new floating IP we will need to update our security groups to open port 22. This is done from “Edit Security Groups” in the “Create Snapshot”drop-down if you did not do it at instance creation. Security groups are described [here](https://docs.cloud.ipnett.com/intro/gettingstarted.html).
+* We can see that we have gotten two IP-addresses, one IPv4 and one IPv6 in two different networks. We also assign a floating IP-address to the v4 interface on the instance to be able to SSH to it as described [here](https://docs.cloud.ipnett.com/intro/gettingstarted.html).
+* Before we can SSH to our new floating IP we will need to update our security groups to open port 22. This is done from “Edit Security Groups” in the “Create Snapshot” drop-down if you did not do it at instance creation. Security groups are described [here](https://docs.cloud.ipnett.com/intro/gettingstarted.html).
 * Now you can log into you instance with SSH. If you are using the vanilla Ubuntu 16.04 image with no extra configuration you log in with the user “ubuntu” and provide the password, you have set on your key (which you also must provide in able to log in).  
 * Run “sudo -s” to gain root rights and then “ip address show” to find the interface apart from your IPv4 interface. This other interface should be down:  
 ![Interface list](../images/ipv6_image2.png)
 In this case we see that the interface that is down is named ens4.
+* For CentOS 7, the default cloud image user is centos, and the interface configuration file is /etc/sysconfig/network-scripts/ifcfg-eth0 (if the interface with the IPv6 network on is eth0).
 * Go to the folder “/etc/network/interfaces.d” and create a file called “ens4.cfg” and fill it with the following contents:   
 
 ```shell  
@@ -30,7 +31,7 @@ In this case we see that the interface that is down is named ens4.
 ```
 
 Save and close the file.  
-  
+
 * Run the command “/etc/init.d/networking restart” to bring up your IPv6 interface. Run “ip address show” to ensure that your instance has gotten the same IPv6-address as stated in the IaaS Dashboard.
 Copy the address on the interface from the "ip address show" command to notepad or some other text editor. Also run "ip -6 route show" to find out your IPv6 default router. Copy the IPv6 address from the row that starts with "default".
 
@@ -45,6 +46,12 @@ gateway <IPv6 address from the ip -6 route show command>
 ### END IPV6 configuration
 ```
 Save the file and then run “/etc/init.d/networking restart” again.
- 
-* Try and ping with the command “ping6 -n ping.sunet.se” to see that it works.
 
+* For CentOS 7, these two lines need to be added to the ifcfg-ethX file:
+```
+IPV6ADDR=2001:xxx:x:xxxx::yyy/64
+IPV6_DEFAULTGW=2001:xxx:x:xxxx::1/64
+```
+then restart the VM or restart network with "systemctl restart network.service" and it should now be usable over IPv6 also.
+
+* Try and ping with the command “ping6 -n ping.sunet.se” to see that it works. If the host is V6-only, make sure you add v6 resolvers to the /etc/resolv.conf file.
