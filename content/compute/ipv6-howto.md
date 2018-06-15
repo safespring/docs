@@ -10,7 +10,7 @@ There are mainly three ways to get an IPv6 address:
 	* Due to the abundance of addresses in IPv6 the leases from a DHCPv6 server are much more generous when it comes to the lease time resulting in that once you get an IPv6 address from the DHCPv6 server you can keep it virtually forever if the DHCPv6-server is set up with a big enough scope. This removes the need of static IPv6 addresses on servers serving IPv6 content.
 
 ##Configuration
-In this guide, we will use the third option above: DHCPv6.
+In this guide, we will use a combination of the first and third options: static assigment and DHCPv6. The reason we need to do that is a known issue right now that makes DHCPv6 unstable over time.
 
 * Set up an instance in the Horizon dashboard. In this example, we will use an Ubuntu 16.04 image. We also set it up with a keypair so that we can SSH to the host later. In this demonstration, the b.tiny flavor will do. We also connect it to an IPv4 network and the public-ipv6 network. We will use the IPv4 network for IPv4 traffic and management.
 ![Network list](../images/ipv6_image1.png)
@@ -32,5 +32,19 @@ In this case we see that the interface that is down is named ens4.
 Save and close the file.  
   
 * Run the command “/etc/init.d/networking restart” to bring up your IPv6 interface. Run “ip address show” to ensure that your instance has gotten the same IPv6-address as stated in the IaaS Dashboard.
+Copy the address on the interface from the "ip address show" command to notepad or some other text editor. Also run "ip -6 route show" to find out your IPv6 default router. Copy the IPv6 address from the row that starts with "default".
+
+Now it is time to time to set the address and default router given from DHCPv6 statically on the interface. Open up the /etc/network.d/ens4.cfg in your editor again. Edit the file so that it looks like the following:
+
+```shell
+### Start IPV6 static configuration
+iface ens4 inet6 static
+address <IPv6 address from the ip address show command>
+netmask 128
+gateway <IPv6 address from the ip -6 route show command> 
+### END IPV6 configuration
+```
+Save the file and then run “/etc/init.d/networking restart” again.
+ 
 * Try and ping with the command “ping6 -n ping.sunet.se” to see that it works.
 
