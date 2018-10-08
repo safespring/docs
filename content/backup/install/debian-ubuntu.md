@@ -1,5 +1,9 @@
 # Debian/Ubuntu Linux (64-bit)
 
+The instructions below tells how to set up the backup clients manually from the
+providers RPMs. Safespring now also has a repository for the backup client which can be reached at: https://repo.cloud.ipnett.com/debian/.
+
+
 _This document describes how to manually install IBM TSM on Debian or Ubuntu Linux (64-bit)._
 
 Since the latest release, 7.1.2, IBM ships .deb archives, so you can get them directly.
