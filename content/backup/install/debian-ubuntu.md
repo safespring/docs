@@ -1,79 +1,35 @@
 # Debian/Ubuntu Linux (64-bit)
 
-The instructions below tells how to set up the backup clients manually from the
-providers RPMs. Safespring now also has a repository for the backup client which can be reached at: https://repo.cloud.ipnett.com/debian/.
+These instructions show how to install the TSM client on Debian or Ubuntu.
+We will use a shell-script listed below and the TSM-debian repositories Safespring
+privides.
 
+Start with creating a node inte portal:
+![Create node](/images/create-node.png)
 
-_This document describes how to manually install IBM TSM on Debian or Ubuntu Linux (64-bit)._
+Make sure to fill in all the fields and to choose "Traditional files" at "Application" dropdown. Click "Create node".
 
-Since the latest release, 7.1.2, IBM ships .deb archives, so you can get them directly.
-For older deb/ubuntu machine the procedure below may still be useful.
+After the creation is finished you will be presented with this dialogue:
 
-Deb archives available on our local mirror here:
-   https://api.cloud.ipnett.se/dist/tsm/mirror/maintenance/storage/tivoli-storage-management/maintenance/client/v7r1/Linux/LinuxX86_DEB/
-and at IBMs site:
-   https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/client/v7r1/Linux/LinuxX86_DEB/
+![Node created](/images/node-created.png)
+Make sure to save the password in a textfile for further reference. Also click
+the "Download configuration" and save the ZIP-file on your computer.
 
-## 1. Fetch TSM installation files:
-
-In this example, files are fetched from the IPnett TSM mirror.
-
-    wget https://api.cloud.ipnett.se/dist/tsm/mirror/maintenance/storage/tivoli-storage-management/maintenance/client/v7r1/Linux/LinuxX86/BA/v711/7.1.1.0-TIV-TSMBAC-LinuxX86.tar
-
-## 2. Unpack installation files
-
-    tar xf *-TIV-TSMBAC-LinuxX86.tar
-
-## 3a. Convert IBM GSKIT and TSM
-
-Make sure you have `alien`and `rpm` installed first.
-With root privileges, run
-
-    for rpm in gsk*.rpm TIVsm-API64*.rpm TIVsm-BA.x86_64.rpm ; do sudo alien -c -d $rpm ; done
-
-## 3b. Install IBM GSKIT and TSM
-
-With root privileges:
-
-    sudo dpkg -i *.deb
-
-## 3c. Setup ldconfig
-
-Edit `/etc/ld.so.conf.d/tsm.conf` and add, for a 64-bit system:
-
-    /opt/tivoli/tsm/client/api/bin64/
-    /usr/local/ibm/gsk8_64/lib64/
-
-With root privileges:
-
-   sudo ldconfig
-
-
-## 4. Add the IPnett BaaS CA to the TSM Trust database
-
-    wget https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA.sh
-    wget https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA.pem
-    sh ./IPnett-Cloud-Root-CA.sh
-
-## 5. Install TSM configuration files
-
-The TSM configuration files are unique to each node, and can be generated via the BaaS API or the portal.
-Place the two files at this location:
-
-- /opt/tivoli/tsm/client/ba/bin/dsm.sys
-- /opt/tivoli/tsm/client/ba/bin/dsm.opt
-
-## 6. Initialize TSM (set client password)
-
-When you start the TSM client for the first time, you will be prompted for your password. If you get asked for the nodename, accept the default which is configured in dsm.sys already (see previous step).
-
-    dsmc query session
-
-## 7. Enable TSM autostart
-The provided init script from IBM does not work on Debian or Ubuntu:
-Replace the /etc/init.d/dsmcad file with the a file with these contents instead:
+Create a file setup-baas.sh with the following contents:
 
 ```shell
+#!/bin/bash
+cat > /etc/apt/sources.list.d/safespring-baas.list << EOF
+deb https://repo.cloud.ipnett.com/debian xenial main
+EOF
+wget -qO - https://repo.cloud.ipnett.com/debian/pubkey.gpg | sudo apt-key add -
+apt-get install unzip
+apt-get update && apt install safespring-baas-setup
+unzip dsm-*
+cp dsm.opt /opt/tivoli/tsm/client/ba/bin/
+cp dsm.sys /opt/tivoli/tsm/client/ba/bin/
+dsmc query session
+cat > /etc/init.d/dsmcad << 'EOF'
 #!/bin/sh
 # kFreeBSD do not accept scripts as interpreters, using #!/bin/sh and sourcing.
 if [ true != "$INIT_D_SCRIPT_SOURCED" ] ; then
@@ -130,5 +86,34 @@ case "$1" in
     exit 1
     ;;
 esac
-
+EOF
+systemctl enable dsmcad
+systemctl start dsmcad
 ```
+
+Now it is time to upload the configuration ZIP-file that you downloaded from the 
+"Create node" in the portal and the script you just created above. If using Windows
+we recommend using WinSCP to upload the files to the home directory of a user
+that has sudo-rights.
+
+![WinSCP upload](/images/winscp-upload.png)
+<image winscp-upload.png>
+
+Now you connect to the server with SSH with to user to which home directory
+you copied the two files. 
+Now you need to run:
+```shell
+ubuntu@baas-test-4:~$ ls
+dsm-ZXAGTHTIGQKC.zip  setup-baas.sh
+ubuntu@baas-test-4:~$ chmod +x setup-baas.sh
+ubuntu@baas-test-4:~$ sudo ./setup-baas.sh
+```
+You will need to answer "Yes" with a "y" two times.
+When you come to the part which asks which node name to use, just hit return.
+After that you provide the password that you got from the backup portal and 
+that you wrote to a textfile.
+
+When the script has finished you have successfully installed TSM on the server.
+You can ensure that the service is running by running "systemctl status dsmcad".
+
+Do not forget to go to the portal and update the node to configure retention
