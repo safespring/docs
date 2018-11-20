@@ -28,7 +28,7 @@ For Windows **8.1, 10, 2012** and **2016** please use this installer,
 [https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.4.1.exe](https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.4.1.exe).
 
 For older Windows versions please use this installer,
-[https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.2.2.exe](https://api.cloud.ipnett.se/dist/installer/ipnett-baas.2.2.2.exe).
+[https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.2.2.exe](https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.2.2.exe).
 
 md5: a42863906d21a90a8e265a6e277561f9  safespring-baas.2.4.1.exe   
 md5: c1d4e1b36ececb2a0d0b55bd32e5fd4f  safespring-baas.2.2.2.exe  
