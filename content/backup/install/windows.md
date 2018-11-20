@@ -1,6 +1,6 @@
 # Windows installation
 ## Auto installation
-
+ 
 This installer installs the TSM BA Client and services and the TBMR client and licenses. It detects 32-bit or 64-bit platforms and contains both versions. Administative priviledges is required for all installations.
 
 It can be run in two modes. The first mode requires that the administrator of the service has created a node and checked out the config file, dsm-nodenamexyz.zip, and have the password to this node.
