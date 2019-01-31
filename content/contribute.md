@@ -47,7 +47,7 @@ suggesting further tweaks or edits. Thank you very much :-)
 
 ## Larger contributions
 
-### Cloning the repostitory
+### Cloning the repository
 
 ### Making changes or additions
 

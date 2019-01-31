@@ -3,8 +3,64 @@ primary color #417da5
      or #195F8C
 */
 
+@import url('https://fonts.googleapis.com/css?family=Hind:600|Montserrat');
+
+body {
+  font-family: Montserrat;
+  color: #323232;
+}
+
+h1, h2 {
+  color: #195f8c;
+  font-family: Hind;
+  font-weight: 600 !important;
+}
+
+h3, h4, h5, h6 {
+  color: #323232;
+  font-family: Hind;
+  font-weight: 600 !important;
+}
+
+label, nav {
+  font-family: Hind;
+  font-weight: 600 !important;
+}
+
+ol {
+  margin: 0 0 1.5em;
+  padding: 0;
+  counter-reset: item;
+}
+
+ol > li {
+  margin: 0;
+  padding: 0 0 0 1em;
+  text-indent: -1em;
+  list-style-type: none;
+  counter-increment: item;
+}
+
+ol > li:before {
+  display: inline-block;
+  width: 1em;
+  padding-right: 0.5em;
+  font-weight: bold;
+  text-align: right;
+  content: counter(item) ".";
+}
+blockquote {
+  text-indent: 0;
+  margin: 10px 0;
+}
+.md-sidebar--primary li {
+  font-size: 1.2em;
+}
+
 .md-typeset a {
   color: #195f8c;
+  font-family: Hind;
+  font-weight: 600 !important;
 }
 
 .md-header {
@@ -20,7 +76,7 @@ primary color #417da5
 }
 
 .md-nav__item--active>.md-nav__link, .md-nav__link:active {
-  color: #195f8c
+  color: #fa690f
 }
 
 .md-tabs {
@@ -48,6 +104,9 @@ primary color #417da5
 accent color #fa690f
 */
 
+.md-typeset {
+  font-size: 1.4em;
+}
 .md-typeset a:active, .md-typeset a:hover {
   color: #fa690f
 }

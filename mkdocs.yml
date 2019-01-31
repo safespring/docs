@@ -18,7 +18,7 @@ extra_css:
   - "safespring.css"
 extra:
   font:
-    text: "Hind"
+    text: "Montserrat"
     code: "Ubuntu Mono"
 
 # https://squidfunk.github.io/mkdocs-material/getting-started/#extensions
@@ -94,9 +94,16 @@ pages:
     - Example NextCloud S3 integration: "storage/nextcloud-s3.md"
     - Tips and Tricks: "storage/tips-n-tricks.md"
     - Other Backends: "storage/other-backends.md"
+  - Synkzone:
+    - General info: "synkzone/general-info.md"
+    - Username & password: "synkzone/username-and-password.md"
+    - Zones: "synkzone/zones.md"
+    - Working with files: "synkzone/working-with-files.md"
+    - Collaboration and conflict management: "synkzone/collaboration-and-conflict-management.md"
+    - Archived files: "synkzone/archived-files.md"
+    - Miscellaneous: "synkzone/miscellaneous.md"
   - Status and support:
     - Status information: "service/status.md"
     - Known issues: "service/known_issues.md"
     - Getting support: "service/support.md"
   - Contributing: "contribute.md"
-
