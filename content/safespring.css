@@ -56,7 +56,9 @@ blockquote {
 .md-sidebar--primary li {
   font-size: 1.2em;
 }
-
+.md-typeset .md-content__icon {
+  font-family: Material Icons;
+}
 .md-typeset a {
   color: #195f8c;
   font-family: Hind;
