@@ -138,11 +138,11 @@ export OS_USER_DOMAIN_NAME=<DOMAIN>
 This instruction will show you how to start new servers through the API. To simplify we will first create
 a network in the gui to which we then connect all our servers. 
 
-Make sure that you have a working rc-file according to the insctructions [here]: https://docs.safespring.com/compute/api/
+Make sure that you have a working rc-file according to the insctructions [here](https://docs.safespring.com/compute/api/)
 
-Then create a network according to [instruction]:https://docs.safespring.com/compute/network/
+Then create a network according to [instruction](https://docs.safespring.com/compute/network/)
 
-You should also create a [key pair]:https://docs.safespring.com/compute/keypairs/ as described here if you want to be able to connect to the servers over [SSH]:https://docs.safespring.com/compute/keypairs/
+You should also create a [key pair](https://docs.safespring.com/compute/keypairs/) as described here if you want to be able to connect to the servers over [SSH]:https://docs.safespring.com/compute/keypairs/
 
 Now it is time to find the ID of the network:
 
