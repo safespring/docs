@@ -202,7 +202,6 @@ If you want to delete the servers you could use the following script:
 #!/bin/bash
 
 while read servername; do
-    env|grep OS_AUTH
     openstack server delete $servername"
 done <servers.txt
 ```
