@@ -142,7 +142,7 @@ Make sure that you have a working rc-file according to the insctructions [here](
 
 Then create a network according to [instruction](https://docs.safespring.com/compute/network/)
 
-You should also create a [key pair](https://docs.safespring.com/compute/keypairs/) as described here if you want to be able to connect to the servers over [SSH]:https://docs.safespring.com/compute/keypairs/
+You should also create a [key pair](https://docs.safespring.com/compute/keypairs/) as described here if you want to be able to connect to the servers over [SSH](https://docs.safespring.com/compute/keypairs/)
 
 Now it is time to find the ID of the network:
 
