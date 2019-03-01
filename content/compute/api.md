@@ -134,15 +134,14 @@ export OS_USER_DOMAIN_NAME=<DOMAIN>
 
 ## Example scripts to create servers
 
-
 This instruction will show you how to start new servers through the API. To simplify we will first create
 a network in the gui to which we then connect all our servers. 
 
-Make sure that you have a working rc-file according to the insctructions [here](https://docs.safespring.com/compute/api/)
+Make sure that you have a working rc-file according to the insctructions [here](https://docs.safespring.com/compute/api/).
 
-Then create a network according to [instruction](https://docs.safespring.com/compute/network/)
+Then create a network according to [instruction](https://docs.safespring.com/compute/network/).
 
-You should also create a [key pair](https://docs.safespring.com/compute/keypairs/) as described here if you want to be able to connect to the servers over [SSH](https://docs.safespring.com/compute/keypairs/)
+You should also create a [key pair](https://docs.safespring.com/compute/keypairs/) as described here if you want to be able to connect to the servers over [SSH](https://docs.safespring.com/compute/keypairs/).
 
 Now it is time to find the ID of the network:
 
@@ -161,7 +160,7 @@ Find the image ID of the operating system you want to use and save it for later.
 You can use an image provided by us, one you have uploaded yourself or a snapshot (which could be practical if
 the servers you want to create should have certin software installed or be configured in a certain way)
 ```shell
-$openstack flavor list
+$ openstack flavor list
 ```
 Find the flavor you want to use. You do not need the ID - only the name
 
@@ -171,7 +170,7 @@ $ openstack keypair list
 ```
 and save the name for later.
 
-Create your server. Everyting inside <BRACKETS> should be replaced with your own information
+Create your server. Everyting inside brackets should be replaced with your own information.
 ```shell
 $ openstack server create --image <IMAGE-ID> --flavor <FLAVOR-NAME> --nic "net-id=<NETWORK-ID>" --key-name <KEYNAME> <INSTANCE-NAME>
 ```
