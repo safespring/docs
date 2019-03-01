@@ -172,7 +172,7 @@ and save the name for later.
 
 Create your server. Everyting inside brackets should be replaced with your own information.
 ```shell
-$ openstack server create --image <IMAGE-ID> --flavor <FLAVOR-NAME> --nic "net-id=<NETWORK-ID>" --key-name <KEYNAME> <INSTANCE-NAME>
+$ nova boot --image <IMAGE-ID> --flavor <FLAVOR-NAME> --nic "net-id=<NETWORK-ID>" --key-name <KEYNAME> <INSTANCE-NAME>
 ```
 
 If you would like to create several servers you can create a skript like this:
