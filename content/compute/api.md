@@ -190,6 +190,12 @@ done <servers.txt
 
 You also need to put the names of the servers that you want to create in the text-file servers.txt in the same folder as the script one name per line.
 
+```shell
+server1
+server2
+server3
+```
+
 If you want to delete the servers you could use the following script:
 
 ```shell
