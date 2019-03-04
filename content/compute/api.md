@@ -206,8 +206,51 @@ while read servername; do
 done <servers.txt
 ```
 
-In order to connect to you servers you need to add security groups and add floating IPs but that is easier to do 
-in the GUI.
+In order to connect to you servers you need to add security groups and add floating IPs. If you book floating IPs 
+and create security groups in the portal you can use these alternate scripts to add that to you instances
+on the fly.
+
+You first need to create a server2.txt file with the following content:
+```shell
+server_name_1;floating_IP_1;security_group
+server_name_2;floating_IP_2;security_group
+```
+
+You must ensure that the name of the security group exists and that the floating IPs you are using are reserved in
+your project but unallocated. Once you have that file in place you can use the follwing script to create the servers
+with the correct names, security group and a floating IP assigned to it:
+```shell
+#!/bin/bash
+NETID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+IMAGEID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+FLAVOR=b.tiny
+KEYNAME="keyname"
+
+while read serverdef; do
+    IFS=';' read -r -a serverinfo <<< "$serverdef"
+    servername=${serverinfo[0]}
+    fip=${serverinfo[1]}
+    secgroup=${serverinfo[2]}
+    echo "openstack server create --image $IMAGEID --flavor $FLAVOR --security-group $secgroup --network $NETID --key
+-name $KEYNAME $servername"
+    openstack server create --image $IMAGEID --flavor $FLAVOR --security-group $secgroup --network $NETID --key-name
+$KEYNAME $servername
+    echo "openstack server add floating ip $servername $fip"
+    openstack server add floating ip $servername $fip
+done <servers2.txt
+```
+
+And in order to delete the servers again - use this altered script:
+```shell
+#!/bin/bash
+
+while read serverdef; do
+    IFS=';' read -r -a serverinfo <<< "$serverdef"
+    servername=${serverinfo[0]}
+    echo "openstack server delete $servername"
+    openstack server delete $servername
+done <servers2.txt
+```
 
 ## Example Terraform configuration
 
