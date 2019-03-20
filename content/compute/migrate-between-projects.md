@@ -1,7 +1,7 @@
 #Migrate an instance to another project
 In order to migrate an instance from one project to another please perform the following steps:
 
-1. Create a snapshot of the instance in the source project.
+1. Create a snapshot of the instance in the source project. Be aware that this takes a long time to complete.
 ![image](../../images/snapshot.png)
 
 2. Create a new volume with the contents of the snapshot (instead of empty volume) in the source project.
