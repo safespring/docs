@@ -29,7 +29,7 @@ unzip dsm-*
 cp dsm.opt /opt/tivoli/tsm/client/ba/bin/
 cp dsm.sys /opt/tivoli/tsm/client/ba/bin/
 dsmc query session
-cat > /etc/init.d/dsmcad << 'EOF'
+cat > /etc/init.d/dsmcad << EOF
 #!/bin/sh
 # kFreeBSD do not accept scripts as interpreters, using #!/bin/sh and sourcing.
 if [ true != "$INIT_D_SCRIPT_SOURCED" ] ; then
