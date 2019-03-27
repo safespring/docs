@@ -1,8 +1,3 @@
----
-aliases:
-  - /backup/install/apple-osx/
----
-
 First of all, get the latest released TSM bundle (comes in .DMG format), since recent macOS requires a recent TSM to work, this folder holds 7.1.6.x.:
 
 [Mac TSM client 7.1.6.3](https://www3.software.ibm.com/storage/tivoli-storage-management/patches/client/v7r1/Mac/v716/7.1.6.3-TIV-TSMBAC-Mac.dmg)
