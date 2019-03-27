@@ -5,9 +5,13 @@ problems some customers currently experience. The inital description has been
 moved to the bottom of this page.
 
 * 07.04.2018 at 10:00 - Status update
+
 * 02.03.2018 at 15:00 - Status update
+
 * 26.02.2018 at 14:00 - Status update
+
 * 16.02.2018 at 12:00 - Initial description and mitigation plans
+
 
 ### Work towards mitigation
 
@@ -19,18 +23,12 @@ this work happens.
 
 #### Worklog Saturday 9.4.2018 10:00
 
-* Migration of data is still ongoing. No data loss or unexpected side issues
-  have been reported during this work.
+* Migration of data is still ongoing. No data loss or unexpected side issues have been reported during this work.
 
-* Max load on the main server is still high but under control. We've not had
-  further reports of the original problem where backup sessions were
-  incomplete.
+* Max load on the main server is still high but under control. We've not had further reports of the original problem where backup sessions were incomplete.
 
-* Customers might still experience slow response during certain operations
-  using the portal at peak load times - 20 to 60 seconds is not unusual. If
-  this happens, the portal might seem stuck, but please wait to let it
-  complete. Our experience is that the requests will eventually complete
-  successfully.
+* Customers might still experience slow response during certain operations using the portal at peak load times - 20 to 60 seconds is not unusual. If this happens, the portal might seem stuck, but please wait to let it complete. Our experience is that the requests will eventually complete successfully.
+
 
 #### Worklog Friday 2.3.2108 15:00
 
@@ -105,5 +103,3 @@ To check if this might have occured to a node you control, run:
 
 For Linux/Unix machines, you might use the file /var/log/cron. For Windows
 machines, some other local log file like C:\Windows\WindowsUpdate.log
-
-
