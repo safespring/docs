@@ -54,7 +54,7 @@ pages:
     - Introduction: "backup/introduction.md"
     - Installation:
       - Overview: "backup/install/overview.md"
-      - Apple OSX: "backup/install/apple-osx.md"
+      - Apple macOS: "backup/install/apple-macos.md"
       - Debian/Ubuntu: "backup/install/debian-ubuntu.md"
       - FreeBSD/other: "backup/install/freebsd-other.md"
       - RHEL: "backup/install/rhel.md"
