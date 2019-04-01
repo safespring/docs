@@ -19,6 +19,7 @@ Create a file setup-baas.sh with the following contents:
 
 ```shell
 #!/bin/bash
+WORKINGDIR=/opt/tivoli/tsm/client/ba/bin/
 cat > /etc/apt/sources.list.d/safespring-baas.list << EOF
 deb https://repo.cloud.ipnett.com/debian xenial main
 EOF
@@ -26,69 +27,27 @@ wget -qO - https://repo.cloud.ipnett.com/debian/pubkey.gpg | sudo apt-key add -
 apt-get install unzip
 apt-get update && apt install safespring-baas-setup
 unzip dsm-*
-cp dsm.opt /opt/tivoli/tsm/client/ba/bin/
-cp dsm.sys /opt/tivoli/tsm/client/ba/bin/
+cp dsm.opt $WORKINGDIR
+cp dsm.sys $WORKINGDIR
 dsmc query session
-cat > /etc/init.d/dsmcad << EOF
-#!/bin/sh
-# kFreeBSD do not accept scripts as interpreters, using #!/bin/sh and sourcing.
-if [ true != "$INIT_D_SCRIPT_SOURCED" ] ; then
-    set "$0" "$@"; INIT_D_SCRIPT_SOURCED=true . /lib/init/init-d-script
-fi
-### BEGIN INIT INFO
-# Provides:          dsmcad
-# Required-Start:    $remote_fs $syslog
-# Required-Stop:     $remote_fs $syslog
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: DSMCAD initscript
-# Description:       This script replaces the /etc/init.d/dsmcad script
-#                       from IBM that only works on Red Hat variants
-#                       to start the dmscad service on Debian variants
-### END INIT INFO
+cat > /etc/systemd/system/dsmcad.service << EOF
+[Unit]
+Description=Tivoli Storage Manager Client Daemon
+After=network.target
 
-# Author: Gabriel Paues <gabriel.paues@safespring.com>
-#
+[Service]
+Type=forking
+ExecStart=/usr/bin/dsmcad
+Restart=on-abort
+GuessMainPID=no
+WorkingDirectory=/opt/tivoli/tsm/client/ba/bin/
 
-DESC="DSMCAD Start Script"
-DSMCAD_DIR=/opt/tivoli/tsm/client/ba/bin
-DAEMON=$DSMCAD_DIR/dsmcad
-PIDFILE=/var/run/dsmcad.pid
-WORKING_DIR=/var/log/tsm
-
-mkdir -p $WORKING_DIR
-
-test -x $DAEMON || exit 0
-
-. /lib/lsb/init-functions
-
-case "$1" in
-  start)
-        log_daemon_msg "Starting dsmcad" "dsmcad"
-        cd $WORKING_DIR
-        start_daemon -p $PIDFILE $DAEMON
-        log_end_msg $?
-    ;;
-  stop)
-        log_daemon_msg "Stopping dsmcad" "dsmcad"
-        killproc -p $PIDFILE $DAEMON
-        log_end_msg $?
-    ;;
-  force-reload|restart)
-    $0 stop
-    $0 start
-    ;;
-  status)
-    status_of_proc -p $PIDFILE $DAEMON atd && exit 0 || exit $?
-    ;;
-  *)
-    echo "Usage: /etc/init.d/dsmcad {start|stop|restart|force-reload|status}"
-    exit 1
-    ;;
-esac
+[Install]
+WantedBy=multi-user.target
 EOF
 systemctl enable dsmcad
 systemctl start dsmcad
+systemctl status dsmcad
 ```
 
 Now it is time to upload the configuration ZIP-file that you downloaded from the 
