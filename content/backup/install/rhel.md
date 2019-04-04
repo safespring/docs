@@ -1,6 +1,6 @@
 # RedHat Linux (64-bit)
 
-_This document describes how to install IPnett BaaS on RedHat Enterprise Linux (64-bit)._
+_This document describes how to install Safespring BaaS on RedHat Enterprise Linux (64-bit)._
 
 There are two ways of installing BaaS:
  * Manually signing up nodes,

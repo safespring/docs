@@ -2,13 +2,13 @@
 
 ## Download
 
-Download TSM client software from the following repos. IPnett mirrors the software for better download speeds:
+Download TSM client software from the following repos. Safespring mirrors the software for better download speeds:
 - IBM Tivoli Storage Manager (TSM) Client (release)
  - [IBM Software](https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/client/)
 - IBM Tivoli Storage Manager (TSM) Client (patches)
  - [IBM Software](https://www3.software.ibm.com/storage/tivoli-storage-management/patches/client/)
-- IBM Tivoli Storage Manager (TSM) Recommended by IPnett
- - [IPnett, Stockholm](https://repo.cloud.ipnett.com/tsm/recommended/)
+- IBM Tivoli Storage Manager (TSM) Recommended by Safespring
+ - [Safespring, Stockholm](https://repo.cloud.ipnett.com/tsm/recommended/)
 
 ## Manual Installation Instructions
 

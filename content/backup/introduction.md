@@ -3,7 +3,7 @@
 _This page covers the following topics:_
 
 * Installing TSM
-* Adding trust to the IPnett PKI
+* Adding trust to the Safespring PKI
 * Requesting TSM node credentials
 * Configuring TSM autostart
 * Basic TSM configuration (initial backup)

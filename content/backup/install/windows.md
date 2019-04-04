@@ -221,7 +221,7 @@ _This document describes how to **manually** install IBM TSM on Windows Windows 
 
 Required files - (Right click and 'Save as...'):
  - [7.1.1.0-TIV-TSMBAC-WinX64.exe](https://api.cloud.ipnett.se/dist/tsm/mirror/maintenance/storage/tivoli-storage-management/maintenance/client/v7r1/Windows/x64/v711/7.1.1.0-TIV-TSMBAC-WinX64.exe)
- - [IPnett Root CA installer](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA-win64.bat)
+ - [Safespring Root CA installer](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA-win64.bat)
 
 ### Procedure
 
@@ -237,7 +237,7 @@ Required files - (Right click and 'Save as...'):
     2c. Resume the installation, choose Typical installation and accept the UAC pop-up that comes up, "IBM manager".
     2d. After installation, answer 'No' to the reboot question.
 
-3. In a command prompt with elevated privileges, execute the "IPnett Root CA installer", `IPnett-Cloud-Root-CA-win64.bat`, to install the IPnett BaaS CA into the GSK (IBM crypto kit) trust database.
+3. In a command prompt with elevated privileges, execute the "Safespring Root CA installer", `IPnett-Cloud-Root-CA-win64.bat`, to install the Safespring BaaS CA into the GSK (IBM crypto kit) trust database.
 
 4. Create a backup client node via the BaaS API, and save the node password for future reference. `perl ipnett-baas.pl create node <fqdn> <costcenter> <flags>`
 

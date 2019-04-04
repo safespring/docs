@@ -21,8 +21,8 @@ Since the software used for file level restore doesn't support SSL we have to us
      Country Name (2 letter code) [PL]:SE 
      State or Province Name (full name) [Mazovia Province]:Stockholm
      Locality Name (eg, city) [Warsaw]:Stockholm
-     Organization Name (eg, company) [Stunnel Developers]:IPnett
-     Organizational Unit Name (eg, section) [Provisional CA]:IPnett
+     Organization Name (eg, company) [Stunnel Developers]:Safespring
+     Organizational Unit Name (eg, section) [Provisional CA]:Safespring
      Common Name (FQDN of your server) [localhost]:
 
 * Download the file https://raw.githubusercontent.com/IPnett/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA.pem and put it in C:\Program Files (x86)\stunnel\config\IPnett-Cloud-Root-CA.pem 

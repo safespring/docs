@@ -16,7 +16,7 @@ The restore part requires a bootable ISO image on CD/DVD-ROM or USB or similar. 
 
 ### Restore preparations
 
-IPnett recommends all users to prepare and maintain bootable media of the recovery tool _before_ the required use of the tool.
+Safespring recommends all users to prepare and maintain bootable media of the recovery tool _before_ the required use of the tool.
 
 In order to restore a machine, the following preparatory steps needs to be taken:
  1. Retrieve the bootable ISO image
@@ -28,7 +28,7 @@ In order to restore a machine, the following preparatory steps needs to be taken
 
 ##### 1. Retrieve the bootable ISO image
 
-The bootable ISOs of TBMR are available at IPnett's [distribution site](https://api.cloud.ipnett.se/dist/tbmr/Linux/). Note that there is one version for 32-bit architectures and another for 64-bit.
+The bootable ISOs of TBMR are available at Safespring's [distribution site](https://api.cloud.ipnett.se/dist/tbmr/Linux/). Note that there is one version for 32-bit architectures and another for 64-bit.
 
 ##### 2. Prepare bootable media (DVD or USB) with this bootable image
 
@@ -46,7 +46,7 @@ Recommended step. More details/guidance to be included here in the future.
 
 ##### 1. Retrieve the bootable ISO image
 
-In the case of Windows, the bootable ISOs of TBMR are _not_ available at IPnett's [distribution site](https://api.cloud.ipnett.se/dist/tbmr/Windows/). The bootable images are based on WinPE 2 for 32-bit Windows and WinPE 4 for 64-bit Windows. This is due to Microsoft Licensing restrictions.
+In the case of Windows, the bootable ISOs of TBMR are _not_ available at Safesprings's [distribution site](https://api.cloud.ipnett.se/dist/tbmr/Windows/). The bootable images are based on WinPE 2 for 32-bit Windows and WinPE 4 for 64-bit Windows. This is due to Microsoft Licensing restrictions.
 
 The solution is that each customer site creates its own 32-bit and 64-bit TBMR WinPE images.
 Cristie has a tool called **CRISP** that assists with this.
@@ -57,7 +57,7 @@ The requirements for this are:
  * Two utilities from Microsoft's [Download Site](http://www.microsoft.com/download/en/default.aspx):
   * For 32-bit images: Windows Automated Installation Kit (WAIK) (Cristie suggests the file "6001.18000.080118-1840-kb3aikl_en.iso"
   * For 64-bit images: Microsoft Windows Assessment and Deployment Kit (WADK) (Cristie suggests to search for "Microsoft Windows Assessment and Deployment Kit (WADK) version 8" in the search bar to find a release dated 31 July 2012)
- * The CRISP tool comes with the TBMR Suite, which is found at IPnett's [distribution site](https://api.cloud.ipnett.se/dist/tbmr/Windows/) (SetupTBMRSuiteXXX.exe).
+ * The CRISP tool comes with the TBMR Suite, which is found at Safespring's [distribution site](https://api.cloud.ipnett.se/dist/tbmr/Windows/) (SetupTBMRSuiteXXX.exe).
 
 For detailed instructions on the use of CRISP, please see the [CRISP guide](https://api.cloud.ipnett.se/dist/tbmr/Windows/CRISP-7-UserGuide.pdf).
 
@@ -75,19 +75,19 @@ Recommended step. More details/guidance to be included here in the future.
 
 <a name="TBMR_inst"></a>
 ### Client Installation
-#### IPnett's BaaS packaging for Windows and Linux
+#### Safespring's BaaS packaging for Windows and Linux
 
-IPnett's BaaS packaging of TSM and TBMR installs the TBMR client on a backup client machine.
+Safespring's BaaS packaging of TSM and TBMR installs the TBMR client on a backup client machine.
 
 As of <code>2015-07</code> this is supported on [Windows platforms](Installation-Windows) and this is the now recommended installation method.
 
 #### Manual Installation on e.g Redhat Linux
 
-Prerequisites are a working IPnett BaaS TSM installation on the machine in question.
+Prerequisites are a working Safespring BaaS TSM installation on the machine in question.
 
 ##### 1. Install
 
-RPMs are found at IPnett's [distribution site](https://api.cloud.ipnett.se/dist/tbmr/Linux/)
+RPMs are found at Safespring's [distribution site](https://api.cloud.ipnett.se/dist/tbmr/Linux/)
 
     # 64-bit client example:
     wget https://api.cloud.ipnett.se/dist/tbmr/Linux/tbmr-7.1-2.x86_64.rpm
@@ -98,7 +98,7 @@ RPMs are found at IPnett's [distribution site](https://api.cloud.ipnett.se/dist/
     cd /TBMRCFG
     echo > /TBMRCFG/`licmgr --sig`.sig
 
-_N.B. TBMR will be automatically licensed during Q3._ Until then, please contact IPnett for a temporary license.
+_N.B. TBMR will be automatically licensed during Q3._ Until then, please contact Safespring for a temporary license.
 
 ##### Generate system profile
   
