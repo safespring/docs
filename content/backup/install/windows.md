@@ -9,7 +9,7 @@ Any user with administrative permissions can then install the services on their 
 The second mode includes the process of creating a new node and therefore requires API credentials and more settings. It is recommended to use credentials with limited numbers nodes and not your fully administrative credentials.
 If credentials with unlimited permissions is used it is advised to delete all files in Windows `%TEMP%` directory after installation or failure to install since it may disclose secrets.
 The installer makes it best to remove them but in some scenarios they might be left behind.
-To see options and rules to run simply run `"safespring-baas.2.4.3.exe -help"`. All installer parameters must be in CAPITAL letters. Flags can be in lower case.
+To see options and rules to run simply run `"safespring-baas.2.4.4.exe -help"`. All installer parameters must be in CAPITAL letters. Flags can be in lower case.
 
 ![help](../../images/help.png)
 
@@ -25,12 +25,12 @@ To see options and rules to run simply run `"safespring-baas.2.4.3.exe -help"`. 
 
 ## Download
 For Windows **8.1, 10, 2012** and **2016** please use this installer,
-[https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.4.3.exe](https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.4.3.exe).
+[https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.4.4.exe](https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.4.4.exe).
 
 For older Windows versions please use this installer,
 [https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.2.3.exe](https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.2.3.exe).
 
-md5: b619287659f0d84caa999002fc3c16a7  safespring-baas.2.4.3.exe   
+md5: 88caa2b579329629f7498a7964cfd0a3  safespring-baas.2.4.4.exe   
 md5: e214804ae968770ed8ffe7a60f0d9097  safespring-baas.2.2.3.exe  
 
 Latest URL is `https://api.cloud.ipnett.se/dist/installer/latest-win`
@@ -49,7 +49,7 @@ To run in mode 1, place the installer and the `dsm-nodename.zip` in the same dir
 **Example:**
 
 !!! note ""
-    `safespring-baas.2.4.3.exe PASS=<password> (-passive | -silent)`
+    `safespring-baas.2.4.4.exe PASS=<password> (-passive | -silent)`
 
 The installer can be run in either manually, passive or silent mode. Passive shows the GUI and progress and silent runs without output in background. `PASS` is the node's current password.
 
@@ -79,12 +79,12 @@ Mode two requires a few more parameters in order to create the node. `TOKEN` is 
 For updates when already running UPDATE=1 can be used. It is not possible to downgrade.
 To rerun the TBMR part only and because of TBMR license failures you can run with TBMRONLY=1.
 
-Put the safespring-baas.2.4.3.exe in a directory where you have write permissions since it will write the `dsm-<nodename>.zip` file in the current directory.
+Put the safespring-baas.2.4.4.exe in a directory where you have write permissions since it will write the `dsm-<nodename>.zip` file in the current directory.
 
 **Example:**
 
 !!! note ""
-    `safespring-baas.2.4.3.exe TOKEN=<secrettoken> FQDN=<uniquename> MAIL=<mailaddress> COST=<costcenter> (-silent | -passive)`
+    `safespring-baas.2.4.4.exe TOKEN=<secrettoken> FQDN=<uniquename> MAIL=<mailaddress> COST=<costcenter> (-silent | -passive)`
 
 The installer can be run in either manually, passive or silent mode. Passive shows the GUI and progress and silent runs without output in background.
 
@@ -98,10 +98,10 @@ The installer can be run in either manually, passive or silent mode. Passive sho
 ## Updates
 The installation can be updated and completed with both new TSM and TBMR
 version if the installer is run with the UPDATE argument.
-`safespring-baas.2.4.3.exe UPDATE=1`.
+`safespring-baas.2.4.4.exe UPDATE=1`.
 Then the same nodename and configuration is kept and all components is updated
 if required. If only TBMR should be installed or updated it can be run with the
-TBMRONLY argument. `safespring-baas.2.4.3.exe TBMRONLY=1`. This method can also be used to license TBMR if it is trial or unlicensed for some reason.
+TBMRONLY argument. `safespring-baas.2.4.4.exe TBMRONLY=1`. This method can also be used to license TBMR if it is trial or unlicensed for some reason.
 
 ## Revision history
 * **1.0** Initial version for Windows 8, 8.1 and 2012.
@@ -191,6 +191,9 @@ TBMRONLY argument. `safespring-baas.2.4.3.exe TBMRONLY=1`. This method can also 
     * New TSM x64 version, 8.1.7.0.
     * New TSM x32 version, 7.1.8.4.
     * New TBMR x64 version, 8.4.
+* **2.4.4**
+    * New TSM x64 version, 8.1.7.1.
+    * New TSM x32 version, 7.1.8.5.
 	
 ## Pitfalls
 
