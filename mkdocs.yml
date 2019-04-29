@@ -93,6 +93,7 @@ pages:
     - Example Duck CLI config: "storage/duck-cli.md"
     - Example NextCloud S3 integration: "storage/nextcloud-s3.md"
     - Tips and Tricks: "storage/tips-n-tricks.md"
+    - Backup Exec and Safespring Storage: "storage/backup-exec.md"
     - Other Backends: "storage/other-backends.md"
   - Synkzone:
     - General info: "synkzone/general-info.md"
