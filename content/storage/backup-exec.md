@@ -66,7 +66,7 @@ When both dropdowns in the Cloud storage dialogue is filled in press Next.
 ![Pick bucket](/images/create-cloud-storage-05.png)
 Now it is time to pick a bucket where your backups should end up. If you haven't created a bucket for that yet - use the CloudBerry S3 Explorer to do that. Press "Next".
 ![Choose number of concurrent operations](/images/create-cloud-storage-06.png)
-Here you configure how many concurrent operations that should be allowed to this cloud storage. Depending on you needs (if you know that you will have to run multiple backup jobs simultaneously to the cloud storage set a suitable number here. If you start with 4 you know that you will be able to run 4 concurrent sessions to this specifik cloud storage. If you get errors in the reports - you can try and decrease this number for debugging purposes. 
+Here you configure how many concurrent operations that should be allowed to this cloud storage. Depending on you needs (if you know that you will have to run multiple backup jobs simultaneously to the cloud storage set a suitable number here. If you start with 4 you know that you will be able to run 4 concurrent sessions to this specific cloud storage. If you get errors in the reports - you can try and decrease this number for debugging purposes. 
 
 You now have configured Backup Exec to work with Safespring Storage.
 
