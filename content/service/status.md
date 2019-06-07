@@ -3,7 +3,7 @@
 ## Status page
 
 A status page is available at https://status.safespring.com - the page contains
-(manual) annoucement of downtime and maintenace windows.
+annoucement of downtime and maintenace windows.
 
 ## Mailing lists
 
