@@ -8,7 +8,7 @@ Primarily we support our services by using dedicated email addresses:
 
 * Compute iaas@cloud.ipnett.se
 
-* Storage baas@cloud.ipnett.se
+* Storage staas@cloud.ipnett.com
 
 Please indicate how you want to be contacted, if needed, when you email us.
 
