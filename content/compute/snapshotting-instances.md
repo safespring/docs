@@ -4,8 +4,8 @@ then how to start a copy of the instance from the snapshot. The way of doing thi
 a bit depending on how the instance was created in the first place.
 
 There is mainly two variants to create an instance in Safesprings platform:
-..* You create the instance from an image Safespring provides in the platform.
-..* You create the instance from a volume. When doing this you will be able to alter the standard 40 GB size of the root filesystem. This option is also common if you have migrated the instance from another platform into Safespring.
+* You create the instance from an image Safespring provides in the platform.
+* You create the instance from a volume. When doing this you will be able to alter the standard 40 GB size of the root filesystem. This option is also common if you have migrated the instance from another platform into Safespring.
 The image below shows what the different types of method looks like in the instance view:
 ![image](../../images/snapshot-different-instance-types.png)
 The instance which is started from an image has the image listed in the "Image"-column whether the instance created from a volume just has a minus-sign in that column.
