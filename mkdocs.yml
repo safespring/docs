@@ -84,6 +84,7 @@ pages:
     - Windows images: "compute/windows.md"
     - VMware import: "compute/vmware-import.md"
     - Migrate instance to another project: "compute/migrate-between-projects.md"
+    - Taking snapshots of instances: "compute/snapshotting-instances.md"
   - Storage:
     - General S3 Info: "storage/generalinfo.md"
     - Example s3cmd config: "storage/s3cmd.md"
