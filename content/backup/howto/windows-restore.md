@@ -1,4 +1,5 @@
 # Restoring Windows instance from Safespring Backup to Safespring Compute
+
 Criste TSM Bare Machine Recovery (TBMR) is a solution that is included in the Safespring Backup service.
 This document describes how to restore an instance from Safespring Backup using TBMR.
 
@@ -32,7 +33,7 @@ This document describes how to restore an instance from Safespring Backup using 
     ![image](../../images/restore-web-console.png)
     In the meantime, go to "Volumes" and click "Manage Attachments" in the drop-down menu of the volume you have created to restore the machines root filesystem (C:)
     ![image](../../images/restore-attach-c-volume.png)
-    Repeat the process for all the other volumes if the instance has more than just C: 
+    Repeat the process for all the other volumes if the instance has more than just C:
 
     In the volume listing you should now see that the empty volume is attached to you TBMR-instance:
     ![image](../../images/restore-attached-c.png)
@@ -46,7 +47,9 @@ This document describes how to restore an instance from Safespring Backup using 
 
     Now it is time to fill in the server and node information to restore. Unfortunately copy and paste does not work in the web console so you will have to fill in everything by
     hand. In order to get keyboard focus in the web console you also need to click on the gray area around the actual console window which is somewhat unintuitive.
-    ```
+
+    ```code
+
     Server Address: tsm1.cloud.ipnett.se
 
     Port: 1600 (change from 1500)
@@ -59,8 +62,8 @@ This document describes how to restore an instance from Safespring Backup using 
 
     ![image](../../images/restore-fill-in-node-info.png)
 
-7. If you have filled in the information correctly you will see that you successfully have established a connection to the backup server. If you have any typos you will see a red text
-    telling you that you could not connect to the server. In that case click "Back" and ensure that you have gotten everything right.
+7. If you have filled in the information correctly you will see that you successfully have established a connection to the backup server. If you have any typos you 
+    will see a red text telling you that you could not connect to the server. In that case click "Back" and ensure that you have gotten everything right.
     restore-contacting-backup-server.png
     When the fetching of configuration is done - click "Finish".
     Click "Next" in the next dialogue to create partitions and volumes.
@@ -88,8 +91,7 @@ This document describes how to restore an instance from Safespring Backup using 
 10. Now it is time for TBMR to install the needed drivers. Click "Next" in the "Dissimilar Hardware" dialogue and the "Next" again. If the backup was made from an instance
     running in Safespring Compute you will get a message saying, "No new devices were found in your system". Click "Finish".
 
-11. Now you get back to the TBMR Recovery Environment. We should not reboot since we now will create a new instance which will be the actual restored instance. Head to "Volumes" in 
-    Safespring Compute and detach the volume from the TBMR instance and then go to instances and delete the TBMR-instance after the volume has been detached.
+11. Now you get back to the TBMR Recovery Environment. We should not reboot since we now will create a new instance which will be the actual restored instance. Head to "Volumes" in Safespring Compute and detach the volume from the TBMR instance and then go to instances and delete the TBMR-instance after the volume has been detached.
     ![image](../../images/restore-detach-volumes.png)
 
 12. Now it is time to make the volume for the restored C: drive bootable. In order to do this, you will need API access to Safesprings Compute setup correctly. Instruction for how to do that
