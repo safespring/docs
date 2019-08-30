@@ -11,18 +11,15 @@ This document describes how to restore an instance from Safespring Backup using 
 ## Method
 
 1. Start with going to the backup portal and rekey the node that you want to restore. You need to do this to have a password to use to connect to the backup server:
-
   ![image](../../images/restore-rekey.png)
-
   Copy the new password and the node name to a notepad.
 
 2. Now go to the compute portal and create volumes of the same size and type (fast/large) as the machine you will restore. Also create one volume for the root file system (C:).
    It is a good idea create volumes that are a couple of GBs bigger than the original volume just to be sure that the restored files will have enough space.
-
-    ![image](../../images/restore-create-volume.png)
+   ![image](../../images/restore-create-volume.png)
 
 3. Now you go and start an instance which will use TBMR to restore the machine. Make sure to pick the TBMR image when you should Source:
-    ![image](../../images/restore-launch-restore-instance.png)
+   ![image](../../images/restore-launch-restore-instance.png)
 
 4. Put the machine in a network where it can have internet access (does not have to be in the same network as the instance you are restoring even if it does not really matter).
     When you pick flavor "m.small" will suffice even though a larger instance with more memory and vCPUs could make the restore go faster. It does not matter what security groups
