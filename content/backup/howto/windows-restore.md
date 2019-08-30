@@ -17,7 +17,7 @@ This document describes how to restore an instance from Safespring Backup using 
   Copy the new password and the node name to a notepad.
 
 2. Now go to the compute portal and create volumes of the same size and type (fast/large) as the machine you will restore. Also create one volume for the root file system (C:).
-    It is a good idea create volumes that are a couple of GBs bigger than the original volume just to be sure that the restored files will have enough space.
+   It is a good idea create volumes that are a couple of GBs bigger than the original volume just to be sure that the restored files will have enough space.
 
     ![image](../../images/restore-create-volume.png)
 
