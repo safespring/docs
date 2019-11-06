@@ -2,8 +2,8 @@
 
 This page describes what we are working on right now
 
-|Current|Near term|Future|
+|Currently working on|Near term plans|Future plans|
 |-------|---------|------|
-|New revised flavours, including larger sizes|New network architecture for compute platform|-|
-|Flavours vith dedicated storage (in sto1)|-|-|
-
+|New revised flavours,<br>including larger sizes|New network stack|-|
+|Flavours with dedicated storage|-|-|
+|New archive storage cluster<br>at separate location|-|-|
