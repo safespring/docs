@@ -4,6 +4,13 @@ There are some currently known issues in the Compute platform. This page
 describes the most common pitfalls. Known issues for Backup is under the [Backup
 FAQ page](/backup/faq).
 
+## Resize operations disabled
+
+Due to different issues with resize operations, we have disabled the resize operations 
+users. If you need to resize instances, please contact [support](/service/support/). 
+
+We excpect to support user initiated resize operations after a future system upgrade.
+
 ## DNS Resolver
 
 The built in resolver in the platform has some issues in the current version.
