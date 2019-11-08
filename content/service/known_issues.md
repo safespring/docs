@@ -16,7 +16,7 @@ We excpect to support user initiated resize operations after a future system upg
 The built in resolver in the platform has some issues in the current version.
 It has been reported to be slow and not to respond to queries in a timely
 manner. The best work around is to provide another resolver when creating the
-network to which you connect your instances. It is done in the third tab in the
+network to which you connect your instances. Use 89.32.32.32 which is SUNETs resolver. It is done in the third tab in the
 "Create Network" dialogue:
 
 ![Create Network Tab 3](/images/create-network-dia2.png)

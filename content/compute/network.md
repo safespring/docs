@@ -37,7 +37,7 @@ Just pick a private network which is not taken in your project and provide the n
 
 ![Create network dialogue 2](/images/create-network-dia2.png)
 
-The next dialogue will present you with some optional settings. Since the internal DNS resolver has shown to be slow at times it is highly recommended to provide an external resolver. This could be Googles (8.8.8.8) or another resolver of you liking. Click "Create".
+The next dialogue will present you with some optional settings. Since the internal DNS resolver has shown to be slow at times it is highly recommended to provide an external resolver. Use 89.32.32.32 which is SUNETs resolver. Click "Create".
 
 ## Connect the network to your router
 Navigate to Network->Routers again and click the title of you router:
