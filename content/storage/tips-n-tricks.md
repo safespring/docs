@@ -13,7 +13,7 @@ In order to request older file versions, your clients need to have
 support for it, and not all S3 clients do. 
 
 S3 Browser looks like this if you view a bucket with versioning
-enabled and press the Versios panel:
+enabled and press the Versions panel:
 
 ![S3browser](/images/S3browser+versions.png)
 
