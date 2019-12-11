@@ -51,8 +51,8 @@ Horizon webui.
 
 3.  Use the following commmand to download the image to local storage:
 
-        glance image-download <uuid-of-previously-created-snapshot> \
-            --file <where-you-want-to-store-the-image-file-in-raw-format> \
+        glance image-download _uuid_of_previously_created_snapshot_ \
+            --file _local_filename_to_save_raw_image_to_ \
             --progress
 
 ## Launching a new instance based on an uploaded custom image
@@ -60,9 +60,9 @@ Horizon webui.
 Uploading a raw image can be done through the command line:
 
     glance image-create \
-        --file <path-to-local-raw-image> \
+        --file _path_to_local_raw_image_ \
         --disk-format=raw \
-        --name <name-of-this-image> \
+        --name _name_of_image_ \
         --property architecture=x86_64 \
         --protected False \
         --visibility private \
