@@ -1,5 +1,19 @@
 # FAQ
 
+## Failure to launch the TSM BA GUI
+- When trying to start the backup GUI the setup may be launched again.
+If this happens, let it run through. You may get prompted and asked to continue, to restart services, please just accept and continue. If you're asked to *reboot*, then select "no".
+- The GUI is a JAVA application so if you don't have JRE or any equivalent you might get this error.  
+![JRE error](../images/baas-jre-error.png)
+
+You can then download https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u232-b09/OpenJDK8U-jre_x64_windows_hotspot_8u232b09.msi and
+run this command to install it,  
+
+!!! note ""
+    `msiexec /i OpenJDK8U-jre_x64_windows_hotspot_8u232b09.msi ADDLOCAL=FeatureMain,FeatureEnvironment,FeatureJarFileRunWith INSTALLDIR="c:\Program Files\AdoptOpenJDK\" ALLUSERS=1 /qn /l*v "%temp%\BaaS-openjdk8_jre_x64.log"`
+
+You could use other providers of JRE according to our license preferences but we have not tried them all.
+
 ## How do I get keys to generate my API token?
 
 * Login at the BaaS portal, https://portal.cloud.sunet.se/, goto "Backup" and then select "Keys" and press "Create key".
