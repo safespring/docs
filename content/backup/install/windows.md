@@ -200,7 +200,8 @@ TBMRONLY argument. `safespring-baas.2.4.8.exe TBMRONLY=1`. This method can also 
 * **2.4.9**
     * New TSM x64 version, 8.1.9.0.
     * New TSM x32 version, 7.1.8.7.
-	* Bugfix for c++ runtime versions
+    * Bugfix for c++ runtime versions
+    * Updated Cristie TBMR license, ends 2020-12-31.
 
 ## Pitfalls
 
