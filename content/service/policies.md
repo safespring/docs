@@ -14,3 +14,5 @@ The following activities are prohibited:
 - Denial of Service, Distributed denial of service or simulations.
 - Flooding attacks (HTTP flood attacks, API requests, login requests etc).
 - SYN flooding, ICMP flooding, UDP flooding.
+
+Before doing security testing, we kindly ask you to inform us at support@safespring.com
