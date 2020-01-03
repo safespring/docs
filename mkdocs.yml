@@ -110,4 +110,5 @@ pages:
     - Status information: "service/status.md"
     - Known issues: "service/known_issues.md"
     - Getting support: "service/support.md"
-  - Contributing: "contribute.md"
+    - Policies and SLA: "service/policies.md"
+  # - Contributing: "contribute.md"
