@@ -108,7 +108,8 @@ pages:
   - Status and support:
     - Roadmap: "service/roadmap.md"
     - Status information: "service/status.md"
-    - Known issues: "service/known_issues.md"
     - Getting support: "service/support.md"
     - Policies and SLA: "service/policies.md"
-  # - Contributing: "contribute.md"
+    - Domain changes: "service/domain-changes.md"
+    - Known issues: "service/known_issues.md"
+    - Contributing: "contribute.md"
