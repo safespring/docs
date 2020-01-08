@@ -20,4 +20,8 @@ cloud.ipnett.com. Now that Safespring is an independant company, we are migratin
 
 ## Storage
 
+|Old|New|Comment|
+|-|-|-|
+|s3-archive.cloud.ipnett.se|s3.sto1.safedc.net||
+
 
