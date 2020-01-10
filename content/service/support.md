@@ -13,3 +13,6 @@ If you report issues with our services, please include as much information as
 possible as this will make it easier for our engineers to start trouble
 shooting. Relevant information could be instance IDs for compute instances, logs
 from the backup client etc.
+
+Also refer to our [policy](../policies) for important information about our SLA and
+support level.

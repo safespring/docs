@@ -4,6 +4,12 @@
 
 Safespring provides 99,9% uptime SLA for our Compute and Storage service.
 
+## Support
+
+For critical issues that affects the availability of our services, we will reply
+within the limits set by our SLA. For non critical and minor issues, please allow
+up to 24 hours for replies.
+
 ## Safespring customer support policy for security testing
 
 Customers are welcome to perform security testing against their infrastructure
@@ -18,5 +24,3 @@ The following activities are prohibited:
 
 Before doing security testing, we kindly ask you to inform us at
 support@safespring.com
-
-
