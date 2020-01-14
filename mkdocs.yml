@@ -50,6 +50,7 @@ pages:
   - Overview: "index.md"
   - Backup:
 #     - Status: "backup/status.md"
+    - New domain name: "backup/new-domain-name.md"
     - Getting started: "backup/getting-started.md"
     - Introduction: "backup/introduction.md"
     - Installation:

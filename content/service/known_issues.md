@@ -4,6 +4,15 @@ There are some currently known issues in the Compute platform. This page
 describes the most common pitfalls. Known issues for Backup is under the [Backup
 FAQ page](/backup/faq).
 
+## New certificate and hostname on Safespring Backup Service
+
+Safespring backup service is changing hostname: tsm1.cloud.ipnett.se becomes
+tsm1.backup.sto2.safedc.net.
+
+All customers running Safespring Backup needs to update hostnames and
+certificates for Safespring Backup services to start using the new hostnames.
+See [this blogpost](https://docs.safespring.com/service/known_issues/) for details.
+
 ## Resize operations disabled
 
 Due to different issues with resize operations, we have disabled the resize operations 
