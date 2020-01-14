@@ -1,5 +1,10 @@
 # Change of host- and domain name for Support and Backup service 2020-01-19
 
+!!!note
+    Change of host name and DNS needs to be done 2020-01-14 latest. When you have
+    done the changes (new DNS-name and added the extra root-ca-cert) then the
+    service is back to 100% again, and backups/restores work exactly as planned.
+
 In line with our work to replace the former parent company name from our services, at the time of renewal of the certificates that protect the Backup traffic, we will be renaming the endpoint to our own domain to match the Storage and Compute services.
 
 *“tsm1.cloud.ipnett.se”* will change to **tsm1.backup.sto2.safedc.net** on the 19 of january 2020. You may update the domain name at any time. It's already active.
