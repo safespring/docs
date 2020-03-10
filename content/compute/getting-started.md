@@ -2,9 +2,12 @@
 
 ## I just got an IaaS account, what now?
 
-Start by logging into the portal, at <https://dashboard.cloud.sunet.se> for the Swedish portal, and <https://portal.cloud.ipnett.no> for the Norwegian portal.
+Start by logging into the portal, at https://login.sto1.safespring.com for the Swedish portal, and <https://portal.cloud.ipnett.no> for the Norwegian portal.
 
 You will be greeted with an overview of the project/account statistics. It usually starts off rather empty, but as machines are added, resources will be summarized there.
+
+!!! info "Are you connected to SUNET?"
+    Swedish universities and colleges that are connected to SUNET have their own portal. Start by logging into the portal at <https://dashboard.cloud.sunet.se>. You will be greeted with an overview of the project/account statistics. It usually starts off rather empty, but as machines are added, resources will be summarized there.
 
 ## Virtual Machines
 
@@ -32,14 +35,14 @@ Also, while we try to keep the public images up-to-date when publishing them, ke
 
 Using snapshots to freeze volumes is a useful technique for being able to back out of tests, but do mind to clean out unused snapshots when they are no longer of interest, since they count against your storage quota.
 
-All flavors in Safesprings platform come with a 40 GB root disk. In the case you would want another size on the root disk you first create a volume under "Volumes" and pick Volume Source as Image and  then pick the image that corresponds to the operating system you want to run on the instance. 
+All flavors in Safesprings platform come with a 40 GB root disk. In the case you would want another size on the root disk you first create a volume under "Volumes" and pick Volume Source as Image and  then pick the image that corresponds to the operating system you want to run on the instance.
 
 ![image](../../images/create_volume.png)
 
 
 After creating the volume you head to the "Launch instance" dialogue. Under "Source" you pick "Volume" from the pick-list and then press the plus sign for the volume you created in the former step. You can also choose whether the volume should be persistent or not by switching the "Delete Volume on Instance Delete" option.
 
- 
+
 ![image](../../images/launch_with_volume.png)
 
 ## Networks
@@ -57,9 +60,9 @@ In order to be able to reach out, you associate a Floating IP to your machine. S
 
 Before going into network creation, just a short notice about..
 
-## Security Groups
+### Security Groups
 
-Security groups is the name for the basic network packet filtering option built in to the Openstack/Contrail setup in use in the IPnett/Safespring cloud. Security groups allow you to create lists of rules that can be applied to instances.
+Security groups is the name for the basic network packet filtering option built in to the Openstack/Contrail setup in use in the Safespring cloud. Security groups allow you to create lists of rules that can be applied to instances.
 
 One instance can have several security groups attached to them, and default is to deny everything and then each added security group would add more exceptions that would be allowed so one group may allow inbound SSH (TCP port 22) for remote administration and another group allows outgoing HTTP and HTTPS (outbound port 80,443) in order for the instance to download OS updates.
 
@@ -67,7 +70,7 @@ Before being able to reach outside networks, a floating IP needs to be associate
 
 ![image](../../images/dash-security-groups.png)
 
-## Creating your own security groups
+### Creating your own security groups
 
 First create a group, and give it a descriptive name. Security groups are per project, so you may name them as you like, they will not be visible to other projects.
 

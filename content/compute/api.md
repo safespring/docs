@@ -26,11 +26,15 @@ using.
 If the _python-virtualenvwrapper_ package is not available you might have to
 install _epel-release_ first.
 
-    yum install python-devel python-pip python-virtualenvwrapper gcc
+```
+yum install python-devel python-pip python-virtualenvwrapper gcc
+```
 
 #### Ubuntu or Debian
 
-    apt-get install python-dev python-pip virtualenvwrapper build-essential
+```
+apt-get install python-dev python-pip virtualenvwrapper build-essential
+```
 
 #### Installing the client using virtualenvwrapper and pip
 
@@ -135,7 +139,7 @@ export OS_USER_DOMAIN_NAME=<DOMAIN>
 ## Example scripts to create servers
 
 This instruction will show you how to start new servers through the API. To simplify we will first create
-a network in the gui to which we then connect all our servers. 
+a network in the gui to which we then connect all our servers.
 
 Make sure that you have a working rc-file according to the insctructions [here](https://docs.safespring.com/compute/api/).
 
@@ -206,7 +210,7 @@ while read servername; do
 done <servers.txt
 ```
 
-In order to connect to you servers you need to add security groups and add floating IPs. If you book floating IPs 
+In order to connect to you servers you need to add security groups and add floating IPs. If you book floating IPs
 and create security groups in the portal you can use these alternate scripts to add that to you instances
 on the fly.
 
@@ -294,4 +298,3 @@ terraform plan
 terraform apply
 terraform destroy
 ```
-

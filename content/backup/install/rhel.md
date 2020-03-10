@@ -3,6 +3,7 @@
 _This document describes how to install Safespring BaaS on RedHat Enterprise Linux (64-bit)._
 
 There are two ways of installing BaaS:
+
  * Manually signing up nodes,
  * Automatically signing up nodes
 
@@ -16,12 +17,14 @@ The repositories are located at https://repo.cloud.ipnett.com/rpm/ (though this 
 ### EL6
 CentOS 6.7 and RedHat EL 6.7 are tested.
 
-    curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-IPnett \
-      https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/rpm/RPM-GPG-KEY-IPnett
-    rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-IPnett
-    curl -o /etc/yum.repos.d/ipnett-el6.repo \
-      https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/rpm/ipnett-el6.repo
-    
+```shell
+curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-IPnett \
+  https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/rpm/RPM-GPG-KEY-IPnett
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-IPnett
+curl -o /etc/yum.repos.d/ipnett-el6.repo \
+  https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/rpm/ipnett-el6.repo
+```
+
 The commands will:
 
 1. Download our RPM GPG signing key,
@@ -31,12 +34,13 @@ The commands will:
 ### EL7
 CentOS 7 and RedHat EL 7 are tested.
 
-    curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-IPnett \
-      https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/rpm/RPM-GPG-KEY-IPnett
-    rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-IPnett
-    curl -o /etc/yum.repos.d/ipnett-el7.repo \
-      https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/rpm/ipnett-el7.repo
-    
+```shell
+curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-IPnett \
+  https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/rpm/RPM-GPG-KEY-IPnett
+rpmkeys --import /etc/pki/rpm-gpg/RPM-GPG-KEY-IPnett
+curl -o /etc/yum.repos.d/ipnett-el7.repo \
+  https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/rpm/ipnett-el7.repo
+```
 
 The commands will:
 
@@ -48,9 +52,9 @@ The commands will:
 
 Now you must decide whether you want to install a package which allows for automatic node registration or if you prefer, for one reason or another, to manage the node registration yourself.
 
-### 2.a) Installation with automatic node registration
+### 2. a) Installation with automatic node registration
 
-#### 2.a.1) Installation of software
+#### 2. a.1) Installation of software
 The following command will install a package that contains an enrollment-script, and it depends on the regular `ipnett-baas` package, which in turn depends on the TSM software:
 
 `yum install ipnett-baas-setup`
@@ -59,14 +63,16 @@ The following command will install a package that contains an enrollment-script,
 
 After successfully having installed the software, the service can be automatically enrolled with by using the  `ipnett-baas-setup` program. Brief usage instructions are listed below:
 
-    # ipnett-baas-setup 
-    /usr/bin/ipnett-baas-setup [-a application] [-c ON|OFF] [-C cost_center] [-d ON|OFF]
-       [-D ON|OFF] [-e ON|OFF] [-f credentials_file] [-H host_name]
-       [-i host_description] [-m mail_address] [-p platform]
-       [-t auth_token]
-    
-    Also, see man ipnett-baas-setup for more information
-    
+```bash
+# ipnett-baas-setup
+/usr/bin/ipnett-baas-setup [-a application] [-c ON|OFF] [-C cost_center] [-d ON|OFF]
+  [-D ON|OFF] [-e ON|OFF] [-f credentials_file] [-H host_name]
+  [-i host_description] [-m mail_address] [-p platform]
+  [-t auth_token]
+```
+
+Also, see man ipnett-baas-setup for more information
+
 The program requires an authentication token to communicate with the API.
 It is recommended that an API key with enrollment capabilities are used to automatically enroll hosts, since these have limited permissions due to risk of key misplacement.
 

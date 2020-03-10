@@ -15,8 +15,8 @@ See [this blogpost](https://docs.safespring.com/service/known_issues/) for detai
 
 ## Resize operations disabled
 
-Due to different issues with resize operations, we have disabled the resize operations 
-users. If you need to resize instances, please contact [support](/service/support/). 
+Due to different issues with resize operations, we have disabled the resize operations
+users. If you need to resize instances, please contact [support](/service/support/).
 
 We excpect to support user initiated resize operations after a future system upgrade.
 
@@ -96,25 +96,22 @@ The solution was to downgrade shade to a known good (1.12.1) version.
 
 If you experiance flapping ipv6 connectivity it could be resolved either by
 setting a static default route and not depend on RA.
-Remove the "accept_ra 1" if it exists in you network configuration file or
-any sysctl settings for accept_ra.
+Remove the `accept_ra 1` if it exists in you network configuration file or
+any sysctl settings for `accept_ra`.
 
 !!! note "Set static default route."
+    This is an example, check your instance network address and change accordingly.
 
-This is an example, check your instance network address and change accordingly.
+      `# ip -6 route add default via 2001:6b0:5a:4017::1`
 
-`# ip -6 route add default via 2001:6b0:5a:4017::1`
+      You may need to delete the RA route first if it exists.
 
-You may need to delete the RA route first if it exists.
-
-`# ip -6 route delete default`
+      `# ip -6 route delete default`
 
 Alternative configure all ipv6 settings static.
 
 !!! note "Set static ipv6."
-
-Find your ipv6 address from Horizon or by CLI and insert it as "ipv6_address"
-and set "ipv6_gateway" to the same subnet but ::1 at the end. No quotes.
+    Find your ipv6 address from Horizon or by CLI and insert it as `ipv6_address` and set `ipv6_gateway` to the same subnet but `::1` at the end.
 
 ### Debian or Ubuntu
 

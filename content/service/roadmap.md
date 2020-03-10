@@ -4,11 +4,11 @@ This page describes what we are working on right now
 
 ## Roadmap for Safespring services
 
-| Currently working on       | Near term plans          | Future plans                        |
+| Currently working on       | Near term plans          | Future plans                                 |
 |----------------------------|-----------------------------------|-------------------------------------|
-| Openstack upgrade for Safespring Mangaged Infrastructure | New dashboard for Safespring Backup       |  |
-| New network stack    | New revised flavours,including larger sizes in osl1 | -                                   |
-|     Openstack upgrade for Safesring Compute | Flavours with dedicated storage in osl1             | -                                   |
+| Openstack upgrade for Safespring Mangaged Infrastructure | New dashboard for Safespring Backup       | N/A           |
+| New network stack    | New revised flavours,including larger sizes in osl1 | N/A                                    |
+| Openstack upgrade for Safesring Compute | Flavours with dedicated storage in osl1             | N/A                |
 
 ## Recent changes in the platform
 

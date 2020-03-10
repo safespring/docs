@@ -1,6 +1,6 @@
 # Change of host- and domain name for Support and Backup service 2020-01-19
 
-!!!note
+!!! warning "Change of host name and DNS"
     Change of host name and DNS needs to be done 2020-01-14 latest. When you have
     done the changes (new DNS-name and added the extra root-ca-cert) then the
     service is back to 100% again, and backups/restores work exactly as planned.
@@ -17,12 +17,16 @@ This solely affects customers who do backups against TSM1 (tsm1.cloud.ipnett.se)
 
 The dsm.sys (unix-like OSes) or dsm.opt (Win) file needs to get TCPSERVERADDRESS updated from tsm1.cloud.ipnett.se to <b>tsm1.backup.sto2.safedc.net</b> and the root-ca for safedc.net needs to get into the IBM TSM keystore (dsmcert.kdb).</p><p>The old cert(s) in the keystore can stay, it will not do any harm if they remain. This will not affect the OS certificate stores, or any other application using certificates. </p>
 
-### More information
+## More information
 
 <ul>
   <li><a href="https://docs.safespring.com/service/domain-changes/">Docs: Safespring domain name changes</a></li>
   <li><a href="https://github.com/safespring/cloud-BaaS/tree/master/pki">Helper scripts for migration and CA root certificate</a></li>
   <li><a href="https://github.com/safespring/cloud-BaaS/blob/master/pki/SafeDC-Net-Root-CA.pem">Certificate to add to keystore </a></li>
+</ul>
+
+### Operationg systems
+<ul>
   <li><b>Linux:</b>
     <ul>
       <li><a href="https://github.com/safespring/cloud-BaaS/blob/master/pki/Update-SafeDC-Net-CA.sh">Update SafeDC-Net-CA</a></li>
@@ -42,5 +46,4 @@ The dsm.sys (unix-like OSes) or dsm.opt (Win) file needs to get TCPSERVERADDRESS
     </ul>
   </li>
 </ul>
-
-
+</ul>

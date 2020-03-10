@@ -19,9 +19,7 @@ The lists are low traffic and fully moderated by Safespring, but relevant
 questions or messages from customers are appreciated.
 
 * [backup-users at lists.safespring.com][backup-users]
-
 * [compute-users at lists.safespring.com][compute-users]
-
 * [storage-users at lists.safespring.com][storage-users]
 
 [backup-users]: https://lists.safespring.com/mailman/listinfo/backup-users
@@ -34,4 +32,3 @@ We publish information about our [currently known issues][ki]. Please review it
 to avoid spending time on them.
 
 [ki]:known_issues/
-

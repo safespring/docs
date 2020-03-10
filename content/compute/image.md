@@ -1,8 +1,7 @@
 # Image service
 
-> **note**
-> Some of these instructions require use of Openstack command line
-> tools.
+!!! info
+    Some of these instructions require use of Openstack command line tools.
 
 ## Uploading an image
 
@@ -38,11 +37,8 @@ Horizon webui.
 1.  Create a snapshot from an existing instance (either via openstack
     cli or in the Horizon webui).
 
-> **note**
->
-> Creating a snapshot takes some time since the whole instance disk image
-> will be uploaded to the Glance image service over a
-> network connection. This will be the time to get some coffee.
+    !!! note
+        Creating a snapshot takes some time since the whole instance disk image will be uploaded to the Glance image service over a network connection. This will be the time to get some coffee.
 
 2.  From the command line, list the all images in the project and verify
     that the snapshot is visible:
@@ -74,8 +70,8 @@ After the upload have finished, verify that the image is visible:
     glance image list
 
 The uploaded image can now be used to launch new instances. In the
-Horizon webui, navigate to "Compute" -&gt; "Images". The uploaded image
-should now be visible in the list. Click the "Launch" button to the
+Horizon webui, navigate to `Compute` -&gt; `Images`. The uploaded image
+should now be visible in the list. Click the `Launch` button to the
 right of the uploaded image and fill in instance information as usual.
 
 ## Changing disk type on an image

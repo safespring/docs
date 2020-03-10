@@ -1,5 +1,5 @@
 #Connecting your virtual servers to your infrastructure
-The instances you have set up in Safespring Compute will get floating IP 
+The instances you have set up in Safespring Compute will get floating IP
 addresses from the SUNET/UNINETT IP pool and are the way of contact for the clients
 connecting to you services. By setting up Security Groups you will be able
 to control which clients (based on IP) that can connect to your servers.
@@ -20,15 +20,15 @@ at your site. By routing the floating IPs that you use for your servers in
 the Safespring infrastructure to your tunnel endpoint server at site, you
 can ensure that all traffic to those virtual machines go through the tunnel
 encrypted. To handle the return traffic you respectively set up routes for
-the IPs (hosts or networks) that you virtual machines should be able to 
+the IPs (hosts or networks) that you virtual machines should be able to
 communicate to the endpoint at Safespring.
 
 Saferoute is somewhat more work to set up but will give you a separate routing
-instance (VRF) in the SUNET/UNINETT MPLS network effectively giving you a port in your 
+instance (VRF) in the SUNET/UNINETT MPLS network effectively giving you a port in your
 edge router to SUNET/UNINETT where all the traffic to your servers will be served.
 This is especially good if you have security policies at your site which
 enforces infrastrucure to be behind a central firewall. You will also be able
-to pick which IP-addresses you want to use for your virtual machines in the 
+to pick which IP-addresses you want to use for your virtual machines in the
 Safespring infrastructure.
 
 Below we will describe both ways of connecting to you virtual instances.
@@ -216,7 +216,7 @@ $ openstack port show 08c66eba-6a6c-4ca8-811e-68006d8b24f5
 
 ### The client
 
-This example can be used in the same way as the server example through Horizon or with cli. Please observe the note below the example. 
+This example can be used in the same way as the server example through Horizon or with cli. Please observe the note below the example.
 
 ```shell
 #cloud-config
@@ -290,12 +290,8 @@ to the "Home network" with a next-hop to the vpn-server.
 
 You can easily follow packets with tcpdump even on the "tun" interfaces.
 
-### Notes
-
-> **Note**
->
-> It is recommended to update the OS and reboot the server as part of
-> the setup.
+!!! note
+    It is recommended to update the OS and reboot the server as part of the setup.
 
 ##Dedicated Access with Saferoute
 ![Connecting to Safespring](/images/connect.png)

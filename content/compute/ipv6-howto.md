@@ -9,7 +9,7 @@ There are mainly three ways to get an IPv6 address:
 	* The default router is still configured with Router Advertisement – and not with DHCPv6.
 	* Due to the abundance of addresses in IPv6 the leases from a DHCPv6 server are much more generous when it comes to the lease time resulting in that once you get an IPv6 address from the DHCPv6 server you can keep it virtually forever if the DHCPv6-server is set up with a big enough scope. This removes the need of static IPv6 addresses on servers serving IPv6 content.
 
-##Configuration
+## Configuration
 In this guide, we will use a combination of the first and third options: static assigment and DHCPv6. The reason we need to do that is a known issue right now that makes DHCPv6 unstable over time.
 
 * Set up an instance in the Horizon dashboard. In this example, we will use an Ubuntu 16.04 image. We also set it up with a keypair so that we can SSH to the host later. In this demonstration, the b.tiny flavor will do. We also connect it to an IPv4 network and the public-ipv6 network. We will use the IPv4 network for IPv4 traffic and management.
@@ -42,16 +42,15 @@ Now it is time to time to set the address and default router given from DHCPv6 s
 iface ens4 inet6 static
 address <IPv6 address from the ip address show command>
 netmask 64
-gateway <IPv6 address from the ip -6 route show command> 
+gateway <IPv6 address from the ip -6 route show command>
 ### END IPV6 configuration
 ```
 Save the file and then run “/etc/init.d/networking restart” again.
 
 * For CentOS 7, these two lines need to be added to the ifcfg-ethX file:
-```
-IPV6ADDR=2001:xxx:x:xxxx::yyy/64
-IPV6_DEFAULTGW=2001:xxx:x:xxxx::1/64
-```
-then restart the VM or restart network with "systemctl restart network.service" and it should now be usable over IPv6 also.
-
+	```
+	IPV6ADDR=2001:xxx:x:xxxx::yyy/64
+	IPV6_DEFAULTGW=2001:xxx:x:xxxx::1/64
+	```
+	then restart the VM or restart network with "systemctl restart network.service" and it should now be usable over IPv6 also.
 * Try and ping with the command “ping6 -n ping.sunet.se” to see that it works. If the host is V6-only, make sure you add v6 resolvers to the /etc/resolv.conf file.

@@ -6,12 +6,10 @@ If you want to contribute, please consider the following:
 
 * An [account on GitHub.com][gh] is needed in order to fork this repository and
   make changes to it.
-
 * The documentation on this site is written using a text markup language named
   *Markdown*. Please read [this article][md] for a quick intro to its basic
   features. Next, comparing this [example of Markdown elements][mdex] with its
   [source][mdexsource] will get you going.
-
 * The documentation is published under a [Creative Commons BY-SA 4.0][ccsa4]
   license and all contributions will implicitly adhere to that license.
 

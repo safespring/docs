@@ -53,4 +53,4 @@ The full [cloudbase documentation](http://cloudbase-init.readthedocs.io/en/lates
 
 !!! warning
     Anything entered in the Customization Script dialog box can end up stored in log files etc and as such if used to set passwords these should only be for very temporary usage
-![Launch Instance Powershell](../images/launch-instance-powershell.png) 
+![Launch Instance Powershell](../images/launch-instance-powershell.png)
