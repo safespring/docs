@@ -46,10 +46,11 @@ Horizon webui.
         glance image-list
 
 3.  Use the following commmand to download the image to local storage:
-
-        glance image-download _uuid_of_previously_created_snapshot_ \
-            --file _local_filename_to_save_raw_image_to_ \
-            --progress
+    ```
+    glance image-download _uuid_of_previously_created_snapshot_ \
+        --file _local_filename_to_save_raw_image_to_ \
+        --progress
+    ```
 
 ## Launching a new instance based on an uploaded custom image
 
@@ -107,7 +108,7 @@ virtio-only instance using the second image and lastly delete the
 first instance.
 
 This can also be used to change the network card type, using the
-property ``hw_vif_model``. Default is "virtio" but the list also has
-"e1000", "ne2k_pci", "pcnet", "rtl8139" where e1000 emulates an Intel
+property `hw_vif_model`. Default is `virtio` but the list also has
+`e1000`, `ne2k_pci`, `pcnet`, `rtl8139` where `e1000` emulates an Intel
 Pro gigabit ethernet card, and the others are different versions of
 old chipsets almost never used nowadays. This is rarely needed.

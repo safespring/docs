@@ -1,10 +1,11 @@
 # Getting Started
 
-## I just got an IaaS account, what now?
+## I just got a Safespring Compute account, what now?
 
-Start by logging into the portal, at https://login.sto1.safespring.com for the Swedish portal, and <https://portal.cloud.ipnett.no> for the Norwegian portal.
+Start by logging into the portal. You will be greeted with an overview of the project/account statistics. It usually starts off rather empty, but as machines are added, resources will be summarized there.
 
-You will be greeted with an overview of the project/account statistics. It usually starts off rather empty, but as machines are added, resources will be summarized there.
+* **Swedish** portal: https://login.sto1.safespring.com
+* **Norwegian** portal: https://portal.cloud.ipnett.no
 
 !!! info "Are you connected to SUNET?"
     Swedish universities and colleges that are connected to SUNET have their own portal. Start by logging into the portal at <https://dashboard.cloud.sunet.se>. You will be greeted with an overview of the project/account statistics. It usually starts off rather empty, but as machines are added, resources will be summarized there.
@@ -50,7 +51,7 @@ After creating the volume you head to the "Launch instance" dialogue. Under "Sou
 All tenants (be it test accounts or projects) need to have some kind of network
 made available to it. If you are testing out, there may already be a
 demo-network or something similar set up for your instances, otherwise you need
-to [create a network](network/) for your machines to start in.
+to [create a network](/compute/network/) for your machines to start in.
 
 ![image](../../images/dash-select-net.png)
 

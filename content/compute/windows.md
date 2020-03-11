@@ -37,9 +37,11 @@ The password should show up in the "Password" field.
 
 ### ALTERNATE: Retrieving the admin password using the nova commandline
 
-If you have access to the openstack commandline tools you can use nova to retrieve the password. Ensure the correct `OS_` environment variables are set, then run
+If you have access to the openstack commandline tools you can use nova to retrieve the password. Ensure the correct `OS_` environment variables are set, then run following script where `winbox1` is your windows instance and `~/keys/windows-passwords.pem` is the private key file from the key pair you generated earlier:
 
-`nova get-password winbox1 ~/keys/windows-passwords.pem` - where winbox1 is your windows instance and ~/keys/windows-passwords.pem is the private key file from the key pair you generated earlier.
+```
+nova get-password winbox1 ~/keys/windows-passwords.pem
+```
 
 ## Setting the Administrator password (and other things) under instance creation
 
@@ -52,5 +54,6 @@ Basically anything that a user in the Administrators group can do via powershell
 The full [cloudbase documentation](http://cloudbase-init.readthedocs.io/en/latest/) is available online.
 
 !!! warning
-    Anything entered in the Customization Script dialog box can end up stored in log files etc and as such if used to set passwords these should only be for very temporary usage
+    Anything entered in the Customization Script dialog box can end up stored in log files etc and as such if used to set passwords these should only be for very temporary usage.
+    
 ![Launch Instance Powershell](../images/launch-instance-powershell.png)

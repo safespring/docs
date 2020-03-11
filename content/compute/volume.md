@@ -18,16 +18,16 @@ with risk of data loss.
 
 1. Find the correct volume using the Volumes tab of your compute project.
 
-1. Select *Change Volume Type* in the pulldown menu for the volume you want to
+1. Select `Change Volume Type` in the pulldown menu for the volume you want to
    migrate.
 
     ![Edit volume](/images/cinder-edit-volume.png)
 
 1. Select the new volume type from the pulldown list
 
-1. Set *Migration policy* to *On demand*
+1. Set `Migration policy` to `On demand`
 
-1. Click *Change Volume Type*
+1. Click `Change Volume Type`
 
 The volume service will now copy the volume from the old backend to the new.
 Depending on the size of the volume, this operation will take some time.
