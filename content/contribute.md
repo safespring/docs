@@ -21,7 +21,7 @@ If you want to contribute, please consider the following:
 
 ## Fast GitHub-based workflow
 
-For quick, small changes - like fixing a typo or rewording something - the
+For quick, small changes, like fixing a typo or rewording something, the
 easiest way to contribute is directly on GitHub!
 
 1. Click the pencil to the right of the header on the page. This will open the
@@ -45,8 +45,8 @@ suggesting further tweaks or edits. Thank you very much :-)
 
 ## Larger contributions
 
-### Cloning the repository
+1. Cloning the repository
 
-### Making changes or additions
+2. Making changes or additions
 
-### Submitting a pull request
+3. Submitting a pull request

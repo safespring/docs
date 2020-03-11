@@ -8,15 +8,15 @@ clients always encrypt data over the wire, and it will land on disks
 which are encrypted-at-rest, which means it will be encrypted twice,
 but the inner encryption is something you will have full control over. Options mentioned below go into:
 
-``` shell tab="Linux/Unix"
-/opt/tivoli/tsm/client/ba/bin/dsm.sys`
+``` tab="Linux/Unix"
+/opt/tivoli/tsm/client/ba/bin/dsm.sys
 ```
 
-``` shell tab="Windows"
+``` tab="Windows"
 C:\Program Files\tivoli\tsm\baclient\dsm.opt
 ```
 
-``` shell tab="macOS"
+``` tab="macOS"
 /Library/Application Support/tivoli/tsm/client/ba/bin/dsm.sys
 ```
 
@@ -72,9 +72,15 @@ if and how to store the encryption key. The choices are:
 
 ## Selecting what to encrypt
 
-To cover the whole disk, something simple like `INCLUDE.encrypt "/.../*"` for Unix/Linux/Mac and
-`INCLUDE.encrypt ?:\...\*` for Windows will make all files on all drives and filesystems that are
-backed up to be encrypted before transfer.
+To cover the whole disk, something simple like the following example will make all files on all drives and filesystems that are backed up to be encrypted before transfer.
+
+``` tab="Unix, Linux and macOS"
+INCLUDE.encrypt "/.../*"
+```
+
+``` tab="Windows"
+INCLUDE.encrypt ?:\...\*
+```
 
 Do mind that it will not affect files that have already been sent over
 previously, which may confuse people testing encryption on a node for

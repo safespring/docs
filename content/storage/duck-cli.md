@@ -77,30 +77,27 @@ other meta operations you should probably use the GUI or s3cmd, but
 for normal upload/download/sync ops, duck performs very well and
 allows for good parallelism while transferring data.
 
-```
-duck --list safe://<my-bucket-name>
-```
+!!! info "lists entries in that bucket,"
+    ```
+    duck --list safe://<my-bucket-name>
+    ```
 
-lists entries in that bucket,
+!!! info "uploads a file or recursively uploads a whole directory structure."
+    ```
+    duck --upload safe://my-bucket-name object-or-dir
+    ```
 
-```
-duck --upload safe://my-bucket-name object-or-dir
-```
+!!! info "Downloads it later on."
+    ```
+    duck --download safe://my-bucket-name/file
+    ```
 
-uploads a file or recursively uploads a whole directory
-structure.
+!!! info "Use this to synchronize local `-vs-` remote folders."
+    ```
+    duck --synchronize safe://my-bucket-name local-dir
+    ```
 
-```
-duck --download safe://my-bucket-name/file
-```
 
-downloads it later on. Use
-
-```
-duck --synchronize safe://my-bucket-name local-dir
-```
-
-to synchronize local `-vs-` remote folders.
 
 ## Options
 

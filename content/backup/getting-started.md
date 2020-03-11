@@ -1,6 +1,7 @@
 After installing the client using the guides on this wiki, you are ready to start doing backups and restores. If you started the scheduler service (Client Acceptor Service on windows, dsmcad on linux/mac/solaris/other-unices), TSM will make backups once per day around the time set on the backup schedule.
 
 If you want to start a manual backup, start the graphical client (Backup & Archive GUI in the windows Start menu or /opt/tivoli/tsm/client/ba/bin/dsmj for linux/solaris, TSM Tools for Administrators on Mac)
+
 You will see a GUI looking like this:
 
 <image goes here>
@@ -14,13 +15,9 @@ If you choose to initiate the backups from the client (instead of configuring wh
 1. Set up your own reports based on the backup logs on the client node
 1. Set up a backup job in the portal as well as your local scripted one. This way the server will be able to measure the job configured in the portal and the reports will be correct.
 
-IBMs documentation for backups (and considerations before setting up your backups) is available here:
-
-http://www-01.ibm.com/support/knowledgecenter/SSGSG7_7.1.1/com.ibm.itsm.client.doc/c_bac_data.html
+[IBMs documentation for backups](http://www-01.ibm.com/support/knowledgecenter/SSGSG7_7.1.1/com.ibm.itsm.client.doc/c_bac_data.html)  (and considerations before setting up your backups) is available here:
 
 
 You may also ask to restore data from that GUI. Anyone that has local administration privileges may restore data from backups made on this machine.
 
-IBM documentation regarding different kinds of restore operations and options is available from here:
-
-http://www-01.ibm.com/support/knowledgecenter/SSGSG7_7.1.1/com.ibm.itsm.client.doc/c_res_data.html
+Please read the [IBM documentation](http://www-01.ibm.com/support/knowledgecenter/SSGSG7_7.1.1/com.ibm.itsm.client.doc/c_res_data.html) regarding different kinds of restore operations and options.

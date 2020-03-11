@@ -1,8 +1,7 @@
 # Installing Nextcloud
 
 There are a number of instructions on how to install Nextcloud.
-
-Safespring recommend the instructions here: https://websiteforstudents.com/install-nextcloud-on-ubuntu-17-04-17-10-with-apache2-mariadb-and-php/
+[Safespring recommend these instructions](https://websiteforstudents.com/install-nextcloud-on-ubuntu-17-04-17-10-with-apache2-mariadb-and-php/)
 
 Do not forget to secure your installation with Let's Encrypt.
 The most reliable instructions to install certbot can be found here: https://certbot.eff.org/docs/install.html

@@ -13,7 +13,7 @@ _This page covers the following topics:_
 
 ## Install TSM
 
-See [TSM Installation](/backup/install/overview.md).
+See [TSM Installation](/backup/install/overview).
 
 
 ## Backup
@@ -42,7 +42,7 @@ Selective backup (always backup, including non-changed files):
 
 ```shell
 cd /opt/tivoli/tsm/client/ba/bin
-dsmc 
+dsmc
 tsm> selective </path/to/backup> [option]
 ```
 
@@ -58,21 +58,21 @@ dsmc
 Restore the most recent version of a deleted file:
 
 ```shell
-tsm> restore /path/to/file.txt -latest 
+tsm> restore /path/to/file.txt -latest
 ```
-    
+
 List all versions of a file, pick one to restore:
 
 ```shell
-tsm> restore /path/to/file.txt -pick -inactive 
+tsm> restore /path/to/file.txt -pick -inactive
 ```
 
 Restore file1 to new name and location:
 
 ```shell
-tsm> restore /path/to/file1.txt /path/to/new/dir/file2.txt 
+tsm> restore /path/to/file1.txt /path/to/new/dir/file2.txt
 ```
-   
+
 Restore file structure to original location including subdirectories:
 
 ```shell
@@ -82,5 +82,5 @@ tsm> restore /home/ -subdirs=yes
 Restore many files to new location, trailing / is important if "projects" is a dir, use " " for paths with wildcards:
 
 ```shell
-tsm> restore "/home/john/Documents/*" /home/glenn/projects/ 
+tsm> restore "/home/john/Documents/*" /home/glenn/projects/
 ```
