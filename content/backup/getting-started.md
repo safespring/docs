@@ -1,6 +1,13 @@
-After installing the client using the guides on this wiki, you are ready to start doing backups and restores. If you started the scheduler service (Client Acceptor Service on windows, dsmcad on linux/mac/solaris/other-unices), TSM will make backups once per day around the time set on the backup schedule.
+After installing the client using the guides on this wiki, you are ready to start doing backups and restores.
 
-If you want to start a manual backup, start the graphical client (Backup & Archive GUI in the windows Start menu or /opt/tivoli/tsm/client/ba/bin/dsmj for linux/solaris, TSM Tools for Administrators on Mac)
+### Scheduler service
+If you started the scheduler service, TSM will make backups once per day around the time set on the backup schedule.
+
+* **Client Acceptor Service** on Windows
+* **dsmcad** on Linux, macOS, Solaris and other-unices),
+
+### Manual backup
+If you want to start a manual backup, start the graphical client (Backup & Archive GUI in the windows Start menu or `/opt/tivoli/tsm/client/ba/bin/dsmj` for linux/solaris, TSM Tools for Administrators on Mac)
 
 You will see a GUI looking like this:
 

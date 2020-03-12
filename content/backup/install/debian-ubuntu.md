@@ -5,6 +5,7 @@ We will use a shell-script listed below and the TSM-debian repositories Safespri
 privides.
 
 Start with creating a node inte portal:
+
 ![Create node](/images/create-node.png)
 
 Make sure to fill in all the fields and to choose "Traditional files" at "Application" dropdown. Click "Create node".
@@ -12,6 +13,7 @@ Make sure to fill in all the fields and to choose "Traditional files" at "Applic
 After the creation is finished you will be presented with this dialogue:
 
 ![Node created](/images/node-created.png)
+
 Make sure to save the password in a textfile for further reference. Also click
 the "Download configuration" and save the ZIP-file on your computer.
 
@@ -56,11 +58,12 @@ we recommend using WinSCP to upload the files to the home directory of a user
 that has sudo-rights.
 
 ![WinSCP upload](/images/winscp-upload.png)
-<image winscp-upload.png>
 
 Now you connect to the server with SSH with to user to which home directory
 you copied the two files.
+
 Now you need to run:
+
 ```shell
 ubuntu@baas-test-4:~$ ls
 dsm-ZXAGTHTIGQKC.zip  setup-baas.sh

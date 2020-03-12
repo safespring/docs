@@ -31,20 +31,24 @@ use_https = True
 When you have the program installed and a config file in place, you
 can make a bucket and place a file or two in there.
 
-    s3cmd mb s3://unique-bucket-name
+```shell
+s3cmd mb s3://unique-bucket-name
 
-    s3cmd put localfile.txt s3://unique-bucket-name
+s3cmd put localfile.txt s3://unique-bucket-name
 
-    upload: 'localfile.txt' -> 's3://unique-bucket-name'
-    524 of 524   100% in  1s    3.68 MB/s  done
+upload: 'localfile.txt' -> 's3://unique-bucket-name'
+524 of 524   100% in  1s    3.68 MB/s  done
 
-    s3cmd ls s3://unique-bucket-name
+s3cmd ls s3://unique-bucket-name
+```
 
-Other commands include "sync" to synchronize a local folder to S3
+Other commands include `sync` to synchronize a local folder to S3
 storage or the other way around:
 
-    s3cmd sync local/ s3://unique-bucket-name
-    s3cmd sync  s3://unique-bucket-name local/
+```shell
+s3cmd sync local/ s3://unique-bucket-name
+s3cmd sync  s3://unique-bucket-name local/
+```
 
 ## Make files public
 

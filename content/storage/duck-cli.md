@@ -28,7 +28,7 @@ $HOME/.duck/profiles/safe.cyberduckprofile
 The contents of this file should look like this for the Norwegian
 site:
 
-``` xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/
 PropertyList-1.0.dtd">
@@ -77,12 +77,12 @@ other meta operations you should probably use the GUI or s3cmd, but
 for normal upload/download/sync ops, duck performs very well and
 allows for good parallelism while transferring data.
 
-!!! info "lists entries in that bucket,"
+!!! info "Lists entries in that bucket,"
     ```
     duck --list safe://<my-bucket-name>
     ```
 
-!!! info "uploads a file or recursively uploads a whole directory structure."
+!!! info "Uploads a file or recursively uploads a whole directory structure."
     ```
     duck --upload safe://my-bucket-name object-or-dir
     ```

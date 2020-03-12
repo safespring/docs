@@ -17,10 +17,14 @@ To see options and rules to run simply run `"safespring-baas.2.5.0.exe -help"`. 
     **The installation process may take up to 25 minutes to complete. Especially the "TBMR Installation" may take quite a long time.** If you are running "Windows Defender" on Windows Server 2016 or Windows 10 you can speed up things by disable the realtime scan for the TBMR process. This can be done with a powershell command before you start the installer.
 
     From the command prompt, run as Administrator, do
-    `powershell -Command Add-MpPreference -ExclusionProcess {C:\Program Files\Cristie\TBMR\TbmrCfg.exe}`
+    ```
+    powershell -Command Add-MpPreference -ExclusionProcess {C:\Program Files\Cristie\TBMR\TbmrCfg.exe}
+    ```
 
     To check the result, do
-    `powershell -Command Get-MpPreference | findstr ExclusionProcess`
+    ```
+    powershell -Command Get-MpPreference | findstr ExclusionProcess
+    ```
 
 
 ## Download
@@ -61,23 +65,18 @@ In order to use the fully automated install you must generate your secret token 
 The access token only needs to be generated once and on any machine with openssl or PowerShell.
 How to get your access-key and secret key can be read here, https://docs.safespring.com/backup/faq/#how-do-i-get-keys-to-generate-my-api-token.
 
-Download and install openssl [from here](https://slproweb.com/products/Win32OpenSSL.html)
-and run
+Download and [install openssl](https://slproweb.com/products/Win32OpenSSL.html) then run the following script, or choose Powershell or bash instead.
 
-```shell
+``` shell tab="openssl"
 echo <access-key>:<secret-key> | <\path\to\>openssl enc -base64 -e
 ```
 
-or run this in PowerShell,
-
-```shell
+``` shell tab="PowerShell"
 $b = [System.Text.Encoding]::UTF8.GetBytes("<access-key>:<secret-key>")
 [System.Convert]::ToBase64String($b)
 ```
 
-If run in bash for Windows10, do this,
-
-```shell
+```bash tab="Bash for Windows10"
 echo -n "<access-key>:<secret-key>" | openssl enc -base64 -e
 ```
 
@@ -86,7 +85,7 @@ Mode two requires a few more parameters in order to create the node. `TOKEN` is 
 For updates when already running UPDATE=1 can be used. It is not possible to downgrade.
 To rerun the TBMR part only and because of TBMR license failures you can run with TBMRONLY=1.
 
-Put the safespring-baas.2.5.0.exe in a directory where you have write permissions since it will write the `dsm-<nodename>.zip` file in the current directory.
+Put the `safespring-baas.2.5.0.exe` in a directory where you have write permissions since it will write the `dsm-<nodename>.zip` file in the current directory.
 
 
 !!! note "Example"
@@ -232,7 +231,7 @@ TBMRONLY argument. `safespring-baas.2.5.0.exe TBMRONLY=1`. This method can also 
     ![License fail dialogue](../../images/tbmr_snapshot_fail.png)
 
 ## Report problems
-In case of reporting a problem please include ALL logfiles from `%TEMP%` named Safespring*.*, BaaS*.* and Cristie*.*.
+In case of reporting a problem please include ALL logfiles from `%TEMP%` named `Safespring*.*`, `BaaS*.*` and `Cristie*.*`.
 
 ## Simple launch script
 This script will start a incremental backup and keep the window open until it's manually closed. This makes it possible to verify a successful backup. Feel free to modify to your own needs. (Right click and 'Save target as...') [Download here](https://api.cloud.ipnett.se/dist/installer/RunBaaS.cmd).
@@ -272,30 +271,35 @@ Required files - (Right click and 'Save as...'):
 ### Procedure
 
 1. Download the required files according to above into a temporary folder
+1. Run `7.1.1.0-TIV-TSMBAC-WinX64.exe` to install the program and *hold* at the following point:
 
-1. Run 7.1.1.0-TIV-TSMBAC-WinX64.exe to install the program and *hold* at the following point:
-![Tivoli Storage Manager Client - InstallShield Wizard](../../images/TSMBAC_ISWizard.png)
+    ![Tivoli Storage Manager Client - InstallShield Wizard](../../images/TSMBAC_ISWizard.png)
 
     1. The installation process will by default require a reboot, due to the installation of a couple of VC redistributables.
-
     1. If a reboot is unpleasant, at the above decision point, jump to the _"Circumvent reboot during install"_ section below.
-
     1. Resume the installation, choose Typical installation and accept the UAC pop-up that comes up, "IBM manager".
-
     1. After installation, answer 'No' to the reboot question.
-
-1. In a command prompt with elevated privileges, execute the "Safespring Root CA installer", `IPnett-Cloud-Root-CA-win64.bat`, to install the Safespring BaaS CA into the GSK (IBM crypto kit) trust database.
-
-1. Create a backup client node via the BaaS API, and save the node password for future reference. `perl ipnett-baas.pl create node <fqdn> <costcenter> <flags>`
-
-1. Retrieve client node configuration and password from the BaaS API or the web portal, and unpack the `dsm.opt` file into `C:\Program Files\Tivoli\TSM\baclient\`. `perl ipnett-baas.pl get node <nodename> config`
-
-1. Set the client's password.  In `C:\Program Files\Tivoli\TSM\baclient`, enter `dsmc set password <PASSWORD> <PASSWORD> <PASSWORD>`
-
+    
+1. In a command prompt with elevated privileges, execute the "Safespring Root CA installer" to install the Safespring BaaS CA into the GSK (IBM crypto kit) trust database.
+    ```
+    IPnett-Cloud-Root-CA-win64.bat
+    ```
+1. Create a backup client node via the BaaS API, and save the node password for future reference.
+    ```
+    perl ipnett-baas.pl create node <fqdn> <costcenter> <flags>
+    ```
+1. Retrieve client node configuration and password from the BaaS API or the web portal, and unpack the `dsm.opt` file into `C:\Program Files\Tivoli\TSM\baclient\`.
+    ```
+    perl ipnett-baas.pl get node <nodename> config
+    ```
+1. Set the client's password.  In `C:\Program Files\Tivoli\TSM\baclient`, enter
+    ```
+    dsmc set password <PASSWORD> <PASSWORD> <PASSWORD>
+    ```
 1. E.g invoke client: `dsmc`.  Then to do full incremental on entire system: `i` for incremental.
-
 1. Setup scheduling: Go to the portal, select Update on the node you are installing, choose a schedule and a retention period you want to have.
-   For API users, https://github.com/safespring/cloud-BaaS/blob/master/API.md documents the various calls, including scheduling.
+
+    For API users, https://github.com/safespring/cloud-BaaS/blob/master/API.md documents the various calls, including scheduling.
 
 ### Circumventing reboot during install
 
