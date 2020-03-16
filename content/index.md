@@ -2,11 +2,10 @@
 
 This site contains documentation for Safespring services and user resources.
 
-For service status, go to our [statuspage](https://status.safespring.com)
+* For service status, go to our [statuspage](https://status.safespring.com)
+* For support, see our [support page][sup]
 
-For support, see our [support page][sup]
-
-!!! info "New support address for all services"
+!!! note "New support address for all services"
     We will be adding a new address for tickets, support@safespring.com to replace the previous     support addresses under cloud.ipnett.se/no. The old addresses will continue working for     a while, but we hope it will simplify your experience by having a single point of access    regardless of which service you need help with.
 
 !!! info "Known issues"

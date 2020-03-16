@@ -4,11 +4,11 @@
     * Clustered SQL servers
     * Many SQL server instances
 
-    then these intructions aren't enough.
+    then these instructions aren't enough.
 
-    **Prerequisite 1**:   Windows PowerShell version 3 has to be installed prior to this installation.
+    **Prerequisite 1**: Windows PowerShell version 3 has to be installed prior to this installation.
 
-    **Prerequisite 2**:   Installation and configuration of the file client, a.k.a. baclient has to be completed prior to this installation.  Among other things the file client installs/configures the SSL certificates and the TSM API.
+    **Prerequisite 2**: Installation and configuration of the file client, a.k.a. baclient has to be completed prior to this installation.  Among other things the file client installs/configures the SSL certificates and the TSM API.
 
 ## Step 1 - Download
 
@@ -63,7 +63,7 @@ The SQL backup is always done using a separate TSM nodename.
 
 ## Step 6 - Configuration file
 
-Download the configuration file from the API.   Unzip the file and a dsm.opt will appear.
+Download the configuration file from the API.   Unzip the file and a `dsm.opt` will appear.
 Edit the `dsm.opt` and add the following two lines (In the next release this will be done by default - until then do it manually)
 
 ```shell
@@ -98,7 +98,7 @@ Install the services needed for the TDP SQL.  This is done using the script `ins
     install_sched XXXYUUVJWDWG_DB PaSSvd Administrator qwerty "."
     ```
 
-In many cases the tsm scheduler has to be run as a local/domain user.  This is depending on the security settings in SQL.  Make sure to specify an account that can access SQL.
+In many cases the TSM scheduler has to be run as a local/domain user.  This is depending on the security settings in SQL.  Make sure to specify an account that can access SQL.
 
 ## Step 8 - Associate node
 
@@ -107,7 +107,8 @@ Associate the TDP node with one or more schedules in the TSM server – using th
 ## Step 9 - Exclude DB files
 
 (optional) Exclude the database files from the file backup.  Since we are backing up the SQL server using the TDP for SQL agent it is unnecessary to back up the same files with the file client.
-Add the correct exclude lines to C:\program files\tivoli\tsm\baclient\dsm.opt.   
+
+Add the correct exclude lines to `C:\program files\tivoli\tsm\baclient\dsm.opt.`   
 
 !!! note "Example"
     ```shell

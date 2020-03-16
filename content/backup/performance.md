@@ -59,7 +59,11 @@ Elapsed processing time:               24:56:18
  * **157 objects uploaded per second, post-dedup**
    * 310 OPS => 1.11M objects per hour.
 
-The run leaves a very small local dedup database cache in `/opt/tivoli/tsm/client/ba/bin/TSMDEDUPDB_TSM1.CLOUD.IPNETT.SE${NODENAME}.DB`.
+The run leaves a very small local dedup database cache in
+
+```
+/opt/tivoli/tsm/client/ba/bin/TSMDEDUPDB_TSM1.CLOUD.IPNETT.SE${NODENAME}.DB
+```
 
 With a size of 263 KiB, it appears it will really be populated on the second run.
 

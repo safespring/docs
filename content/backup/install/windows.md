@@ -7,9 +7,17 @@ It can be run in two modes. The first mode requires that the administrator of th
 Any user with administrative permissions can then install the services on their computer using the installer, zip and password.
 
 The second mode includes the process of creating a new node and therefore requires API credentials and more settings. It is recommended to use credentials with limited numbers nodes and not your fully administrative credentials.
+
 If credentials with unlimited permissions is used it is advised to delete all files in Windows `%TEMP%` directory after installation or failure to install since it may disclose secrets.
 The installer makes it best to remove them but in some scenarios they might be left behind.
-To see options and rules to run simply run `"safespring-baas.2.5.0.exe -help"`. All installer parameters must be in CAPITAL letters. Flags can be in lower case.
+
+To see options and rules to run simply run:
+
+```
+safespring-baas.2.5.0.exe -help
+```
+
+All installer parameters must be in CAPITAL letters. Flags can be in lower case.
 
 ![help](../../images/help.png)
 
@@ -109,9 +117,12 @@ if required. If only TBMR should be installed or updated it can be run with the
 TBMRONLY argument. `safespring-baas.2.5.0.exe TBMRONLY=1`. This method can also be used to license TBMR if it is trial or unlicensed for some reason.
 
 ## Revision history
-* **1.0** Initial version for Windows 8, 8.1 and 2012.
-* **1.1** Initial version for Windows 7, 2008.
-* **1.1.1** Bugfix version for Windows 7, 2008.  *  Handle cleanup when running RDP with per session temporary folders.
+* **1.0**
+    * Initial version for Windows 8, 8.1 and 2012.
+* **1.1**
+    * Initial version for Windows 7, 2008.
+* **1.1.1**
+    * Bugfix version for Windows 7, 2008.  *  Handle cleanup when running RDP with per session temporary folders.
 * **1.0.1**
     * Bugfix version for Windows 8, 8.1 and 2012.
     *  Handle cleanup when running RDP with per session temporary folders.
@@ -279,7 +290,7 @@ Required files - (Right click and 'Save as...'):
     1. If a reboot is unpleasant, at the above decision point, jump to the _"Circumvent reboot during install"_ section below.
     1. Resume the installation, choose Typical installation and accept the UAC pop-up that comes up, "IBM manager".
     1. After installation, answer 'No' to the reboot question.
-    
+
 1. In a command prompt with elevated privileges, execute the "Safespring Root CA installer" to install the Safespring BaaS CA into the GSK (IBM crypto kit) trust database.
     ```
     IPnett-Cloud-Root-CA-win64.bat
