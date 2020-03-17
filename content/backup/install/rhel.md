@@ -97,7 +97,7 @@ echo -n $the_access_key:$the_secret_key | openssl enc -base64 -e
 A typical invocation of the script would be something like:
 
 ```shell
-safespring-backup-setup -f /root/ipnett-baas-credentials.yaml -m user@example.com -C $costcenter -p RHEL-7
+safespring-backup-setup -f /root/safespring-backup-credentials.yaml -m user@example.com -C $costcenter -p RHEL-7
 ```
 
 More detailed usage instructions are found in the man-page, `man
