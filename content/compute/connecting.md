@@ -1,34 +1,42 @@
-#Connecting your virtual servers to your infrastructure
-The instances you have set up in Safespring Compute will get floating IP 
+# Connecting your virtual servers to your infrastructure
+
+## Connecting to Safespring
+
+The instances you have set up in Safespring Compute will get floating IP
 addresses from the SUNET/UNINETT IP pool and are the way of contact for the clients
-connecting to you services. By setting up Security Groups you will be able
+connecting to you services.
+
+By setting up Security Groups you will be able
 to control which clients (based on IP) that can connect to your servers.
 Many applications today support encryption in transit so you come a long way
 with tools like [LetsEncrypt](https://letsencrypt.org/) to uphold secure access to your services.
 
+## Secure transport
 Sometimes application encryption is not enough for secure transport and in
 those cases Safespring offers two solutions:
+
 1. Site-to-site layer 3 VPN - SSLVPN based tunnel
 2. Saferoute - dedicated MPLS VRF in SUNETs/UNINETTs network
 
 ![Connecting to Safespring](/images/connect.png)
 
-
+### Site-to-site
 Site-to-site VPN is easier to set up and works by setting up two tunnel
-enpoints, one in Safesprings infrastructure and one in your infrastructure
+endpoints, one in Safesprings infrastructure and one in your infrastructure
 at your site. By routing the floating IPs that you use for your servers in
 the Safespring infrastructure to your tunnel endpoint server at site, you
 can ensure that all traffic to those virtual machines go through the tunnel
 encrypted. To handle the return traffic you respectively set up routes for
-the IPs (hosts or networks) that you virtual machines should be able to 
+the IPs (hosts or networks) that you virtual machines should be able to
 communicate to the endpoint at Safespring.
 
+### Saferoute
 Saferoute is somewhat more work to set up but will give you a separate routing
-instance (VRF) in the SUNET/UNINETT MPLS network effectively giving you a port in your 
+instance (VRF) in the SUNET/UNINETT MPLS network effectively giving you a port in your
 edge router to SUNET/UNINETT where all the traffic to your servers will be served.
 This is especially good if you have security policies at your site which
-enforces infrastrucure to be behind a central firewall. You will also be able
-to pick which IP-addresses you want to use for your virtual machines in the 
+enforces infrastructure to be behind a central firewall. You will also be able
+to pick which IP-addresses you want to use for your virtual machines in the
 Safespring infrastructure.
 
 Below we will describe both ways of connecting to you virtual instances.
@@ -43,8 +51,7 @@ and whistles that you might would like to have in production but it is a good
 starting point.
 
 To start, copy the cloud-config file below and edit it to suit your
-environment . This file is in yaml syntax and you can read more at
-http://cloudinit.readthedocs.io/en/latest/topics/examples.html
+environment . [This file is in yaml syntax](http://cloudinit.readthedocs.io/en/latest/topics/examples.html)
 
 ```shell
 #cloud-config
@@ -216,7 +223,16 @@ $ openstack port show 08c66eba-6a6c-4ca8-811e-68006d8b24f5
 
 ### The client
 
-This example can be used in the same way as the server example through Horizon or with cli. Please observe the note below the example. 
+This example can be used in the same way as the server example through Horizon or with cli.
+
+!!! info
+    In order to fully automate you must use some method to transfer the client files from the VPN-server to the VPN-client.
+
+    This can be made in several ways, ex. `scp /etc/openvpn/ccd/client1.files.tar ubuntu@10.0.0.1:/tmp`, from the server
+    to the client.
+
+    This script doesn't provide that step so you need to manually transfer the file and rerun the script on the clientside again.
+    `bash /root/setup-openvpn.sh`
 
 ```shell
 #cloud-config
@@ -266,14 +282,6 @@ runcmd:
 ```
 
 
-> **Note**
-> In order to fully automate you must use some method to transfer the client files from the VPN-server to the VPN-client.
-> This can be made in several ways, ex. "scp /etc/openvpn/ccd/client1.files.tar ubuntu@10.0.0.1:/tmp", from the server
-> to the client.
-> This script doesn't provide that step so you need to manually transfer the file and rerun the script on the clientside again.
-> "bash /root/setup-openvpn.sh"
-
-
 ### Routing
 
 At the "Home network" there is an option to add the destination route
@@ -290,16 +298,12 @@ to the "Home network" with a next-hop to the vpn-server.
 
 You can easily follow packets with tcpdump even on the "tun" interfaces.
 
-### Notes
-
-> **Note**
->
-> It is recommended to update the OS and reboot the server as part of
-> the setup.
+!!! note
+    It is recommended to update the OS and reboot the server as part of the setup.
 
 ##Dedicated Access with Saferoute
 ![Connecting to Safespring](/images/connect.png)
 
 The second option to set up connectivity is by using Saferoute where a dedicated MPLS IPVPN is set up through SUNETs/UNINETTs network. The advantages is that that the virtual servers in the infrastructure will logically be placed behind the firewall at the campus site. This makes managing the firewall rules for the virtual infrastructure no different from managing the servers at the site since traffic to both environments will go through the firewall at the campus site. All traffic between servers at the campus and the Safespring infrastructure will also go through this private channel.
 
-To set this up a part of the Campus IP-range must be reserved for the infrastructure at Safespring. Depending on the need of addresses in the virtual infrastructure the size of the range might vary but it is better to reserve some extra addresses since the administrative work for setting this up includes work both at SUNET/UNINETT, Safespring and the central IT at campus. To order Saferoute - contact Safespring and fill in the form at [here](https://goo.gl/forms/usCnl6T8nEIZmAJW2).  
+To set this up a part of the Campus IP-range must be reserved for the infrastructure at Safespring. Depending on the need of addresses in the virtual infrastructure the size of the range might vary but it is better to reserve some extra addresses since the administrative work for setting this up includes work both at SUNET/UNINETT, Safespring and the central IT at campus. To order Saferoute - contact Safespring and [fill in the form](https://goo.gl/forms/usCnl6T8nEIZmAJW2).  

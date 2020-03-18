@@ -1,8 +1,7 @@
 # Image service
 
-> **note**
-> Some of these instructions require use of Openstack command line
-> tools.
+!!! info
+    Some of these instructions require use of Openstack command line tools.
 
 ## Uploading an image
 
@@ -38,11 +37,8 @@ Horizon webui.
 1.  Create a snapshot from an existing instance (either via openstack
     cli or in the Horizon webui).
 
-> **note**
->
-> Creating a snapshot takes some time since the whole instance disk image
-> will be uploaded to the Glance image service over a
-> network connection. This will be the time to get some coffee.
+    !!! note
+        Creating a snapshot takes some time since the whole instance disk image will be uploaded to the Glance image service over a network connection. This will be the time to get some coffee.
 
 2.  From the command line, list the all images in the project and verify
     that the snapshot is visible:
@@ -50,10 +46,11 @@ Horizon webui.
         glance image-list
 
 3.  Use the following commmand to download the image to local storage:
-
-        glance image-download _uuid_of_previously_created_snapshot_ \
-            --file _local_filename_to_save_raw_image_to_ \
-            --progress
+    ```
+    glance image-download _uuid_of_previously_created_snapshot_ \
+        --file _local_filename_to_save_raw_image_to_ \
+        --progress
+    ```
 
 ## Launching a new instance based on an uploaded custom image
 
@@ -74,8 +71,8 @@ After the upload have finished, verify that the image is visible:
     glance image list
 
 The uploaded image can now be used to launch new instances. In the
-Horizon webui, navigate to "Compute" -&gt; "Images". The uploaded image
-should now be visible in the list. Click the "Launch" button to the
+Horizon webui, navigate to `Compute` -&gt; `Images`. The uploaded image
+should now be visible in the list. Click the `Launch` button to the
 right of the uploaded image and fill in instance information as usual.
 
 ## Changing disk type on an image
@@ -111,7 +108,7 @@ virtio-only instance using the second image and lastly delete the
 first instance.
 
 This can also be used to change the network card type, using the
-property ``hw_vif_model``. Default is "virtio" but the list also has
-"e1000", "ne2k_pci", "pcnet", "rtl8139" where e1000 emulates an Intel
+property `hw_vif_model`. Default is `virtio` but the list also has
+`e1000`, `ne2k_pci`, `pcnet`, `rtl8139` where `e1000` emulates an Intel
 Pro gigabit ethernet card, and the others are different versions of
 old chipsets almost never used nowadays. This is rarely needed.

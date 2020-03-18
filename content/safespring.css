@@ -3,62 +3,227 @@ primary color #417da5
      or #195F8C
 */
 
-@import url('https://fonts.googleapis.com/css?family=Hind:600|Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Hind:300|Montserrat');
 
 body {
   font-family: Montserrat;
   color: #323232;
 }
 
-h1, h2 {
+h2 {
   color: #195f8c;
   font-family: Hind;
-  font-weight: 600 !important;
+  font-weight: 300 !important;
+  margin: 4rem 0 -1rem !important;
+}
+
+h1 {
+  font-family: Hind;
+  font-weight: 300 !important;
+  color: #fafefe !important;
+  background-image: linear-gradient(to bottom right, #3C9BCD, #195f8c);
+  margin: 0 0 30px -2.4rem !important;
+  border-radius: 3px;
+  padding: 8rem 8rem 2.4rem 2.4rem;
 }
 
 h3, h4, h5, h6 {
-  color: #323232;
+  color: #3C9BCD;
   font-family: Hind;
-  font-weight: 600 !important;
+  font-weight: 300 !important;
+  margin: 3rem 0 -1rem !important;
+}
+
+.codehilite pre {
+  background-color: #EBF1F5 !important;
+}
+
+img {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
 }
 
 label, nav {
   font-family: Hind;
-  font-weight: 600 !important;
+  font-weight: 300 !important;
 }
 
-ol {
-  margin: 0 0 1.5em;
-  padding: 0;
-  counter-reset: item;
+.md-nav--secondary {
+  border: none !important;
+  padding: 10px !important;
 }
 
-ol > li {
+
+.md-nav__title--site {
+  font-size: 1.5em;
+  padding: 0 0 20px 0;
+}
+
+
+.md-sidebar--primary li {
+  font-size: 1.3em;
+  border-top: 0.5px solid #EBF1F5;
+  padding: 6px 10px 10px 10px;
   margin: 0;
-  padding: 0 0 0 1em;
-  text-indent: -1em;
-  list-style-type: none;
-  counter-increment: item;
 }
 
-ol > li:before {
-  display: inline-block;
-  width: 1em;
-  padding-right: 0.5em;
-  font-weight: bold;
-  text-align: right;
-  content: counter(item) ".";
+.md-sidebar--primary li li{
+  font-size: 1.1em;
+  border-top: none;
+  padding: 0 0 0 20px;
+  margin: 0;
 }
+
+.md-nav__list {
+  padding-top: 0;
+}
+
+/* START - notes, warning, information cards */
+
+.admonition.note {
+  border-left: .4rem solid #3C9BCD !important;
+}
+
+.admonition.info {
+  border-left: .4rem solid #32CD32 !important;
+}
+
+.admonition.warning {
+  border-left: .4rem solid #FA690F !important;
+}
+
+.warning .admonition-title::before {
+  color: #FA690F !important;
+}
+
+.info .admonition-title::before {
+  color: #32CD32 !important;
+}
+
+.info .admonition-title {
+  background-color: rgba(50, 205, 5, 0.1) !important;
+  color: #32CD32;
+}
+
+.warning .admonition-title {
+  background-color: rgba(250, 105, 15, 0.1) !important;
+  color: #FA690F;
+}
+
+.note .admonition-title {
+  background-color: #EBF1F5 !important;
+  color: #195F8C;
+}
+
+.admonition-title::before {
+  color: #3C9BCD !important;
+}
+
+/* END - notes, warning, information cards */
+
+/* START - tables */
+
+thead>tr>th {
+  background-color: #fafefe !important;
+  color: #3C9BCD !important;
+  font-family: Hind !important;
+  font-weight: 300 !important;
+  border-bottom: 1px dotted #3C9BCD !important;
+}
+
+table {
+  box-shadow: none !important;
+  border-bottom: 1px dotted #3C9BCD !important;
+}
+
+.md-typeset table:not([class]) td {
+  border: 0;
+}
+
+tr:nth-child(odd) {
+  background-color: #EBF1F5;
+}
+
+/* END - tables */
+
+.md-content ul {
+  list-style: none; /* Remove default bullets */
+}
+
+.md-content ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #3C9BCD; /* Change the color */
+  font-family: auto;
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+.md-content ul li ul li::before {
+  content: "–";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #FA690F; /* Change the color */
+  font-family: auto;
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+}
+
+.md-content ul li ul li ul li::before {
+  content: "+";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #32CD32; /* Change the color */
+  font-family: auto;
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+}
+
+button.md-clipboard:before {
+  color: rgba(25,95,140,.6) !important;
+}
+
+.md-container {
+  background-color: #FAFEFE;
+}
+
+.md-sidebar--secondary {
+  margin-top: 20px;
+  background-color: #FFF;
+  height: fit-content !important;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.md-clipboard:hover:before {
+  color: rgba(25,95,140,1) !important;
+}
+
 blockquote {
   text-indent: 0;
   margin: 10px 0;
 }
-.md-sidebar--primary li {
-  font-size: 1.2em;
+
+.md-sidebar--primary .md-sidebar__inner {
+  border-right: 0.5px solid #EBF1F5;
+  border-bottom: 0.5px solid #EBF1F5;
 }
+
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+.md-nav__list {
+  color: #195f8c;
+}
+
+.md-nav__list .md-nav__list {
+  color: #323232;
+  font: 400 Montserrat;
+  padding: 0;
+}
+
 .md-typeset .md-content__icon {
   font-family: Material Icons;
 }
+
 .md-typeset a {
   color: #195f8c;
   font-family: Hind;
@@ -101,6 +266,15 @@ blockquote {
   }
 }
 
+.superfences-tabs>label:hover {
+  color: #195f8c !important;
+}
+
+.superfences-tabs>input:checked+label {
+  color: #fa690f !important;
+  font-weight: 600 !important;
+}
+
 
 /*
 accent color #fa690f
@@ -122,27 +296,31 @@ accent color #fa690f
 }
 
 .md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover {
-  background-color: #fa690f
+  background-color: #fa690f;
 }
 
 .md-source-file:hover:before {
-  background: #fa690f
+  background: #fa690f:
 }
 
 .md-typeset .codehilite::-webkit-scrollbar-thumb:hover {
-  background-color: #fa690f
+  background-color: #fa690f:
 }
 
 .md-typeset .footnote li:hover .footnote-backref:hover, .md-typeset .footnote li:target .footnote-backref {
-  color: #fa690f
+  color: #fa690f:
 }
 
 .md-typeset [id] .headerlink:focus, .md-typeset [id]:hover .headerlink:hover, .md-typeset [id]:target .headerlink {
-  color: #fa690f
+  color: #fa690f:
 }
 
 @media only screen and (min-width:60em) {
   .md-search__scrollwrap::-webkit-scrollbar-thumb:hover {
-    background-color: #fa690f
+    background-color: #fa690f:
   }
+}
+
+.md-footer-meta {
+  display: none;
 }

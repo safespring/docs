@@ -1,6 +1,6 @@
 # VMware import
 
-## i. Overview
+## Overview
 
 To import disk images from VMware, a few steps are required.
 
@@ -8,21 +8,20 @@ A bare minimum approach listed below. We use two different Linux servers below s
 
 The reason we copy the image before we make driver modifications is to preserve the clean VMware server just in case. Relying on VMware snapshots isn't ideal because it is complicated to make raw copies of volumes that are snapshotted.
 
-**Method at a glance**
+!!! info "Method at a glance"
 
-  1. Transfer boot volume to the Linux server with Libvirt and KVM.
-  2. Prepare libvirt template for the server being transferred:
-    * Boot up the server, login, install Virtio drivers, guest tools and uninstall VMware tools
-    * Reboot server and validate driver installation
-  3. Upload image to Safespring Compute, create volume and boot new server from volume
+    1. Transfer boot volume to the Linux server with Libvirt and KVM.
+    2. Prepare libvirt template for the server being transferred:
+        * Boot up the server, login, install Virtio drivers, guest tools and uninstall VMware tools
+        * Reboot server and validate driver installation
+    3. Upload image to Safespring Compute, create volume and boot new server from volume
 
 ### Prerequisites
 
   * A CentOS (7 preferred) "datamover" server VM setup in the VMware cluster, with EPEL repository and `pigz`, `pv`, `screen` installed. Give it 4-8 GB RAM and 2-4 vCPUs.
-  * Another Linux server, "libvirt host", accessible using SSH from above CentOS host, prepared with Openstack CLI, libvirt/KVM and a several hundred GB large storage volume (HDD performance (100+ MB/s) is sufficient). **Do not connect its network adapter to a working network** (for safety).
+  * Another Linux server, "libvirt host", accessible using SSH from above CentOS host, prepared with Openstack CLI, libvirt/KVM and a several hundred GB large storage volume (HDD performance (100+ MB/s) is sufficient). **Do not connect its network adapter to a working network (for safety).**
   * Credentials to access the OpenStack Project using CLI -- not explained in this guide.
   * If Windows among VM OS' to be transferred, download `virtio-win.iso` from https://fedoraproject.org/wiki/Windows_Virtio_Drivers
-
 
 ## 1. Image transfer to "libvirt host"
 
@@ -40,22 +39,20 @@ In the "datamover":
   * Login to the linux
   * Start a screen window (e.g `screen -S datamover`)
   * Verify e.g. using `cfdisk /dev/sdb` that the recently added harddrive is indeed `/dev/sdb`. (`lsblk` is another useful tool.)
-  * Run a line similar to:
+  * Run a line similar to the following example, where `$username` is the username at and `$hostname` the hostname or IP address of the "libvirt host".
 ```shell
 dd if=/dev/sdb bs=16M | pigz -c -1 | pv | \
   ssh -c chacha20-poly1305@openssh.com -p 22 $username@$hostname \
   "pigz -cd | dd of=/mnt/bigstoragedevice/imagename.raw bs=16M"
 ```
-(where `$username` is the username at and `$hostname` the hostname or IP address of the "libvirt host".)
 
 ## 2. Image driver preparation
 
-Note:
-
-  * It is recommended to first make a local copy of the image file on the same storage device, in case you mess up something, so you don't need to redo the SSH copy.
-  * If being the first VM to be copied, prepare a VM template in libvirt. Example that follows uses `virt-manager`:
-    * Choose to create a new VM from an existing disk image and point out the recently copied image. Pick the correct OS.
-  * Follow the OS-specific steps below.
+!!! info
+    * It is recommended to first make a local copy of the image file on the same storage device, in case you mess up something, so you don't need to redo the SSH copy.
+    * If being the first VM to be copied, prepare a VM template in libvirt. Example that follows uses `virt-manager`:
+      * Choose to create a new VM from an existing disk image and point out the recently copied image. Pick the correct OS.
+    * Follow the OS-specific steps below.
 
 ### Windows 2012 R2
 
@@ -70,7 +67,8 @@ Note:
     * Browse to `vioserial/2k12r2/amd64/` and right-click `vioserial.inf` and hit "Install".
     * Browse to `viostor/2k12r2/amd64/` and right-click `viostor.inf` and hit "Install".
     * Browse to `guest-agent` and double click `qemu-ga-x64.msi`. It will automatically install.
-  * Open up Windows' `Add or remove programs` window, and uninstall `VMware Tools`. **Do NOT accept to reboot the server at the end**
+  * Open up Windows' `Add or remove programs` window, and uninstall `VMware Tools`.
+    * **Do NOT accept to reboot the server at the end.**
   * Power off the server completely.
   * Once powered off, go to the VM configuration and remove the 1MB dummy harddrive, then change the bus type emulation of C: from IDE to Virtio. Save changes.
   * Boot the VM again (for fun: note the speed difference from last time)
@@ -107,7 +105,8 @@ Note:
     - For "PCI Simple Communications Controller": Choose `virtio/vioserial/2k8r2/amd64/`
     - For "SCSI Controller": Choose `virtio/viostor/2k8r2/amd64/`
   * Then, browse to the installed ISO in a file browser, and install `guest-agent/qemu-ga-x64.msi`.
-  * Open up Windows' `Programs and Features` window, and uninstall `VMware Tools`. **Do NOT accept to reboot the server at the end**
+  * Open up Windows' `Programs and Features` window, and uninstall `VMware Tools`.
+    * **Do NOT accept to reboot the server at the end**
   * Power off the server completely.
   * Once powered off, go to the VM configuration and remove the 1MB dummy harddrive, then change the bus type emulation of C: from IDE to Virtio. Save changes.
   * Boot the VM again (for fun: note the speed difference from last time)
@@ -126,9 +125,9 @@ Use [the Windows 2008 R2 (x64) guide](#windows-2008-r2-x64).
 
 ### Windows 2003
 
-  * Make sure the VM template imports C: using `IDE` bus type emulation.
-  * Add a secondary dummy harddrive at 1 MB and use `Virtio` bus type emulation.
-  * Make sure the CD-ROM emulation uses `IDE` bus type emulation and has the virtio-win ISO mounted.
+  * Make sure the VM template imports `C:` using `IDE` bus type emulation.
+  * Add a secondary dummy hard-drive at 1 MB and use `Virtio` bus type emulation.
+  * Make sure the CD-ROM emulation uses `IDE` bus type emulation and has the `virtio-win` ISO mounted.
   * Boot machine and login (for fun: note how slow it is to boot):
     * Windows will after login display a number of "Welcome to the Found New Hardware Wizard" wizard windows.
     * It is impossible to see the mapping between these and the underlying devices.
@@ -139,7 +138,7 @@ Use [the Windows 2008 R2 (x64) guide](#windows-2008-r2-x64).
     - "Safely remove PCI Device"
     - "Safely remove SCSI Controller"
     - "Safely remove Ethernet Controller"
-  * You may also experience that a hardware installation was performed automatially and successfully, in the form of a "System Settings Change" dialogue box stating "Windows has finished installing new devices. The software that supports your device requires that you restart your computer. You must restart your computer before the new settings will take effect. Do you want to restart your computer now?":
+  * You may also experience that a hardware installation was performed automatically and successfully, in the form of a "System Settings Change" dialogue box stating "Windows has finished installing new devices. The software that supports your device requires that you restart your computer. You must restart your computer before the new settings will take effect. Do you want to restart your computer now?":
     * **NB!** Do not reboot!
     * Instead continue and fix the drivers.
   * Open up the "Device Manager" and go to "Other Devices" where these should be listed with a warning icon:
@@ -155,10 +154,11 @@ Use [the Windows 2008 R2 (x64) guide](#windows-2008-r2-x64).
     - For "SCSI Controller": Choose `virtio/viostor/2k3/{x86 or amd64}/`
     - for Audio Device on High Definition Audio bus -- if Windows did not notify the successful installation of this driver, just skip it
   * Then, browse to the installed ISO in a file browser, and install either `guest-agent/qemu-ga-x86.msi` or `guest-agent/qemu-ga-x64.msi`.
-  * Open up Windows' `Add or remove programs` window, and uninstall `VMware Tools`. **Do NOT accept to reboot the server at the end**:
+  * Open up Windows' `Add or remove programs` window, and uninstall `VMware Tools`.
+    * **Do NOT accept to reboot the server at the end**:
     * If there is no option to "Remove" for VMware tools in "Add or remove programs", mount a VMware tools iso (i.e. https://packages.vmware.com/tools/esx/5.5/windows/index.html ) and, following https://kb.vmware.com/s/article/2010137, open `cmd`, navigate to the cd drive, type `setup /c` or `setup64 /c` depending on your OS architecture.
   * Power off the server completely.
-  * Once powered off, go to the VM configuration and remove the 1MB dummy harddrive, then change the bus type emulation of C: from IDE to Virtio. Save changes.
+  * Once powered off, go to the VM configuration and remove the 1MB dummy hard-drive, then change the bus type emulation of `C:` from IDE to Virtio. Save changes.
   * Boot the VM again (for fun: note the speed difference from last time)
   * Occasionally, Windows may do some driver work and immediately ask to reboot again -- if so, do it.
   * Validation: Login, open up `device manager` and check that the following devices & drivers showed up:
@@ -191,11 +191,11 @@ Now it's time to:
 
 In your Openstack CLI shell, run:
 
-```
+```shell
 openstack image create --min-disk $mindisk --file $imagename.raw $imagename
 ```
 
-Replace `$imagename` and `$mindisk` as necessary. `$mindisk` should be equal to the drive size. Unit is GB. Round up. :)
+
 
 This command creates an image in Openstack's Image Service, Glance. The upload takes a while and there is no progress bar. Check your network transfer rate.
 
@@ -224,7 +224,7 @@ Copy the UUID of the network you wish to boot the server in, to variable `$net_u
 
 In your Openstack CLI shell, run:
 
-```
+```shell
 openstack server create --volume $imagename --flavor b.large \
 --nic net-id=$net_uuid --wait $vmname
 ```

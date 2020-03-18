@@ -3,7 +3,7 @@
 ## Getting s3cmd
 
 Most linux distributions will have s3cmd in their repos, so a simple
-"apt-get install s3cmd" or "yum install s3cmd" (perhaps after adding
+`apt-get install s3cmd` or `yum install s3cmd` (perhaps after adding
 the RH/CentOS EPEL repos) should suffice. Otherwise, the project
 website is http://s3tools.org/s3cmd
 
@@ -11,56 +11,61 @@ website is http://s3tools.org/s3cmd
 
 s3cmd can be told to output a file containing all options in their
 current state, but it holds a lot of unneeded information so a simple
-start config could be as short as:
+start config could be as short as the following example and nothing else.
 
 $HOME/.s3cfg:
 
-    [default]
-    access_key = Access_key_goes_here
-    secret_key = REDACTED
-    check_ssl_certificate = True
-    guess_mime_type = True
-    host_base = s3.sto1.safedc.net
-    host_bucket = s3.sto1.safedc.net
-    use_https = True
-
-and nothing else.
+```
+[default]
+access_key = Access_key_goes_here
+secret_key = REDACTED
+check_ssl_certificate = True
+guess_mime_type = True
+host_base = s3.sto1.safedc.net
+host_bucket = s3.sto1.safedc.net
+use_https = True
+```
 
 ## Simple s3cmd usage
 
 When you have the program installed and a config file in place, you
 can make a bucket and place a file or two in there.
 
-    s3cmd mb s3://unique-bucket-name
+```shell
+s3cmd mb s3://unique-bucket-name
 
-    s3cmd put localfile.txt s3://unique-bucket-name
+s3cmd put localfile.txt s3://unique-bucket-name
 
-    upload: 'localfile.txt' -> 's3://unique-bucket-name'
-    524 of 524   100% in  1s    3.68 MB/s  done
+upload: 'localfile.txt' -> 's3://unique-bucket-name'
+524 of 524   100% in  1s    3.68 MB/s  done
 
-    s3cmd ls s3://unique-bucket-name
+s3cmd ls s3://unique-bucket-name
+```
 
-Other commands include "sync" to synchronize a local folder to S3
+Other commands include `sync` to synchronize a local folder to S3
 storage or the other way around:
 
-    s3cmd sync local/ s3://unique-bucket-name
-    s3cmd sync  s3://unique-bucket-name local/
+```shell
+s3cmd sync local/ s3://unique-bucket-name
+s3cmd sync  s3://unique-bucket-name local/
+```
 
 ## Make files public
 
-If you want to make a certain file publically available, you can
-either  add -P while uploading:
+If you want to make a certain file publicly available, you can
+either  add `-P` while uploading afterwards to publish the file.
 
-    s3cmd put -P file1 file2 s3://unique-bucket-name
+``` tab="Before uploading"
+s3cmd put -P file1 file2 s3://unique-bucket-name
+```
 
-or use:
+``` tab="After uploading"
+s3cmd setacl -P s3://unique-bucket-name/file1
+```
 
-    s3cmd setacl -P s3://unique-bucket-name/file1
 
-afterwards to publish the file.
-
-NOTE: the public upload will return a URL to the now-available
-file but with http://... which you should change to https://
+!!! warning "Change to https"
+    The public upload will return a URL to the now-available file but with `http://...` which you should change to `https://`.
 
 ## Performance options in $HOME/.s3cfg
 
@@ -91,7 +96,7 @@ performance.
 
 If you have huge amounts of data to send, you can of course parallelize
 the whole operation by starting several s3cmd clients, perhaps handling
-one directory each or with separate --files-from=FILE input lists.
+one directory each or with separate `--files-from=FILE` input lists.
 
 ## Other flags and options
 
@@ -105,7 +110,8 @@ only send the newly arrived files which doesn't already exist at the
 s3 side.
 
 In order to prevent s3cmd from re-calculating the local MD5 sums on every run, add a
-```--cache-file=/path/to/cache.md5s``` to the s3cmd invocation and it
+
+`--cache-file=/path/to/cache.md5s` to the s3cmd invocation and it
 will note the timestamp of the files along with the MD5 sum so that it can skip that part on every upcoming run.
 
     s3cmd --list-md5 ls s3://unique-bucket-name

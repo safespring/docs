@@ -6,12 +6,10 @@ If you want to contribute, please consider the following:
 
 * An [account on GitHub.com][gh] is needed in order to fork this repository and
   make changes to it.
-
 * The documentation on this site is written using a text markup language named
   *Markdown*. Please read [this article][md] for a quick intro to its basic
   features. Next, comparing this [example of Markdown elements][mdex] with its
   [source][mdexsource] will get you going.
-
 * The documentation is published under a [Creative Commons BY-SA 4.0][ccsa4]
   license and all contributions will implicitly adhere to that license.
 
@@ -23,7 +21,7 @@ If you want to contribute, please consider the following:
 
 ## Fast GitHub-based workflow
 
-For quick, small changes - like fixing a typo or rewording something - the
+For quick, small changes, like fixing a typo or rewording something, the
 easiest way to contribute is directly on GitHub!
 
 1. Click the pencil to the right of the header on the page. This will open the
@@ -47,8 +45,8 @@ suggesting further tweaks or edits. Thank you very much :-)
 
 ## Larger contributions
 
-### Cloning the repository
+1. Cloning the repository
 
-### Making changes or additions
+2. Making changes or additions
 
-### Submitting a pull request
+3. Submitting a pull request

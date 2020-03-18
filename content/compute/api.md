@@ -19,18 +19,15 @@ Openstack.org instructions on how to install the client can be found
 ### Linux
 
 First install the neccessary OS packages depending on what distribution you are
-using.
+using. If the `python-virtualenvwrapper` package is not available you might have to install `epel-release` first.
 
-#### Red Hat Enterprise Linux, CentOS or Fedora
+```shell tab="Red Hat Enterprise Linux, CentOS or Fedora"
+yum install python-devel python-pip python-virtualenvwrapper gcc
+```
 
-If the _python-virtualenvwrapper_ package is not available you might have to
-install _epel-release_ first.
-
-    yum install python-devel python-pip python-virtualenvwrapper gcc
-
-#### Ubuntu or Debian
-
-    apt-get install python-dev python-pip virtualenvwrapper build-essential
+```shell tab="Ubuntu or Debian"
+apt-get install python-dev python-pip virtualenvwrapper build-essential
+```
 
 #### Installing the client using virtualenvwrapper and pip
 
@@ -135,7 +132,7 @@ export OS_USER_DOMAIN_NAME=<DOMAIN>
 ## Example scripts to create servers
 
 This instruction will show you how to start new servers through the API. To simplify we will first create
-a network in the gui to which we then connect all our servers. 
+a network in the gui to which we then connect all our servers.
 
 Make sure that you have a working rc-file according to the insctructions [here](https://docs.safespring.com/compute/api/).
 
@@ -188,7 +185,7 @@ while read servername; do
 done <servers.txt
 ```
 
-You also need to put the names of the servers that you want to create in the text-file servers.txt in the same folder as the script one name per line.
+You also need to put the names of the servers that you want to create in the `text-file servers.txt` in the same folder as the script one name per line.
 
 ```shell
 server1
@@ -206,19 +203,21 @@ while read servername; do
 done <servers.txt
 ```
 
-In order to connect to you servers you need to add security groups and add floating IPs. If you book floating IPs 
+In order to connect to you servers you need to add security groups and add floating IPs. If you book floating IPs
 and create security groups in the portal you can use these alternate scripts to add that to you instances
 on the fly.
 
-You first need to create a server2.txt file with the following content:
+You first need to create a `server2.txt` file with the following content:
+
 ```shell
 server_name_1;floating_IP_1;security_group
 server_name_2;floating_IP_2;security_group
 ```
 
 You must ensure that the name of the security group exists and that the floating IPs you are using are reserved in
-your project but unallocated. Once you have that file in place you can use the follwing script to create the servers
+your project but unallocated. Once you have that file in place you can use the following script to create the servers
 with the correct names, security group and a floating IP assigned to it:
+
 ```shell
 #!/bin/bash
 NETID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -241,6 +240,7 @@ done <servers2.txt
 ```
 
 And in order to delete the servers again - use this altered script:
+
 ```shell
 #!/bin/bash
 
@@ -294,4 +294,3 @@ terraform plan
 terraform apply
 terraform destroy
 ```
-

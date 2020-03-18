@@ -1,13 +1,12 @@
 # Known Issues
 
 There are some currently known issues in the Compute platform. This page
-describes the most common pitfalls. Known issues for Backup is under the [Backup
-FAQ page](/backup/faq).
+describes the most common pitfalls. Known issues for Backup is under the [Backup FAQ page](/backup/faq).
 
 ## New certificate and hostname on Safespring Backup Service
 
-Safespring backup service is changing hostname: tsm1.cloud.ipnett.se becomes
-tsm1.backup.sto2.safedc.net.
+Safespring backup service is changing hostname: `tsm1.cloud.ipnett.se` becomes
+`tsm1.backup.sto2.safedc.net`.
 
 All customers running Safespring Backup needs to update hostnames and
 certificates for Safespring Backup services to start using the new hostnames.
@@ -15,35 +14,35 @@ See [this blogpost](https://docs.safespring.com/service/known_issues/) for detai
 
 ## Resize operations disabled
 
-Due to different issues with resize operations, we have disabled the resize operations 
-users. If you need to resize instances, please contact [support](/service/support/). 
+Due to different issues with resize operations, we have disabled the resize operations
+users. If you need to resize instances, please contact [support](/service/support/).
 
-We excpect to support user initiated resize operations after a future system upgrade.
+We expect to support user initiated resize operations after a future system upgrade.
 
 ## DNS Resolver
 
 The built in resolver in the platform has some issues in the current version.
 It has been reported to be slow and not to respond to queries in a timely
 manner. The best work around is to provide another resolver when creating the
-network to which you connect your instances. Use 89.32.32.32 which is SUNETs resolver. It is done in the third tab in the
+network to which you connect your instances. Use `89.32.32.32` which is SUNETs resolver. It is done in the third tab in the
 "Create Network" dialogue:
 
 ![Create Network Tab 3](/images/create-network-dia2.png)
 
 In the picture above we picked Googles resolver but any external resolver would
 work. Please note that this setting can only set when creating the network in
-the GUI. In order to update this setting on an existing network - the API must
+the GUI. In order to update this setting on an existing network, the API must
 be used.
 
 ## Instance operations
 
 "Create Snapshot" only works for smaller instances at the moment. This has to
-do with some compability issues with OpenStack and the Ceph backend. With the
+do with some compatibility issues with OpenStack and the Ceph backend. With the
 coming upgrade of OpenStack, this is prioritized to get working for all kinds
 of instances.
 
 In the drop-down menu in the instance listing there are some operations which
-are unsupported at the moment. It does not mean that they fail - but they could
+are unsupported at the moment. It does not mean that they fail,  but they could
 lead to data-loss and therefore not recommended for use. Problems with using
 "Suspend" and "Resize" while a volume was attached to the instance have been
 reported. To ensure that the attached volume persists after the operation it
@@ -61,7 +60,7 @@ very long time for larger instances and should be used with caution.
 
 For every network you create which is connected to a router with an external
 gateway another network also will show up in the network listing and network
-topolgy view:
+topology view:
 
 ![Network Listing](/images/snat-network.png)
 
@@ -73,8 +72,7 @@ platform.
 ## Network operations in the GUI
 
 Right now the operations to change admin state and to change name of a network
-does not work in the GUI. We recommend our users to use [API
-Access](/compute/api/) to perform these operations.
+does not work in the GUI. We recommend our users to use [API Access](/compute/api/) to perform these operations.
 
 
 ## Backup client incompatibility with local Windows NTFS deduplication enabled
@@ -87,38 +85,34 @@ in the backup client.
 
 ## Too recent version of shade results in images not showing
 
-We have had an instance where a newer (1.24.0) version of shade caused some
+We have had an instance where a newer (`1.24.0`) version of shade caused some
 images to become unavailable for provisioning when using ansible.
 
-The solution was to downgrade shade to a known good (1.12.1) version.
+The solution was to downgrade shade to a known good (`1.12.1`) version.
 
 ## Unstable ipv6 connectivity
 
-If you experiance flapping ipv6 connectivity it could be resolved either by
+If you experience flapping ipv6 connectivity it could be resolved either by
 setting a static default route and not depend on RA.
-Remove the "accept_ra 1" if it exists in you network configuration file or
-any sysctl settings for accept_ra.
+Remove the `accept_ra 1` if it exists in you network configuration file or
+any sysctl settings for `accept_ra`.
 
 !!! note "Set static default route."
+    This is an example, check your instance network address and change accordingly.
 
-This is an example, check your instance network address and change accordingly.
+      `# ip -6 route add default via 2001:6b0:5a:4017::1`
 
-`# ip -6 route add default via 2001:6b0:5a:4017::1`
+      You may need to delete the RA route first if it exists.
 
-You may need to delete the RA route first if it exists.
-
-`# ip -6 route delete default`
+      `# ip -6 route delete default`
 
 Alternative configure all ipv6 settings static.
 
 !!! note "Set static ipv6."
+    Find your ipv6 address from Horizon or by CLI and insert it as `ipv6_address` and set `ipv6_gateway` to the same subnet but `::1` at the end.
 
-Find your ipv6 address from Horizon or by CLI and insert it as "ipv6_address"
-and set "ipv6_gateway" to the same subnet but ::1 at the end. No quotes.
 
-### Debian or Ubuntu
-
-```
+``` shell tab="Debian or Ubuntu"
 iface ens6 inet6 static
   address "ipv6_address"
   netmask 64
@@ -127,9 +121,7 @@ iface ens6 inet6 static
   dns-nameservers 2001:4860:4860::8844 2001:4860:4860::8888
 ```
 
-### CentOS and Fedora
-
-```
+``` shell tab="CentOS and Fedora"
 IPV6INIT=yes
 IPV6ADDR="ipv6_address"/64
 IPV6_DEFAULTGW="ipv6_gateway"

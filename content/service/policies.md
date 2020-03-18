@@ -1,4 +1,4 @@
-# Policies and SLA
+# Safespring Policies and SLA
 
 ## Storage and Compute Service level agreement (SLA)
 
@@ -13,14 +13,14 @@ up to 24 hours for replies.
 ## Safespring customer support policy for security testing
 
 Customers are welcome to perform security testing against their infrastructure
-hosted by Safespring. The following limitiation apply:
+hosted by Safespring. The following limitation apply:
 
 The following activities are prohibited:
 
-- Denial of Service, Distributed denial of service (DDoS) or simulations of DoS
+* Denial of Service, Distributed denial of service (DDoS) or simulations of DoS
   or DDoS attacks.
-- Flooding attacks (HTTP flood attacks, API requests, login requests etc).
-- SYN flooding, ICMP flooding, UDP flooding.
+* Flooding attacks (HTTP flood attacks, API requests, login requests etc).
+* SYN flooding, ICMP flooding, UDP flooding.
 
 Before doing security testing, we kindly ask you to inform us at
 support@safespring.com
