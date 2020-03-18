@@ -14,7 +14,7 @@ h2 {
   color: #195f8c;
   font-family: Hind;
   font-weight: 300 !important;
-  margin: 4rem 0 -1rem !important;
+  margin: 2rem 0 -0.8rem !important;
 }
 
 h1 {
@@ -27,7 +27,7 @@ h3, h4, h5, h6 {
   color: #3C9BCD;
   font-family: Hind;
   font-weight: 300 !important;
-  margin: 3rem 0 -1rem !important;
+  margin: 1.5rem 0 -0.8rem !important;
 }
 
 .codehilite pre {
@@ -182,10 +182,16 @@ button.md-clipboard:before {
 
 .md-sidebar--secondary {
   margin-top: 20px;
+  height: min-content !important;
   background-color: #FFF;
-  height: fit-content !important;
   border-radius: 10px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.md-sidebar__scrollwrap {
+  min-height: min-content;
+}
+
 }
 
 .md-clipboard:hover:before {
