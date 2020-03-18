@@ -20,11 +20,8 @@ h2 {
 h1 {
   font-family: Hind;
   font-weight: 300 !important;
-  color: #fafefe !important;
-  background-image: linear-gradient(to bottom right, #3C9BCD, #195f8c);
-  margin: 0 0 30px -2.4rem !important;
-  border-radius: 3px;
-  padding: 8rem 8rem 2.4rem 2.4rem;
+  color: #000 !important;
+  font-size: 3.125rem !important;
 }
 
 h3, h4, h5, h6 {
