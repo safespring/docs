@@ -37,19 +37,15 @@ All installer parameters must be in CAPITAL letters. Flags can be in lower case.
 
 ## Download
 For Windows **8.1, 10, 2012** and **2016** please use this installer,
-[https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.5.0.exe](https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.5.0.exe).
+[https://repo.service.safedc.net/windows/safespring-backup.2.5.0.exe](https://repo.service.safedc.net/windows/safespring-backup.2.5.0.exe).
 
 For older Windows versions please use this installer,
-[https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.2.4.exe](https://api.cloud.ipnett.se/dist/installer/safespring-baas.2.2.4.exe).
+[https://repo.service.safedc.net/windows/safespring-backup.2.2.4.exe](https://repo.service.safedc.net/windows/safespring-backup.2.2.4.exe).
 
 ```
 md5: aa15d64fb7f9a095b217dadd76157932  safespring-baas.2.2.4.exe
 md5: 8f515a07efe9cfa6768643c3813e3e6c  safespring-baas.2.5.0.exe
 ```
-
-Latest URL is `https://api.cloud.ipnett.se/dist/installer/latest-win`
-
-A demo of the autoinstaller can be found [here](https://api.cloud.ipnett.se/dist/media/IPnett-BaaS-Installation.avi).
 
 ## Space requirements
 It is recommended to have at least **4 to 5 GB** of free space available for these services. Space is depending on TBMR driver collection and may vary between different hardware/platforms.
@@ -243,9 +239,6 @@ TBMRONLY argument. `safespring-baas.2.5.0.exe TBMRONLY=1`. This method can also 
 
 ## Report problems
 In case of reporting a problem please include ALL logfiles from `%TEMP%` named `Safespring*.*`, `BaaS*.*` and `Cristie*.*`.
-
-## Simple launch script
-This script will start a incremental backup and keep the window open until it's manually closed. This makes it possible to verify a successful backup. Feel free to modify to your own needs. (Right click and 'Save target as...') [Download here](https://api.cloud.ipnett.se/dist/installer/RunBaaS.cmd).
 
 ```shell
 @echo off
