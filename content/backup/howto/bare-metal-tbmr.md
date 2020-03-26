@@ -32,7 +32,7 @@ In order to restore a machine, the following preparatory steps needs to be taken
 
  1. **Retrieve the bootable ISO image.**
 
-    The bootable ISOs of TBMR are available at Safespring's [distribution site](https://api.cloud.ipnett.se/dist/tbmr/Linux/).
+    The bootable ISOs of TBMR are available at Safespring's [distribution site](https://archive.service.safedc.net/tbmr/Linux/).
     Note that there is one version for 32-bit architectures and another for 64-bit.
 
  2. **Prepare bootable media (DVD or USB) with this bootable image.**
@@ -51,7 +51,7 @@ In order to restore a machine, the following preparatory steps needs to be taken
 
  1. **Retrieve the bootable ISO image**
 
-    In the case of Windows, the bootable ISOs of TBMR are _not_ available at Safesprings's [distribution site](https://api.cloud.ipnett.se/dist/tbmr/Windows/). The bootable images are based on WinPE 2 for 32-bit Windows and WinPE 4 for 64-bit Windows. This is due to Microsoft Licensing restrictions.
+    In the case of Windows, the bootable ISOs of TBMR are _not_ available at Safesprings's [distribution site](https://archive.service.safedc.net/tbmr/Windows/). The bootable images are based on WinPE 2 for 32-bit Windows and WinPE 4 for 64-bit Windows. This is due to Microsoft Licensing restrictions.
 
     The solution is that each customer site creates its own 32-bit and 64-bit TBMR WinPE images.
     Cristie has a tool called **CRISP** that assists with this.
@@ -63,9 +63,9 @@ In order to restore a machine, the following preparatory steps needs to be taken
      * Two utilities from Microsoft's [download site](http://www.microsoft.com/download/en/default.aspx):
         * For 32-bit images: Windows Automated Installation Kit (WAIK) (Cristie suggests the file `6001.18000.080118-1840-kb3aikl_en.iso`
         * For 64-bit images: Microsoft Windows Assessment and Deployment Kit (WADK) (Cristie suggests to search for "Microsoft Windows Assessment and Deployment Kit (WADK) version 8" in the search bar to find a release dated 31 July 2012)
-        * The CRISP tool comes with the TBMR Suite, which is found at Safespring's [distribution site](https://api.cloud.ipnett.se/dist/tbmr/Windows/) (`SetupTBMRSuiteXXX.exe`).
+        * The CRISP tool comes with the TBMR Suite, which is found at Safespring's [distribution site](https://archive.service.safedc.net/tbmr/Windows/) (`SetupTBMRSuiteXXX.exe`).
 
-    For detailed instructions on the use of CRISP, please see the [CRISP guide](https://api.cloud.ipnett.se/dist/tbmr/Windows/CRISP-7-UserGuide.pdf).
+    For detailed instructions on the use of CRISP, please see the [CRISP guide](https://archive.service.safedc.net/tbmr/Windows/CRISP-7-UserGuide.pdf).
 
 2. **Prepare bootable media (CD or USB) with this bootable image**
 
@@ -94,11 +94,11 @@ Prerequisites are a working Safespring Backup TSM installation on the machine in
 
 1. **Install**
 
-    RPMs are found at Safespring's [distribution site](https://api.cloud.ipnett.se/dist/tbmr/Linux/)
+    RPMs are found at Safespring's [distribution site](https://archive.service.safedc.net/tbmr/Linux/)
 
     ```shell
     # 64-bit client example:
-    wget https://api.cloud.ipnett.se/dist/tbmr/Linux/tbmr-7.1-2.x86_64.rpm
+    wget https://archive.service.safedc.net/tbmr/Linux/tbmr-7.1-2.x86_64.rpm
     rpm -Uvh tbmr-7.1-2.x86_64.rpm
     ```
 
@@ -154,8 +154,8 @@ To perform a restore of a machine with TBMR, the following steps must be taken:
 
 For further details at this point, please see:
 
- * [TBMR For Linux Usage Guide](https://api.cloud.ipnett.se/dist/tbmr/Linux/UserGuide.pdf)
- * [TBMR For Windows Usage Guide](https://api.cloud.ipnett.se/dist/tbmr/Windows/TBMR-722-UserGuide.pdf)
+ * [TBMR For Linux Usage Guide](https://archive.service.safedc.net/tbmr/Linux/UserGuide.pdf)
+ * [TBMR For Windows Usage Guide](https://archive.service.safedc.net/tbmr/Windows/TBMR-722-UserGuide.pdf)
 
 #### Restore of a Linux machine
 

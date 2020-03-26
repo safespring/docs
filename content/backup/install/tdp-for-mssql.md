@@ -12,15 +12,15 @@
 
 ## Step 1 - Download
 
-Download the TDP for SQL media [here](https://api.cloud.ipnett.se/dist/tsm/db/mssql/TSM_DB_7.1.1_DP_MS_SQL_ML.exe) and save it in a local directory.  In this example `C:\TSM-media` is used. Execute the `.exe` file and it will unpack the files.
+Download the TDP for SQL media [here](https://archive.service.safedc.net/tsm/db/mssql/TSM_DB_7.1.1_DP_MS_SQL_ML.exe) and save it in a local directory.  In this example `C:\TSM-media` is used. Execute the `.exe` file and it will unpack the files.
 
 ## Step 2 - Support files
 
 Download the support files to the same directory.
 
-- https://api.cloud.ipnett.se/dist/tsm/db/mssql/db_full.bat
-- https://api.cloud.ipnett.se/dist/tsm/db/mssql/db_incr.bat
-- https://api.cloud.ipnett.se/dist/tsm/db/mssql/install_sched.bat
+- https://archive.service.safedc.net/tsm/db/mssql/db_full.bat
+- https://archive.service.safedc.net/tsm/db/mssql/db_incr.bat
+- https://archive.service.safedc.net/tsm/db/mssql/install_sched.bat
 
 ## Step 3 - Installation
 

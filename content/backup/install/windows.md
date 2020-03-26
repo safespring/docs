@@ -37,16 +37,30 @@ All installer parameters must be in CAPITAL letters. Flags can be in lower case.
 
 ## Download
 For Windows **8.1, 10, 2012** and **2016** please use this installer,
+<<<<<<< HEAD
 [https://repo.service.safedc.net/windows/safespring-backup.2.5.0.exe](https://repo.service.safedc.net/windows/safespring-backup.2.5.0.exe).
 
 For older Windows versions please use this installer,
 [https://repo.service.safedc.net/windows/safespring-backup.2.2.4.exe](https://repo.service.safedc.net/windows/safespring-backup.2.2.4.exe).
+=======
+[https://archive.service.safedc.net/installer/safespring-baas.2.5.0.exe](https://archive.service.safedc.net/installer/safespring-baas.2.5.0.exe).
+
+For older Windows versions please use this installer,
+[https://archive.service.safedc.net/installer/safespring-baas.2.2.4.exe](https://archive.service.safedc.net/installer/safespring-baas.2.2.4.exe).
+>>>>>>> Change URLs for  api.cloud.ipnett.se/dist to archive.service.safedc.net
 
 ```
 md5: aa15d64fb7f9a095b217dadd76157932  safespring-baas.2.2.4.exe
 md5: 8f515a07efe9cfa6768643c3813e3e6c  safespring-baas.2.5.0.exe
 ```
 
+<<<<<<< HEAD
+=======
+Latest URL is `https://archive.service.safedc.net/installer/latest-win`
+
+A demo of the autoinstaller can be found [here](https://archive.service.safedc.net/media/IPnett-BaaS-Installation.avi).
+
+>>>>>>> Change URLs for  api.cloud.ipnett.se/dist to archive.service.safedc.net
 ## Space requirements
 It is recommended to have at least **4 to 5 GB** of free space available for these services. Space is depending on TBMR driver collection and may vary between different hardware/platforms.
 The installer pauses for 20 seconds if free space is < 5000000000 bytes. If `cancel` is pressed or timeout is reached the installer will abort. If `OK` is pressed, then will the installation continue and make an attempt.
@@ -240,26 +254,6 @@ TBMRONLY argument. `safespring-baas.2.5.0.exe TBMRONLY=1`. This method can also 
 ## Report problems
 In case of reporting a problem please include ALL logfiles from `%TEMP%` named `Safespring*.*`, `BaaS*.*` and `Cristie*.*`.
 
-```shell
-@echo off
-:: ******************************************************
-:: * TSM BA IPnett Cloud Solution
-:: * TSM BA Client backup launcher
-:: * version 0.1
-:: * Author: Jan Munkhammar
-:: ******************************************************
-:: * Changes:
-:: 0.1 Initial version
-::
-c:
-cd "c:\Program Files\Tivoli\TSM\baclient"
-:: Less output
-::cmd /k "dsmc incremental -quiet"
-
-:: More output
-cmd /k "dsmc incremental"
-```
-
 ## Manual installation
 
 ### Microsoft Windows (64-bit)
@@ -269,7 +263,7 @@ _This document describes how to **manually** install IBM TSM on Windows Windows 
 
 Required files - (Right click and 'Save as...'):
 
-- [7.1.1.0-TIV-TSMBAC-WinX64.exe](https://api.cloud.ipnett.se/dist/tsm/mirror/maintenance/storage/tivoli-storage-management/maintenance/client/v7r1/Windows/x64/v711/7.1.1.0-TIV-TSMBAC-WinX64.exe)
+- [7.1.1.0-TIV-TSMBAC-WinX64.exe](https://archive.service.safedc.net/tsm/mirror/maintenance/storage/tivoli-storage-management/maintenance/client/v7r1/Windows/x64/v711/7.1.1.0-TIV-TSMBAC-WinX64.exe)
 - [Safespring Root CA installer](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA-win64.bat)
 
 ### Procedure
