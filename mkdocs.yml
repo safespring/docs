@@ -16,6 +16,8 @@ theme:
   favicon: "favicon.ico"
 extra_css:
   - "safespring.css"
+extra_javascript:
+  - "https://lbpj80qtys85.statuspage.io/embed/script.js"
 extra:
   font:
     text: "Montserrat"
