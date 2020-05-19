@@ -12,6 +12,7 @@ first parts of the installation are identical.
 ## 1. Configure the repository
 
 Packages are provided for the following distributions:
+
 * Debian 10 Buster
 * Debian 9 Stretch
 * Ubuntu 20 Focal Fossa
