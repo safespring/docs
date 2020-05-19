@@ -11,12 +11,34 @@ first parts of the installation are identical.
 
 ## 1. Configure the repository
 
-Run the following commands on the server that will run the backup client
-software.  Create the file ```/etc/apt/sources.list.d/safespring-backup``` with
-the following content:
+Packages are provided for the following distributions:
+* Debian 10 Buster
+* Debian 9 Stretch
+* Ubuntu 20 Focal Fossa
+* Ubuntu 18 Bionic Beaver
+* Ubuntu 16 Xenial Xerus
 
-```
-echo 'deb https://repo.service.safedc.net/debian stretch main' > /etc/apt/sources.list.d/safespring-backup.list
+The following table contains the ```apt``` configuration for each of the
+supported distributions:
+
+| Distribution            | Apt repository configuration                            |
+| ----------------------- | ------------------------------------------------------- |
+| Debian 10 Buster        | deb https://repo.service.safedc.net/debian buster main  |
+| Debian 9 Stretch        | deb https://repo.service.safedc.net/debian stretch main |
+| Ubuntu 20 Focal Fossa   | deb https://repo.service.safedc.net/debian focal main   |
+| Ubuntu 18 Bionic Beaver | deb https://repo.service.safedc.net/debian bionic main  |
+| Ubuntu 16 Xenial Xerus  | deb https://repo.service.safedc.net/debian xenial main  |
+
+Find the ```apt``` configuration for your server in the table above and run the
+following commands on the server that will run the backup client software. In
+the example below we will be configuring the repository for a Debian 9 server.
+
+Create the file ```/etc/apt/sources.list.d/safespring-backup``` with the
+following content:
+
+```shell
+DISTRIBUTION="stretch"
+echo "deb https://repo.service.safedc.net/debian ${DISTRIBUTION} main" > /etc/apt/sources.list.d/safespring-backup.list
 ```
 
 Fetch the repository key and install it in the file ```/tmp/safespring-repo-key```:
