@@ -8,7 +8,7 @@ First of all, get the latest released TSM bundle (comes in `.DMG` format), since
 
 Install it as usual on Mac by attaching the DMG as a disk and then click on the installer icon.
 
-Then grab this script [certificate installation script for macOS](https://raw.githubusercontent.com/IPnett/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA-macosx.sh) and the certificate in PEM format here [BaaS service CA root certificate](https://raw.githubusercontent.com/IPnett/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA.pem).
+Then grab this script [certificate installation script for macOS](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/MacOSX-Update-SafeDC-Net-CA.sh) and the certificate in PEM format here [BaaS service CA root certificate](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem).
 
 ```shell tab="Shell"
 #!/bin/sh
