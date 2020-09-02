@@ -36,7 +36,7 @@ Restart your shell. Create a virtualenv and install the client into it.
 ```shell
 mkvirtualenv oscli
 pip install --upgrade pip
-pip install python-openstackclient
+pip install python-openstackclient python-neutronclient
 ```
 
 To stop or start using this virtual Python environment, type
