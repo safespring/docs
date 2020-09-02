@@ -190,7 +190,7 @@ console.
 
 The "neutron" command is the magic to allow unknown packets to enter the
 cloud network. Either you enter it by yourself or you send a request to
-us and we'll do it for you if you don't have cli access. The output is
+us and we'll do it for you if you [don't have API access](/compute/api/). The output is
 tailored from the installation and is unique for each server.
 
 ```shell
