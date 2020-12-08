@@ -10,7 +10,7 @@ Safespring backup service is changing hostname: `tsm1.cloud.ipnett.se` becomes
 
 All customers running Safespring Backup needs to update hostnames and
 certificates for Safespring Backup services to start using the new hostnames.
-See [this blogpost](https://docs.safespring.com/service/known_issues/) for details.
+See [this blogpost](https://www.safespring.com/blogg/byte-av-host-och-domainname/) for details.
 
 ## Resize operations disabled
 
