@@ -18,7 +18,7 @@ It is important to note the difference between local storage and central storage
 The picture above shows one instance running only with central storage (to the left) and one instance running with local storage on the right. Local storage is using the latest interface NVME which makes it about 7-10 times faster than central storage, FAST, with SSD. The downside is that local storage will only be stored in one copy instead of three which is the case for central storage. This means that if the local hard disk on the compute node where the instance is running crashes the data will be gone. Therefore it is very important to have a working backup solution for all data stored with Local Storage.
 
 ## Networking
-The networking in the new platform is different compared to the old. The old solution used VXLAN-tunnels to set up layer-2 connectivity between the instances but in Calico which is used in the new platform there are no Layer-2 connectivity to the instances but inly layer 3 IP connectivity. This has benefits for stability and scalability but comes with some constraints compared to the old solution.
+The networking in the new platform is different compared to the old. The old solution used VXLAN-tunnels to set up layer-2 connectivity between the instances but in Calico which is used in the new platform there is no Layer-2 connectivity to the instances but only layer 3 IP connectivity. This has benefits for stability and scalability but comes with some constraints compared to the old solution.
 
 ![image](../../images/np-calico.png)
 
