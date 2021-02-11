@@ -104,6 +104,7 @@ pages:
      - Overview: "new/overview.md"
      - New features: "new/features.md"
      - Overlay networks: "new/overlay.md"
+     - S3 credentials: "new/s3-credentials.md"
   #   - Zones: "synkzone/zones.md"
   #   - Working with files: "synkzone/working-with-files.md"
   #   - Collaboration and conflict management: "synkzone/collaboration-and-conflict-management.md"
