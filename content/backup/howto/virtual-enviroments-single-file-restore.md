@@ -31,7 +31,7 @@ Since the software used for file level restore doesn't support SSL we have to us
     accept = 127.0.0.1:1800
     connect = tsm1-v4.cloud.ipnett.se:1600
     verify = 2
-    checkhost = tsm1.cloud.ipnett.se
+    checkhost = tsm1.backup.sto2.safedc.net
     CAfile = C:\Program Files\stunnel\config\IPnett-Cloud-Root-CA.pem
     ```
 * Run the app `stunnel Service install` from the start menu.  This will install the stunnel service.
