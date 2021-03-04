@@ -19,6 +19,13 @@ enabled when creating an Object Storage Repository in Veeam:
  
 ![Veeam Immutable Setting](/images/immutable-setting.png)
 
-Before this can be done Safespring must create a bucket with the Object locking
-feature enabled. Contact support@safespring.com to request such a bucket.
 
+## Creating buckets that allow object locking
+In order to use object locking (with Veeam 10+ and the Immutable Feature for instance) you need to specify at creation time that the bucket is to allow locking of objects, this can be done with minios “mc” command:
+```shell
+mc —with-lock mb ceph/mybucket
+```
+or with aws-cli
+```shell
+aws --endpoint=https://s3.stoX s3api create-bucket --bucket=bucketnamehere --object-lock-enabled-for-bucket 
+```
