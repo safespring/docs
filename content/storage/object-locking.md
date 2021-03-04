@@ -19,7 +19,6 @@ enabled when creating an Object Storage Repository in Veeam:
  
 ![Veeam Immutable Setting](/images/immutable-setting.png)
 
-To use this feature two prerequisites must be met:
 Before this can be done Safespring must create a bucket with the Object locking
 feature enabled. Contact support@safespring.com to request such a bucket.
 
