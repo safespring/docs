@@ -4,7 +4,7 @@ There are some currently known issues in the Compute platform. This page
 describes the most common pitfalls. Known issues for Backup is under the [Backup FAQ page](/backup/faq).
 
 ## Networking issue with the Debian 10 imiges
-Unfortunately the network services installed on the publicly provided Debian 10 images is not working with OpenStack. One option is to install a Debain 9 image and 
+Unfortunately the network services installed on the publicly provided Debian 10 images are not working with OpenStack. One option is to install a Debain 9 image and 
 then do an upgrade. Another option is to provide the following Cloud-Init script under "Configuration" when launching the instance. This will make the network services
 work as intended.
 
