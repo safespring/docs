@@ -3,6 +3,72 @@
 There are some currently known issues in the Compute platform. This page
 describes the most common pitfalls. Known issues for Backup is under the [Backup FAQ page](/backup/faq).
 
+## Networking issue with the Debian 10 imiges
+Unfortunately the network services installed on the publicly provided Debian 10 images is not working with OpenStack. One option is to install a Debain 9 image and 
+then do an upgrade. Another option is to provide the following Cloud-Init script under "Configuration" when launching the instance. This will make the network services
+work as intended.
+
+```shell
+#cloud-config
+
+output: {all: '| tee -a /var/log/cloud-init-output.log'}
+
+password: [REDACTED]
+
+chpasswd: { expire: False }
+
+ssh_pwauth: True
+
+manage_etc_hosts: false
+
+package_upgrade: false
+
+packages:
+
+- curl
+
+write_files:
+
+- path: /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
+
+content: |
+
+network: {config: disabled}
+
+- path: /etc/network/interfaces.d/custom_eth0
+
+content: |
+
+auto lo
+
+iface lo inet loopback
+
+auto eth0
+
+iface eth0 inet dhcp
+
+mtu 1500
+
+iface eth0 inet6 dhcp
+
+accept_ra 2
+
+runcmd:
+
+- sed -i '1i\'"$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4) $(hostname)" /etc/hosts
+
+- rm -f /etc/network/interfaces.d/50-cloud-init
+
+- systemctl restart networking
+
+
+```
+
+## Federated login and the Chrome browser
+Due to an update and a change of policy in the Chrome browser, the federated login to the Safespring platform does not work as intended. 
+Safespring has tried to find a solution to this but it has proven hard to get around the core problem. We are monitoring this
+issue closely to find a solution. In the meantime we recommend those who run into this bug to use another browser like Firefox instead.
+
 ## New certificate and hostname on Safespring Backup Service
 
 Safespring backup service is changing hostname: `tsm1.cloud.ipnett.se` becomes
