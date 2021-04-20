@@ -64,11 +64,6 @@ runcmd:
 
 ```
 
-## Federated login and the Chrome browser
-Due to an update and a change of policy in the Chrome browser, the federated login to the Safespring platform does not work as intended. 
-Safespring has tried to find a solution to this but it has proven hard to get around the core problem. We are monitoring this
-issue closely to find a solution. In the meantime we recommend those who run into this bug to use another browser like Firefox instead.
-
 ## New certificate and hostname on Safespring Backup Service
 
 Safespring backup service is changing hostname: `tsm1.cloud.ipnett.se` becomes
