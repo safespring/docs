@@ -98,9 +98,10 @@ be used.
 ## Instance operations
 
 "Create Snapshot" only works for smaller instances at the moment. This has to
-do with some compatibility issues with OpenStack and the Ceph backend. With the
-coming upgrade of OpenStack, this is prioritized to get working for all kinds
-of instances.
+do with some compatibility issues with OpenStack and the Ceph backend. In addition,
+creating snapshots can in some cases create locking issues in the storage backend
+which will lead to a hard reboot of the instance. With the coming upgrade of OpenStack,
+this is prioritized to get working for all kinds of instances.
 
 In the drop-down menu in the instance listing there are some operations which
 are unsupported at the moment. It does not mean that they fail,  but they could
