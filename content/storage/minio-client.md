@@ -10,7 +10,8 @@ Install minio client (mc) from https://min.io/download
   
   mc alias set <ALIAS> <YOUR-S3-ENDPOINT> [YOUR-ACCESS-KEY] [YOUR-SECRET-KEY] [--api API-SIGNATURE]
 
-should produce a config like the one below, naming the alias sto2 and using S3v4 API
+should produce a config like the one below, naming the alias sto2 and
+using S3v4 API
 
 ```
   more $HOME/.minioc/config.json
@@ -30,8 +31,9 @@ should produce a config like the one below, naming the alias sto2 and using S3v4
 
 ## Running various commands
 
-On this machine, the mc command was named "minioc", presumably because
-midnight commander has been using the name "mc" for a very long time.
+On this machine, the mc command was renamed "minioc" by the package
+manager, presumably because midnight commander has been using the name
+"mc" for a very long time.
 
 ```
 $ date > DATETIME.txt
