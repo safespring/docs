@@ -14,6 +14,15 @@ This site contains documentation for Safespring services and user resources.
 
 ## Services
 
+Our services are delivered from three datacentres in Norway and Sweden - *osl1* in the Oslo region, and *sto1* and *sto2* at two different locations in the Stockholm region
+
+|                    | osl1  | sto1  | sto2  |
+| :----------------- | :---: | :---: | :---: |
+| Safespring Compute |   X   |   X   |   -   |
+| Safespring Storage |   X   |   -   |   X   |
+| Safespring Backup  |   -   |   -   |   X   |
+
+
 ### Safesping Compute
 
 To get started with the Compute service, see the [getting started guide](compute/getting-started)
