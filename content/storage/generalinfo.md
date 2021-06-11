@@ -6,16 +6,22 @@ accessibility.
 
 ## Minimum required info for S3 access
 
-Many clients will assume you are talking to AWS S3, in which case they
-might want you to add region and country and other information. This
-information isn't used by our endpoint, so you should be able to get
-many clients going with only `access_key`, `secret_key` and the `https` URL
-to the service:
+Many clients will assume you are talking to AWS S3, in which case they might
+want you to add region and country and other information. This information isn't
+used by our endpoint, so you should be able to get many clients going with only
+`access_key`, `secret_key`.  The access- and secret keys are not personal, so
+you should store them securely and share them within a project. 
+
+!!! note
+    In a future update, we will offer personal S3 credentials that are
+    valid within a project.
+
+The `https` URLs to the service:
 
 !!! info "New URLs"
+    + New norwegian site - https://s3-archive.osl1.safedc.net
     + Norwegian site  - https://s3.osl1.safedc.net
-    + Swedish site #1 - https://s3.sto1.safedc.net
-    + Swedish site #2 - https://s3.sto2.safedc.net
+    + Swedish site - https://s3.sto2.safedc.net
 
 
 ``` tab="Sweden (Old URL)"
