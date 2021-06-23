@@ -122,3 +122,4 @@ pages:
     - Domain changes: "service/domain-changes.md"
     - Known issues: "service/known_issues.md"
     - Contributing: "contribute.md"
+    - Sto4 status: "service/sto4_storage.md"
