@@ -4,6 +4,20 @@ After the incident that took down the storage cluster in our sto4 site, we are w
 
 A complete incident report is beeing prepared, and will be published later.
 
+## Update 2021-06-25
+
+We are implementing quota limits per bucket on our other ceph clusters, to
+prevent same isse from happening at other sites. We are also looking at other
+protection mechanisms.
+
+We have an ongoing support case with nextcloud to ensure we are doing the right
+steps to restore the service and any data.
+
+We have had progress in restoring data from sto4. This is still a slow process,
+but we plan to speed up the process at some point in next week. 
+
+We are working on setting up alternative solutions for users at sto4. 
+ 
 ## Update 2021-06-24
 
 We have had progress on restoring files: Work has been done to manually restore a few specific files from the placement groups that are unavailable. Later this process will be automated so we can speed up the process. Progress is still slow because of the manual steps that need to be taken, but we expect recovery to be faster from next week. So far the work has been successful.
