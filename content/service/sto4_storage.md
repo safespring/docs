@@ -4,6 +4,15 @@ After the incident that took down the storage cluster in our sto4 site, we are w
 
 A complete incident report is beeing prepared, and will be published later.
 
+## Update 2021-06-26
+
+Yesterday we calculated quotas for sto3, we have controlled all existing
+accounts, and all accounts will have limits set today.
+
+We are waiting for Nextcloud support and an implemetation of automatc restores
+before we can restore at any speed. Both are prioritized, and we expect to see
+progress in the coming week.
+
 ## Update 2021-06-25
 
 We are implementing quota limits per bucket on our other ceph clusters, to
