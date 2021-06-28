@@ -4,6 +4,11 @@ After the incident that took down the storage cluster in our sto4 site, we are w
 
 A complete incident report is beeing prepared, and will be published later.
 
+## Update 2021-06-28
+We keep on doing progress with the restore process. As it looks now we will be able to start automated restores later this week. We will be able to focus our efforts on specifik buckets where the primary storage bucket for the Nextcloud installation in sto4 has the highest priority.
+
+We have also enforced bucket quotas on 5 million objects per bucket in sto3 which will prevent this problem from happening there.
+
 ## Update 2021-06-26
 
 Yesterday we calculated quotas for sto3, we have controlled all existing
