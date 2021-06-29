@@ -4,6 +4,15 @@ After the incident that took down the storage cluster in our sto4 site, we are w
 
 A complete incident report is beeing prepared, and will be published later.
 
+## Update 2021-06-29
+We now have a working program to list all object names in a bucket which we will use as
+input to the next set of programs that will do the actual restore. We can also get metadata about the objects to get the checksums but since Nextcloud is using multipart uploads as default we will have to investigate the chunk sizes for the multipart uploads to be able to calculate the checksums correctly to be able to verify the integrity of the restored data.
+
+We have a working process to restore the objects in the active part of the cluster. Next stepis to find which parts of the objects that resides in the inactive part and find a consistent way how to restore them.
+
+We are working on setting up a new Nextcloud instance to which the users that where using the Sunet Drive solution can reupload the files that they still have. We will then be able to find a delta on which files that can not be reuploaded in order to focus our efforts on restoring those objects.
+
+
 ## Update 2021-06-28
 We keep on doing progress with the restore process. As it looks now we will be able to start automated restores later this week. We will be able to focus our efforts on specifik buckets where the primary storage bucket for the Nextcloud installation in sto4 has the highest priority.
 
