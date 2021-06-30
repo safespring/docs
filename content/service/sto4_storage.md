@@ -4,6 +4,10 @@ After the incident that took down the storage cluster in our sto4 site, we are w
 
 A complete incident report is beeing prepared, and will be published later.
 
+## Update 2021-06-30
+Our focus right now is to restore the primary storage bucket for the Nextcloud installation. Yesterday we managed to restore 810 objects out of 1230 in that bucket. The restored objects have all a size smaller than 4 MB. Due to multipart handling in the backend objects bigger than 4 MB need to be handled differently. The parts of the objects need to be found and concatenated in order to restore them properly. We are today writing the code to do just that to be able to retrieve those objects as well.
+
+
 ## Update 2021-06-29
 We now have a working program to list all object names in a bucket which we will use as
 input to the next set of programs that will do the actual restore. We can also get metadata about the objects to get the checksums but since Nextcloud is using multipart uploads as default we will have to investigate the chunk sizes for the multipart uploads to be able to calculate the checksums correctly to be able to verify the integrity of the restored data.
