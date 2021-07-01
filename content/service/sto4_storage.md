@@ -4,6 +4,12 @@ After the incident that took down the storage cluster in our sto4 site, we are w
 
 A complete incident report is beeing prepared, and will be published later.
 
+## Update 2021-07-01
+We now have a working automatic process to restore objects larger than 4 MB from the active part of the cluster. The restoration process from the inactive nodes is still manual.
+
+To be able to provide a reliable report of what is in the cluster and what we need to restore work will now be focused primarly on restoring the metadata. By restoring the metadata we will be able to tell with certainty exactly which files that was in the solution before it went down. Once we have the metadata database we will continue to restore the actual objects.
+
+
 ## Update 2021-06-30
 Our focus right now is to restore the primary storage bucket for the Nextcloud installation. Yesterday we managed to restore 810 objects out of 1230 in that bucket. The restored objects have all a size smaller than 4 MB. Due to multipart handling in the backend objects bigger than 4 MB need to be handled differently. The parts of the objects need to be found and concatenated in order to restore them properly. We are today writing the code to do just that to be able to retrieve those objects as well.
 
