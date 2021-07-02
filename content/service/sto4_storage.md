@@ -4,6 +4,10 @@ After the incident that took down the storage cluster in our sto4 site, we are w
 
 A complete incident report is beeing prepared, and will be published later.
 
+## Update 2021-07-02
+We have today continued with the restore of the metadata. We also have set up a process for clearer communication on which data to restore first. We still aim at being able to restore objects in a larger scale early next week. 
+
+
 ## Update 2021-07-01
 We now have a working automatic process to restore objects larger than 4 MB from the active part of the cluster. The restoration process from the inactive nodes is still manual.
 
