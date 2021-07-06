@@ -4,6 +4,12 @@ After the incident that took down the storage cluster in our sto4 site, we are w
 
 A complete incident report is beeing prepared, and will be published later.
 
+## Update 2021-07-6
+
+We are splitting the restore operation in two parts: First we are going to restore metadata, and when that is done, we will be able to restore actual data at a faster speed. We will report the progress of the metadata restoration in tomorrows status update.
+
+Meanwhile, we have also restored a full object from the cluster as a proof of concept, and we are waiting for the customer to verify that the restore is complete before we proceed with more objects.
+
 ## Update 2021-07-05
 
 Since last status update, we have continued to work on setting up infrastructure and automating restore process. We haven't restored any more files, but we have a list of 5 prioritized buckets we will start to restore this week. Once we have more information about numbers (number of buckets to restore, number of files in each bucket) - we will update with progress here.
