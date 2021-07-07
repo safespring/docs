@@ -4,7 +4,11 @@ After the incident that took down the storage cluster in our sto4 site, we are w
 
 A complete incident report is beeing prepared, and will be published later.
 
-## Update 2021-07-6
+## Update 2021-07-07
+
+We are still working on the metadata restore, and also building tooling. That means no files are restored today, but unless anything unexpected happens, we will se a much faster recovery rate starting next week. 
+
+## Update 2021-07-06
 
 We are splitting the restore operation in two parts: First we are going to restore metadata, and when that is done, we will be able to restore actual data at a faster speed. We will report the progress of the metadata restoration in tomorrows status update.
 
