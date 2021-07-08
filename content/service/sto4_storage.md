@@ -6,6 +6,10 @@ A complete incident report is beeing prepared, and will be published later.
 
 ## Update 2021-07-07
 
+Today we have finished the code for metadata restore, and also proceeded our infrastructure work, which means we are getting closer to restore data from next week.
+
+## Update 2021-07-07
+
 We are still working on the metadata restore, and also building tooling. That means no files are restored today, but unless anything unexpected happens, we will se a much faster recovery rate starting next week. 
 
 ## Update 2021-07-06
