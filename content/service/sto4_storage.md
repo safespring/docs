@@ -2,9 +2,13 @@
 
 After the incident that took down the storage cluster in our sto4 site, we are working on restoring data from the cluster. Daily updates will be posted on this site.
 
-A complete incident report is beeing prepared, and will be published later.
+A complete incident report is being prepared, and will be published later.
 
-## Update 2021-07-07
+## Update 2021-07-09
+
+There is not much to report today. We started exporting metadata yesterday and it will be finished today. On Monday we will process metadata, and finish code to restore actual data. We expect more news on Tuesday, when we expect to start restoring data.
+
+## Update 2021-07-08
 
 Today we have finished the code for metadata restore, and also proceeded our infrastructure work, which means we are getting closer to restore data from next week.
 
@@ -23,13 +27,13 @@ Meanwhile, we have also restored a full object from the cluster as a proof of co
 Since last status update, we have continued to work on setting up infrastructure and automating restore process. We haven't restored any more files, but we have a list of 5 prioritized buckets we will start to restore this week. Once we have more information about numbers (number of buckets to restore, number of files in each bucket) - we will update with progress here.
 
 ## Update 2021-07-02
-We have today continued with the restore of the metadata. We also have set up a process for clearer communication on which data to restore first. We still aim at being able to restore objects in a larger scale early next week. 
+We have today continued with the restore of the metadata. We also have set up a process for clearer communication on which data to restore first. We still aim at being able to restore objects in a larger scale early next week.
 
 
 ## Update 2021-07-01
 We now have a working automatic process to restore objects larger than 4 MB from the active part of the cluster. The restoration process from the inactive nodes is still manual.
 
-To be able to provide a reliable report of what is in the cluster and what we need to restore work will now be focused primarly on restoring the metadata. By restoring the metadata we will be able to tell with certainty exactly which files that was in the solution before it went down. Once we have the metadata database we will continue to restore the actual objects.
+To be able to provide a reliable report of what is in the cluster and what we need to restore work will now be focused primarely on restoring the metadata. By restoring the metadata we will be able to tell with certainty exactly which files that was in the solution before it went down. Once we have the metadata database we will continue to restore the actual objects.
 
 
 ## Update 2021-06-30
