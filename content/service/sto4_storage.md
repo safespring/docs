@@ -4,6 +4,13 @@ After the incident that took down the storage cluster in our sto4 site, we are w
 
 A complete incident report is being prepared, and will be published later.
 
+## Update 2021-07-13
+
+We restored a single file as a demonstration, and we have verified that the restore was successful. Today, we are assembling metadata that was exported, and we will start to export actual data, following a list of prioritized buckets. It will take a few days before we have the first full buckets ready. We will post another update with progress tomorrow.
+## Update 2021-07-12
+
+We are still working on assembing metadata. We expect to start restoring data tomorrow.
+
 ## Update 2021-07-09
 
 There is not much to report today. We started exporting metadata yesterday and it will be finished today. On Monday we will process metadata, and finish code to restore actual data. We expect more news on Tuesday, when we expect to start restoring data.
