@@ -4,6 +4,9 @@ After the incident that took down the storage cluster in our sto4 site, we are w
 
 A complete incident report is being prepared, and will be published later.
 
+## Update 2021-07-15
+
+We have exported data from the first buckets. We will not post updates during the weekend, but we will continue working during the weekend to stitch together the pieces. We expect that we are staring to get results early next week. We are also writing the final pieces of code to automate all the steps, so we expect quicker data from some point in next week.
 ## Update 2021-07-14
 
 We have restored metadata for the first buckets, and are currently exporting data. After that - we will assemble the data, copy it to a new location and make it available for the users. We hope to have some results before the weekend.
