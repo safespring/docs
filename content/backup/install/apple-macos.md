@@ -4,7 +4,7 @@ First of all, get the latest released TSM bundle (comes in `.DMG` format), since
     [Mac TSM client 7.1.8.6](https://www3.software.ibm.com/storage/tivoli-storage-management/patches/client/v7r1/Mac/v718/7.1.8.6-TIV-TSMBAC-Mac.dmg)
 
 !!! note "Latest V8 release"
-    [Mac TSM client 8.1.8.0](https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Mac/v818/8.1.8.0-TIV-TSMBAC-Mac.dmg)
+    [Mac TSM client 8.1.12.0](https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Mac/v8112/8.1.12.0-TIV-TSMBAC-Mac.dmg)
 
 Install it as usual on Mac by attaching the DMG as a disk and then click on the installer icon.
 
