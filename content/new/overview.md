@@ -15,11 +15,11 @@ Instances means virtual machine in OpenStack. As you can see two instances out o
 VCPU stands for Virtual CPU and translates to processor cores in Safesprings platform. In this example 8 out of 20 are running in the project.
 ## RAM
 RAM is exactly what you would expect it to be: memory allocated to the instances in the project. 
-## Volumes (NOT SUPPORTED YET)
+## Volumes 
 Volumes corresponds to the number of volumes created in the project. Storage in OpenStack comes in two types: ephemeral and persistent. Ephemeral storage is created with the instance and has the same lifetime as the instance. This means that ephemeral storage is removed automatically when the instance is removed. Persistent storage can be created independently of instances and attached and detached to instances. This type of storage is not tied to a specific instance and is created and deleted separately. Volumes is the notion for persistent storage in OpenStack and hence can be created in a dialogue separate from the instance creation.
-## Volume Snapshots (NOT SUPPORTED YET)
+## Volume Snapshots 
 It is possible to take snapshots of a volume. This pie chart shows how many such snapshots that are stored currently. 
-## Volumes Storage (NOT SUPPORTED YET)
+## Volumes Storage 
 Here you can see how much of the current storage quota that is used in the project. 
 ## Security Groups and Security Group Rules
 Security Groups is the built-in firewall functionality in OpenStack. One Security Groups is a set of Security Group Rules with each of them corresponding to a specific port and allowed source IP, IP network of other Security Group. 
