@@ -6,6 +6,12 @@ this site.
 
 A complete incident report is being prepared, and will be published later.
 
+## Final update 2021-08-31
+
+Working with our subcontractor and customer we've now restored and rebuilt all
+requested data from the affected ceph cluster in sto4. The S3 service will be
+rebuilt and return at a later date.
+
 ## Update 2021-07-19
 
 Unfortunatley during the weekend we suffered a setback where parts of the
