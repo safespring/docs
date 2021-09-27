@@ -106,7 +106,7 @@ pages:
   - New Platform:
      - Overview: "new/overview.md"
      - New features: "new/features.md"
-     - Overlay networks: "new/overlay.md"
+     - VPN options: "new/vpn.md"
      - Differences from older platforms: "new/differences.md"
      - S3 credentials: "new/s3-credentials.md"
   #   - Zones: "synkzone/zones.md"
