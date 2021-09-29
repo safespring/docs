@@ -1,14 +1,14 @@
 # Differences from older platform 
 
 ## Network
-The new platform doesn't have overlay networks. Instead there is 3 networks to choose from (attach only one network):
+In the new platform, there is 3 networks to choose from (attach only one network):
 
 1. public: This network will give you a public v4 ip address, public v6 address, dns setup and default gateway so it is reachable directly to/from Internet.
 2. default: This network will give you a private ip on a RFC 1918 network,
    dns setup and default gateway with Network Address Translation (NAT) for outgoing traffic so instances can reach 
-   services on the Internet, in addtion to instances on other networks (provided it is allowed by means of security groups).
+   services on the Internet, in addtion to instances on other networks in Safespring Compute (provided it is allowed by means of security groups).
 3. private: This network will give you a private ip on a RFC 1918 network that is routed to/from other
-   safespring networks (including public) but not anywhere else.
+   Safespring networks (including public) but not anywhere else.
 
 Thus, the right way to communicate between instances attached to the different networks is to
 just use security groups directly to control access. Do NOT add a second
