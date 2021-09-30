@@ -3,11 +3,11 @@
 ## Network
 In the new platform, there is 3 networks to choose from (attach only one network):
 
-1. public: This network will give you a public v4 ip address, public v6 address, dns setup and default gateway so it is reachable directly to/from Internet.
-2. default: This network will give you a private ip on a RFC 1918 network,
+1. **public**: This network will give you a public IPv4 address, public IPv6 address, dns setup and default gateway so it is reachable directly to/from Internet.
+2. **default**: This network will give you a private IPv4 on a RFC 1918 network,
    dns setup and default gateway with Network Address Translation (NAT) for outgoing traffic so instances can reach 
    services on the Internet, in addtion to instances on other networks in Safespring Compute (provided it is allowed by means of security groups).
-3. private: This network will give you a private ip on a RFC 1918 network that is routed to/from other
+3. **private**: This network will give you a private IPv4 on a RFC 1918 network that is routed to/from other
    Safespring networks (including public) but not anywhere else.
 
 Thus, the right way to communicate between instances attached to the different networks is to
@@ -16,11 +16,11 @@ interface on any instance. That will create problems with default gateways that
 compete, thus unstable network connection to the instance
 
 As an example all instances from any network in the new platform will be able
-to communicate if the are members of the following computer security group in
+to communicate if they are members of the following computer security group in
 (as expressed in Terraform code):
 
 ```code
-resource "openstack_compute_secgroup_v2" "instance_inerconnect" {
+resource "openstack_compute_secgroup_v2" "instance_interconnect" {
   name        = "interconnect"
   description = "Full network access between members of this security group"
 
@@ -41,6 +41,11 @@ resource "openstack_compute_secgroup_v2" "instance_inerconnect" {
 ```
 
 The keyword here is `self`. See: https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs/resources/compute_secgroup_v2#self
+
+!!! note "IPv6 on the default network"
+         Before the v2 platform reaches production the default network will ALSO provide
+         a public v6 address. This means you can have public IPv6 for free, as the
+         public network will be priced per IPv4 address.
 
 ## s3 bucket naming constraints
 
