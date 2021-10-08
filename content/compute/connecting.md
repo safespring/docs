@@ -1,6 +1,7 @@
 # Connecting your virtual servers to your infrastructure
 
 ## Connecting to Safespring
+For general encrypted connection options to your instances in the Safespring infrastructure we refer to the documentation writte for the new platform [here](https://docs.safespring.com/new/vpn/). Wireguard replaces the older openvpn setup descibred below as well as the Saferoute option which at the moment does not work in our version 2 of the platform we are migrating our customers to.
 
 The instances you have set up in Safespring Compute will get floating IP
 addresses from the SUNET/UNINETT IP pool and are the way of contact for the clients
@@ -301,9 +302,3 @@ You can easily follow packets with tcpdump even on the "tun" interfaces.
 !!! note
     It is recommended to update the OS and reboot the server as part of the setup.
 
-##Dedicated Access with Saferoute
-![Connecting to Safespring](/images/connect.png)
-
-The second option to set up connectivity is by using Saferoute where a dedicated MPLS IPVPN is set up through SUNETs/UNINETTs network. The advantages is that that the virtual servers in the infrastructure will logically be placed behind the firewall at the campus site. This makes managing the firewall rules for the virtual infrastructure no different from managing the servers at the site since traffic to both environments will go through the firewall at the campus site. All traffic between servers at the campus and the Safespring infrastructure will also go through this private channel.
-
-To set this up a part of the Campus IP-range must be reserved for the infrastructure at Safespring. Depending on the need of addresses in the virtual infrastructure the size of the range might vary but it is better to reserve some extra addresses since the administrative work for setting this up includes work both at SUNET/UNINETT, Safespring and the central IT at campus. To order Saferoute - contact Safespring and [fill in the form](https://goo.gl/forms/usCnl6T8nEIZmAJW2).  
