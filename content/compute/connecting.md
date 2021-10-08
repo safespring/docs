@@ -17,9 +17,7 @@ Sometimes application encryption is not enough for secure transport and in
 those cases Safespring offers two solutions:
 
 1. Site-to-site layer 3 VPN - SSLVPN based tunnel
-2. Saferoute - dedicated MPLS VRF in SUNETs/UNINETTs network
-
-![Connecting to Safespring](/images/connect.png)
+2. Using Safesprings Wireguard installer described [here](https://docs.safespring.com/new/vpn/). 
 
 ### Site-to-site
 Site-to-site VPN is easier to set up and works by setting up two tunnel
@@ -30,17 +28,6 @@ can ensure that all traffic to those virtual machines go through the tunnel
 encrypted. To handle the return traffic you respectively set up routes for
 the IPs (hosts or networks) that you virtual machines should be able to
 communicate to the endpoint at Safespring.
-
-### Saferoute
-Saferoute is somewhat more work to set up but will give you a separate routing
-instance (VRF) in the SUNET/UNINETT MPLS network effectively giving you a port in your
-edge router to SUNET/UNINETT where all the traffic to your servers will be served.
-This is especially good if you have security policies at your site which
-enforces infrastructure to be behind a central firewall. You will also be able
-to pick which IP-addresses you want to use for your virtual machines in the
-Safespring infrastructure.
-
-Below we will describe both ways of connecting to you virtual instances.
 
 ## Site-to-site layer 3 VPN
 
