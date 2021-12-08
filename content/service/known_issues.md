@@ -3,55 +3,6 @@
 There are some currently known issues in the Compute platform. This page
 describes the most common pitfalls. Known issues for Backup is under the [Backup FAQ page](/backup/faq).
 
-## cloud.ipnett.[no|se] domain offline
-Due to historical reasons some of our v1 infrastructure is registered on the cloud.ipnett.[no|se] domains. As of Dec 7 2021 these domains have become unavailable.
-
-To access services on these domains, you can add the following to your local hosts file:
-
-```shell
-193.11.91.194 keystone.cloud.ipnett.se
-193.11.89.226 keystone-beta.cloud.ipnett.se
-193.11.89.226 portal.cloud.ipnett.se
-193.11.89.225 keystone.api.cloud.ipnett.se
-193.11.89.225 glance.api.cloud.ipnett.se
-193.11.89.225 cinder.api.cloud.ipnett.se
-193.11.89.225 nova.api.cloud.ipnett.se
-193.11.89.225 neutron.api.cloud.ipnett.se
-193.11.89.225 ceilometer.api.cloud.ipnett.se
-193.11.89.225 heat.api.cloud.ipnett.se
-193.11.89.225 cloudformation.api.cloud.ipnett.se
-193.11.89.225 cloudwatch.api.cloud.ipnett.se
-193.11.89.225 contrail.api.cloud.ipnett.se
-193.11.89.225 discovery.api.cloud.ipnett.se
-193.11.89.225 restintsm.api.cloud.ipnett.se
-193.11.89.225 billing.api.cloud.ipnett.se
-```
-
-for .se, and for .no:
-
-```shell
-193.156.25.225 cloud.ipnett.no
-193.156.25.225 api.cloud.ipnett.no
-193.156.25.225 billing.api.cloud.ipnett.no
-193.156.25.225 ceilometer.api.cloud.ipnett.no
-193.156.25.225 cinder.api.cloud.ipnett.no
-193.156.25.225 cloudformation.api.cloud.ipnett.no
-193.156.25.225 cloudwatch.api.cloud.ipnett.no
-193.156.25.225 contrail.api.cloud.ipnett.no
-193.156.25.225 glance.api.cloud.ipnett.no
-193.156.25.225 heat.api.cloud.ipnett.no
-193.156.25.225 keystone.api.cloud.ipnett.no
-193.156.25.225 neutron.api.cloud.ipnett.no
-193.156.25.225 nova.api.cloud.ipnett.no
-193.156.25.225 restintsm.api.cloud.ipnett.no
-193.156.25.225 s3-archive.api.cloud.ipnett.no
-193.156.25.225 wildcard.api.cloud.ipnett.no
-193.156.25.227 contrail.cloud.ipnett.no
-193.156.25.229 graylog.cloud.ipnett.no
-193.156.25.228 vnc.cloud.ipnett.no
-193.156.25.226 wildcard.cloud.ipnett.no
-```
-
 ## Networking issue with the Debian 10 images
 Unfortunately the network services installed on the publicly provided Debian 10 images are not working with OpenStack. One option is to install a Debain 9 image and 
 then do an upgrade. Another option is to provide the following Cloud-Init script under "Configuration" when launching the instance. This will make the network services
@@ -239,4 +190,53 @@ IPV6_DEFAULTGW="ipv6_gateway"
 IPV6_AUTOCONF=no
 DNS1=2001:4860:4860::8844
 DNS2=2001:4860:4860::8888
+```
+
+## cloud.ipnett.[no|se] domains
+Due to historical reasons some of our v1 infrastructure is registered on the cloud.ipnett.[no|se] domains. There have been a couple of instances where these domains have gone offline.
+
+In the event that the domains are unavailable, you can work around it by adding the following to your local hosts file:
+
+```shell
+193.11.91.194 keystone.cloud.ipnett.se
+193.11.89.226 keystone-beta.cloud.ipnett.se
+193.11.89.226 portal.cloud.ipnett.se
+193.11.89.225 keystone.api.cloud.ipnett.se
+193.11.89.225 glance.api.cloud.ipnett.se
+193.11.89.225 cinder.api.cloud.ipnett.se
+193.11.89.225 nova.api.cloud.ipnett.se
+193.11.89.225 neutron.api.cloud.ipnett.se
+193.11.89.225 ceilometer.api.cloud.ipnett.se
+193.11.89.225 heat.api.cloud.ipnett.se
+193.11.89.225 cloudformation.api.cloud.ipnett.se
+193.11.89.225 cloudwatch.api.cloud.ipnett.se
+193.11.89.225 contrail.api.cloud.ipnett.se
+193.11.89.225 discovery.api.cloud.ipnett.se
+193.11.89.225 restintsm.api.cloud.ipnett.se
+193.11.89.225 billing.api.cloud.ipnett.se
+```
+
+for .se, and for .no:
+
+```shell
+193.156.25.225 cloud.ipnett.no
+193.156.25.225 api.cloud.ipnett.no
+193.156.25.225 billing.api.cloud.ipnett.no
+193.156.25.225 ceilometer.api.cloud.ipnett.no
+193.156.25.225 cinder.api.cloud.ipnett.no
+193.156.25.225 cloudformation.api.cloud.ipnett.no
+193.156.25.225 cloudwatch.api.cloud.ipnett.no
+193.156.25.225 contrail.api.cloud.ipnett.no
+193.156.25.225 glance.api.cloud.ipnett.no
+193.156.25.225 heat.api.cloud.ipnett.no
+193.156.25.225 keystone.api.cloud.ipnett.no
+193.156.25.225 neutron.api.cloud.ipnett.no
+193.156.25.225 nova.api.cloud.ipnett.no
+193.156.25.225 restintsm.api.cloud.ipnett.no
+193.156.25.225 s3-archive.api.cloud.ipnett.no
+193.156.25.225 wildcard.api.cloud.ipnett.no
+193.156.25.227 contrail.cloud.ipnett.no
+193.156.25.229 graylog.cloud.ipnett.no
+193.156.25.228 vnc.cloud.ipnett.no
+193.156.25.226 wildcard.cloud.ipnett.no
 ```
