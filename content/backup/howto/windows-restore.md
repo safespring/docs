@@ -66,7 +66,7 @@ In the next dialogue about the certificate - just click "Next".
 Now it is time to fill in the server and node information to restore. Unfortunately copy and paste does not work in the web console so you will have to fill in everything by
 hand. In order to get keyboard focus in the web console you also need to click on the gray area around the actual console window which is somewhat unintuitive.
 ```
-Server Address: tsm1.cloud.ipnett.se
+Server Address: tsm1.backup.sto2.safedc.net
 Port: 1600 (change from 1500)
 Node name: The node name that you saved in a notepad from step one.
 User Id: Leave blank
