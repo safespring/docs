@@ -255,7 +255,7 @@ _This document describes how to **manually** install IBM TSM on Windows Windows 
 Required files - (Right click and 'Save as...'):
 
 - [7.1.1.0-TIV-TSMBAC-WinX64.exe](https://archive.service.safedc.net/tsm/mirror/maintenance/storage/tivoli-storage-management/maintenance/client/v7r1/Windows/x64/v711/7.1.1.0-TIV-TSMBAC-WinX64.exe)
-- [Safespring Root CA installer](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA-win64.bat)
+- [Safespring Root CA installer](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA-win64.bat)
 
 ### Procedure
 

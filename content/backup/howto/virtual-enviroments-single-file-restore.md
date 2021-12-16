@@ -23,7 +23,7 @@ Since the software used for file level restore doesn't support SSL we have to us
         Common Name (FQDN of your server) [localhost]:
         ```
 
-* Download the file https://raw.githubusercontent.com/IPnett/cloud-BaaS/master/pki/IPnett-Cloud-Root-CA.pem and put it in `C:\Program Files (x86)\stunnel\config\IPnett-Cloud-Root-CA.pem`
+* Download the file https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem and put it in `C:\Program Files (x86)\stunnel\config\SafeDC-Net-Root-CA.pem`
 * Replace the content of `C:\Program Files (x86)\stunnel\config\stunnel.conf` with the following:
     ```shell
     [cleartext-tsm]
@@ -32,7 +32,7 @@ Since the software used for file level restore doesn't support SSL we have to us
     connect = tsm1-v4.cloud.ipnett.se:1600
     verify = 2
     checkhost = tsm1.backup.sto2.safedc.net
-    CAfile = C:\Program Files\stunnel\config\IPnett-Cloud-Root-CA.pem
+    CAfile = C:\Program Files\stunnel\config\SafeDC-Net-Root-CA.pem
     ```
 * Run the app `stunnel Service install` from the start menu.  This will install the stunnel service.
 * Start the service, either the normal windows way, or by running the app "stunnel Service Start".  The service will start automatically after reboots.
