@@ -109,6 +109,7 @@ pages:
      - VPN options: "new/vpn.md"
      - Differences from older platforms: "new/differences.md"
      - S3 credentials: "new/s3-credentials.md"
+     - Application credentials: "new/app-creds.md"
   #   - Zones: "synkzone/zones.md"
   #   - Working with files: "synkzone/working-with-files.md"
   #   - Collaboration and conflict management: "synkzone/collaboration-and-conflict-management.md"
