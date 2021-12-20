@@ -29,7 +29,7 @@ Since the software used for file level restore doesn't support SSL we have to us
     [cleartext-tsm]
     client = yes
     accept = 127.0.0.1:1800
-    connect = tsm1-v4.cloud.ipnett.se:1600
+    connect = tsm1.backup.sto2.safedc.net:1600
     verify = 2
     checkhost = tsm1.backup.sto2.safedc.net
     CAfile = C:\Program Files\stunnel\config\SafeDC-Net-Root-CA.pem
