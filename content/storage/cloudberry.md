@@ -11,8 +11,9 @@ Start with adding an `S3 compatible gateway` config,
 ![Create config](/images/cloudberry1.png)
 
 and in the next menu, give it a name, add endpoint URL
-https://s3-archive.api.cloud.ipnett.se and the `access_key`
-and `secret_key` you got while enrolling for the service.
+https://s3.sto2.safedc.net (if this is where your account is located)
+and the `access_key` and `secret_key` you got while enrolling for the
+service.
 
 ![Options](/images/cloudberry2.png)
 
@@ -43,7 +44,7 @@ may read or write to the files/folders.
 For folders, you may choose to apply the setting recursively to
 the whole directory tree. If you upload a file and ask for its
 Public URL, you will get something along the lines of:
-http://s3-archive.api.cloud.ipnett.se/bucket-name/Folder/File.txt
+http://s3.sto2.safedc.net/bucket-name/Folder/File.txt
 which is ALMOST usable immediately.
 
 Since the S3 software runs
