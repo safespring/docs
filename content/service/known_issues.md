@@ -201,6 +201,7 @@ In the event that the domains are unavailable, you can work around it by adding 
 193.11.91.194 keystone.cloud.ipnett.se
 193.11.89.226 keystone-beta.cloud.ipnett.se
 193.11.89.226 portal.cloud.ipnett.se
+193.11.89.226 api.cloud.ipnett.se
 193.11.89.225 keystone.api.cloud.ipnett.se
 193.11.89.225 glance.api.cloud.ipnett.se
 193.11.89.225 cinder.api.cloud.ipnett.se
