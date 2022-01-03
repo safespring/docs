@@ -8,6 +8,8 @@ Now that Safespring is an independent company, we are migrating those services i
 
 |Old|New|Comment|
 |-|-|-|
+|portal.cloud.ipnett.no|login.osl1.safespring.com||
+|portal.cloud.ipnett.se|dashboard.cloud.sunet.se|temporary address|
 |cloud.ipnett.com|safespring.com||
 |cloud.ipnett.com|safedc.net|New domain for services|
 |staas@cloud.ipnett.se|support@safespring.com|New support address|

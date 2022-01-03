@@ -4,11 +4,11 @@
 
 Start by logging into the portal. You will be greeted with an overview of the project/account statistics. It usually starts off rather empty, but as machines are added, resources will be summarized there.
 
-* **Swedish** portal: https://login.sto1.safespring.com
-* **Norwegian** portal: https://portal.cloud.ipnett.no
+* **Swedish site sto1** portal: https://dashboard.sto1.safespring.com
+* **Norwegian site osl1** portal: https://dashboard.osl1.safespring.com
 
-!!! info "Are you connected to SUNET?"
-    Swedish universities and colleges that are connected to SUNET have their own portal. Start by logging into the portal at <https://dashboard.cloud.sunet.se>. You will be greeted with an overview of the project/account statistics. It usually starts off rather empty, but as machines are added, resources will be summarized there.
+!!! info "Legacy sites"
+    The old sto1 site is accessible through the SUNET dashboard at <https://dashboard.cloud.sunet.se>. for all users. The old osl1 site is accessible at https://login.osl1.safespring.com for all users. If you use the API at legacy sites, please refer to this documentation: https://docs.safespring.com/service/known_issues/#cloudipnettnose-domains
 
 ## Virtual Machines
 
