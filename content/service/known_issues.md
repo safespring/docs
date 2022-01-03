@@ -198,46 +198,20 @@ Due to historical reasons some of our v1 infrastructure is registered on the clo
 In the event that the domains are unavailable, you can work around it by adding the following to your local hosts file:
 
 ```shell
-193.11.91.194 keystone.cloud.ipnett.se
-193.11.89.226 keystone-beta.cloud.ipnett.se
-193.11.89.226 portal.cloud.ipnett.se
 193.11.89.226 api.cloud.ipnett.se
 193.11.89.225 keystone.api.cloud.ipnett.se
 193.11.89.225 glance.api.cloud.ipnett.se
 193.11.89.225 cinder.api.cloud.ipnett.se
 193.11.89.225 nova.api.cloud.ipnett.se
 193.11.89.225 neutron.api.cloud.ipnett.se
-193.11.89.225 ceilometer.api.cloud.ipnett.se
-193.11.89.225 heat.api.cloud.ipnett.se
-193.11.89.225 cloudformation.api.cloud.ipnett.se
-193.11.89.225 cloudwatch.api.cloud.ipnett.se
-193.11.89.225 contrail.api.cloud.ipnett.se
-193.11.89.225 discovery.api.cloud.ipnett.se
-193.11.89.225 restintsm.api.cloud.ipnett.se
-193.11.89.225 billing.api.cloud.ipnett.se
 ```
 
 for .se, and for .no:
 
 ```shell
-193.156.25.225 cloud.ipnett.no
 193.156.25.225 api.cloud.ipnett.no
-193.156.25.225 billing.api.cloud.ipnett.no
-193.156.25.225 ceilometer.api.cloud.ipnett.no
-193.156.25.225 cinder.api.cloud.ipnett.no
-193.156.25.225 cloudformation.api.cloud.ipnett.no
-193.156.25.225 cloudwatch.api.cloud.ipnett.no
-193.156.25.225 contrail.api.cloud.ipnett.no
 193.156.25.225 glance.api.cloud.ipnett.no
-193.156.25.225 heat.api.cloud.ipnett.no
 193.156.25.225 keystone.api.cloud.ipnett.no
 193.156.25.225 neutron.api.cloud.ipnett.no
 193.156.25.225 nova.api.cloud.ipnett.no
-193.156.25.225 restintsm.api.cloud.ipnett.no
-193.156.25.225 s3-archive.api.cloud.ipnett.no
-193.156.25.225 wildcard.api.cloud.ipnett.no
-193.156.25.227 contrail.cloud.ipnett.no
-193.156.25.229 graylog.cloud.ipnett.no
-193.156.25.228 vnc.cloud.ipnett.no
-193.156.25.226 wildcard.cloud.ipnett.no
 ```
