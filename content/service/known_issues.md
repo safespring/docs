@@ -193,23 +193,26 @@ DNS2=2001:4860:4860::8888
 ```
 
 ## cloud.ipnett.[no|se] domains
-Due to historical reasons some of our v1 infrastructure is registered on the cloud.ipnett.[no|se] domains. There have been a couple of instances where these domains have gone offline.
+Due to historical reasons some of our v1 infrastructure is using cloud.ipnett.[no|se] domains
+which are no longer in public DNS. Thus, in order to reach these services using API you'll need
+the following names and IP adresses in your local hosts file.
 
-In the event that the domains are unavailable, you can work around it by adding the following to your local hosts file:
+For .se, sto1 v1 API services
 
 ```shell
 193.11.89.226 api.cloud.ipnett.se
-193.11.89.225 keystone.api.cloud.ipnett.se
-193.11.89.225 glance.api.cloud.ipnett.se
 193.11.89.225 cinder.api.cloud.ipnett.se
-193.11.89.225 nova.api.cloud.ipnett.se
+193.11.89.225 glance.api.cloud.ipnett.se
+193.11.89.225 keystone.api.cloud.ipnett.se
 193.11.89.225 neutron.api.cloud.ipnett.se
+193.11.89.225 nova.api.cloud.ipnett.se
 ```
 
-for .se, and for .no:
+For .no, osl1 v1 API services
 
 ```shell
 193.156.25.225 api.cloud.ipnett.no
+193.156.25.225 cinder.api.cloud.ipnett.no
 193.156.25.225 glance.api.cloud.ipnett.no
 193.156.25.225 keystone.api.cloud.ipnett.no
 193.156.25.225 neutron.api.cloud.ipnett.no
