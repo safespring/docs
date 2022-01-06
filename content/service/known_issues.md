@@ -218,3 +218,35 @@ For .no, osl1 v1 API services
 193.156.25.225 neutron.api.cloud.ipnett.no
 193.156.25.225 nova.api.cloud.ipnett.no
 ```
+
+## Example rc files for legacy sites
+
+These are example rc files (settings) for accessing our Norwegian and
+Swedish Compute services. Replace the bracketed variables with your own
+information.
+
+### no-south-1
+
+```shell
+export OS_AUTH_URL=https://keystone.api.cloud.ipnett.no/v3
+export OS_IDENTITY_API_VERSION=3
+export OS_PASSWORD=<PASSWORD>
+export OS_PROJECT_DOMAIN_NAME=<DOMAIN>
+export OS_PROJECT_NAME=<PROJECT>
+export OS_REGION_NAME=no-south-1
+export OS_USERNAME=<USERNAME>
+export OS_USER_DOMAIN_NAME=<DOMAIN>
+```
+
+### se-east-1
+
+```shell
+export OS_AUTH_URL=https://keystone.api.cloud.ipnett.se/v3
+export OS_IDENTITY_API_VERSION=3
+export OS_PASSWORD=<PASSWORD>
+export OS_PROJECT_DOMAIN_NAME=<DOMAIN>
+export OS_PROJECT_NAME=<PROJECT>
+export OS_REGION_NAME=se-east-1
+export OS_USERNAME=<USERNAME>
+export OS_USER_DOMAIN_NAME=<DOMAIN>
+```

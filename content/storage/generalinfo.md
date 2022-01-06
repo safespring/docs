@@ -23,15 +23,6 @@ The `https` URLs to the service:
     + Norwegian site  - https://s3.osl1.safedc.net
     + Swedish site - https://s3.sto2.safedc.net
 
-
-``` tab="Sweden (Old URL)"
-Old Swedish URL - https://s3-archive.api.cloud.ipnett.se
-```
-
-``` tab="Norway (Old URL)"
-Old Norwegian URL - https://s3-archive.api.cloud.ipnett.no
-```
-
 The URL change is due to the rename from IPNett to Safespring of our
 company.  The old URLs will continue to work for a long time, but new
 client configurations should point to the new name.
