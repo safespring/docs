@@ -254,13 +254,13 @@ _This document describes how to **manually** install IBM TSM on Windows Windows 
 
 Required files - (Right click and 'Save as...'):
 
-- [7.1.1.0-TIV-TSMBAC-WinX64.exe](https://archive.service.safedc.net/tsm/mirror/maintenance/storage/tivoli-storage-management/maintenance/client/v7r1/Windows/x64/v711/7.1.1.0-TIV-TSMBAC-WinX64.exe)
+- [8.1.13.2-TIV-TSMBAC-WinX64.exe](https://public.dhe.ibm.com/storage/tivoli-storage-management/patches/client/v8r1/Windows/x64/v8113/8.1.13.2-TIV-TSMBAC-WinX64.exe)
 - [Safespring Root CA installer](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA-win64.bat)
 
 ### Procedure
 
 1. Download the required files according to above into a temporary folder
-1. Run `7.1.1.0-TIV-TSMBAC-WinX64.exe` to install the program and *hold* at the following point:
+1. Run `8.1.13.2-TIV-TSMBAC-WinX64.exe` to install the program and *hold* at the following point:
 
     ![Tivoli Storage Manager Client - InstallShield Wizard](../../images/TSMBAC_ISWizard.png)
 
@@ -271,7 +271,7 @@ Required files - (Right click and 'Save as...'):
 
 1. In a command prompt with elevated privileges, execute the "Safespring Root CA installer" to install the Safespring BaaS CA into the GSK (IBM crypto kit) trust database.
     ```
-    IPnett-Cloud-Root-CA-win64.bat
+    SafeDC-Net-Root-CA-win64.bat
     ```
 1. Create a backup client node via the BaaS API, and save the node password for future reference.
     ```
