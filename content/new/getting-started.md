@@ -2,6 +2,7 @@
 
 ## I just got a Safespring Compute account, what now?
 
+
 Start by logging into the portal. You will be greeted with an overview of the project/account statistics. It usually starts off rather empty, but as machines are added, resources will be summarized there.
 
 * **Swedish site sto1** portal: https://dashboard.sto1.safespring.com
@@ -46,20 +47,97 @@ After creating the volume you head to the "Launch instance" dialogue. Under "Sou
 
 ![image](../../images/launch_with_volume.png)
 
-## Networks
+## Flavors and Local Storage
+Flavors is the concept of instance dimensions in OpenStack. Each flavor corresponds to a certain configuration regarding VCPUs, memory and disk space. There are two types of flavors in the platform: those that come with local storage and those that do not. If you intend to boot from image you must pick a flavor with local storage. If you want to boot from volume, by creating a volume beforehand with the contents of an image, you should pick a flovr without local storage. The naming convention for the local storage flavors are on the form:
+```shell
+lb.medium.2d
+```
 
-All tenants (be it test accounts or projects) need to have some kind of network
-made available to it. If you are testing out, there may already be a
-demo-network or something similar set up for your instances, otherwise you need
-to [create a network](/compute/network/) for your machines to start in.
+The flavor name starts with an L. This means that this flavor comes with Local Storage. Local Storage means that the instance will use the storage on the compute node on which the instance is running instead of storage from a central storage solution.
+The second letter can be either “b” or “m”. B stands for a 1:2 relationship between number of VCPUs and gigabyte of memory. Medium means two VCPUs so in this case this means that the instance will have 4 GB of memory. M means that the instance will have a 1:4 relationship so instead the instance would have 8 GB of memory allocated.
+The naming convention for the flavors without local storage are the same, just that they do not start with an L and have no d-notation after the dimension since they do not come with extra disk. If that is needed that is handled by adding volumes instead. 
+```shell
+b.medium
+```
+It is important to note the difference between local storage and central storage.
 
-![image](../../images/dash-select-net.png)
+![image](../../images/np-storage-types.png)
 
-When starting an instance in a tenant network, it will get an internal network IP, probably set up with one of the RFC1918 IP-ranges, which means it can't be reached (yet) from the outside. It often also means that it can't reach out either. For some instances, this is exactly what is intended, but sooner or later you will need to be able to go outside of that network to get updates and/or other post-install configuration options.
+The picture above shows one instance running only with central storage (to the left) and one instance running with local storage on the right. Local storage is using the latest interface NVME which makes it about 7-10 times faster than central storage, FAST, with SSD. The downside is that local storage will only be stored in one copy instead of three which is the case for central storage. This means that if the local hard disk on the compute node where the instance is running crashes the data will be gone. Therefore it is very important to have a working backup solution for all data stored with Local Storage.
 
-In order to be able to reach out, you associate a Floating IP to your machine. Specifically, you attach it to your network interface. This means that the RFC1918 IP you got when starting up will remain. You will just get a 1:1 NAT mapping from the outside IP into your VM interface. One instance may do this and act as a proxy for many other instances on the same internal network, if your security design requires all VMs to pass through a central point.
+## Boot from image
+The simplest way of booting an instance is to boot it directly from the image service. By doing so you will use the ephepmeral storage. Ephemeral storage means that the storage lifetime is tied to the instance. It will persist as long as the instance exists but will automatically be deleted if the instance is deleted. If the instance you're starting is of a stateless type, with maybe any more persistent data is stored on a separate volume this is a good option.
 
-Before going into network creation, just a short notice about..
+To boot an instance from image, use the regular "Launch instance" wizard in the GUI. In the "Source" tab make sure the dropdown menu at the top is "Image" and also make sure that the "Create New Volume" is set to "No".
+
+In the flavor tab it is now important to pick a flavor with lokal storage in order for the image to be put somewhere. These flavors start with an "l", example lb.small which has a root disk on lokal disk of 20 GB.
+
+Continue the wizard to create the server. Now you have created an image based instance which is backed by local storage on the compute node where it is running. The upsides with this is that local storage is much faster than central storage. The downside is that the local storage only is stored in one copy on the compute node which means that if the hard drive on that compute node fails, dataloss will occur. If all the persistent datat is stored on a separate volume this is not a problem, but it is important to know the implications.
+
+## Boot from volume
+By booting from volume the instance root file system instead will be stored on persistent storage in the central storage solution. This means that the lifetime of the volume is separate from the lifetime of the instance, It is therefore possible to remove the instance and still keep the boot volume and at a later point boot up another instance with the same backing persistent storage which means that it is possible to recreate a removed instance in a later stage as long as the volume containing the root file system is not removed.
+
+There are two ways of achieving this. Either by manually create the volume beforehand or using the same "Launch Instance" wizard but with other options. We will start with describing how to do it by manually creating the volume first.
+
+1) Go to the "Volumes" tab in OpenStack and click "Create Volume".
+2) In the following dialogue give the volume a name, pick "Image" as the volume source, and then pick which image you will use as boot media for the instance.
+3) Pick storage type, fast or large. It is highly recommended to use "fast" for boot media since large will make the server slower and may only be applicable for some test servers.
+4) Set the size. If you have picked an image this field will be filled in with the smallest possible size you can use for this image. It is usually a good recommendation to use more than the minimum so increase this value with maybe factor 2.
+5) Click "Create Volume"
+
+You will now get back to the volume listing view and you can now click the little arrow besides "Edit volume" and pick "Launch as instance". You will now get redirected to the "Launch Instance" dialogue, just that is prepared with the right options under the "Source" tab so that you will use you newly created volume to boot the instance. Finish the wizard to start you new instance with the volume backing its storage. Under the "Flavor" tab you now instead pick a flavor with no local storage since you already have the storage covereed with central storage.
+
+The second option is to use the "Launch Instance" dialogue but under the "Source" tab pick image but leave the option "Create New Volume" at "Yes". You also se another option underneath which says "Delete Volume on Instance Delete". If you set this to "Yes" the volume will automatically get deleted when the instance is deleted, if "No" the volume will be kept even if you delete the instance. Since you have chosen to boot create a volume you probably would like to set this to "No" and manually delete the volume if you would like to do so after you have deleted the instance. Again, under the "Flavor" tab you now pick a flavor with no local storage, since it is not needed when booting from volume.
+
+
+## Network
+In the new platform, there is 3 networks to choose from (attach only one network):
+
+1. **public**: This network will give you a public IPv4 address, public IPv6 address, dns setup and default gateway so it is reachable directly to/from Internet.
+2. **default**: This network will give you a private IPv4 on a RFC 1918 network,
+   dns setup and default gateway with Network Address Translation (NAT) for outgoing traffic so instances can reach
+   services on the Internet, in addtion to instances on other networks in Safespring Compute (provided it is allowed by means of security groups).
+3. **private**: This network will give you a private IPv4 on a RFC 1918 network that is routed to/from other
+   Safespring networks (including public) but not anywhere else.
+
+![image](../../images/np-networks.png)
+
+Thus, the right way to communicate between instances attached to the different networks is to
+just use security groups directly to control access. Do NOT add a second
+interface on any instance. That will create problems with default gateways that
+compete, thus unstable network connection to the instance
+
+As an example all instances from any network in the new platform will be able
+to communicate if they are members of the following computer security group in
+(as expressed in Terraform code):
+
+```code
+resource "openstack_compute_secgroup_v2" "instance_interconnect" {
+  name        = "interconnect"
+  description = "Full network access between members of this security group"
+
+  rule {$
+    ip_protocol = "tcp"
+    from_port   = "1"
+    to_port     = "65535"
+    self        = true
+  }
+
+  rule {
+    ip_protocol = "udp"
+    from_port   = "1"
+    to_port     = "65535"
+    self        = true
+  }
+}
+```
+
+The keyword here is `self`. See: https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs/resources/compute_secgroup_v2#self
+
+!!! note "IPv6 on the default network"
+         Before the v2 platform reaches production the default network will ALSO provide
+         a public v6 address. This means you can have public IPv6 for free, as the
+         public network will be priced per IPv4 address.
 
 ### Security Groups
 
@@ -83,17 +161,6 @@ then add rules to it. Some of the common protocols have pregenerated defaults, a
 
 As soon as you apply the security group to an instance, it will take effect, no restart or rebuild will be necessary. Do note that the Default ruleset usually prevents all traffic, and that new security groups you place on instances should add permissions for only those protocols you want to allow.
 
-## Floating IPs
-
-Floating IPs are taken from a global pool of network addresses that we currently have allocated to the cloud services. Each instance that needs to interact directly with the outside will need to associate a floating IP. If you intend to make a VPN connection in order to stretch your home network into the cloud, the gateway machine would be the only one for which you would do this, the rest would talk to it for outside communications.
-
-Associating a Floating IP is done when the instance exists, so you can be presented with the interface you have, and then you select one out of many free IPs. The list of IPs may at times be empty, then you just press the "+" sign next to "Select an IP address" and then select from which pool to get an IP, allocate one and go back to the previous screen again.
-
-The drop down menu should now have an IP you can associate with your instance. If you haven't done it yet, Edit Security Groups for that instance and set filter rules appropriate for your instance.
-
-You machine could now be reachable from the outside, rules permitting.
-
-![image](../../images/dash-float-ip.png)
 
 ## Cloud Init
 
