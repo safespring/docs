@@ -48,7 +48,7 @@ After creating the volume you head to the "Launch instance" dialogue. Under "Sou
 ![image](../../images/launch_with_volume.png)
 
 ## Flavors and Local Storage
-Flavors is the concept of instance dimensions in OpenStack. Each flavor corresponds to a certain configuration regarding VCPUs, memory and disk space. There are two types of flavors in the platform: those that come with local storage and those that do not. If you intend to boot from image you must pick a flavor with local storage. If you want to boot from volume, by creating a volume beforehand with the contents of an image, you should pick a flovr without local storage. The naming convention for the local storage flavors are on the form:
+Flavors is the concept of instance dimensions in OpenStack. Each flavor corresponds to a certain configuration regarding VCPUs, memory and disk space. There are two types of flavors in the platform: those that come with local storage and those that do not. If you intend to boot from image you must pick a flavor with local storage. If you want to boot from volume, by creating a volume beforehand with the contents of an image, you should pick a flavor without local storage. The naming convention for the local storage flavors are on the form:
 ```shell
 lb.medium.2d
 ```
