@@ -78,12 +78,11 @@ pages:
     - FAQ: "backup/faq.md"
   - Compute:
      - Overview: "new/overview.md"
-     - New features: "new/features.md"
+     - Getting Started: "new/getting-started.md"
      - VPN options: "new/vpn.md"
-     - Differences from older platforms: "new/differences.md"
+     - API Access: "new/api.md"
      - S3 credentials: "new/s3-credentials.md"
      - Application credentials: "new/app-creds.md"
-     - Boot variants: "new/boot-variants.md"
      - HOWTOs:
        - Connecting to Safespring: "compute/connecting.md"
        - Windows images: "compute/windows.md"
@@ -91,8 +90,8 @@ pages:
        - Migrate instance to another project: "compute/migrate-between-projects.md"
        - Taking snapshots of instances: "compute/snapshotting-instances.md"
      - Legacy:
-       - Getting started: "compute/getting-started.md"
-       - API access: "compute/api.md"
+       - Getting started: "compute/getting-started-legacy.md"
+       - API access: "compute/api-legacy.md"
        - Image service: "compute/image.md"
        - Volume service: "compute/volume.md"
        - Network service: "compute/network.md"
