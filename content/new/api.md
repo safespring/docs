@@ -73,7 +73,6 @@ Then install _python-openstackclient_ using pip
 C:\Python27\Scripts>pip install python-openstackclient
 ```
 
-[Python 2.7]: https://www.python.org/downloads/
 
 ### Configuration and credentials
 
@@ -98,6 +97,11 @@ openstack token issue
 ```
 
 ## Terraform
-[Terraform]: https://terraform.io is a tool to provision infrastructure on cloud platforms. It is built to be an agnostic tool which uses the same templates regardless of the underlying cloud provider. 
+[Terraform] is a tool to provision infrastructure on cloud platforms. It is built to be an agnostic tool which uses the same templates regardless of the underlying cloud provider. 
 
-Safespring has developed a number of Terraform modules for different kind of instances and comes with a README which describes how to use them. The modules can be found [here]: https://github.com/safespring-community/terraform-modules .
+Safespring has developed a number of Terraform modules for different kind of instances and comes with an examples directory which describes how to use them. The modules can be found at: [Safespring terraform modules]
+[Python 2.7]: https://www.python.org/downloads/
+[Terraform]: https://www.terraform.io
+[Safespring terraform modules]: https://github.com/safespring-community/terraform-modules
+
+
