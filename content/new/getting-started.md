@@ -116,7 +116,7 @@ resource "openstack_compute_secgroup_v2" "instance_interconnect" {
   name        = "interconnect"
   description = "Full network access between members of this security group"
 
-  rule {$
+  rule {
     ip_protocol = "tcp"
     from_port   = "1"
     to_port     = "65535"
