@@ -4,14 +4,22 @@ This page describes what we are working on right now
 
 ## Roadmap for Safespring services
 
-| Currently working on       | Near term plans          | Future plans                                 |
+| Currently working on       | Near term plans                   | Future plans                        |
 |----------------------------|-----------------------------------|-------------------------------------|
-| Openstack upgrade for Safespring Mangaged Infrastructure | New dashboard for Safespring Backup       | N/A           |
-| New network stack    | New revised flavours,including larger sizes in osl1 | N/A                                    |
-| Openstack upgrade for Safesring Compute | Flavours with dedicated storage in osl1             | N/A                |
+| Upgrades to Safesring Compute in sto1 site | Upgrades to Safespring Compute in osl1 site   |         |
+| Updated flavors                            |                                               |         |
+| New Safespring Storage site in sweden      |                                               |         |
 
 ## Recent changes in the platform
 
+### January 2022
+
+* We are now charging for IPv4 address use in sto1 site
+
+
+### September 2021
+
+* Block storage and NVME flavors available on the new sto1 site
 ### January 2020
 
 * Improved performance for Safespring Storage service in sto2
