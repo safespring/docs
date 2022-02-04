@@ -15,7 +15,7 @@ This page describes what we are working on right now
 ### January 2022
 
 * We are now charging for IPv4 address use in sto1 site
-
+* Old ipnett domains are deprecated - see [this link](https://docs.safespring.com/service/domain-changes/) for more information
 
 ### September 2021
 
