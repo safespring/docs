@@ -14,13 +14,13 @@ Start by logging into the portal. You will be greeted with an overview of the pr
 
 Openstack calls VMs "instances" so in order to start running a few machines, you go to the Instances category, and use Launch Instance(s) to get your first VM up.
 
-![image](../../images/dash-launch.png)
+![image](../images/dash-launch.png)
 
 When creating an instance, you get asked about if you want to create a volume, and if you answer yes to that, also if you want it deleted after deleting the instance.
 
 It is normally not necessary to create a (new) volume for a new instance, answering No means that you will get a disk of the preferred size pre-configured for your chosen OS image. For machines with shorter lifespans (tests, validation and so on) this may be a good alternative. Disks created alongside with the OS image are sometimes referred to as 'ephemeral disks'. Regardless of if you create a volume / disk manually or not, you can always attach more disks later on.
 
-![image](../../images/dash-image-select.png)
+![image](../images/dash-image-select.png)
 
 Before we go into starting VMs, let's take a quick look at the concepts and names used in this cloud implementation.
 
@@ -38,13 +38,13 @@ Using snapshots to freeze volumes is a useful technique for being able to back o
 
 All flavors in Safesprings platform come with a 40 GB root disk. In the case you would want another size on the root disk you first create a volume under "Volumes" and pick Volume Source as Image and  then pick the image that corresponds to the operating system you want to run on the instance.
 
-![image](../../images/create_volume.png)
+![image](../images/create_volume.png)
 
 
 After creating the volume you head to the "Launch instance" dialogue. Under "Source" you pick "Volume" from the pick-list and then press the plus sign for the volume you created in the former step. You can also choose whether the volume should be persistent or not by switching the "Delete Volume on Instance Delete" option.
 
 
-![image](../../images/launch_with_volume.png)
+![image](../images/launch_with_volume.png)
 
 ## Networks
 
@@ -53,7 +53,7 @@ made available to it. If you are testing out, there may already be a
 demo-network or something similar set up for your instances, otherwise you need
 to [create a network](/compute/network/) for your machines to start in.
 
-![image](../../images/dash-select-net.png)
+![image](../images/dash-select-net.png)
 
 When starting an instance in a tenant network, it will get an internal network IP, probably set up with one of the RFC1918 IP-ranges, which means it can't be reached (yet) from the outside. It often also means that it can't reach out either. For some instances, this is exactly what is intended, but sooner or later you will need to be able to go outside of that network to get updates and/or other post-install configuration options.
 
@@ -69,17 +69,17 @@ One instance can have several security groups attached to them, and default is t
 
 Before being able to reach outside networks, a floating IP needs to be associated with one of your network interfaces (ports), and a security group allowing this must be applied to your instance. You can create many different security groups and apply one or more to any instance you have. Applying a security group takes effect immediately on running instances. Running local firewalls is still recommended, since other machines on the same local network may still reach your instance.
 
-![image](../../images/dash-security-groups.png)
+![image](../images/dash-security-groups.png)
 
 ### Creating your own security groups
 
 First create a group, and give it a descriptive name. Security groups are per project, so you may name them as you like, they will not be visible to other projects.
 
-![image](../../images/create-security-group.png)
+![image](../images/create-security-group.png)
 
 then add rules to it. Some of the common protocols have pregenerated defaults, and specifically SSH is at the bottom of the list, so it might require scrolling for it to be visible. If the program or protocol you want to open up isn't in that list, you will have to start by specifying TCP/UDP/ICMP manually and set which port(s) it uses. If you want to have it reachable from any IP, leave the CIDR field blank, even though the "?" help popup might suggest that "-1" indicates any. Otherwise, if you want to make the rule dependent on a certain source network or even a single IP, just add it with an appropriate netmask in the CIDR field.
 
-![image](../../images/Manage-security-group.png)
+![image](../images/Manage-security-group.png)
 
 As soon as you apply the security group to an instance, it will take effect, no restart or rebuild will be necessary. Do note that the Default ruleset usually prevents all traffic, and that new security groups you place on instances should add permissions for only those protocols you want to allow.
 
@@ -93,7 +93,7 @@ The drop down menu should now have an IP you can associate with your instance. I
 
 You machine could now be reachable from the outside, rules permitting.
 
-![image](../../images/dash-float-ip.png)
+![image](../images/dash-float-ip.png)
 
 ## Cloud Init
 
@@ -109,4 +109,4 @@ When launching an instance you can add a cloud init file up to 16k in size. That
 
 More advanced customizations can be added as a "configuration drive" which will appear as a separate disk to the guest which holds whatever data and software needed for post-install, preferably in a generic way so it can be reused for many instances. It is further possible to add per-instance specific metadata in the last step of the launch wizard, which the instance can ask for while starting up.
 
-![image](../../images/dash-cloud-init.png)
+![image](../images/dash-cloud-init.png)

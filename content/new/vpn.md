@@ -45,7 +45,7 @@ The reason for you using Zerotier in the first place is probably that you do
 not want the instance to be publicly available so the network "default" is your
 best choice here.
 
-![image](../../images/np-launch-instance.png)
+![image](../images/np-launch-instance.png)
 
 The next point of interest is the “Configuration” tab. This is where we will paste the cloud-init code below that will install the agent:
 
@@ -62,6 +62,6 @@ runcmd:
 Make sure to insert your network ID from the Zerotier web page at the last row. Start the instance and go the the Zerotiers webpage. After a while you should see you host showing up in the “Members” section:
 
 
-![image](../../images/np-zerotier-members.png)
+![image](../images/np-zerotier-members.png)
 
 When the host show up, check the “Auth” checkbox to join the host to the network. It will now get an IP-address in the overlay network which you can reach from the other nodes in the networket

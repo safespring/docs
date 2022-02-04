@@ -26,7 +26,7 @@ A file called windows-passwords.pem should be dowloaded to your computer. Take g
 
 ### Creating a Windows instance via webui
 
-You create a Windows instance in much the same way as [any other instance](./getting-started.md), by selecting one of the windows images under the Source menu.
+You create a Windows instance in much the same way as [any other instance](./getting-started-legacy.md), by selecting one of the windows images under the Source menu.
 
 In the "Key Pair" section of the "Launch instance" dialog, select the key pair "windows-passwords" you created earlier.
 

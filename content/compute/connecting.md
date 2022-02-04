@@ -152,7 +152,7 @@ runcmd:
 Then paste your file into the "Configuration section", "Customization
 Script" or upload it "Load script from a file".
 
-![image](../../images/cloud-init.png)
+![image](../images/cloud-init.png)
 
 You could also use the Openstack cli and input the file as "user-data"
 when creating the server.
@@ -280,7 +280,7 @@ default-gateway, "Alt 2".
 At the "cloud network" side all clients/servers must have a route back
 to the "Home network" with a next-hop to the vpn-server.
 
-![image](../../images/network-vpn.png)
+![image](../images/network-vpn.png)
 
 ### Troubleshoot
 

@@ -5,7 +5,7 @@ The different tenants in OpenStack is divided into domains and projects. One dom
 When you log into the platform you will be greated with the “Overview”-screen were you can see how much resources you currently is using in the project.
 
 
-![image](../../images/np-overview.png)
+![image](../images/np-overview.png)
 
 The pie charts show how much of the resources compared to the set quota. 
 
