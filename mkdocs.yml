@@ -81,16 +81,16 @@ pages:
      - Getting Started: "new/getting-started.md"
      - VPN options: "new/vpn.md"
      - API Access: "new/api.md"
-     - S3 credentials: "new/s3-credentials.md"
      - Application credentials: "new/app-creds.md"
      - HOWTOs:
        - Connecting to Safespring: "compute/connecting.md"
        - Windows images: "compute/windows.md"
+       - S3 credentials (sto3): "new/s3-credentials.md"
        - VMware import: "compute/vmware-import.md"
        - Migrate instance to another project: "compute/migrate-between-projects.md"
        - Taking snapshots of instances: "compute/snapshotting-instances.md"
      - Legacy:
-       - Getting started: "compute/getting-started-legacy.md"
+       #       - Getting started: "compute/getting-started-legacy.md"
        - API access: "compute/api-legacy.md"
        - Image service: "compute/image.md"
        - Volume service: "compute/volume.md"
