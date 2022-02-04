@@ -90,7 +90,7 @@ pages:
        - Migrate instance to another project: "compute/migrate-between-projects.md"
        - Taking snapshots of instances: "compute/snapshotting-instances.md"
      - Legacy:
-       #       - Getting started: "compute/getting-started-legacy.md"
+       - Getting started: "compute/getting-started-legacy.md"
        - API access: "compute/api-legacy.md"
        - Image service: "compute/image.md"
        - Volume service: "compute/volume.md"
