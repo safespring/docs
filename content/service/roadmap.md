@@ -12,6 +12,10 @@ This page describes what we are working on right now
 
 ## Recent changes in the platform
 
+### February 2022
+
+* Improved performance for windows instances in the new platform
+
 ### January 2022
 
 * We are now charging for IPv4 address use in sto1 site
