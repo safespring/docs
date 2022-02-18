@@ -3,6 +3,9 @@
 There are some currently known issues in the Compute platform. This page
 describes the most common pitfalls. Known issues for Backup is under the [Backup FAQ page](/backup/faq).
 
+## Create volumes from image sometimes fails in new v2 platform
+Sometimes when trying to create a volume from an image, the process fails with and "Error" status on the volume. This has to do with backend glance servers and we are working to fix this. If this happens, contact support@safespring.com with the ID of the volume and we will remove the failing volume. Then you can try again. The intermittent nature of the failure has to do with that some backend glance servers does not expand the qcow2 image correctly.
+
 ## Networking issue with the Debian 10 images
 Unfortunately the network services installed on the publicly provided Debian 10 images are not working with OpenStack. One option is to install a Debain 9 image and 
 then do an upgrade. Another option is to provide the following Cloud-Init script under "Configuration" when launching the instance. This will make the network services

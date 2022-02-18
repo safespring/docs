@@ -46,6 +46,7 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+  - tables
 
 # Pages layout
 pages:
@@ -81,6 +82,7 @@ pages:
      - Getting Started: "new/getting-started.md"
      - VPN options: "new/vpn.md"
      - API Access: "new/api.md"
+     - Flavors: "new/flavors.md"
      - Application credentials: "new/app-creds.md"
      - HOWTOs:
        - Connecting to Safespring: "compute/connecting.md"
