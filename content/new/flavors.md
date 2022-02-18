@@ -56,7 +56,7 @@ To spread capacity fairly over instances the IOPS quota on them are linear to th
 
 If you have API-access you can view the IOPS quota with the command:
 
-    ```openstack flavor list --long```
+    openstack flavor list --long
 
 !!! info "Conclusion"
     Flavors starting with lb2 should be booted from "Image". Flavors starting with b2 should be booted from a volume created from an image. Combinations such as booting a lb2-flavor from volume or b2-flavor from image will not work and render an error.
