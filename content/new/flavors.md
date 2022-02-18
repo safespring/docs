@@ -55,6 +55,7 @@ To boot these instance one should boot from "Image" under the "Source"-tab in th
 To spread capacity fairly over instances the IOPS quota on them are linear to the amount of disk space they reserve. This means that an l-flavor ending with 2d has twice the amount of IOPS reserved than an l-flavor ending with 1d. A flavor ending with 4d has four times IOPS quota compared to 1d. This should be taken into consideration if IOPS is important for your application running in the instance even though you do not need a larger disk space. The higher amount of disk reserved the faster the disk will be. You can see this in the table above for the lb2 flavors. 
 
 If you have API-access you can view the IOPS quota with the command:
+
     ```openstack flavor list --long```
 
 !!! info "Conclusion"
