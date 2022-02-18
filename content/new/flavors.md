@@ -50,7 +50,7 @@ The flavors starting with l works a little bit different since they come with a 
 To boot these instance one should boot from "Image" under the "Source"-tab in the "Launch Instance"-dialogue. The image will be copied to the root disk of the instance before start.
 
 !!! info "Important Note"
-    It is important to understand the implications of the local disk flavors. The performance of them will be higher but the disk the image is created on  will be a single point of failure. If the disk crashes, the instance will not be restorable. **Therefore it is important that these instances either are stateless or backed up properly.** 
+    It is important to understand the implications of the local disk flavors. The performance of them will be higher but the virtual disk created will be a single point of failure. If the physical disk, on which the virtual disk is placed, crashes, the instance will not be restorable. **Therefore it is important that these instances either are stateless or backed up properly.** 
 
 To spread capacity fairly over instances the IOPS quota on them are linear to the amount of disk space they reserve. This means that an l-flavor ending with 2d has twice the amount of IOPS reserved than an l-flavor ending with 1d. A flavor ending with 4d has four times IOPS quota compared to 1d. This should be taken into consideration if IOPS is important for your application running in the instance even though you do not need a larger disk space. The higher amount of disk reserved the faster the disk will be. You can see this in the table above for the lb2 flavors. 
 
