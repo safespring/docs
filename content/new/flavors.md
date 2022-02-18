@@ -31,9 +31,9 @@ The table below shows some flavor names and a description of what they mean so t
 
 | Flavor name    | Description                                                                  |
 | -------------- | ---------------------------------------------------------------------------- |
-| `b.c2m4`       | No local disk (boot from volume) with 2 vCPUs and 4 GB of memory             |
-| `lb.c4m8.1d`   | Local disk (boot from image) with 4 vCPUs, 8 GB of memory and 250 GB of disk |
-| `lb.c48m.2d`   | Local disk with 4 vCPUs, 8 GB of memory and 500 GB of disk.                  |
-| `lb.c48m.4d`   | Local disk with 4 vCPUs, 8 GB of memory and 1000 GB of disk.                 |
+| `b2.c2r8`      | No local disk (boot from volume) with 2 vCPUs and 8 GB of memory             |
+| `l2.c2r4.100`  | 100 GB local disk (boot from image) with 2 vCPUs, 4 GB of memory             |
+| `l2.c4r8.500`  | 500 GB local disk with 4 vCPUs and 8 GB of memory                            |
+| `l2.c8r16.1000`| 100 GB local disk with 8 vCPUs and 16 GB of memory                           |
 
 
