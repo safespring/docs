@@ -20,7 +20,7 @@ Instance created with these flavors need a volume to boot from. See below how to
 
 
 ##L2 flavors (local disk)
-Instances created with these flavors must be booted from and image and not a volume. See below how to accomplish that.
+Instances created with these flavors must be booted from an image and not a volume. See below how to accomplish that.
 
 | Flavor name    | Description                                                                  |
 | -------------- | ---------------------------------------------------------------------------- |
@@ -52,11 +52,10 @@ To boot these instance one should boot from "Image" under the "Source"-tab in th
 !!! info "Important Note"
     It is important to understand the implications of the local disk flavors. The performance of them will be higher but the disk the image is created on  will be a single point of failure. If the disk crashes, the instance will not be restorable. **Therefore it is important that these instances either are stateless or backed up properly.** 
 
-To spread capacity fairly over instances the IOPS quota on them are linear to the amount of disk space they reserve. This means that an l-flavor ending with 2d has twice the amount of IOPS reserved than an l-flavor ending with 1d. A flavor ending with 4d has four times IOPS quota compared to 1d. This should be taken into consideration if IOPS is important for you application running in the instance even though you do not need a larger disk space. The higher amount of disk reserved the faster the disk will be. You can see this in the table above for the lb2 flavors. 
+To spread capacity fairly over instances the IOPS quota on them are linear to the amount of disk space they reserve. This means that an l-flavor ending with 2d has twice the amount of IOPS reserved than an l-flavor ending with 1d. A flavor ending with 4d has four times IOPS quota compared to 1d. This should be taken into consideration if IOPS is important for your application running in the instance even though you do not need a larger disk space. The higher amount of disk reserved the faster the disk will be. You can see this in the table above for the lb2 flavors. 
 
 If you have API-access you can view the IOPS quota with the command:
-```
-    openstack flavor list --long
+    ```openstack flavor list --long```
 
 !!! info "Conclusion"
     Flavors starting with lb2 should be booted from "Image". Flavors starting with b2 should be booted from a volume created from an image. Combinations such as booting a lb2-flavor from volume or b2-flavor from image will not work and render an error.
