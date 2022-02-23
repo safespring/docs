@@ -48,22 +48,8 @@ After creating the volume you head to the "Launch instance" dialogue. Under "Sou
 ![image](../images/launch_with_volume.png)
 
 ## Flavors and Local Storage
-Flavors is the concept of instance dimensions in OpenStack. Each flavor corresponds to a certain configuration regarding VCPUs, memory and disk space. There are two types of flavors in the platform: those that come with local storage and those that do not. If you intend to boot from image you must pick a flavor with local storage. If you want to boot from volume, by creating a volume beforehand with the contents of an image, you should pick a flavor without local storage. The naming convention for the local storage flavors are on the form:
-```shell
-lb.medium.2d
-```
+You can read more about the different flavors and what they mean [here](/new/flavors/)
 
-The flavor name starts with an L. This means that this flavor comes with Local Storage. Local Storage means that the instance will use the storage on the compute node on which the instance is running instead of storage from a central storage solution.
-The second letter can be either “b” or “m”. B stands for a 1:2 relationship between number of VCPUs and gigabyte of memory. Medium means two VCPUs so in this case this means that the instance will have 4 GB of memory. M means that the instance will have a 1:4 relationship so instead the instance would have 8 GB of memory allocated.
-The naming convention for the flavors without local storage are the same, just that they do not start with an L and have no d-notation after the dimension since they do not come with extra disk. If that is needed that is handled by adding volumes instead. 
-```shell
-b.medium
-```
-It is important to note the difference between local storage and central storage.
-
-![image](../images/np-storage-types.png)
-
-The picture above shows one instance running only with central storage (to the left) and one instance running with local storage on the right. Local storage is using the latest interface NVME which makes it about 7-10 times faster than central storage, FAST, with SSD. The downside is that local storage will only be stored in one copy instead of three which is the case for central storage. This means that if the local hard disk on the compute node where the instance is running crashes the data will be gone. Therefore it is very important to have a working backup solution for all data stored with Local Storage.
 
 ## Boot from image
 The simplest way of booting an instance is to boot it directly from the image service. By doing so you will use the ephepmeral storage. Ephemeral storage means that the storage lifetime is tied to the instance. It will persist as long as the instance exists but will automatically be deleted if the instance is deleted. If the instance you're starting is of a stateless type, with maybe any more persistent data is stored on a separate volume this is a good option.
@@ -101,6 +87,11 @@ In the new platform, there is 3 networks to choose from (attach only one network
    Safespring networks (including public) but not anywhere else.
 
 ![image](../images/np-networks.png)
+
+!!! info "Important note"
+    You no longer have the ability to create your own networks. All networks has a separate DHCP-scope from which instances created in that network will get an IP-address from. This means that you will have less flexibility which IP-addresses your instances get, but you will instead gain in stability since the simpler network model in v2 has proven to be much more stable than that in v1.
+
+Instances in different network will be able to communicate as long as your security groups allow it. Note that this also applies to instances in the public network with public IP-addresses and instances in the default and private networks. 
 
 Thus, the right way to communicate between instances attached to the different networks is to
 just use security groups directly to control access. Do NOT add a second
