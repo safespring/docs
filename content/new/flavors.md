@@ -7,7 +7,7 @@ Instance created with these flavors need a volume to boot from. See below how to
 
 | Flavor name    | Description                                                                  |
 | -------------- | ---------------------------------------------------------------------------- |
-| `b2.c1r28`      | ram: 2048, vcpus: 1, disk: 0             |
+| `b2.c1r2`      | ram: 2048, vcpus: 1, disk: 0             |
 | `b2.c1r4`  | ram: 4096, vcpus: 1, disk: 0             |
 | `b2.c2r4`  | ram: 4096, vcpus: 2, disk: 0                           |
 | `b2.c2r8`| ram: 8192, vcpus: 2, disk: 0                           |
