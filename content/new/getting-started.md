@@ -98,6 +98,9 @@ just use security groups directly to control access. Do NOT add a second
 interface on any instance. That will create problems with default gateways that
 compete, thus unstable network connection to the instance
 
+!!! info "Important note"
+    Traffic between all instances in the platform (including RFC1918-subnets i.e. private and default) will be routed directly by the platform, thus the destination service will see the RFC1918 IP address as source address when traffic originates from them. This may have a subtle implication for tenants running public facing services that is contacted by instances on a Safespring RFC1918 subnet: If the public service (or operating system) filters out RFC1918-addresses (because they are not expected) it will effectively stop traffic originating form the Safespring RFC1918 subnets. Thus, you must ensure that these subnets is allowed to access your service. Most likely it will just work, but it is worth being aware of. You can use the openstack cli to list all v4 subnets with: `openstack subnet list |grep v4`
+
 As an example all instances from any network in the new platform will be able
 to communicate if they are members of the following computer security group in
 (as expressed in Terraform code):
