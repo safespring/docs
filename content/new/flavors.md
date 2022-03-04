@@ -1,9 +1,12 @@
 # Flavors
 This chapter describes the different flavors and how they are used in the platform. It is important to understand what the different flavors imply and which combinations that is possible to boot a working instance.
 
-##B2 flavors (block storage)
-Instance created with these flavors need a volume to boot from. See below how to accomplish that.
+## b2 flavors (block storage)
 
+!!! info "versions"
+    The first number in the flavor name (l2 or b2) denotes a particular version of this flavor. We might introduce other versions in the future with different properties.
+
+Instance created with these flavors need a volume to boot from. See below how to accomplish that.
 
 | Flavor name    | Description                                                                  |
 | -------------- | ---------------------------------------------------------------------------- |
@@ -18,8 +21,8 @@ Instance created with these flavors need a volume to boot from. See below how to
 | `b2.c16r32`| ram: 32768, vcpus: 16, disk: 0 |
 | `b2.c16r64`| ram: 65536, vcpus: 16, disk: 0 |
 
+## l2 flavors (local disk)
 
-##L2 flavors (local disk)
 Instances created with these flavors must be booted from an image and not a volume. See below how to accomplish that.
 
 | Flavor name    | Description                                                                  |
@@ -37,7 +40,8 @@ Instances created with these flavors must be booted from an image and not a volu
 | `l2.c16r32.500`| ram: 32768, vcpus: 16, disk: 500, read_iops: 50000, write_iops: 25000 |
 | `l2.c16r32.1000`| ram: 32768, vcpus: 16, disk: 1000, read_iops: 100000, write_iops: 50000 |
 
-## b2. and lb2. flavors
+## b2. and l2. flavors
+
 ![image](../images/np-storage-types.png)
 The flavors starting with b2 does not come with any disk space in the flavor. You can see this in the flavor listing when starting the instance that they have a zero in the "Root Disk" column. This means that in order to boot an instance with such a flavor the root disk must be created beforehand under "Volumes". The procedure is to create a new volume and choosing that it should contain an image that you pick in the drop down "Use Image as Source" which is visible if you pick "Image" under the drop down "Volume Source".
 
@@ -53,13 +57,11 @@ To boot these instance one should boot from "Image" under the "Source"-tab in th
 !!! info "Important Note"
     It is important to understand the implications of the local disk flavors. The performance of them will be higher but the virtual disk created will be a single point of failure. If the physical disk, on which the virtual disk is placed, crashes, the instance will not be restorable. **Therefore it is important that these instances either are stateless or backed up properly.** 
 
-To spread capacity fairly over instances the IOPS quota on them are linear to the amount of disk space they reserve. This means that an l-flavor ending with 500 has five times the amount of IOPS reserved than an l-flavor ending with 100. A flavor ending with 1000 has ten times IOPS quota compared to 100. This should be taken into consideration if IOPS is important for your application running in the instance even though you do not need a larger disk space. The higher amount of disk reserved the faster the disk will be. You can see this in the table above for the lb2 flavors. 
+To spread capacity fairly over instances the IOPS quota on them are linear to the amount of disk space they reserve. This means that an l-flavor ending with 500 has five times the amount of IOPS reserved than an l-flavor ending with 100. A flavor ending with 1000 has ten times IOPS quota compared to 100. This should be taken into consideration if IOPS is important for your application running in the instance even though you do not need a larger disk space. The higher amount of disk reserved the faster the disk will be. You can see this in the table above for the l2 flavors. 
 
 If you have API-access you can view the IOPS quota with the command:
 
     openstack flavor list --long
 
 !!! info "Conclusion"
-    Flavors starting with lb2 should be booted from "Image". Flavors starting with b2 should be booted from a volume created from an image. Combinations such as booting a lb2-flavor from volume or b2-flavor from image will not work and render an error.
-
-
+    Flavors starting with l2 should be booted from "Image". Flavors starting with b2 should be booted from a volume created from an image. Combinations such as booting a l2-flavor from volume or b2-flavor from image will not work and render an error.

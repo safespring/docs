@@ -12,6 +12,12 @@ This page describes what we are working on right now
 
 ## Recent changes in the platform
 
+### March 2022
+
+* New flavors, see [documentation](../compute/../new/flavors.md)
+* Added IPv6 to default instance network
+* Fixed an issue where NAT outgoing rules implemented  in calico policy wrongfully also NATed connections going to the internal, east-west, public IPs of the public openstack network.
+
 ### February 2022
 
 * Improved performance for windows instances in the new platform
