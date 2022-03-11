@@ -4,6 +4,23 @@ S3 is an object store, much like an FTP server, except it scales to
 much larger sizes and uses `https://` for both integrity, safety and
 accessibility.
 
+## Get S3 credentials
+S3 credentials are mapped to projects in Safesprings Compute platform. 
+This means that if you want to get credentials for S3 you will have to login into
+version 2 of Safesprings Compute platform and then choose "Project" up to the right and then API Access.
+You will now see a button which says "View Credentials" and if you click that you will be precented with an
+information screen. 
+* S3 URL: this is the serice point URL to which to direct your S3 Client.
+* EC2 Access Key: the S3 access key
+* EC2 Secret Key: the S3 secret key
+
+![View Credentials](/images/view-credentials.png)
+
+!!! note
+    Every project in Safespring Compute has one S3 account connected to it but one project can have several users. This means
+    that when different users press the "View Credentials" button in Safespring Compute they will get different key pairs of access and secret 
+    keys. Important to understand is that these different key pairs will give access to the SAME S3 account, tied to the project.
+
 ## Minimum required info for S3 access
 
 Many clients will assume you are talking to AWS S3, in which case they might
@@ -48,3 +65,12 @@ directories and/or files. Creating more than one bucket is possible,
 but do mind that it can fail if the name isn't unique, or the name of
 it would not work as a `DNS` entry. The directories and files inside can
 have names with more variation of course.
+
+## s3 bucket naming constraints
+
+In earlier setups we were running with `rgw_relaxed_s3_bucket_names` set to
+`true`. This allowed a bit more characters but could cause issues with clients
+& solutions expecting the stricter standard bucket naming constraints. To avoid
+such issues in the future we are now running  with the default constraints
+which can be seen here
+<https://docs.ceph.com/en/octopus/radosgw/s3/bucketops/#constraints>.
