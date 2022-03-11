@@ -9,10 +9,11 @@ S3 credentials are mapped to projects in Safesprings Compute platform.
 This means that if you want to get credentials for S3 you will have to login into
 version 2 of Safesprings Compute platform and then choose "Project" up to the right and then API Access.
 You will now see a button which says "View Credentials" and if you click that you will be precented with an
-information screen. 
-* S3 URL: this is the serice point URL to which to direct your S3 Client.
-* EC2 Access Key: the S3 access key
-* EC2 Secret Key: the S3 secret key
+information screen:
+
+1. S3 URL: this is the serice point URL to which to direct your S3 Client.
+2. EC2 Access Key: the S3 access key
+3. EC2 Secret Key: the S3 secret key
 
 ![View Credentials](/images/view-credentials.png)
 
