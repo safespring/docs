@@ -35,7 +35,7 @@ and then versioning might help recovering from inadvertent changes.
 On the other hand, the storage will charge you for the full extent of
 stored data, even if some clients will not let you see the hidden
 versions, so you might be surprised to see usage exceed the sum of the
-sizes of the visible files. Versioning if off by default, so this can
+sizes of the visible files. Versioning is off by default, so this can
 only happen if you deliberately enable it on a particular bucket.
 
 You need to be careful when acting on old versions of files, the GUI
