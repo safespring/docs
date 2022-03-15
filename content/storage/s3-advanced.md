@@ -263,7 +263,7 @@ s3cmd -c second-user-project-s3cfg get s3://BUCKET_OWNER_PROJECT_ID:mysharedbuck
 ```
 
 ## Using presigned URLs
-It is possible to generate URLs to object which are presigned with a time limit how long the link is valid. This way it is possible to grant access to single objects without the need to use policies. 
+It is possible to generate URLs to object which are presigned with a time limit how long the link is valid. This way it is possible to grant temporary access to single objects without the need to use policies. 
 
 When you generated your s3.cfg file above there where two lines that maybe did not make any sense then:
 
@@ -284,6 +284,6 @@ The command to issue is the following:
 # s3cmd -c owner-s3.cfg signurl s3://bucket/testfile +86400
 ```
 The command will return an URL that you can send to anyone and will be valid for 24 hours from now.
-
+You can also skip +86400 to make the URL permanent. 
 
 
