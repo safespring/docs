@@ -4,7 +4,7 @@
 This chapter descibes how you can set up specific Access Control Lists (from now on called ACLs)
 to control access to specific buckets or objects from other S3 users in the platform.
 
-The reasons for doing could be: 
+Reasons for doing this could be: 
 
 1. Give public access to a specific bucket or object
 2. Give another S3 user read or read/write access to a specific bucket, objects or subfolder of a bucket.
