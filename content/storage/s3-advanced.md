@@ -154,18 +154,18 @@ To apply the policy, let the owner issue the following:
 # s3cmd -c owner-s3.cfg setpolicy rw-policy.json s3://sharedbucket
 ```
 
-The owner now has to send it Project ID, and the name of the bucket to the user.
+The owner now has to send its Project ID, and the name of the bucket to the user.
 
 To list the contents of the bucket, the bucket user should issue:
 
 ```
 # s3cmd -c user-s3.cfg ls s3://BUCKET_OWNER_PROJECT_ID:sharedbucket
 ```
-The user now should se a listing of the contents of the bucket.
+The user now should see a listing of the contents of the bucket.
 
 #### Grant any user read access to a bucket
 
-Create a file called all-read-policy.json:
+Create a file called **all-read-policy.json**:
 
 ```
 {
@@ -204,7 +204,7 @@ s3cmd -c user-s3.cfg get s3://BUCKET_OWNER_PROJECT_ID:sharedbucket/testfile
 ```
 
 #### Grant one user full access and another read access
-Policies can also be combined like this:
+Policies can also be combined like this. The example below will give FIRST_USER full access to the Owners bucket, and SECOND_USER read access::
 
 ```
 {
@@ -276,7 +276,7 @@ These varibales are important now when we want to create those pre-signed URLs t
 signing mechanism to use HTTPS instead of HTTP which you need in Safespring's platform since HTTP is not allowed.
 
 Let's say that the owner has a configuration file called owner-s3.cfg where those variables are set and wants
-to create a pre-signed url for the object s3://bucket/testfile which is valid for 24 hours (or 86400 secoonds). 
+to create a pre-signed url for the object **s3://bucket/testfile** which is valid for 24 hours (or 86400 seconds). 
 
 The command to issue is the following:
 
