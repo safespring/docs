@@ -88,18 +88,47 @@ In the new platform, there is 3 networks to choose from (attach only one network
 
 ![image](../images/np-networks.png)
 
+
 !!! info "Important note"
     You no longer have the ability to create your own networks. All networks has a separate DHCP-scope from which instances created in that network will get an IP-address from. This means that you will have less flexibility which IP-addresses your instances get, but you will instead gain in stability since the simpler network model in v2 has proven to be much more stable than that in v1.
 
 Instances in different network will be able to communicate as long as your security groups allow it. Note that this also applies to instances in the public network with public IP-addresses and instances in the default and private networks. 
 
 Thus, the right way to communicate between instances attached to the different networks is to
-just use security groups directly to control access. Do NOT add a second
+just use security groups directly to control access. **Do NOT add a second
 interface on any instance. That will create problems with default gateways that
-compete, thus unstable network connection to the instance
+compete, thus unstable network connection to the instance.**
 
 !!! info "Important note"
     Traffic between all instances in the platform (including RFC1918-subnets i.e. private and default) will be routed directly by the platform, thus the destination service will see the RFC1918 IP address as source address when traffic originates from them. This may have a subtle implication for tenants running public facing services that is contacted by instances on a Safespring RFC1918 subnet: If the public service (or operating system) filters out RFC1918-addresses (because they are not expected) it will effectively stop traffic originating form the Safespring RFC1918 subnets. Thus, you must ensure that these subnets is allowed to access your service. Most likely it will just work, but it is worth being aware of. You can use the openstack cli to list all v4 subnets with: `openstack subnet list |grep v4`
+
+### No layer 2 connectivity, only layer 3
+To clarify even further see the image below which shows 6 instances in the same project. Instances 1 and 2 are 
+put in the public network. This does not mean that they are in the same network per se, public only tells that
+these two instances will get an IP address from the public range. Networking-wise instance 1 and 2 are in 
+different networks. The same goes for 3 and 4 in the default network. They are in separate networks but both
+get and private IP address from the private pool with NAT enabled. Instance 5 and 6 are the same, two separate
+networks but instead IP-addresses from the private pool with no NAT enabled.
+
+![image](../images/v2-networking.svg)
+
+All connectivity between the different instances is routed in the same routing fabric, public or private. 
+Instance 1 in the public network could act jumphost to reach the instance 3, 4, 5 or 6 without being connected to
+neither default nor private. As stated above you even **can't use more than ONE interface on a single instance** 
+because the addresses are given out with DHCP which will cause a conflicting default gateway configuration if 
+you use more than ONE network on each instance. 
+
+
+### Security groups is what decides what goes where
+Since all the instances are connected to the same routing fabric, this means that it is possible to reach the 
+instances in the private networks from the public networks and vice versa, should the right security groups be 
+in place. Since all instances are in their own network connected to the router, you even need security groups
+to allow traffic between instances in the "same" network, for example between 1 and 2. This design makes the 
+configuration simpler since all you have to consider when allowing traffic between instances are the security
+groups. No layer 2 "leaking" traffic can ever happen since all instances are in separate networks.
+
+
+
 
 As an example all instances from any network in the new platform will be able
 to communicate if they are members of the following computer security group in
