@@ -10,7 +10,7 @@ Duck is used to move files, and handles a lot of different protocols,
 and for each of those protocols you use, it wants you to make a URL
 scheme so it can differentiate between endpoints in case you use it to
 copy from remoteA to remoteB. This in turn shares the config file
-`forOBmat` that Cyberduck uses, but since you would almost always
+`format` that Cyberduck uses, but since you would almost always
 configure Cyberduck from the GUI, it's not super well documented nor
 simple. For this reason we have made a config file that works with our
 S3 endpoints.
