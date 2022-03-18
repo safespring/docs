@@ -1,8 +1,8 @@
-# Roadmap for safespring services
+# Roadmap for Safespring services
 
 This page describes what we are working on right now
 
-## Roadmap for Safespring services
+## Roadmap
 
 | Currently working on       | Near term plans                   | Future plans                        |
 |----------------------------|-----------------------------------|-------------------------------------|
