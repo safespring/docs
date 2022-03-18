@@ -7,7 +7,7 @@ This page describes what we are working on right now
 | Currently working on       | Near term plans                   | Future plans                        |
 |----------------------------|-----------------------------------|-------------------------------------|
 | Upgrades to Safespring Compute in osl1 site |                  |                                     |
-| New Safespring Storage site in Sweden |                        |                                     |
+|  |                        |                                     |
 |                            |                                   |                                     |
 
 ## Recent changes in the platform
