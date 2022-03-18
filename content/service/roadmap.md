@@ -6,9 +6,7 @@ This page describes what we are working on right now
 
 | Currently working on       | Near term plans                   | Future plans                        |
 |----------------------------|-----------------------------------|-------------------------------------|
-| Upgrades to Safespring Compute in osl1 site |                  |                                     |
-|  |                        |                                     |
-|                            |                                   |                                     |
+| Upgrades to Safespring Compute in osl1 site | Elastic IP adresses                 |                                     |
 
 ## Recent changes in the platform
 
