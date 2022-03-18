@@ -16,7 +16,8 @@ Our services are delivered from three datacentres in Norway and Sweden - *osl1* 
 |                    | osl1  | sto1  | sto2  |
 | :----------------- | :---: | :---: | :---: |
 | Safespring Compute |   X   |   X   |   -   |
-| Safespring Storage |   X   |   -   |   X   |
+| Safespring Storage |   X   |   X   |   -   |
+| Safespring Archive |   -   |   -   |   X   |
 | Safespring Backup  |   -   |   -   |   X   |
 
 
