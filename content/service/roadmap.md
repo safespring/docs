@@ -14,6 +14,7 @@ This page describes what we are working on right now
 
 ### March 2022
 
+* Old flavors are removed. If that impacts your automation scripts, please refer to our [statuspage](https://status.safespring.com/incidents/sndw1pmf48f5)
 * New flavors, see [documentation](../compute/../new/flavors.md)
 * Added IPv6 to default instance network
 * Fixed an issue where NAT outgoing rules implemented  in calico policy wrongfully also NATed connections going to the internal, east-west, public IPs of the public openstack network.
