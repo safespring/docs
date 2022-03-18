@@ -2,7 +2,7 @@
 
 ## Storage and Compute Service level agreement (SLA)
 
-Safespring provides 99,9% uptime SLA for our Compute and Storage service.
+Safespring provides 99,9% availability SLA for our Compute and Storage service. 
 
 ## Support
 
