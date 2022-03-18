@@ -3,18 +3,19 @@
 There are some currently known issues in the Compute platform. This page
 describes the most common pitfalls. Known issues for Backup is under the [Backup FAQ page](/backup/faq).
 
-## Snapshots in version 1
-Safespring has trimmed the snapshotting functionality in version 1 of the platform which will make them go faster. There is still an old bug though with the image service not renewing it's keystone token which makes operations longer than 1 hour to fail. With the current omptimizations an image of 40 GB will take about 20 minutes so that will usually not be a problem. When taking snapshots in the GUI Horizon it is important though to **start the snapshot operation soon after you have logged in** since the token is generated when you login in and not when you start the snapshot job. If you're about to take several snapshots in a row, you should logout and then login again before taking the next snapshot.
+## Snapshots in legacy platform
+Safespring has trimmed the snapshotting functionality in the legacy platform which will make them go faster. There is still an old bug though with the image service not renewing it's keystone token which makes operations longer than 1 hour to fail. With the current optimizations an image of 40 GB will take about 20 minutes so that will usually not be a problem. When taking snapshots in the GUI Horizon it is important though to **start the snapshot operation soon after you have logged in** since the token is generated when you login in and not when you start the snapshot job. If you're about to take several snapshots in a row, you should logout and then login again before taking the next snapshot.
 
 !!! info "Important Notice"
     To have the best success with snapshots the instance should be **shut off** before taking the snapshot.
 
 
+## Create volumes from image sometimes fails
 
-## Create volumes from image sometimes fails in new v2 platform
 Sometimes when trying to create a volume from an image, the process fails with and "Error" status on the volume. This has to do with backend glance servers and we are working to fix this. If this happens, contact support@safespring.com with the ID of the volume and we will remove the failing volume. Then you can try again. The intermittent nature of the failure has to do with that some backend glance servers does not expand the qcow2 image correctly.
 
 ## Networking issue with the Debian 10 images
+
 Unfortunately the network services installed on the publicly provided Debian 10 images are not working with OpenStack. One option is to install a Debain 9 image and 
 then do an upgrade. Another option is to provide the following Cloud-Init script under "Configuration" when launching the instance. This will make the network services
 work as intended.
