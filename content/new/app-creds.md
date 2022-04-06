@@ -36,7 +36,7 @@ to the platform and go to https://v2.dashboard.sto1.safedc.net/dashboard/identit
 click the button "Create Application Credential". You will then be presented with the following dialoge:
 
 
-[image](../images/app-creds-dia.png)
+![image](../images/app-creds-dia.png)
 
 Fill in the fields to generate the credentials. You can choose to provide a secret yourself or you can let the platform
 do it. If you let the platform do it, make sure to write the secret down since this is what you will be using to contact
