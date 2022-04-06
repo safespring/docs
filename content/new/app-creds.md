@@ -31,7 +31,19 @@ Examples:
   credentials
 
 ## Creating application credentials
-  
+Application credentials can be generated both when logging in with SWAMID or with local account. To generate them log in
+to the platform and go to https://v2.dashboard.sto1.safedc.net/dashboard/identity/application_credentials/. You then
+click the button "Create Application Credential". You will then be presented with the following dialoge:
+
+
+[image](../images/app-creds-dia.png)
+
+Fill in the fields to generate the credentials. You can choose to provide a secret yourself or you can let the platform
+do it. If you let the platform do it, make sure to write the secret down since this is what you will be using to contact
+    the platform.
+
+
+
 1. Install the openstack command line client
 2. Configure the environment variables and/or `clouds.yaml` file with your user credentials and correct site and project.
 3. Run `openstack application credential create <name-of-credential>`.
