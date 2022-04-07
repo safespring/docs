@@ -252,8 +252,13 @@ export OS_USER_DOMAIN_NAME=<DOMAIN>
 
 ### se-east-1
 
+For API access to sto1 legacy, you also need to [download a
+certificate](safedc_root.pem) to be able to verify the internal certs used. Set
+the path to this certificate in the rc file setting `OS_CACERT` as below
+
 ```shell
 export OS_AUTH_URL=https://keystone.api.cloud.ipnett.se/v3
+export OS_CACERT=/path/to/safedc_root.pem
 export OS_IDENTITY_API_VERSION=3
 export OS_PASSWORD=<PASSWORD>
 export OS_PROJECT_DOMAIN_NAME=<DOMAIN>
