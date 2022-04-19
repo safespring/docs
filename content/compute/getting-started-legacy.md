@@ -4,11 +4,15 @@
 
 Start by logging into the portal. You will be greeted with an overview of the project/account statistics. It usually starts off rather empty, but as machines are added, resources will be summarized there.
 
-* **Swedish site sto1** portal: https://dashboard.sto1.safespring.com
-* **Norwegian site osl1** portal: https://dashboard.osl1.safespring.com
+* **Swedish legacy site sto1** portal: https://dashboard.cloud.sunet.se
+* **Norwegian legacy site osl1** portal: https://login.osl1.safespring.com
 
 !!! info "Legacy sites"
-    The old sto1 site is accessible through the SUNET dashboard at <https://dashboard.cloud.sunet.se>. for all users. The old osl1 site is accessible at https://login.osl1.safespring.com for all users. If you use the API at legacy sites, please refer to this documentation: https://docs.safespring.com/service/known_issues/#cloudipnettnose-domains
+    The old sto1 site is accessible through the SUNET dashboard at
+    <https://dashboard.cloud.sunet.se>. for all users. The old osl1 site is
+    accessible at https://login.osl1.safespring.com for all users. If you use
+    the API at legacy sites, please refer to this documentation:
+    https://docs.safespring.com/service/known_issues/#cloudipnettnose-domains
 
 ## Virtual Machines
 
