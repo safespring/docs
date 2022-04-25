@@ -14,7 +14,7 @@ The installer makes it best to remove them but in some scenarios they might be l
 To see options and rules to run simply run:
 
 ```
-safespring-baas.2.6.0.exe -help
+safespring-baas.2.6.1.exe -help
 ```
 
 All installer parameters must be in CAPITAL letters. Flags can be in lower case.
@@ -37,7 +37,7 @@ All installer parameters must be in CAPITAL letters. Flags can be in lower case.
 
 ## Download
 For Windows **8.1, 10, 2012** and **2016** please use this installer,
-[https://repo.service.safedc.net/windows/safespring-backup.2.6.0.exe](https://repo.service.safedc.net/windows/safespring-backup.2.6.0.exe).
+[https://repo.service.safedc.net/windows/safespring-backup.2.6.1.exe](https://repo.service.safedc.net/windows/safespring-backup.2.6.1.exe).
 
 For older Windows versions please use this installer,
 [https://repo.service.safedc.net/windows/safespring-backup.2.2.4.exe](https://repo.service.safedc.net/windows/safespring-backup.2.2.4.exe).
@@ -45,7 +45,7 @@ For older Windows versions please use this installer,
 
 ```
 md5: aa15d64fb7f9a095b217dadd76157932  safespring-baas.2.2.4.exe
-md5: 289e13a46087406518b0851c9b32337c  safespring-baas.2.6.0.exe
+md5: 5c810bc97c17741e3067c0a0ec8cc56c  safespring-baas.2.6.1.exe
 ```
 
 ## Space requirements
@@ -60,7 +60,7 @@ To run in mode 1, place the installer and the `dsm-nodename.zip` in the same dir
 
 !!! note "Example"
     ```shell
-    safespring-baas.2.6.0.exe PASS=<password> (-passive | -silent)
+    safespring-baas.2.6.1.exe PASS=<password> (-passive | -silent)
     ```
 
 The installer can be run in either manually, passive or silent mode. Passive shows the GUI and progress and silent runs without output in background. `PASS` is the node's current password.
@@ -90,12 +90,12 @@ Mode two requires a few more parameters in order to create the node. `TOKEN` is 
 For updates when already running UPDATE=1 can be used. It is not possible to downgrade.
 To rerun the TBMR part only and because of TBMR license failures you can run with TBMRONLY=1.
 
-Put the `safespring-baas.2.6.0.exe` in a directory where you have write permissions since it will write the `dsm-<nodename>.zip` file in the current directory.
+Put the `safespring-baas.2.6.1.exe` in a directory where you have write permissions since it will write the `dsm-<nodename>.zip` file in the current directory.
 
 
 !!! note "Example"
     ```shell
-    safespring-baas.2.6.0.exe TOKEN=<secrettoken> FQDN=<uniquename> MAIL=<mailaddress> COST=<costcenter> (-silent | -passive)
+    safespring-baas.2.6.1.exe TOKEN=<secrettoken> FQDN=<uniquename> MAIL=<mailaddress> COST=<costcenter> (-silent | -passive)
     ```
 
 The installer can be run in either manually, passive or silent mode. Passive shows the GUI and progress and silent runs without output in background.
@@ -108,10 +108,10 @@ The installer can be run in either manually, passive or silent mode. Passive sho
 ## Updates
 The installation can be updated and completed with both new TSM and TBMR
 version if the installer is run with the UPDATE argument.
-`safespring-baas.2.6.0.exe UPDATE=1`.
+`safespring-baas.2.6.1.exe UPDATE=1`.
 Then the same nodename and configuration is kept and all components is updated
 if required. If only TBMR should be installed or updated it can be run with the
-TBMRONLY argument. `safespring-baas.2.6.0.exe TBMRONLY=1`. This method can also be used to license TBMR if it is trial or unlicensed for some reason.
+TBMRONLY argument. `safespring-baas.2.6.1.exe TBMRONLY=1`. This method can also be used to license TBMR if it is trial or unlicensed for some reason.
 
 ## Revision history
 * **1.0**
@@ -233,6 +233,10 @@ TBMRONLY argument. `safespring-baas.2.6.0.exe TBMRONLY=1`. This method can also 
     * New TBMR x64 version, 9.3.
     * Patch for Bitlocker in TBMR 9.3
     * New TBMR Licenses.
+* **2.6.1**
+    * New TSM x64 version, 8.1.13.3.
+    * New TBMR x64 version, 9.3.2.
+	* Always renew TBMR license.
 
 ## Pitfalls
 
