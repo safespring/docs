@@ -46,5 +46,26 @@ and list contents in a bucket:
   2021-05-27 15:34:49         30 DATETIME.txt
 ```
 
-So most of the setup commands use s3api subcommand, and operations
-later on use the s3 subcommand.
+Most of the setup commands use s3api subcommand, and operations later
+on use the s3 subcommand. If the --help flag is not showing the s3 and
+s3api subcommands, give it junk input like this:
+
+```
+  $ aws s3 sdflkasfklsdf
+  $ aws s3api flgjsflgjdfg
+```
+
+to get listings of the actual availabe subcommands for aws s3 and aws
+s3api.
+
+Complete aws-cli docs are at:
+
+https://docs.aws.amazon.com/cli/latest/index.html
+
+S3 specifics:
+
+https://docs.aws.amazon.com/cli/latest/reference/s3/index.html
+
+and S3API:
+
+https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html
