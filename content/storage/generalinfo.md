@@ -67,7 +67,7 @@ but do mind that it can fail if the name isn't unique, or the name of
 it would not work as a `DNS` entry. The directories and files inside can
 have names with more variation of course.
 
-## s3 bucket naming constraints
+## S3 bucket naming constraints
 
 In earlier setups we were running with `rgw_relaxed_s3_bucket_names` set to
 `true`. This allowed a bit more characters but could cause issues with clients
