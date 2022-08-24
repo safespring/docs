@@ -8,6 +8,10 @@ The preparations will differ depending on which kind of flavor or storage that t
 1. Instance is booting from volume using persistent storage.
 2. Instance is booting from image using ephemeral boot storage.
 
+You can tell if you instance is booting from image by looking in the "Image Name" column of the instance. If you see a minus sign there, the instance is booting from volume and belong to case 1. If you see an image name there, it belongs to case 2.
+
+![image](../images/volume-or-image.png)
+
 There is also a third case if the instance is booting from local disk. At the moment the method does not cover this case, but if it is ok to instead use central Ceph backed storage in the new platform this case will be the same as case 2.
 
 The goal for the preparations in order to migrate the volume to the new platform is to convert it to a volume. Safespring can then be contacted with the following information and perform the migration:
