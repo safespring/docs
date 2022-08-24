@@ -52,7 +52,7 @@ If you have multiple volumes connected - and are mounting these by disk path (i.
  * Under "Network Ports", select the same port as you detached earlier. The ip address should match the one you made a note of
  * Select the same Security Groups you had earlier
  * Key pair is not necessary
- * If you wish to use server groups for instance separation this is it.
+ * If you wish to use server groups for instance separation, add server to desired group here.
 * Launch instance.
 * IF you detached extra volumes from the old instance earlier, attach these to the new one:
  * Under Compute -> Instances, select "Attach Volume" in the drop-down menu of the new instance, then select volume to attach and click "Attach volume". This needs to be done for each volume you need to attach
