@@ -102,8 +102,6 @@ fi
 [[ ! -z "${group}" ]] && servergroup="--hint group=$(openstack server group show ${group} -c id -f value)" || servergroup=""
 
 
-echo "server group args ${servergroup}"
-
 ### HANDLE OLD INSTANCE STUFF
 
 # Stop instance
