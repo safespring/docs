@@ -47,7 +47,7 @@ If you have multiple volumes connected - and are mounting these by disk path (i.
 * Launch a new Instance (Compute -> Instances -> Launch Instance):
  * Give the instance a name
  * In the "Source" menu under "Select Boot Source" select "Volume", then find the volume you created earlier under "Available" and select it (click the "up" arrow)
- * Choose a non-localdisk (b.*) flavor
+ * Choose a non-localdisk (b.) flavor
  * DO NOT select a network
  * Under "Network Ports", select the same port as you detached earlier. The ip address should match the one you made a note of
  * Select the same Security Groups you had earlier
@@ -57,3 +57,107 @@ If you have multiple volumes connected - and are mounting these by disk path (i.
 * IF you detached extra volumes from the old instance earlier, attach these to the new one:
  * Under Compute -> Instances, select "Attach Volume" in the drop-down menu of the new instance, then select volume to attach and click "Attach volume". This needs to be done for each volume you need to attach
 
+
+## Shell script
+
+Using the openstack CLI can speed up the process.
+
+The code below is tested using the `python3-openstackclient 5.2.0` on ubuntu, run by a regular user with access to the relevant openstack projects and instances.
+
+As with every script downloaded from the internet, it is extremely important to read through and understand the steps before actually running the script.
+
+The script needs to be run with either instance name or instance uuid as the first parameter, and an optional server group name (from `openstack server group list`) as second parameter.
+
+There is currently very little sanity checking going on, so please verify input parameters.
+
+The script shuts down the original instance, detaches network port and any volumes, creates a temporary snapshot of the instance, creates a bootable volume, deletes the temp snapshot, tries to figure out a comparable flavor to use (removes .disksize at end, changes leading l. to b.), tnen creates new instance with the created boot volume and attaches port and any volumes.
+
+The `l2.c32r64.1000` flavor does not have a b. equivalent, all other currently available flavours should be handled by the script.
+
+Source instance is *not* deleted automatically and should not be deleted manually before you verify that the new one works as expected.
+
+```code
+#!/bin/bash
+instance=${1}
+group=${2}
+
+# Get instance info+++
+echo -n "Gathering data.."
+instance_uuid=$(openstack server show ${instance} -c id -f value)
+instance_name=$(openstack server show ${instance} -c name -f value)
+instance_portid=$(openstack port list --server ${instance_uuid} -c ID -f value)
+instance_volumes=$(openstack server show ${instance_uuid} -c volumes_attached -f value|cut -d\' -f2)
+original_flavor=$(openstack server show ${instance_uuid} -c flavor -f value|awk '{ print $1 }')
+new_flavor=$(echo ${original_flavor}|cut -d'.' -f1,2|sed -e 's/^l/b/g')
+secgroups=$(openstack server show ${instance_uuid} -c security_groups -f value|cut -d\' -f2)
+echo "done!"
+
+## Name of new instance
+new_instance_name=${instance_name}_volbacked
+
+# Server grouping, if any. Fail if group does not exist.
+if [[ ! -z "${group}" ]]; then
+        openstack server group show ${group} || exit 1
+fi
+[[ ! -z "${group}" ]] && servergroup="--hint group=$(openstack server group show ${group} -c id -f value)" || servergroup=""
+
+
+echo "server group args ${servergroup}"
+
+### HANDLE OLD INSTANCE STUFF
+
+# Stop instance
+echo "Stopping original instance"
+openstack server stop ${1}
+
+# Create snapshot
+echo "Creating snapshot from original instance"
+openstack server image create --name tempsnap-${instance_name} --wait ${instance_uuid}
+
+# Get snapshot uuid and min disk
+snap_uuid=$(openstack image show tempsnap-${instance_name} -c id -f value)
+min_disk=$(openstack image show tempsnap-${instance_name} -c min_disk -f value)
+
+# Create volume from snapshot
+echo "Starting volume creation from snapshot"
+openstack volume create --image ${snap_uuid} --size ${min_disk} --type fast ${instance_name}-bootvolume
+
+# Get volume uuid
+vol_uuid=$(openstack volume show ${instance_name}-bootvolume -c id -f value)
+
+# Wait until volume is available
+echo "Waiting for volume creation to be done, checking status every 10 seconds. This will take a while"
+while [ $(openstack volume show ${vol_uuid} -c status -f value) != "available" ]; do
+	openstack volume show ${vol_uuid} -c status -f value
+	sleep 10
+done
+
+echo "Root volume created"
+
+# Delete temp snapshot
+echo "Deleting temporary snapshot ${snap_uuid}"
+openstack image delete ${snap_uuid}
+
+# Detach ports
+echo "Detaching port ${instance_portid} from original instance"
+openstack server remove port ${instance_uuid} ${instance_portid}
+
+# Detach volumes
+for v in ${instance_volumes}; do
+	echo "detaching volume ${v}.."
+	openstack server remove volume ${instance_uuid} ${v}
+done
+
+### CREATE NEW INSTANCE
+
+echo "Creating new instance ${new_instance_name}"
+echo "openstack server create --wait --volume ${vol_uuid} --flavor ${new_flavor} --port ${instance_portid} ${servergroup} ${new_instance_name}"
+openstack server create --wait --volume ${vol_uuid} --flavor ${new_flavor} --port ${instance_portid} ${servergroup} ${new_instance_name}
+new_instance_uuid=$(openstack server show ${new_instance_name} -c id -f value)
+
+# Add volumes
+for v in ${instance_volumes}; do
+	echo "Adding volume ${v} to new instance"
+	openstack server add volume ${new_instance_uuid} ${v}
+done
+```
