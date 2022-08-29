@@ -64,8 +64,11 @@ s3cmd setacl -P s3://unique-bucket-name/file1
 ```
 
 
-!!! warning "Change to https"
+!!! warning "Change to https and inject project id if necessary"
     The public upload will return a URL to the now-available file but with `http://...` which you should change to `https://`.
+    Also, if you use s3 with credentials obtained from an Openstack project you must inject the project id of that project into
+    the public url like this: `https://<site>/<project-id>:<bucket-name>/<object-name>`
+
 
 ## Performance options in $HOME/.s3cfg
 
