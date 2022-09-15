@@ -4,7 +4,7 @@ This guide show the steps to convert a localdisk-backed (l.) flavor to volume-ba
 
 A port that is created in the same process as creating an instance will automatically be deleted when detaching from an instance or when the instance is deleted. 
 
-Before you start you should therefore get confirmation that we have set `preserve_on_delete` to `true` for the port connected to the specific instance.
+Before you start you should therefore get confirmation from support that we have set `preserve_on_delete` to `true` for the port connected to the specific instance.
 
 ## Pre-conversion steps
 
@@ -16,6 +16,7 @@ Before starting the conversion it is a good idea to make note of the following:
 * (current) Flavor name
 * List of currently connected volumes
 * Any potential server groups
+* For Linux systems, see what is written below under Notes, especially it is a good idea to check mount points.
 
 ## Time usage
 
