@@ -5,10 +5,6 @@
 For advanced use cases and automation it is neccessary to use the
 Openstack API endpoints directly.
 
-To do this, contact support to make sure you get an API-enabled
-user account created for you. A federated user account from e.g SWAMID
-or Dataporten can't be used directly in this case.
-
 ## Install the Openstack command line client
 
 Openstack.org instructions on how to install the client can be found
