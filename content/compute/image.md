@@ -2,6 +2,23 @@
 
 !!! info
     Some of these instructions require use of Openstack command line tools.
+## Policy regarding images provided in the platform
+Safespring provides images from the following distributions and operating systems:
+1. Centos
+2. Debian
+3. Ubuntu
+4. Windows
+
+Safespring does not make any modifications to the images but sources them from the upstream provider from the official OpenStack image repos. 
+
+Safespring takes the responsibility for the following things for the images uploaded to the platform:
+1. That the checkssum provided by the upstream provider matches the checksom of the image uploaded to the platform
+2. The the images can boot on a new instance
+3. The new instance booted from the image gets an IPv4 and IPv6 adress
+4. The the SSH-key provided at creation gets properly injected into the "authorized_keys"-file of the instance
+5. The the instance can connect to a network with one interace.
+
+Safespring guarantees to upload an image at most two week after a new stable release of the operating systeam listed above has been relelased.
 
 ## Uploading an image
 
