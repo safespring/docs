@@ -81,6 +81,7 @@ pages:
      - Overview: "new/overview.md"
      - Getting Started: "new/getting-started.md"
      - VPN options: "new/vpn.md"
+     - Image service: "new/image.md"
      - API Access: "new/api.md"
      - Flavors: "new/flavors.md"
      - Application credentials: "new/app-creds.md"
@@ -96,8 +97,8 @@ pages:
      - Legacy:
        - Getting started: "compute/getting-started-legacy.md"
        - API access: "compute/api-legacy.md"
-       - Image service: "compute/image.md"
        - Volume service: "compute/volume.md"
+       - Image service: "compute/image.md"
        - Network service: "compute/network.md"
        - Using Keypairs: "compute/keypairs.md"
        - Enabling IPv6: "compute/ipv6-howto.md"
