@@ -6,9 +6,25 @@ This page describes what we are working on right now
 
 | Currently working on       | Near term plans                   | Future plans                        |
 |----------------------------|-----------------------------------|-------------------------------------|
-| Upgrades to Safespring Compute in osl1 site | Elastic IP adresses                 |                                     |
+| Upgrades to Safespring Compute in osl1 site |  New portal for Safespring Backup    |                                     |
+| Elastic IP adresses  |||
+
 
 ## Recent changes in the platform
+
+
+### October 2022
+
+* Debian 11 images available
+
+### August 2022
+
+* All ipnett.se-domains are deprecated
+* Customers are now allowed to reset volume states using the API
+
+### May 2022
+
+* Fixed an issue that lead to high CPU usage for some instance types
 
 ### March 2022
 
