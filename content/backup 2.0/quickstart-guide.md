@@ -31,6 +31,8 @@ Press "Activate" to proceed with the activation of your consumption unit.
 
 ![Activate Consumption Unit](images/baas-portal-consumption-unit-node-activate.png)
 
+Next step is to install the IBM Spectrum Protect Backup-Archive Client.
+
 ## Install IBM Spectrum Protect Backup-Archive Client
 Install the IBM Spectrum Protect Backup-Archive Client, you can download the latest client from [IBMs FTP Server][ibm-ftp]
 - [Patch Version](http://ftp.software.ibm.com/storage/tivoli-storage-management/patches/client/)
