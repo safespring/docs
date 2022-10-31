@@ -9,6 +9,7 @@ In this Quickstart Guide will we cover how to create
 For more information please read [How-To Consumption Units](howto/consumption-units.md)
 
 Login to [Safespring Backup Portal](baas-portal) with your credentials. [Need new credentials?](faq.md) talk to our [support](../service/support.md)
+
 ![BaaS Portal Login](images/baas-portal-login.png)
 
 When you login for the first time you will see a empty desktop but if you already have node assigned you will see a summary on all created nodes.
@@ -35,13 +36,13 @@ Next step is to install the IBM Spectrum Protect Backup-Archive Client.
 
 ## Install IBM Spectrum Protect Backup-Archive Client
 Install the IBM Spectrum Protect Backup-Archive Client, you can download the latest client from [IBMs FTP Server][ibm-ftp]
+
 - [Patch Version](http://ftp.software.ibm.com/storage/tivoli-storage-management/patches/client/)
 - [Maintenance Version](http://ftp.software.ibm.com/storage/tivoli-storage-management/maintenance/client/)
 
 Please follow in the installation infstructions for your Operating System.
+
 - [Microsoft Windows](install/windows.md)
-- [Debian/Ubuntu](install/debian-ubuntu.md)
-- [RedHat Enterprise Linux](install/rhel.md)
 
 [baas-portal]:https://portal.backup.sto2.safedc.net/
 [ibm-ftp]:http://ftp.software.ibm.com/storage/tivoli-storage-management/

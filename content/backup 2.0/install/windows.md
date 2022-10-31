@@ -140,6 +140,10 @@ Here can you schedule the backup for your consumption unit.
 
     ![Finish the configuration](../images/SPBAC-GUI-Schedule-wizard-schedule-finish.png)
 
+### Finish
+Basic installation for Backup-Archive Client is now finish, if you need to setup a Online agent for e.g Microsoft SQL, Orable Database or any other application, you can continue with that installation.
+
+
 [baas-portal]:https://portal.backup.sto2.safedc.net/
 [windows-ca-installer]:https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA-win64.bat
 [windows-dsm-opt]:https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/dsm.opt.sample
