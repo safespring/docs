@@ -116,7 +116,7 @@ The address and port to connect to is always `169.254.169.254:179`. Even
 though the BGP peering happens over IPv4 only, you may advertise IPv6 prefixes
 over this connection. Please note that the term "safespring" is an arbitrary
 name set specifically in Bird in order to identify the connection - it has no
-technical meaning or effect. After starting Bird we can check satus with
+technical meaning or effect. After starting Bird we can check status with
 
 ```code
 # birdcl show protocol safespring
@@ -170,4 +170,6 @@ This may not be optimal, so consider deploying only a few nodes with elastic IP.
 
 ## Conclusion
 
-Safespring Elastic IP enables a generic and simple method of implementing load balancing and failover over industry standard BGP protocol for a variety of usecases. Please contact us in order to get the necessary resources to get started.
+Safespring Elastic IP enables a generic and simple method of implementing load
+balancing and failover over industry standard BGP protocol for a variety of
+usecases. Please contact us in order to get the necessary resources to get started.
