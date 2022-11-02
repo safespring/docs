@@ -45,6 +45,7 @@ installed with
 ```
 
 Regardless of which software you use, there are common parameters:
+
 1. Your assigned [AS number](https://en.wikipedia.org/wiki/Autonomous_system_(Internet))
 2. A provided AS number to peer your instance to, which is different from the instance's AS number
 3. IPv4 and IPv6 prefixes you are allowed to announce
