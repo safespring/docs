@@ -1,9 +1,7 @@
-# Windows installation
+# Microsoft Windows installation (64-bit)
 ## Manual installation
 
-### Microsoft Windows (64-bit)
-
-_This document describes how to **manually** install IBM TSM on Windows Windows (64-bit)._
+_This document describes how to **manually** install install IBM Spectrum Protect Backup-Archive Client on Windows Windows (64-bit)._
 
 Required files:
 
@@ -36,7 +34,7 @@ Required files:
 
 #### Create Configuration File
 
-1. Retrieve client node configuration and password from the [Safespring Backup Portal](baas-portal), and edit the `dsm.opt.sample`, copy the *Setup Information* from the portal and past it in to `dsm.opt.sample` file and save that file in `C:\Program Files\Tivoli\TSM\baclient`
+1. Retrieve client node configuration and password from the [Safespring Backup Portal](baas-portal), and edit the `dsm.opt.sample`, copy the *Setup Information* from the portal and paste it in to `dsm.opt.sample` file and save that file in `C:\Program Files\Tivoli\TSM\baclient`
 
 ![Copy the Backup Configuration information](../images/baas-portal-consumption-unit-setup-infomartion.png)
 
@@ -46,14 +44,18 @@ Paste the information to the `dsm.opt.sample` file between the `*** Copy and Pas
 
 Save the file as `dsm.opt` in the Backup-Archive Directory e.g `C:\Program Files\Tivoli\TSM\Baclient\dsm.opt`
     
-1. To test the connection, easiest way is either via GUI or CLI.
+1. Test the connection, easiest way is either via GUI or CLI.
     1. **Login via Command-Line**
+
     Start a Command-Line window in *Administrator Mode* and change to the Backup-Archive Client directory e.g `cd C:\Program Files\Tivoli\TSM\Baclient` 
     Start the `dsmc.exe` and it will now ask you to confirm the *User ID* that is the same as your node name, and copy and paste the password from the [Safespring Backup Portal](baas-portal)
     
     ![Copy Password from Safespring Backup Portal](../images/baas-portal-consumption-unit-setup-infomartion.png) ![Paste Password to the Password Feild](../images/SPBAC-cli-login.png)
 
+    Run `quit` to exit Spectrum Protect Backup-Archive Client CLI.
+
     1. **Login via GUI**
+
     The GUI icon can you find in the start-menu, search for Backup-Archive GUI 
     
     ![GUI via Start-Menu](../images/SPBAC-startmenu-GUI.png)
@@ -75,6 +77,7 @@ Here can you schedule the backup for your consumption unit.
 
 1. Setup IBM Spectrum Protect Backup-Archive Client schedule polling.
     1. **Setup schedule via Command-Line**
+
      Start a Command-Line window in *Administrator Mode* and change to the Backup-Archive Client directory e.g `cd C:\Program Files\Tivoli\TSM\Baclient`.
      Run following commands to setup your schedule.
      ```
@@ -88,6 +91,7 @@ Here can you schedule the backup for your consumption unit.
      ```
 
     1. **Setup schedule via GUI**
+    
     The GUI icon can you find in the start-menu, search for Backup-Archive GUI 
     
     ![GUI via Start-Menu](../images/SPBAC-startmenu-GUI.png)
