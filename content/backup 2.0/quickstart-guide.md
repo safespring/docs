@@ -43,6 +43,7 @@ Install the IBM Spectrum Protect Backup-Archive Client, you can download the lat
 Please follow in the installation infstructions for your Operating System.
 
 - [Microsoft Windows](install/windows.md)
+- [Linux](install/linux.md)
 
 [baas-portal]:https://portal.backup.sto2.safedc.net/
 [ibm-ftp]:http://ftp.software.ibm.com/storage/tivoli-storage-management/
