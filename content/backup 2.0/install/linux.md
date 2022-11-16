@@ -22,7 +22,7 @@ Required files:
 
     1. RHEL / RPM based distros
     ```
-    wget https://public.dhe.ibm.com/storage/tivoli-storage-management/patches/client/v8r1/Linux/LinuxX86/v81xx/8.x.xx.x-TIV-TSMBAC-LinuxX86_DEB.tar
+    wget https://public.dhe.ibm.com/storage/tivoli-storage-management/patches/client/v8r1/Linux/LinuxX86/BA/v81xx/8.x.xx.x-TIV-TSMBAC-LinuxX86.tar
     ```
 
 1. Extract the package `8.x.x.x-TIV-TSMBAC-LinuxX86.tar` for RPM based Linux distros or `8.x.x.x-TIV-TSMBAC-LinuxX86_DEB.tar` for Debian based Linux distros
@@ -39,27 +39,27 @@ Required files:
 1. Install the minimum requirment packages, `gskcrypt64`, `gskssl64`, `tivsm-api64`, `tivsm-ba`. All other packages has other functionalities like journaling.
     1. Ubuntu / Debian
     ```
-    sudo apt-get install ./gskcrypt64_8.0-55.28.linux.x86_64.deb ./gskssl64_8.0-55.28.linux.x86_64.deb ./tivsm-api64.amd64.deb ./tivsm-ba.amd64.deb
+    sudo apt-get install ./gskcrypt64_x.x-xx.x.linux.x86_64.deb ./gskssl64_x.x-xx.x.linux.x86_64.deb ./tivsm-api64.amd64.deb ./tivsm-ba.amd64.deb
     ```
 
     1. RHEL / RPM based distros
     ```
-    sudo dnf install ./gskcrypt64_8.0-55.28.linux.x86_64.deb ./gskssl64_8.0-55.28.linux.x86_64.deb ./tivsm-api64.amd64.deb ./tivsm-ba.amd64.deb
+    sudo dnf install ./gskcrypt64-x.x.xx.x.linux.x86_64.rpm ./gskssl64-x.x.xx.x.linux.x86_64.rpm ./TIVsm-API64.x86_64.rpm ./TIVsm-BA.x86_64.rpm
     ```
 
 #### Install Safespring Root Certificate
 
 1. Download the [SafeDC Root CA PEM File](linux-ca-pem). In a command prompt with elevated privileges, install the Safespring BaaS Root CA into the GSK (IBM crypto kit) trust database.
     ```
-    wget (linux-ca-pem)
-    dsmcert -add -server SafeDC -file ./SafeDC-Net-Root-CA.pem
+    wget https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem
+    sudo dsmcert -add -server SafeDC -file ./SafeDC-Net-Root-CA.pem
     ```
 
 #### Create Configuration File
 1. Download the [dsm.sys.sample](linux-dsm-sys) & [dsm.opt.sample](linux-dsm-opt)
     ```
-    wget (linux-dsm-sys)
-    wget (linux-dsm-opt)
+    wget https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.sys.sample
+    wget https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.opt.sample
     ```
 
 1. Retrieve client node configuration and password from the [Safespring Backup Portal](baas-portal), download and modify the `dsm.sys.sample` file, copy the *Setup Information* from the portal and paste it in to `dsm.sys.sample` file and remove `.sample`  on both `dsm.opt` and `dsm.sys` 
@@ -149,10 +149,11 @@ Here can you schedule the backup for your consumption unit.
 1. Setup IBM Spectrum Protect Backup-Archive Client schedule polling.
     1. **Setup schedule via Linux Terminal**
      
-     ```
-    sudo systemctl enable dsmcad
+    ```
+    sudo systemctl enable dsmcad 
+    
     sudo systemctl start dsmcad
-     ```
+    ```
 
 ### Finish
 Basic installation for Backup-Archive Client is now finish, if you need to setup a Online agent for e.g Microsoft SQL, Orable Database or any other application, you can continue with that installation.
