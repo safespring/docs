@@ -3,8 +3,8 @@
 There are two ways of installing the software needed for the Safespring Backup
 service:
 
- - Automatically signing up nodes
- - Manually signing up nodes,
+- Automatically signing up nodes
+- Manually signing up nodes,
 
 In both cases, the software is distributed through RPM repositories and the
 first parts of the installation are identical.

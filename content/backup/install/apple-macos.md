@@ -1,3 +1,5 @@
+# Installing on macOS
+
 First of all, get the latest released TSM bundle (comes in `.DMG` format), since recent macOS requires a recent TSM to work, this folder holds 7.1.6.x.:
 
 !!! note "Latest V7 patch release"
@@ -67,4 +69,4 @@ Put the PEM file next to the script and run the script. It will clean out any pr
 
 After this, the example configuration files can be collected from the BaaS Portal. TSM for macOS will read preference files from `/Library/Application Support/tivoli/tsm/client/ba/bin/dsm.*` but apart from that works like any other Unix system in terms of how to write Include/Exclude paths and so on. Any generic unix TSM guide will probably work if you replace `/opt/` with `/Library/Application Support/` for where to find TSM files.
 
-The command line backup client "dsmc" ends up in `/usr/local/bin/dsm c` and the gui in your Applications folder as two programs, both "Tivoli Storage Manager" and "TSM tools for administrators" where the first only works if you already are logged in as an admin, otherwise it isn't allowed to read config files and hence won't reach the TSM server, and the second will first run sudo, and then start TSM as an admin.
+The command line backup client "dsmc" ends up in `/usr/local/bin/dsm c` and the  GUI in your Applications folder as two programs, both "Tivoli Storage Manager" and "TSM tools for administrators" where the first only works if you already are logged in as an admin, otherwise it isn't allowed to read config files and hence won't reach the TSM server, and the second will first run sudo, and then start TSM as an admin.

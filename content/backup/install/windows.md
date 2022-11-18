@@ -1,4 +1,5 @@
 # Microsoft Windows installation (64-bit)
+
 ## Manual installation
 
 _This document describes how to **manually** install install IBM Spectrum Protect Backup-Archive Client on Windows Windows (64-bit)._
@@ -27,9 +28,12 @@ Required files:
 #### Install Safespring Root Certificate
 
 1. In a command prompt with elevated privileges, execute the "Safespring Root CA installer" to install the Safespring BaaS CA into the GSK (IBM crypto kit) trust database.
-    ```
+
+
+    ```sh
     SafeDC-Net-Root-CA-tsm12-win64.bat
     ```
+
 ![Install SafeDC Root CA](../images/SPBAC-Root-CA.png)
 
 #### Create Configuration File
@@ -49,7 +53,7 @@ Save the file as `dsm.opt` in the Backup-Archive Directory e.g `C:\Program Files
 
     Start a Command-Line window in *Administrator Mode* and change to the Backup-Archive Client directory e.g `cd C:\Program Files\Tivoli\TSM\Baclient` 
     Start the `dsmc.exe` and it will now ask you to confirm the *User ID* that is the same as your node name, and copy and paste the password from the [Safespring Backup Portal](baas-portal)
-    
+
     ![Copy Password from Safespring Backup Portal](../images/baas-portal-consumption-unit-setup-infomartion.png) ![Paste Password to the Password Feild](../images/SPBAC-cli-login.png)
 
     Run `quit` to exit Spectrum Protect Backup-Archive Client CLI.
@@ -57,7 +61,7 @@ Save the file as `dsm.opt` in the Backup-Archive Directory e.g `C:\Program Files
     1. **Login via GUI**
 
     The GUI icon can you find in the start-menu, search for Backup-Archive GUI 
-    
+
     ![GUI via Start-Menu](../images/SPBAC-startmenu-GUI.png)
 
     When the Backup-Archive GUI Starts it will ask for Node Admin ID and Password.
@@ -70,7 +74,7 @@ Save the file as `dsm.opt` in the Backup-Archive Directory e.g `C:\Program Files
 #### Schedule Daily Backups
 
 1. IBM Spectrum Protect Backup-Archive Client are polling the backup server on regular basis to see when it will backup your data next time.
-To assign a predefined schedule, open [Safespring Backup Portal](baas-portal) and go to the *consumption unit* you want to define an schedule too and click on *schedule* 
+To assign a predefined schedule, open [Safespring Backup Portal](baas-portal) and go to the _consumption unit_ you want to define an schedule too and click on _schedule_ 
 ![Consumption Unit Schedule](../images/baas-portal-consumption-unit-schedule.png)
 
 Here can you schedule the backup for your consumption unit.
@@ -78,9 +82,10 @@ Here can you schedule the backup for your consumption unit.
 1. Setup IBM Spectrum Protect Backup-Archive Client schedule polling.
     1. **Setup schedule via Command-Line**
 
-     Start a Command-Line window in *Administrator Mode* and change to the Backup-Archive Client directory e.g `cd C:\Program Files\Tivoli\TSM\Baclient`.
+     Start a Command-Line window in _Administrator Mode_ and change to the Backup-Archive Client directory e.g `cd C:\Program Files\Tivoli\TSM\Baclient`.
      Run following commands to setup your schedule.
-     ```
+
+     ```sh
     dsmcutil install scheduler /name:"TSM Client Scheduler" /node:<NODENAME> /optfile:"<PATH TO DSM.OPT>" /password:<TSM PASSWORD> /autostart:no /startnow:no
     
     dsmcutil install cad /name:"TSM Client Acceptor" /node:<NODENAME> /password:<TSM PASSWORD> /optfile:"<PATH TO DSM.OPT>" /autostart:yes /startnow:no
@@ -91,9 +96,9 @@ Here can you schedule the backup for your consumption unit.
      ```
 
     1. **Setup schedule via GUI**
-    
+
     The GUI icon can you find in the start-menu, search for Backup-Archive GUI 
-    
+
     ![GUI via Start-Menu](../images/SPBAC-startmenu-GUI.png)
 
     Click on *Utilities -> Setup Wizard* to start the Configuraton Wizard.
@@ -124,7 +129,7 @@ Here can you schedule the backup for your consumption unit.
 
     ![Insert Node name and Password](../images/SPBAC-GUI-Client-Acceptor-node-n-pwd.png)
 
-    Click on *(o) Automatic when Windows boots* to automatic start the TSM Client Acceptor Services
+    Click on _(o) Automatic when Windows boots_ to automatic start the TSM Client Acceptor Services
 
     ![Client Acceptor Services](../images/SPBAC-GUI-Client-Acceptor-services.png)
 
@@ -132,7 +137,7 @@ Here can you schedule the backup for your consumption unit.
 
     ![TSM Client Logs Files](../images/SPBAC-GUI-Client-Acceptor-logfiles.png)
 
-    Click on *(o) Yes* to start the TSM Client Acceptor when the wizard are done.
+    Click on _(o) Yes_ to start the TSM Client Acceptor when the wizard are done.
 
     ![Start TSM Client Acceptor after wizard](../images/SPBAC-GUI-Schedule-wizard-schedule-services.png)
 
@@ -140,13 +145,13 @@ Here can you schedule the backup for your consumption unit.
 
     ![Confirm the Schedule Services](../images/SPBAC-GUI-Schedule-wizard-schedule-confirm.png)
 
-    The Configuration are now done, click *Finish* to quit the wizard.
+    The Configuration are now done, click _Finish_ to quit the wizard.
 
     ![Finish the configuration](../images/SPBAC-GUI-Schedule-wizard-schedule-finish.png)
 
 ### Finish
-Basic installation for Backup-Archive Client is now finish, if you need to setup a Online agent for e.g Microsoft SQL, Orable Database or any other application, you can continue with that installation.
 
+Basic installation for Backup-Archive Client is now finish, if you need to setup a Online agent for e.g Microsoft SQL, Orable Database or any other application, you can continue with that installation.
 
 [baas-portal]:https://portal.backup.sto2.safedc.net/
 [windows-ca-installer]:https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA-win64.bat

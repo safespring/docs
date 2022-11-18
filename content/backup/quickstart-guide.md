@@ -1,11 +1,14 @@
 # Quickstart Guide
+
 In this Quickstart Guide will we cover how to create 
+
 - Consumption Unit and Assign that with a backup node
 - Install IBM Spectrum Protect Backup-Archive Client
 - Configure IBM Spectrum Protect Backup-Archive Client
 - Schedule our first backup
 
 ## Create Consumption Unit
+
 For more information please read [How-To Consumption Units](howto/consumption-units.md)
 
 Login to [Safespring Backup Portal](baas-portal) with your credentials. [Need new credentials?](faq.md) talk to our [support](../service/support.md)
@@ -35,6 +38,7 @@ Press "Activate" to proceed with the activation of your consumption unit.
 Next step is to install the IBM Spectrum Protect Backup-Archive Client.
 
 ## Install IBM Spectrum Protect Backup-Archive Client
+
 Install the IBM Spectrum Protect Backup-Archive Client, you can download the latest client from [IBMs FTP Server][ibm-ftp]
 
 - [Patch Version](http://ftp.software.ibm.com/storage/tivoli-storage-management/patches/client/)
