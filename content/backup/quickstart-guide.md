@@ -30,7 +30,7 @@ Fillout the form like, Platform, preferred backup server, Domain, Client Option 
 
 ![Consumption Unit New Node](images/baas-portal-consumption-unit-node.png)
 
-We are recommending that you let "Data-source" be empty to let us randomizing the nodename to keep the data anonymous.
+We are recommending that you let "Data-source" be empty to let us randomize the nodename.
 Press "Activate" to proceed with the activation of your consumption unit.
 
 ![Activate Consumption Unit](images/baas-portal-consumption-unit-node-activate.png)
@@ -44,7 +44,7 @@ Install the IBM Spectrum Protect Backup-Archive Client, you can download the lat
 - [Patch Version](http://ftp.software.ibm.com/storage/tivoli-storage-management/patches/client/)
 - [Maintenance Version](http://ftp.software.ibm.com/storage/tivoli-storage-management/maintenance/client/)
 
-Please follow in the installation infstructions for your Operating System.
+Please follow in the installation instructions for your Operating System.
 
 - [Microsoft Windows](install/windows.md)
 - [Linux](install/linux.md)
