@@ -14,18 +14,19 @@ If this happens, let it run through. You may get prompted and asked to continue,
 
 ## How do I get keys to generate my API token?
 
-* Login at the BaaS portal, https://portal.cloud.sunet.se/, goto "Backup" and then select "Keys" and press "Create key".
-This will get you the access-key and secret-key that can be used to create your access token.  
-![Keys](../images/accesskey-2.png)
+* Login at the [Safespring Backup portal](baas-portal), goto "Settings" and then select "API access" and press "Add".
+This will get you the client_id and together with your username and password you can create access token and a refresh token.
+![Keys](./images/accesstoken.png)
 
+For more details and examples, see your [API Documentation](api.md)
 
 ## Where can I fetch IBM TSM client software?
 
-- See our [TSM installation guide](Installation)
+- See our [TSM installation guide](./install/overview.md)
 
 ## How do I install TBMR (Bare machine recovery for TSM)
 
-- See our [TBMR installation guide](TBMR)
+- See our [TBMR installation guide](TBMR) **MISSING**
 
 ## When will Operating System X version Y be fully supported by TSM?
 
@@ -49,8 +50,11 @@ no inbound ports need to be configured, so installation and operations behind NA
 
 ## Why can't I delete filespaces from the client?
 
-* This is a security feature since some cryptolockers and ransomwares target [backups][ransomware]. If you want to delete a filespace from the backup, please contact our [support][supportpage] to enable the feature temmporarily.
+* This is a security feature since some cryptolockers and ransomwares target [backups][ransomware]. If you want to delete a filespace from the backup, please contact our [support](../service/support.md) to enable the feature temmporarily.
 
+## Credentials to Safespring Backup Portal?
+
+* To get credentials for [Safespring Backup Portal](baas-portal) you need to talk to your backup admin to invite you, if you are the first one in your organisation, please open a ticket with your [support](../service/support.md).
 
 [ransomware]:http://www.backupcentral.com/forum/5/254427/ransomware_deleted_tsm_backups_from_node
-[supportpage]:https://docs.safespring.com/support/
+[baas-portal]:https://portal.backup.sto2.safedc.net/

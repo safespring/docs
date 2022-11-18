@@ -2,8 +2,6 @@
 
 ## Safespring Cloud Backup API
 
-Safespring has deployed a public API that can be used to automate TSM client (node) management. The API is implemented as a `RESTful` API, accessible via https://backup.sto2.safedc.net/tsm/.
+Safespring has deployed a public API that can be used to automate TSM client (node) management, billing and orchestration. The API is implemented as a `RESTful` API, accessible via [https://portal-api.backup.sto2.safedc.net/v1/help](https://portal-api.backup.sto2.safedc.net/v1/help).
 
-Usage examples can be found in https://github.com/IPnett/cloud-BaaS/blob/master/API.md.
-
-API access credentials are created out of band via the Safespring Cloud Service Portal.
+API access credentials can you create on your own in your business unit at the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/)
