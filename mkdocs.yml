@@ -49,8 +49,14 @@ markdown_extensions:
   - tables
 
 # Pages layout
-pages:
+nav:
   - Overview: "index.md"
+  - Backup 2.0: 
+    - Quick-Start Guide: "backup 2.0/quickstart-guide.md"
+    - Installation: 
+      - Overview: "backup 2.0/install/overview.md" 
+      - Linux: "backup 2.0/install/linux.md"
+      - Windows: "backup 2.0/install/windows.md"
   - Backup:
 #   - Status: "backup/status.md"
     - New domain name: "backup/new-domain-name.md"

@@ -1,67 +1,46 @@
-# Debian/Ubuntu Linux (64-bit)
+# RedHat Linux (64-bit)
 
 There are two ways of installing the software needed for the Safespring Backup
 service:
 
-- Automatically signing up nodes
-- Manually signing up nodes,
+ - Automatically signing up nodes
+ - Manually signing up nodes,
 
-In both cases, the software is distributed through deb repositories and the
+In both cases, the software is distributed through RPM repositories and the
 first parts of the installation are identical.
 
 ## 1. Configure the repository
 
-Packages are provided for the following distributions:
-
-- Debian 10 Buster
-- Debian 9 Stretch
-- Ubuntu 20 Focal Fossa
-- Ubuntu 18 Bionic Beaver
-- Ubuntu 16 Xenial Xerus
-
-The following table contains the ```apt``` configuration for each of the
-supported distributions:
-
-| Distribution            | Apt repository configuration                            |
-| ----------------------- | ------------------------------------------------------- |
-| Debian 10 Buster        | deb https://repo.service.safedc.net/debian buster main  |
-| Debian 9 Stretch        | deb https://repo.service.safedc.net/debian stretch main |
-| Ubuntu 20 Focal Fossa   | deb https://repo.service.safedc.net/debian focal main   |
-| Ubuntu 18 Bionic Beaver | deb https://repo.service.safedc.net/debian bionic main  |
-| Ubuntu 16 Xenial Xerus  | deb https://repo.service.safedc.net/debian xenial main  |
-
-Find the ```apt``` configuration for your server in the table above and run the
-following commands on the server that will run the backup client software. In
-the example below we will configure the repository for a Debian 9 server.
-
-Create the file ```/etc/apt/sources.list.d/safespring-backup``` with the
-following content:
+Run the following commands on the server that will run the backup client
+software.  Create the file ```/etc/yum.repos.d/safespring-backup.repo``` with
+the following content:
 
 ```shell
-DISTRIBUTION="stretch"
-echo "deb https://repo.service.safedc.net/debian ${DISTRIBUTION} main" > /etc/apt/sources.list.d/safespring-backup.list
+[safespring-backup]
+name=Safespring Backup client repository
+baseurl=https://repo.service.safedc.net/rhel
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/PACKAGES-GPG-KEY-Safespring
+gpgcheck=1
 ```
 
-Fetch the repository key and install it in the file ```/tmp/safespring-repo-key```:
+Fetch and install the he repository key and install it in the file ```/etc/pki/rpm-gpg/PACKAGES-GPG-KEY-Safespring```:
 
 ```shell
-wget -O /tmp/safespring-repo-key https://repo.service.safedc.net/repokey/PACKAGES-GPG-KEY-Safespring
+curl -o /etc/pki/rpm-gpg/PACKAGES-GPG-KEY-Safespring \
+    https://repo.service.safedc.net/repokey/PACKAGES-GPG-KEY-Safespring
 ```
 
 Import the key:
 
 ```shell
-apt-key add /tmp/safespring-repo-key && rm /tmp/safespring-repo-key
+rpmkeys --import /etc/pki/rpm-gpg/PACKAGES-GPG-KEY-Safespring
 ```
-
-!!!note
-    If you are using Debian you are required to install the package
-    ```apt-transport-https``` before updating the repository caches.
 
 Update repository caches:
 
 ```shell
-apt-get update
+yum makecache
 ```
 
 ## 2. Installation of software
@@ -73,7 +52,7 @@ will install backup client software as well as enable and run the ```dsmcad```
 service. The bare metal restore service TBMR is installed as a dependency.
 
 ```shell
-apt-get install safespring-backup-setup
+yum install safespring-backup-setup
 ```
 
 #### 2.a.1) Automatic enrollment
@@ -126,7 +105,7 @@ A typical invocation of the script would be something like:
 /usr/bin/safespring-backup-setup -f /root/safespring-backup-credentials.yaml \
     -m user@example.com \
     -C $costcenter \
-    -p Debian-7
+    -p RHEL-7
 ```
 
 More detailed usage instructions are found in the man-page, `man
@@ -146,7 +125,7 @@ The manual node registration procedures follows a similar method. Issuing the
 following command will install the meta-package which depends on TSM:
 
 ```shell
-apt-get install install safespring-backup
+yum install safespring-backup
 ```
 
 It will install TSM and prepare it for operations with the service (i.e.

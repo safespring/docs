@@ -1,5 +1,3 @@
-# Installing for MSSQL
-
 !!! warning "Disclaimer"
      This instruction is for a single standalone, non-clustered, SQL server with one SQL server instance.  There can be several databases within this single instance and all are backed up. If you have a more complex setup such as
 

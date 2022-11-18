@@ -1,5 +1,3 @@
-# Installing on FreeBSD
-
 !!! note "Before you start"
     This assumes you have added whatever package is needed for linux compat and set the corresponding `sysctl/rc.conf` flags to make it work. We tried with some version of the Fedora 10 package from ports.
 
@@ -16,13 +14,13 @@ linprocfs_load=“YES”
 
 In the `/etc` directory of the FreeBSD system, I placed a link for the "mtab" that points into the emulation filespace, and it is created easiest as follows:
 
-```sh
+```
 ln -sf /compat/linux/proc/mtab /etc/mtab
 ```
 
 which you only have to do once. Then you make sure linprocfs is mounted by editing your fstab and add this line:
 
-```sh
+```
 linprocfs /compat/linux/proc linprocfs rw 0 0
 ```
 

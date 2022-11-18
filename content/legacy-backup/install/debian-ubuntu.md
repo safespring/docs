@@ -3,8 +3,8 @@
 There are two ways of installing the software needed for the Safespring Backup
 service:
 
-- Automatically signing up nodes
-- Manually signing up nodes,
+ - Automatically signing up nodes
+ - Manually signing up nodes,
 
 In both cases, the software is distributed through deb repositories and the
 first parts of the installation are identical.
@@ -13,11 +13,11 @@ first parts of the installation are identical.
 
 Packages are provided for the following distributions:
 
-- Debian 10 Buster
-- Debian 9 Stretch
-- Ubuntu 20 Focal Fossa
-- Ubuntu 18 Bionic Beaver
-- Ubuntu 16 Xenial Xerus
+* Debian 10 Buster
+* Debian 9 Stretch
+* Ubuntu 20 Focal Fossa
+* Ubuntu 18 Bionic Beaver
+* Ubuntu 16 Xenial Xerus
 
 The following table contains the ```apt``` configuration for each of the
 supported distributions:
@@ -32,7 +32,7 @@ supported distributions:
 
 Find the ```apt``` configuration for your server in the table above and run the
 following commands on the server that will run the backup client software. In
-the example below we will configure the repository for a Debian 9 server.
+the example below we will be configuring the repository for a Debian 9 server.
 
 Create the file ```/etc/apt/sources.list.d/safespring-backup``` with the
 following content:
