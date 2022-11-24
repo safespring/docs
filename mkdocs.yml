@@ -51,38 +51,16 @@ markdown_extensions:
 # Pages layout
 nav:
   - Overview: "index.md"
-  - Backup 2.0: 
-    - Quick-Start Guide: "backup 2.0/quickstart-guide.md"
+  - Backup: 
+    - Quick-Start Guide: "backup/quickstart-guide.md"
     - Installation: 
-      - Overview: "backup 2.0/install/overview.md" 
-      - Linux: "backup 2.0/install/linux.md"
-      - Windows: "backup 2.0/install/windows.md"
-  - Backup:
-#   - Status: "backup/status.md"
-    - New domain name: "backup/new-domain-name.md"
-    - Getting started: "backup/getting-started.md"
-    - Introduction: "backup/introduction.md"
-    - Installation:
-      - Overview: "backup/install/overview.md"
-      - Apple macOS: "backup/install/apple-macos.md"
-      - Debian/Ubuntu: "backup/install/debian-ubuntu.md"
-      - FreeBSD/other: "backup/install/freebsd-other.md"
-      - RHEL: "backup/install/rhel.md"
+      - Overview: "backup/install/overview.md" 
+      - Linux: "backup/install/linux.md"
       - Windows: "backup/install/windows.md"
-      - TDP for MSSQL: "backup/install/tdp-for-mssql.md"
-    - Performance: "backup/performance.md"
-    - Howtos:
-      - Alternate restore: "backup/howto/restore-alternate.md"
-      - vSphere: "backup/howto/vsphere.md"
-      - Encryption: "backup/howto/encrypted.md"
-      - Includes & Excludes: "backup/howto/includeexclude.md"
-      - Performance tuning: "backup/howto/performance-tuning.md"
-      - Bare metal recovery: "backup/howto/bare-metal-tbmr.md"
-      - Virtual environments single file restore: "backup/howto/virtual-enviroments-single-file-restore.md"
-      - Handling changing files: "backup/howto/changing-files.md"
-      - Restore Windows machine from backup to Safespring Compute: "backup/howto/windows-restore.md"
-    - API: "backup/api.md"
+      - macOS: "backup/install/apple-macos.md"
+      - freeBSD: "backup/install/freebsd-other.md"
     - FAQ: "backup/faq.md"
+    - Legacy Backup: "legacy-backup/index.md"
   - Compute:
      - Overview: "new/overview.md"
      - Getting Started: "new/getting-started.md"
