@@ -7,9 +7,9 @@ _This document describes how to **manually** install IBM Spectrum Protect Backup
 Required files:
 
 - [IBM Spectrum Protect Backup-Archive Client](https://public.dhe.ibm.com/storage/tivoli-storage-management/patches/client/v8r1/Linux/)
-- [SafeDC Root CA PEM File](linux-ca-pem) (Right-click and Save)
-- [SafeDC Default Option file dsm.opt](linux-dsm-opt) (Right-click and Save)
-- [SafeDC Default Configuration file dsm.sys](linux-dsm-sys) (Right-click and Save)
+- [SafeDC Root CA PEM File](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem) (Right-click and Save)
+- [SafeDC Default Option file dsm.opt](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.opt.sample) (Right-click and Save)
+- [SafeDC Default Configuration file dsm.sys](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.sys.sample) (Right-click and Save)
 
 ### Installation and Configuration
 
@@ -57,7 +57,7 @@ Required files:
 
 #### Install Safespring Root Certificate
 
-1. Download the [SafeDC Root CA PEM File](linux-ca-pem). In a command prompt with elevated privileges, install the Safespring BaaS Root CA into the GSK (IBM crypto kit) trust database.
+1. Download the [SafeDC Root CA PEM File](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem). In a command prompt with elevated privileges, install the Safespring BaaS Root CA into the GSK (IBM crypto kit) trust database.
 2.  ```sh
     wget https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem
     sudo dsmcert -add -server SafeDC -file ./SafeDC-Net-Root-CA.pem
@@ -65,14 +65,14 @@ Required files:
 
 #### Create Configuration File
 
-1. Download the [dsm.sys.sample](linux-dsm-sys) & [dsm.opt.sample](linux-dsm-opt)
+1. Download the [dsm.sys.sample](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.sys.sample) & [dsm.opt.sample](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.opt.sample)
 
     ```sh
     wget https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.sys.sample
     wget https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.opt.sample
     ```
 
-1. Retrieve client node configuration and password from the [Safespring Backup Portal](baas-portal), download and modify the `dsm.sys.sample` file, copy the *Setup Information* from the portal and paste it in to `dsm.sys.sample` file and remove `.sample`  on both `dsm.opt` and `dsm.sys` 
+1. Retrieve client node configuration and password from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/), download and modify the `dsm.sys.sample` file, copy the *Setup Information* from the portal and paste it in to `dsm.sys.sample` file and remove `.sample`  on both `dsm.opt` and `dsm.sys` 
 
 ![Copy the Backup Configuration information](../images/baas-portal-consumption-unit-setup-infomartion.png)
 
@@ -122,7 +122,7 @@ Save both `dsm.sys` and `dsm.opt` in `/opt/tivoli/tsm/client/ba/bin/`
 
     1. **Login via Linux Terminal**
 
-    Start a Linux terminal and run the `dsmc`, it will now ask you to confirm the _User ID_ that is the same as your node name, and copy and paste the password from the [Safespring Backup Portal](baas-portal)
+    Start a Linux terminal and run the `dsmc`, it will now ask you to confirm the _User ID_ that is the same as your node name, and copy and paste the password from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/)
 
     ![Copy Password from Safespring Backup Portal](../images/baas-portal-consumption-unit-setup-infomartion.png) 
 
@@ -152,7 +152,7 @@ Save both `dsm.sys` and `dsm.opt` in `/opt/tivoli/tsm/client/ba/bin/`
 #### Schedule Daily Backups
 
 1. IBM Spectrum Protect Backup-Archive Client are polling the backup server on regular basis to see when it will backup your data next time.
-To assign a predefined schedule, open [Safespring Backup Portal](baas-portal) and go to the _consumption unit_ you want to define an schedule too and click on _schedule_
+To assign a predefined schedule, open [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) and go to the _consumption unit_ you want to define an schedule too and click on _schedule_
 ![Consumption Unit Schedule](../images/baas-portal-consumption-unit-schedule.png)
 
 Here can you schedule the backup for your consumption unit.
@@ -170,8 +170,3 @@ Here can you schedule the backup for your consumption unit.
 
 Basic installation for Backup-Archive Client is now finish, if you need to setup a Online agent for e.g Microsoft SQL, Orable Database or any other application, you can continue with that installation.
 
-[baas-portal]:https://portal.backup.sto2.safedc.net/
-[linux-ca-installer]:https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/Update-SafeDC-Net-CA.sh
-[linux-ca-pem]:https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem
-[linux-dsm-opt]:https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.opt.sample
-[linux-dsm-sys]:https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.sys.sample

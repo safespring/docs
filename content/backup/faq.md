@@ -17,7 +17,7 @@ If this happens, let it run through. You may get prompted and asked to continue,
 
 ## How do I get keys to generate my API token?
 
-- Login at the [Safespring Backup portal](baas-portal), goto "Settings" and then select "API access" and press "Add".
+- Login at the [Safespring Backup portal](https://portal.backup.sto2.safedc.net/), goto "Settings" and then select "API access" and press "Add".
 This will get you the client_id and together with your username and password you can create access token and a refresh token.
 ![Keys](./images/accesstoken.png)
 
@@ -57,7 +57,7 @@ no inbound ports need to be configured, so installation and operations behind NA
 
 ## Credentials to Safespring Backup Portal?
 
-- To get credentials for [Safespring Backup Portal](baas-portal) you need to talk to your backup admin to invite you, if you are the first one in your organisation, please open a ticket with your [support](../service/support.md).
+- To get credentials for [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) you need to talk to your backup admin to invite you, if you are the first one in your organisation, please open a ticket with your [support](../service/support.md).
 
 [ransomware]:http://www.backupcentral.com/forum/5/254427/ransomware_deleted_tsm_backups_from_node
 [baas-portal]:https://portal.backup.sto2.safedc.net/

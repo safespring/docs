@@ -7,8 +7,8 @@ _This document describes how to **manually** install install IBM Spectrum Protec
 Required files:
 
 - [IBM Spectrum Protect Backup-Archive Client](https://public.dhe.ibm.com/storage/tivoli-storage-management/patches/client/v8r1/Windows/x64/)
-- [SafeDC Root CA installer](windows-ca-installer) (Right-click and Save)
-- [SafeDC Default Configuration file dsm.opt](windows-dsm-opt) (Right-click and Save)
+- [SafeDC Root CA installer](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA-win64.bat) (Right-click and Save)
+- [SafeDC Default Configuration file dsm.opt](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/dsm.opt.sample) (Right-click and Save)
 
 ### Installation and Configuration
 
@@ -38,7 +38,7 @@ Required files:
 
 #### Create Configuration File
 
-1. Retrieve client node configuration and password from the [Safespring Backup Portal](baas-portal), and edit the `dsm.opt.sample`, copy the *Setup Information* from the portal and paste it in to `dsm.opt.sample` file and save that file in `C:\Program Files\Tivoli\TSM\baclient`
+1. Retrieve client node configuration and password from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/), and edit the `dsm.opt.sample`, copy the *Setup Information* from the portal and paste it in to `dsm.opt.sample` file and save that file in `C:\Program Files\Tivoli\TSM\baclient`
 
 ![Copy the Backup Configuration information](../images/baas-portal-consumption-unit-setup-infomartion.png)
 
@@ -52,7 +52,7 @@ Save the file as `dsm.opt` in the Backup-Archive Directory e.g `C:\Program Files
     1. **Login via Command-Line**
 
     Start a Command-Line window in *Administrator Mode* and change to the Backup-Archive Client directory e.g `cd C:\Program Files\Tivoli\TSM\Baclient` 
-    Start the `dsmc.exe` and it will now ask you to confirm the *User ID* that is the same as your node name, and copy and paste the password from the [Safespring Backup Portal](baas-portal)
+    Start the `dsmc.exe` and it will now ask you to confirm the *User ID* that is the same as your node name, and copy and paste the password from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/)
 
     ![Copy Password from Safespring Backup Portal](../images/baas-portal-consumption-unit-setup-infomartion.png) ![Paste Password to the Password Feild](../images/SPBAC-cli-login.png)
 
@@ -65,7 +65,7 @@ Save the file as `dsm.opt` in the Backup-Archive Directory e.g `C:\Program Files
     ![GUI via Start-Menu](../images/SPBAC-startmenu-GUI.png)
 
     When the Backup-Archive GUI Starts it will ask for Node Admin ID and Password.
-    This can be copy and pasted from the the [Safespring Backup Portal](baas-portal) and paste it to the Password feild.
+    This can be copy and pasted from the the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) and paste it to the Password feild.
 
     ![Copy Password from Safespring Backup Portal](../images/baas-portal-consumption-unit-setup-infomartion.png) ![Paste Password to Password Feild](../images/SPBAC-GUI-login.png)
 
@@ -74,7 +74,7 @@ Save the file as `dsm.opt` in the Backup-Archive Directory e.g `C:\Program Files
 #### Schedule Daily Backups
 
 1. IBM Spectrum Protect Backup-Archive Client are polling the backup server on regular basis to see when it will backup your data next time.
-To assign a predefined schedule, open [Safespring Backup Portal](baas-portal) and go to the _consumption unit_ you want to define an schedule too and click on _schedule_ 
+To assign a predefined schedule, open [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) and go to the _consumption unit_ you want to define an schedule too and click on _schedule_ 
 ![Consumption Unit Schedule](../images/baas-portal-consumption-unit-schedule.png)
 
 Here can you schedule the backup for your consumption unit.
@@ -125,7 +125,7 @@ Here can you schedule the backup for your consumption unit.
 
     ![Client Acceptor TCP Port, default is 1581](../images/SPBAC-GUI-Client-Acceptor-TCP-port.png)
 
-    Insert the node password, the password can be copy from the [Safespring Backup Portal](baas-portal).
+    Insert the node password, the password can be copy from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/).
 
     ![Insert Node name and Password](../images/SPBAC-GUI-Client-Acceptor-node-n-pwd.png)
 
@@ -152,7 +152,3 @@ Here can you schedule the backup for your consumption unit.
 ### Finish
 
 Basic installation for Backup-Archive Client is now finish, if you need to setup a Online agent for e.g Microsoft SQL, Orable Database or any other application, you can continue with that installation.
-
-[baas-portal]:https://portal.backup.sto2.safedc.net/
-[windows-ca-installer]:https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA-win64.bat
-[windows-dsm-opt]:https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/dsm.opt.sample
