@@ -5,6 +5,7 @@ current platform. This guide describes what the user needs to do in order to use
 
 ## Two cases
 The preparations will differ depending on which kind of flavor or storage that the instance in the legacy platform is using:
+
 1. Instance is booting from image using ephemeral boot storage or local disk.
 2. Instance is booting from volume using persistent storage.
 
