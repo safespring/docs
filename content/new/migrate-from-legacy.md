@@ -13,9 +13,10 @@ You can tell if you instance is booting from image by looking in the "Image Name
 
 ![image](../images/volume-or-image.png)
 
+If you want to migrate an external volume that is not used for booting an instance, follow the instructions for case 2.
 
 ## Case one
-This case covers when the instance boot from volume. Since it already is booting from volume there are very few things that needs to be done:
+This case covers when the instance boots from image:
 
 1. Shut off the instance
 2. Create a snapshot of the instance in Horizon.
@@ -30,7 +31,7 @@ In the new platform the metadata can be viewed in Horizon and there you should s
 10. After a couple of days of running in the new instance, don't forget to remove the old instance, including the created volume snapshot and volume in the legacy platform.
 
 ## Case two
-When an instance is already booting from a volume, it is simpler and you can skip step 2 and 3 in the listing above and only shut off the instance and start from step 4 in the listing above, and then continue following the same instructions.
+When an instance is already booting from a volume, it is simpler and you can skip step 2 and 3 in the listing above and only shut off the instance and start from step 4, and then continue following the same instructions.
 
 ## How to set the metadata tag for migration 
 
@@ -50,3 +51,13 @@ To automate the creation of the volume snapshot from an instance booting from im
 
 
 ```
+
+## Convert an instance to boot from local disk in the new platform
+If the original instance in legacy booted from local disk you might want to do the same in the new platform. 
+If you follow the method above you will end up with a volume which you can boot from, but that will be from shared
+storage and not local disk. In order to boot from local disk in the new platform you need to perform the following extra steps:
+
+1. Boot up the instance from the migrated volume.
+2. Create a snapshot from the instance.
+3. Start a new instance, using a local disk flavor (l2-series) with enough local disk to house the snapshot.
+4. You can now delete the first instance booting from the migrated volume. 
