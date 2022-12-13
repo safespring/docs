@@ -15,6 +15,7 @@ You can tell if you instance is booting from image by looking in the "Image Name
 
 ## Case one
 This case covers when the instance boot from volume. Since it already is booting from volume there are very few things that needs to be done:
+
 1. Shut off the instance
 2. Create a snapshot of the instance in Horizon.
 3. Create a volume from the snapshot.
