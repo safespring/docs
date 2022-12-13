@@ -24,7 +24,7 @@ This case covers when the instance boots from image:
 4. Create a volume snapshot from the volume created from the instance snapshot.
 5. Mark the volume snapshot with the meta-data tag "migrate_to=<project-id of project i v2 to where the volume should be migrated>". The API commands how to do this is listed below.
 6. Contact Safespring and ask them to run the tooling for migrating the volume. This will eventually be an automatic process that runs at specific times but for now Safespring runs the scripts manually.
-7. Once the migration is done the volume snapshot in legacy will get the meta-data tag "migrate_status='volume_synced'" set. This can only be viewed with API in legacy by running ```openstack volume snapshot show <snapshot-id```
+7. Once the migration is done the volume snapshot in legacy will get the meta-data tag "migrate_status='volume_synced'" set. This can only be viewed with API in legacy by running ```openstack volume snapshot show <snapshot-id>```
 In the new platform the metadata can be viewed in Horizon and there you should see the metadata tags "migrate_status=volume_synced" as well as the project id from which the volume was migrated in legacy.
 8. The volumes belonging to the instance will now be visible in the destination project in the new platform so you can now create the instance again from the boot volume, and potential additional volumes that the instance had in the legacy platform.
 9. Try to boot up the instance from the migrated volume and check that everything works as it should. Also attach secondary volumes that you might have migrated with the same method.
@@ -46,7 +46,7 @@ openstack volume snapshot set --property 'migrate_to=<project id>' <volume snaps
 To automate the creation of the volume snapshot from an instance booting from image, you can run the following commands after you have created the snapshot of the instance in Horizon:
 ```code
 (cli): openstack image list --private
-(cli): openstack volume create --image <image_id> --size <size> <vol-navn>
+(cli): openstack volume create --image <image_id> --size <size> <vol-name>
 (cli): openstack volume snapshot create --volume <volume_id> --property migrate_to=<v2_project_id>
 
 
