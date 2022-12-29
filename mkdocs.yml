@@ -70,6 +70,7 @@ nav:
      - Application credentials: "new/app-creds.md"
      - Persistent IP address: "new/persistent-ip-address.md"
      - Elastic IP address: "new/elastic-ip.md"
+     - Using Keypairs: "compute/keypairs.md"
      - HOWTOs:
        - Connecting to Safespring: "compute/connecting.md"
        - Windows images: "compute/windows.md"
@@ -84,7 +85,6 @@ nav:
        - Image service: "compute/image.md"
        - Volume service: "compute/volume.md"
        - Network service: "compute/network.md"
-       - Using Keypairs: "compute/keypairs.md"
        - Enabling IPv6: "compute/ipv6-howto.md"
   - Storage:
     - General S3 Info: "storage/generalinfo.md"
