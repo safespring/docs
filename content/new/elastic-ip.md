@@ -1,15 +1,16 @@
 # Elastic IP
 
-The Safespring Elastic IP feature allows for users and projects to announce anycast
-IP addresses within a site, and enables the potential for load balancing and/or
-failover for your services. The customer instances advertise the addresses via
-[Border Gateway Protocol (BGP)](https://en.wikipedia.org/wiki/Border_Gateway_Protocol),
-either IPv4 and/or IPv6 addresses. If the same address is advertised from multiple
-instances, [Equal Cost Multipath (ECMP)](https://en.wikipedia.org/wiki/Equal-cost_multi-path_routing) 
-routes will be created in the Safespring infrastructure.
+Safespring Elastic IP allows projects to announce anycast IP addresses within a
+site and enables potential for load balancing and/or failover for your services.
+You may advertise extra addresses for project instances via [Border Gateway
+Protocol (BGP)](https://en.wikipedia.org/wiki/Border_Gateway_Protocol), either
+IPv4 and/or IPv6 addresses. If the same address is advertised from multiple
+instances, [Equal Cost Multipath
+(ECMP)](https://en.wikipedia.org/wiki/Equal-cost_multi-path_routing) routes will
+be created in the Safespring infrastructure.
 
-Example usecases for the Safespring Elastic IP feature include MetalLB for container
-clusters and anycast enabled haproxy servers.
+Example usecases for the Safespring Elastic IP feature include MetalLB for
+container clusters and failover-handling haproxy servers.
 
 ## How it works
 
@@ -32,8 +33,8 @@ instance attaches to. In our example we will be using the popular BGP speaker
 [GoBGP](https://osrg.github.io/gobgp/) and
 [ExaBGP](https://github.com/Exa-Networks/exabgp)
 
-Please note that the Security Groups you configure for your instance will be applied
-to the OpenStack network for the instance, as well as to the IP addresses announced by
+Please note that the security groups you configure for your instance will be applied
+to the Openstack network for the instance, as well as to the IP addresses announced by
 the instance.
 
 Installing Bird is trivial as it is available in most linux distributions (Enterprise
@@ -44,13 +45,14 @@ installed with
 # sudo apt-get install -y bird2
 ```
 
-Regardless of which software you use, there are common parameters:
+Regardless of which software you use, common configuration parameters will be
+communicated to you from support, when the feature is enabled for you
 
 1. Your assigned [AS number](https://en.wikipedia.org/wiki/Autonomous_system_(Internet))
-2. A provided AS number to peer your instance to, which is different from the instance's AS number
+2. An IP address and AS number to peer your instance with
 3. IPv4 and IPv6 prefixes you are allowed to announce
 
-A complete configuration file for [Bird](https://bird.network.cz/) could look like this:
+An example configuration file for [Bird](https://bird.network.cz/) could look like this:
 
 ```code
 router id 10.129.0.3;
@@ -99,7 +101,7 @@ protocol kernel {
 
 protocol bgp safespring  {
   neighbor 169.254.169.254 port 179 as 64700;
-  local 10.129.0.3 as 64512;
+  local 10.129.0.3 as 64532;
   multihop;
   ipv4 {
         import none;
@@ -112,11 +114,12 @@ protocol bgp safespring  {
 }
 ```
 
-The address and port to connect to is always `169.254.169.254:179`. Even
-though the BGP peering happens over IPv4 only, you may advertise IPv6 prefixes
-over this connection. Please note that the term "safespring" is an arbitrary
-name set specifically in Bird in order to identify the connection - it has no
-technical meaning or effect. After starting Bird we can check status with
+The address and port to connect to is always `169.254.169.254:179` using AS
+number `64700`. Even though the BGP peering happens over IPv4 only, you may
+advertise IPv6 prefixes over this connection. Please note that the term
+"safespring" is an arbitrary name set specifically in Bird in order to identify
+the connection - it has no technical meaning or effect. After starting Bird we
+can check status with
 
 ```code
 # birdcl show protocol safespring
@@ -159,17 +162,85 @@ Table master6:
 
 ## Next steps
 
-More instances advertising the same IP addresses may be created
-(with identical configuration for the BGP speaker software, with the notable
-exeption for the instance's own address). Depending on your usecase, a service
-health checker can be useful. For example,
-[AnyCast Healthcecker](https://github.com/unixsurfer/anycast_healthchecker)
-configures the Bird daemon directly. If you are using MetalLB, please note
-that by default MetalLB will try peering all your nodes with the infrastructure.
-This may not be optimal, so consider deploying only a few nodes with elastic IP.
+More instances advertising the same IP addresses may be created with identical
+configuration for the BGP speaker software - the only difference being the
+instance's own address. Depending on your usecase, a service health checker can
+be useful. For example, [AnyCast
+Healthcecker](https://github.com/unixsurfer/anycast_healthchecker) configures
+the Bird daemon directly. If you are using MetalLB, please note that by default
+MetalLB will try peering all your nodes with the infrastructure. This may not be
+optimal, so consider deploying only a few nodes to run that service.
 
 ## Conclusion
 
 Safespring Elastic IP enables a generic and simple method of implementing load
 balancing and failover over industry standard BGP protocol for a variety of
 usecases. Please contact us in order to get the necessary resources to get started.
+
+## Additional example configurations
+
+### exabgp
+
+
+```
+neighbor 169.254.169.254 {             # bgp neighbor to peer with
+  local-address 10.129.0.5;            # local instance IP address
+  local-as 64532;                      # bgp as (unique per openstack project)
+  peer-as 64700;                       # safespring compute as (static)
+}
+
+# process to announce or withdraw address based on the result of the check.sh script
+process service_ip {
+  run python3 -m exabgp healthcheck --cmd "/etc/exabgp/check.sh 185.189.29.2" --ip 185.189.29.2 --interval 15 --no-ip-setup --up-metric 1 --withdraw-on-down;
+  encoder text;
+}
+```
+
+Show what addresses are currently announced to the upstream router
+```
+$ sudo exabgpcli show adj-rib out extensive
+neighbor 169.254.169.254 local-ip 10.129.0.5 local-as 64532 peer-as 64700 router-id 10.129.0.5 family-allowed in-open ipv4 unicast 185.189.29.2/32 next-hop self med 1
+```
+
+### metallb
+
+Example metallb CRDs. See https://github.com/metallb/metallb/ and the
+`config/manifests` folder of the version you are using. We recommend using frr
+mode https://metallb.universe.tf/concepts/bgp/#frr-mode
+
+```
+apiVersion: metallb.io/v1beta1
+kind: BGPAdvertisement
+metadata:
+  name: local
+  namespace: metallb
+spec:
+  ipAddressPools:
+  - first-pool
+  aggregationLength: 32
+  communities:
+  - 65535:65282
+```
+
+```
+apiVersion: metallb.io/v1beta2
+kind: BGPPeer
+metadata:
+  name: local
+  namespace: metallb
+spec:
+  myASN: 64532
+  peerASN: 64700
+  peerAddress: 169.254.169.254
+```
+
+```
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: first-pool
+  namespace: metallb
+spec:
+  addresses:
+  - 185.189.29.2/32
+```
