@@ -23,7 +23,7 @@ Our services are delivered from three datacentres in Norway and Sweden - *osl1* 
 
 ### Safesping Compute
 
-To get started with the Compute service, see the [getting started guide](compute/getting-started-legacy)
+To get started with the Compute service, see the [getting started guide](new/getting-started-legacy)
 
 ### Safespring Storage
 
