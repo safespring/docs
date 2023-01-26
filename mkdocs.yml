@@ -71,7 +71,7 @@ nav:
      - Persistent IP address: "new/persistent-ip-address.md"
      - Elastic IP address: "new/elastic-ip.md"
      - Using Keypairs: "compute/keypairs.md"
-     - Features: "new/troubleshooting.md"
+     - Trouble Shooting: "new/troubleshooting.md"
      - HOWTOs:
        - Connecting to Safespring: "compute/connecting.md"
        - Windows images: "compute/windows.md"
