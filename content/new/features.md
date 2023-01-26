@@ -33,3 +33,5 @@ The network “private” means that the instance will get a private IPv4 and IP
 “Public” will give you one public IPv4 address and IPv6 address. This network is used for instances that should be reached from the instances such as frontends and jump hosts. 
 The addresses in all the networks are given with DHCP and all the networks are using a shared pool of IP-addresses. Even though an DHCP is used and instance will never change IP-address as long as it is not deleted.
 
+## Rescuing instances
+There is a "Rescue Instance" feature in the drop-down menu on the instance in the instance listing, which makes it possible to put the instance in rescue mode. The user picks an image to boot from (could be any image that you feel familiar with) and then the instance will be rebooted with the original root file system mounted as a secondary volume. You can now run fsck or other operations on the root fs in order to repair the filesystem. Once you are done, pick "Unrescue Instance" in the drop-down menu and the instance will be rebooted with the mended root file system.
