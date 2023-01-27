@@ -5,6 +5,11 @@
 A status page is available at https://status.safespring.com - the page contains
 annoucement of downtime and maintenace windows.
 
+## Important Update Regarding Retirement of Legacy Platform in STO1
+We would like to inform you that our legacy platform in sto1 will be shut down on May 1st.
+
+Please read important information on what you need to do [here](https://www.safespring.com/blogg/2023/2023-01-updates-to-legacy-platform/).
+
 ## Mailing list for the backup service
 
 Backup service customers should subscribe to our service-specific mailing list
