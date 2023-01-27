@@ -19,7 +19,7 @@ In the examples below words written with capital letters, such as BUCKETOWNERPRO
 
 ### Setting up s3cmd
 We are going to use the tool "s3cmd" for all configuration. Use the instructions [here](/storage/s3cmd.md) to install it. To test these examples you are going to need to have two separate s3cmd-config
-files. To get the varianbles you need to create those files login to your Safespring account, click "API Access" up to the left, and the "View Credentials". You will be presented with something like this:
+files. To get the variables you need to create those files login to your Safespring account, click "API Access" up to the left, and the "View Credentials". You will be presented with something like this:
 
 ![View Credentials](/images/view-credentials.png)
 
@@ -272,7 +272,7 @@ public_url_use_https = True
 signurl_use_https = True
 
 ```
-These varibales are important now when we want to create those pre-signed URLs to an object. They force the
+These variables are important now when we want to create those pre-signed URLs to an object. They force the
 signing mechanism to use HTTPS instead of HTTP which you need in Safespring's platform since HTTP is not allowed.
 
 Let's say that the owner has a configuration file called owner-s3.cfg where those variables are set and wants
@@ -285,5 +285,3 @@ The command to issue is the following:
 ```
 The command will return an URL that you can send to anyone and will be valid for 24 hours from now.
 You can also skip +86400 to make the URL permanent. 
-
-
