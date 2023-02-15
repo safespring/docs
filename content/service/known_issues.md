@@ -207,12 +207,13 @@ DNS1=2001:4860:4860::8844
 DNS2=2001:4860:4860::8888
 ```
 
-## cloud.ipnett.[no|se] domains
-Due to historical reasons some of our v1 infrastructure is using cloud.ipnett.[no|se] domains
-which are no longer in public DNS. Thus, in order to reach these services using API you'll need
-the following names and IP adresses in your local hosts file.
+## Accessing API in sto1 legacy
 
-For .se, sto1 v1 API services
+General API access is no longer available in legacy, but it is still possible
+to get it working. You need a local, non-federated account.
+
+Edit your local /etc/hosts to add the legacy DNS names which are no longer
+published:
 
 ```shell
 193.11.89.226 api.cloud.ipnett.se
@@ -223,50 +224,28 @@ For .se, sto1 v1 API services
 193.11.89.225 nova.api.cloud.ipnett.se
 ```
 
-For .no, osl1 v1 API services
-
-```shell
-193.156.25.225 api.cloud.ipnett.no
-193.156.25.225 cinder.api.cloud.ipnett.no
-193.156.25.225 glance.api.cloud.ipnett.no
-193.156.25.225 keystone.api.cloud.ipnett.no
-193.156.25.225 neutron.api.cloud.ipnett.no
-193.156.25.225 nova.api.cloud.ipnett.no
-```
-
-## Example rc files for legacy sites
-
-These are example rc files (settings) for accessing our Norwegian and
-Swedish Compute services. Replace the bracketed variables with your own
-information.
-
-### no-south-1
-
-```shell
-export OS_AUTH_URL=https://keystone.api.cloud.ipnett.no/v3
-export OS_IDENTITY_API_VERSION=3
-export OS_PASSWORD=<PASSWORD>
-export OS_PROJECT_DOMAIN_NAME=<DOMAIN>
-export OS_PROJECT_NAME=<PROJECT>
-export OS_REGION_NAME=no-south-1
-export OS_USERNAME=<USERNAME>
-export OS_USER_DOMAIN_NAME=<DOMAIN>
-```
-
-### se-east-1
-
-For API access to sto1 legacy, you also need to [download a
-certificate](safedc_root.pem) to be able to verify the internal certs used. Set
-the path to this certificate in the rc file setting `OS_CACERT` as below
+Use the following rc file as a base to create one with your own credentials.
+You need to know your username, password, domain and project name.
 
 ```shell
 export OS_AUTH_URL=https://keystone.api.cloud.ipnett.se/v3
-export OS_CACERT=/path/to/safedc_root.pem
 export OS_IDENTITY_API_VERSION=3
-export OS_PASSWORD=<PASSWORD>
-export OS_PROJECT_DOMAIN_NAME=<DOMAIN>
-export OS_PROJECT_NAME=<PROJECT>
-export OS_REGION_NAME=se-east-1
+export OS_VOLUME_API_VERSION=2
 export OS_USERNAME=<USERNAME>
 export OS_USER_DOMAIN_NAME=<DOMAIN>
+export OS_PASSWORD=<PASSWORD>
+export OS_PROJECT_NAME=<PROJECT>
+export OS_PROJECT_DOMAIN_NAME=<DOMAIN>
+export OS_REGION_NAME=se-east-1
 ```
+
+Use a version of openstack cli that is not too new:
+
+```
+pip install python-openstackclient==4.0.2 python_cinderclient==6.0.0
+
+source credentials.rc
+openstack --insecure server list --long
+openstack --insecure volume list --long
+```
+
