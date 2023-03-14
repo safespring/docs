@@ -55,14 +55,12 @@ The flavors starting with l works a little bit different since they come with a 
 To boot these instance one should boot from "Image" under the "Source"-tab in the "Launch Instance"-dialogue. The image will be copied to the root disk of the instance before start.
 
 !!! info "Important Note"
-    It is important to understand the implications of the local disk flavors. The performance of them will be higher but the virtual disk created will be a single point of failure. If the physical disk, on which the virtual disk is placed, crashes, the instance will not be restorable. **Therefore it is important that these instances either are stateless or backed up properly.** 
+    It is important to understand the implications of the local disk flavors. The performance of them will be higher but the virtual disk created will be a single point of failure. If the physical disk, on which the virtual disk is placed, crashes, the instance will not be restorable. **Therefore it is important that these instances either are stateless or backed up properly.** When setting up flavors with l2 flavors that are members of a cluster, it is recomended to use the feature "Server Groups" with a Anti-Affinity group associatied with you cluster members to ensure that the local disks end up on different computes nodes. You do not want to end up with a cluster where all the members in the cluster use the same local storage, since a failure on that storage will affect all the cluster members.
+
 
 To spread capacity fairly over instances the IOPS quota on them are linear to the amount of disk space they reserve. This means that an l-flavor ending with 500 has five times the amount of IOPS reserved than an l-flavor ending with 100. A flavor ending with 1000 has ten times IOPS quota compared to 100. This should be taken into consideration if IOPS is important for your application running in the instance even though you do not need a larger disk space. The higher amount of disk reserved the faster the disk will be. You can see this in the table above for the l2 flavors. 
 
-!!! info "PRO tip"
-    When setting up flavors with l2 flavors that are members of a cluster, it is recomended to use the feature "Server Groups" with a Anti-Affinity group associatied with you cluster members to ensure that the local disks end up on different computes nodes. You do not want to end up with a cluster where all the members in the cluster use the same local storage, since a failure on that storage will affect all the cluster members.
-
-If you have API-access you can view the IOPS quota with the command:
+    If you have API-access you can view the IOPS quota with the command:
 
     openstack flavor list --long
 
