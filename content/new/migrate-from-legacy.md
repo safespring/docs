@@ -18,16 +18,24 @@ However, if you cannot do this, Safespring has developed a method for migrating
 volumes from the legacy platform to our current platform. This guide describes
 what the user needs to do in order to use the method.
 
-### Determine which flavor you're using in the legacy platform
+### Determine which boot source and flavor you're using in the legacy platform
 
 The preparations will differ depending on which kind of flavor or storage the
 instance in the legacy platform is using:
 
-1. The instance is using a local disk flavor and boots from an image. 
-2. The instance is using a central storage flavor and boots from a volume.
+1. The instance is using a local disk flavor and boots from an image source. 
+2. The instance is using a central storage flavor and boots from an image source.
+3. The instance is using a central storage flavor and boots from a volume.
 
 Local flavors are prefixed  with `lb-` or `lm`. Central storage flavors are
 prefixed with `b-` or `m-`.
+
+You can tell if you instance is booting from image source by looking in the
+"Image Name" column of the instance. If you see a minus sign there, the instance
+is booting from volume and belong to category 3 above. If you see an image name
+there, it belongs to category 1 or 2 depending on the flavor.
+
+![image](../images/volume-or-image.png)
 
 ### Determine which flavor you will be using in the new platform
 
@@ -45,19 +53,20 @@ You can read more about our flavors
 
 ## Initial preparations
 In order to migrate, please make sure:
-- You have access to the project you're migrating from in the legacy platform
+- You have access to the project you're migrating _from_ in the legacy platform
 - You have a user account in the new platform
-- That the project has been created in the new platform
+- That the project you're migrating _to_ has been created in the new platform
 - That you have access to the project you're migrating to in the new platform
 
 If not, please contact `support(at)safespring.com` and we will help you out.
 
 You will also need the project ID for the project you're migrating to. You can
-find this by simply clicking on Identity - Projects and note the Project ID next
+find this by simply clicking on Identity - Projects and copy the Project ID next
 to the project name. 
 
-## Migrating from a central flavor
-If you are migrating from a central flavor, the process is simple.
+## Migrating from a central flavor with volume boot source
+This is the simplest case in which you can migrate the volume directly to the
+new platform. 
 
 1. In the legacy platform, shut off the instance from the operating system or in the dashboard. 
 2. Under Compute - Volumes, select "Create Snapshot" from the Actions menu
@@ -80,6 +89,26 @@ If you are migrating from a central flavor, the process is simple.
 8. After a couple of days of running in the new instance, don't forget to
    remove the old instance, including the created volume snapshot and volume in
    the legacy platform.
+## Migrating from a central flavor with image boot source
+As we only facilitate the migration of volumes, you will need to create a
+snapshot of the instance and convert this to a volume if you have an image boot
+source. This is a simple process but involves a few extra steps.
+
+1. In the legacy platform, shut off the instance from the operating system or in
+   the dashboard. 
+2. Under Instances in the Compute side menu, select "Create Snapshot" from the 
+   Actions menu.
+3. Under Images in the Compute side menu, find the image you created and select
+   "Create Volume" from the Actions menu. Choose "fast" as the type. This shouldn't
+   take too long but please be patient if it doesn't complete immediately.
+
+After this, you can follow the steps in the previous section to migrate the
+volume. Although it it possible to create an image from the volume after
+you've migrated to the new platform, there no real benefit of doing so as 
+the image service and the volume service runs on the same backend. If you still
+want an image instead of a volume you can follow the steps under "Converting the
+volume to an image for use with a local flavor", ignoring steps that applies to
+local disk.  
 
 ## Migrating from a local flavor
 If you are migrating from a local flavor, the process is slightly more complex
