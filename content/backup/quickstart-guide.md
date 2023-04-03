@@ -28,6 +28,13 @@ When the consumption unit has been created the portal will ask you if you want t
 
 Fillout the form like, Platform, preferred backup server, Domain, Client Option set and contact details (e.g. Server owner E-Mail or Support Email).
 
+The Client Option Set defaults to Dedup_and_Compression to allow but not force the client
+to attempt to use deduplication and compression before sending data over to the server
+in order to reduce transfer time and amount. Other options include Force_Encrypt which
+will unconditionally make the client locally encrypt all data before transfer with a
+key you need to enter once. These two options are mutually exclusive. There is a
+None option which sets no client options from server-side.
+
 ![Consumption Unit New Node](images/baas-portal-consumption-unit-node.png)
 
 We are recommending that you let "Data-source" be empty to let us randomize the nodename.
