@@ -59,6 +59,8 @@ nav:
       - Windows: "backup/install/windows.md"
       - macOS: "backup/install/apple-macos.md"
       - freeBSD: "backup/install/freebsd-other.md"
+      - Application:
+        - Microsoft SQL Server: "backup/install/mssql-windows.md"
     - FAQ: "backup/faq.md"
     - Legacy Backup: "legacy-backup/index.md"
   - Compute:

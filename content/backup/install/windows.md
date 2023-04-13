@@ -2,12 +2,11 @@
 
 ## Manual installation
 
-_This document describes how to **manually** install install IBM Spectrum Protect Backup-Archive Client on Windows Windows (64-bit)._
+_This document describes how to **manually** install IBM Spectrum Protect Backup-Archive Client on Windows Windows (64-bit)._
 
 Required files:
 
-- [IBM Spectrum Protect Backup-Archive Client](https://public.dhe.ibm.com/storage/tivoli-storage-management/patches/client/v8r1/Windows/x64/)
-- [SafeDC Root CA installer](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA-win64.bat) (Right-click and Save)
+- [IBM Spectrum Protect Backup-Archive Client](https://www3.software.ibm.com/storage/tivoli-storage-management/patches/client/v8r1/Windows/x64/)
 - [SafeDC Default Configuration file dsm.opt](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/dsm.opt.sample) (Right-click and Save)
 
 ### Installation and Configuration
@@ -16,7 +15,9 @@ Required files:
 
 1. Download the required files according to above into a temporary folder
 1. Run `8.x.x.x-TIV-TSMBAC-WinX64.exe` to extract all installations files.
-1. Open the `TSMClient` Installation directory that just get created and run `spinstall.exe` and accept the UAC pop-up that comes up, "Setup Launcher Unicode".. ![UAC Pop-up](../images/UAC-popup.png) Follow the instructions on the screen, and if this is a new installation you maybe need to install a few requirements.
+1. Open the `TSMClient` Installation directory that just get created and run `spinstall.exe` and accept the UAC pop-up that comes up, "Setup Launcher Unicode". 
+![UAC Pop-up](../images/UAC-popup.png) 
+Follow the instructions on the screen, and if this is a new installation you maybe need to install a few requirements.
 
     ![Spectrum Protect Backup-Archive Client - InstallShield Wizard](../images/SPBAC_ISWizard.png)
 
@@ -24,17 +25,6 @@ Required files:
     1. If a reboot is unpleasant, at the above decision point, jump to the _"Circumvent reboot during install"_ section below.
     1. Resume the installation, choose Typical installation.
     1. After installation, answer 'No' to the reboot question.
-
-#### Install Safespring Root Certificate
-
-1. In a command prompt with elevated privileges, execute the "Safespring Root CA installer" to install the Safespring BaaS CA into the GSK (IBM crypto kit) trust database.
-
-
-    ```sh
-    SafeDC-Net-Root-CA-tsm12-win64.bat
-    ```
-
-![Install SafeDC Root CA](../images/SPBAC-Root-CA.png)
 
 #### Create Configuration File
 

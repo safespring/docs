@@ -46,10 +46,10 @@ Next step is to install the IBM Spectrum Protect Backup-Archive Client.
 
 ## Install IBM Spectrum Protect Backup-Archive Client
 
-Install the IBM Spectrum Protect Backup-Archive Client, you can download the latest client from [IBMs FTP Server][http://ftp.software.ibm.com/storage/tivoli-storage-management/]
+Install the IBM Spectrum Protect Backup-Archive Client, you can download the latest client from [IBMs FTP Server][https://www3.software.ibm.com/storage/tivoli-storage-management]
 
-- [Patch Version](http://ftp.software.ibm.com/storage/tivoli-storage-management/patches/client/)
-- [Maintenance Version](http://ftp.software.ibm.com/storage/tivoli-storage-management/maintenance/client/)
+- [Patch Version](https://www3.software.ibm.com/storage/tivoli-storage-management/patches/client/)
+- [Maintenance Version](https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/client/)
 
 Please follow in the installation instructions for your Operating System.
 
