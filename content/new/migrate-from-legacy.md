@@ -1,11 +1,42 @@
 # Migrate from legacy platform
 
 Migrating from the legacy platform is imperative for all customers who want to
-continue using Safespring's service as the legacy platform are not longer
+continue using Safespring's services as the legacy platform is no longer
 supported from April 1 2023, and will be shut down on May 1 2023.
 
-For most customers the migration is a simple process, but there are some things
+For most customers the migration is a simple process but there are some things
 to consider before beginning.
+
+## A few notes before you begin
+
+Migrating a volume from the legacy platform to the new platform is equivalent to
+taking out a hard drive from physical computer and ship it to a new data center.
+This means that even though the hard drive and the data on it is the same, the
+computer you install it into along with the network and firewall (security
+groups) are not. The same goes for any other resources you may have in the
+legacy platform, including images, snapshots, SSH keys etc. You need to recreate
+these in the new platform as needed.
+
+As the data center is located in a different location, the IP ranges will
+differ. This means that you will need to recreate any DNS records pointing to IP
+addresses in the legacy platform and change any configuration dependent on your
+legacy network _before_ migrating. There is no way to migrate an IP address from
+the legacy platform to the new platform. Please also note that the network model in
+the new platform is different from the legacy platform. You can read more about
+this in our [docs](https://docs.safespring.com/new/getting-started/#network).
+
+Any dependencies between resources in the legacy platform will need to be
+resolved before migrating. For example, if you have multiple volumes attached
+to your instances, you will need to migrate these volumes separately and then
+attach them in the new platform. There's no internal routing between networks
+in the legacy platform and the new platform, so if your instance is depended on
+a service running on another instance in the legacy platform, you will need to
+make this available over the internet or migrate the service to the new platform.
+
+Depending on the operating system, you might need to do some preparations before
+the volume can be installed on a new instance. For example, if you are using
+Windows you may want to run the Sysprep tool to prepare the installation for a
+new instance.
 
 ## Choosing your method
 
