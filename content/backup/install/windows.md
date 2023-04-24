@@ -75,15 +75,15 @@ Here can you schedule the backup for your consumption unit.
      Start a Command-Line window in _Administrator Mode_ and change to the Backup-Archive Client directory e.g `cd C:\Program Files\Tivoli\TSM\Baclient`.
      Run following commands to setup your schedule.
 
-     ```sh
+    ```sh
     dsmcutil install scheduler /name:"TSM Client Scheduler" /node:<NODENAME> /optfile:"<PATH TO DSM.OPT>" /password:<TSM PASSWORD> /autostart:no /startnow:no
-    
+
     dsmcutil install cad /name:"TSM Client Acceptor" /node:<NODENAME> /password:<TSM PASSWORD> /optfile:"<PATH TO DSM.OPT>" /autostart:yes /startnow:no
-    
+
     dsmcutil update cad /name:"TSM Client Acceptor" /cadschedname:"TSM Client Scheduler"
 
     net start "TSM Client Acceptor"
-     ```
+    ```
 
     1. **Setup schedule via GUI**
 
