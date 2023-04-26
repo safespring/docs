@@ -1,11 +1,44 @@
 # Migrate from legacy platform
 
 Migrating from the legacy platform is imperative for all customers who want to
-continue using Safespring's service as the legacy platform are not longer
+continue using Safespring's services as the legacy platform is no longer
 supported from April 1 2023, and will be shut down on May 1 2023.
 
-For most customers the migration is a simple process, but there are some things
+For most customers the migration is a simple process but there are some things
 to consider before beginning.
+
+## A few notes before you begin
+
+- Migrating a volume from the legacy platform to the new platform is like taking
+  out a hard drive from physical computer and shipping it to a new data center.
+
+- The computer, network, and firewall (security groups) do not follow the hard
+  drive. You need to create these in the new platform.
+
+- Same goes for any other resources you may have in the legacy platform,
+  including images, snapshots, SSH keys etc.
+
+- IP ranges will differ in the new platform. DNS records that point to IP
+  addresses in the legacy platform need to be recreated. Additionally, any
+  configuration dependent on the legacy network needs to be changed _before_
+  migrating.
+
+- The network model in the new platform is different from the legacy platform.
+  See our [docs](https://docs.safespring.com/new/getting-started/#network) for
+  more info on that.
+
+- Any dependencies between resources in the legacy platform need to be resolved
+  before migration. For example, if you have multiple volumes attached
+  to your instances, you will need to migrate these volumes separately and then
+  attach them in the new platform.
+
+- If an instance is dependent on a service running on another instance in the
+  legacy platform, it needs to be made available over the internet or migrated to
+  the new platform. There is no internal routing between networks in the legacy
+  platform and the new platform.  
+
+- The volume may need preparations depending on the operating system such as the
+  Sysprep tool for Windows.
 
 ## Choosing your method
 
