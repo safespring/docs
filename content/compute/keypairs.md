@@ -23,4 +23,4 @@ If you start PuTTY you now will be able to go to `SSH` -> `Auth` in the session 
 
 ![Putty key dialogue](/images/putty-key.png)
 
-If you also give the Floating IP that you have assigned (and updated the security groups to allow SSH-traffic) you now should be able to log in to you instance with you key and password that you set in the convert procedure.
+If you instance is connected to the "public" network (and updated the security groups to allow SSH-traffic) you now should be able to log in to you instance with you key and password that you set in the convert procedure.
