@@ -90,8 +90,9 @@ See [this blogpost](https://www.safespring.com/blogg/byte-av-host-och-domainname
 
 ## Resize operations disabled
 
-Due to different issues with resize operations, we have disabled the resize operations
-users. If you need to resize instances, please contact [support](/service/support/).
+Due to different issues with resize operations we have disabled user-initiated resize operations. If you need to resize instances, please contact [support](/service/support/).
+
+It is not possible to resize to an instance that has less disk space than the one you are resizing from.
 
 We expect to support user initiated resize operations after a future system upgrade.
 
