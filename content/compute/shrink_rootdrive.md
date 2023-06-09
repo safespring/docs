@@ -38,7 +38,7 @@ As long as the original instance is present you can always restart the process, 
 
 Just to reiterate, before starting make sure you
 
-* have a persistent ip addres
+* have a persistent ip address
 * have made a mental note _not to delete the original instance until you are 100% sure the new one works_.
 
 Also, the total amount of data on the current root drive can not exceed the space you are resizing to, so if you want to resize to 100G but have 101G of data you will have to do some cleanup.
