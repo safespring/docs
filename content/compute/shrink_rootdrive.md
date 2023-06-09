@@ -24,7 +24,7 @@ There are two things that must (and must not) be done during this process:
 
 The ip address of a normally created instance is ephemeral and will auto-release itself when the port using it is disconnected from the original instance.
 
-If you want to keep the current ip address of the instance, please create an issue with support@safespring.com where you specify the instance id of your instane and that you want to set / verify that the connected ports are set to be persistent.
+If you want to keep the current ip address of the instance, please create an issue with support@safespring.com where you specify the instance id of your instance and that you want to set / verify that the connected ports are set to be persistent.
 
 A persistent port will not disappear on disconnect from the instance and can therefore be moved to another instance, which is what we want here.
 
@@ -32,13 +32,13 @@ A persistent port will not disappear on disconnect from the instance and can the
 
 The resize process has a couple of steps where all data being worked on can be lost. To insure that the original data is intact until you have a new working instance, *do not delete the original instance until you have a new verified working smaller instance*.
 
-As long as the orignal instance is present you can always restart the process, and if the process for some reason does not work you can just abort and power on the original instance again.
+As long as the original instance is present you can always restart the process, and if the process for some reason does not work you can just abort and power on the original instance again.
 
 ## Resizing the local drive
 
 Just to reiterate, before starting make sure you
 
-* have a persistant ip addres
+* have a persistent ip addres
 * have made a mental note _not to delete the original instance until you are 100% sure the new one works_.
 
 Also, the total amount of data on the current root drive can not exceed the space you are resizing to, so if you want to resize to 100G but have 101G of data you will have to do some cleanup.
