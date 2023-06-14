@@ -35,7 +35,7 @@ to consider before beginning.
 - If an instance is dependent on a service running on another instance in the
   legacy platform, it needs to be made available over the internet or migrated to
   the new platform. There is no internal routing between networks in the legacy
-  platform and the new platform.  
+  platform and the new platform.
 
 - The volume may need preparations depending on the operating system such as the
   Sysprep tool for Windows.
@@ -45,7 +45,7 @@ to consider before beginning.
 Moving instances between clouds comes with a few caveats. Ideally, you would
 build the instance in the new cloud and then migrate the data you need from the
 old, using the the opportunity to clean up and start fresh. This is the method
-we recommend whenever possible. 
+we recommend whenever possible.
 
 However, if you cannot do this, Safespring has developed a method for migrating
 volumes from the legacy platform to our current platform. This guide describes
@@ -56,7 +56,7 @@ what the user needs to do in order to use the method.
 The preparations will differ depending on which kind of flavor or storage the
 instance in the legacy platform is using:
 
-1. The instance is using a local disk flavor and boots from an image source. 
+1. The instance is using a local disk flavor and boots from an image source.
 2. The instance is using a central storage flavor and boots from an image source.
 3. The instance is using a central storage flavor and boots from a volume.
 
@@ -78,8 +78,8 @@ performance but do not have any redundancy. This means that if the host fails,
 your data as gone. Therefore, we only recommend using local flavors for
 stateless workloads where data loss is acceptable. Central flavors offers a
 slightly lower performance but will meet the needs of most customers, with the
-added benefit of redundancy and flexibility such zero downtime during
-maintenance etc. 
+added benefit of redundancy and flexibility such as zero downtime during
+maintenance etc.
 
 You can read more about our flavors
 [here](https://docs.safespring.com/new/flavors)
@@ -95,27 +95,27 @@ If not, please contact `support(at)safespring.com` and we will help you out.
 
 You will also need the project ID for the project you're migrating to. You can
 find this by simply clicking on Identity - Projects and copy the Project ID next
-to the project name. 
+to the project name.
 
 ## Migrating from a central flavor with volume boot source
 This is the simplest case in which you can migrate the volume directly to the
-new platform. 
+new platform.
 
 1. In the legacy platform, shut off the instance from the operating system or in the dashboard. 
 2. Under Compute - Volumes, select "Create Snapshot" from the Actions menu
-3. Under "Description" type in `migrate_to=<project-id of project i v2>`. This
+3. Under "Description" type in `migrate_to=<project-id of project in v2>`. This
    will tag the volume and will be picked up automatically by our migration
-   tooling.  
+   tooling.
 4. Wait for migration to complete (usually around 15 minutes but may take up to
    a few hours in some cases)
 5. Once the migration is complete, you will see the volume in the new platform
-   under Compute - Volumes. To make sure that the volume is ready to use, 
+   under Compute - Volumes. To make sure that the volume is ready to use,
    choose "Update metadata" from the Actions menu and check that you have
    migrate_status=volume_synced under "Existing Metadata". Also make sure that
    the volume is bootable
 6. Create a new instance and select Volume under Select Boot Source. Please make
    sure that you select the correct volume and a central flavor type prefixed
-   with `b2` matching the resource needs of the instance. 
+   with `b2` matching the resource needs of the instance.
 7. After the instance has been created make sure that it boots correctly and
    that you can access it via SSH or the console. Also attach secondary volumes
    that you might have migrated using the same method.
@@ -128,8 +128,8 @@ snapshot of the instance and convert this to a volume if you have an image boot
 source. This is a simple process but involves a few extra steps.
 
 1. In the legacy platform, shut off the instance from the operating system or in
-   the dashboard. 
-2. Under Instances in the Compute side menu, select "Create Snapshot" from the 
+   the dashboard.
+2. Under Instances in the Compute side menu, select "Create Snapshot" from the
    Actions menu.
 3. Under Images in the Compute side menu, find the image you created and select
    "Create Volume" from the Actions menu. Choose "fast" as the type. This shouldn't
@@ -137,11 +137,11 @@ source. This is a simple process but involves a few extra steps.
 
 After this, you can follow the steps in the previous section to migrate the
 volume. Although it it possible to create an image from the volume after
-you've migrated to the new platform, there no real benefit of doing so as 
+you've migrated to the new platform, there no real benefit of doing so as
 the image service and the volume service runs on the same backend. If you still
 want an image instead of a volume you can follow the steps under "Converting the
 volume to an image for use with a local flavor", ignoring steps that applies to
-local disk.  
+local disk.
 
 ## Migrating from a local flavor
 If you are migrating from a local flavor, the process is slightly more complex
@@ -152,32 +152,32 @@ but should be pretty straight forward if you follow the steps below.
    create a new volume of at least the same size as the ephemeral disk and attach
    it to the instance. If you don't, you can skip to the next headline.
 2. Determine if you need to copy the data on the ephemeral disk or if you
-   need to clone the entire filesystem as it is. 
+   need to clone the entire filesystem as it is.
    - If you only need the data, create a new filesystem on the volume device,
      mount it and use rsync or similar to copy the data from the ephemeral disk to
      the new volume.
    - If you need to clone the entire filesystem, unmount the ephemeral disk and
-     use dd to clone the entire filesystem to the volume device, e.g. 
+     use dd to clone the entire filesystem to the volume device, e.g.
      `dd if=/dev/sdb of=/dev/sdc --progress` where `/dev/sdb` is the ephemeral
-     disk and `/dev/sdc` is the volume device. 
+     disk and `/dev/sdc` is the volume device.
    If you're not sure or not comfortable with running these commands, please
    contact support and we will help you out.
 3. When done, detach the volume from the instance.
 4. Under Compute - Volumes, select "Create Snapshot" from the Actions menu
-3. Under "Description" type in `migrate_to=<project-id of project i v2>`. This
+3. Under "Description" type in `migrate_to=<project-id of project in v2>`. This
    will tag the volume and will be picked up automatically by our migration
-   tooling.  
+   tooling.
 4. Wait for migration to complete (usually around 15 minutes but may take up to
    a few hours)
 5. Once the migration is complete, you will see the volume in the new platform
-   under Compute - Volumes. To make sure that the volume is ready to use, 
+   under Compute - Volumes. To make sure that the volume is ready to use,
    choose "Update metadata" from the Actions menu and check that you have
-   migrate_status=volume_synced under "Existing Metadata". 
+   migrate_status=volume_synced under "Existing Metadata".
 6. You can leave this for now and continue with the next step.
 
 ### Migrating the root disk
 1. In the legacy platform, shut off the instance from the operating system or in
-   the dashboard. 
+   the dashboard.
 2. Under Instances in the Compute side menu, select "Create Snapshot" from the Actions menu. This will
    take some time to complete so please be patient.
 3. Under Images in the Compute side menu, find the image you created and select
@@ -187,15 +187,15 @@ but should be pretty straight forward if you follow the steps below.
    patient if it doesn't complete immediately.
 4. Under Volumes in the Compute side menu, find the volume you created and
    select "Create Snapshot" from the Actions menu.
-5. Under "Description" type in `migrate_to=<project-id of project i v2>`. This
+5. Under "Description" type in `migrate_to=<project-id of project in v2>`. This
    will tag the volume and will be picked up automatically by our migration
-   tooling.  
+   tooling.
 6. Wait for migration to complete (usually around 15 minutes but may take up to
    a few hours)
 7. Once the migration is complete, you will see the volume in the new platform
-   under Compute - Volumes. To make sure that the volume is ready to use, 
+   under Compute - Volumes. To make sure that the volume is ready to use,
    choose "Update metadata" from the Actions menu and check that you have
-   migrate_status=volume_synced under "Existing Metadata". 
+   migrate_status=volume_synced under "Existing Metadata".
 
 ### Boot from volume
 If you plan to boot from the volume, you can now create a new instance and
@@ -215,7 +215,7 @@ image, create a new instance with a local flavor and select the image as source.
    that you can access it via SSH or the console. Also attach the volume where
    you migrated the ephemeral disk to, if you did so.
 5. Decide if you want to keep the ephemeral disk on a volume or copy the content to
-   the root disk. 
+   the root disk.
 6. If you want to keep the ephemeral disk on a volume, simply add the device to
    `/etc/fstab` and mount it. If you want to copy the content to the root disk,
    use rsync or similar to copy the data from the ephemeral disk to the root
