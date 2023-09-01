@@ -19,7 +19,7 @@ Access Control
 A reason why one would want to declare a hierarchy of business units in 
 Cloutility is the ability to limit access for units in the organization. You 
 can create new user accounts underneath these units, as well as 
-assign new roles. These users may then access consumption units _only_ withing 
+assign new roles. These users may then access consumption units _only_ within 
 their respective business units.
 
 Try this out by clicking on Add in the top-left corner to add a new business 
