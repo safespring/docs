@@ -61,6 +61,8 @@ nav:
       - freeBSD: "backup/install/freebsd-other.md"
       - Application:
         - Microsoft SQL Server: "backup/install/mssql-windows.md"
+    - HOWTOs:
+      - Business Units: "backup/howto/business-units.md"
     - FAQ: "backup/faq.md"
     - Legacy Backup: "legacy-backup/index.md"
   - Compute:
