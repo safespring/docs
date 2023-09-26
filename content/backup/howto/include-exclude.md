@@ -128,7 +128,7 @@ Description               : Files are saved 30 days
 ...
 ```
 
-where the names of the MgmtClass are what we are looking for
+Where the names of the MgmtClass are what we are looking for
 ( *30DAYS* and *180DAYS* in that example list)
 
 To set different retentions for OS files and personal files on a Unix-based
