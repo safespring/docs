@@ -40,6 +40,10 @@ The default for `DOMAIN` is called `ALL-LOCAL` which means _all local
 filesystems_. You can specify it explicitly if you want, and add exclusion 
 or inclusion rules to it as well.
 
+The path suffixes `\...\* ` (or `/.../*` on Unix-based systems) means match 
+anything, 
+at any directory level.
+
 ## How includes interact
 
 You should view it as if `INCLUDE` and `EXCLUDE` statements are parsed
@@ -161,8 +165,8 @@ exclude everything else under `/var`. An option is to use:
 
 ``` shell
 DOMAIN /
-EXCLUDE /var
-INCLUDE /var/local
+EXCLUDE /var/.../*
+INCLUDE /var/local/.../*
 ```
 
 The problem is that this way, the client will scan all directories under 
@@ -181,7 +185,7 @@ EXCLUDE.DIR /var/lib
 EXCLUDE.DIR /var/cache
 EXCLUDE.DIR /var/log
 * ....
-INCLUDE /var/local
+INCLUDE /var/local/.../*
 ```
 
 However, this is rather inflexible. Because every time a new directory or 
