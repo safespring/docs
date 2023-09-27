@@ -154,7 +154,7 @@ using `dsmc archive ...`, only on backups. In order to actually change
 retrieve` and then archive them again.
 
 ## Virtual mount-points
-
+ 
 An issue which may arise when using `INCLUDE`, `EXCLUDE` and 
 `EXCLUDE.DIR` to back up single directories is that the set of rules may get 
 rather long, inflexible, or have bad performance. Let us explain.
