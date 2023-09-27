@@ -40,6 +40,10 @@ The default for `DOMAIN` is called `ALL-LOCAL` which means _all local
 filesystems_. You can specify it explicitly if you want, and add exclusion 
 or inclusion rules to it as well.
 
+The path suffixes `\...\* ` (or `/.../*` on Unix-based systems) means match 
+anything, 
+at any directory level.
+
 ## How includes interact
 
 You should view it as if `INCLUDE` and `EXCLUDE` statements are parsed
@@ -150,7 +154,7 @@ using `dsmc archive ...`, only on backups. In order to actually change
 retrieve` and then archive them again.
 
 ## Virtual mount-points
-
+ 
 An issue which may arise when using `INCLUDE`, `EXCLUDE` and 
 `EXCLUDE.DIR` to back up single directories is that the set of rules may get 
 rather long, inflexible, or have bad performance. Let us explain.
@@ -161,8 +165,8 @@ exclude everything else under `/var`. An option is to use:
 
 ``` shell
 DOMAIN /
-EXCLUDE /var
-INCLUDE /var/local
+EXCLUDE /var/.../*
+INCLUDE /var/local/.../*
 ```
 
 The problem is that this way, the client will scan all directories under 
@@ -181,7 +185,7 @@ EXCLUDE.DIR /var/lib
 EXCLUDE.DIR /var/cache
 EXCLUDE.DIR /var/log
 * ....
-INCLUDE /var/local
+INCLUDE /var/local/.../*
 ```
 
 However, this is rather inflexible. Because every time a new directory or 
