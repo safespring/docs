@@ -20,6 +20,11 @@ documented as optional.
 The issue is actively being investigated and this page will be updated with new
 information as soon as there is something to share.
 
+**Update 2023-10-02:** The issues is now fixed upstream 
+(https://github.com/projectcalico/calico/pull/8026/files/ff96fc82fcbae2d0eafd8f77ab782d4e7cbd2646) 
+and we will implement the fix as soon as possible and then update the status
+here.
+
 ## Rebuild of Debian 11 breaks DHCPv6 address assignment
 This bug is described [here](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=991613). The Debian 11 image comes up just fine with IPv4 and IPv6 when creating it from the image but if one tries to rebuild the instance with the "Rebuild"-command DHCPv6 will fail to provide an IPv6 address. This has to do with that the instance the first time created generates a DUID which is used to calculate the last part of the IPv6 adress. When the instance is rebuilt another DUID is calculated which does no match the former DUID and therefore the DHCPv6 services will not provide the address. The solution is to save the old DUID in /var/lib/dhcp/dhclient6.ens3.leases and insert the same value into the same file after the rebuild.   
 
