@@ -94,6 +94,7 @@ nav:
        - Enabling IPv6: "compute/ipv6-howto.md"
   - Storage:
     - General S3 Info: "storage/generalinfo.md"
+    - S3 Quotas: "storage/quota.md"
     - Example s3cmd config: "storage/s3cmd.md"
     - S3 Advanced Features: "storage/s3-advanced.md"
     - S3 Usage Report: "storage/usage-statistics.md"
