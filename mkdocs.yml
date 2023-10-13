@@ -65,6 +65,7 @@ nav:
       - Business Units: "backup/howto/business-units.md"
       - Deleting Nodes: "backup/howto/delete-node.md"
       - Include/Exclude: "backup/howto/include-exclude.md"
+    - REST API: "backup/rest-api.md"
     - FAQ: "backup/faq.md"
     - Legacy Backup: "legacy-backup/index.md"
   - Compute:
