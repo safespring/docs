@@ -1,7 +1,45 @@
 # Known Issues
 
 There are some currently known issues in the Compute platform. This page
-describes the most common pitfalls. Known issues for Backup is under the [Backup FAQ page](/backup/faq).
+describes the most common pitfalls. Known issues for Backup is under the [Backup
+FAQ page](/backup/faq).
+
+## DHCP lease not being renewed causing loss of connectivity in STO1
+
+This is an issue that we've seen on certain hypervisors in STO1, where unicast
+messages from the DHCP client are being dropped before they reach the service
+acting as DHCP server. This causes the lease to expire and the instance to lose
+its IP address. Although we haven't been able to find the root cause of the
+issue, it's expected to be resolved in an upcoming hypervisor upgrade. In the
+meantime, we've proceeded to set an unlimited duration on IPv4 leases. However,
+its recommended to either configure a static IP or set a DHCP client option to
+prevent connectivity loss when rebooting the instance.
+
+### DHCP client-side options on Ubuntu 22.04
+
+To configure the DHCP client with the "critical" option, add the following to Netplan:
+
+```yaml
+/etc/netplan/99-critical-dhcp.yaml
+network:
+  version: 2
+  ethernets:
+    ens3:  # Replace "ens3" with your network interface name
+      dhcp4: true
+      dhcp6: true # optional
+      critical: true
+```
+
+### DHCP client-side options on Debian and other distribution using networkd
+
+Create an override file for the network interface and add the following to the
+DHCP section:
+
+```ini
+/etc/systemd/network/99-dhcp-client.network
+[DHCP]
+KeepConfiguration=true
+```
 
 ## Security group rule with unspecified `remote_ip_prefix` opens up all ports
 
