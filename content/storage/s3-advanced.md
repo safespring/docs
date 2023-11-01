@@ -261,6 +261,39 @@ The the second user can download the same file, but will not be able to upload a
 ```
 s3cmd -c second-user-project-s3cfg get s3://BUCKET_OWNER_PROJECT_ID:mysharedbucket/mysharedfolder/productlist.db
 ```
+## Accessing a publicly available file over HTTPS
+
+It is possible to configure an object to be publicly available, and reachable over HTTPS.
+Below are the most common commands to alter the ACLs on an object or a bucket.
+
+You may choose to remove --recursive if is required only for the bucket or folder and not for objects within.
+
+```
+s3cmd setacl --acl-private --recursive s3://mybucket-name
+s3cmd setacl --acl-private --recursive s3://mybucket-name/folder-name
+s3cmd setacl --acl-private --recursive s3://mybucket-name/folder-name/object-name
+s3cmd setacl --acl-public --recursive s3://mybucket-name
+s3cmd setacl --acl-public --recursive s3://mybucket-name/folder-name
+s3cmd setacl --acl-public --recursive s3://mybucket-name/folder-name/object-name
+```
+
+The first three commands is to restrict public access, and the three last is to enable it. There are two variables you need to access a publicly available object
+over HTTPS:
+
+1. The S3_URL, which can be found in the "View Credentials" dialogue (see picture above) or in the welcome mail you got when you got onboarded. Most common values for this is s3.sto1.safedc.net or s3.osl1.safedc.net.
+2. The PROJECT_ID, which can be found in the "View Credentials" dialogue.
+
+Once you got these variables you, and have set the bucket or objects to public with one of the commands above the URL for reaching the object will be:
+
+```
+https://<S3_URL>/<PROJECT_ID>:bucket/object-name
+```
+So, if the S3_URL is s3.sto1.safedc.net and the PROJECT_ID is ABC123 the https URL will be:
+
+```
+https://s3.sto1.safedc.net/ABC123:bucket/object-name
+```
+
 
 ## Using presigned URLs
 It is possible to generate URLs to object which are presigned with a time limit how long the link is valid. This way it is possible to grant temporary access to single objects without the need to use policies. 
