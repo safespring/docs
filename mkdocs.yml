@@ -68,6 +68,7 @@ nav:
     - Automation:
       - Command Line: "backup/automation/cli-tool.md"
       - REST API: "backup/automation/rest-api.md"
+      - API Resources: "backup/automation/api-resources.md"
       - More Info: "backup/automation/more-info.md"
     - FAQ: "backup/faq.md"
     - Legacy Backup: "legacy-backup/index.md"
