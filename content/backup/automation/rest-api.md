@@ -222,13 +222,14 @@ API Endpoints
 ----------------
 **The Cloutility REST API is documented [here](https://portal-api.backup.sto2.safedc.net/v1/help) 
 in great detail.** 
-We will just cover a few useful endpoints here,
-but there are many more.
+We will just cover a few useful endpoints,
+but you should be aware that there are many more.
 
-For all listed API endpoints, the HTTP request headers Origin and 
-Authorization are obligatory. 
-For brevity, these headers will be omitted from the document, 
-but it is implicitly implied that they should be sent with every HTTP request.
+For all listed API endpoints, the HTTP request headers `Origin` and 
+`Authorization` are obligatory. 
+For brevity, these headers will be omitted from the rest of the document. 
+In other words,
+it is implicitly implied that they should be sent with every HTTP request.
 
 ### Business units
 
@@ -274,7 +275,7 @@ Below are some endpoints that you can use to find your business units programmat
     "invoiceDay": 0
   }
   ```
-  **Note:** The ID numbers in the output example are called `{bunitId}` in the rest of the document. You should replace this placeholder with the ID number of the business unit you intend to operate on.
+  **Note:** The `id` numbers in the output example above will be referred to as `{bunitId}` in the rest of the document. You should replace this placeholder with the ID number of the business unit you intend to operate on.
 
 * Get detailed information about a single business unit.
   ```
@@ -366,7 +367,7 @@ Below are some endpoints that you can use to find your business units programmat
   }
   ```
   
-* Get business units directly related to a specific business unit.
+* Get business units directly under a specific business unit.
   ```
   [GET] /v1/bunits/{bunitId}/bunits
   - Response Body: Collection of BusinessUnit
@@ -381,7 +382,7 @@ If you wish to create a business unit, first pick the right time zone using:
 - Response Body: TimeZone
 ```
 
-Then create the business unit using:
+Then create the business unit with:
 ```
 [POST] /v1/bunits/{bunitId}/bunits
 - Request Body: BusinessUnit
@@ -397,7 +398,8 @@ The request body can have the following format:
 }
 ```
 
-Note that not all fields of the BusinessUnit resource type have to be defined in the request.
+Note that not all fields of the BusinessUnit resource type have to be defined in the request, 
+this is normal.
 
 #### Modifying business units
 If you wish to modify existing business units, use the following endpoint:
@@ -425,13 +427,13 @@ please refer to Cloutility's REST API documentation:
     Many times endpoints return incomplete objects, contrary to what the Cloutility documentation may appear to be saying. 
     
     This actually saves network bandwidth as the size of these objects along with all their components may be huge.
-    But it can cause confusion to someone that is not used to the Cloutility's API.
+    But it can cause confusion to someone that is not used to Cloutility's API.
     
     We recommend that you use the most explicit endpoint for what you want to retrieve. For example, if you want all users of a Business Unit, do not use `/v1/bunits/{bunitId}`, use instead `/v1/bunits/{bunitId}/users`.
 
 ### Consumption units
 Once you have the ID number (`bunitId`) of the business unit you wish to operate under, 
-you can start managing **consumption units** for this business unit. In the Cloutility API, these are referred to as "consumers". But we will use the terms that the web interface uses, that is "consumption units".
+you can start managing **consumption units** for this business unit. In the Cloutility API, these are referred to as "consumers". But we will use the term that the web interface uses for consistency, that is "consumption units".
 
 #### Retrieving units
 Just like with business units, you can retrieve consumption units in an analogous fashion:
@@ -562,7 +564,8 @@ will be a significantly more detailed version of the consumption unit.
 - Request Body: Consumer
 ```
 
-#### Audit logs
+#### Audit log
+To query the audit log, use:
 ```
 [GET] /v1/bunits/{bunitId}/consumers/{consumerId}/auditlogs?includeDescendants={true/false}&limit={limit}&offset={offset}&orderDesc={true/false}&startTime={start_date}&endTime={end_date}&types=0&types=100&types=200&types=300&types=400
 ```
@@ -573,6 +576,43 @@ You can add/remove the following parameters to include/exclude log-entry types:
 - `&types=200` for modify-actions
 - `&types=300` for delete-actions
 - `&types=400` for errors
+
+The query parameters `startDate` and `endDate` are optional. But if you define them, make sure that the values are [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formatted. 
+For example `2023-11-03T08:00:00Z`.
+
+#### Reports
+Consumption unit reports hold information about its usage over time. 
+More concretely, it is values such as how much storage is used, 
+and how much data has been transferred.
+
+To find reports over a time interval, use this endpoint:
+```
+[GET] /v1/bunits/{bunitId}/consumers/{consumerId}/reports?startDate={startDate}&endDate={endDate}&status={true/false}&warnings={true/false}
+- Response Body: NodeReportList
+```
+
+Use `startDate` and `endDate` to specify a time interval, the format of their values is the same as in the Audit Log endpoint above.
+
+Set `status` or `warnings` to `true` to retrieve the status of the report or the warnings of the report respectively.
+
+All query parameters are optional.
+
+If you have requested node warnings, 
+you may want to also use the following endpoint to interpret their types:
+```
+[GET] /v1/nodewarningtypes
+- Response Body: NodeWarningTypeList
+```
+
+To find the latest report, use:
+```
+[GET] v1/bunits/{bunitId}/consumers/{consumerId}/reports/latest?userId={userId}
+- Response Body: NodeReport
+```
+
+The `userId` parameter can be used to customize the report for a specific user. 
+It is optional.
+
 
 ### Backup servers
 There is only _one_ backup server that we will consider, and that is the default one.
