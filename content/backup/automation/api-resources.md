@@ -12,47 +12,82 @@ This document provides an overview of the REST API resources in Cloutility and t
 }
 ```
 
-## TimeZone
-```json
-{
-  "$type": string,  // optional
-  "href": string,  // optional
-  "actions": [APIEndpoint...],  // optional
-  "name": string,
-  "windowsId": string,
-  "offset": integer,
-  "id": integer,
-  "createdDate": date
-}
-```
-
-## TimeZoneList
+## Action
 ```json
 {
   "href": string,
-  "total": integer,
-  "offset": integer,
-  "first": string,
-  "items": [TimeZone...]
-}
-```
-
-## AddressType
-```json
-{
-  "id": integer,
   "name": string,
+  "id": integer,
   "createdDate": date
 }
 ```
 
-## Country
+## Activity
+```json
+{
+  "inProgress": boolean,
+  "type": ActivityType,
+  "address": string,
+  "examindedFiles": integer,
+  "affectedFiles": integer,
+  "failedFiles": integer,
+  "bytes": integer,
+  "idle": integer,
+  "mediaWait": integer,
+  "processes": integer,
+  "successful": boolean,
+  "communicateWait": integer,
+  "startTime": date,
+  "endTime": date,
+  "details": string,
+  "node": Node,
+  "dataMover": Node,
+  "filespace": Filespace,
+  "subEntity": string,
+  "asNode": string,
+  "schedule": Schedule,
+  "event": Event,
+  "activityLogs": [ActivityLog...],
+  "id": integer,
+  "createdDate": date,
+  "archivedDate": date
+}
+```
+
+## ActivityLog
+```json
+{
+  "severity": string,
+  "message": string,
+  "messageNumber": integer,
+  "node": Node,
+  "schedule": Schedule,
+  "activity": Activity,
+  "filtered": boolean,
+  "id": integer,
+  "createdDate": date,
+  "archivedDate": date
+}
+```
+
+## ActivityLogFilter
+```json
+{
+  "filter": string,
+  "messageNumber": string,
+  "id": integer,
+  "createdDate": date,
+  "archivedDate": date
+}
+```
+
+## ActivityType
 ```json
 {
   "name": string,
-  "code": string,
   "id": integer,
-  "createdDate": date
+  "createdDate": date,
+  "archivedDate": date
 }
 ```
 
@@ -85,185 +120,64 @@ This document provides an overview of the REST API resources in Cloutility and t
 }
 ```
 
-## Privilege
+## AddressType
 ```json
 {
-  "name": string,
-  "operation": string,
-  "resource": string,
   "id": integer,
+  "name": string,
   "createdDate": date
 }
 ```
 
-## Role
-```json
-{
-  "inheritable": boolean,
-  "name": string,
-  "description": string,
-  "privileges": [Privilege...],
-  "id": integer,
-  "createdDate": date
-}
-```
-
-## Language
-```json
-{
-  "name": string,
-  "iso639Code": string,
-  "id": integer,
-  "createdDate": date
-}
-```
-
-## Action
+## BackupServer
 ```json
 {
   "href": string,
+  "id": integer,
+  "name": string
+}
+```
+
+## BillingCycle
+```json
+{
+  "id": integer,
   "name": string,
+  "createdDate": date,
+  "months": integer
+}
+```
+
+## BillingData
+```json
+{
+  "href": string,  // optional
+  "invoiceDateStr": string,
+  "summary": [BillingDataSummary...],  // optional
+  "billingBusinessUnit": BusinessUnit,
+  "invoiceDate": date,
+  "invoices": [Invoice...],
   "id": integer,
   "createdDate": date
 }
 ```
 
-## IdentityProvider
-```json
-{
-  "guid": string,
-  "name": string,
-  "inherited": boolean,
-  "public": boolean,
-  "entityId": integer,
-  "identityLocation": string,
-  "singleSignOnUrl": string,
-  "signInUrl": string,
-  "certificate": bytes,
-  "certificateName": string,
-  "certificateInfo": string,
-  "publicKey": string,
-  "signatureKeys": string,
-  "enableUserEmail": boolean,
-  "ignoreTotp": boolean,
-  "latestSamlAssertion": string,
-  "businessUnit": BusinessUnit,
-  "id": integer,
-  "createdDate": date,
-  "archivedDate": date
-}
-```
-
-## UserIdentity
-```json
-{
-  "identifier": string,
-  "user": User,
-  "identityProvider": IdentityProvider,
-  "id": integer,
-  "createdDate": date,
-  "archivedDate": date
-}
-```
-
-## User
-```json
-{
-  "href": string,
-  "actions": [Action...],
-  "name": string,
-  "phone": string,
-  "email": string,
-  "failedLoginAttempts": integer,
-  "usesTotp": boolean,
-  "locked": boolean,
-  "dateFormatInitialized": string,
-  "timeFormatInitialized": string,
-  "dateTimeFormat": string,
-  "dateAtTimeFormat": string,
-  "csvDelimiter": string,
-  "decimalMark": string,
-  "role": Role,
-  "lastLoginDate": date,
-  "lastPasswordChange": string,
-  "businessUnit": BusinessUnit,
-  "businessUnitId": integer,
-  "language": Language,
-  "receiveCommentNotifications": boolean,
-  "receiveDeleteRequestNotifications": boolean,
-  "useOwnReportErrorConfig": boolean,
-  "groupStatusReportByBusinessUnits": boolean,
-  "itemsPerPage": integer,
-  "excludeJobTags": boolean,
-  "userIdentities": [UserIdentity...],
-  "displayName": string,
-  "id": integer,
-  "createdDate": date
-}
-```
-
-## UserList
+## BillingDataList
 ```json
 {
   "href": string,
   "total": integer,
   "offset": integer,
   "first": string,
-  "items": [User...]
+  "items": [BillingData...]
 }
 ```
 
-## DataSourceState
+## BillingDataSummary
 ```json
 {
-  "id": integer,
-  "name": string
-}
-```
-
-## DataSourceType
-```json
-{
-  "id": integer,
-  "name": string
-}
-```
-
-## BusinessUnitTag
-```json
-{
-  "id": integer,
-  "businessUnitId": integer,
-  "text": string,
-  "inheritable": boolean,
-  "businessUnitCount": integer,
-  "consumerCount": integer
-}
-```
-
-## BusinessUnitURL
-```json
-{
-  "$type": string  // optional
-  "href": string,
-  "total": integer,
-  "offset": integer,  // optional
-  "first": string,  // optional
-  "items": [BusinessUnit...]
-}
-```
-
-## SimpleBusinessUnit
-```json
-{
-  "id": integer,
-  "parentId": integer,  // optional
-  "name": string,
-  "groupName": string,
-  "reportRemotely": boolean,
-  "businessUnits": [SimpleBusinessUnit...],
-  "tags": [BusinessUnitTag...],
-  "invoiceDay": integer
+  "currency": Currency,
+  "total": float
 }
 ```
 
@@ -315,12 +229,27 @@ A business unit.
 }
 ```
 
-## BackupServer
+## BusinessUnitTag
 ```json
 {
-  "href": string,
   "id": integer,
-  "name": string
+  "businessUnitId": integer,
+  "text": string,
+  "inheritable": boolean,
+  "businessUnitCount": integer,
+  "consumerCount": integer
+}
+```
+
+## BusinessUnitURL
+```json
+{
+  "$type": string  // optional
+  "href": string,
+  "total": integer,
+  "offset": integer,  // optional
+  "first": string,  // optional
+  "items": [BusinessUnit...]
 }
 ```
 
@@ -343,6 +272,148 @@ A business unit.
   "offset": integer,
   "first": string,
   "items": [ClientOptionSet...]
+}
+```
+
+## Consumer
+```json
+{
+  "dataSourceType": DataSourceType,
+  "dataSourceIsPotentialParent": boolean,
+  "dataSourceState": DataSourceState,
+  "latestRestorePoint": date,
+  "name": string,
+  "billingStartDate": date,
+  "businessUnit": BusinessUnit,
+  "comments": [Comment...],
+  "note": string,  // optional
+  "externalReference": string,  // optional
+  "node": Node,
+  "limitHighStorage": integer,
+  "allowNoActivity": boolean,
+  "tags": [BusinessUnitTag...],
+  "jobs": [...],
+  "id": integer,
+  "createdDate": date,
+  "billingEndDate": boolean,
+  "scheduledDeletionDate": boolean
+}
+```
+
+## ConsumerList
+```json
+{
+  "href": string,
+  "total": integer,
+  "offset": integer,
+  "first": string,
+  "items": [Consumer...]
+}
+```
+
+## Contract
+```json
+{
+  "href": string,  // optional
+  "billingStartDate": date,
+  "agreedLegalTerms": string,
+  "erpReference": string,
+  "discount": float,
+  "byCalendar": boolean,
+  "prepayConsumption": boolean,
+  "useCpuMultiplier": boolean,
+  "billingCycle": BillingCycle,  // optional
+  "paymentTerms": PaymentTerms,  // optional
+  "currency": Currency,
+  "subscriptions": [ContractSubscription...],
+  "referrals": [Referral...],
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## ContractSubscription
+```json
+{
+  "billingStartDate": date,  // optional
+  "name": string,
+  "currency": Currency,
+  "contractCount": integer,
+  "components": [SubscriptionComponent...],  // optional
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## Country
+```json
+{
+  "name": string,
+  "code": string,
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## Currency
+```json
+{
+  "name": string,
+  "code": string,
+  "symbol": string,
+  "displayName": string,
+  "longDisplayName": string,
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## DataSourceState
+```json
+{
+  "id": integer,
+  "name": string
+}
+```
+
+## DataSourceState
+```json
+{
+  "id": integer,
+  "name": string
+}
+```
+
+## DataSourceState
+```json
+{
+  "id": integer,
+  "name": string
+}
+```
+
+## DataSourceType
+```json
+{
+  "id": integer,
+  "name": string
+}
+```
+
+## DataSourceType
+```json
+{
+  "id": integer,
+  "name": string
+}
+```
+
+## DataSourceType
+We only have one such resource in use:
+```json
+{
+  "id": 1,
+  "name": "SP Backup node"
 }
 ```
 
@@ -372,246 +443,10 @@ A business unit.
 }
 ```
 
-## NodeType
-```json
-{
-  "href": string,  // optional
-  "id": integer,
-  "name": string,
-  "shortName": string,  // optional
-  "createdDate": date
-}
-```
-
-## NodeTypeList
-```json
-{
-  "href": string,
-  "total": integer,
-  "offset": integer,
-  "first": string,
-  "items": [NodeType...]
-}
-```
-
-## NodeOperatingSystem
-```json
-{
-  "href": string,  // optional
-  "name": string,
-  "shortName": string,
-  "supportedNodeTypes": [NodeType...],  // optional
-  "id": integer,
-  "createdDate": date
-}
-```
-
-## NodeOperatingSystemList
-```json
-{
-  "href": string,
-  "total": integer,
-  "offset": integer,
-  "first": string,
-  "items": [NodeOperatingSystem...]
-}
-```
-
-## NodePlatform
-```json
-{
-  "name": string,
-  "id": integer,
-  "createdDate": date
-}
-```
-
-## NodeTsmClientVersion
-```json
-{
-  "name": string,
-  "id": integer,
-  "createdDate": date
-}
-```
-
-## NodeOSLevel
-```json
-{
-  "name": string,
-  "id": integer,
-  "createdDate": date
-}
-```
-
-## NodeSyncState
-```json
-{
-  "name": string,
-  "id": integer,
-  "createdDate": date
-}
-```
-
-## SessionSecurity
-```json
-{
-  "id": integer,
-  "name": string
-}
-```
-
-## DataSourceType
-```json
-{
-  "id": integer,
-  "name": string
-}
-```
-
-## DataSourceState
-```json
-{
-  "id": integer,
-  "name": string
-}
-```
-
-## PeriodUnit
-```json
-{
-  "name": string,
-  "id": integer,
-  "createdDate": date,
-  "archivedDate": date
-}
-```
-
 ## DurationUnit
 ```json
 {
   "name": string,
-  "id": integer,
-  "createdDate": date,
-  "archivedDate": date
-}
-```
-
-## Schedule
-```json
-{
-  "name": string,
-  "description": string,
-  "domain": Domain,
-  "action": Action,
-  "objects": string,
-  "options": string,
-  "asNodeNames": [string...],
-  "startTime": date,
-  "periodUnit": PeriodUnit,
-  "duration": integer,
-  "durationUnit": DurationUnit,
-  "priority": integer,
-  "dayOfWeek": string,
-  "monday": boolean,
-  "tuesday": boolean,
-  "wednesday": boolean,
-  "thursday": boolean,
-  "friday": boolean,
-  "saturday": boolean,
-  "sunday": boolean,
-  "id": integer,
-  "createdDate": date,
-  "archivedDate": date
-}
-```
-
-## NodeSchedule
-```json
-{
-  "schedule": Schedule,
-  "node": Node,
-  "lastSuccessful": date,
-  "errorCount": integer,
-  "errorHandled": boolean,
-  "id": integer,
-  "createdDate": date,
-  "archivedDate": date
-}
-```
-
-## EventStatus
-```json
-{
-  "name": string,
-  "id": integer,
-  "createdDate": date,
-  "archivedDate": date
-}
-```
-
-## EventReason
-```json
-{
-  "name": string,
-  "id": integer,
-  "createdDate": date,
-  "archivedDate": date
-}
-```
-
-## ActivityType
-```json
-{
-  "name": string,
-  "id": integer,
-  "createdDate": date,
-  "archivedDate": date
-}
-```
-
-## ActivityLog
-```json
-{
-  "severity": string,
-  "message": string,
-  "messageNumber": integer,
-  "node": Node,
-  "schedule": Schedule,
-  "activity": Activity,
-  "filtered": boolean,
-  "id": integer,
-  "createdDate": date,
-  "archivedDate": date
-}
-```
-
-## Activity
-```json
-{
-  "inProgress": boolean,
-  "type": ActivityType,
-  "address": string,
-  "examindedFiles": integer,
-  "affectedFiles": integer,
-  "failedFiles": integer,
-  "bytes": integer,
-  "idle": integer,
-  "mediaWait": integer,
-  "processes": integer,
-  "successful": boolean,
-  "communicateWait": integer,
-  "startTime": date,
-  "endTime": date,
-  "details": string,
-  "node": Node,
-  "dataMover": Node,
-  "filespace": Filespace,
-  "subEntity": string,
-  "asNode": string,
-  "schedule": Schedule,
-  "event": Event,
-  "activityLogs": [ActivityLog...],
   "id": integer,
   "createdDate": date,
   "archivedDate": date
@@ -634,67 +469,13 @@ A business unit.
   "schedule": Schedule,
   "activities": [Activity...],
   "importedFromNodeUpdate": boolean,
-  "id": integer, 
-  "createdDate": date,
-  "archivedDate": date
-}
-```
-
-## RetentionRule
-```json
-{
-  "name": string,
-  "nodePaths": string,
-  "filespacePaths": string,
-  "retentionDays": integer,
-  "isActive": boolean,
-  "startTime": date,
-  "description": string,
-  "scheduleStyle": string,
-  "frequency": string,
-  "dayOfWeek": string,
-  "month": string,
-  "dayOfMonth": string,
-  "weekOfMonth": string,
-  "nextStart": date,
-  "previousStart": date,
   "id": integer,
   "createdDate": date,
   "archivedDate": date
 }
 ```
 
-## RetentionSetState
-```json
-{
-  "name": string,
-  "id": integer
-}
-```
-
-## RetentionSet
-```json
-{
-  "description": string,
-  "expiryDate": date,
-  "fileCount": integer,
-  "spId": integer,
-  "retentionPeriod": string,
-  "rule": RetentionRule,
-  "sizeMegaBytes": integer,
-  "state": RetentionSetState,
-  "pointInTime": date,
-  "lastUpdatedBy": string,
-  "lastUpdated": date,
-  "nodes": [Node...],
-  "filespaces": [Filespace...],
-  "id": integer,
-  "createdDate": date,
-  "archivedDate": date
-}
-```
-
-## NodeGroup
+## EventReason
 ```json
 {
   "name": string,
@@ -704,14 +485,172 @@ A business unit.
 }
 ```
 
-## ActivityLogFilter
+## EventStatus
 ```json
 {
-  "filter": string,
-  "messageNumber": string,
+  "name": string,
   "id": integer,
   "createdDate": date,
   "archivedDate": date
+}
+```
+
+## Filespace
+```json
+{
+  "href": string,
+  "tsmFilespaceId": string,
+  "type": string,
+  "capacityMegaBytes": float,
+  "frontEndCapacityMegaBytes": integer,
+  "percentageUtilized": float,
+  "lastBackupStart": date,
+  "lastBackupEnd": date,
+  "occupancies": [FilespaceOccupancy...],
+  "dedupStats": [...],
+  "activities": [...],
+  "events": [...],
+  "node": Node,
+  "retentionSets": [...],
+  "name": string,
+  "dataSourceState": DataSourceState,
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## FilespaceList
+```json
+{
+  "href": string,
+  "total": integer,
+  "offset": integer,
+  "first": string,
+  "items": [Filespace...]
+}
+```
+
+## FilespaceOccupancy
+```json
+{
+  "storagePool": StoragePool,
+  "files": integer,
+  "logicalMegaBytes": float,
+  "logicalMegaBytesCorrected": float,
+  "dedupStatNeeded": boolean,
+  "dedupStatUpToDate": boolean,
+  "physicalMegaBytes": float,
+  "reportingMegaBytes": float,
+  "storageMegaBytes": float,
+  "type": FilespaceOccupancyType,
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## FilespaceOccupancyType
+```json
+{
+  "id": integer,
+  "name": string,
+  "createdDate": date
+}
+```
+
+## IdentityProvider
+```json
+{
+  "guid": string,
+  "name": string,
+  "inherited": boolean,
+  "public": boolean,
+  "entityId": integer,
+  "identityLocation": string,
+  "singleSignOnUrl": string,
+  "signInUrl": string,
+  "certificate": bytes,
+  "certificateName": string,
+  "certificateInfo": string,
+  "publicKey": string,
+  "signatureKeys": string,
+  "enableUserEmail": boolean,
+  "ignoreTotp": boolean,
+  "latestSamlAssertion": string,
+  "businessUnit": BusinessUnit,
+  "id": integer,
+  "createdDate": date,
+  "archivedDate": date
+}
+```
+
+## Invoice
+```json
+{
+  "href": string,
+  "payingBusinessUnit": BusinessUnit,
+  "lines": [InvoiceLine...],
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## InvoiceLine
+```json
+{
+  "subscription": Subscription,
+  "product": Product,
+  "startDate": date,
+  "endDate": date,
+  "unitPrice": float,
+  "quantity": float,
+  "note": string,
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## InvoiceList
+```json
+{
+  "href": string,
+  "total": integer,
+  "offset": integer,
+  "first": string,
+  "items": [Invoice...]
+}
+```
+
+## InvoiceMethod
+```json
+{
+  "name": string,
+  "invoicesRemoteData": boolean,
+  "isQuantifiable": boolean,
+  "replicationAware": boolean,
+  "isSystemOnly": boolean,
+  "usesSettlementMethod": boolean,
+  "type": InvoiceMethodType,
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## InvoiceMethodType
+```json
+{
+  "name": string,
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## Language
+```json
+{
+  "name": string,
+  "iso639Code": string,
+  "id": integer,
+  "createdDate": date
 }
 ```
 
@@ -771,6 +710,16 @@ A backup node.
 }
 ```
 
+## NodeGroup
+```json
+{
+  "name": string,
+  "id": integer,
+  "createdDate": date,
+  "archivedDate": date
+}
+```
+
 ## NodeList
 ```json
 {
@@ -782,157 +731,190 @@ A backup node.
 }
 ```
 
-## StoragePool
+## NodeOSLevel
 ```json
 {
   "name": string,
-  "type": string,
-  "totalStorageMegaBytes": float,
-  "freeStorageMegaBytes": float,
-  "maxProcesses": integer,
   "id": integer,
   "createdDate": date
 }
 ```
 
-## FilespaceOccupancyType
-```json
-{
-  "id": integer,
-  "name": string,
-  "createdDate": date
-}
-```
-
-## FilespaceOccupancy
-```json
-{
-  "storagePool": StoragePool,
-  "files": integer,
-  "logicalMegaBytes": float,
-  "logicalMegaBytesCorrected": float,
-  "dedupStatNeeded": boolean,
-  "dedupStatUpToDate": boolean,
-  "physicalMegaBytes": float,
-  "reportingMegaBytes": float,
-  "storageMegaBytes": float,
-  "type": FilespaceOccupancyType,
-  "id": integer,
-  "createdDate": date
-}
-```
-
-## Filespace
-```json
-{
-  "href": string,
-  "tsmFilespaceId": string,
-  "type": string,
-  "capacityMegaBytes": float,
-  "frontEndCapacityMegaBytes": integer,
-  "percentageUtilized": float,
-  "lastBackupStart": date,
-  "lastBackupEnd": date,
-  "occupancies": [FilespaceOccupancy...],
-  "dedupStats": [...],
-  "activities": [...],
-  "events": [...],
-  "node": Node,
-  "retentionSets": [...],
-  "name": string,
-  "dataSourceState": DataSourceState,
-  "id": integer,
-  "createdDate": date
-}
-```
-
-## FilespaceList
-```json
-{
-  "href": string,
-  "total": integer,
-  "offset": integer,
-  "first": string,
-  "items": [Filespace...]
-}
-```
-
-## Consumer
-```json
-{
-  "dataSourceType": DataSourceType,
-  "dataSourceIsPotentialParent": boolean,
-  "dataSourceState": DataSourceState,
-  "latestRestorePoint": date,
-  "name": string,
-  "billingStartDate": date,
-  "businessUnit": BusinessUnit,
-  "comments": [Comment...],
-  "note": string,  // optional
-  "externalReference": string,  // optional
-  "node": Node,
-  "limitHighStorage": integer,
-  "allowNoActivity": boolean,
-  "tags": [BusinessUnitTag...],
-  "jobs": [...],
-  "id": integer,
-  "createdDate": date,
-  "billingEndDate": boolean,
-  "scheduledDeletionDate": boolean
-}
-```
-
-## ConsumerList
-```json
-{
-  "href": string,
-  "total": integer,
-  "offset": integer,
-  "first": string,
-  "items": [Consumer...]
-}
-```
-
-## BillingDataSummary
-```json
-{
-  "currency": Currency,
-  "total": float
-}
-```
-
-## BillingData
+## NodeOperatingSystem
 ```json
 {
   "href": string,  // optional
-  "invoiceDateStr": string,
-  "summary": [BillingDataSummary...],  // optional
-  "billingBusinessUnit": BusinessUnit,
-  "invoiceDate": date,
-  "invoices": [Invoice...],
+  "name": string,
+  "shortName": string,
+  "supportedNodeTypes": [NodeType...],  // optional
   "id": integer,
   "createdDate": date
 }
 ```
 
-## BillingDataList
+## NodeOperatingSystemList
 ```json
 {
   "href": string,
   "total": integer,
   "offset": integer,
   "first": string,
-  "items": [BillingData...]
+  "items": [NodeOperatingSystem...]
 }
 ```
 
-## BillingCycle
+## NodePlatform
 ```json
 {
+  "name": string,
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## NodeReport
+```json
+{
+  "name": string,  // Consumption unit name
+  "statusReportId": integer,
+  "pending": boolean,
+  "dataSourceType": DataSourceType,
+  "nodeReportTypeId": integer,
+  "dataSource": string,  // Node name
+  "dataSourceState": DataSourceState,
+  "deviceName": string,
+  "tsmName": string,  // Node name
+  "status": ErrorStatus,
+  "tsmServerName": string,
+  "proxyNodeReports": [NodeReport...],
+  "errorsDeactivated": boolean,
+  "errorsDeactivatedNoActivity": boolean,
+  "megaBytes": float,
+  "backupMegaBytes": float,
+  "archiveMegaBytes": float,
+  "megaBytesDelta": float,
+  "megaBytesDeltaPercentage": float,
+  "backupMegaBytesDeltaPercentage": float,
+  "archiveMegaBytesDeltaPercentage": float,
+  "backupMegaBytesDelta": float,
+  "archiveMegaBytesDelta": float,
+  "megaBytesForCurrentBusinessUnit": float,
+  "backupMegaBytesForCurrentBusinessUnit": float,
+  "archiveMegaBytesForCurrentBusinessUnit": float,
+  "comments": [Comment...],
+  "transferredMegaBytes": float,
+  "transferredBackupMegaBytes": float,
+  "transferredRestoreMegaBytes": float,
+  "percentOfTotalStorageOfBusinessUnit": float,
+  "consumerId": integer,
+  "nodeId": integer,
+  "businessUnitId": integer,
+  "businessUnitName": string,
+  "reportDate": date,
+  "warnings": [NodeReportWarning...],  // Optional
+  "id": integer,
+  "createdDate": date,
+  "href": string
+}
+```
+All `ErrorStatus` values are defined [here](https://portal-api.backup.sto2.safedc.net/v1/help/ResourceModel?modelName=ErrorStatus).
+
+## NodeReportList
+```json
+{
+  "href": string,
+  "total": integer,
+  "offset": integer,
+  "first": string,
+  "items": [NodeReport...]
+}
+```
+## NodeReportWarning
+```json
+{
+  "type": NodeWarningType,
+  "status": ErrorStatus,
+  "days": integer,
+  "limit": float,
+  "nodeReportId": integer,
+  "id": integer,
+  "createdDate": date
+}
+```
+All `ErrorStatus` values are defined [here](https://portal-api.backup.sto2.safedc.net/v1/help/ResourceModel?modelName=ErrorStatus).
+
+## NodeSchedule
+```json
+{
+  "schedule": Schedule,
+  "node": Node,
+  "lastSuccessful": date,
+  "errorCount": integer,
+  "errorHandled": boolean,
+  "id": integer,
+  "createdDate": date,
+  "archivedDate": date
+}
+```
+
+## NodeSyncState
+```json
+{
+  "name": string,
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## NodeTsmClientVersion
+```json
+{
+  "name": string,
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## NodeType
+```json
+{
+  "href": string,  // optional
   "id": integer,
   "name": string,
-  "createdDate": date,
-  "months": integer
+  "shortName": string,  // optional
+  "createdDate": date
+}
+```
+
+## NodeTypeList
+```json
+{
+  "href": string,
+  "total": integer,
+  "offset": integer,
+  "first": string,
+  "items": [NodeType...]
+}
+```
+
+## NodeWarningType
+```json
+{
+  "name": string,  // Optional
+  "usesLimit": boolean,
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## NodeWarningTypeList
+```json
+{
+  "href": string,
+  "total": integer,
+  "offset": integer,
+  "first": string,
+  "items": [NodeWarningType...]
 }
 ```
 
@@ -946,55 +928,22 @@ A backup node.
 }
 ```
 
-## Currency
-```json
-{
-  "name": string,
-  "code": string,
-  "symbol": string,
-  "displayName": string,
-  "longDisplayName": string,
-  "id": integer,
-  "createdDate": date
-}
-```
-
-## QuantityCalculationOption
-```json
-{
-  "id": integer,
-  "name": string
-}
-```
-
-## InvoiceMethodType
+## PeriodUnit
 ```json
 {
   "name": string,
   "id": integer,
-  "createdDate": date
+  "createdDate": date,
+  "archivedDate": date
 }
 ```
 
-## InvoiceMethod
+## Privilege
 ```json
 {
   "name": string,
-  "invoicesRemoteData": boolean,
-  "isQuantifiable": boolean,
-  "replicationAware": boolean,
-  "isSystemOnly": boolean,
-  "usesSettlementMethod": boolean,
-  "type": InvoiceMethodType,
-  "id": integer,
-  "createdDate": date
-}
-```
-
-## ProductCode
-```json
-{
-  "name": string,
+  "operation": string,
+  "resource": string,
   "id": integer,
   "createdDate": date
 }
@@ -1016,32 +965,20 @@ A backup node.
 
 Find replication types [here](https://portal-api.backup.sto2.safedc.net/v1/help/ResourceModel?modelName=ReplicationType).
 
-## SubscriptionComponent
+## ProductCode
 ```json
 {
-  "quantity": integer,
-  "price": float,
-  "isCapacity": boolean,
-  "includedBundles": integer,
-  "startDate": date,
-  "quantityCalculationOption": QuantityCalculationOption,
-  "product": Product,
-  "replicationType": integer,
+  "name": string,
   "id": integer,
   "createdDate": date
 }
 ```
 
-## ContractSubscription
+## QuantityCalculationOption
 ```json
 {
-  "billingStartDate": date,  // optional
-  "name": string,
-  "currency": Currency,
-  "contractCount": integer,
-  "components": [SubscriptionComponent...],  // optional
   "id": integer,
-  "createdDate": date
+  "name": string
 }
 ```
 
@@ -1059,60 +996,233 @@ Find replication types [here](https://portal-api.backup.sto2.safedc.net/v1/help/
 }
 ```
 
-## Contract
+## RetentionRule
 ```json
 {
-  "href": string,  // optional
-  "billingStartDate": date,
-  "agreedLegalTerms": string,
-  "erpReference": string,
-  "discount": float,
-  "byCalendar": boolean,
-  "prepayConsumption": boolean,
-  "useCpuMultiplier": boolean,
-  "billingCycle": BillingCycle,  // optional
-  "paymentTerms": PaymentTerms,  // optional
-  "currency": Currency,
-  "subscriptions": [ContractSubscription...],
-  "referrals": [Referral...],
+  "name": string,
+  "nodePaths": string,
+  "filespacePaths": string,
+  "retentionDays": integer,
+  "isActive": boolean,
+  "startTime": date,
+  "description": string,
+  "scheduleStyle": string,
+  "frequency": string,
+  "dayOfWeek": string,
+  "month": string,
+  "dayOfMonth": string,
+  "weekOfMonth": string,
+  "nextStart": date,
+  "previousStart": date,
+  "id": integer,
+  "createdDate": date,
+  "archivedDate": date
+}
+```
+
+## RetentionSet
+```json
+{
+  "description": string,
+  "expiryDate": date,
+  "fileCount": integer,
+  "spId": integer,
+  "retentionPeriod": string,
+  "rule": RetentionRule,
+  "sizeMegaBytes": integer,
+  "state": RetentionSetState,
+  "pointInTime": date,
+  "lastUpdatedBy": string,
+  "lastUpdated": date,
+  "nodes": [Node...],
+  "filespaces": [Filespace...],
+  "id": integer,
+  "createdDate": date,
+  "archivedDate": date
+}
+```
+
+## RetentionSetState
+```json
+{
+  "name": string,
+  "id": integer
+}
+```
+
+## Role
+```json
+{
+  "inheritable": boolean,
+  "name": string,
+  "description": string,
+  "privileges": [Privilege...],
   "id": integer,
   "createdDate": date
 }
 ```
 
-## InvoiceLine
+## Schedule
 ```json
 {
-  "subscription": Subscription,
-  "product": Product,
+  "name": string,
+  "description": string,
+  "domain": Domain,
+  "action": Action,
+  "objects": string,
+  "options": string,
+  "asNodeNames": [string...],
+  "startTime": date,
+  "periodUnit": PeriodUnit,
+  "duration": integer,
+  "durationUnit": DurationUnit,
+  "priority": integer,
+  "dayOfWeek": string,
+  "monday": boolean,
+  "tuesday": boolean,
+  "wednesday": boolean,
+  "thursday": boolean,
+  "friday": boolean,
+  "saturday": boolean,
+  "sunday": boolean,
+  "id": integer,
+  "createdDate": date,
+  "archivedDate": date
+}
+```
+
+## SessionSecurity
+```json
+{
+  "id": integer,
+  "name": string
+}
+```
+
+## SimpleBusinessUnit
+```json
+{
+  "id": integer,
+  "parentId": integer,  // optional
+  "name": string,
+  "groupName": string,
+  "reportRemotely": boolean,
+  "businessUnits": [SimpleBusinessUnit...],
+  "tags": [BusinessUnitTag...],
+  "invoiceDay": integer
+}
+```
+
+## StoragePool
+```json
+{
+  "name": string,
+  "type": string,
+  "totalStorageMegaBytes": float,
+  "freeStorageMegaBytes": float,
+  "maxProcesses": integer,
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## SubscriptionComponent
+```json
+{
+  "quantity": integer,
+  "price": float,
+  "isCapacity": boolean,
+  "includedBundles": integer,
   "startDate": date,
-  "endDate": date,
-  "unitPrice": float,
-  "quantity": float,
-  "note": string,
+  "quantityCalculationOption": QuantityCalculationOption,
+  "product": Product,
+  "replicationType": integer,
   "id": integer,
   "createdDate": date
 }
 ```
 
-## Invoice
+## TimeZone
 ```json
 {
-  "href": string,
-  "payingBusinessUnit": BusinessUnit,
-  "lines": [InvoiceLine...],
+  "$type": string,  // optional
+  "href": string,  // optional
+  "actions": [APIEndpoint...],  // optional
+  "name": string,
+  "windowsId": string,
+  "offset": integer,
   "id": integer,
   "createdDate": date
 }
 ```
 
-## InvoiceList
+## TimeZoneList
 ```json
 {
   "href": string,
   "total": integer,
   "offset": integer,
   "first": string,
-  "items": [Invoice...]
+  "items": [TimeZone...]
 }
 ```
+
+## User
+```json
+{
+  "href": string,
+  "actions": [Action...],
+  "name": string,
+  "phone": string,
+  "email": string,
+  "failedLoginAttempts": integer,
+  "usesTotp": boolean,
+  "locked": boolean,
+  "dateFormatInitialized": string,
+  "timeFormatInitialized": string,
+  "dateTimeFormat": string,
+  "dateAtTimeFormat": string,
+  "csvDelimiter": string,
+  "decimalMark": string,
+  "role": Role,
+  "lastLoginDate": date,
+  "lastPasswordChange": string,
+  "businessUnit": BusinessUnit,
+  "businessUnitId": integer,
+  "language": Language,
+  "receiveCommentNotifications": boolean,
+  "receiveDeleteRequestNotifications": boolean,
+  "useOwnReportErrorConfig": boolean,
+  "groupStatusReportByBusinessUnits": boolean,
+  "itemsPerPage": integer,
+  "excludeJobTags": boolean,
+  "userIdentities": [UserIdentity...],
+  "displayName": string,
+  "id": integer,
+  "createdDate": date
+}
+```
+
+## UserIdentity
+```json
+{
+  "identifier": string,
+  "user": User,
+  "identityProvider": IdentityProvider,
+  "id": integer,
+  "createdDate": date,
+  "archivedDate": date
+}
+```
+
+## UserList
+```json
+{
+  "href": string,
+  "total": integer,
+  "offset": integer,
+  "first": string,
+  "items": [User...]
+}
+```
+
