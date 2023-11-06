@@ -6,7 +6,7 @@ _This document describes how to **manually** install IBM Spectrum Protect Backup
 
 Required files:
 
-- [IBM Spectrum Protect Backup-Archive Client](https://public.dhe.ibm.com/storage/tivoli-storage-management/patches/client/v8r1/Linux/)
+- [IBM Spectrum Protect Backup-Archive Client](https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/)
 - [SafeDC Root CA PEM File](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem) (Right-click and Save)
 - [SafeDC Default Option file dsm.opt](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.opt.sample) (Right-click and Save)
 - [SafeDC Default Configuration file dsm.sys](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.sys.sample) (Right-click and Save)
@@ -19,13 +19,13 @@ Required files:
     1. Ubuntu / Debian
 
     ```sh
-    wget https://public.dhe.ibm.com/storage/tivoli-storage-management/patches/client/v8r1/Linux/LinuxX86_DEB/v81xx/8.x.xx.x-TIV-TSMBAC-LinuxX86_DEB.tar
+    wget https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86_DEB/BA/v81xx/8.x.xx.x-TIV-TSMBAC-LinuxX86_DEB.tar
     ```
 
-    1. RHEL / RPM based distros
+    1. RHEL / RPM-based distros
 
     ```sh
-    wget https://public.dhe.ibm.com/storage/tivoli-storage-management/patches/client/v8r1/Linux/LinuxX86/BA/v81xx/8.x.xx.x-TIV-TSMBAC-LinuxX86.tar
+    wget https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86/BA/v81xx/8.x.xx.x-TIV-TSMBAC-LinuxX86.tar
     ```
 
 1. Extract the package `8.x.x.x-TIV-TSMBAC-LinuxX86.tar` for RPM based Linux distros or `8.x.x.x-TIV-TSMBAC-LinuxX86_DEB.tar` for Debian based Linux distros
@@ -36,20 +36,20 @@ Required files:
     tar xvf 8.1.xx.x-TIVBAC-LinuxX86_DEB.tar
     ```
 
-    1. RHEL / RPM based distros
+    1. RHEL / RPM-based distros
 
     ```sh
     tar xvf 8.1.xx.x-TIVBAC-LinuxX86.tar
     ```
 
-1. Install the minimum requirment packages, `gskcrypt64`, `gskssl64`, `tivsm-api64`, `tivsm-ba`. All other packages has other functionalities like journaling.
+1. Install the minimum requirement packages, `gskcrypt64`, `gskssl64`, `tivsm-api64`, `tivsm-ba`. All other packages have other functionalities like journaling.
     1. Ubuntu / Debian
 
     ```sh
     sudo apt-get install ./gskcrypt64_x.x-xx.x.linux.x86_64.deb ./gskssl64_x.x-xx.x.linux.x86_64.deb ./tivsm-api64.amd64.deb ./tivsm-ba.amd64.deb
     ```
 
-    1. RHEL / RPM based distros
+    1. RHEL / RPM-based distros
 
     ```sh
     sudo dnf install ./gskcrypt64-x.x.xx.x.linux.x86_64.rpm ./gskssl64-x.x.xx.x.linux.x86_64.rpm ./TIVsm-API64.x86_64.rpm ./TIVsm-BA.x86_64.rpm
@@ -57,11 +57,14 @@ Required files:
 
 #### Install Safespring Root Certificate
 
-1. Download the [SafeDC Root CA PEM File](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem). In a command prompt with elevated privileges, install the Safespring BaaS Root CA into the GSK (IBM crypto kit) trust database.
-2.  ```sh
-    wget https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem
-    sudo dsmcert -add -server SafeDC -file ./SafeDC-Net-Root-CA.pem
-    ```
+1. Download the [SafeDC Root CA PEM File](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem).
+2.  In a command prompt with elevated privileges, install the Safespring BaaS Root CA into the GSK (IBM crypto kit) trust database.
+
+This can be done as follows:
+```sh
+wget https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem
+sudo dsmcert -add -server SafeDC -file ./SafeDC-Net-Root-CA.pem
+```
 
 #### Create Configuration File
 
@@ -118,7 +121,7 @@ SERVERNAME SafeDC
 
 Save both `dsm.sys` and `dsm.opt` in `/opt/tivoli/tsm/client/ba/bin/`
 
-1. Test the connection, easiest way is via CLI.
+1. Test the connection, the easiest way is via CLI.
 
     1. **Login via Linux Terminal**
 
@@ -151,8 +154,12 @@ Save both `dsm.sys` and `dsm.opt` in `/opt/tivoli/tsm/client/ba/bin/`
 
 #### Schedule Daily Backups
 
-1. IBM Spectrum Protect Backup-Archive Client are polling the backup server on regular basis to see when it will backup your data next time.
-To assign a predefined schedule, open [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) and go to the _consumption unit_ you want to define an schedule too and click on _schedule_
+1. IBM Spectrum Protect Backup-Archive Client is polling the backup server on 
+   a regular basis to see when it will backup your data next time.
+To assign a predefined schedule,
+   open [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/)
+   and go to the _consumption unit_
+   you want to define a schedule too and click on _schedule_
 ![Consumption Unit Schedule](../images/baas-portal-consumption-unit-schedule.png)
 
 Here can you schedule the backup for your consumption unit.
@@ -168,5 +175,7 @@ Here can you schedule the backup for your consumption unit.
 
 ### Finish
 
-Basic installation for Backup-Archive Client is now finish, if you need to setup a Online agent for e.g Microsoft SQL, Orable Database or any other application, you can continue with that installation.
+Basic installation for Backup-Archive Client is now finished, if you need to 
+setup an Online agent for e.g., Microsoft SQL, Oracle Database or any other 
+application, you can continue with that installation.
 

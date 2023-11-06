@@ -151,9 +151,9 @@ This document provides an overview of the REST API resources in Cloutility and t
 ## BillingData
 ```json
 {
-  "href": string,  // optional
+  "href": string,  // Optional
   "invoiceDateStr": string,
-  "summary": [BillingDataSummary...],  // optional
+  "summary": [BillingDataSummary...],  // Optional
   "billingBusinessUnit": BusinessUnit,
   "invoiceDate": date,
   "invoices": [Invoice...],
@@ -186,14 +186,14 @@ A business unit.
 ```json
 {
   "href": string,
-  "parentBusinessUnit": BusinessUnit,  // optional
-  "timeZone": TimeZone,  // optional
-  "users": UserList | BusinessUnitURL,  // optional
-  "addresses": AddressList | BusinessUnitURL,  // optional
-  "businessUnits": BusinessUnitList | BusinessUnitURL,  // optional
-  "ancestors": BusinessUnitURL,  // optional
-  "note": string,  // optional
-  "contract": Contract,  // optional
+  "parentBusinessUnit": BusinessUnit,  // Optional
+  "timeZone": TimeZone,  // Optional
+  "users": UserList | BusinessUnitURL,  // Optional
+  "addresses": AddressList | BusinessUnitURL,  // Optional
+  "businessUnits": BusinessUnitList | BusinessUnitURL,  // Optional
+  "ancestors": BusinessUnitURL,  // Optional
+  "note": string,  // Optional
+  "contract": Contract,  // Optional
   "domainFilter": [string...],
   "clientOptionSetFilter": [string...],
   "name": string,
@@ -223,8 +223,8 @@ A business unit.
 {
   "href": string,
   "total": integer,
-  "offset": integer,  // optional
-  "first": string,  // optional
+  "offset": integer,  // Optional
+  "first": string,  // Optional
   "items": [BusinessUnit...]
 }
 ```
@@ -244,11 +244,11 @@ A business unit.
 ## BusinessUnitURL
 ```json
 {
-  "$type": string  // optional
+  "$type": string  // Optional
   "href": string,
   "total": integer,
-  "offset": integer,  // optional
-  "first": string,  // optional
+  "offset": integer,  // Optional
+  "first": string,  // Optional
   "items": [BusinessUnit...]
 }
 ```
@@ -256,9 +256,9 @@ A business unit.
 ## ClientOptionSet
 ```json
 {
-  "href": string,  // optional
+  "href": string,  // Optional
   "name": string,
-  "description": string,  // optional
+  "description": string,  // Optional
   "id": integer,
   "createdDate": date
 }
@@ -286,13 +286,13 @@ A business unit.
   "billingStartDate": date,
   "businessUnit": BusinessUnit,
   "comments": [Comment...],
-  "note": string,  // optional
-  "externalReference": string,  // optional
+  "note": string,  // Optional
+  "externalReference": string,  // Optional
   "node": Node,
   "limitHighStorage": integer,
   "allowNoActivity": boolean,
   "tags": [BusinessUnitTag...],
-  "jobs": [...],
+  "jobs": [Job...],
   "id": integer,
   "createdDate": date,
   "billingEndDate": boolean,
@@ -314,7 +314,7 @@ A business unit.
 ## Contract
 ```json
 {
-  "href": string,  // optional
+  "href": string,  // Optional
   "billingStartDate": date,
   "agreedLegalTerms": string,
   "erpReference": string,
@@ -322,8 +322,8 @@ A business unit.
   "byCalendar": boolean,
   "prepayConsumption": boolean,
   "useCpuMultiplier": boolean,
-  "billingCycle": BillingCycle,  // optional
-  "paymentTerms": PaymentTerms,  // optional
+  "billingCycle": BillingCycle,  // Optional
+  "paymentTerms": PaymentTerms,  // Optional
   "currency": Currency,
   "subscriptions": [ContractSubscription...],
   "referrals": [Referral...],
@@ -335,11 +335,11 @@ A business unit.
 ## ContractSubscription
 ```json
 {
-  "billingStartDate": date,  // optional
+  "billingStartDate": date,  // Optional
   "name": string,
   "currency": Currency,
   "contractCount": integer,
-  "components": [SubscriptionComponent...],  // optional
+  "components": [SubscriptionComponent...],  // Optional
   "id": integer,
   "createdDate": date
 }
@@ -376,38 +376,6 @@ A business unit.
 }
 ```
 
-## DataSourceState
-```json
-{
-  "id": integer,
-  "name": string
-}
-```
-
-## DataSourceState
-```json
-{
-  "id": integer,
-  "name": string
-}
-```
-
-## DataSourceType
-```json
-{
-  "id": integer,
-  "name": string
-}
-```
-
-## DataSourceType
-```json
-{
-  "id": integer,
-  "name": string
-}
-```
-
 ## DataSourceType
 We only have one such resource in use:
 ```json
@@ -417,11 +385,29 @@ We only have one such resource in use:
 }
 ```
 
+## DedupStat
+```json
+{
+  "spCreatedDate": date,
+  "storagePoolName": string,
+  "storagePool": StoragePool,
+  "nodeName": string,
+  "filespaceName": string,
+  "filespace": Filespace,
+  "physicalMegaBytes": float,
+  "protectedMegaBytes": float,
+  "type": string,
+  "id": integer,
+  "createdDate": date,
+  "archivedDate": date
+}
+```
+
 ## Domain
 ```json
 {
-  "href": string,  // optional
-  "server": BackupServer,  // optional
+  "href": string,  // Optional
+  "server": BackupServer,  // Optional
   "name": string,
   "description": string,
   "backupRetention": integer,
@@ -507,11 +493,11 @@ We only have one such resource in use:
   "lastBackupStart": date,
   "lastBackupEnd": date,
   "occupancies": [FilespaceOccupancy...],
-  "dedupStats": [...],
-  "activities": [...],
-  "events": [...],
+  "dedupStats": [DedupStat...],
+  "activities": [Activity...],
+  "events": [Event...],
   "node": Node,
-  "retentionSets": [...],
+  "retentionSets": [RetentionSet...],
   "name": string,
   "dataSourceState": DataSourceState,
   "id": integer,
@@ -644,6 +630,80 @@ We only have one such resource in use:
 }
 ```
 
+## Job
+```json
+{
+  "href": string,
+  "businessUnitId": integer,
+  "consumerId": integer,
+  "dataSourceId": integer,
+  "serverId": integer,
+  "tags": [Tag...],
+  "type": JobType,  // Optional
+  "status": JobStatus,  // Optional
+  "severity": JobSeverity,
+  "supportStatus": SupportStatus,  // Optional
+  "dataSourceType": DataSourceType,  // Optional
+  "dataSourceState": DataSourceState,  // Optional
+  "scheduled": boolean,
+  "scheduledStart": date,  // Optional
+  "actualStart": date,  // Optional
+  "completed": date,
+  "examinedFiles": integer,
+  "affectedFiles": integer,
+  "failedFiles": integer,
+  "result": integer,
+  "transferredMegaBytes": float,
+  "transferredGigaBytes": float,
+  "serverType": ServerType,  // Optional
+  "jobName": JobName,  // Optional
+  "name": string,
+  "duration": timedelta,
+  "transferredMegaBytesPerSecond": float,
+  "id": integer,
+  "createdDate": date
+}
+```
+
+The values
+that `JobSeverity` can assume are defined [here](https://portal-api.backup.sto2.safedc.net/v1/help/ResourceModel?modelName=JobSeverity).
+
+## JobList
+```json
+{
+  "href": string,
+  "total": integer,
+  "offset": integer,
+  "first": string,
+  "items": [Job...]
+}
+```
+## JobName
+```json
+{
+  "name": string,
+  "id": integer,
+  "createdDate": date,
+  "archivedDate": date
+}
+```
+
+## JobStatus
+```json
+{
+  "id": integer,
+  "name": string
+}
+```
+
+## JobType
+```json
+{
+  "id": integer,
+  "name": string
+}
+```
+
 ## Language
 ```json
 {
@@ -660,7 +720,7 @@ A backup node.
 {
   "href": string,
   "cpuCount": integer,
-  "activatedDate": date,  // optional
+  "activatedDate": date,  // Optional
   "locked": boolean,
   "operatingSystem": NodeOperatingSystem,
   "type": NodeType,
@@ -679,7 +739,7 @@ A backup node.
   "proxyTargets": [Node...],
   "nodeGroups": [NodeGroup...],
   "tsmName": string,
-  "tsmNodeId": string,  // optional
+  "tsmNodeId": string,  // Optional
   "tsmPassword": string,
   "contact": string,
   "platform": NodePlatform,
@@ -687,20 +747,20 @@ A backup node.
   "osLevel": NodeOSLevel,
   "tcpName": string,
   "tcpAddress": string,
-  "macAddress": string,  // optional
+  "macAddress": string,  // Optional
   "sessionSecurity": SessionSecurity,
-  "hypervisor": string,  // optional
+  "hypervisor": string,  // Optional
   "containsVmFilespaces": boolean,
-  "lastAccessTime": string,  // optional
-  "registeredTime": string,  // optional
+  "lastAccessTime": string,  // Optional
+  "registeredTime": string,  // Optional
   "decommissioned": boolean,
   "replicationState": boolean,
   "replicationMode": integer,
-  "replicationServerPrimary": string,  // optional
-  "replicationServerSecondary": string,  // optional
-  "replicationServerSecondary2": string,  // optional
+  "replicationServerPrimary": string,  // Optional
+  "replicationServerSecondary": string,  // Optional
+  "replicationServerSecondary2": string,  // Optional
   "activityLogFilters": [ActivityLogFilter...],
-  "remoteActivities": [...],
+  "remoteActivities": [...],  // SAP-HANA specific, should always be empty
   "name": string,
   "dataSourceState": DataSourceState,
   "dataSourceType": DataSourceType,
@@ -743,10 +803,10 @@ A backup node.
 ## NodeOperatingSystem
 ```json
 {
-  "href": string,  // optional
+  "href": string,  // Optional
   "name": string,
   "shortName": string,
-  "supportedNodeTypes": [NodeType...],  // optional
+  "supportedNodeTypes": [NodeType...],  // Optional
   "id": integer,
   "createdDate": date
 }
@@ -878,10 +938,10 @@ All `ErrorStatus` values are defined [here](https://portal-api.backup.sto2.safed
 ## NodeType
 ```json
 {
-  "href": string,  // optional
+  "href": string,  // Optional
   "id": integer,
   "name": string,
-  "shortName": string,  // optional
+  "shortName": string,  // Optional
   "createdDate": date
 }
 ```
@@ -957,7 +1017,7 @@ All `ErrorStatus` values are defined [here](https://portal-api.backup.sto2.safed
   "inheritable": boolean,
   "method": InvoiceMethod,
   "replicationType": integer,
-  "inheritedProductCode": ProductCode,  // optional
+  "inheritedProductCode": ProductCode,  // Optional
   "id": integer,
   "createdDate": date
 }
@@ -1091,6 +1151,15 @@ Find replication types [here](https://portal-api.backup.sto2.safedc.net/v1/help/
 }
 ```
 
+## ServerType
+There should only be one such resource:
+```json
+{
+  "id": 1,
+  "name": "IBM Storage Protect"
+}
+```
+
 ## SessionSecurity
 ```json
 {
@@ -1103,7 +1172,7 @@ Find replication types [here](https://portal-api.backup.sto2.safedc.net/v1/help/
 ```json
 {
   "id": integer,
-  "parentId": integer,  // optional
+  "parentId": integer,  // Optional
   "name": string,
   "groupName": string,
   "reportRemotely": boolean,
@@ -1142,12 +1211,20 @@ Find replication types [here](https://portal-api.backup.sto2.safedc.net/v1/help/
 }
 ```
 
+## SupportStatus
+```json
+{
+  "id": integer,
+  "name": string
+}
+```
+
 ## TimeZone
 ```json
 {
-  "$type": string,  // optional
-  "href": string,  // optional
-  "actions": [APIEndpoint...],  // optional
+  "$type": string,  // Optional
+  "href": string,  // Optional
+  "actions": [APIEndpoint...],  // Optional
   "name": string,
   "windowsId": string,
   "offset": integer,
@@ -1225,4 +1302,3 @@ Find replication types [here](https://portal-api.backup.sto2.safedc.net/v1/help/
   "items": [User...]
 }
 ```
-

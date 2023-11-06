@@ -1,18 +1,19 @@
 # Installing on macOS
 
-First of all, get the latest released TSM bundle (comes in `.DMG` format), since recent macOS requires a recent TSM to work, this folder holds 7.1.6.x.:
+First of all, get the latest-released TSM bundle (comes in `.DMG` format), 
+since recent macOS requires a recent TSM to work, this folder holds 7.1.8.x.:
 
 !!! note "Latest V7 patch release"
-    [Mac TSM client 7.1.8.6](https://www3.software.ibm.com/storage/tivoli-storage-management/patches/client/v7r1/Mac/v718/7.1.8.6-TIV-TSMBAC-Mac.dmg)
+    [Mac TSM client 7.1.8.11](https://www3.software.ibm.com/storage/tivoli-storage-management/patches/client/v7r1/Mac/v718/7.1.8.11-TIV-TSMBAC-Mac.dmg)
 
 !!! note "Latest V8 release"
-    [Mac TSM client 8.1.12.0](https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Mac/v8112/8.1.12.0-TIV-TSMBAC-Mac.dmg)
+    [Mac TSM client 8.1.20.0](https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Mac/v8120/8.1.20.0-TIV-TSMBAC-Mac.dmg)
 
 Install it as usual on Mac by attaching the DMG as a disk and then click on the installer icon.
 
 Then grab this script [certificate installation script for macOS](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/MacOSX-Update-SafeDC-Net-CA.sh) and the certificate in PEM format here [BaaS service CA root certificate](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem).
 
-```shell tab="Shell"
+```shell
 #!/bin/sh
 
 PASSWORD=$(mktemp -d /tmp/temp-one-time-idXXXXXXXXXXXXX)
@@ -38,7 +39,7 @@ else
 fi
 ```
 
-```pem tab="PEM"
+```pem
 -----BEGIN CERTIFICATE-----
 MIIEBTCCAu2gAwIBAgIBADANBgkqhkiG9w0BAQsFADBfMQswCQYDVQQGEwJTRTET
 MBEGA1UECgwKU2FmZWRjLm5ldDEeMBwGA1UECwwVRGF0YWNlbnRlciBPcGVyYXRp

@@ -129,7 +129,6 @@ the `requests` module. To install this module, run `python3 -m pip install
 requests`.
 
 ```python
-# Todo: Add to https://github.com/IssTech/cloutility-script/tree/main
 import requests
 
 # Change these
@@ -613,6 +612,40 @@ To find the latest report, use:
 The `userId` parameter can be used to customize the report for a specific user. 
 It is optional.
 
+#### Jobs
+To retrieve information about jobs 
+(e.g., restore or backup jobs) against a backup node, 
+you have to first get retrieve the very first job. 
+We will explain why later. 
+Use this endpoint to get the first job:
+
+```
+[GET] /v1/bunits/{bunit_id}/consumers/{consumer_id}/jobs/first
+- Response Body: Job
+```
+
+!!! warning 
+    Do not use `/v1/bunits/{bunit_id}/consumers/{consumer_id}/jobs/first` for anything other than getting the first job date. Many fields returned by this endpoint will have bogus values (0, 0.0, empty string, etc.). 
+    So do not rely on it for actual job status data.
+
+The reason why we did this is that the next endpoint, 
+which retrieves jobs at a specific time interval, 
+is very strict about how you define **the start** of this interval.
+
+```
+[GET] /v1/bunits/{bunit_id}/consumers/{consumer_id}/jobs/first?startTime={startTime}&endTime={endTime}
+- Response Body: JobList
+```
+
+The parameters `startTime` and `endTime` _are_ optional. 
+But omitting them will only get you the jobs from the latest 24 hours. 
+
+If you use this endpoint, you probably want more control over the time interval.
+
+To specify a custom interval, make sure that `startTime` is **greater 
+than or equal to** the value of the `completed` field of the first job.
+
+The `endTime` parameter can be any date.
 
 ### Backup servers
 There is only _one_ backup server that we will consider, and that is the default one.
