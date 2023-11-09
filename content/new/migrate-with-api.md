@@ -63,7 +63,7 @@ $ cp <new-rc-file> utilities/v1v2-migration
 
 
 ## API access
-In these examples we will use Ubuntu as the OS for the migration host but any RHEL or Debian based distribution works. To install the OpenStack API client follow the instructions [here](./api-md).
+In these examples we will use Ubuntu as the OS for the migration host but any RHEL or Debian based distribution works. To install the OpenStack API client follow the instructions [here](https://docs.safespring.com/new/api/).
 
 Once installed you can test that you have API-access to both platforms:
 
