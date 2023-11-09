@@ -90,6 +90,7 @@ nav:
        - Migrate instance to another project: "compute/migrate-between-projects.md"
        - Taking snapshots of instances: "compute/snapshotting-instances.md"
        - Migrate instances from legacy: "new/migrate-from-legacy.md"
+       - Migrate with API: "new/migrate-with-api.md"
      - Legacy:
        - Getting started: "compute/getting-started-legacy.md"
        - API access: "compute/api-legacy.md"
