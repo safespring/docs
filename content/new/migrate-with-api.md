@@ -89,7 +89,7 @@ First one needs to take a snapshot in the source platform of the instance that s
 The script is run with two environment files as arguments:
 
 ```shell 
-$ ./migate-instance-snapshot.sh <old-rc-file> <new-rc-file>
+$ ./migrate-instance-snapshot.sh <old-rc-file> <new-rc-file>
 ```
 
 The script will list all the available images and snapshots in the source platform. The user then provides the name of the snapshot that should be migrated.
@@ -106,7 +106,7 @@ $ sudo apt install qemu-utils
 ```
 The script is run with two environment files for OpenStack API access as arguments:
 ```shell
-$ migate-data-vol.sh <old-rc-file> <new-rc-file>
+$ ./migrate-data-vol.sh <old-rc-file> <new-rc-file>
 ```
 This script is used to migrate volumes from the old to the new platform. The migrated volumes will be found under "Volumes" in the new platform once they are migrated.
 
