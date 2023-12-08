@@ -25,12 +25,13 @@ Click on the "Consumption Units" tab and then "Add"
 
 ![New Consumption Unit](images/baas-portal-new-consumption-unit.png)
 
-Type a friendly name, e.g. hostname or FQDN. and press "Add"
+Type a friendly name, e.g., hostname or FQDN. 
+Then press "Add".
 When the consumption unit has been created, the portal will ask you if you 
 want to add/assign a backup node to the consumption unit, press "Yes" to continue.
 
 Fill out the form like, Platform, preferred backup server, Domain, Client 
-Option set and contact details (e.g. Server owner E-Mail or Support Email).
+Option set and contact details (e.g., Server owner E-Mail or Support Email).
 
 The Client Option Set defaults to Dedup_and_Compression to allow but not force the client
 to attempt to use deduplication and compression before sending data over to the server

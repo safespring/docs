@@ -6,20 +6,20 @@ Safespring provides 99,9% availability SLA for our Compute and Storage service.
 
 ## Support
 
-For critical issues that affects the availability of our services, we will reply
-within the limits set by our SLA. For non critical and minor issues, please allow
+For critical issues that affect the availability of our services, we will reply
+within the limits set by our SLA. For non-critical and minor issues, please allow
 up to 24 hours for replies.
 
 ## Safespring customer support policy for security testing
 
 Customers are welcome to perform security testing against their infrastructure
-hosted by Safespring. The following limitation apply:
+hosted by Safespring. The following limitations apply:
 
 The following activities are prohibited:
 
 * Denial of Service, Distributed denial of service (DDoS) or simulations of DoS
   or DDoS attacks.
-* Flooding attacks (HTTP flood attacks, API requests, login requests etc).
+* Flooding attacks (HTTP flood attacks, API requests, login requests, etc.).
 * SYN flooding, ICMP flooding, UDP flooding.
 
 Before doing security testing, we kindly ask you to inform us at

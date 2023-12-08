@@ -64,6 +64,8 @@ nav:
     - HOWTOs:
       - Business Units: "backup/howto/business-units.md"
       - Deleting Nodes: "backup/howto/delete-node.md"
+      - Email Reports : "backup/howto/reports-by-email.md"
+      - Encryption: "backup/howto/encryption.md"
       - Include/Exclude: "backup/howto/include-exclude.md"
       - Windows Recovery: "backup/howto/windows-recovery.md"
     - Automation:

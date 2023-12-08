@@ -14,11 +14,11 @@ rebuilt and return at a later date.
 
 ## Update 2021-07-19
 
-Unfortunatley during the weekend we suffered a setback where parts of the
+Unfortunately, during the weekend we suffered a setback where parts of the
 cluster went offline, and back online again. This caused data and object
 movement to happen, thus causing the manually created object index we've based
 the restore process on to become outdated. Rerunning the manual indexing code
-will fix this but it takes a very long time due to the high object count.
+will fix this, but it takes a very long time due to the high object count.
 
 Due to this setback, automating the restore in a scalable way will take longer
 than expected. Timeline adjusted, our goals for this week are the same as those

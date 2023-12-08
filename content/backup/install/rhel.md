@@ -6,7 +6,7 @@ service:
 - Automatically signing up nodes
 - Manually signing up nodes,
 
-In both cases, the software is distributed through RPM repositories and the
+In both cases, the software is distributed through RPM repositories, and the
 first parts of the installation are identical.
 
 ## 1. Configure the repository
@@ -24,7 +24,8 @@ gpgkey=file:///etc/pki/rpm-gpg/PACKAGES-GPG-KEY-Safespring
 gpgcheck=1
 ```
 
-Fetch and install the he repository key and install it in the file ```/etc/pki/rpm-gpg/PACKAGES-GPG-KEY-Safespring```:
+Fetch and install the repository key, and save it as the file 
+```/etc/pki/rpm-gpg/PACKAGES-GPG-KEY-Safespring```:
 
 ```shell
 curl -o /etc/pki/rpm-gpg/PACKAGES-GPG-KEY-Safespring \
@@ -88,9 +89,9 @@ secret_access_key: $the_secret_key
 ```
 
 !!!warning
-    Strict permissions on the credentials file is required! The script will
-    fail if strict permissions are not set. A malicious user can use the
-    credentials to delete or modify backup nodes and schedules.
+    Strict permissions on the credential file are required! 
+    The script will fail if strict permissions are not set. 
+    A malicious user can use the credentials to delete or modify backup nodes and schedules.
 
 B) Via `safespring-backup-setup -t $token` which expects a base64 encoding of
 the key and secret key as in the following command:
@@ -115,21 +116,21 @@ instructions.
 #### 2.a.2) Service activation
 
 The ```safespring-backup-setup``` script will enable and launch the
-```dsmcad``` service (as a systemd unit).  There is however one final task to
-be done before the service is fully activated and the client will start to
-perform backup, which is explained in step 3 below.
+```dsmcad``` service (as a systemd unit). 
+There is, however, one final task to
+be done before the service is fully activated, and the client will start to perform backup, which is explained in step 3 below.
 
 ### 2.b) Installation with manual node registration
 
-The manual node registration procedures follows a similar method. Issuing the
-following command will install the meta-package which depends on TSM:
+The manual node registration procedures follow a similar method. 
+Issuing the following command will install the meta-package which depends on TSM:
 
 ```shell
 yum install safespring-backup
 ```
 
 It will install TSM and prepare it for operations with the service (i.e.
-install CA certificates, etc) but it will _not_ register the client with the
+install CA certificates, etc.), but it will _not_ register the client with the
 Backup service. The manual routine for node registration is described below.
 
 #### 2.b.1) Create a node in the Backup Portal
@@ -156,7 +157,7 @@ Place the two files according to below:
 
 When you start the TSM client for the first time, you will be prompted for your
 password. If you get asked for the nodename, accept the default which is
-configured in ```dsm.sys``` already (see previous step).
+configured in ```dsm.sys``` already (see the previous step).
 
 ```shell
 dsmc query session
@@ -176,7 +177,7 @@ systemctl start dsmcad
 
 ### 3) Activation of backup schedule and backup policy
 
-Currently it is required to wait until after the creation of the node, to
+Currently, it is required to wait until after the creation of the node to
 configure a backup schedule and backup policy for it.  This is either done via
 the Portal, or via the API directly.
 

@@ -22,6 +22,9 @@ Prerequisites
 * The TSM Backup/Archive client (dsmc) must be installed and configured to 
   perform a full incremental system backup. See the 
   [Quickstart Guide](../quickstart-guide.md) for information about how to do this.
+* A license for TBMR. 
+  As a customer, you have access to our site license. 
+  Please contact [support](../../service/support.md) to receive a copy.
 
 Installation
 --------------
@@ -129,7 +132,7 @@ System Recovery
     initially be provided to you, but you should definitely make sure that it 
     looks like the way you want it.
     ![Cloutility Dashboard](../images/tbmr-volume-layout.png)
-    On the left-hand side you can see the backed-up volumes. On the right, you 
+    On the left-hand side you can see the current volumes. On the right, you 
     have the proposed layout. An **exclamation mark (!)** means that the object 
     will be formatted/partitioned. If it is blank where the (!) should be, then 
     it means the object will be ignored. Right-click the disks and partitions 
