@@ -42,6 +42,8 @@ Instances created with these flavors must be booted from an image and not a volu
 
 ## b2. and l2. flavors
 
+### b2. flavors
+
 ![image](../images/np-storage-types.png)
 The flavors starting with b2 does not come with any disk space in the flavor. You can see this in the flavor listing when starting the instance that they have a zero in the "Root Disk" column. This means that in order to boot an instance with such a flavor the root disk must be created beforehand under "Volumes". The procedure is to create a new volume and choosing that it should contain an image that you pick in the drop down "Use Image as Source" which is visible if you pick "Image" under the drop down "Volume Source".
 
@@ -49,6 +51,26 @@ Once the boot volume is created you can choose that as you boot media when creat
 
 !!! info "PRO tip"
     After creating the volume from the image you can also start from the "Volumes" view and click the "Launch as Instance" in the context menu at the end of the row of the volume you just have created. You will now be redirected to the "Launch Instance"-dialogue with the correct settings in the "Source"-tab to boot your instance from the volume.
+
+When using b2 flavors, the IOPS quota is determined by the limits imposed on the
+volume type, rather than the flavor settings.
+
+For "fast" volumes, the IOPS are set at a rate of 100 read operations and 50
+write operations per gigabyte. If a 10GB volume is used, the IOPS would be 1000
+for reads and 500 for writes. Similarly, a 20GB volume would provide 2000 read
+IOPS and 1000 write IOPS. The upper limit is 100000 read IOPS and 50000 write
+IOPS.
+
+For "large" volumes there's 2 IOPS per gigabyte for both read and write
+operations. The lower limit for these volumes is set at 50 read IOPS and 50
+write IOPS, while the upper limit is capped at 4000 read IOPS and 4000 write
+IOPS. For instance, a 100GB volume would yield 200 read IOPS and 200 write IOPS,
+while volumes below 25GB would provide 50 read IOPS and 50 write IOPS.
+
+It is important to note that these limits apply to all mounted volumes on an
+instance, not just boot drives.
+
+### l2. flavors
 
 The flavors starting with l works a little bit different since they come with a root disk in the flavor. The l signals "local disk" and means that the instance will be created with a local disk coming with the flavor.
 
