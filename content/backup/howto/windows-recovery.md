@@ -66,10 +66,11 @@ systems to make them recoverable using TBMR.
    Replace `[CONTRACT-ID]` and `[ACTIVATION-CODE]` with the proper values.
 3. In `C:\Program Files\Tivoli\TSM\baclient\dsm.opt` add the following line:
    ```
-   preschedulecmd "C:\Program Files\Cristie\TBMR\TBMRcfg.exe"
+   preschedulecmd '"C:\Program Files\Cristie\TBMR\TBMRcfg.exe"'
    ```
-   This will run `TBMRcfg.exe` before every scheduled incremental backup that 
-   will regenerate an important folder called `C:\TBMRCFG`.
+   This option will run `TBMRcfg.exe` before every scheduled event, such 
+   as incremental backups. It will regenerate an important folder called 
+   `C:\TBMRCFG`.
 4. The special folder created by TBMR called `C:\TBMRCFG` contains 
    information about the OS, dsmc configurations and the hardware it is 
    running on. It is important that it is available in the backup during a 
