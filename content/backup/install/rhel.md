@@ -89,7 +89,7 @@ secret_access_key: $the_secret_key
 ```
 
 !!!warning
-    Strict permissions on the credential file are required! 
+    Strict permissions on the credentials file is required! 
     The script will fail if strict permissions are not set. 
     A malicious user can use the credentials to delete or modify backup nodes and schedules.
 
