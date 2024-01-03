@@ -10,30 +10,35 @@ we need you to follow two steps.
 **For every backup node/client:**
 
 1. Perform one last complete incremental backup against the old server (TSM12).
-2. Modify the client configuration file to use the hostname of the new server 
-   and do comment out `COMMMETHOD V6TCPIP` if you have that entry.
+2. Modify the client configuration file to use the hostname of the new server. 
+   Also, comment out `COMMMETHOD V6TCPIP` and 
+   `TESTFLAG disable_tls13` if you have these entries.
 
      - **(Linux)** Edit `/opt/tivoli/tsm/client/ba/bin/dsm.sys`. 
        Change:
        ```
        TCPSERVERADDRESS tsm12.backup.sto2.safedc.net
        COMMMETHOD V6TCPIP
+       TESTFLAG disable_tls13
        ```
        To:
        ```
        TCPSERVERADDRESS server2.backup.dco1.safedc.net
        *COMMMETHOD V6TCPIP
+       *TESTFLAG disable_tls13
        ```
      - **(Windows)** Edit `C:\Program Files\Tivoli\TSM\baclient\dsm.opt`. 
        Change:
        ```
        TCPSERVERADDRESS tsm12.backup.sto2.safedc.net
        COMMMETHOD V6TCPIP
+       TESTFLAG disable_tls13
        ```
        To:
        ```
        TCPSERVERADDRESS server2.backup.dco1.safedc.net
        *COMMMETHOD V6TCPIP
+       *TESTFLAG disable_tls13
        ```
 
     If the TSM Backup-Archive client software is still running, after letting it 
