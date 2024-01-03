@@ -8,7 +8,7 @@ this happen is done in the background by our technicians. From your end,
 we need you to follow two steps at your given switch date. This date should be provided to you by SafeSpring. 
 
 If you need assistance with the following steps, 
-you can contact [support](./../../service/support.md).
+you are welcome to contact [support](./../../service/support.md).
 
 **For every backup node/client:**
 
