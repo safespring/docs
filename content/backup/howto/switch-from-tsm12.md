@@ -4,8 +4,11 @@ Connect TSM Backup-Archive Client to the new Server
 Around New Year 2024 we have been working on switching to a new TSM server in 
 Kalix, Norrbotten (**server2.backup.dco1.safedc.net**) from the older TSM12 in 
 Stockholm (**tsm12.backup.sto2.safedc.net**). Most work to make
-this happen is done in the background by our technicians. From your side, 
-we need you to follow two steps.
+this happen is done in the background by our technicians. From your end, 
+we need you to follow two steps at your given switch date. This date should be provided to you by SafeSpring. 
+
+If you need assistance with the following steps, 
+you can contact [support](./../../service/support.md).
 
 **For every backup node/client:**
 
