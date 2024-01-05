@@ -37,13 +37,14 @@ you should store them securely and share them within a project.
 The `https` URLs to the service:
 
 !!! info "New URLs"
-    + New norwegian site - https://s3-archive.osl1.safedc.net
+    + New Norwegian site - https://s3-archive.osl1.safedc.net
     + Norwegian site  - https://s3.osl1.safedc.net
-    + Swedish site - https://s3.sto2.safedc.net
+    + Swedish site - https://s3.sto1.safedc.net
+    + New Swedish secondary site - https://s3-archive.sto2.safedc.net
 
-The URL change is due to the rename from IPNett to Safespring of our
-company.  The old URLs will continue to work for a long time, but new
-client configurations should point to the new name.
+The URL change was due to the rename from IPNett to Safespring of our
+company.  The old IPNett URLs have now expired and all new client
+configurations should point to the new safedc names.
 
 The `new safedc.net` S3 URLs contain wildcard subdomain certificates so that
 clients, libraries or frameworks who insist on accessing the domain with `https://BUCKETNAME.URL/dir/object`
