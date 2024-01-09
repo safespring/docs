@@ -5,8 +5,7 @@
 All out customers can e-mail support@safespring.com for all the services.
 
 If you report issues with our services, please include as much information as
-possible as this will make it easier for our engineers to start trouble
-shooting.
+possible as this will make it easier for our engineers to start troubleshooting.
 
 Relevant information could be:
 
@@ -14,5 +13,5 @@ Relevant information could be:
 * Logs from the backup client
 * etc...
 
-Also refer to our [policy](../policies) for important information about our SLA and
+Also refer to our [policy](./policies.md) for important information about our SLA and
 support level.

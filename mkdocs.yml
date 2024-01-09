@@ -64,7 +64,11 @@ nav:
     - HOWTOs:
       - Business Units: "backup/howto/business-units.md"
       - Deleting Nodes: "backup/howto/delete-node.md"
+      - Email Reports : "backup/howto/reports-by-email.md"
+      - Encryption: "backup/howto/encryption.md"
       - Include/Exclude: "backup/howto/include-exclude.md"
+      - New Server: "backup/howto/switch-from-tsm12.md"
+#      - Windows Recovery: "backup/howto/windows-recovery.md"
     - Automation:
       - Command Line: "backup/automation/cli-tool.md"
       - REST API: "backup/automation/rest-api.md"

@@ -6,7 +6,7 @@ service:
 - Automatically signing up nodes
 - Manually signing up nodes,
 
-In both cases, the software is distributed through deb repositories and the
+In both cases, the software is distributed through deb repositories, and the
 first parts of the installation are identical.
 
 ## 1. Configure the repository
@@ -32,7 +32,7 @@ supported distributions:
 
 Find the ```apt``` configuration for your server in the table above and run the
 following commands on the server that will run the backup client software. In
-the example below we will configure the repository for a Debian 9 server.
+the example below, we will configure the repository for a Debian 9 server.
 
 Create the file ```/etc/apt/sources.list.d/safespring-backup``` with the
 following content:
