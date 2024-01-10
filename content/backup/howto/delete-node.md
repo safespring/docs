@@ -1,21 +1,38 @@
 Deleting Nodes
 ===============
 
-Deleting nodes from the backup server is done through <a href="https://portal.backup.sto2.safedc.net/" target="_blank">Cloutility</a>. A user may either 
-delete the node directly, or submit a deletion 
+Deleting nodes is done through <a href="https://portal.backup.sto2.safedc.net/" target="_blank">Cloutility</a>. 
+A user may either delete the node directly, or submit a deletion 
 request for backup administrators to accept/reject. A less privileged user may 
-only have the option to submit a request rather than delete the node on 
-their own. 
+only be able to submit a request rather than delete the node on 
+their own. Once the node has been deleted from Cloutility, it will be locked
+in the TSM backup server, effectively decommissioning it for future backups. 
+The node will not be deleted immediately from the server, your backups will 
+remain throughout the remaining retention time, and can be retrieved when 
+a restore is needed.
 
 You as a backup administrator have the ability to assign new roles and 
 create new accounts with these roles under your organization. In this way, 
 you can choose if users with a specific role can or cannot delete nodes 
 directly.
 
-In the Cloutility portal, deleting backup nodes is done by deleting the 
-_consumption unit_. 
-Therefore, this article will (almost exclusively) describe deletion of 
-consumption units rather than backup nodes, as the former implies the latter.
+In the Cloutility portal interface, deleting backup nodes is done by deleting 
+the _consumption unit_. 
+A backup node is _a type of_ consumption unit, and it is the only type of 
+consumption unit that we use.
+Therefore, we will be using the terms "backup node" and 
+"consumption unit" interchangeably in the text, unless an explicit exception is 
+made to this rule.
+
+Deleting a Backup Node
+----------------------
+If you have the right permissions, you can delete a backup node by clicking on
+[Your Business Unit] -> Consumption Units -> [Your Backup Node] -> Delete.
+A popup form will appear, asking if you would like to retain or remove schedules 
+from the backup node.
+
+The form also asks for a comment in conjunction with the deletion. 
+This field can be used to document the reason for the deletion.
 
 Relevant Role Permissions
 ------------------
@@ -29,7 +46,7 @@ They can be adjusted for roles under Settings (cogwheel, top-right corner), then
   a deletion request.
 
 
-### Deletion request settings page
+### Deletion Request Settings Page
 
 Under each _Business Unit_ you can find settings for how Delete requests should 
 work. They are found under Settings, Identity and then Deletion request 
