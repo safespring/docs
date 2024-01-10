@@ -8,7 +8,7 @@ only be able to submit a request rather than delete the node on
 their own. Once the node has been deleted from Cloutility, it will be locked
 in the TSM backup server, effectively decommissioning it for future backups. 
 The node will not be deleted immediately from the server, your backups will 
-remain throughout the remaining retention time, and can be retrieved when 
+remain throughout the retention time, and can be retrieved when 
 a restore is needed.
 
 You as a backup administrator have the ability to assign new roles and 
