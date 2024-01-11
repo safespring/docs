@@ -32,36 +32,37 @@ How to Switch to the new Server
 
 2. Modify the client configuration file to use the hostname of the new server,
    and the new node name.
-   Also, comment out `TESTFLAG disable_tls13` if you have this entry.
+   Also, remove `TESTFLAG disable_tls13` if you have this entry.
 
      - **(Linux)** Edit `/opt/tivoli/tsm/client/ba/bin/dsm.sys`. 
        Change:
        ```
        NODENAME YOUR_OLD_NODE_NAME
        TCPSERVERADDRESS tsm12.backup.sto2.safedc.net
-       TESTFLAG disable_tls13
        ```
        To:
        ```
        NODENAME YOUR_NEW_NODE_NAME
        TCPSERVERADDRESS server2.backup.dco1.safedc.net
-       *TESTFLAG disable_tls13
        ```
      - **(Windows)** Edit `C:\Program Files\Tivoli\TSM\baclient\dsm.opt`. 
        Change:
        ```
        NODENAME YOUR_OLD_NODE_NAME
        TCPSERVERADDRESS tsm12.backup.sto2.safedc.net
-       TESTFLAG disable_tls13
        ```
        To:
        ```
        NODENAME YOUR_NEW_NODE_NAME
        TCPSERVERADDRESS server2.backup.dco1.safedc.net
-       *TESTFLAG disable_tls13
        ```
-       
-         Here is <a href="https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/dsm.opt.example" target="_blank">an example</a> of a working dsm.opt file on Windows.
+         Here is <a href="https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/dsm.opt.example" target="_blank">an example</a> 
+         of a working dsm.opt file on Windows
+         that you can use as a reference. You can replace your existing dsm.opt 
+         file with this example if you want. But do make sure to include 
+         custom options from your previous dsm.opt file that you know you want 
+         to keep, such as include/exclude rules for example.
+         Also, make sure to replace the node name, as instructed in the file.
 
 3. Your node on **server2.backup.dco1.safedc.net** has a new password. 
    This new password is provided to you through 
