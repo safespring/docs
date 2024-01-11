@@ -56,7 +56,8 @@ How to Switch to the new Server
        NODENAME YOUR_NEW_NODE_NAME
        TCPSERVERADDRESS server2.backup.dco1.safedc.net
        ```
-         Here is <a href="https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/dsm.opt.example" target="_blank">an example</a> of a working dsm.opt file on Windows
+         Here is <a href="https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/dsm.opt.example" target="_blank">an example</a> 
+         of a working dsm.opt file on Windows
          that you can use as a reference. You can replace your existing dsm.opt 
          file with this example if you want. But do make sure to include 
          custom options from your previous dsm.opt file that you know you want 
