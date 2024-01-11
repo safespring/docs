@@ -60,10 +60,12 @@ How to Switch to the new Server
        TCPSERVERADDRESS server2.backup.dco1.safedc.net
        *TESTFLAG disable_tls13
        ```
+       
+         Here is <a href="https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/dsm.opt.example" target="_blank">an example</a> of a working dsm.opt file on Windows.
 
 3. Your node on **server2.backup.dco1.safedc.net** has a new password. 
    This new password is provided to you through 
-   [Cloutility](https://portal.backup.sto2.safedc.net/). Go to 
+   <a href="https://portal.backup.sto2.safedc.net/" target="_blank">Cloutility</a>. Go to 
    Consumption Units -> [Your New Node] -> Basics -> Setup information -> 
    SP password.
 
