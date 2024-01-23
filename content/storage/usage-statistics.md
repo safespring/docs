@@ -13,7 +13,7 @@ about the API call and get a new functions usable from the CLI tool.
 
 The installation of these extras is documented here:
 
-https://github.com/ceph/ceph/tree/master/examples/boto3
+https://github.com/ceph/ceph/tree/main/examples/rgw/boto3
 
 and assumes an already installed and configured [aws-cli](/storage/aws-cli).
 
