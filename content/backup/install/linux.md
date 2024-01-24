@@ -87,7 +87,7 @@ Paste the information to the `dsm.sys` file between the `*** Copy and Paste Info
 SERVERNAME SafeDC
   *** Copy and Paste Information from Safespring Backup Portal ***
   NODENAME XXXXXXXXXX
-  TCPSERVERADDRESS tsm12.backup.sto2.safedc.net
+  TCPSERVERADDRESS server2.backup.dco1.safedc.net
   TCPPORT 1600
   *** Copy and Paste Information from Safespring Backup Portal ***
 
@@ -116,7 +116,6 @@ SERVERNAME SafeDC
   SRVPREPOSTSNAPDISABLED  yes
 
   REVOKEREMOTEACCESS Access
-  TESTFLAG disable_tls13
 ```
 
 Save both `dsm.sys` and `dsm.opt` in `/opt/tivoli/tsm/client/ba/bin/`

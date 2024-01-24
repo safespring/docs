@@ -114,22 +114,17 @@ System Recovery
 ---------------------
 
 1. Boot the Recovery ISO. If it was booted successfully, you should see several buttons including "Recover System", "Tools", etc.
-2. Click on "Tools".
-3. Select "Advanced Options" and hit "OK".
-4. Check "Edit Dsm.Opt". Hit "OK", and then "Close".
-5. Click on "Recover System".
-6. Optionally, you can select a location to save logs to. This can be useful for debugging potential errors. If you have a USB stick, or a volume connected to the node, you can save the logs there.
-7. Hit "Next >" three times.
-8. Fill in the following fields:
+2. Click on "Recover System".
+3. Optionally, you can select a location to save logs to. This can be useful for debugging potential errors. If you have a USB stick, or a volume connected to the node, you can save the logs there.
+4. Hit "Next >" three times.
+5. Fill in the following fields:
 
-    - Server Name/IP Address: **tsm12.backup.sto2.safedc.net**
+    - Server Name/IP Address: **server2.backup.dco1.safedc.net**
     - Port: **1600**
     - Node Name: **[Name of the Node to recover from]**
     - Password: **[Node password, can be found in Cloutility]**
     - (Optional) Point-in-time (PIT) restore: **[which point in time to restore from]** When not setting this option, TBMR will restore from the _latest_ backup.
-   
-9. Hit "Next >". Now you will be asked to apply final edits to `dsm.opt`. You have to add the line `TESTFLAG disable_tls13` to this file. Optionally, you may add other settings here if needed. Once you are done, save the file and close Notepad.
-10. Next you will be asked to specify the volume layout. A proposed one will 
+6. Next, you will be asked to specify the volume layout. A proposed one will 
     initially be provided to you, but you should definitely make sure that it 
     looks like the way you want it.
     ![Cloutility Dashboard](../images/tbmr-volume-layout.png)
@@ -139,10 +134,10 @@ System Recovery
     it means the object will be ignored. Right-click the disks and partitions 
     to specify the desired layout.
 
-11. Hit "Next >". Select the drive(s) to restore.
-12. Hit "Next >". Optionally, set network settings and machine host name.
-13. Hit "Next >". Optionally, specify the location of additional network or 
+7. Hit "Next >". Select the drive(s) to restore.
+8. Hit "Next >". Optionally, set network settings and machine host name.
+9. Hit "Next >". Optionally, specify the location of additional network or 
     storage drivers. If any additional drivers are needed, they can be provided 
     using a USB stick or a virtual volume, for example.
-14. Hit "Finish" and wait for the system to be recovered.
+10. Hit "Finish" and wait for the system to be recovered.
     ![Restoration in progress](../images/tbmr-restoring.png)
