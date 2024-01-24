@@ -40,6 +40,11 @@ will unconditionally make the client locally encrypt all data before transfer wi
 key you need to enter once. These two options are mutually exclusive. There is a
 None option that sets no client options from server-side.
 
+The Domain decides the retention time of your backups. 
+For example, if you choose 60DAYS, 
+then previously backed-up files will remain on the backup server for 60 days. 
+STANDARD sets the retention time to 180 days.
+
 ![Consumption Unit New Node](images/baas-portal-consumption-unit-node.png)
 
 We are recommending that you let "Data-source" be empty to let us randomize the nodename.
