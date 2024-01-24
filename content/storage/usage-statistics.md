@@ -17,7 +17,7 @@ https://github.com/ceph/ceph/tree/main/examples/rgw/boto3
 
 and assumes an already installed and configured [aws-cli](/storage/aws-cli).
 
-After adding the [json-file](https://raw.githubusercontent.com/ceph/ceph/master/examples/boto3/service-2.sdk-extras.json) that describes the extension, you can
+After adding the [json-file](https://raw.githubusercontent.com/ceph/ceph/master/examples/rgw/boto3/service-2.sdk-extras.json) that describes the extension, you can
 call aws like this: (with correct endpoint and profile-name for your configuration)
 
 ```
