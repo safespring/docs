@@ -37,16 +37,16 @@ Billing & Separation of Consumption
 --------
 If you are dealing with several economic units that do their own accounting 
 separately from each other, 
-you can use Business Units to separate the consumption of backup services 
+you can add Business Units to separate the consumption of backup services 
 between them. 
-Furthermore, a parent business unit can act as a reseller of backup services 
-to child business units. 
-A contractual agreement can be established between a parent and its children 
-which allows the parent to choose how to charge the children. It also 
-allows you to calculate billing data which can then be used to generate 
-invoices.
-Said invoices can be uploaded as PDF files so that the child business unit
-has access to them via Cloutility.
+Furthermore, a parent business unit can be declared as a reseller of backup 
+services to child business units. 
+A contractual agreement can be established between the parent and its children 
+which allows the parent to specify how the children are charged. 
+This allows Cloutility to calculate billing data that can then be used to 
+generate invoices.
+It is possible to upload said invoices as PDF files so that the users under the
+child business unit have access to them via Cloutility.
 
 All of this is manageable from the [REST API](../automation/rest-api.md). 
 There are options to also assign electronic billing codes to subscriptions, 
@@ -59,5 +59,5 @@ These codes can be specified from the contract page,
 at Child Business Unit -> Settings -> Contract. 
 They can also be associated with specific Payment Terms
 at Parent Business Unit -> Settings -> Payment Terms.
-A payment term tells us the maximum amount of time that is allowed for a 
-payment to be made since the invoice date, for example, 30 days.
+A payment term tells us the maximum amount of time that a payment has to be 
+made since the invoice date, for example, 30 days.
