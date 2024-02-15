@@ -5,7 +5,9 @@ perform Create, Retrieve, Update and Delete (CRUD) operations with various
 _resources_.
 
 This document describes how you can manage several resource 
-types on your account, including **Consumption Units** and **Backup Nodes**. This will lay the foundation for understanding how to manage other resource types in Cloutility.
+types on your account, including **Consumption Units** and **Backup Nodes**. 
+This will lay the foundation for understanding how to manage other resource 
+types in Cloutility.
 
 Before talking about these features, 
 we need to understand how authentication on Cloutility works.
@@ -14,16 +16,20 @@ how do you "log in"?
 
 Authentication
 ---------------
-Cloutility authentication & authorization is based on the OAuth v2 protocol. The way this 
-works is by requesting an _access token_ that corresponds to our user account.
+Cloutility authentication & authorization is based on the OAuth v2 protocol. 
+The way this works is by requesting an _access token_ that corresponds to our 
+user account.
 Once we have this access token, we can perform any operations that our 
 account has permissions to do!
 
 **An overview of the steps:**
 
-1. Use Cloutility to generate a client ID for your origin URL (such as "https://service.yourcompany.com").
-2. Ask Cloutility for a seemingly random string called an "access token" by giving it the client ID, origin, your username and your password.
-3. Use the access token and the origin to perform operations, like creating backup nodes or retrieving a list of all users, for example.
+1. Use Cloutility to generate a client ID for your origin URL 
+   (such as "https://service.yourcompany.com").
+2. Ask Cloutility for a seemingly random string called an "access token" by 
+   giving it the client ID, origin, your username and your password.
+3. Use the access token and the origin to perform operations, like creating 
+   backup nodes or retrieving a list of all users, for example.
 
 ### Generating a Client ID
 
@@ -61,7 +67,8 @@ _The HTTP request body should be on one line, but is split here into several
 lines for clarity._ 
 
 The **grant_type** should always be the same. It should be set to the 
-"password" [OAuth2 Grant Type](https://oauth.net/2/grant-types/). You have to specify the client_id, username and the password.
+"password" [OAuth2 Grant Type](https://oauth.net/2/grant-types/). You have to specify the client_id, 
+username and the password.
 
 Once you have made the HTTP request, you should get an HTTP response with an 
 **AccessToken** body. Its structure is as follows.
@@ -208,7 +215,8 @@ else:
     exit(1)
 ```
 
-Define the first four constants, and run the program. The output should be something like:
+Define the first four constants, and run the program. The output should be 
+something like:
 
 ```
 Got access token! Expires in 299 seconds.
@@ -232,9 +240,13 @@ it is implicitly implied that they should be sent with every HTTP request.
 
 ### Business units
 
-Consumption units (backup nodes) are managed under [Business units](../howto/business-units.md). Therefore, to create new consumption units, we have to know which business units we have, and more specifically their _id numbers_.
+Consumption units (backup nodes) are managed under [Business units](../howto/business-units.md). 
+Therefore, to create new consumption units, 
+we have to know which business units we have, 
+and more specifically their _id numbers_.
 
-Below are some endpoints that you can use to find your business units programmatically.
+Below are some endpoints that you can use to find your business units 
+programmatically.
 
 * Returns the descendant tree of the active profile's business unit.
   ```
@@ -274,7 +286,11 @@ Below are some endpoints that you can use to find your business units programmat
     "invoiceDay": 0
   }
   ```
-  **Note:** The `id` numbers in the output example above will be referred to as `{bunitId}` in the rest of the document. You should replace this placeholder with the ID number of the business unit you intend to operate on.
+!!! note 
+    The `id` numbers in the output example above will be referred to as 
+    `{bunitId}` in the rest of the document. 
+    You should replace this placeholder with the ID number of the business 
+    unit you intend to operate on.
 
 * Get detailed information about a single business unit.
   ```
@@ -397,7 +413,8 @@ The request body can have the following format:
 }
 ```
 
-Note that not all fields of the BusinessUnit resource type have to be defined in the request, 
+Note that not all fields of the BusinessUnit resource type have to be defined 
+in the request, 
 this is normal.
 
 #### Modifying business units
@@ -415,27 +432,38 @@ If you wish to delete business units, use the following endpoint:
 - Request Body: BusinessUnit
 ```
 
+
+
 #### More details
-For more details about the objects sent as responses and what the meanings of the fields are, 
-please refer to Cloutility's REST API documentation:
+For more details about the objects sent as responses and what the meanings of 
+the fields are, please refer to Cloutility's REST API documentation:
 
 - [BusinessUnit](https://portal-api.backup.sto2.safedc.net/v1/help/ResourceModel?modelName=BusinessUnit)
 - [SimpleBusinessUnit](https://portal-api.backup.sto2.safedc.net/v1/help/ResourceModel?modelName=SimpleBusinessUnit)
 
 !!! note
-    Many times endpoints return incomplete objects, contrary to what the Cloutility documentation may appear to be saying. 
+    Many times endpoints return incomplete objects, contrary to what the 
+    Cloutility documentation may appear to be saying. 
     
-    This actually saves network bandwidth as the size of these objects along with all their components may be huge.
+    This actually saves network bandwidth as the size of these objects along 
+    with all their components may be huge.
     But it can cause confusion to someone that is not used to Cloutility's API.
     
-    We recommend that you use the most explicit endpoint for what you want to retrieve. For example, if you want all users of a Business Unit, do not use `/v1/bunits/{bunitId}`, use instead `/v1/bunits/{bunitId}/users`.
+    We recommend that you use the most explicit endpoint for what you want to 
+    retrieve. For example, if you want all users of a Business Unit, 
+    do not use `/v1/bunits/{bunitId}`, use instead `/v1/bunits/{bunitId}/users`.
 
 ### Consumption units
-Once you have the ID number (`bunitId`) of the business unit you wish to operate under, 
-you can start managing **consumption units** for this business unit. In the Cloutility API, these are referred to as "consumers". But we will use the term that the web interface uses for consistency, that is "consumption units".
+Once you have the ID number (`bunitId`) of the business unit you wish to 
+operate under, 
+you can start managing **consumption units** for this business unit. 
+In the Cloutility API, these are referred to as "consumers". 
+But we will use the term that the web interface uses for consistency, 
+that is "consumption units".
 
 #### Retrieving units
-Just like with business units, you can retrieve consumption units in an analogous fashion:
+Just like with business units, you can retrieve consumption units in an 
+analogous fashion:
 ```
 [GET] /v1/bunits/{bunitId}/consumers
 - Response Body: Collection of Consumer
@@ -535,7 +563,8 @@ The endpoint used to create new consumption units is:
 - Response Body: Consumer
 ```
 
-The absolutely simplest way to create a consumption unit is to just specify its **name** in the request body.
+The absolutely simplest way to create a consumption unit is to just specify 
+its **name** in the request body.
 
 ```json
 {
@@ -576,7 +605,8 @@ You can add/remove the following parameters to include/exclude log-entry types:
 - `&types=300` for delete-actions
 - `&types=400` for errors
 
-The query parameters `startDate` and `endDate` are optional. But if you define them, make sure that the values are [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formatted. 
+The query parameters `startDate` and `endDate` are optional. 
+But if you define them, make sure that the values are [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formatted. 
 For example `2023-11-03T08:00:00Z`.
 
 #### Reports
@@ -590,9 +620,11 @@ To find reports over a time interval, use this endpoint:
 - Response Body: NodeReportList
 ```
 
-Use `startDate` and `endDate` to specify a time interval, the format of their values is the same as in the Audit Log endpoint above.
+Use `startDate` and `endDate` to specify a time interval, 
+the format of their values is the same as in the Audit Log endpoint above.
 
-Set `status` or `warnings` to `true` to retrieve the status of the report or the warnings of the report respectively.
+Set `status` or `warnings` to `true` to retrieve the status of the report or 
+the warnings of the report respectively.
 
 All query parameters are optional.
 
@@ -625,7 +657,10 @@ Use this endpoint to get the first job:
 ```
 
 !!! warning 
-    Do not use `/v1/bunits/{bunit_id}/consumers/{consumer_id}/jobs/first` for anything other than getting the first job date. Many fields returned by this endpoint will have bogus values (0, 0.0, empty string, etc.). 
+    Do not use `/v1/bunits/{bunit_id}/consumers/{consumer_id}/jobs/first` for 
+    anything other than getting the first job date. 
+    Many fields returned by this endpoint will have bogus values 
+    (0, 0.0, empty string, etc.). 
     So do not rely on it for actual job status data.
 
 The reason why we did this is that the next endpoint, 
@@ -648,9 +683,12 @@ than or equal to** the value of the `completed` field of the first job.
 The `endTime` parameter can be any date.
 
 ### Backup servers
-There is only _one_ backup server that we will consider, and that is the default one.
+There is only _one_ backup server that we will consider, 
+and that is the default one.
 
-The reason these endpoints are useful is that they give us access to all the available policy domains and client option sets, which can be used during backup node creation.
+The reason these endpoints are useful is that they give us access to all the 
+available policy domains and client option sets, 
+which can be used during backup node creation.
 ```
 [GET] /v1/bunits/{bunit_id}/defaultserver
 - Response Body: BackupServer
@@ -661,7 +699,9 @@ The reason these endpoints are useful is that they give us access to all the ava
 ```
 
 ### Backup node operating systems and types
-When creating or modifying backup nodes, we have to specify an operating system and node type. Therefore, it is necessary to know how to retrieve `NodeOperatingSystem` and `NodeType` resources.
+When creating or modifying backup nodes, we have to specify an operating 
+system and node type. Therefore, it is necessary to know how to retrieve 
+`NodeOperatingSystem` and `NodeType` resources.
 
 ```
 [GET] /v1/nodeoperatingsystems
@@ -676,11 +716,15 @@ When creating or modifying backup nodes, we have to specify an operating system 
 
 
 ### Backup nodes
-A consumption unit is mapped one-to-one with a backup node. But in the API they are treated as different resources. 
+A consumption unit is mapped one-to-one with a backup node. 
+But in the API they are treated as different resources. 
 
 !!! note
-    The reason for having consumption units and not just backup nodes, is that consumption units _can_ technically be other services.
-    In other words, the "consumption unit" abstraction was created to accompany other consumable services and treat them similarly. But here, they are only used as backup units.
+    The reason for having consumption units and not just backup nodes, 
+    is that consumption units _can_ technically be other services.
+    In other words, the "consumption unit" abstraction was created to accompany 
+    other consumable services and treat them similarly. 
+    But here, they are only used as backup units.
 
 To retrieve the backup node of a consumption unit:
 ```
@@ -708,7 +752,8 @@ The request body can have the following format:
 }
 ```
 
-The required resources such as the `ClientOptionSet` and the `Domain` and can be retrieved using the endpoints above.
+The required resources such as the `ClientOptionSet` and the `Domain` and can 
+be retrieved using the endpoints above.
 
 #### Editing a backup node
 ```
@@ -725,13 +770,19 @@ _This will remove the entire consumption unit as well._
 ```
 
 #### Activate
-To actually be able to use a backup node, it has to be activated first. This is done by using the following endpoint:
+To actually be able to use a backup node, it has to be activated first. 
+This is done by using the following endpoint:
 ```
 [GET] /v1/bunits/{bunit_id}/consumers/{consumer_id}/node/activate?tsmName={tsm_node_name}
 - Response Body: string
 ```
 
-Make sure to give the backup node a name by replacing the `{tsm_node_name}` placeholder. The name that you give must obey IBM Storage Protect's [object naming rules](https://www.ibm.com/docs/en/storage-protect/8.1.20?topic=commands-naming-storage-protect-objects). Because this is the name that will be used to configure the respective computer's backup client.
+Make sure to give the backup node a name by replacing the `{tsm_node_name}` 
+placeholder. 
+The name that you give must obey IBM Storage Protect's 
+[object naming rules](https://www.ibm.com/docs/en/storage-protect/8.1.21?topic=commands-naming-storage-protect-objects). 
+Because this is the name that will be used to configure the respective 
+computer's backup client.
 
 #### Filespaces
 You can use the following endpoint to manage the filespaces of a node. 
@@ -740,10 +791,14 @@ You can use the following endpoint to manage the filespaces of a node.
 [GET] /v1/bunits/{bunit_id}/consumers/{consumer_id}/node/filespaces?tsmSync={true/false}
 - Response Body: FilespaceList
 ```
-Setting tsmSync to `true` will manually sync Cloutility with the backup server before returning the filespaces. Setting it to `false` will make the call faster.
+Setting tsmSync to `true` will manually sync Cloutility with the backup server 
+before returning the filespaces. 
+Setting it to `false` will make the call faster.
 
 #### Setting proxy nodes
-You can allow a node to act as another node, in other words, making a node a _proxy agent_ for a _proxy target_. The proxy agent can then, for example, restore the proxy target's files. 
+You can allow a node to act as another node, in other words, making a node a 
+_proxy agent_ for a _proxy target_. 
+The proxy agent can then, for example, restore the proxy target's files. 
 
 With the API, this relationship can be established from either side.
 
@@ -772,6 +827,93 @@ To severe a proxy relationship, you may use either one of these endpoints:
 [DELETE] /v1/bunits/{bunit_id}/consumers/{proxy_consumer_id}/node/proxytargets/{target_consumer_id}
 - Request Body: Node
 ```
+
+### Billing Information
+It is possible to retrieve information about which services a business unit is 
+subscribed to, how much has been consumed, and how much it all costs.
+
+#### Contract
+This endpoint allows you to retrieve the contract that a business unit is 
+participating in.
+```
+[GET] /v1/bunits/{bunit_id}/contract
+- Response Body: Contract
+```
+
+#### Invoices
+The following endpoint allows you to retrieve invoice data for a Business Unit.
+```
+[GET] /v1/bunits/{bunit_id}/invoices
+- Response Body: InvoiceList
+[GET] /v1/bunits/{bunit_id}/invoices/{invoice_date_str}
+- Response Body: Invoice
+```
+
+`invoice_date_str` has the YYYY-MM-DD format and can be retrieved from the 
+`Invoice.href` field.
+
+If invoices (usually PDF files) have been uploaded for a business unit
+ to Cloutility, they can be accessed using:
+```
+[GET] /v1/bunits/{bunit_id}/invoicefiles
+```
+
+If you are reselling backup services to a business unit, you can upload invoices
+using:
+```
+[POST] /v1/bunits/{bunit_id}/invoicefiles?erpReference={erpReference}&sendToBillingAddress={sendToBillingAddress}
+```
+
+`erpReference` is an optional ERP code, used when integrating invoicing 
+software.
+`sendToBillingAddress` is a boolean (can be `true` or `false`).
+
+#### Billing data
+If a business unit is a reseller of backup services to its children, the 
+following endpoint allows you to retrieve the billing data.
+```
+[GET] /v1/bunits/{bunit_id}/billing?includeNext={count}
+- Response Body: BillingDataList
+[GET] /v1/bunits/{bunit_id}/billing/{invoice_date_str}
+- Response Body: BillingData
+```
+
+When integrating invoicing software, it can be useful to automatically be
+notified about new billing data, at the end of the month, for example. 
+You can subscribe to these events by clicking on Reseller Business Unit -> 
+Settings -> Billing -> Subscribers -> Add. 
+
+![Add Billing Subscriber](../images/baas-portal-billing-subscriber.png)
+
+The "Post URL" field is an HTTP endpoint that you host. 
+It should be able to process POST-requests from Cloutility that are sent every 
+time billing data is generated.
+This end point must be at the very least accessible to Cloutility, and can be
+firewalled off from other clients.
+
+You can click on the "Test" button next to the "Post URL" field to send a test
+request from Cloutility your endpoint.
+The test request will look something like this:
+```
+POST /baas-report/?code=xyz HTTP/1.1
+Content-Type: application/json; charset=utf-8
+Host: invoicing.company.com
+Content-Length: 49
+Expect: 100-continue
+
+{"trigger":"test for new billing data available"}
+```
+
+The header `Expect: 100-continue` is the HTTP client's way 
+(Cloutility in this case) to ask the HTTP server if it is okay to send the data.
+The server should normally reply with status code 100 (continue).
+```
+HTTP/1.1 100 Continue
+```
+Then read the incoming data.
+
+Your HTTP server should handle this automatically, but it is worth mentioning in 
+case it does not do so.
 
 Resources
 -----------
