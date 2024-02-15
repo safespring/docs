@@ -141,3 +141,5 @@ System Recovery
     using a USB stick or a virtual volume, for example.
 10. Hit "Finish" and wait for the system to be recovered.
     ![Restoration in progress](../images/tbmr-restoring.png)
+11. Once done, boot into the recovered drive. 
+    **You should see a carbon-copy of the backed-up system.**
