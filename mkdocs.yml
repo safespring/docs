@@ -69,6 +69,7 @@ nav:
       - Include/Exclude: "backup/howto/include-exclude.md"
       - New Server: "backup/howto/switch-from-tsm12.md"
       - Windows Recovery: "backup/howto/windows-recovery.md"
+      - Linux Recovery: "backup/howto/linux-recovery.md"
     - Automation:
       - Command Line: "backup/automation/cli-tool.md"
       - REST API: "backup/automation/rest-api.md"

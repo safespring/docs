@@ -19,7 +19,7 @@ Prerequisites
 ---------------
 
 * The client machine must be running Windows.
-* The TSM Backup/Archive client (dsmc) must be installed and configured to 
+* The TSM Backup-Archive client (dsmc) must be installed and configured to 
   perform a full incremental system backup. See the 
   [Quickstart Guide](../quickstart-guide.md) for information about how to do this.
 * A license for TBMR. 
@@ -66,7 +66,7 @@ systems to make them recoverable using TBMR.
    Replace `[CONTRACT-ID]` and `[ACTIVATION-CODE]` with the proper values.
 3. In `C:\Program Files\Tivoli\TSM\baclient\dsm.opt` add the following line:
    ```
-   preschedulecmd '"C:\Program Files\Cristie\TBMR\TBMRcfg.exe"'
+   PRESCHEDULECMD '"C:\Program Files\Cristie\TBMR\TBMRcfg.exe"'
    ```
    This option will run `TBMRcfg.exe` before every scheduled event, such 
    as incremental backups. It will regenerate an important folder called 

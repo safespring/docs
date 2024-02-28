@@ -1,4 +1,4 @@
-Encrypting parts of backups.
+Encrypting parts of backups
 ============================
 
 If you want to make sure data is unreadable for 3rd parties (including

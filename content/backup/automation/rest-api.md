@@ -879,7 +879,8 @@ following endpoint allows you to retrieve the billing data.
 ```
 
 When integrating invoicing software, it can be useful to automatically be
-notified about new billing data, at the end of the month, for example. 
+notified when new billing data is generated, 
+at the end of the month, for example. 
 You can subscribe to these events by clicking on Reseller Business Unit -> 
 Settings -> Billing -> Subscribers -> Add. 
 
@@ -910,10 +911,14 @@ The server should normally reply with status code 100 (continue).
 ```
 HTTP/1.1 100 Continue
 ```
-Then read the incoming data.
+Then read the incoming HTTP request data.
 
-Your HTTP server should handle this automatically, but it is worth mentioning in 
-case it does not do so.
+Your HTTP server should handle this automatically, 
+but it is worth mentioning in case it does not do so.
+
+Once your server has recieved this trigger, 
+it can retrieve the latest billing data by invoking `/v1/bunits/{bunit_id}/billing`, 
+as mentioned above.
 
 Resources
 -----------
