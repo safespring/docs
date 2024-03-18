@@ -63,6 +63,7 @@ nav:
         - Microsoft SQL Server: "backup/install/mssql-windows.md"
     - HOWTOs:
       - Business Units: "backup/howto/business-units.md"
+      - Password: "backup/howto/password.md"
       - Deleting Nodes: "backup/howto/delete-node.md"
       - Email Reports : "backup/howto/reports-by-email.md"
       - Encryption: "backup/howto/encryption.md"
@@ -70,6 +71,7 @@ nav:
       - New Server: "backup/howto/switch-from-tsm12.md"
       - Windows Recovery: "backup/howto/windows-recovery.md"
       - Linux Recovery: "backup/howto/linux-recovery.md"
+      - Handling Changing Files: "backup/howto/changing-files.md"
     - Automation:
       - Command Line: "backup/automation/cli-tool.md"
       - REST API: "backup/automation/rest-api.md"

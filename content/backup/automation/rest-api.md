@@ -756,10 +756,27 @@ The required resources such as the `ClientOptionSet` and the `Domain` and can
 be retrieved using the endpoints above.
 
 #### Editing a backup node
+This endpoint is used to edit a backup node's attributes.
 ```
 [PUT] /v1/bunits/{bunit_id}/consumers/{consumer_id}/node
 - Request Body: Node
 - Response Body: Node
+```
+
+To change the **password** of the backup node, there is this specific endpoint:
+```
+[POST] /v1/bunits/{bunit_id}/consumers/{consumer_id}/node/password
+- Request Body: Node
+- Response Body: Node
+```
+
+The request body only needs one attribute from the `Node` resource, 
+and that is `tsmPassword`. In other words, the request body should look like 
+this:
+```json
+{
+  "tsmPassword": "[your new password]"
+}
 ```
 
 #### Deleting a backup node
