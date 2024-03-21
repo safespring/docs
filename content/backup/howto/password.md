@@ -129,11 +129,11 @@ When a backup node is newly created and activated, it starts off with something 
 
 This table highlights important differences between the two:
 
-| **Transitional**                              | **Strict**                                     |
-|-----------------------------------------------|------------------------------------------------|
-| Laxer security requirements overall           | Stricter security requirements overall         |
-| Case sensitive passwords                      | Case insensitive passwords                     |
-| 1 logon-attempt limit before locking the node | 5 logon-attempts limit before locking the node |
+| **Transitional**                                      | **Strict**                                             |
+|-------------------------------------------------------|--------------------------------------------------------|
+| Laxer security requirements overall                   | Stricter security requirements overall                 |
+| Case insensitive passwords                            | Case sensitive passwords                               |
+| Max 1 invalid sign-on attempt before locking the node | Max 5 invalid sing-on attempts before locking the node |
 
 Invalid sign-on attempts
 -------------------------

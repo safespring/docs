@@ -63,7 +63,7 @@ nav:
         - Microsoft SQL Server: "backup/install/mssql-windows.md"
     - HOWTOs:
       - Business Units: "backup/howto/business-units.md"
-      - Password: "backup/howto/password.md"
+      - Passwords: "backup/howto/password.md"
       - Deleting Nodes: "backup/howto/delete-node.md"
       - Email Reports : "backup/howto/reports-by-email.md"
       - Encryption: "backup/howto/encryption.md"
