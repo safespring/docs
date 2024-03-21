@@ -1,4 +1,4 @@
-Backup Node Password
+The Backup Node Password
 =====================
 
 Initially, when a backup node is created and activated in Cloutility, a randomly generated password is set and will thereafter be made available from the portal under "Setup information."
