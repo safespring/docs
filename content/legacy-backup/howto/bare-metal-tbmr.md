@@ -22,7 +22,7 @@ The restore part requires a bootable ISO image on CD/DVD-ROM or USB or similar. 
 
 Safespring recommends all users to prepare and maintain bootable media of the recovery tool _before_ the required use of the tool.
 
-In order to restore a machine, the following preparatory steps needs to be taken:
+To restore a machine, the following preparatory steps need to be taken:
  1. Retrieve the bootable ISO image
  2. Prepare bootable media (CD/DVD or USB) with this bootable image
  3. Recommended: Add to operational procedural documentation how restores are made

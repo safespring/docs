@@ -756,10 +756,27 @@ The required resources such as the `ClientOptionSet` and the `Domain` and can
 be retrieved using the endpoints above.
 
 #### Editing a backup node
+This endpoint is used to edit a backup node's attributes.
 ```
 [PUT] /v1/bunits/{bunit_id}/consumers/{consumer_id}/node
 - Request Body: Node
 - Response Body: Node
+```
+
+To change the **password** of the backup node, there is this specific endpoint:
+```
+[POST] /v1/bunits/{bunit_id}/consumers/{consumer_id}/node/password
+- Request Body: Node
+- Response Body: Node
+```
+
+The request body only needs one attribute from the `Node` resource, 
+and that is `tsmPassword`. In other words, the request body should look like 
+this:
+```json
+{
+  "tsmPassword": "[your new password]"
+}
 ```
 
 #### Deleting a backup node
@@ -879,7 +896,8 @@ following endpoint allows you to retrieve the billing data.
 ```
 
 When integrating invoicing software, it can be useful to automatically be
-notified about new billing data, at the end of the month, for example. 
+notified when new billing data is generated, 
+at the end of the month, for example. 
 You can subscribe to these events by clicking on Reseller Business Unit -> 
 Settings -> Billing -> Subscribers -> Add. 
 
@@ -910,10 +928,14 @@ The server should normally reply with status code 100 (continue).
 ```
 HTTP/1.1 100 Continue
 ```
-Then read the incoming data.
+Then read the incoming HTTP request data.
 
-Your HTTP server should handle this automatically, but it is worth mentioning in 
-case it does not do so.
+Your HTTP server should handle this automatically, 
+but it is worth mentioning in case it does not do so.
+
+Once your server has recieved this trigger, 
+it can retrieve the latest billing data by invoking `/v1/bunits/{bunit_id}/billing`, 
+as mentioned above.
 
 Resources
 -----------
