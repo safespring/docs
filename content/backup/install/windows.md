@@ -8,10 +8,11 @@ Required files:
 
 - [IBM Spectrum Protect Backup-Archive Client](https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Windows/x64/)
 - [SafeDC Default Configuration file dsm.opt](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/dsm.opt.sample) (Right-click and Save)
+- [Certificate installation script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA-win64.bat) (Right-click and Save)
 
 ### Installation and Configuration
 
-#### Installation
+#### Installation of the software
 
 1. Download the required files according to above into a temporary folder
 1. Run `8.x.x.x-TIV-TSMBAC-WinX64.exe` to extract all installations files.
@@ -41,6 +42,18 @@ Paste the information to the `dsm.opt.sample` file between the `*** Copy and Pas
 ![dsm.opt sample file](../images/SPBAC-dsm-opt.png)
 
 Save the file as `dsm.opt` in the Backup-Archive Directory e.g `C:\Program Files\Tivoli\TSM\Baclient\dsm.opt`
+
+#### Install the certificate
+
+Run the
+[SafeDC-Net-Root-CA-win64.bat](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA-win64.bat)
+script as admin. It will remove all previous certificates and install
+the correct CA Root for the BaaS service into the IBM cert
+store. TSM/IBM will not use, nor touch the system certificate stores
+in any way. This is safe to run several times, it will just remove and
+reinstall the same CA Root certificate every time.
+
+#### First connection
     
 1. Test the connection, the easiest way is either via GUI or CLI.
     1. **Login via Command-Line**
