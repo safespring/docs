@@ -176,3 +176,41 @@ Remove the old password store:
 rm -f /etc/adsm/TSM.*
 ```
 Then follow the instructions under Solution in _Scenario #1_.
+
+### Scenario #3—"ANS5283E The operation was unsuccessful"
+Your client system runs Windows, and you are migrating your backups 
+from an old node to a new one.
+
+After having created and activated the new backup node on Cloutility, you attempted to log in to the new node using the correct password.
+
+#### Problem
+Instead of successfully establishing a session with the backup server, you ended up with the following error in 
+`C:\Program Files\Tivoli\TSM\baclient\dsmerror.log`:
+
+```
+ANS5283E The operation was unsuccessful
+```
+
+#### Solution
+
+This error appears when you have forgotten to import Safespring's CA 
+certificate. The problem is not the password being wrong.
+Please consult the [Windows installation guide](../install/windows.md) 
+for information on how to import the certificate.
+
+You can verify that the CA certificate has been imported successfully by 
+running the following command in the Command Prompt with Administrative 
+privileges:
+
+```shell
+cd "C:\Program Files\ibm\gsk8\lib64"
+"C:\Program Files\ibm\gsk8\bin\gsk8capicmd_64.exe" -cert -list -db "C:\Program Files\Tivoli\TSM\baclient\dsmcert.kdb" -stashed
+```
+
+You should be getting the following output:
+
+```
+Certificates found
+* default, - personal, ! trusted, # secret key
+!       "Safedc Net Root CA"
+```

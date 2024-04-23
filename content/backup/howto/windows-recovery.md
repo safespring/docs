@@ -110,6 +110,103 @@ Once you have the ISO, you can optionally burn it to a USB drive if needed.
 You should now be ready to use the ISO to perform full recoveries of 
 backed-up Windows machines that have had TBMR set up.
 
+System Recovery on Safespring Compute
+-------------------------------------
+This section covers the extra steps needed to recover a Windows instance running
+on Safespring Compute.
+
+### Step 1: Create an image
+Follow the steps above to create an ISO image if you have not already done so.
+Similar to the pre-defined images on the Compute platform such as 
+windows-server-2022 or ubuntu-22.04, you can upload your own images.
+To upload the ISO so that you can use it on the compute platform, go to 
+Compute -> Images and click on "Create Image."
+Then:
+
+- Specify a descriptive name, such as `tbmr-x.y.z`. 
+- Choose the ISO as the image file. 
+- Select Format as ISO.
+
+You may optionally change other settings if you would like to further 
+customize the image.
+Once done, hit "Create Image."
+
+### Step 2: Create a volume to restore to
+You need a new volume to restore the system to.
+It should be at least the same size as that of the original system.
+
+Go to Volumes -> Volumes, and click on "Create Volume."
+Then:
+
+- Specify a descriptive "Volume Name."
+- Keep the "Volume Source" as "No source, empty volume."
+- The "Size" should be at least the same or larger than the original boot 
+  volume.
+
+You may optionally change other settings if you would like to further 
+customize the volume.
+Once done, hit "Create Volume."
+
+Click on "Edit Volume" next to the newly created volume, 
+and make sure that the "Bootable" checkbox is ticked.
+
+### Step 3: Create a TBMR instance
+To use the ISO image, you must create a compute instance for TBMR. 
+**This is not the instance for the restored system, only TBMR. 
+It can be safely discarded once the restoration is complete.**
+
+Go to Compute -> Instances and click on "Launch Instance."
+
+1. Specify a descriptive "Instance Name", such as `TBMR`.
+2. Click "Next >", then choose "Image" under "Select Boot Source." 
+   Choose the TBMR image that you have created in "Step 1" by clicking on the
+   arrow next to it.
+   This will move it to the "Allocated" list.
+3. Click "Next >". 
+   Then select an instance flavor that has storage allocated to 
+   it such as `l2.c4r8.100` by clicking the arrow next to it. 
+   You won't need more than 100GB because this space will only be used by the 
+   TBMR ISO and not the system to be recovered.
+4. Click "Next >". 
+   Select either public or default.
+5. Click on "Launch Instance."
+6. Once the instance has been launched, on the "Actions" column, click on the
+   arrow and then "Attach Volume." Select the volume from "Step 2" and attach 
+   it. **This is the volume that the system will be recovered to.**
+
+### Step 4: Perform the system recovery
+At this point, you should have everything ready to perform the system recovery.
+The most secure way to interface with TBMR on the Safespring Compute platform
+is to use the Console (a web-based VNC client). 
+It can be accessed from Compute -> Instances -> [Your TBMR instance] -> Console.
+
+![Compute Console](../images/tbmr-on-compute-console.png)
+
+Perform all the obligatory steps described in the **System Recovery** section 
+below as you would on any other machine.
+
+Once done, go to Compute -> Instances and click on the arrow next to the 
+TBMR instance, and click on "Detach Volume." 
+Select the restored volume, and detach it. 
+Proceed to Step 5.
+
+### Step 5: Create an instance for the recovered system
+With the recovered drive, you are ready to create the compute instance for the
+recovered drive. 
+
+Make sure to:
+
+- When creating the instance, choose a flavor without any storage.
+- In the "Source" section, set "Select Boot Source" to "Volume" and 
+"Delete Volume on Instance Delete" to "No." Next, select the recovered volume.
+
+Once you have configured everything, you can launch the instance and test it
+to see if it had booted up and is functional.
+
+If everything worked correctly, you may delete the TBMR instance. 
+The TBMR image can be kept around for future use if you want,
+or be discarded as well.
+
 System Recovery
 ---------------------
 
