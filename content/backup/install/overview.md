@@ -14,5 +14,5 @@ Download IBM Spectrum Protect Backup-Archive Client software from the following 
 
 ## Links to IBMs client installation guides
 
-- [Windows](https://www.ibm.com/docs/en/SSEQVQ_8.1.21/pdf/b_ba_guide_win.pdf)
-- [Linux/Unix](https://www.ibm.com/docs/en/SSEQVQ_8.1.21/pdf/b_ba_guide_unx_lnx.pdf)
+- [Windows](https://www.ibm.com/docs/en/SSEQVQ_8.1.22/pdf/b_ba_guide_win.pdf)
+- [Linux/Unix](https://www.ibm.com/docs/en/SSEQVQ_8.1.22/pdf/b_ba_guide_unx_lnx.pdf)

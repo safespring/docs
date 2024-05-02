@@ -14,8 +14,8 @@ Required files:
 
 #### Installation of the software
 
-1. Download the required files according to above into a temporary folder
-1. Run `8.x.x.x-TIV-TSMBAC-WinX64.exe` to extract all installations files.
+1. Download the required files according to above into a temporary folder.
+1. Run `8.x.x.x-TIV-TSMBAC-WinX64.exe` to extract all installation files.
 1. Open the `TSMClient` Installation directory that just got created and run
    `spinstall.exe` and accept the UAC pop-up that comes up,
    "Setup Launcher Unicode". 
@@ -26,22 +26,23 @@ Follow the instructions on the screen,
 
     ![Spectrum Protect Backup-Archive Client - InstallShield Wizard](../images/SPBAC_ISWizard.png)
 
-    1. The installation process could sometimes require a reboot, due to the installation of a couple of VC redistributables.
+    1. The installation process could sometimes require a reboot, 
+       due to the installation of a couple of VC redistributables.
     1. If a reboot is unpleasant, at the above decision point, jump to the _"Circumvent reboot during install"_ section below.
     1. Resume the installation, choose Typical installation.
     1. After installation, answer 'No' to the reboot question.
 
 #### Create Configuration File
 
-1. Retrieve client node configuration and password from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/), and edit the `dsm.opt.sample`, copy the *Setup Information* from the portal and paste it in to `dsm.opt.sample` file and save that file in `C:\Program Files\Tivoli\TSM\baclient`
+1. Retrieve client node configuration and password from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/), and edit the `dsm.opt.sample`, copy the *Setup Information* from the portal and paste it in to `dsm.opt.sample` file and save that file in `C:\Program Files\Tivoli\TSM\baclient`.
 
 ![Copy the Backup Configuration information](../images/baas-portal-consumption-unit-setup-infomartion.png)
 
-Paste the information to the `dsm.opt.sample` file between the `*** Copy and Paste Information from Safespring Backup Portal ***` sections
+Paste the information to the `dsm.opt.sample` file between the `*** Copy and Paste Information from Safespring Backup Portal ***` sections.
 
 ![dsm.opt sample file](../images/SPBAC-dsm-opt.png)
 
-Save the file as `dsm.opt` in the Backup-Archive Directory e.g `C:\Program Files\Tivoli\TSM\Baclient\dsm.opt`
+Save the file as `dsm.opt` in the Backup-Archive Directory e.g `C:\Program Files\Tivoli\TSM\Baclient\dsm.opt`.
 
 #### Install the certificate
 
@@ -69,13 +70,15 @@ reinstall the same CA Root certificate every time.
 
     1. **Login via GUI**
 
-    The GUI icon can you find in the start-menu, search for Backup-Archive GUI 
+    The GUI icon can be found in the start-menu, search for 
+    "Backup-Archive GUI". 
 
     ![GUI via Start-Menu](../images/SPBAC-startmenu-GUI.png)
 
     When the Backup-Archive GUI starts, it will ask for Node Admin ID and 
    Password.
-    This can be copy and pasted from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) and paste it to the Password feild.
+    These can be copied 
+    and pasted from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/).
 
     ![Copy Password from Safespring Backup Portal](../images/baas-portal-consumption-unit-setup-infomartion.png) ![Paste Password to Password Feild](../images/SPBAC-GUI-login.png)
 
@@ -85,7 +88,7 @@ reinstall the same CA Root certificate every time.
 #### Schedule Daily Backups
 
 1. IBM Spectrum Protect Backup-Archive Client is polling the backup server 
-   on a regular basis to see when it will backup your data next time.
+   regularly to see when it should backup your data next time.
 To assign a predefined schedule, open [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) and go to the _consumption unit_ you want to define a schedule too and click on _schedule_ 
 ![Consumption Unit Schedule](../images/baas-portal-consumption-unit-schedule.png)
 
@@ -95,7 +98,7 @@ Here can you schedule the backup for your consumption unit.
     1. **Setup schedule via Command-Line**
 
      Start a Command-Line window in _Administrator Mode_ and change to the Backup-Archive Client directory e.g `cd C:\Program Files\Tivoli\TSM\Baclient`.
-     Run the following commands to setup your schedule.
+     Run the following commands to set up your schedule.
 
     ```sh
     dsmcutil install scheduler /name:"TSM Client Scheduler" /node:<NODENAME> /optfile:"<PATH TO DSM.OPT>" /password:<TSM PASSWORD> /autostart:no /startnow:no
@@ -117,11 +120,13 @@ Here can you schedule the backup for your consumption unit.
 
     ![Start the Schedule Setup Wizard](../images//SPBAC-GUI-Schedule-wizard-mainmenu.png)
 
-    A wizard will help you to go though step-by-step to setup the schedule.
+    A wizard will help you to go through the process step-by-step of setting up
+    the schedule.
 
     ![Schedule Wizard Guide](../images/SPBAC-GUI-Schedule-wizard-start.png)
 
-    Confirm that you want to *Install a new or additional scheduler*, if *Update ...* and *Remove ...* is enables, that means you already have a earlier Spectrum Protect Schedule configured. 
+    Confirm that you want to *Install a new or additional scheduler*, if *Update ...* and *Remove ...* is enabled, 
+    that means you already have an earlier Spectrum Protect Schedule configured. 
 
     ![Install a new or addition scheduler](../images/SPBAC-GUI-Schedule-wizard-new-schedule.png)
 
@@ -133,11 +138,12 @@ Here can you schedule the backup for your consumption unit.
 
     ![Client Acceptor Configuration File Path](../images/SPBAC-GUI-Client-Acceptor-Config-file.png)
 
-    Confirm the Client Acceptor TCP Port, this port doesn't need to be expose externally.
+    Confirm the Client Acceptor TCP Port, 
+    this port doesn't need to be exposed externally.
 
     ![Client Acceptor TCP Port, default is 1581](../images/SPBAC-GUI-Client-Acceptor-TCP-port.png)
 
-    Insert the node password, the password can be copy from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/).
+    Insert the node password, the password can be copied from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/).
 
     ![Insert Node name and Password](../images/SPBAC-GUI-Client-Acceptor-node-n-pwd.png)
 
@@ -154,7 +160,7 @@ Here can you schedule the backup for your consumption unit.
 
     ![Start TSM Client Acceptor after wizard](../images/SPBAC-GUI-Schedule-wizard-schedule-services.png)
 
-    Confirm the configuration before Setup Wizard creates the services.
+    Confirm the configuration before the Setup Wizard creates the services.
 
     ![Confirm the Schedule Services](../images/SPBAC-GUI-Schedule-wizard-schedule-confirm.png)
 
@@ -165,5 +171,5 @@ Here can you schedule the backup for your consumption unit.
 ### Finish
 
 Basic installation of the Backup-Archive Client is now done. If you need to 
-setup an Online agent for e.g., Microsoft SQL, Oracle Database or any other 
+set up an Online agent for e.g., Microsoft SQL, Oracle Database or any other 
 application, you can continue with that installation.

@@ -139,5 +139,5 @@ Data encryption type:               256-bit AES
 
 ## Read more on IBMs site
 
-* [Include options](https://www.ibm.com/docs/en/storage-protect/8.1.21?topic=reference-include-options)
-* [Encryptkey options](https://www.ibm.com/docs/en/storage-protect/8.1.21?topic=reference-encryptkey)
+* [Include options](https://www.ibm.com/docs/en/storage-protect/8.1.22?topic=reference-include-options)
+* [Encryptkey options](https://www.ibm.com/docs/en/storage-protect/8.1.22?topic=reference-encryptkey)

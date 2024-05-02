@@ -58,7 +58,7 @@ no inbound ports need to be configured, so installation and operations behind NA
 
 ## Why can't I delete filespaces from the client?
 
-- This is a security feature since some cryptolockers and ransomwares target [backups][ransomware]. If you want to delete a filespace from the backup, please contact our [support](../service/support.md) to enable the feature temmporarily.
+- This is a security feature since some cryptolockers and ransomwares target [backups][ransomware]. If you want to delete a filespace from the backup, please contact our [support](../service/support.md) to enable the feature temporarily.
 
 ## Credentials to Safespring Backup Portal?
 

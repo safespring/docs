@@ -70,7 +70,7 @@ nav:
       - Include/Exclude: "backup/howto/include-exclude.md"
       - New Server: "backup/howto/switch-from-tsm12.md"
       - Windows Recovery: "backup/howto/windows-recovery.md"
-      # - Linux Recovery: "backup/howto/linux-recovery.md"
+     # - Linux Recovery: "backup/howto/linux-recovery.md"
       - Handling Changing Files: "backup/howto/changing-files.md"
     - Automation:
       - Command Line: "backup/automation/cli-tool.md"
