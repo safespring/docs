@@ -71,6 +71,7 @@ nav:
       - New Server: "backup/howto/switch-from-tsm12.md"
       - Windows Recovery: "backup/howto/windows-recovery.md"
      # - Linux Recovery: "backup/howto/linux-recovery.md"
+      - Admin SSO: "backup/howto/sso.md"
       - Handling Changing Files: "backup/howto/changing-files.md"
     - Automation:
       - Command Line: "backup/automation/cli-tool.md"
