@@ -24,10 +24,10 @@ How to Switch to the new Server
    
      **Schedules**
 
-     If you have used schedules in the old node, then you should add them to 
+     If you have used schedules with the old node, then you should add them to 
      the new node as well. 
-     This can be done from Cloutility -> Consumption Units -> 
-     [Your New Node] -> Schedules -> Available schedules. 
+     This can be done from **Cloutility -> Consumption Units -> 
+     [Your New Node] -> Schedules -> Available schedules**. 
      Click Add on the right schedules so that they match the old node.
 
 2. Modify the client configuration file to use the hostname of the new server,
@@ -67,8 +67,8 @@ How to Switch to the new Server
 3. Your node on **server2.backup.dco1.safedc.net** has a new password. 
    This new password is provided to you through 
    <a href="https://portal.backup.sto2.safedc.net/" target="_blank">Cloutility</a>. Go to 
-   Consumption Units -> [Your New Node] -> Basics -> Setup information -> 
-   SP password.
+   **Consumption Units -> [Your New Node] -> Basics -> Setup information -> 
+   SP password**.
 
     If the TSM Backup-Archive client software is still running, after letting it 
     finish any operation that it may be performing, restart it to make sure that 

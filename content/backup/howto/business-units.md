@@ -34,7 +34,7 @@ Here you may add new user accounts that are limited only to this particular
 unit.
 
 Billing & Separation of Consumption
---------
+-------------------------------------
 If you are dealing with several economic units that do their own accounting 
 separately from each other, 
 you can add Business Units to separate the consumption of backup services 
@@ -48,7 +48,18 @@ generate invoices.
 It is possible to upload said invoices as PDF files so that the users under the
 child business unit have access to them via Cloutility.
 
-All of this is manageable from the [REST API](../automation/rest-api.md). 
+### Backup service contracts
+You can view your own business unit's contract by visiting 
+**Settings -> Contract**.
+
+To define a contract between your business unit and one of its children, 
+navigate to the child, and then go to **Settings -> Contract** from there. 
+It will look something like this:
+
+![Contract](../images/baas-portal-contract.png)
+
+### Invoicing software integration
+
 There are options to also assign electronic billing codes to subscriptions, 
 allowing you to integrate the billing data from Cloutility with invoicing 
 software.
@@ -56,8 +67,28 @@ software.
 ![Billing Codes](../images/baas-portal-billing-codes.png)
 
 These codes can be specified from the contract page, 
-at Child Business Unit -> Settings -> Contract. 
+at **[Child Business Unit] -> Settings -> Contract**. 
 They can also be associated with specific Payment Terms
-at Parent Business Unit -> Settings -> Payment Terms.
+at **[Parent Business Unit] -> Settings -> Payment Terms**.
 A payment term tells us the maximum amount of time that a payment has to be 
 made since the invoice date, for example, 30 days.
+
+
+Cloutility is fully [API-driven](../automation/rest-api.md), so this information
+can be used by scripts together with an invoicing system to automate invoice creation.
+
+Branding
+-----------
+A neat feature is that every business unit can have its own branding.
+
+![Branding Overview](../images/baas-portal-branding-overview.png)
+
+Above, we have an example of a fictive university with a nice green theme. 
+An administrator can change their business unit's color palette and logo by visiting **Settings -> Identity -> Branding**. 
+
+![Branding Settings](../images/baas-portal-branding-settings.png)
+
+In our example, 
+backup administrators to a child business unit 
+(such as Datalogiska Institutionen) underneath the university can do exactly 
+the same thing within their unit.

@@ -18,7 +18,7 @@ If not, you can enable this feature by adding the option to `/opt/tivoli/tsm/cli
 
 ### Further reading
 
-The `passwordaccess` option: https://www.ibm.com/docs/en/storage-protect/8.1.21?topic=reference-passwordaccess
+The `passwordaccess` option: https://www.ibm.com/docs/en/storage-protect/8.1.22?topic=reference-passwordaccess
 
 Retrieving the current password
 ------------------------
@@ -91,7 +91,7 @@ del "C:\Windows\Temp\1710702970_0" "C:\Windows\Temp\1710702970_0.plain"
 ```
 
 ### Further reading
-Password storage: https://www.ibm.com/docs/en/storage-protect/8.1.21?topic=started-secure-password-storage
+Password storage: https://www.ibm.com/docs/en/storage-protect/8.1.22?topic=started-secure-password-storage
 
 Password encryption details: https://blog.sigterm.se/posts/the-joys-of-bootstrapping-ibm-backup-client/
 
@@ -121,7 +121,7 @@ dsmc set password "old password" "new password"
 
 ### Further reading
 
-More about `dsmc set password`: https://www.ibm.com/docs/en/storage-protect/8.1.21?topic=commands-set-password
+More about `dsmc set password`: https://www.ibm.com/docs/en/storage-protect/8.1.22?topic=commands-set-password
 
 Session security: transitional vs. strict
 -------------------------------------------
@@ -199,7 +199,7 @@ Please consult the [Windows installation guide](../install/windows.md)
 for information on how to import the certificate.
 
 You can verify that the CA certificate has been imported successfully by 
-running the following command in the Command Prompt with Administrative 
+running the following commands in the Command Prompt with Administrative 
 privileges:
 
 ```shell

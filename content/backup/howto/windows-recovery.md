@@ -119,23 +119,27 @@ on Safespring Compute.
 Follow the steps above to create an ISO image if you have not already done so.
 Similar to the pre-defined images on the Compute platform such as 
 windows-server-2022 or ubuntu-22.04, you can upload your own images.
+
 To upload the ISO so that you can use it on the compute platform, go to 
-Compute -> Images and click on "Create Image."
+**Compute -> Images** and click on "Create Image."
 Then:
 
 - Specify a descriptive name, such as `tbmr-x.y.z`. 
 - Choose the ISO as the image file. 
 - Select Format as ISO.
 
+![Create TBMR Image](../images/compute-create-tbmr-image.png)
+
 You may optionally change other settings if you would like to further 
 customize the image.
+
 Once done, hit "Create Image."
 
 ### Step 2: Create a volume to restore to
 You need a new volume to restore the system to.
 It should be at least the same size as that of the original system.
 
-Go to Volumes -> Volumes, and click on "Create Volume."
+Go to **Volumes -> Volumes**, and click on "Create Volume."
 Then:
 
 - Specify a descriptive "Volume Name."
@@ -143,8 +147,11 @@ Then:
 - The "Size" should be at least the same or larger than the original boot 
   volume.
 
+![Create restoration volume](../images/compute-create-restoration-volume.png)
+
 You may optionally change other settings if you would like to further 
 customize the volume.
+
 Once done, hit "Create Volume."
 
 Click on "Edit Volume" next to the newly created volume, 
@@ -152,23 +159,28 @@ and make sure that the "Bootable" checkbox is ticked.
 
 ### Step 3: Create a TBMR instance
 To use the ISO image, you must create a compute instance for TBMR. 
-**This is not the instance for the restored system, only TBMR. 
+**This is not the instance for the system to be restored, rather it is for TBMR 
+only. 
 It can be safely discarded once the restoration is complete.**
 
 Go to Compute -> Instances and click on "Launch Instance."
 
 1. Specify a descriptive "Instance Name", such as `TBMR`.
+   ![Details](../images/compute-tbmr-instance-details.png)
 2. Click "Next >", then choose "Image" under "Select Boot Source." 
-   Choose the TBMR image that you have created in "Step 1" by clicking on the
+   Choose the TBMR image that you have created on "Step 1" by clicking on the
    arrow next to it.
    This will move it to the "Allocated" list.
+   ![Image](../images/compute-tbmr-instance-image.png)
 3. Click "Next >". 
    Then select an instance flavor that has storage allocated to 
-   it such as `l2.c4r8.100` by clicking the arrow next to it. 
-   You won't need more than 100GB because this space will only be used by the 
+   it, such as `l2.c4r8.100`, by clicking the arrow next to it. 
+   You will not need more than 100GB because this space will only be used by the 
    TBMR ISO and not the system to be recovered.
+   ![Flavor](../images/compute-iso-instance-flavor.png)
 4. Click "Next >". 
    Select either public or default.
+   ![Network](../images/compute-iso-instance-network.png)
 5. Click on "Launch Instance."
 6. Once the instance has been launched, on the "Actions" column, click on the
    arrow and then "Attach Volume." Select the volume from "Step 2" and attach 
@@ -201,7 +213,7 @@ Make sure to:
 "Delete Volume on Instance Delete" to "No." Next, select the recovered volume.
 
 Once you have configured everything, you can launch the instance and test it
-to see if it had booted up and is functional.
+to see if it has booted up and is functional.
 
 If everything worked correctly, you may delete the TBMR instance. 
 The TBMR image can be kept around for future use if you want,
@@ -219,7 +231,7 @@ System Recovery
     - Server Name/IP Address: **server2.backup.dco1.safedc.net**
     - Port: **1600**
     - Node Name: **[Name of the Node to recover from]**
-    - Password: **[Node password, can be found in Cloutility]**
+    - Password: **[Node password, can be found/set in Cloutility]**
     - (Optional) Point-in-time (PIT) restore: **[which point in time to restore from]** When not setting this option, TBMR will restore from the _latest_ backup.
 6. Next, you will be asked to specify the volume layout. A proposed one will 
     initially be provided to you, but you should definitely make sure that it 
