@@ -55,7 +55,7 @@ Required files:
     1. If you are using an **AlwaysOn** cluster, you need to do all the steps on 
        all the cluster nodes and not on the AlwaysOn Node.
 1. Go to the Schedules tab and select the backup schedules you want to protect your environment.
-    1. If you want to run Full Backup you need the Full Backup Script, for Log Backups you need the Log backup Script and Differential Backup you need the Differential Backup Script in your `c:\safespring` directory.
+    1. If you want to run Full Backup you need the Full Backup Script, for Log Backups you need the Log backup Script and Differential Backup you need the Differential Backup Script in your `c:\Safespring` directory.
 1. We recommend installing a separate `IBM Client Acceptor Service` that are only control Microsoft SQL Backup Service, so part of the installation do you need to start a **Command Line Window** and run the configuration script `tdpsql-install-windows.cmd` that you saved in the `c:\Safespring` directory. Run the script with two parameters `tdpsql-install-windows.cmd NODENAME PASSWORD`
 ![Installing Backup Scheduler](../images/TDP4SQL-Install-Service.png)
 
