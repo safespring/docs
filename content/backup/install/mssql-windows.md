@@ -44,11 +44,12 @@ Required files:
 ![Manuall Backup](../images/TDP4SQL-Full-Backup.png)
 
 #### Schedule Backups
-1. Download the required backup scripts and save them to `C:\safespring`
+1. Download the required backup scripts and save them to `C:\Safespring`
 - [Full Backup Script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/sqlfull.ps1) (Right-click and Save)
 - [Log Backup Script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/sqllog.ps1) (Right-click and Save)
 - [Differential Backup Script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/sqldiff.ps1) (Right-click and Save)
 - [Install Backup Schedule Services](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/tdpsql-install-windows.cmd) (Right-click and Save)
+1. Open Powershell and run `Unblock-File C:\Safespring\*` to make the scripts runnable.
 1. Login on [Safepspring Backup Portal](https://portal.backup.sto2.safedc.net/)
 1. Select on the Microsoft SQL Backup Consumption Unit
     1. If you are using an **AlwaysOn** cluster, you need to do all the steps on 
