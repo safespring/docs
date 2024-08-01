@@ -10,7 +10,7 @@ You need to install [IBM Storage Defender Backup-Archive Client](./windows.md) b
 
 Required files:
 
-- [IBM Storage Defender Data Protection for Microsoft SQL](https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/tivoli-data-protection/ntsql/)
+- IBM Storage Defender Data Protection for Microsoft SQL. _Please contact [Support](../../service/support.md) to receive a licensed copy._
 - [SafeDC Default Configuration file dsm.opt](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/dsm.opt.sample) (Right-click and Save)
 - [SafeDC Default Configuration file tdpsql.cfg](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/tdpsql.cfg.sample) (Right-click and Save)
 
@@ -44,17 +44,18 @@ Required files:
 ![Manuall Backup](../images/TDP4SQL-Full-Backup.png)
 
 #### Schedule Backups
-1. Download the required backup scripts and save them to `C:\safespring`
+1. Download the required backup scripts and save them to `C:\Safespring`
 - [Full Backup Script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/sqlfull.ps1) (Right-click and Save)
 - [Log Backup Script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/sqllog.ps1) (Right-click and Save)
 - [Differential Backup Script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/sqldiff.ps1) (Right-click and Save)
 - [Install Backup Schedule Services](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/tdpsql-install-windows.cmd) (Right-click and Save)
+1. Open Powershell and run `Unblock-File C:\Safespring\*` to make the scripts runnable.
 1. Login on [Safepspring Backup Portal](https://portal.backup.sto2.safedc.net/)
 1. Select on the Microsoft SQL Backup Consumption Unit
     1. If you are using an **AlwaysOn** cluster, you need to do all the steps on 
        all the cluster nodes and not on the AlwaysOn Node.
 1. Go to the Schedules tab and select the backup schedules you want to protect your environment.
-    1. If you want to run Full Backup you need the Full Backup Script, for Log Backups you need the Log backup Script and Differential Backup you need the Differential Backup Script in your `c:\safespring` directory.
+    1. If you want to run Full Backup you need the Full Backup Script, for Log Backups you need the Log backup Script and Differential Backup you need the Differential Backup Script in your `c:\Safespring` directory.
 1. We recommend installing a separate `IBM Client Acceptor Service` that are only control Microsoft SQL Backup Service, so part of the installation do you need to start a **Command Line Window** and run the configuration script `tdpsql-install-windows.cmd` that you saved in the `c:\Safespring` directory. Run the script with two parameters `tdpsql-install-windows.cmd NODENAME PASSWORD`
 ![Installing Backup Scheduler](../images/TDP4SQL-Install-Service.png)
 
