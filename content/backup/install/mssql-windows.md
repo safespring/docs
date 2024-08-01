@@ -10,7 +10,7 @@ You need to install [IBM Storage Defender Backup-Archive Client](./windows.md) b
 
 Required files:
 
-- [IBM Storage Defender Data Protection for Microsoft SQL](https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/tivoli-data-protection/ntsql/)
+- IBM Storage Defender Data Protection for Microsoft SQL. _Please contact [Support](../../service/support.md) to receive a licensed copy._
 - [SafeDC Default Configuration file dsm.opt](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/dsm.opt.sample) (Right-click and Save)
 - [SafeDC Default Configuration file tdpsql.cfg](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/tdpsql.cfg.sample) (Right-click and Save)
 
