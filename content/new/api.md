@@ -2,7 +2,7 @@
 
 ## Requirements
 
-For advanced use cases and automation it is neccessary to use the
+For advanced use cases and automation it is necessary to use the
 Openstack API endpoints directly.
 
 ## Install the Openstack command line client
@@ -14,7 +14,7 @@ Openstack.org instructions on how to install the client can be found
 
 ### Linux
 
-First install the neccessary OS packages depending on what distribution you are
+First install the necessary OS packages depending on what distribution you are
 using. If the `python-virtualenvwrapper` package is not available you might have to install `epel-release` first.
 
 ```shell tab="Red Hat Enterprise Linux, CentOS or Fedora"
