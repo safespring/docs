@@ -90,6 +90,10 @@ Once your container image is ready, you can push it to your Container Registry u
 
 You can verify the results in the Registry dashboard by navigating to the **Projects** page via the left-hand menu and selecting the **library** project. Your image should be listed there.
 
+### Docker Hub Proxy
+
+In order to address the rate limiting imposed by Docker hub registry we provide a proxy available for internal use within the Container platform. This can be utilised by prefixing your images with the `registry.eu-2.paas.open-science-cloud.ec.europa.eu/base`, for example instead of `bitnami/redis` or `docker.io/bitnami/redis`, use image `registry.eu-2.paas.open-science-cloud.ec.europa.eu/base/bitnami/redis`.
+
 ## Working with Helm Charts
 
 !!! info "Helm"

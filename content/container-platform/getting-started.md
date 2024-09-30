@@ -51,7 +51,7 @@ This configuration can be added via the Web Console using the `+` (plus) icon on
 
 ![Container Platform Add YAML](../images/cp-add-yaml.png)
 
-Check you are on the desired project, above the `Import YAML` title there is the name of the project and a dropdown you can select the appropriate project. From the CLI you can select the right project either by running `oc project <project_name>` or ading `-n <project_name>` as an option to the `oc` command.
+Check you are on the desired project, above the `Import YAML` title there is the name of the project and a dropdown you can select the appropriate project. From the CLI you can select the right project either by running `oc project <project_name>` or adding `-n <project_name>` as an option to the `oc` command.
 
 From the command line the `YAML` configuration can be saved as files and applied using `oc apply -f <file_path>` or specifying the project `oc apply -n <project_name> -f <file_path>`
 
@@ -59,7 +59,7 @@ From the command line the `YAML` configuration can be saved as files and applied
 
 #### Creating a Deployment
 
-Deployments manage rolling updates for an application. They typically contain a ReplicaSet and several pods. Another equivalent resource is a StatefulSet, that like a Deployment,  defines Pods based on container specification. But unlike a Deployment, a StatefulSet gives an expected and stable identity, with a persistent identifier that it is maintained across any event (upgrades, re-deployments, ...). A stateful set provides:
+Deployments manage rolling updates for an application. They typically contain a ReplicaSet and several pods. Another equivalent resource is a StatefulSet, that like a Deployment,  defines Pods based on container specification. But unlike a Deployment, a StatefulSet gives an expected and stable identity, with a persistent identifier that it is maintained across any event (upgrades, re-deployments, etc.). A stateful set provides:
 
 - Stable, unique network identifiers.
 - Stable, persistent storage.

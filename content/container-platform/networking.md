@@ -24,7 +24,7 @@ spec:
 - **`termination`**: Determines how incoming encrypted traffic is handled.
     - **`edge`**: Handles incoming HTTPS traffic and redirects HTTP traffic to your pod. Your application doesn't manage HTTPS.
     - **`passthrough`**: Passes HTTPS traffic directly to your service without handling it. Your application must manage HTTPS. **Currently not supported.**
-    - **`reencrypt`**: Handles incoming HTTPS traffic and then reencrypts it with a different certificate (which can be self-signed). Your application must handle HTTPS for the new certificate.
+    - **`reencrypt`**: Handles incoming HTTPS traffic and then re-encrypts it with a different certificate (which can be self-signed). Your application must handle HTTPS for the new certificate.
 - **`insecureEdgeTerminationPolicy`**: Determines how incoming unencrypted traffic is managed.
     - **`Allow`**: Permits HTTP traffic (not recommended).
     - **`Redirect`**: Redirects clients to the HTTPS endpoint (recommended).

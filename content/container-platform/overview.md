@@ -33,6 +33,11 @@ To login into the Container Platform Web console use the appropriate URL (e.g. E
 
 ![Container Platform Login](../images/cp-login.png)
 
+!!! note
+    To Display other login options use the keyboard key combination: `Ctrl/Cmd + Shift + H` or `Windows Key + Shift + H`.
+
+![Container Platform Login](../images/cp-login-2.png)
+
 All applications launched in the Container Platform will run within `projects` that have been requested by each user in the European Open Science Cloud. Each project has its own private virtual network and it is isolated from other projects. Users can only see projects they have access to.
 
 ![Container Platform Web Console](../images/cp-web-console.png)
@@ -54,7 +59,8 @@ To obtain the login access token go to the Web console and under the User menu (
 
 ```bash
 # for example EOSC production login using token 
-oc login --server=https://api.eu-2.paas.open-science-cloud.ec.europa.eu:6443 --token=<access-token>
+oc login --server=https://api.eu-2.paas.open-science-cloud.ec.europa.eu:6443 \
+    --token=<access-token>
 ```
 
 ### EOSC users
