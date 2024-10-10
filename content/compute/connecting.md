@@ -1,7 +1,7 @@
 # Connecting your virtual servers to your infrastructure
 
 ## Connecting to Safespring
-For general encrypted connection options to your instances in the Safespring infrastructure we refer to the documentation writte for the new platform [here](https://docs.safespring.com/new/vpn/). Wireguard replaces the older openvpn setup descibred below as well as the Saferoute option which at the moment does not work in our version 2 of the platform we are migrating our customers to.
+For general encrypted connection options to your instances in the Safespring infrastructure we refer to the documentation written for the new platform [here](https://docs.safespring.com/new/vpn/). Wireguard replaces the older openvpn setup descibred below as well as the Saferoute option which at the moment does not work in our version 2 of the platform we are migrating our customers to.
 
 The instances you have set up in Safespring Compute will get floating IP
 addresses from the SUNET/UNINETT IP pool and are the way of contact for the clients
