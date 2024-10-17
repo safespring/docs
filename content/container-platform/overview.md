@@ -24,12 +24,12 @@ Current OKD version: 4.15 / Kubernetes version: 1.28
 There are three main interfaces to interact with Container Platform:
 
 - Web console - [OKD 4 docs](https://docs.okd.io/4.15/web_console/web-console-overview.html);
-- Command line (`oc`; or `kubectl` as fallback) - follow [CLI tools](https://docs.redhat.com/en/documentation/openshift_container_platform/4.15/html-single/cli_tools/index) for installing `oc` command. For installing `kubectl` command follow [kubernetes instal tools](https://kubernetes.io/docs/tasks/tools/);
+- Command line (`oc`; or `kubectl` as fallback) - follow [CLI tools](https://github.com/okd-project/okd/releases/tag/4.15.0-0.okd-2024-03-10-010116) for installing `oc` command. For installing `kubectl` command follow [kubernetes instal tools](https://kubernetes.io/docs/tasks/tools/);
 - API - for using different programming languages follow [REST API](https://docs.okd.io/4.15/rest_api/index.html).
 
 ### Web Console
 
-To login into the Container Platform Web console use the appropriate URL (e.g. EOSC https://eu-2.paas.open-science-cloud.ec.europa.eu/ ) and select login method `EOSC AAI`, which will redirect you to select the login provider. Once login has been successful you will be able to see the OKD Web Console.
+To login into the Container Platform Web console use the appropriate URL (e.g. EOSC: https://eu-2.paas.open-science-cloud.ec.europa.eu/ ) and select login method `EOSC AAI`, which will redirect you to select the login provider. Once login has been successful you will be able to see the OKD Web Console.
 
 ![Container Platform Login](../images/cp-login.png)
 
@@ -51,6 +51,10 @@ oc login <api_url> -u=<username> -p=<password>
  
 # for example EOSC production
 oc login --server=https://api.eu-2.paas.open-science-cloud.ec.europa.eu:6443
+
+# check cluster status once logged-in
+
+oc status
 ```
 
 To obtain the login access token go to the Web console and under the User menu (top right corner) see the `Copy login command` and follow the instructions
@@ -72,10 +76,16 @@ EOSC users can use the Production Cluster with the following endpoints:
 | Web console            | https://eu-2.paas.open-science-cloud.ec.europa.eu/         |
 | API address            | https://api.eu-2.paas.open-science-cloud.ec.europa.eu:6443 |
 | Default routes address | `*.eu-2.open-science-cloud-user-apps.eu`                   |
-| Image registry         | https://registry.apps.okd-eosc.staging.safedc.services/    |
+| Image registry         | https://registry.eu-2.paas.open-science-cloud.ec.europa.eu/   |
 
-!!! note
-    For Accessing the staging environment to test specific features in an isolated environment please contact support@safespring.com or official European Open Science Cloud help desk.
+Staging cluster has the following endpoints:
+
+|                        | URL                                                        |
+|------------------------|------------------------------------------------------------|
+| Web console            | https://console-openshift-console.apps.okd-eosc.staging.safedc.services/         |
+| API address            | https://api.okd-eosc.staging.safedc.services:6443 |
+| Default routes address | `*.apps.okd-eosc.staging.safedc.services`                   |
+| Image registry         | https://registry.eapps.okd-eosc.staging.safedc.services   |
 
 
 ## What to do next ?

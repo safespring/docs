@@ -33,10 +33,10 @@ In addition to OKD-specific documentation available on this site, both OKD and K
    - **Projects:** Similar to Kubernetes namespaces but with additional features, such as resource quotas and role-based access control (RBAC).
    - **Templates:** Provide a mechanism to define a set of objects that can be instantiated together, often used to create complex applications.
 
-In order to start using Container platform a user must have access to a namespace/project. Every Kubernetes object is created inside a `Namespace`. It is just a sandbox where all the other objects are contained and separated from objects belonging to other namespaces. In OKD they are referred as `Projects`. 
+In order to start using Container platform a user must have access to a namespace/project. Every Kubernetes object is created inside a `Namespace`. It is just a sandbox where all the other objects are contained and separated from objects belonging to other namespaces. In OKD they are referred as `Projects`, and the terms can be used interchangeable to some degree.
 
 !!! important
-    By default users are not permitted to create new projects. New projects can be created via upport@safespring.com or official European Open Science Cloud instructions.
+    By default users are not permitted to create new projects. New projects can be created via support@safespring.com or official European Open Science Cloud instructions.
 
     For more information on Projects and quotas see [Projects](projects.md) section.
 
@@ -227,10 +227,10 @@ spec:
         volumeMounts:
         - mountPath: /mountdata
           name: smalldisk-vol # Refers to your volume below
-  volumes:
-  - name: smalldisk-vol
-    persistentVolumeClaim:
-      claimName: nginx-pvc # Refers to your PersistentVolumeClaim (pvc.yaml)
+      volumes:
+      - name: smalldisk-vol
+        persistentVolumeClaim:
+          claimName: nginx-pvc # Refers to your PersistentVolumeClaim (pvc.yaml)
 ```
 
 ### Create a CronJob
