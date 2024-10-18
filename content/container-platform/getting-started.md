@@ -261,3 +261,221 @@ spec:
                 restartPolicy: OnFailure
 
 ```
+
+### Deployment Using Kustomize
+
+To create a [Kustomize](https://kustomize.io/) deployment for OKD (OpenShift Kubernetes Distribution), you can define resources such as `Deployment`, `Service`, and `ConfigMap`, and then customize them using Kustomize. Here's an example of how to deploy an application to OKD using Kustomize.
+
+- **Base**: Contains the shared resources (e.g., `Deployment`, `Service`) that are common for both environments.
+- **Overlays**: Customize the base configuration for specific environments (development and production) using strategic merge patches.
+- **Kustomize**: Processes the `kustomization.yaml` files to apply patches and generate the final manifests to be deployed to OKD. 
+
+#### Directory Structure
+
+```
+nginx/
+├── base/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── kustomization.yaml
+└── overlays/
+    ├── dev/
+    │   ├── kustomization.yaml
+    │   └── patch-deployment.yaml
+    └── prod/
+        ├── kustomization.yaml
+        └── patch-deployment.yaml
+```
+
+#### Base Configurations
+
+1. **`base/deployment.yaml`**: This file defines a basic deployment configuration.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-container
+        image: docker.io/nginxinc/nginx-unprivileged
+        ports:
+        - containerPort: 80
+```
+
+2. **`base/service.yaml`**: Defines the service for your application.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
+```
+
+3. **`base/kustomization.yaml`**: Kustomize file that references the `Deployment` and `Service`.
+
+```yaml
+resources:
+  - deployment.yaml
+  - service.yaml
+```
+
+#### Overlay Configurations
+
+Now, we’ll create two overlays: `dev` and `prod`, where the deployment configurations can be customized.
+
+1. **`overlays/dev/kustomization.yaml`**:
+
+```yaml
+resources:
+- ../../base
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+patches:
+- path: patch-deployment.yaml
+```
+
+2. **`overlays/dev/patch-deployment.yaml`**: This file customizes the base deployment for the development environment, for example, by changing the number of replicas and the image version.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: nginx-container
+          image: docker.io/nginxinc/nginx-unprivileged
+```
+
+3. **`overlays/prod/kustomization.yaml`**:
+
+```yaml
+resources:
+- ../../base
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+patches:
+- path: patch-deployment.yaml
+```
+
+4. **`overlays/prod/patch-deployment.yaml`**: This file customizes the base deployment for production, increasing the number of replicas and setting a stable image.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 5
+  template:
+    spec:
+      containers:
+        - name: nginx-container
+          image: docker.io/nginxinc/nginx-unprivileged
+```
+
+#### Deploying with Kustomize
+
+To deploy your application to OKD, you can use the following commands:
+
+1. **Development Environment**:
+
+```bash
+oc apply -k overlays/dev -n <namespace>
+```
+
+2. **Production Environment**:
+
+```bash
+oc apply -k overlays/prod -n <namespace>
+```
+
+3. **Expose the route**
+
+```bash
+oc get svc -n <namespace>
+# expose the my-wordpress service
+oc expose route my-wordpress -n <namespace>
+```
+
+4. **Remove deployment**
+
+```bash
+oc delete -k overlays/prod -n <namespace>
+```
+
+### Deployment Using Helm
+
+Make sure helm is installed https://helm.sh/docs/intro/install/
+
+1. **Add Helm repository**
+
+```bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+```
+
+2. **Install a Helm chart (e.g., WordPress)**
+
+```bash
+helm install -n <namespace> my-wordpress bitnami/wordpress --set ingress.enable=true --set service.type=ClusterIP
+
+```
+Where:
+- `my-wordpress`: This is the release name.
+- `bitnami/wordpress`: The Helm chart to install.
+- `--set ingress.enable=true`: We make sure ingress is enabled.
+- `--set service.type=ClusterIP`: We customize the service type to expose WordPress.
+
+3. **Verify the deployment**
+
+```bash
+oc get pods -n <namespace>
+helm list -n <namespace>
+```
+
+4. **Scale deployment**
+
+```bash
+helm upgrade -n <namespace> my-wordpress bitnami/wordpress --set replicaCount=3
+```
+
+To rollback use `helm rollback -n <namespace> my-wordpress 1`
+
+5. **Expose the route**
+
+```bash
+oc get svc -n <namespace>
+# expose the my-wordpress service
+oc expose route my-wordpress -n <namespace>
+```
+
+6. **Uninstall helm release**
+
+```bash
+helm uninstall -n <namespace> my-wordpress
+```
