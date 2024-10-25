@@ -44,7 +44,7 @@ For more information:
 - [OKD Guidelines](https://docs.okd.io/4.15/openshift_images/create-images.html#images-create-guide-openshift_create-images)
 - [Support Arbitrary User IDs](https://docs.okd.io/4.15/openshift_images/create-images.html#use-uid_create-images)
 
-Common adjustments for images running on OpenShift include:
+Common adjustments for images running on OKD include:
 
 - Avoiding privileged ports (below `1024`).
 - Adding write access to certain directories for `gid=0`, e.g., `RUN chgrp -R 0 /some/directory && chmod -R g+rwX /some/directory`.
@@ -97,7 +97,7 @@ In order to address the rate limiting imposed by Docker hub registry we provide 
 ## Working with Helm Charts
 
 !!! info "Helm"
-    Helm is a CLI tool which enables developers to create declarative and configurable application/service definitions for Kubernetes/OpenShift named charts. Each chart is configurable and produces Kubernetes/OpenShift resources in the process (which describe the application).
+    Helm is a CLI tool which enables developers to create declarative and configurable application/service definitions for Kubernetes/OKD named charts. Each chart is configurable and produces Kubernetes/OKD resources in the process (which describe the application).
 
     See more at: https://helm.sh/
 

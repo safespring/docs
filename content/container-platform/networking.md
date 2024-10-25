@@ -2,7 +2,7 @@
 
 ## Routes
 
-Routes in OpenShift are similar to Ingress in vanilla Kubernetes, enabling external access to a Service object via HTTP/HTTPS. A typical Route definition looks like this:
+Routes in OKD are similar to Ingress in vanilla Kubernetes, enabling external access to a Service object via HTTP/HTTPS. A typical Route definition looks like this:
 
 ```yaml
 apiVersion: v1

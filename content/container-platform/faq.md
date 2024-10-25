@@ -76,15 +76,14 @@ If the problem persists for several minutes, the issue might be that the volume 
 
 ## How can I spot potential problems ?
 
-Debugging **Deployments**, **StatefulSets** (similar resources) and **Pods** in an OpenShift project focus on:
+Debugging **Deployments**, **StatefulSets**, **Pods** and other resources in an OKD project focuses on:
+
 - Checking pod status and logs.
 - Describing deployments, statefulsets and pods to identify issues.
 - Reviewing events and resource quotas.
 - Inspecting image pulls, health probes, and network configurations.
 
-By following these techniques, you should be able to identify the root cause of most issues in OpenShift deployments.
-
-Below are the various methods and tools you can use to debug and troubleshoot deployments and pods within OpenShift.
+By following these techniques, you should be able to identify the root cause of most issues in OKD deployments.
 
 ### 1. Check the Status of the Resource
 
@@ -156,7 +155,7 @@ oc logs <pod-name> -c <container-name> --previous -n <namespace>
 
 ### 6. Inspect Events in the Namespace
 
-Events in OpenShift provide helpful insight into what is happening within your project. These logs include scheduling, resource availability, and networking-related issues.
+Events in OKD provide helpful insight into what is happening within your project. These logs include scheduling, resource availability, and networking-related issues.
 
 ```bash
 oc get events -n <namespace>

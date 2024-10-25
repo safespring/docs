@@ -8,7 +8,7 @@ In addition to OKD-specific documentation available on this site, both OKD and K
 
 - [Official OKD Documentation](https://docs.okd.io/)
 - [Official Kubernetes Documentation](https://kubernetes.io/docs/home/)
-- [Openshift cookbook](https://cookbook.openshift.org/)
+- [OKD cookbook](https://cookbook.openshift.org/)
 - [Differences between Kubernetes and Openshift](https://www.ibm.com/think/topics/openshift-vs-kubernetes)
 
 ## Core Concepts
@@ -26,7 +26,7 @@ In addition to OKD-specific documentation available on this site, both OKD and K
    - **InitContainer:** is a container in a pod that is intended run to completion before the main containers are start
    - **Jobs:** Jobs represent one-off tasks that run to completion and then stop, whilst a **CronJob** is represents one-time **Jobs** on a repeating schedule.
 
-### OpenShift-Specific Resources
+### OKD-Specific Resources
    - **BuildConfigs:** Define how to build and deploy an application from source code to a running container image.
    - **ImageStreams:** Track changes to images, enabling versioning and automatic updates of Pods when a new image is available.
    - **Routes:** Provide external URLs for services, enabling external traffic to reach services inside the cluster.
