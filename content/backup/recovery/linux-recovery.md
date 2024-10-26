@@ -18,22 +18,7 @@ is done on Linux. However, that will not be described here.
 TBMR Preparation Guide
 ----------------------------
 
-### Part one - Restore preparations
-
-Safespring recommends all users to prepare and maintain bootable media of the recovery tool _before_ the required use of the tool.
-
-To restore a machine, the following preparatory steps need to be taken:
-
- 1. **Retrieve the bootable ISO image.**
-
-    The bootable ISO of TBMR, called XBMR, is available at Safespring's [distribution site](https://archive.service.safedc.net/tbmr/Linux/). The bootable ISO-file is named `xbmr-for-safespring-x.x.x.x.linux.x86_64.iso`.
-
- 2. **Prepare bootable media (DVD or USB) with this bootable image.**
-
-    Using your favorite method, prepare, for example, a DVD or USB drive with 
-    the ISO image retrieved in step 1.
-
-### Part two - Client Installation
+### Client Installation
 
 We will describe step by step how to install the TBMR utility on Linux
 systems to make them recoverable using TBMR.
@@ -49,7 +34,9 @@ systems to make them recoverable using TBMR.
   [Quickstart Guide](../quickstart-guide.md) for information about how to do this.
 * A license for TBMR. 
   As a customer, you have access to our site license. 
-  Please contact [support](../../service/support.md) to receive a copy.
+
+Please contact [support](../../service/support.md) to receive a copy of the TBMR software and 
+license.
 
 #### Installation
 1. Install TBMR **(on Ubuntu/Debian)**:
@@ -203,8 +190,7 @@ To perform a restore of a machine with TBMR, the following steps must be taken:
  3. **Generate** a new password for the node via API or portal.
  4. **Enter** the node name (12 characters A-Z) and password into the booted tool.
  5. **Optionally add** any additional missing drivers for the new machine.
- 6. **Optionally partition** the devices for the new machine.
- 7. **Restore** the old machine into a new system.
+ 6. **Restore** the old machine into a new system.
 
 ### More information
 
@@ -212,6 +198,22 @@ For further details at this point, please see:
 
  * [TBMR For Linux Usage Guide](https://archive.service.safedc.net/tbmr/Linux/UserGuide.pdf)
  * [TBMR For Windows Usage Guide](https://archive.service.safedc.net/tbmr/Windows/TBMR-722-UserGuide.pdf)
+
+### Preparations
+
+Safespring recommends all users to prepare and maintain bootable media of the recovery tool _before_ the required use of the tool.
+
+To restore a machine, the following preparatory steps need to be taken:
+
+ 1. **Retrieve the bootable ISO image.**
+
+    The bootable ISO of TBMR for Linux, called XBMR. The ISO is named 
+    `xbmr-for-safespring-x.x.x.x.linux.x86_64.iso`.
+
+ 2. **Prepare bootable media (DVD or USB) with this bootable image.**
+
+    Using your favorite method, prepare, for example, a DVD or USB drive with 
+    the ISO image retrieved in step 1.
 
 ### Restore of a Linux machine
 
