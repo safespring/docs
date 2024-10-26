@@ -81,8 +81,8 @@ nav:
     #   - First Backup: "backup/performance/first-backup.md"
     - Recovery:
       - The Basics: "backup/recovery/basics.md"
-      - Windows System: "backup/recovery/windows-recovery.md"
-      - Linux System: "backup/recovery/linux-recovery.md"
+      - Windows Systems: "backup/recovery/windows-recovery.md"
+      - Linux Systems: "backup/recovery/linux-recovery.md"
     - FAQ: "backup/faq.md"
     - Legacy Backup: "legacy-backup/index.md"
   - Compute:
