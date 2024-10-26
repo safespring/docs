@@ -23,7 +23,7 @@ The following table contains the ```apt``` configuration for each of the
 supported distributions:
 
 | Distribution            | Apt repository configuration                            |
-| ----------------------- | ------------------------------------------------------- |
+|-------------------------|---------------------------------------------------------|
 | Debian 10 Buster        | deb https://repo.service.safedc.net/debian buster main  |
 | Debian 9 Stretch        | deb https://repo.service.safedc.net/debian stretch main |
 | Ubuntu 20 Focal Fossa   | deb https://repo.service.safedc.net/debian focal main   |

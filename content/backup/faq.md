@@ -31,9 +31,9 @@ For more details and examples, see your [API Documentation](api.md)
 
 ## How do I install TBMR (Bare machine recovery for TSM)
 
-- For Windows see our [TBMR installation guide](howto/windows-recovery.md)
+- For Windows see our [Windows TBMR installation guide](recovery/windows-recovery.md)
+- For Linux see our [Linux TBMR installation guide](recovery/linux-recovery.md)
 
-Documentation for using TBMR on other platforms is currently _missing_.
 
 ## When will Operating System X version Y be fully supported by TSM?
 
