@@ -131,6 +131,7 @@ nav:
   - Status and support:
     - Roadmap: "service/roadmap.md"
     - Status information: "service/status.md"
+    - Offboarding information: "new/offboarding.md"
     - Getting support: "service/support.md"
     - Policies and SLA: "service/policies.md"
     - Domain changes: "service/domain-changes.md"
