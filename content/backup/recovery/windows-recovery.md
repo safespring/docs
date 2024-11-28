@@ -24,7 +24,9 @@ Prerequisites
   [Quickstart Guide](../quickstart-guide.md) for information about how to do this.
 * A license for TBMR. 
   As a customer, you have access to our site license. 
-  Please contact [support](../../service/support.md) to receive a copy.
+
+Please contact [support](../../service/support.md) to receive a copy of the TBMR software and 
+license.
 
 Installation
 --------------
