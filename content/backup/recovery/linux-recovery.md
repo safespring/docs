@@ -88,8 +88,11 @@ go to Compute -> Images and click on "Create Image."
 Then:
 
 - Specify a descriptive name, such as `xbmr-x.x.x.x`. 
-- Choose the ISO as the image file. 
-- Select Format as ISO.
+- Select the ISO as the image file. 
+- Select Format as `ISO - Optical Disk Image`.
+- Set the architecture to `x86_64`.
+- Set the minimum RAM (MB) to `8192`.
+- Set Protected to No.
 
 ![Create TBMR Image](../images/compute-create-xbmr-image.png)
 
