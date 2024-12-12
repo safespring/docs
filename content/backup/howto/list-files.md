@@ -24,7 +24,7 @@ you are looking for are if you are searching for files under `/home`.
 
 This is how you find all filespaces on your node:
 ```
-root@hostname ~# dsmc q f 
+root@hostname ~# dsmc query filespace
 IBM Storage Protect
 Command Line Backup-Archive Client Interface
   Client Version 8, Release 1, Level 23.0 
@@ -41,7 +41,7 @@ Session established with server DCO1-BACKUP-SERVER-2: Linux/x86_64
   1     2024-09-13 04:16:26     EXT4    /               
 ```
 
-The command `dsmc q f` is shorthand for `dsmc query filespace`.
+The command `dsmc query filespace` can be shortened to `dsmc q f`.
 
 You can also find this information in the Backup Portal by visiting 
 `Consumption units -> Your Node -> File spaces`.

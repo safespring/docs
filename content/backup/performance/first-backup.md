@@ -35,7 +35,7 @@ at:
 ```
 /opt/tivoli/tsm/client/ba/bin/TSMDEDUPDB_${SERVERNAME}${NODENAME}.DB
 ```
-However, even with optimizations, there is 
+However, even with such optimizations, there is 
 going to be some overhead incurred from comparing the metadata from your 
 filesystems with the metadata from the backup server to prevent
 unnecessary uploads to the server.
@@ -48,9 +48,9 @@ progressive incremental backup</a>, unless specified otherwise. This is the reco
 
 The First Complete Backup
 ----------------------------
-When backing up a machine for the _first time_, you know a priori that there is 
-no data from your machine on the backup server. 
-In such a case, the optimization above yields no benefit, 
+When backing up a machine for the _first time_, you know beforehand that there 
+is no data from your machine on the backup server. 
+In such a case, the optimization above (caching) yields no benefit, 
 and the Backup-Archive client will only incur an unnecessary overhead when using 
 the incremental backup method.
 
@@ -68,8 +68,8 @@ Selective command documentation</a>
 
 The `dsmc selective` command:
 
-- Will back up the files that you explicitly select, regardless if they exist
-  on the backup server or not.
+- Will back up the files that you explicitly select, regardless if they already
+  exist on the backup server or not.
 - Will obey the include/exclude rules in dsm.sys (or dsm.opt on Windows).
 
 Unlike incremental backups, the client does not 
@@ -117,9 +117,9 @@ How to Back up
 
 2. Run:
    ```
-   dsmc selective -su=yes '/*'
+   dsmc selective -subdir=yes '/*'
    ```
-   The flag `-su=yes` means recursively backup subdirectories.
+   The flag `-subdir=yes` means recursively backup subdirectories.
 
    **Suggestion:** If you are connecting to the machine remotely, it can be 
    a good 
@@ -150,7 +150,7 @@ How to Back up
 2. Open an administrative Command Prompt, and run:
    ```
    cd C:\Program Files\Tivoli\TSM\baclient
-   dsmc selective -su=yes 'C:\*'
+   dsmc selective -subdir=yes 'C:\*'
    ```
    If the machine has several drives, run this step once for each drive but 
    replace `C:\*` with the correct label.

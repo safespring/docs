@@ -64,23 +64,24 @@ More examples
 
 Restore **a single file** to the current working directory:
 ```
-dsmc res '/root/.ssh/authorized_keys' './'
+dsmc restore '/root/.ssh/authorized_keys' './'
 ```
 
 Restore **a directory** and only its immediate descendants to the current 
 working directory:
 ```
-dsmc res '/home/ubuntu/' './'
+dsmc restore '/home/ubuntu/' './'
 ```
 
 Fully restore **a directory** to the current working directory:
 ```
-dsmc res -su=y '/home/ubuntu/' './'
+dsmc restore -subdir=y '/home/ubuntu/' './'
 ```
 
-This is `mkdir ubuntu` with extra steps:
+Restore only a directory without its content (almost equivalent 
+to `mkdir ubuntu`):
 ```
-dsmc res '/home/ubuntu' './'
+dsmc restore '/home/ubuntu' './'
 ```
 
 Cancel restore session
