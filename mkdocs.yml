@@ -69,15 +69,20 @@ nav:
       - Encryption: "backup/howto/encryption.md"
       - Include/Exclude: "backup/howto/include-exclude.md"
       - New Server: "backup/howto/switch-from-tsm12.md"
-      - Windows Recovery: "backup/howto/windows-recovery.md"
-     # - Linux Recovery: "backup/howto/linux-recovery.md"
       - Admin SSO: "backup/howto/sso.md"
       - Handling Changing Files: "backup/howto/changing-files.md"
+      - List Files: "backup/howto/list-files.md"
     - Automation:
       - Command Line: "backup/automation/cli-tool.md"
       - REST API: "backup/automation/rest-api.md"
       - API Resources: "backup/automation/api-resources.md"
       - More Info: "backup/automation/more-info.md"
+    # - Performance:
+    #   - First Backup: "backup/performance/first-backup.md"
+    - Recovery:
+      - The Basics: "backup/recovery/basics.md"
+      - Windows Systems: "backup/recovery/windows-recovery.md"
+      - Linux Systems: "backup/recovery/linux-recovery.md"
     - FAQ: "backup/faq.md"
     - Legacy Backup: "legacy-backup/index.md"
   - Compute:

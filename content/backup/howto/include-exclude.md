@@ -10,7 +10,7 @@ or some other scheduler or event handler. The invocation would
 then be as simple as (on a Unix-based OS):
 
 ``` shell
-dsmc inc /var/lib/pg_data/psql_dumps/
+dsmc incremental /var/lib/pg_data/psql_dumps/
 ```
 
 But in case you would need a backup to run using the built-in
@@ -33,7 +33,7 @@ EXCLUDE C:\...\*
 INCLUDE "C:\Program Files\docgenerator\...\*"
 ```
 
-The `DOMAIN` specifier only applies to invocations like `dsmc inc` where 
+The `DOMAIN` specifier only applies to invocations like `dsmc incremental` where 
 you do not specify any path, or when `dsmcad` starts backup on a schedule.
 
 The default for `DOMAIN` is called `ALL-LOCAL` which means _all local 
@@ -65,7 +65,7 @@ rule.
 
 Combining includes and excludes that select whether to back up or not
 with includes and excludes for compression/encryption is a separate
-topic, [explained here](https://www.ibm.com/docs/en/storage-protect/8.1.22?topic=options-compression-encryption-backup-processing).
+topic, [explained here](https://www.ibm.com/docs/en/storage-protect/8.1.24?topic=options-compression-encryption-backup-processing).
 
 ### Handling common includes/excludes
 
@@ -115,7 +115,7 @@ directories, which in turn control retention times, i.e., for how long
 the backups will be kept. You might set a very short 
 retention time on operating system files, but long retention times on personal document folders on the same machine.
 
-On a configured node, you can run `dsmc query mgmt` to see available
+On a configured node, you can run `dsmc query mgmtclass` to see available
 selections, returning something like this:
 
 ``` shell
@@ -216,5 +216,5 @@ This is a more performant and flexible option to back up individual directories.
 
 ## Links
 
-* [All details on includes and excludes on the IBM website](https://www.ibm.com/docs/en/storage-protect/8.1.21?topic=reference-include-options)
-* [Details on the DOMAIN option](https://www.ibm.com/docs/en/storage-protect/8.1.22?topic=reference-domain)
+* [All details on includes and excludes on the IBM website](https://www.ibm.com/docs/en/storage-protect/8.1.24?topic=reference-include-options)
+* [Details on the DOMAIN option](https://www.ibm.com/docs/en/storage-protect/8.1.24?topic=reference-domain)
