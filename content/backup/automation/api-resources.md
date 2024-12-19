@@ -1,7 +1,10 @@
 REST API Resources
 ===================
 
-This document provides an overview of the REST API resources in Cloutility and their structures. A more complete documentation of Cloutility's REST API resources can be found [here](https://portal-api.backup.sto2.safedc.net/v1/help).
+This document provides an overview of the REST API resources in Cloutility and 
+their structures. 
+More complete documentation of Cloutility's REST API resources can be found 
+[here](https://portal-api.backup.sto2.safedc.net/v1/help).
 
 ## APIEndpoint
 ```json

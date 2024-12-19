@@ -26,28 +26,30 @@ macOS
 ```
 
 If you are going to use encryption, you will probably want to
-move from the default AES128 to AES256 with this option: `Encryptiontype aes256`.
+move from the default AES128 to AES256 with this option: 
+`Encryptiontype aes256`.
 
 How to handle keys
 ------------------
 
-First of all, there is nothing that prevents you from using external
+First, there is nothing that prevents you from using external
 crypto software using whatever key scheme, the only change as far as
 the service goes is that deduplication and compression will not yield
 any gains.
 
 When creating a node when you know all data will be
-encrypted, selecting `Encryption` will make sure neither client nor server will attempt dedup or
-compression to prevent waste of computing resources. It is not a hard
- requirement, and if you want to encrypt only parts of it, select
-deduplication and compression as normal, then use options (described
+encrypted, selecting `FORCE_ENCRYPT` will make sure neither client nor server 
+will attempt dedup or compression to prevent waste of computing resources. 
+It is not a hard requirement, and if you want to encrypt only parts of it, 
+select `DEDUP_AND_COMPRESS` as normal, then use options (described
 below) to point out the specific folders to encrypt.
 
 Selecting encryption while creating the node will push server config to the
-client going `INCLUDE.ENCRYPT /.../*` to make sure all files are secure at first run.
+client going `INCLUDE.ENCRYPT /.../*` to make sure all files are secure at 
+first run.
 
 ### IBM client encryption
-If you want to let the IBM client do the encryption you have to select
+If you want to let the IBM client do the encryption, you have to select
 if and how to store the encryption key. The choices are:
 
 1. **Never store the key at all.** This forces you to enter the key for
@@ -66,6 +68,11 @@ if and how to store the encryption key. The choices are:
    encrypted root disk which requires password entry at boot, it will
    still be protected from "evil maid" scenarios where someone copies
    your drive when it is turned off and tries to use the data offline.
+   
+    If you choose this option, 
+    please read the section 
+    about [securing the keystore](#the-password-keystore)
+    to avoid giving the backup server access to the encryption key password.
 
 3. **Generate a key and store it in the backup server database.**  Sounds
    a bit weird, but is meant to protect situations similar to having
@@ -84,12 +91,12 @@ before transfer.
 
 Unix, Linux and macOS
 ```
-INCLUDE.encrypt "/.../*"
+INCLUDE.ENCRYPT "/.../*"
 ```
 
 Windows
 ```
-INCLUDE.encrypt ?:\...\*
+INCLUDE.ENCRYPT ?:\...\*
 ```
 
 Do mind that it will not affect files that have already been sent over
@@ -107,8 +114,8 @@ key has been supplied.
 ## Encrypting selected folders
 
 If you want to selectively encrypt a subset of the data, add
-something along the lines of this to your `dsm.opt` / `dsm.sys`
-file:
+something like this to your `dsm.opt` (Windows) / `dsm.sys` 
+(Unix, Linux or macOS) file:
 
 ```shell
 INCLUDE.ENCRYPT "/Users/username/secret2/.../*"
@@ -137,7 +144,48 @@ Data encryption type:               256-bit AES
 ...
 ```
 
+## The Password keystore
+If you have chosen to store the encryption key password on the machine 
+(using the option `ENCRYPTKEY save`), 
+then this password will be stored in a keystore located
+at `/etc/adsm/TSM.KDB` (on Unix, Linux or macOS) 
+or `C:\ProgramData\Tivoli\TSM\baclient\Nodes\[your node name]\DCO1-BACKUP-SERVER-2\TSM.KDB` 
+(on Windows).
+
+In such a case, the keystore `TSM.KDB` along with `TSM.sth` and `TSM.IDX` 
+should not be readable (unencrypted) by the backup server.
+You should therefore either exclude them from your backups or encrypt them 
+client-side as well. 
+
+!!! note 
+      If you are already encrypting all your backups, then you don't need to do
+      anything else.
+
+### On Linux
+Exclude the keystore:
+```
+EXCLUDE.DIR "/etc/adsm"
+```
+
+Or, encrypt it:
+```
+INCLUDE.ENCRYPT "/etc/adsm/.../*"
+```
+
+### On Windows
+Exclude the keystore:
+```
+EXCLUDE.DIR "C:\ProgramData\Tivoli\TSM\baclient\Nodes\[your node name]\DCO1-BACKUP-SERVER-2"
+```
+
+Or, encrypt it:
+```
+INCLUDE.ENCRYPT "C:\ProgramData\Tivoli\TSM\baclient\Nodes\[your node name]\DCO1-BACKUP-SERVER-2\...\*"
+```
+
+Remember to replace `[your node name]` with your actual node name.
+
 ## Read more on IBMs site
 
-* [Include options](https://www.ibm.com/docs/en/storage-protect/8.1.24?topic=reference-include-options)
-* [Encryptkey options](https://www.ibm.com/docs/en/storage-protect/8.1.24?topic=reference-encryptkey)
+* [Include options](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-include-options)
+* [Encryptkey options](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-encryptkey)

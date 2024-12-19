@@ -797,7 +797,7 @@ This is done by using the following endpoint:
 Make sure to give the backup node a name by replacing the `{tsm_node_name}` 
 placeholder. 
 The name that you give must obey IBM Storage Protect's 
-[object naming rules](https://www.ibm.com/docs/en/storage-protect/8.1.24?topic=commands-naming-storage-protect-objects). 
+[object naming rules](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-naming-storage-protect-objects). 
 Because this is the name that will be used to configure the respective 
 computer's backup client.
 

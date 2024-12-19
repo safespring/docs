@@ -94,7 +94,7 @@ The identity is the user ID that we described in **Identity provider user ID**.
 Select **XPath**.
 
 ### Identity location
-The identity location will be an <a href='https://www.w3schools.com/xml/xpath_syntax.asp' target='_blank'>XPath</a> query. 
+The identity location will be an <a href='https://extendsclass.com/xpath-tester.html' target='_blank'>XPath</a> query. 
 
 For example, if the user identity is the text content of a NameID-tag, 
 then you can use the query: 

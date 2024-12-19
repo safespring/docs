@@ -36,19 +36,19 @@ Options:
   `/the/filespace/subdir/a/b.txt` on the current system. If we omit this flag,
   dsmc will default to `preservepath=subtree`, this will instead cause the
   aforementioned file to be restored to `/subdir/a/b.txt`. This may or may not 
-  cause unwanted conflicts, depending on the destination. ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.24?topic=reference-preservepath))
+  cause unwanted conflicts, depending on the destination. ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-preservepath))
 - **-subdir=yes**: Restore files in subdirectories, recursively. 
   Without this option, dsmc will only restore direct descendants of the 
-  specified source directory. ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.24?topic=reference-subdir))
+  specified source directory. ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-subdir))
 - **-replace=yes**: On conflict, automatically replace the current file on the 
-  system. ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.24?topic=reference-replace))
+  system. ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-replace))
 - **-dateformat=3**: Set the date format to YYYY-MM-DD 
   (for the `pitdate` option). The default can vary depending on the system 
-  locale. ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.24?topic=reference-dateformat))
+  locale. ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-dateformat))
 - **-pitdate**: Point-In-Time (PIT) date of the backed-up files to restore. 
-  ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.24?topic=reference-pitdate))
+  ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-pitdate))
 - **-pittime**: Point-In-Time (PIT) time of the backed-up files to restore.
-  ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.24?topic=reference-pittime))
+  ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-pittime))
 
 Positional arguments:
 
@@ -57,7 +57,7 @@ Positional arguments:
   any ambiguity, by instead writing `'/the/filespace/subdir/'`.
 - `'/'`: The destination to where restored files and directories should end up.
 
-More information can be found [here](https://www.ibm.com/docs/en/storage-protect/8.1.24?topic=uc-restore).
+More information can be found [here](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=uc-restore).
 
 More examples
 ---------------
@@ -75,11 +75,11 @@ dsmc restore '/home/ubuntu/' './'
 
 Fully restore **a directory** to the current working directory:
 ```
-dsmc restore -subdir=y '/home/ubuntu/' './'
+dsmc restore -subdir=yes '/home/ubuntu/' './'
 ```
 
-Restore only a directory without its content (almost equivalent 
-to `mkdir ubuntu`):
+Restore **a directory** without its content to the current working directory 
+(almost equivalent to `mkdir ubuntu`):
 ```
 dsmc restore '/home/ubuntu' './'
 ```
