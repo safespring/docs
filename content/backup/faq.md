@@ -1,4 +1,6 @@
-# FAQ
+FAQ
+======
+
 
 ## Failure to launch the TSM BA GUI
 
@@ -23,7 +25,7 @@ If this happens, let it run through. You may get prompted and asked to continue,
 This will get you the client_id and together with your username and password you can create access token and a refresh token.
 ![Keys](./images/accesstoken.png)
 
-For more details and examples, see your [API Documentation](api.md)
+For more details and examples, see your [API Documentation](./automation/rest-api.md).
 
 ## Where can I fetch IBM TSM client software?
 
@@ -62,7 +64,7 @@ no inbound ports need to be configured, so installation and operations behind NA
 
 ## Credentials to Safespring Backup Portal?
 
-- To get credentials for [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) you need to talk to your backup admin to invite you, if you are the first one in your organisation, please open a ticket with your [support](../service/support.md).
+- To get credentials for [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) you need to talk to your backup admin to invite you, if you are the first one in your organisation, please open a ticket with our [support](../service/support.md).
 
 [ransomware]:https://web.archive.org/web/20200218233114/http://www.backupcentral.com/forum/5/254427/ransomware_deleted_tsm_backups_from_node
 [baas-portal]:https://portal.backup.sto2.safedc.net/

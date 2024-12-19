@@ -62,16 +62,17 @@ nav:
       - Application:
         - Microsoft SQL Server: "backup/install/mssql-windows.md"
     - HOWTOs:
+      - Consumption Units: "backup/howto/consumption-units.md"
       - Business Units: "backup/howto/business-units.md"
       - Passwords: "backup/howto/password.md"
       - Deleting Nodes: "backup/howto/delete-node.md"
       - Email Reports : "backup/howto/reports-by-email.md"
       - Encryption: "backup/howto/encryption.md"
       - Include/Exclude: "backup/howto/include-exclude.md"
-      - New Server: "backup/howto/switch-from-tsm12.md"
       - Admin SSO: "backup/howto/sso.md"
       - Handling Changing Files: "backup/howto/changing-files.md"
       - List Files: "backup/howto/list-files.md"
+      - Linux GUI: "backup/howto/linux-gui.md"
     - Automation:
       - Command Line: "backup/automation/cli-tool.md"
       - REST API: "backup/automation/rest-api.md"
@@ -81,8 +82,10 @@ nav:
     #   - First Backup: "backup/performance/first-backup.md"
     - Recovery:
       - The Basics: "backup/recovery/basics.md"
-      - Windows Systems: "backup/recovery/windows-recovery.md"
       - Linux Systems: "backup/recovery/linux-recovery.md"
+      - Windows Systems: "backup/recovery/windows-recovery.md"
+      - Testing: "backup/recovery/testing.md"
+      - Encryption: "backup/recovery/encryption.md"
     - FAQ: "backup/faq.md"
     - Legacy Backup: "legacy-backup/index.md"
   - Compute:

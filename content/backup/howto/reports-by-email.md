@@ -116,7 +116,7 @@ The button that appears next to some of the inline-checkboxes opens a dialog tha
 
 There are options for how to group consumption unit information. You can either group by node **Platform** or **Type**.
 
-To take into consideration whether [Node Replication](https://www.ibm.com/docs/en/storage-protect/8.1.24?topic=commands-query-node-query-nodes#r_cmd_node_query__ndq_fielddesc__title__1) is activated while grouping, you can check the **Replication Mode** option for each respective node type.
+To take into consideration whether [Node Replication](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-query-node-query-nodes#r_cmd_node_query__ndq_fielddesc__title__1) is activated while grouping, you can check the **Replication Mode** option for each respective node type.
 
 !!! note
       Ignore the options for "IBM Spectrum Protect _Plus_" and "Rubrik".

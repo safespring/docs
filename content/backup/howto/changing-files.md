@@ -4,11 +4,11 @@ Handling changing files
 Nightly emails always report errors
 --------------------------------------
 
-A very common cause for that is files which are either read-locked
-from TSM completely (more common on windows OSes) or files that change
+A very common cause for that is files that are either read-locked
+from TSM completely (more common on Windows OSes) or files that change
 constantly during backups.
 
-The output from command line `dsmc inc` or the contents of
+The output from command line `dsmc incremental` or the contents of
 `dsmsched.log` will list the progress and results of the backup. If
 files are changing, the client will retry them later on, several times.
 
@@ -61,7 +61,7 @@ report as:
     ```shell
     UORUIJSMAMENW   FILE_2000         futu   4     4     4     4     4    HOST1
     ```
-So in order to get successful runs and clean reports that point out
+So to get successful runs and clean reports that point out
 other more "real" errors if they occur, you should add specific
 `EXCLUDE` rules to your `dsm.sys/dsm.opt` files for files.
 

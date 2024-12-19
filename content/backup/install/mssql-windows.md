@@ -18,7 +18,7 @@ Required files:
 
 #### Installation
 1. Download the required files according to above into a temporary folder
-1. Run `8.1.xx.x-TIV-TSMSQL-Win.exe` to extract all installations files.
+1. Run `8.1.xx.x-TIV-TSMSQL-Win.exe` to extract all installation files.
 1. Open the `8.1.xx.x-TIV-TSMSQL-Win` Installation directory that just get created and run `SetupFCM.exe` and accept the UAC pop-up that comes up.
 1. Follow the instructions on the screen, and if this is a new installation, you maybe need to install a few requirements
 ![TDP Dependency](../images/TDPSQL-dependency.png)
@@ -45,11 +45,11 @@ Required files:
 
 #### Schedule Backups
 1. Download the required backup scripts and save them to `C:\Safespring`
-- [Full Backup Script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/sqlfull.ps1) (Right-click and Save)
-- [Log Backup Script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/sqllog.ps1) (Right-click and Save)
-- [Differential Backup Script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/sqldiff.ps1) (Right-click and Save)
-- [Install Backup Schedule Services](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/tdpsql-install-windows.cmd) (Right-click and Save)
-1. Open Powershell and run `Unblock-File C:\Safespring\*` to make the scripts runnable.
+      - [Full Backup Script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/sqlfull.ps1) (Right-click and Save)
+      - [Log Backup Script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/sqllog.ps1) (Right-click and Save)
+      - [Differential Backup Script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/sqldiff.ps1) (Right-click and Save)
+      - [Install Backup Schedule Services](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/tdpsql-install-windows.cmd) (Right-click and Save)
+1. Open PowerShell and run `Unblock-File C:\Safespring\*` to make the scripts runnable.
 1. Login on [Safepspring Backup Portal](https://portal.backup.sto2.safedc.net/)
 1. Select on the Microsoft SQL Backup Consumption Unit
     1. If you are using an **AlwaysOn** cluster, you need to do all the steps on 
