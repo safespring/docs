@@ -107,7 +107,7 @@ client for database backup, then set this field to "Microsoft SQL Server".
 ### Type
 Describes the type of machine.
 This field has no effect on backups apart from determining 
-which [schedules](#schedules) are available.
+which schedules are available.
 The options "File Server" and "Workstation" both have the same set of available 
 schedules.
 The final option, "Application server", will only allow you to pick 
