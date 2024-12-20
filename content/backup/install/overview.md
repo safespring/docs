@@ -2,10 +2,10 @@
 
 ## Download
 
-Download IBM Spectrum Protect Backup-Archive Client software from the following repos:
+Download IBM Storage Protect Backup-Archive Client software from the following repos:
 
-- IBM Spectrum Protect Backup-Archive Client (release) - [IBM Storage Software](https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/client/)
-- IBM Spectrum Protect Backup-Archive Client (patches) - [IBM Storage Software](https://www3.software.ibm.com/storage/tivoli-storage-management/patches/client/)
+- IBM Storage Protect Backup-Archive Client (release) - [IBM Storage Software](https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/client/)
+- IBM Storage Protect Backup-Archive Client (patches) - [IBM Storage Software](https://www3.software.ibm.com/storage/tivoli-storage-management/patches/client/)
 
 ## Manual Installation Instructions
 

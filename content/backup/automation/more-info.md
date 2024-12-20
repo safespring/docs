@@ -11,6 +11,6 @@ servers or other nodes with important data.
 Performing the installations automatically may be especially desirable 
 when such devices are deployed regularly.
 
-There is an excellent [article](https://blog.sigterm.se/posts/the-joys-of-bootstrapping-ibm-backup-client/) about how to do this. 
+There is an excellent <a href="https://blog.sigterm.se/posts/the-joys-of-bootstrapping-ibm-backup-client/" target="_blank">article</a> about how to do this. 
 It also goes to great lengths explaining how to programmatically configure 
 **encrypted backups**.

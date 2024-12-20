@@ -42,7 +42,7 @@ a consumption unit in the
 Backup Portal</a>. 
 
 !!! note
-     If you don't have an account, please consult the 
+     If you do not have an account, please consult the 
      [FAQ](../faq.md#credentials-to-safespring-backup-portal) for information on
      how to get one.
 
@@ -201,7 +201,7 @@ your node anything you like as long as it follows IBM Storage Protect's
 
 #### Microsoft SQL node naming
 If the node is used to store MS SQL backup data on a Windows machine that also
-has its own node (let's call it `ABCDEF123456`) for the file system, then
+has its own node (let us call it `ABCDEF123456`) for the file system, then
 it is normal to name the MS SQL node `ABCDEF123456_DB` 
 (the machine node name suffixed with `_DB`).
 
@@ -214,6 +214,67 @@ The backup server TCP port.
 ### SP password
 The [password](../howto/password.md) of the backup node.
 
+
+Backup node status
+-------------------
+There are several ways for you to get status reports on a backup node.
+We will cover some of them here.
+
+### Trend matrix and Report
+The trend matrix offers a quick overview of how healthy a machine's 
+(or an application's) backup routine has been over a period of time.
+
+![Trend Matrix](../images/baas-backup-node-trend-matrix.png)
+
+To get detailed information, click on one of the dates in the matrix, this will
+take you to the **Report** tab.
+
+### Job matrix and Jobs
+
+The **Job matrix** is very similar to the Trend matrix, but is more focused on
+individual jobs, rather than the overall status of the backup routine at each 
+date.
+
+Detailed information about individual backup jobs can be viewed from by 
+clicking the **Jobs** tab.
+
+### Progress chart
+
+The progress chart can be accessed at 
+**Consumption units -> [Your Consumption Unit] -> Progress charts**.
+
+It shows how much storage the backup node has used over a period of time, and
+how much data has been transferred.
+
+Audit log
+----------
+All changes made to a consumption unit in the Backup Portal are logged in an
+Audit log.
+
+A consumption unit's Audit log can be found at 
+**Consumption units -> [Your Consumption Unit] -> Audit Log**.
+
+![Audit Log](../images/baas-portal-audit-log.png)
+
+
+Filespaces
+-----------
+All backup data is stored in filespaces. Information about your backup node's
+filespaces can be found at 
+**Consumption units -> [Your Consumption Unit] -> Filespaces**.
+
+![Filespaces](../images/baas-portal-filespaces.png)
+
+Normally, every filesystem on a machine will automatically get its own 
+filespace in the backup node. 
+There are exceptions, for example, when defining 
+[virtual mount-points](../howto/include-exclude.md#virtual-mount-points), 
+in which case each such mount-point will have its own filespace 
+even when they are not independent filesystems, but regular directories.
+Also, when backing up Windows machines using VSS, some resulting filespaces
+will not correspond to filesystems on the machine.
+This can be seen on the "Type" column when the filespace type is "VSS" rather
+than a filesystem name such as "NTFS".
 
 Creating multiple consumption units
 -------------------------------------
@@ -232,3 +293,28 @@ file with all the data needed to create every consumption unit and its backup
 node.
 
 ![Add Multiple Consumption Units](../images/baas-portal-add-multiple-consumption-units.png)
+
+You also have templates for both formats that you can follow. 
+Download a template by clicking on JSON or CSV in the "File Templates" box.
+
+You could, for example, 
+use the CSV format and edit the file in LibreOffice Calc 
+(or Excel or equivalent).
+This will provide a nice interface to quickly input all the fields for every 
+consumption unit.
+
+![Batch Creation](../images/baas-portal-consumption-unit-batch-creation.png)
+
+Alternatively, you could add the consumption units in the browser directly by
+clicking on the **Add** button in the bottom left corner.
+
+Once done, re-upload the edited .CSV (or .JSON) file to the "Upload" box if 
+you have chosen to use that method.
+Verify the input in the table at the bottom.
+
+![Batch Table](../images/baas-portal-consumption-unit-batch-table.png)
+
+Then click **Add** in the top right corner.
+
+The consumption units should now be created, and backup nodes should be
+ready to be activated.

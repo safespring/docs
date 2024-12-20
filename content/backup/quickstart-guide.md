@@ -3,8 +3,8 @@
 In this Quickstart Guide, we will cover how to:
 
 - Create a Consumption Unit and Assign that with a backup node
-- Install IBM Spectrum Protect Backup-Archive Client
-- Configure IBM Spectrum Protect Backup-Archive Client
+- Install IBM Storage Protect Backup-Archive Client
+- Configure IBM Storage Protect Backup-Archive Client
 - Schedule our first backup
 
 ## Create Consumption Unit
@@ -41,7 +41,7 @@ Option set and contact details (e.g., Server owner E-Mail or Support Email).
 
 The Client Option Set defaults to DEDUP_AND_COMPRESS to allow but not force the client
 to attempt to use deduplication and compression before sending data over to the server
-in order to reduce transfer time and amount. Other options include FORCE_ENCRYPT which
+to reduce transfer time and amount. Other options include FORCE_ENCRYPT which
 will unconditionally make the client locally encrypt all data before transfer with a
 key you need to enter once. These two options are mutually exclusive. There is a
 None option that sets no client options from server-side.
@@ -59,11 +59,11 @@ Click **Activate** to proceed with the activation of your consumption unit.
 
 ![Activate Consumption Unit](images/baas-portal-consumption-unit-node-activate.png)
 
-The next step is to install the IBM Spectrum Protect Backup-Archive Client.
+The next step is to install the IBM Storage Protect Backup-Archive Client.
 
-## Install IBM Spectrum Protect Backup-Archive Client
+## Install IBM Storage Protect Backup-Archive Client
 
-Install the IBM Spectrum Protect Backup-Archive Client, you can download the 
+Install the IBM Storage Protect Backup-Archive Client, you can download the 
 latest client from 
 <a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/" target="_blank">
 IBMs FTP Server</a>
@@ -75,3 +75,4 @@ Please follow in the installation instructions for your Operating System.
 
 - [Microsoft Windows](install/windows.md)
 - [Linux](install/linux.md)
+- [Apple macOS](install/apple-macos.md)
