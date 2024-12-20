@@ -58,7 +58,7 @@ dsmc query backup -subdir=yes '{/home}/peter/'
 Options:
 
 - **-subdir=yes**: List all under the specified directory, recursively. 
-  Without this option, dsmc will only show direct descendants. ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-subdir))
+  Without this option, dsmc will only show direct descendants. (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-subdir" target="_blank">docs</a>)
 
 Positional arguments:
 
@@ -67,4 +67,4 @@ Positional arguments:
   any ambiguity, by instead just writing `'/home/peter/'`. Here, the leading 
   `/` is important.
 
-More information can be found [here](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-query-backup).
+More information can be found <a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-query-backup" target="_blank">here</a>.

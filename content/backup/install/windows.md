@@ -2,11 +2,11 @@
 
 ## Manual installation
 
-_This document describes how to **manually** install IBM Spectrum Protect Backup-Archive Client on Windows (64-bit)._
+_This document describes how to **manually** install IBM Storage Protect Backup-Archive Client on Windows (64-bit)._
 
 Required files:
 
-- [IBM Spectrum Protect Backup-Archive Client](https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Windows/x64/)
+- [IBM Storage Protect Backup-Archive Client](https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Windows/x64/)
 - [SafeDC Default Configuration file dsm.opt](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/dsm.opt.sample) (Right-click and Save)
 - [Certificate installation script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA-win64.bat) (Right-click and Save)
 
@@ -24,7 +24,7 @@ Follow the instructions on the screen,
    and if this is a new installation,
    you maybe need to install a few requirements.
 
-    ![Spectrum Protect Backup-Archive Client - InstallShield Wizard](../images/SPBAC_ISWizard.png)
+    ![Storage Protect Backup-Archive Client - InstallShield Wizard](../images/SPBAC_ISWizard.png)
 
     1. The installation process could sometimes require a reboot, 
        due to the installation of a couple of VC redistributables.
@@ -36,7 +36,7 @@ Follow the instructions on the screen,
 
 1. Retrieve client node configuration and password from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/), and edit the `dsm.opt.sample`, copy the *Setup Information* from the portal and paste it in to `dsm.opt.sample` file and save that file in `C:\Program Files\Tivoli\TSM\baclient`.
 
-![Copy the Backup Configuration information](../images/baas-portal-consumption-unit-setup-infomartion.png)
+![Copy the Backup Configuration information](../images/baas-portal-backup-node-setup-information.png)
 
 Paste the information to the `dsm.opt.sample` file between the `*** Copy and Paste Information from Safespring Backup Portal ***` sections.
 
@@ -64,9 +64,9 @@ reinstall the same CA Root certificate every time.
    Files\Tivoli\TSM\Baclient`
     Start the `dsmc.exe` and it will now ask you to confirm the *User ID* that is the same as your node name, and copy and paste the password from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/)
 
-    ![Copy Password from Safespring Backup Portal](../images/baas-portal-consumption-unit-setup-infomartion.png) ![Paste Password to the Password Feild](../images/SPBAC-cli-login.png)
+    ![Copy Password from Safespring Backup Portal](../images/baas-portal-backup-node-setup-information.png) ![Paste Password to the Password Feild](../images/SPBAC-cli-login.png)
 
-    Run `quit` to exit Spectrum Protect Backup-Archive Client CLI.
+    Run `quit` to exit Storage Protect Backup-Archive Client CLI.
 
     1. **Login via GUI**
 
@@ -80,21 +80,21 @@ reinstall the same CA Root certificate every time.
     These can be copied 
     and pasted from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/).
 
-    ![Copy Password from Safespring Backup Portal](../images/baas-portal-consumption-unit-setup-infomartion.png) ![Paste Password to Password Feild](../images/SPBAC-GUI-login.png)
+    ![Copy Password from Safespring Backup Portal](../images/baas-portal-backup-node-setup-information.png) ![Paste Password to Password Feild](../images/SPBAC-GUI-login.png)
 
     If the application starts, it has logged in successfully, and will save 
    the password (encrypted) for future use.
 
 #### Schedule Daily Backups
 
-1. IBM Spectrum Protect Backup-Archive Client is polling the backup server 
-   regularly to see when it should backup your data next time.
-To assign a predefined schedule, open [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) and go to the _consumption unit_ you want to define a schedule too and click on _schedule_ 
-![Consumption Unit Schedule](../images/baas-portal-consumption-unit-schedule.png)
-
-Here can you schedule the backup for your consumption unit.
-
-1. Setup IBM Spectrum Protect Backup-Archive Client schedule polling.
+1. IBM Storage Protect Backup-Archive Client is polling the backup server 
+   regularly to see when it should back up your data next time.
+   To assign a predefined schedule, open [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) 
+   and go to the _consumption unit_ you want to define a schedule too and 
+   click on _schedule_<br/>
+   ![Consumption Unit Schedule](../images/baas-portal-consumption-unit-schedule.png)<br/>
+   Here can you schedule the backup for your consumption unit.
+1. Setup IBM Storage Protect Backup-Archive Client schedule polling.
     1. **Setup schedule via Command-Line**
 
      Start a Command-Line window in _Administrator Mode_ and change to the Backup-Archive Client directory e.g `cd C:\Program Files\Tivoli\TSM\Baclient`.
@@ -126,7 +126,7 @@ Here can you schedule the backup for your consumption unit.
     ![Schedule Wizard Guide](../images/SPBAC-GUI-Schedule-wizard-start.png)
 
     Confirm that you want to *Install a new or additional scheduler*, if *Update ...* and *Remove ...* is enabled, 
-    that means you already have an earlier Spectrum Protect Schedule configured. 
+    that means you already have an earlier Storage Protect Schedule configured. 
 
     ![Install a new or addition scheduler](../images/SPBAC-GUI-Schedule-wizard-new-schedule.png)
 

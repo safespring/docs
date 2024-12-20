@@ -2,7 +2,7 @@ Command Line Tool
 ===================
 
 If you need to automate management of backup nodes, there is an easy-to-use 
-command line tool called [cloutility-api-client](https://github.com/safespring-community/cloutility-api-client) that you can use.
+command line tool called <a href="https://github.com/safespring-community/cloutility-api-client" target="_blank">cloutility-api-client</a> that you can use.
 
 **Features:**
 

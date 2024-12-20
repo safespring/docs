@@ -13,12 +13,12 @@ This happens automatically.
 **Keep in mind that when it happens, the initial password found in Cloutility becomes obsolete.**
 
 The above-mentioned automatic authentication and password generation is enabled by using the client option `PASSWORDACCESS GENERATE`. 
-It should be set already if you were using the template provided by Safespring for [UNIX-based systems](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.sys.sample) or [Windows](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/dsm.opt.example) to configure the client. 
+It should be set already if you were using the template provided by Safespring for <a href="https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.sys.sample" target="_blank">UNIX-based systems</a> or <a href="https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/dsm.opt.example" target="_blank">Windows</a> to configure the client. 
 If not, you can enable this feature by adding the option to `/opt/tivoli/tsm/client/ba/bin/dsm.sys` or `C:\Program Files\Tivoli\TSM\Baclient\dsm.opt` on UNIX-based systems or Windows respectively.
 
 ### Further reading
 
-The `passwordaccess` option: https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-passwordaccess
+The `passwordaccess` option: <a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-passwordaccess" target="_blank">IBM Documentation</a>
 
 Retrieving the current password
 ------------------------
@@ -91,13 +91,13 @@ del "C:\Windows\Temp\1710702970_0" "C:\Windows\Temp\1710702970_0.plain"
 ```
 
 ### Further reading
-Password storage: https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=started-secure-password-storage
+Password storage: <a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=started-secure-password-storage" target="_blank">IBM Documentation</a>
 
-Password encryption details: https://blog.sigterm.se/posts/the-joys-of-bootstrapping-ibm-backup-client/
+Password encryption details: <a href="https://blog.sigterm.se/posts/the-joys-of-bootstrapping-ibm-backup-client/" target="_blank">Patrik Lundin's Article</a>
 
 Changing the password
 -----------------------
-You can whenever you want to change the password of a backup node from Cloutility. This will enforce the new password and update it on the backup server. To do so, go to Consumption Units -> [Your backup node] -> Basics. Click on "Change" on the right side of "SP password".
+You can whenever you want to change the password of a backup node from Cloutility. This will enforce the new password and update it on the backup server. To do so, go to **Consumption Units -> [Your backup node] -> Basics**. Click on "Change" on the right side of "SP password".
 
 It is also possible to change the password directly from the backup-archive client. Keep in mind that this will make the password stored in Cloutility out of sync with the actual password. This is a technical limitation due to the backup server _only_ storing the hash digest of the password for security reasons. You will be the only one who can access the password in plain-text.
 
@@ -121,7 +121,7 @@ dsmc set password "old password" "new password"
 
 ### Further reading
 
-More about `dsmc set password`: https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-set-password
+More about `dsmc set password`: <a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-set-password" target="_blank">IBM Documentation</a>
 
 Session security: transitional vs. strict
 -------------------------------------------
@@ -154,7 +154,7 @@ You have just created and activated a new backup node. Because it is new, it is 
 You accidentally type the wrong password, and the server silently locks the node. Then you type in the password (correctly this time) and still end up with an authentication failure. **The backup-archive client made no mention of the node being locked, and only reported authentication failures regardless of what you typed.** Cloutility has not synced the lock-state with the backup server yet, and therefore does not show that the node is locked.
 
 #### Solution
-Go to Cloutility -> Consumption Units -> [Your backup node] -> Basics.
+Go to **Cloutility -> Consumption Units -> [Your backup node] -> Basics**.
 
 If Cloutility hasn't synced the lock-state yet, the backup node will appear as "Unlocked." If so, click on "Unlocked" to change the state to "Locked," and hit Save.
 

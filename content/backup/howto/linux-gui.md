@@ -40,6 +40,6 @@ GUI Scaling
 -------------------
 If you have a HiDPI screen and the application appears small, you can scale up the graphical interface by an
 integer, for example, 2 or 3. 
-Unfortunately, fractional scaling (like 1.5) is not supported. This is a [known limitation](https://bugs.openjdk.org/browse/JDK-8214227) in JDK.
+Unfortunately, fractional scaling (like 1.5) is not supported. This is a <a href="https://bugs.openjdk.org/browse/JDK-8214227" target="_blank">known limitation</a> in JDK.
 
 To scale the application, edit `/usr/local/share/applications/dsmj.desktop` and change `GDK_SCALE=1` to the scaling you want, for example, `GDK_SCALE=2`.

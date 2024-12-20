@@ -20,9 +20,9 @@ Required files:
 1. Download the required files according to above into a temporary folder
 1. Run `8.1.xx.x-TIV-TSMSQL-Win.exe` to extract all installation files.
 1. Open the `8.1.xx.x-TIV-TSMSQL-Win` Installation directory that just get created and run `SetupFCM.exe` and accept the UAC pop-up that comes up.
-1. Follow the instructions on the screen, and if this is a new installation, you maybe need to install a few requirements
-![TDP Dependency](../images/TDPSQL-dependency.png)
-
+1. Follow the instructions on the screen, and if this is a new installation, 
+   you maybe need to install a few requirements<br/>
+   ![TDP Dependency](../images/TDPSQL-dependency.png)
 1. To make your configuration phase easier, we need to install one more package, under installation package directory, you need to open  `TSMSQL_WIN\fcm\x64\sql\81xxx\enu` and start installation program the `spinstall.exe`
 1. Install all dependencies and follow the standard installation.
 
@@ -50,7 +50,7 @@ Required files:
       - [Differential Backup Script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/sqldiff.ps1) (Right-click and Save)
       - [Install Backup Schedule Services](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/tdpsql-install-windows.cmd) (Right-click and Save)
 1. Open PowerShell and run `Unblock-File C:\Safespring\*` to make the scripts runnable.
-1. Login on [Safepspring Backup Portal](https://portal.backup.sto2.safedc.net/)
+1. Login on the <a href="https://portal.backup.sto2.safedc.net/" target="_blank">Safepspring Backup Portal</a>
 1. Select on the Microsoft SQL Backup Consumption Unit
     1. If you are using an **AlwaysOn** cluster, you need to do all the steps on 
        all the cluster nodes and not on the AlwaysOn Node.

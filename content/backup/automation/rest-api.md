@@ -1,6 +1,8 @@
 The Cloutility REST API
 =====================
-The Cloutility portal has a [REST API](https://restfulapi.net/) that can be used to programmatically 
+The Cloutility portal has a 
+<a href="https://restfulapi.net/" target="_blank">REST API</a> that can be 
+used to programmatically 
 perform Create, Retrieve, Update and Delete (CRUD) operations with various 
 _resources_.
 
@@ -36,7 +38,7 @@ account has permissions to do!
 To get access tokens, you need a client ID. This client ID identifies 
 your program. 
 It can be generated in the Cloutility portal by clicking on 
-Settings (cogwheel in the top-right corner) -> API access -> Add. You will 
+**Settings (cogwheel in the top-right corner) -> API access -> Add**. You will 
 be asked to provide an app name, an origin and a choice whether to 
 allow token refreshing or not. The origin should be a URL, this is 
 relevant because the origin must be sent with every API call, or else the 
@@ -67,8 +69,8 @@ _The HTTP request body should be on one line, but is split here into several
 lines for clarity._ 
 
 The **grant_type** should always be the same. It should be set to the 
-"password" [OAuth2 Grant Type](https://oauth.net/2/grant-types/). You have to specify the client_id, 
-username and the password.
+"password" <a href="https://oauth.net/2/grant-types/" target="_blank">OAuth2 Grant Type</a>. 
+You have to specify the client_id, username and the password.
 
 Once you have made the HTTP request, you should get an HTTP response with an 
 **AccessToken** body. Its structure is as follows.
@@ -86,9 +88,9 @@ Do you see **access_token** above? That is what you want.
 The **token_type** is always the same, it can be ignored. The **expires_in** 
 tells us when the access token expires, in Cloutility it is always ~5 
 minutes. In most situations this should give us plenty of time to execute a 
-program that utilizes the API. If we need more time, we can use the 
+program that uses the API. If we need more time, we can use the 
 **refresh_token** to generate a new access token. How this is done is described 
-under the Refreshing an Access Token section.
+under the [Refreshing an Access Token](#refreshing-an-access-token) section.
 
 ### How to Use an Access Token
 
@@ -126,8 +128,8 @@ one line._
 
 The placeholder **your_refresh_token** is replaced with the refresh token 
 that you got when you first authenticated yourself, see **AccessToken** in 
-the Requesting an Access Token section above. This refresh token will always 
-be the same.
+the [Requesting an Access Token](#refreshing-an-access-token) section above. 
+This refresh token will stay the same.
 
 ### Full Python Example Program
 
@@ -438,8 +440,8 @@ If you wish to delete business units, use the following endpoint:
 For more details about the objects sent as responses and what the meanings of 
 the fields are, please refer to Cloutility's REST API documentation:
 
-- [BusinessUnit](https://portal-api.backup.sto2.safedc.net/v1/help/ResourceModel?modelName=BusinessUnit)
-- [SimpleBusinessUnit](https://portal-api.backup.sto2.safedc.net/v1/help/ResourceModel?modelName=SimpleBusinessUnit)
+- <a href="https://portal-api.backup.sto2.safedc.net/v1/help/ResourceModel?modelName=BusinessUnit" target="_blank">BusinessUnit</a>
+- <a href="https://portal-api.backup.sto2.safedc.net/v1/help/ResourceModel?modelName=SimpleBusinessUnit" target="_blank">SimpleBusinessUnit</a>
 
 !!! note
     Many times endpoints return incomplete objects, contrary to what the 
@@ -572,7 +574,7 @@ its **name** in the request body.
 }
 ```
 
-Of course, if you want to, more fields are [available](https://portal-api.backup.sto2.safedc.net/v1/help/Api/POST-v1-bunits-bunitId-consumers).
+Of course, if you want to, more fields are <a href="https://portal-api.backup.sto2.safedc.net/v1/help/Api/POST-v1-bunits-bunitId-consumers">available</a>.
 
 The response, after it has been created, 
 will be a significantly more detailed version of the consumption unit.
@@ -606,7 +608,7 @@ You can add/remove the following parameters to include/exclude log-entry types:
 - `&types=400` for errors
 
 The query parameters `startDate` and `endDate` are optional. 
-But if you define them, make sure that the values are [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formatted. 
+But if you define them, make sure that the values are <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> formatted. 
 For example `2023-11-03T08:00:00Z`.
 
 #### Reports
@@ -796,8 +798,8 @@ This is done by using the following endpoint:
 
 Make sure to give the backup node a name by replacing the `{tsm_node_name}` 
 placeholder. 
-The name that you give must obey IBM Storage Protect's 
-[object naming rules](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-naming-storage-protect-objects). 
+The name that you give must follow IBM Storage Protect's 
+<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-naming-storage-protect-objects" target="_blank">object naming rules</a>. 
 Because this is the name that will be used to configure the respective 
 computer's backup client.
 
@@ -898,8 +900,8 @@ following endpoint allows you to retrieve the billing data.
 When integrating invoicing software, it can be useful to automatically be
 notified when new billing data is generated, 
 at the end of the month, for example. 
-You can subscribe to these events by clicking on Reseller Business Unit -> 
-Settings -> Billing -> Subscribers -> Add. 
+You can subscribe to these events by clicking on **[Reseller Business Unit] -> 
+Settings -> Billing -> Subscribers -> Add**. 
 
 ![Add Billing Subscriber](../images/baas-portal-billing-subscriber.png)
 
@@ -933,7 +935,7 @@ Then read the incoming HTTP request data.
 Your HTTP server should handle this automatically, 
 but it is worth mentioning in case it does not do so.
 
-Once your server has recieved this trigger, 
+Once your server has received this trigger, 
 it can retrieve the latest billing data by invoking `/v1/bunits/{bunit_id}/billing`, 
 as mentioned above.
 

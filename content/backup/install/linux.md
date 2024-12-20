@@ -2,11 +2,11 @@
 
 ## Manual Installation
 
-_This document describes how to **manually** install IBM Spectrum Protect Backup-Archive Client on Linux operating systems like Ubuntu and Red Hat Enterprise Linux (64-bit)._
+_This document describes how to **manually** install IBM Storage Protect Backup-Archive Client on Linux operating systems like Ubuntu and Red Hat Enterprise Linux (64-bit)._
 
 Required files:
 
-- [IBM Spectrum Protect Backup-Archive Client](https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/)
+- <a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/" target="_blank">IBM Storage Protect Backup-Archive Client</a>
 - [SafeDC Root CA PEM File](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem) (Right-click and Save)
 - [SafeDC Default Option file dsm.opt](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.opt.sample) (Right-click and Save)
 - [SafeDC Default Configuration file dsm.sys](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.sys.sample) (Right-click and Save)
@@ -18,43 +18,38 @@ Required files:
 1. Download the required files according to above into a temporary folder
 
     1. Ubuntu / Debian
-
-    ```sh
-    wget https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86_DEB/BA/v81xx/8.x.xx.x-TIV-TSMBAC-LinuxX86_DEB.tar
-    ```
-   
+       ```shell
+       wget https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86_DEB/BA/v81xx/8.x.xx.x-TIV-TSMBAC-LinuxX86_DEB.tar
+       ```
+    
     1. RHEL / RPM-based distros
-
-    ```sh
-    wget https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86/BA/v81xx/8.x.xx.x-TIV-TSMBAC-LinuxX86.tar
-    ```
+       ```shell
+       wget https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86/BA/v81xx/8.x.xx.x-TIV-TSMBAC-LinuxX86.tar
+       ```
 
 2. Extract the package `8.x.x.x-TIV-TSMBAC-LinuxX86.tar` for RPM-based Linux distros or `8.x.x.x-TIV-TSMBAC-LinuxX86_DEB.tar` for Debian based Linux distros
 
-    1. Ubuntu / Debian
+      1. Ubuntu / Debian
+         ```shell
+         tar xvf 8.1.xx.x-TIVBAC-LinuxX86_DEB.tar
+         ```
 
-    ```sh
-    tar xvf 8.1.xx.x-TIVBAC-LinuxX86_DEB.tar
-    ```
-
-    1. RHEL / RPM-based distros
-
-    ```sh
-    tar xvf 8.1.xx.x-TIVBAC-LinuxX86.tar
-    ```
+      1. RHEL / RPM-based distros
+         ```shell
+         tar xvf 8.1.xx.x-TIVBAC-LinuxX86.tar
+         ```
 
 3. Install the minimum requirement packages, `gskcrypt64`, `gskssl64`, `tivsm-api64`, `tivsm-ba`. All other packages have other functionalities like journaling.
-    1. Ubuntu / Debian
 
-    ```sh
-    sudo apt-get install ./gskcrypt64_x.x-xx.x.linux.x86_64.deb ./gskssl64_x.x-xx.x.linux.x86_64.deb ./tivsm-api64.amd64.deb ./tivsm-ba.amd64.deb
-    ```
+      1. Ubuntu / Debian
+         ```shell
+         sudo apt-get install ./gskcrypt64_x.x-xx.x.linux.x86_64.deb ./gskssl64_x.x-xx.x.linux.x86_64.deb ./tivsm-api64.amd64.deb ./tivsm-ba.amd64.deb
+         ```
 
-    1. RHEL / RPM-based distros
-
-    ```sh
-    sudo dnf install ./gskcrypt64-x.x.xx.x.linux.x86_64.rpm ./gskssl64-x.x.xx.x.linux.x86_64.rpm ./TIVsm-API64.x86_64.rpm ./TIVsm-BA.x86_64.rpm
-    ```
+      1. RHEL / RPM-based distros
+         ```shell
+         sudo dnf install ./gskcrypt64-x.x.xx.x.linux.x86_64.rpm ./gskssl64-x.x.xx.x.linux.x86_64.rpm ./TIVsm-API64.x86_64.rpm ./TIVsm-BA.x86_64.rpm
+         ```
 
 #### Install Safespring Root Certificate
 
@@ -78,9 +73,9 @@ sudo dsmcert -add -server SafeDC -file ./SafeDC-Net-Root-CA.pem
 
 2. Retrieve client node configuration and password from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/), download and modify the `dsm.sys.sample` file, copy the *Setup Information* from the portal and paste it in to `dsm.sys.sample` file and remove `.sample`  on both `dsm.opt` and `dsm.sys` 
 
-![Copy the Backup Configuration information](../images/baas-portal-consumption-unit-setup-infomartion.png)
+![Copy the Backup Configuration information](../images/baas-portal-backup-node-setup-information.png)
 
-Paste the information to the `dsm.sys` file between the `*** Copy and Paste Information from Safespring Backup Portal ***` sections
+Paste the information to the `dsm.sys` file between the `*** Copy and Paste Information from the Safespring Backup Portal ***` sections
 
 ```sh
 * sample dsm.sys for SafeDC
@@ -127,7 +122,7 @@ Save both `dsm.sys` and `dsm.opt` in `/opt/tivoli/tsm/client/ba/bin/`
 
     Start a Linux terminal and run the `dsmc`, it will now ask you to confirm the _User ID_ that is the same as your node name, and copy and paste the password from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/)
 
-    ![Copy Password from Safespring Backup Portal](../images/baas-portal-consumption-unit-setup-infomartion.png) 
+    ![Copy Password from Safespring Backup Portal](../images/baas-portal-backup-node-setup-information.png) 
 
     ```sh
     $ sudo dsmc
@@ -150,21 +145,20 @@ Save both `dsm.sys` and `dsm.opt` in `/opt/tivoli/tsm/client/ba/bin/`
     Protect> 
     ```
 
-    Run `quit` to exit Spectrum Protect Backup-Archive Client CLI.
+    Run `quit` to exit Storage Protect Backup-Archive Client CLI.
 
 #### Schedule Daily Backups
 
-1. IBM Spectrum Protect Backup-Archive Client is polling the backup server 
+1. IBM Storage Protect Backup-Archive Client is polling the backup server 
    regularly to see when it should back up your data next time.
    To assign a predefined schedule,
-   open [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/)
+   open the <a href="https://portal.backup.sto2.safedc.net/" target="_blank">
+   Safespring Backup Portal</a>
    and go to the _consumption unit_
-   you want to define a schedule too and click on _schedule_
-![Consumption Unit Schedule](../images/baas-portal-consumption-unit-schedule.png)
-
-Here can you schedule the backup for your consumption unit.
-
-1. Setup IBM Spectrum Protect Backup-Archive Client schedule polling.
+   you want to define a schedule too and click on _schedule_<br/>
+   ![Consumption Unit Schedule](../images/baas-portal-consumption-unit-schedule.png)<br/>
+   Here can you schedule the backup for your consumption unit.
+1. Setup IBM Storage Protect Backup-Archive Client schedule polling.
     1. **Setup schedule via Linux Terminal**
 
     ```sh

@@ -6,7 +6,7 @@ What has been backed up?
 -------------------------
 First, it can be helpful to get an idea of which files you have backed up, and 
 that have not been expired yet.
-To learn how to do this, visit [HOWTOs/List Files](../howtol/ist-files.md).
+To learn how to do this, visit [HOWTOs/List Files](../howto/list-files.md).
 
 Restore
 ---------
@@ -20,7 +20,8 @@ dsmc restore -preservepath=complete -subdir=yes -replace=yes \
 ```
 
 !!! Warning 
-      `-replace=yes` will cause conflicting files on the destination to be replaced automatically. 
+      `-replace=yes` will cause conflicting files on the destination to be 
+      replaced automatically. 
       Remove this option if you want to manually decide for every file what 
       to replace or not.
 
@@ -36,19 +37,19 @@ Options:
   `/the/filespace/subdir/a/b.txt` on the current system. If we omit this flag,
   dsmc will default to `preservepath=subtree`, this will instead cause the
   aforementioned file to be restored to `/subdir/a/b.txt`. This may or may not 
-  cause unwanted conflicts, depending on the destination. ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-preservepath))
+  cause unwanted conflicts, depending on the destination. (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-preservepath" target="_blank">docs</a>)
 - **-subdir=yes**: Restore files in subdirectories, recursively. 
   Without this option, dsmc will only restore direct descendants of the 
-  specified source directory. ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-subdir))
+  specified source directory. (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-subdir" target="_blank">docs</a>)
 - **-replace=yes**: On conflict, automatically replace the current file on the 
-  system. ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-replace))
+  system. (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-replace" target="_blank">docs</a>)
 - **-dateformat=3**: Set the date format to YYYY-MM-DD 
   (for the `pitdate` option). The default can vary depending on the system 
-  locale. ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-dateformat))
+  locale. (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-dateformat" target="_blank">docs</a>)
 - **-pitdate**: Point-In-Time (PIT) date of the backed-up files to restore. 
-  ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-pitdate))
+  (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-pitdate" target="_blank">docs</a>)
 - **-pittime**: Point-In-Time (PIT) time of the backed-up files to restore.
-  ([docs](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-pittime))
+  (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-pittime" target="_blank">docs</a>)
 
 Positional arguments:
 
@@ -57,7 +58,7 @@ Positional arguments:
   any ambiguity, by instead writing `'/the/filespace/subdir/'`.
 - `'/'`: The destination to where restored files and directories should end up.
 
-More information can be found [here](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=uc-restore).
+More information can be found <a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=uc-restore" target="_blank">here</a>.
 
 More examples
 ---------------
