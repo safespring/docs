@@ -119,7 +119,7 @@ There are options for how to group consumption unit information. You can either 
 To take into consideration whether [Node Replication](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-query-node-query-nodes#r_cmd_node_query__ndq_fielddesc__title__1) is activated while grouping, you can check the **Replication Mode** option for each respective node type.
 
 !!! note
-      Ignore the options for "IBM Spectrum Protect _Plus_" and "Rubrik".
+      Ignore the options for "IBM Storage Protect _Plus_" and "Rubrik".
 
 ### Frequency
 
