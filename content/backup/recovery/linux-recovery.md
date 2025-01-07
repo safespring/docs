@@ -54,7 +54,7 @@ license.
     ```
 3. In `/opt/tivoli/tsm/client/ba/bin/dsm.sys` add the following line:
    ```
-   PRESCHEDULECMD '"/usr/bin/tbmrcfg"'
+   PRESCHEDULECMD '"/usr/bin/tbmrcfg" 1> tbmr.log 2>&1 || (exit 0)'
    ```
    This option will run `tbmrcfg` before every scheduled event, such 
    as incremental backups. It will regenerate an important folder called 
