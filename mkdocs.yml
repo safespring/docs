@@ -87,10 +87,10 @@ nav:
       - Windows Systems: "backup/recovery/windows-recovery.md"
       - Testing: "backup/recovery/testing.md"
       - Encryption: "backup/recovery/encryption.md"
-    - Cloud Backup:
-        - Microsoft 365: "backup/cloud/microsoft-365.md"
-        - Microsoft Entra ID: "backup/cloud/microsoft-entra-id.md"
-        - User Data Recovery: "backup/cloud/user-data-recovery.md"
+    # - Cloud Backup:
+    #     - Microsoft 365: "backup/cloud/microsoft-365.md"
+    #     - Microsoft Entra ID: "backup/cloud/microsoft-entra-id.md"
+    #     - User Data Recovery: "backup/cloud/user-data-recovery.md"
     - FAQ: "backup/faq.md"
     - Legacy Backup: "legacy-backup/index.md"
   - Compute:
