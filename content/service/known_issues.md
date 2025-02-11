@@ -1,8 +1,24 @@
 # Known Issues
 
-There are some currently known issues in the Compute platform. This page
+There are some currently known issues for Safespring services. This page
 describes the most common pitfalls. Known issues for Backup is under the [Backup
 FAQ page](/backup/faq).
+
+
+## AWS S3 update makes some S3 libraries or S3 clients fail
+The AWS S3 protocol recently changed to include extra checksums during uploads, and some of the libraries used by S3-compatible applications have quickly followed suit and added the requirements for these checksums. Ceph is implementing these for its S3 endpoint, but no release has this in yet. If you suddenly get an upload error like
+
+```code
+Error: failed to upload state: operation error S3: PutObject, https response error StatusCode: 400, RequestID: xyz HostID: , api error InvalidArgument: x-amz-content-sha256 must be UNSIGNED-PAYLOAD or a valid sha256 value
+```
+or
+
+```code
+upload failed: test.txt to s3://bucket/test.txt An error occurred (MissingContentLength) when calling the PutObject operation: Unknown
+```
+it will be because the client library expects a response with more checksums made than before.
+This affects software that pulls in S3 library code such as Boto3 or from the AWS SDK, and if possible you should see if you can pin the S3 library to a slightly older version until we can push out this update.
+For Boto3, pinning the version to 1.35.99 still works, while 1.36 gives you upload errors.
 
 ## DHCP lease not being renewed causing loss of connectivity in STO1
 
