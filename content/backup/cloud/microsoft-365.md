@@ -61,7 +61,7 @@ Reports
 
 A subscription has a limit on the number of user seats which depends on your 
 contract. To see this number and how many of them are in use, visit 
-**Reporting → Subscription consumption**.
+**Report center → Subscription consumption**.
 
 If you wish to increase the limit, contact [Support](../../service/support.md), 
 and we will help you do so.
@@ -69,7 +69,7 @@ and we will help you do so.
 ### Job analytics
 
 To get an overview of how the most recent backup jobs have gone, you can 
-visit **Reporting → Job analytics**.
+visit **Report center → Job analytics**.
 
 ![avepoint-m365-job-analytics.png](../images/avepoint-m365-job-analytics.png)
 
@@ -86,7 +86,7 @@ turn into a download button.
 
 The AvePoint portal has an audit log where sign-ins and administrative 
 operations are recorded.
-To see the audit log, visit **Reporting → System auditor**.
+To see the audit log, visit **System auditor**.
 
 The log can be exported by clicking the **Export** button. You will be asked to
 specify a time interval to export from the log. The maximum is 1 year.
