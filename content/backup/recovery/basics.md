@@ -8,8 +8,38 @@ First, it can be helpful to get an idea of which files you have backed up, and
 that have not been expired yet.
 To learn how to do this, visit [HOWTOs/List Files](../howto/list-files.md).
 
-Restore
+Where can I restore my data to?
 ---------
+Restoring data from a backup node belonging to a machine of the same operating 
+system as the restoring machine is always supported.
+
+Restoring data from one operating system to another is **not supported** 
+(e.g. Linux data to macOS, or Windows data to Linux).
+
+Restore on Windows
+-------------------
+On Windows, the easiest way to restore files is using the graphical application.
+
+1. Open the **Backup-Archive GUI** application.
+2. Click on **Restore**.
+3. Click on **Point In Time**, then tick the checkbox 
+   **Use a Point in Time date during the restore** 
+   and select the date you wish to restore from. 
+   Once done, click **Ok**.
+4. In the file tree to the left, find the old folder(s) you wish to restore and 
+   tick the checkbox(es) next to it/them.
+5. Click on the **Restore** button.
+6. Click on **Following location** and select an empty folder to restore the 
+   old folder to. 
+   If you don't have one, you can just create an empty folder on 
+   your Desktop. 
+   Leave the **Restore partial path** option checked. 
+   Once done, click **Restore**.
+7. Once the restoration is complete, your old folder should be inside the 
+   previously empty folder you selected on step 6.
+
+Restore on Linux
+-----------------
 Restoring files is done using the `dsmc restore` command.
 
 A complete example:
