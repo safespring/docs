@@ -3,7 +3,7 @@ Microsoft 365 Backup
 
 If your organization is backing up Microsoft 365 data at Safespring, 
 you will be using the AvePoint service to manage backups and restore data. 
-The backups themselves are stored in the Safespring S3 storage.
+The backups themselves are stored in the Safespring S3 storage in Sweden.
 
 To access the administration panel, sign in at 
 <a href="https://m365backup.avepointonlineservices.com/" target="_blank">
@@ -130,8 +130,8 @@ mail client for offline reading.
     cannot sign in to their organization account.
     <p>
     To ensure that this option is available, 
-    **go to Settings → End-user restore → 
-    End-user restore settings for ReCenter and AVA users** and enable 
+    **go to Settings → End user restore → 
+    End user restore settings for ReCenter and AVA users** and enable 
     **Export (ReCenter)** for the services you wish to allow the users to 
     export data for.
     </p>
@@ -151,7 +151,3 @@ then clicking **"..." → Download content**.
 
 When exporting Microsoft Exchange data, you will receive a .pst file. 
 We have an [article on how to read .pst files](pst-files.md).
-
-Data management
-------------------
-

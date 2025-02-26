@@ -6,17 +6,24 @@ you will receive the data as a .pst file.
 This file can contain mailboxes, contacts, calendars, or tasks.
 
 Here we explain how to extract this data on different operating 
-systems _without the need of any proprietary applications (including Outlook)_.
+systems.
 
 Extract on Windows
 --------------------
 
+To extract the .pst file on Windows, you will need to use Outlook. 
+We recommend reading the following article from <a href="https://support.microsoft.com/en-us/office/export-emails-contacts-and-calendar-items-to-outlook-using-a-pst-file-14252b52-3075-4e9b-be4e-ff9ef1068f91" target="_blank">Microsoft's Documentation</a> on how to do so.
 
 Extract on Linux (graphical)
 ------------------------------
 
 The absolutely easiest way to read the data of a .pst file on Linux is to use
-the [Evolution mail client](https://wiki.gnome.org/Apps/Evolution).
+the <a href="https://wiki.gnome.org/Apps/Evolution" target="_blank">
+Evolution mail client</a>.
+
+!!! info
+    Unlike the Windows method, 
+    extracting .pst files on Linux requires no proprietary software.
 
 ### Step 1: Installation
 
