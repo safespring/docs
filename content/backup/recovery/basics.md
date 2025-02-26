@@ -22,12 +22,21 @@ On Windows, the easiest way to restore files is using the graphical application.
 
 1. Open the **Backup-Archive GUI** application.
 2. Click on **Restore**.
+
+    ![SPBAC-home.png](../images/SPBAC-home.png)
+
 3. Click on **Point In Time**, then tick the checkbox 
    **Use a Point in Time date during the restore** 
    and select the date you wish to restore from. 
    Once done, click **Ok**.
+   
+    ![SPBAC-restore-point-in-time.png](../images/SPBAC-restore-point-in-time.png)
+
 4. In the file tree to the left, find the old folder(s) you wish to restore and 
    tick the checkbox(es) next to it/them.
+
+    ![SPBAC-restore-select-file.png](../images/SPBAC-restore-select-file.png)
+
 5. Click on the **Restore** button.
 6. Click on **Following location** and select an empty folder to restore the 
    old folder to. 
@@ -35,8 +44,13 @@ On Windows, the easiest way to restore files is using the graphical application.
    your Desktop. 
    Leave the **Restore partial path** option checked. 
    Once done, click **Restore**.
+
+    ![SPBAC-restore-destination.png](../images/SPBAC-restore-destination.png)
+
 7. Once the restoration is complete, your old folder should be inside the 
    previously empty folder you selected on step 6.
+
+    ![SPBAC-restore-finished.png](../images/SPBAC-restore-finished.png)
 
 Restore on Linux
 -----------------
