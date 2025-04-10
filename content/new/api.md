@@ -25,6 +25,9 @@ yum install python-devel python-pip python-virtualenvwrapper gcc
 apt-get install python-dev python-pip virtualenvwrapper build-essential
 ```
 
+```shell tab="Ubuntu 24.04"
+apt-get install python3-dev python3-pip virtualenvwrapper build-essential
+```
 #### Installing the client using virtualenvwrapper and pip
 
 Restart your shell. Create a virtualenv and install the client into it.
