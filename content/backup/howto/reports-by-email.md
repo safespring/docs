@@ -1,7 +1,8 @@
 Receive Backup Reports via Email
 ========================
 
-You can subscribe to receive reports about single backup nodes or entire business units routinely via email, using Cloutility.
+You can subscribe to receive reports about single backup nodes or entire 
+business units routinely via email, using Cloutility.
 
 The Data
 ----------
@@ -116,7 +117,7 @@ The button that appears next to some of the inline-checkboxes opens a dialog tha
 
 There are options for how to group consumption unit information. You can either group by node **Platform** or **Type**.
 
-To take into consideration whether [Node Replication](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-query-node-query-nodes#r_cmd_node_query__ndq_fielddesc__title__1) is activated while grouping, you can check the **Replication Mode** option for each respective node type.
+To take into consideration whether [Node Replication](https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=commands-query-node-query-nodes#r_cmd_node_query__ndq_fielddesc__title__1) is activated while grouping, you can check the **Replication Mode** option for each respective node type.
 
 !!! note
       Ignore the options for "IBM Storage Protect _Plus_" and "Rubrik".
@@ -140,4 +141,5 @@ You can specify a list of emails/subscribers that will receive incident reports 
 
 ### Data-source status settings
 
-This section is identical to when you design reports for individual nodes. For more information, see [Data-source status settings](#data-source).
+This section is identical to when you design reports for individual nodes. 
+For more information, see [Data-source status settings](#data-source).

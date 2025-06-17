@@ -27,6 +27,15 @@ Services that can be protected are:
 - Project Online
 - Viva Engage
 
+!!! note "Teams Chat"
+    Backup of Microsoft Teams Chat data will require its own App Profile of type _Custom Azure App_. 
+    You will have to:
+
+    1. <a target="_blank" href="https://cdn.avepoint.com/assets/webhelp/avepoint-online-services/index.htm#!Documents/createacustomazureapp.htm">Register a new app</a> for Teams Chat in the Microsoft Entra Admin Center (or Microsoft Azure Portal).
+    2. Make sure to grant the app the necessary permissions for Microsoft Teams Chat backup as described <a target="_blank" href="https://cdn.avepoint.com/assets/webhelp/avepoint-cloud-backup-for-microsoft365/index.htm#!Documents/requiredpermissionsofmicrosoft365appprofile.htm">here</a>.
+    3. Then, in the Confidence Platform, <a target="_blank" href="https://cdn.avepoint.com/assets/webhelp/avepoint-online-services/index.htm#!Documents/consenttocustomapps.htm">add the custom app profile</a>.
+    4. Once done, you will be able to proceed with this guide to enable Teams Chat backup. _Note that it may take some time for the previous steps to take effect and allow you to proceed._
+
 Click on **"..."** on top of the service you wish to protect, and then
 **Configure backup**:
 

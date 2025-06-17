@@ -75,7 +75,8 @@ made since the invoice date, for example, 30 days.
 
 
 Cloutility is fully [API-driven](../automation/rest-api.md), so this information
-can be used by scripts together with an invoicing system to automate invoice creation.
+can be used by scripts together with an invoicing system to automate invoice 
+creation.
 
 Branding
 -----------
@@ -84,7 +85,8 @@ A neat feature is that every business unit can have its own branding.
 ![Branding Overview](../images/baas-portal-branding-overview.png)
 
 Above, we have an example of a fictive university with a nice green theme. 
-An administrator can change their business unit's color palette and logo by visiting **Settings -> Identity -> Branding**. 
+An administrator can change their business unit's color palette and logo by 
+visiting **Settings -> Identity -> Branding**. 
 
 ![Branding Settings](../images/baas-portal-branding-settings.png)
 

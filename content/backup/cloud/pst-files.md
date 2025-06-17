@@ -102,10 +102,11 @@ client.
 However, by default, Thunderbird has no way of importing .pst files 
 <a target="_blank" href="https://support.mozilla.org/en-US/kb/thunderbird-import/">
 without Outlook being installed</a>. 
-You can bypass the Outlook requirement by fist using the command line tool 
+You can bypass the Outlook requirement by first using the command line tool 
 `readpst` to convert the .pst file to .eml/.vcf/.ics files, 
 install the 
-<a target="_blank" href="https://addons.thunderbird.net/en-us/thunderbird/addon/importexporttools-ng/">
+<a target="_blank" 
+href="https://addons.thunderbird.net/en-us/thunderbird/addon/importexporttools-ng/">
 ImportExportTools NG addon</a>, 
 and then use it to import those files. We will guide you through the process.
 

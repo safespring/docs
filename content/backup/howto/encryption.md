@@ -187,5 +187,5 @@ Remember to replace `[your node name]` with your actual node name.
 
 ## Read more on IBMs site
 
-* [Include options](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-include-options)
-* [Encryptkey options](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-encryptkey)
+* [Include options](https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-include-options)
+* [Encryptkey options](https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-encryptkey)

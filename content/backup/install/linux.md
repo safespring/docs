@@ -2,7 +2,9 @@
 
 ## Manual Installation
 
-_This document describes how to **manually** install IBM Storage Protect Backup-Archive Client on Linux operating systems like Ubuntu and Red Hat Enterprise Linux (64-bit)._
+_This document describes how to **manually** install IBM Storage Protect 
+Backup-Archive Client on Linux operating systems like Ubuntu and 
+Red Hat Enterprise Linux (64-bit)._
 
 Required files:
 
@@ -22,7 +24,7 @@ Required files:
        wget https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86_DEB/BA/v81xx/8.x.xx.x-TIV-TSMBAC-LinuxX86_DEB.tar
        ```
     
-    1. RHEL / RPM-based distros
+    2. RHEL / RPM-based distros
        ```shell
        wget https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86/BA/v81xx/8.x.xx.x-TIV-TSMBAC-LinuxX86.tar
        ```
@@ -34,7 +36,7 @@ Required files:
          tar xvf 8.1.xx.x-TIVBAC-LinuxX86_DEB.tar
          ```
 
-      1. RHEL / RPM-based distros
+      2. RHEL / RPM-based distros
          ```shell
          tar xvf 8.1.xx.x-TIVBAC-LinuxX86.tar
          ```
@@ -46,7 +48,7 @@ Required files:
          sudo apt-get install ./gskcrypt64_x.x-xx.x.linux.x86_64.deb ./gskssl64_x.x-xx.x.linux.x86_64.deb ./tivsm-api64.amd64.deb ./tivsm-ba.amd64.deb
          ```
 
-      1. RHEL / RPM-based distros
+      2. RHEL / RPM-based distros
          ```shell
          sudo dnf install ./gskcrypt64-x.x.xx.x.linux.x86_64.rpm ./gskssl64-x.x.xx.x.linux.x86_64.rpm ./TIVsm-API64.x86_64.rpm ./TIVsm-BA.x86_64.rpm
          ```
@@ -158,7 +160,7 @@ Save both `dsm.sys` and `dsm.opt` in `/opt/tivoli/tsm/client/ba/bin/`
    you want to define a schedule too and click on _schedule_<br/>
    ![Consumption Unit Schedule](../images/baas-portal-consumption-unit-schedule.png)<br/>
    Here can you schedule the backup for your consumption unit.
-1. Setup IBM Storage Protect Backup-Archive Client schedule polling.
+2. Setup IBM Storage Protect Backup-Archive Client schedule polling.
     1. **Setup schedule via Linux Terminal**
 
     ```sh

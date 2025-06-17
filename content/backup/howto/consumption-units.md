@@ -138,13 +138,13 @@ to set. You have three possible choices:
 - DEDUP_AND_COMPRESS: Enables client-side deduplication and compression by 
   setting the following options on the client (unless overwritten by 
   dsm.opt / dsm.sys):
-     - <a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-compressalways">COMPRESSALWAYS</a> yes
-     - <a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-compression">COMPRESSION</a> yes
-     - <a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-deduplication">DEDUPLICATION</a> yes
+     - <a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-compressalways">COMPRESSALWAYS</a> yes
+     - <a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-compression">COMPRESSION</a> yes
+     - <a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-deduplication">DEDUPLICATION</a> yes
 - FORCE_ENCRYPT: Forces client-side encryption of all data. Please see the 
   article on [Encryption](../howto/encryption.md#how-to-handle-keys) for more 
   details. Only one option is (forcefully) set:
-     - <a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-include-options">INCLUDE.ENCRYPT</a> /.../*
+     - <a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-include-options">INCLUDE.ENCRYPT</a> /.../*
 - None: The server sets no client options.
 
 ### Contact
@@ -197,7 +197,7 @@ disabled.
 The name of the backup node, it functions like a username.
 A randomized alphanumeric string of size 12 is the convention. But you can name
 your node anything you like as long as it follows IBM Storage Protect's 
-<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-naming-storage-protect-objects" target="_blank">object naming rules</a>.
+<a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=commands-naming-storage-protect-objects" target="_blank">object naming rules</a>.
 
 #### Microsoft SQL node naming
 If the node is used to store MS SQL backup data on a Windows machine that also

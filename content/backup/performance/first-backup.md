@@ -17,7 +17,7 @@ According to IBM:
 The incremental command backs up all new or changed data in the locations 
 that you specify, unless you exclude them from backup services.
 ```
-Source: <a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-incremental">
+Source: <a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=commands-incremental">
 Incremental command documentation</a>
 
 The `dsmc incremental` command:
@@ -29,7 +29,7 @@ This is also what
 **scheduled backups** that are enabled from the Backup Portal do, 
 they are incremental backups.
 
-**(*)** A local deduplication cache (<a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-enablededupcache">docs</a>), which is enabled by default, helps 
+**(*)** A local deduplication cache (<a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-enablededupcache">docs</a>), which is enabled by default, helps 
 incremental backups run efficiently. This cache can be found on Linux systems 
 at:
 ```
@@ -42,7 +42,7 @@ unnecessary uploads to the server.
 
 !!! note
       There are several variations of incremental backups. In this documentation, we
-      are referring to <a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=use-file-backup-techniques#r_client_bup_method_filebackup__prog_incr__title__1">
+      are referring to <a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=use-file-backup-techniques#r_client_bup_method_filebackup__prog_incr__title__1">
 progressive incremental backup</a>, unless specified otherwise. This is the recommended variation for normal 
       operation.
 
@@ -62,7 +62,7 @@ During a selective backup, copies of the files are sent to the server even if
 they did not change since the last backup - which can result in more than one 
 copy of the same file on the server.
 ```
-Source: <a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-selective">
+Source: <a target="_blank" href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=commands-selective">
 Selective command documentation</a>
 
 

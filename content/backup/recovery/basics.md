@@ -81,19 +81,19 @@ Options:
   `/the/filespace/subdir/a/b.txt` on the current system. If we omit this flag,
   dsmc will default to `preservepath=subtree`, this will instead cause the
   aforementioned file to be restored to `/subdir/a/b.txt`. This may or may not 
-  cause unwanted conflicts, depending on the destination. (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-preservepath" target="_blank">docs</a>)
+  cause unwanted conflicts, depending on the destination. (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-preservepath" target="_blank">docs</a>)
 - **-subdir=yes**: Restore files in subdirectories, recursively. 
   Without this option, dsmc will only restore direct descendants of the 
-  specified source directory. (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-subdir" target="_blank">docs</a>)
+  specified source directory. (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-subdir" target="_blank">docs</a>)
 - **-replace=yes**: On conflict, automatically replace the current file on the 
-  system. (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-replace" target="_blank">docs</a>)
+  system. (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-replace" target="_blank">docs</a>)
 - **-dateformat=3**: Set the date format to YYYY-MM-DD 
   (for the `pitdate` option). The default can vary depending on the system 
-  locale. (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-dateformat" target="_blank">docs</a>)
+  locale. (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-dateformat" target="_blank">docs</a>)
 - **-pitdate**: Point-In-Time (PIT) date of the backed-up files to restore. 
-  (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-pitdate" target="_blank">docs</a>)
+  (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-pitdate" target="_blank">docs</a>)
 - **-pittime**: Point-In-Time (PIT) time of the backed-up files to restore.
-  (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-pittime" target="_blank">docs</a>)
+  (<a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-pittime" target="_blank">docs</a>)
 
 Positional arguments:
 
@@ -102,7 +102,7 @@ Positional arguments:
   any ambiguity, by instead writing `'/the/filespace/subdir/'`.
 - `'/'`: The destination to where restored files and directories should end up.
 
-More information can be found <a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=uc-restore" target="_blank">here</a>.
+More information can be found <a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=uc-restore" target="_blank">here</a>.
 
 More examples
 ---------------

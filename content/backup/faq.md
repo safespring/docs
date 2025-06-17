@@ -19,7 +19,9 @@ FAQ
 
 ## How do I get keys to generate my API token?
 
-Login at the <a href="https://portal.backup.sto2.safedc.net/">Safespring Backup portal</a>, go to **Settings** and then select **API access** and click **Add**.
+Login at the <a target="_blank" href="https://portal.backup.sto2.safedc.net/">
+Safespring Backup portal</a>, go to **Settings** and then select **API access** 
+and click **Add**.
 
 The Origin, the generated client_id together with your username and password 
 will allow you to create access tokens and a refresh token. Access tokens
@@ -51,10 +53,12 @@ but it is usually faster than that.
 ## What ports need to be opened in the firewall?
 
 During the installation, 
-platforms with TBMR will want to make an https call to get a license for TBMR, so tcp/443 needs to be open until
-the installation is done, then during backups and schedule calls, only tcp/1600 outwards.
+platforms with TBMR will want to make an HTTPS call to get a license for TBMR, 
+so 443/tcp needs to be open until the installation is done, 
+then during backups and schedule calls, only 1600/tcp outwards.
 All TSM communication is always initiated by the client to our server,
-no inbound ports need to be configured, so installation and operations behind NAT are ok.
+no inbound ports need to be configured, so installation and operations behind 
+NAT are ok.
 
 ## What known issues are there with the clients and the services on top of TSM?
 
@@ -70,8 +74,8 @@ no inbound ports need to be configured, so installation and operations behind NA
   (ANS4042E, which normally is related to locale settings like en_US and sv_SE) 
   on large restores. The next patch release contains the fixed code for it.
 - MacOS X 10.11.x needs the TSM release 7.1.4.0 or newer, otherwise the Apple security framework will interfere with the backup client software locations and not allow you to install or use the backup client. If you update your MacOSX and TSM stops working, install the latest release on top of the old one. No need to change anything in the config files or certificate stores. The upgrade will not disturb those files either.
-- If you forcibly kill the client while doing restore, it will take close to 10 minutes for the server to recognize that the client is not coming back to make a "restartable restore". If you run the client again, it will error out with "Restore already in progress". If the client restore was broken due to network hiccups or similar in-transit issues, it will restart by itself from where it left off as long as the issue is resolved within 10 minutes. If you forcibly kill the client, it will forget that it had a session running and you will have to wait until 10 minutes pass before being able to start a new full restore. "dsmc cancel restore" may or may not speed up this timeout.
-- There is a known issue with the local deduplication cache if you run exactly Linux kernel 2.6.32 and TSM client version 7.1.0.2. If you have this combination, either upgrade the client (preferred, this is verified to help as a single action), or increase the DEDUPCACHESIZE in dsm.sys (which may workaround the problem).
+- If you forcibly kill the client while doing restore, it will take close to 10 minutes for the server to recognize that the client is not coming back to make a "restartable restore". If you run the client again, it will error out with "Restore already in progress". If the client restore was broken due to network hiccups or similar in-transit issues, it will restart by itself from where it left off as long as the issue is resolved within 10 minutes. If you forcibly kill the client, it will forget that it had a session running, and you will have to wait until 10 minutes pass before being able to start a new full restore. "dsmc cancel restore" may or may not speed up this timeout.
+- There is a known issue with the local deduplication cache if you run exactly Linux kernel 2.6.32 and TSM client version 7.1.0.2. If you have this combination, either upgrade the client (preferred, this is verified to help as a single action), or increase the DEDUPCACHESIZE in dsm.sys (which may work around the problem).
 - The 8.1.0.0 TSM client (not 8.1.0.2 or later) will fail if you have 1400+ directories in a single directory. The error will be something like this: "ANS6718E The path contains too many nested subdirectories. The maximum number of nested directories is 1400". The solution is to either upgrade to 8.1.0.2 or later, or edit the dsm.opt to include this line: "TESTFLAGS threadstacksize:2048" if you can't upgrade.
 
 ## Why can't I delete filespaces from the client?
@@ -83,7 +87,10 @@ please contact our [support](../service/support.md) to enable the feature tempor
 
 ## Credentials to Safespring Backup Portal?
 
-To get credentials for [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) you need to talk to your backup admin to invite you, if you are the first one in your organisation, please open a ticket with our [support](../service/support.md).
+To get credentials for the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) you need to talk to 
+your backup admin to invite you. 
+If you are the first one in your organisation, 
+please open a ticket with our [support](../service/support.md).
 
 [ransomware]:https://web.archive.org/web/20200218233114/http://www.backupcentral.com/forum/5/254427/ransomware_deleted_tsm_backups_from_node
 [baas-portal]:https://portal.backup.sto2.safedc.net/

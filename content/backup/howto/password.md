@@ -18,7 +18,7 @@ If not, you can enable this feature by adding the option to `/opt/tivoli/tsm/cli
 
 ### Further reading
 
-The `passwordaccess` option: <a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-passwordaccess" target="_blank">IBM Documentation</a>
+The `passwordaccess` option: <a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-passwordaccess" target="_blank">IBM Documentation</a>
 
 Retrieving the current password
 ------------------------
@@ -60,7 +60,7 @@ rm /root/1708990603_0
 
 ### Retrieving the encrypted password on Windows
 On Windows, the encrypted password is stored in `C:\ProgramData\Tivoli\TSM\baclient\Nodes\[your node name]\DCO1-BACKUP-SERVER-2\TSM.KDB`.
-Replace `[your node name]` with the name of your backup node. The name "DCO1-BACKUP-SERVER-2" above is the name of Safespring's backup server. If you are using the older TSM12 server, the name in the path should reflect that.
+Replace `[your node name]` with the name of your backup node. The name "DCO1-BACKUP-SERVER-2" above is the name of Safespring's backup server.
 
 Open the Command Line Prompt in Administrative Mode, and enter:
 ```shell
@@ -91,7 +91,7 @@ del "C:\Windows\Temp\1710702970_0" "C:\Windows\Temp\1710702970_0.plain"
 ```
 
 ### Further reading
-Password storage: <a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=started-secure-password-storage" target="_blank">IBM Documentation</a>
+Password storage: <a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=started-secure-password-storage" target="_blank">IBM Documentation</a>
 
 Password encryption details: <a href="https://blog.sigterm.se/posts/the-joys-of-bootstrapping-ibm-backup-client/" target="_blank">Patrik Lundin's Article</a>
 
@@ -121,7 +121,7 @@ dsmc set password "old password" "new password"
 
 ### Further reading
 
-More about `dsmc set password`: <a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-set-password" target="_blank">IBM Documentation</a>
+More about `dsmc set password`: <a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=commands-set-password" target="_blank">IBM Documentation</a>
 
 Session security: transitional vs. strict
 -------------------------------------------

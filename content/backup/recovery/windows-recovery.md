@@ -120,9 +120,9 @@ on Safespring Compute.
 ### Step 1: Create an image
 Follow the steps above to create an ISO image if you have not already done so.
 Similar to the pre-defined images on the Compute platform such as 
-windows-server-2022 or ubuntu-22.04, you can upload your own images.
+windows-server-2022 or ubuntu-24.04, you can upload your own images.
 
-To upload the ISO so that you can use it on the compute platform, go to 
+To upload the ISO so that you can use it on the Compute platform, go to 
 **Compute -> Images** and click on "Create Image."
 Then:
 
