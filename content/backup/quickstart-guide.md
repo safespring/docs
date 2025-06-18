@@ -68,8 +68,8 @@ latest client from
 <a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/" target="_blank">
 IBMs FTP Server</a>
 
-- <a href="https://www3.software.ibm.com/storage/tivoli-storage-management/patches/client/" target="_blank">Patch Version</a>
-- <a href="https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/client/" target="_blank">Maintenance Version</a>
+- <a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/patches/client/" target="_blank">Patch Version</a>
+- <a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/" target="_blank">Maintenance Version</a>
 
 Please follow the installation instructions for your operating system.
 
