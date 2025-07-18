@@ -4,6 +4,8 @@ There are some currently known issues for Safespring services. This page
 describes the most common pitfalls. Known issues for Backup is under the [Backup
 FAQ page](/backup/faq).
 
+## Unable to access console in Openstack STO2
+Access to the console for compute instances is restricted, contact support@safespring.com for access.
 
 ## AWS S3 update makes some S3 libraries or S3 clients fail
 The AWS S3 protocol recently changed to include extra checksums during uploads, and some of the libraries used by S3-compatible applications have quickly followed suit and added the requirements for these checksums. Ceph is implementing these for its S3 endpoint, but no release has this in yet. If you suddenly get an upload error like
