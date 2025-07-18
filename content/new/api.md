@@ -5,6 +5,9 @@
 For advanced use cases and automation it is necessary to use the
 Openstack API endpoints directly.
 
+!!! info "API access is restricted" 
+    For access to the Openstack API, contact support@safespring.com.
+
 ## Install the Openstack command line client
 
 Openstack.org instructions on how to install the client can be found
