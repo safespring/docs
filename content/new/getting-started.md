@@ -6,10 +6,8 @@
 Start by logging into the portal. You will be greeted with an overview of the project/account statistics. It usually starts off rather empty, but as machines are added, resources will be summarized there.
 
 * **Swedish site sto1** portal: https://dashboard.sto1.safespring.com
-* **Norwegian site osl1** portal: https://dashboard.osl1.safespring.com
+* **Norwegian site osl2** portal: https://dashboard.osl2.safespring.com
 
-!!! info "Legacy sites"
-    The old sto1 site is accessible through the SUNET dashboard at <https://dashboard.cloud.sunet.se>. for all users. The old osl1 site is accessible at https://login.osl1.safespring.com for all users. If you use the API at legacy sites, please refer to this documentation: https://docs.safespring.com/service/known_issues/#cloudipnettnose-domains
 
 ## Virtual Machines
 
@@ -92,7 +90,7 @@ In the new platform, there is 3 networks to choose from (attach only one network
 !!! info "Important note"
     You no longer have the ability to create your own networks. All networks has a separate DHCP-scope from which instances created in that network will get an IP-address from. This means that you will have less flexibility which IP-addresses your instances get, but you will instead gain in stability since the simpler network model in v2 has proven to be much more stable than that in v1.
 
-Instances in different network will be able to communicate as long as your security groups allow it. Note that this also applies to instances in the public network with public IP-addresses and instances in the default and private networks. 
+Instances in different network will be able to communicate as long as your security groups allow it. Note that this also applies to instances in the public network with public IP-addresses and instances in the default and private networks.
 
 Thus, the right way to communicate between instances attached to the different networks is to
 just use security groups directly to control access. **Do NOT add a second
@@ -103,27 +101,27 @@ compete, thus unstable network connection to the instance.**
     Traffic between all instances in the platform (including RFC1918-subnets i.e. private and default) will be routed directly by the platform, thus the destination service will see the RFC1918 IP address as source address when traffic originates from them. This may have a subtle implication for tenants running public facing services that is contacted by instances on a Safespring RFC1918 subnet: If the public service (or operating system) filters out RFC1918-addresses (because they are not expected) it will effectively stop traffic originating form the Safespring RFC1918 subnets. Thus, you must ensure that these subnets is allowed to access your service. Most likely it will just work, but it is worth being aware of. You can use the openstack cli to list all v4 subnets with: `openstack subnet list |grep v4`
 
 ### No layer 2 connectivity, only layer 3
-To clarify even further see the image below which shows 6 instances in the same project. Instances 1 and 2 are 
+To clarify even further see the image below which shows 6 instances in the same project. Instances 1 and 2 are
 put in the public network. This does not mean that they are in the same network per se, public only tells that
-these two instances will get an IP address from the public range. Networking-wise instance 1 and 2 are in 
+these two instances will get an IP address from the public range. Networking-wise instance 1 and 2 are in
 different networks. The same goes for 3 and 4 in the default network. They are in separate networks but both
 get and private IP address from the private pool with NAT enabled. Instance 5 and 6 are the same, two separate
 networks but instead IP-addresses from the private pool with no NAT enabled.
 
 ![image](../images/v2-networking.svg)
 
-All connectivity between the different instances is routed in the same routing fabric, public or private. 
+All connectivity between the different instances is routed in the same routing fabric, public or private.
 Instance 1 in the public network could act jumphost to reach the instance 3, 4, 5 or 6 without being connected to
-neither default nor private. As stated above you even **can't use more than ONE interface on a single instance** 
-because the addresses are given out with DHCP which will cause a conflicting default gateway configuration if 
-you use more than ONE network on each instance. 
+neither default nor private. As stated above you even **can't use more than ONE interface on a single instance**
+because the addresses are given out with DHCP which will cause a conflicting default gateway configuration if
+you use more than ONE network on each instance.
 
 
 ### Security groups is what decides what goes where
-Since all the instances are connected to the same routing fabric, this means that it is possible to reach the 
-instances in the private networks from the public networks and vice versa, should the right security groups be 
+Since all the instances are connected to the same routing fabric, this means that it is possible to reach the
+instances in the private networks from the public networks and vice versa, should the right security groups be
 in place. Since all instances are in their own network connected to the router, you even need security groups
-to allow traffic between instances in the "same" network, for example between 1 and 2. This design makes the 
+to allow traffic between instances in the "same" network, for example between 1 and 2. This design makes the
 configuration simpler since all you have to consider when allowing traffic between instances are the security
 groups. No layer 2 "leaking" traffic can ever happen since all instances are in separate networks.
 

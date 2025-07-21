@@ -5,7 +5,7 @@ much larger sizes and uses `https://` for both integrity, safety and
 accessibility.
 
 ## Get S3 credentials
-S3 credentials are mapped to projects in Safesprings Compute platform. 
+S3 credentials are mapped to projects in Safesprings Compute platform.
 This means that if you want to get credentials for S3 you will have to login into
 version 2 of Safesprings Compute platform and then choose "Project" up to the right and then API Access.
 You will now see a button which says "View Credentials" and if you click that you will be precented with an
@@ -19,7 +19,7 @@ information screen:
 
 !!! note
     Every project in Safespring Compute has one S3 account connected to it but one project can have several users. This means
-    that when different users press the "View Credentials" button in Safespring Compute they will get different key pairs of access and secret 
+    that when different users press the "View Credentials" button in Safespring Compute they will get different key pairs of access and secret
     keys. Important to understand is that these different key pairs will give access to the SAME S3 account, tied to the project.
 
 ## Minimum required info for S3 access
@@ -28,7 +28,7 @@ Many clients will assume you are talking to AWS S3, in which case they might
 want you to add region and country and other information. This information isn't
 used by our endpoint, so you should be able to get many clients going with only
 `access_key`, `secret_key`.  The access- and secret keys are not personal, so
-you should store them securely and share them within a project. 
+you should store them securely and share them within a project.
 
 !!! note
     In a future update, we will offer personal S3 credentials that are
@@ -37,8 +37,7 @@ you should store them securely and share them within a project.
 The `https` URLs to the service:
 
 !!! info "New URLs"
-    + New Norwegian site - https://s3-archive.osl1.safedc.net
-    + Norwegian site  - https://s3.osl1.safedc.net
+    + Norwegian site  - https://s3.osl2.safedc.net
     + Swedish site - https://s3.sto1.safedc.net
     + New Swedish secondary site - https://s3-archive.sto2.safedc.net
 

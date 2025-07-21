@@ -280,7 +280,7 @@ s3cmd setacl --acl-public --recursive s3://mybucket-name/folder-name/object-name
 The first three commands is to restrict public access, and the three last is to enable it. There are two variables you need to access a publicly available object
 over HTTPS:
 
-1. The S3_URL, which can be found in the "View Credentials" dialogue (see picture above) or in the welcome mail you got when you got onboarded. Most common values for this is s3.sto1.safedc.net or s3.osl1.safedc.net.
+1. The S3_URL, which can be found in the "View Credentials" dialogue (see picture above) or in the welcome mail you got when you got onboarded. Most common values for this is s3.sto1.safedc.net or s3.osl2.safedc.net.
 2. The PROJECT_ID, which can be found in the "View Credentials" dialogue.
 
 Once you got these variables you, and have set the bucket or objects to public with one of the commands above the URL for reaching the object will be:

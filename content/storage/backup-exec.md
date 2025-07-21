@@ -21,7 +21,7 @@ New-BECloudInstance -Name "Safespring" -Provider "rhceph" -ServiceHost "s3.sto1.
 ```
 
 ``` tab="Norwegian account"
-New-BECloudInstance -Name "Safespring" -Provider "rhceph" -ServiceHost "s3.osl1.safedc.net" -SslMode "Full" -HttpsPort 443 -UrlStyle "Path" -Endpoint ""
+New-BECloudInstance -Name "Safespring" -Provider "rhceph" -ServiceHost "s3.osl2.safedc.net" -SslMode "Full" -HttpsPort 443 -UrlStyle "Path" -Endpoint ""
 ```
 
 The command returns a definition of your newly added provider. If you would like

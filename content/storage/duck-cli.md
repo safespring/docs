@@ -45,7 +45,7 @@ PropertyList-1.0.dtd">
         <key>Default Port</key>
         <string>443</string>
         <key>Default Hostname</key>
-        <string>s3.osl1.safedc.net</string>
+        <string>s3.osl2.safedc.net</string>
     </dict>
 </plist>
 ```
