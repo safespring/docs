@@ -65,7 +65,7 @@ rule.
 
 Combining includes and excludes that select whether to back up or not
 with includes and excludes for compression/encryption is a separate
-topic, [explained here](https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=options-compression-encryption-backup-processing).
+topic, [explained here](https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=options-compression-encryption-backup-processing).
 
 ### Handling common includes/excludes
 
@@ -216,5 +216,5 @@ This is a more performant and flexible option to back up individual directories.
 
 ## Links
 
-* <a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-include-options" target="_blank">All details on includes and excludes on the IBM website</a>
-* <a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=reference-domain" target="_blank">Details on the DOMAIN option</a>
+* <a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-include-options" target="_blank">All details on includes and excludes on the IBM website</a>
+* <a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=reference-domain" target="_blank">Details on the DOMAIN option</a>

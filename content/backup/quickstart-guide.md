@@ -44,7 +44,7 @@ to attempt to use deduplication and compression before sending data over to the 
 to reduce transfer time and amount. Other options include FORCE_ENCRYPT which
 will unconditionally make the client locally encrypt all data before transfer with a
 key you need to enter once. These two options are mutually exclusive. There is a
-None option that sets no client options from server-side.
+None option that sets no client options.
 
 The Domain decides the retention time of your backups. 
 For example, if you choose 60DAYS, 
@@ -63,15 +63,15 @@ The next step is to install the IBM Storage Protect Backup-Archive Client.
 
 ## Install IBM Storage Protect Backup-Archive Client
 
-Install the IBM Storage Protect Backup-Archive Client, you can download the 
+Install the IBM Storage Protect Backup-Archive Client. You can download the 
 latest client from 
 <a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/" target="_blank">
 IBMs FTP Server</a>
 
-- <a href="https://www3.software.ibm.com/storage/tivoli-storage-management/patches/client/" target="_blank">Patch Version</a>
-- <a href="https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/client/" target="_blank">Maintenance Version</a>
+- <a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/patches/client/" target="_blank">Patch Version</a>
+- <a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/" target="_blank">Maintenance Version</a>
 
-Please follow in the installation instructions for your Operating System.
+Please follow the installation instructions for your operating system.
 
 - [Microsoft Windows](install/windows.md)
 - [Linux](install/linux.md)

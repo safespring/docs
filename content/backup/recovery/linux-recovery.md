@@ -18,13 +18,22 @@ is done on Linux. However, that will not be described here.
 TBMR Preparation Guide
 ----------------------------
 
+!!! warning 
+     The **TBMR Preparation Guide** steps must be taken before data has been 
+     compromised if you wish to perform a full system restore using TBMR.
+     <br/>
+     <br/>
+     If a current machine has already been compromised, and TBMR was 
+     not installed beforehand, you can still install a new system and 
+     [restore](./basics.md) the files you need manually without the use of TBMR.
+     It may not be as convenient as restoring the entire system in one go, 
+     and letting TBMR ensure that it's bootable, but the option is always there,
+     as long as you have backup of the data.
+
 ### Client Installation
 
 We will describe step by step how to install the TBMR utility on Linux
 systems to make them recoverable using TBMR.
-
-!!! note 
-     These steps must be taken before data has been compromised!
 
 #### Prerequisites
 

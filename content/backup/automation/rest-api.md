@@ -799,7 +799,7 @@ This is done by using the following endpoint:
 Make sure to give the backup node a name by replacing the `{tsm_node_name}` 
 placeholder. 
 The name that you give must follow IBM Storage Protect's 
-<a href="https://www.ibm.com/docs/en/storage-protect/8.1.25?topic=commands-naming-storage-protect-objects" target="_blank">object naming rules</a>. 
+<a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=commands-naming-storage-protect-objects" target="_blank">object naming rules</a>. 
 Because this is the name that will be used to configure the respective 
 computer's backup client.
 
@@ -912,7 +912,7 @@ This end point must be at the very least accessible to Cloutility, and can be
 firewalled off from other clients.
 
 You can click on the "Test" button next to the "Post URL" field to send a test
-request from Cloutility your endpoint.
+request from Cloutility to your endpoint.
 The test request will look something like this:
 ```
 POST /baas-report/?code=xyz HTTP/1.1
@@ -932,7 +932,7 @@ HTTP/1.1 100 Continue
 ```
 Then read the incoming HTTP request data.
 
-Your HTTP server should handle this automatically, 
+Your HTTP server _should_ handle this automatically, 
 but it is worth mentioning in case it does not do so.
 
 Once your server has received this trigger, 

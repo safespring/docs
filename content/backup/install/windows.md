@@ -6,7 +6,7 @@ _This document describes how to **manually** install IBM Storage Protect Backup-
 
 Required files:
 
-- [IBM Storage Protect Backup-Archive Client](https://www3.software.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Windows/x64/)
+- [IBM Storage Protect Backup-Archive Client](https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Windows/x64/)
 - [SafeDC Default Configuration file dsm.opt](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/dsm.opt.sample) (Right-click and Save)
 - [Certificate installation script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA-win64.bat) (Right-click and Save)
 

@@ -95,7 +95,7 @@ Reports
 
 A subscription has a limit on the number of user seats which depends on your 
 contract. To see this number and how many of them are in use, visit 
-**Report -> Subscription consumption**.
+**Report center -> Subscription consumption**.
 
 If you wish to increase the limit, contact [Support](../../service/support.md), 
 and we will help you do so.
@@ -109,7 +109,7 @@ over the last week, visit **Report -> Backup analysis**.
 
 The AvePoint portal has an audit log where sign-ins and administrative 
 operations are recorded.
-To see the audit log, visit **Report -> System auditor**.
+To see the audit log, visit **Report center -> System auditor**.
 
 The log (up to 30 days back) can be exported by clicking the **Export** button.
 
