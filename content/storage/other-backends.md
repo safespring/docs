@@ -16,7 +16,7 @@ terraform {
     bucket     = "bucketname"
     key        = "bucketname/terraform.tfstate"
     region     = "us-east-1"
-    endpoint   = "s3.osl1.safedc.net"
+    endpoint   = "s3.osl2.safedc.net"
     access_key = "AccKeyGoesHere"
     secret_key = "VeryLongSecretKeyHere"
     skip_credentials_validation =true
