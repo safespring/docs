@@ -9,6 +9,10 @@ This site contains documentation for Safespring services and user resources.
     Please review our list of [known issues][ki] to avoid spending time on issues
     we are already aware of.
 
+## Getting Access
+
+To get access to Safespring services, please contact us at hello@safespring.com.
+
 ## Services
 
 Our services are delivered from four datacenters in Norway and Sweden: *osl2*
