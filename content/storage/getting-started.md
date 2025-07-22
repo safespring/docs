@@ -58,14 +58,14 @@ it is.
 
 To help you get started quickly with various S3 clients, we provide sample configurations for popular tools and applications. These examples include the correct endpoint URLs and configuration settings specific to Safespring's S3 service:
 
-- [AWS CLI](../howto/configs/aws-cli.md) - Command-line interface for Amazon Web Services
-- [s3cmd](../howto/configs/s3cmd.md) - Command-line S3 client with sync capabilities
-- [Minio Client](../howto/configs/minio-client.md) - High-performance S3-compatible client
-- [Cyberduck](../howto/configs/cyberduck.md) - GUI client for file transfers
-- [Duck CLI](../howto/configs/duck-cli.md) - Command-line version of Cyberduck
-- [s3fs](../howto/configs/s3fs.md) - Mount S3 buckets as local filesystems
-- [CloudBerry](../howto/configs/cloudberry.md) - Backup and file management tool
-- [Nextcloud S3](../howto/configs/nextcloud-s3.md) - Configure Nextcloud to use S3 storage
+- [AWS CLI](/storage/howto/configs/aws-cli.md) - Command-line interface for Amazon Web Services
+- [s3cmd](/storage/howto/configs/s3cmd.md) - Command-line S3 client with sync capabilities
+- [Minio Client](/storage/howto/configs/minio-client.md) - High-performance S3-compatible client
+- [Cyberduck](/storage/howto/configs/cyberduck.md) - GUI client for file transfers
+- [Duck CLI](/storage/howto/configs/duck-cli.md) - Command-line version of Cyberduck
+- [s3fs](/storage/howto/configs/s3fs.md) - Mount S3 buckets as local filesystems
+- [CloudBerry](/storage/howto/configs/cloudberry.md) - Backup and file management tool
+- [Nextcloud S3](/storage/howto/configs/nextcloud-s3.md) - Configure Nextcloud to use S3 storage
 
 Each configuration guide includes installation instructions, setup details, and usage examples tailored for Safespring's S3 endpoints.
 
