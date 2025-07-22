@@ -9,7 +9,7 @@ There is mainly two variants to create an instance in Safesprings platform:
 
 The image below shows what the different types of method looks like in the instance view:
 
-![image](../images/snapshot-different-instance-types.png)
+![image](../../images/snapshot-different-instance-types.png)
 
 An instance which is started from an image has the image listed in the "Image"-column, whereas if the instance was created from a volume it just has a minus-sign in that column.
 
@@ -17,7 +17,7 @@ If the instance is created from an image, and does not have a minus-sign in the 
 
 If it instead was created from a volume, you should go to the "Volumes"-tab in the GUI and find the volume which is the root filesystem for the instance you want to snapshot.
 
-![image](../images/snapshot-create-volume-snap.png)
+![image](../../images/snapshot-create-volume-snap.png)
 
 Your snapshot will now show up under "Volume Snapshots" tab.
 
@@ -27,7 +27,7 @@ In order to start a new instance from your snapshot you go to the "Launch Instan
 ### 1. Pick a source
 When it is time to pick a source for the instance - use the dropdown and either pick "Instance Snapshot" or "Volume Snapshot" depending on which method you used to take the snapshot. Use "Instance Snapshot" if the original instance was created from an image and "Volume Snapshot" if the snapshot was taken from the volume.
 
-![image](../images/snapshot-start-from-volume-snap.png)
+![image](../../images/snapshot-start-from-volume-snap.png)
 
 ### 2. Pick the same network
 You fill in the other things that are needed, and put the new instance in the same network as the original and launch the instance.
@@ -37,17 +37,17 @@ You fill in the other things that are needed, and put the new instance in the sa
 
 You start by clicking the name of your new instance started from the snapshot and the click "Console". You will notice that the instance does not have working networking connectivity but you log in just like you normally do in the web console.
 
-![image](../images/snapshot-login-to-snapped.png)
+![image](../../images/snapshot-login-to-snapped.png)
 
 Once your in you right-click on the little network icon in the lower right corner and pick the "Open Network and Sharing Center".
 
 Click "Change adapter settings" and right click the network adapter and pick "Properties". You will be presented by the following dialogue:
 
-![image](../images/snapshot-network-properties.png)
+![image](../../images/snapshot-network-properties.png)
 
 Double click the "Internet Protocol version 4" entry and you will see the following:
 
-![image](../images/snapshot-wrong-ip.png)
+![image](../../images/snapshot-wrong-ip.png)
 
 You see that the instance has the original instance IP-address configured which is the problem. Just pick "Obtain an IP-address automatically" and click "OK".
 

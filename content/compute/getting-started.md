@@ -2,16 +2,47 @@
 
 ## I just got a Safespring Compute account, what now?
 
-
 Start by logging into the portal. You will be greeted with an overview of the project/account statistics. It usually starts off rather empty, but as machines are added, resources will be summarized there.
 
 * **Swedish site sto1** portal: https://dashboard.sto1.safespring.com
+* **Swedish site sto2** portal: https://dashboard.sto2.safespring.com
 * **Norwegian site osl2** portal: https://dashboard.osl2.safespring.com
+
+## Understanding Your Account Structure
+
+Before diving into creating virtual machines, it's helpful to understand how Safespring Compute is organized. The platform uses OpenStack's structure of domains and projects:
+
+- **Domains** usually have the form "company.com"
+- **Projects** are administrative entities under a domain, typically named like "project1.company.com" and "project2.company.com"
+- A **project** acts as a separate environment - common setups include separate projects for test and production environments like "test.company.com" and "prod.company.com"
+
+This structure allows you to share resources between different instances (virtual machines) within a project while keeping environments completely separate.
+
+## Understanding the Overview Dashboard
+
+When you log into the platform you will be greeted with the "Overview" screen where you can see how much resources you currently are using in the project.
+
+![image](../images/np-overview.png)
+
+The pie charts show how much of the resources compared to the set quota. In the dashboard you can see a summary of your resources usage.
+
+* Shows running virtual machines vs. quota limit.
+* Virtual CPU cores allocated to instances.
+* Memory allocated to instances.
+* Persistent storage volumes in the project.
+* Current count of volume snapshots.
+* Storage quota usage.
+* Firewall rules for network access control.
+* Not applicable - network creation is disabled in this platform.
 
 
 ## Virtual Machines
 
 Openstack calls VMs "instances" so in order to start running a few machines, you go to the Instances category, and use Launch Instance(s) to get your first VM up.
+
+**VCPUs**: Virtual CPU cores are allocated per instance. Each VCPU corresponds to a processor core in Safespring's platform. Your quota limits how many VCPUs you can use across all instances.
+
+**RAM**: Memory is allocated to each instance based on the chosen flavor. The dashboard shows total RAM usage across all running instances in your project.
 
 ![image](../images/dash-launch.png)
 
@@ -25,7 +56,17 @@ Before we go into starting VMs, let's take a quick look at the concepts and name
 
 ## Volumes and Images
 
-Whenever a disk is created in Openstack, it will be a volume. A volume may be snapshotted and the snapshot may later be reused on the same instance or on other instances.
+Storage in OpenStack comes in two main types:
+
+1. **Ephemeral storage**: Created with the instance and has the same lifetime as the instance. When you delete the instance, ephemeral storage is automatically removed.
+
+2. **Persistent storage (Volumes)**: Can be created independently of instances and attached and detached to instances. This type of storage is not tied to a specific instance and persists even when instances are deleted.
+
+**Volume Snapshots**: You can take point-in-time snapshots of any volume for backup or cloning purposes. These snapshots count against your storage quota, so clean up unused snapshots regularly.
+
+**Volume Storage Quota**: The dashboard shows how much of your allocated storage quota is currently in use across all volumes in the project.
+
+Whenever a disk is created in OpenStack, it will be a volume. A volume may be snapshotted and the snapshot may later be reused on the same instance or on other instances.
 
 You may also add or upload "passive" disks called Images (including ISO images) that may be used to hold templates for instances or to install from, in the case of ISO images. A volume can be converted to an image, in case you prepare a machine and later want to duplicate it many times.
 
@@ -75,6 +116,9 @@ The second option is to use the "Launch Instance" dialogue but under the "Source
 
 
 ## Network
+
+**Security Groups Overview**: Security groups provide built-in firewall functionality in OpenStack. Each security group contains rules that define allowed ports and source IP addresses or networks. You can apply multiple security groups to an instance, and changes take effect immediately on running instances.
+
 In the new platform, there is 3 networks to choose from (attach only one network):
 
 1. **public**: This network will give you a public IPv4 address, public IPv6 address, dns setup and default gateway so it is reachable directly to/from Internet.

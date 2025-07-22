@@ -18,15 +18,15 @@ and *dco1* in Kalix.
 
 |                    | osl2  | sto1  | sto2  | dco1  |
 |:-------------------|:-----:|:-----:|:-----:|:-----:|
-| Safespring Compute |   X   |   X   |   -   |   -   |
-| Safespring Storage |   X   |   X   |   -   |   -   |
+| Safespring Compute |   X   |   X   |   X   |   -   |
+| Safespring Storage |   X   |   X   |   X   |   -   |
 | Safespring Archive |   -   |   -   |   X   |   -   |
 | Safespring Backup  |   -   |   -   |   -   |   X   |
 
 
 ### Safespring Compute
 
-To get started with the Compute service, see the [getting started guide](new/getting-started)
+To get started with the Compute service, see the [getting started guide](compute/getting-started)
 
 ### Safespring Storage
 
