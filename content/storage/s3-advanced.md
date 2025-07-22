@@ -18,10 +18,10 @@ Reasons for doing this could be:
 In the examples below words written with capital letters, such as BUCKETOWNERPROJECT, are variables that should be replaced with values matching your use-case.
 
 ### Setting up s3cmd
-We are going to use the tool "s3cmd" for all configuration. Use the instructions [here](/storage/howto/configs/s3cmd) to install it. To test these examples you are going to need to have two separate s3cmd-config
+We are going to use the tool "s3cmd" for all configuration. Use the instructions [here](howto/configs/s3cmd.md) to install it. To test these examples you are going to need to have two separate s3cmd-config
 files. To get the variables you need to create those files login to your Safespring account, click "API Access" up to the left, and the "View Credentials". You will be presented with something like this:
 
-![View Credentials](/images/view-credentials.png)
+![View Credentials](../images/view-credentials.png)
 
 The important variables to write down are:
 

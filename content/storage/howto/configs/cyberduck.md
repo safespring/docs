@@ -13,7 +13,7 @@ another one.
 
 ![Add config](../../../images/cyberduckadd.png)
 
-Enter the host part of the [URL for your account](/storage/getting-started/#minimum-required-info-for-s3-access) in
+Enter the host part of the [URL for your account](../../getting-started.md#minimum-required-info-for-s3-access) in
 the Server field and fill in your `access_key`. CyberDuck will prompt
 for the `secret_key` at first connect and store it in the system
 keyring.
