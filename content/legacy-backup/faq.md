@@ -25,8 +25,8 @@ This will get you the access-key and secret-key that can be used to create your 
 
 ## How do I install TBMR (Bare machine recovery for TSM)
 
-- For Windows see our [Windows TBMR installation guide](/backup/recovery/windows-recovery.md)
-- For Linux see our [Linux TBMR installation guide](/backup/recovery/linux-recovery.md)
+- For Windows see our [Windows TBMR installation guide](/backup/recovery/windows-recovery)
+- For Linux see our [Linux TBMR installation guide](/backup/recovery/linux-recovery)
 
 ## When will Operating System X version Y be fully supported by TSM?
 

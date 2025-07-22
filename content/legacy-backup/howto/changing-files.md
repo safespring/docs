@@ -63,7 +63,7 @@ So in order to get successful runs and clean reports that point out
 other more "real" errors if they occur, you should add specific
 `EXCLUDE` rules to your `dsm.sys/dsm.opt` files for files.
 
-Read more on [Includes and Excludes](/backup/howto/includeexclude.md)
+Read more on [Includes and Excludes](/legacy-backup/howto/includeexclude)
 
 In the above example, the offending file is also getting rotated by
 the operating system, so we are getting good backups of the

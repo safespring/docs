@@ -35,7 +35,7 @@ To get started with the Compute service, see the [getting started guide](compute
 ### Safespring Storage
 
 To get started with the Storage service, we have a page with [general
-information](storage/generalinfo)
+information](storage/getting-started/)
 
 ### Safespring Backup
 
