@@ -13,7 +13,7 @@ Example usecases for the Safespring Elastic IP feature include MetalLB for
 container clusters and failover-handling haproxy servers.
 
 !!! note "Availability"
-    Elastic IP is available in all Safespring sites but can currently only be requested through [support](../../service/support.md).
+    Elastic IP is available in all Safespring sites but can currently only be requested through [support](../service/support.md).
 
 ## How it works
 
