@@ -7,7 +7,7 @@ This document describes how to restore an instance from Safespring Backup using 
 
 1. The machine we are going to restore must be protected with the Safespring Backup service
 2. Your quota must be set high enough in order to set up a new machine as the same as you will restore
-3. In order to make the restored machine you will need API access to Safesprings platform. Instructions for how to set that up can be found [here](/compute/api.md).
+3. In order to make the restored machine you will need API access to Safesprings platform. Instructions for how to set that up can be found [here](../../compute/api.md).
 
 ## Method
 
@@ -132,7 +132,7 @@ Now you get back to the TBMR Recovery Environment. We should not reboot since we
 ### 12. Make the restored C: drive bootable
 
 Now it is time to make the volume for the restored C: drive bootable. In order to do this, you will need API access to Safesprings Compute setup correctly. Instruction for how to do that
-can be found [here](/compute/api/). Type these two commands. In the second command you should copy the ID of your volume from the first command:
+can be found [here](../../compute/api.md). Type these two commands. In the second command you should copy the ID of your volume from the first command:
 
 ``` shell
 $ openstack volume list

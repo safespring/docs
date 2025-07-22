@@ -13,7 +13,7 @@ _This page covers the following topics:_
 
 ## Install TSM
 
-See [TSM Installation](/backup/install/overview).
+See [TSM Installation](../backup/install/overview.md).
 
 
 ## Backup

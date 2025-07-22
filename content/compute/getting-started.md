@@ -87,7 +87,7 @@ After creating the volume you head to the "Launch instance" dialogue. Under "Sou
 ![image](../images/launch_with_volume.png)
 
 ## Flavors and Local Storage
-You can read more about the different flavors and what they mean [here](/compute/flavors/)
+You can read more about the different flavors and what they mean [here](flavors.md)
 
 
 ## Boot from image

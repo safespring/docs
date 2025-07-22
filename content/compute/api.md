@@ -1,7 +1,7 @@
 # Access the compute service API
 
 !!! warning "API access is restricted"
-    For access to the Openstack API, contact support. See [Getting support](/service/support) for details.
+    For access to the Openstack API, contact support. See [Getting support](../service/support.md) for details.
 ## Requirements
 
 For advanced use cases and automation it is necessary to use the

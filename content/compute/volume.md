@@ -21,7 +21,7 @@ with risk of data loss.
 1. Select `Change Volume Type` in the pulldown menu for the volume you want to
    migrate.
 
-    ![Edit volume](/images/cinder-edit-volume.png)
+    ![Edit volume](../images/cinder-edit-volume.png)
 
 1. Select the new volume type from the pulldown list
 

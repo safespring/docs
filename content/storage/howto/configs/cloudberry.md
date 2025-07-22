@@ -8,14 +8,14 @@ https://www.cloudberrylab.com/explorer/amazon-s3.aspx
 
 Start with adding an `S3 compatible gateway` config,
 
-![Create config](/images/cloudberry1.png)
+![Create config](../../../images/cloudberry1.png)
 
 and in the next menu, give it a name, add endpoint URL
 https://s3.sto2.safedc.net (if this is where your account is located)
 and the `access_key` and `secret_key` you got while enrolling for the
 service.
 
-![Options](/images/cloudberry2.png)
+![Options](../../../images/cloudberry2.png)
 
 ## Simple CloudBerry usage
 
@@ -24,7 +24,7 @@ From this point on, you can use it like any graphical
 remote folder on each side and drag-n-drop files and folders
 between the sites.
 
-![Usage](/images/cloudberry3.png)
+![Usage](../../../images/cloudberry3.png)
 
 ## Features of Cloudberry
 
@@ -39,7 +39,7 @@ by selecting them in the list and pressing the Properties button
 (alternatively right-click on any remote object) to select who
 may read or write to the files/folders.
 
-![Properties](/images/cloudberry4.png)
+![Properties](../../../images/cloudberry4.png)
 
 For folders, you may choose to apply the setting recursively to
 the whole directory tree. If you upload a file and ask for its

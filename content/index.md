@@ -30,12 +30,12 @@ and *dco1* in Kalix.
 
 ### Safespring Compute
 
-To get started with the Compute service, see the [getting started guide](compute/getting-started)
+To get started with the Compute service, see the [getting started guide](compute/getting-started.md)
 
 ### Safespring Storage
 
 To get started with the Storage service, we have a page with [general
-information](storage/getting-started/)
+information](storage/getting-started.md)
 
 ### Safespring Backup
 
@@ -71,5 +71,5 @@ This section describes what we are working on right now
 * NVIDIA A2 GPU flavors in STO2
 * Major Openstack upgrades finished in STO1
 
-[ki]:service/known_issues/
-[sup]:service/support/
+[ki]:service/known_issues.md
+[sup]:service/support.md

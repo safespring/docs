@@ -8,14 +8,14 @@ here:
 
 https://docs.ceph.com/en/octopus/radosgw/s3/serviceops/#get-usage-stats
 
-but there is an alternative where you can inform [aws-cli](/storage/howto/configs/aws-cli)
+but there is an alternative where you can inform [aws-cli](howto/configs/aws-cli.md)
 about the API call and get a new functions usable from the CLI tool.
 
 The installation of these extras is documented here:
 
 https://github.com/ceph/ceph/tree/main/examples/rgw/boto3
 
-and assumes an already installed and configured [aws-cli](/storage/howto/configs/aws-cli).
+and assumes an already installed and configured [aws-cli](howto/configs/aws-cli.md).
 
 After adding the [json-file](https://raw.githubusercontent.com/ceph/ceph/master/examples/rgw/boto3/service-2.sdk-extras.json) that describes the extension, you can
 call aws like this: (with correct endpoint and profile-name for your configuration)

@@ -86,7 +86,7 @@ To restore a machine, the following preparatory steps need to be taken:
 #### Safespring's BaaS packaging for Windows and Linux
 
 Safespring's BaaS packaging of TSM and TBMR installs the TBMR client on a backup client machine.
-As of `2015-07` this is supported on [Windows platforms](Installation-Windows) and this is the now recommended installation method.
+As of `2015-07` this is supported on [Windows platforms](../../backup/recovery/windows-recovery.md) and this is the now recommended installation method.
 
 #### Manual Installation on e.g Redhat Linux
 

@@ -21,6 +21,6 @@ If using PuTTY you start PuTTYgen and copy the public part of the key from the t
 ##Once the key is installed
 If you start PuTTY you now will be able to go to `SSH` -> `Auth` in the session configuration dialogue and use the file picking window under `Private key file for authentication `to point to you converted key.
 
-![Putty key dialogue](/images/putty-key.png)
+![Putty key dialogue](../../images/putty-key.png)
 
 If you instance is connected to the "public" network (and updated the security groups to allow SSH-traffic) you now should be able to log in to you instance with you key and password that you set in the convert procedure.

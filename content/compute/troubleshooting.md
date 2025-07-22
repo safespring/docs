@@ -7,7 +7,7 @@ The OpenStack dashboard provides console access to instances through the web int
 !!! warning "Console access is restricted"
     Console access through the dashboard is firewall protected and only available to users who have been whitelisted for API access. If you need console access to your instances, you must first request API access permissions.
 
-    To request the necessary permissions for console access, contact support as described in the [API access documentation](/compute/api/#access-the-compute-service-api).
+    To request the necessary permissions for console access, contact support as described in the [API access documentation](api.md/#access-the-compute-service-api).
 
 
 
