@@ -121,7 +121,7 @@ This on a single 7200 RPM SATA drive. Some 3k odd objects that had been missed t
 
 Tuning the client options can help you use more of the local resources
 to speed up the backup transfers, at the cost of more CPU, Network and
-I/O.  More about this on [System performance tuning](System-performance-tuning).
+I/O.  More about this on [System performance tuning](/legacy-backup/howto/performance-tuning).
 
 Since we assume most people have decent Internet links now, getting
 the data over the wire as quickly as possible is probably the most

@@ -21,4 +21,4 @@ unsubscribe.
 We publish information about our [currently known issues][ki]. Please review it
 to avoid spending time on them.
 
-[ki]:known_issues/
+[ki]:known_issues.md
