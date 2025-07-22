@@ -100,6 +100,7 @@ nav:
       - VPN options: "compute/vpn.md"
       - API Access: "compute/api.md"
       - Flavors: "compute/flavors.md"
+      - Load Balancing: "compute/loadbalancing.md"
       - Application credentials: "compute/app-creds.md"
       - Trouble Shooting: "compute/troubleshooting.md"
       - HOWTOs:
@@ -128,9 +129,9 @@ nav:
       - Backup Exec and Safespring Storage: "storage/backup-exec.md"
       - Other Backends: "storage/other-backends.md"
   - Status and support:
-      - Roadmap: "service/roadmap.md"
       - Status information: "service/status.md"
-      - Offboarding information: "new/offboarding.md"
+      - Audit Logging: "service/audit_logging.md"
+      - Offboarding information: "service/offboarding.md"
       - Getting support: "service/support.md"
       - Policies and SLA: "service/policies.md"
       - Known issues: "service/known_issues.md"

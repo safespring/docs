@@ -42,5 +42,34 @@ information](storage/generalinfo)
 To get started with the Backup service,
 see the [quickstart guide](backup/quickstart-guide.md)
 
+## Roadmap
+
+This section describes what we are working on right now
+
+### 1 - 3 months
+
+* Migration of STO1 physical datacenter to a new location. This includes a major hardware refresh and new core network. The migration is expected to be completed by the end of the quarter and should mostly be transparent to customers.
+* [Safespring on-demand Kubernetes clusters](https://www.safespring.com/en/services/containerplatform/). We will introduce a self-service portal and API that will allow you to create and manage Kubernetes clusters on demand. This on-demand solution will provide managed control planes and easy customization options.
+
+### 3-9 months
+
+* self-service portal and capabilities for Compute and Storage services
+* Improved S3 authentication and authorization capabilities
+* Kubernetes based private cloud solutions
+
+## Recent changes in the platform
+
+### 2025 Q3
+
+* Refresh of documentation, removal of legacy references
+* Openstack upgrades started in other sites
+
+### 2025 Q1
+
+* Increased S3 archive capacity in STO2
+* Added compute site in STO2
+* NVIDIA A2 GPU flavors in STO2
+* Major Openstack upgrades finished in STO1
+
 [ki]:service/known_issues/
 [sup]:service/support/
