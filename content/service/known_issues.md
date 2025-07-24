@@ -2,7 +2,7 @@
 
 There are some currently known issues for Safespring services. This page
 describes the most common pitfalls. Known issues for Backup is under the [Backup
-FAQ page](/backup/faq).
+FAQ page](../backup/faq.md).
 
 
 ## AWS S3 update makes some S3 libraries or S3 clients fail
@@ -143,7 +143,7 @@ runcmd:
 
 ## Resize operations disabled
 
-Due to different issues with resize operations, we have disabled user-initiated resize operations. If you need to resize instances, please contact [support](/service/support/).
+Due to different issues with resize operations, we have disabled user-initiated resize operations. If you need to resize instances, please contact [support](support.md).
 
 It is not possible to resize to an instance that has less disk space than the one you are resizing from.
 
@@ -168,7 +168,7 @@ reported. To ensure that the attached volume persists after the operation, it
 should be detached from the instance before the "Suspend" or "Resize" command
 is issued.
 
-![Create Network Tab 3](/images/instance-dropdown.png)
+![Create Network Tab 3](../images/instance-dropdown.png)
 
 "Resize" works if you shut down the instance first. It is a prioritized function
 to get working properly even for running instances.  "Shelve" shutdowns the

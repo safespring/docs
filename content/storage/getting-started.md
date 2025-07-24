@@ -5,6 +5,12 @@ much larger sizes and uses `https://` for both integrity, safety and
 accessibility.
 
 ## Get S3 credentials
+
+!!! note
+    Every project in Safespring Compute has one S3 account connected to it but one project can have several users. This means
+    that when different users press the "View Credentials" button in Safespring Compute they will get different key pairs of access and secret
+    keys. Important to understand is that these different key pairs will give access to the SAME S3 account, tied to the project.
+
 S3 credentials are mapped to projects in Safesprings Compute platform.
 This means that if you want to get credentials for S3 you will have to login into
 version 2 of Safesprings Compute platform and then choose "Project" up to the right and then API Access.
@@ -15,12 +21,9 @@ information screen:
 2. EC2 Access Key: the S3 access key
 3. EC2 Secret Key: the S3 secret key
 
-![View Credentials](/images/view-credentials.png)
+![View Credentials](../images/view-credentials.png)
 
-!!! note
-    Every project in Safespring Compute has one S3 account connected to it but one project can have several users. This means
-    that when different users press the "View Credentials" button in Safespring Compute they will get different key pairs of access and secret
-    keys. Important to understand is that these different key pairs will give access to the SAME S3 account, tied to the project.
+
 
 ## Minimum required info for S3 access
 
@@ -50,6 +53,21 @@ clients, libraries or frameworks who insist on accessing the domain with `https:
 for an object named `https://URL/BUCKETNAME/dir/object` will work as expected.
 This feature is not yet fully tested but we'll update this documentation when
 it is.
+
+## Client Configuration Examples
+
+To help you get started quickly with various S3 clients, we provide sample configurations for popular tools and applications. These examples include the correct endpoint URLs and configuration settings specific to Safespring's S3 service:
+
+- [AWS CLI](howto/configs/aws-cli.md) - Command-line interface for Amazon Web Services
+- [s3cmd](howto/configs/s3cmd.md) - Command-line S3 client with sync capabilities
+- [Minio Client](howto/configs/minio-client.md) - High-performance S3-compatible client
+- [Cyberduck](howto/configs/cyberduck.md) - GUI client for file transfers
+- [Duck CLI](howto/configs/duck-cli.md) - Command-line version of Cyberduck
+- [s3fs](howto/configs/s3fs.md) - Mount S3 buckets as local filesystems
+- [CloudBerry](howto/configs/cloudberry.md) - Backup and file management tool
+- [Nextcloud S3](howto/configs/nextcloud-s3.md) - Configure Nextcloud to use S3 storage
+
+Each configuration guide includes installation instructions, setup details, and usage examples tailored for Safespring's S3 endpoints.
 
 ## Buckets, directories, files and objects
 

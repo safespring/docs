@@ -16,7 +16,7 @@ The latest versions of Veeam Backup has support for this feature and can be
 enabled when creating an Object Storage Repository in Veeam:
 
 
-![Veeam Immutable Setting](/images/immutable-setting.png)
+![Veeam Immutable Setting](../images/immutable-setting.png)
 
 
 ### Creating buckets that allow object locking

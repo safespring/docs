@@ -11,14 +11,14 @@ The main window will show "bookmarks" unless you are connected to
 somewhere, and in the lower left corner, press the `+` sign to add yet
 another one.
 
-![Add config](/images/cyberduckadd.png)
+![Add config](../../../images/cyberduckadd.png)
 
-Enter the host part of the [URL for your account](generalinfo.md) in
+Enter the host part of the [URL for your account](../../getting-started.md#minimum-required-info-for-s3-access) in
 the Server field and fill in your `access_key`. CyberDuck will prompt
 for the `secret_key` at first connect and store it in the system
 keyring.
 
-![Create config](/images/cyberduck1.png)
+![Create config](../../../images/cyberduck1.png)
 
 ## Options
 
@@ -58,7 +58,7 @@ Select the file and choose `Info from the File` menu (keyboard
 shortcut: Opt-I) or the cogwheel. Then add or remove permissions as
 you see fit.
 
-![Permissions](/images/cyberduck2.png)
+![Permissions](../../../images/cyberduck2.png)
 
 ## Addons
 
@@ -67,4 +67,4 @@ your Cyberduck preferences and allows you to mount one or more of the
 configured endpoints as a mounted drive. (In my case, the `DC1-S3`
 'drive' on the left)
 
-![Drives](/images/mountainduck1.png)
+![Drives](../../../images/mountainduck1.png)

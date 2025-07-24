@@ -51,32 +51,32 @@ Now it is time to configure the cloud drive.
 Go to the Backup Exec GUI and click the Storage-tab. Click "Configure Cloud Storage" and you will be presented
 with a dialogue. Name the cloud storage to something (in this case Safespring). Press "Next":
 
-![Configure Cloud Storage](/images/create-cloud-storage-01.png)
+![Configure Cloud Storage](../images/create-cloud-storage-01.png)
 
 ### 3. Pick S3
 
-![Choose provider type](/images/create-cloud-storage-02.png)
+![Choose provider type](../images/create-cloud-storage-02.png)
 
 ### 4. Pick Safespring [rhceph]
 In this dialogue you should pick the  option in the first dropdown and the account to use in the second.
 
-![Choose provider and account](/images/create-cloud-storage-03.png)
+![Choose provider and account](../images/create-cloud-storage-03.png)
 
 If you haven't configured the account to the Safespring Storage service yet, press `Add` and you will be presented with the following dialogue. Fill in you account credentials and press OK. When both dropdown in the Cloud storage dialogue is filled in press Next.
 
-![Create account](/images/create-cloud-storage-04.png)
+![Create account](../images/create-cloud-storage-04.png)
 
 
 ### 5. Pick a bucket
 
 Now it is time to pick a bucket where your backups should end up. If you haven't created a bucket for that yet - use the CloudBerry S3 Explorer to do that. Press "Next".
 
-![Pick bucket](/images/create-cloud-storage-05.png)
+![Pick bucket](../images/create-cloud-storage-05.png)
 
 ### 6. Choose number of concurrent operations
 Here you configure how many concurrent operations that should be allowed to this cloud storage. Depending on you needs (if you know that you will have to run multiple backup jobs simultaneously to the cloud storage set a suitable number here. If you start with 4 you know that you will be able to run 4 concurrent sessions to this specific cloud storage. If you get errors in the reports, you can try and decrease this number for debugging purposes.
 
-![Choose number of concurrent operations](/images/create-cloud-storage-06.png)
+![Choose number of concurrent operations](../images/create-cloud-storage-06.png)
 
 ### 7. Success
 You now have configured Backup Exec to work with Safespring Storage.

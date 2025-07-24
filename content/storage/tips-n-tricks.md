@@ -14,14 +14,14 @@ support for it, and not all S3 clients do.
 S3 Browser looks like this if you view a bucket with versioning
 enabled and press the Versions panel:
 
-![S3browser](/images/S3browser+versions.png)
+![S3browser](../images/S3browser+versions.png)
 
 ### CyberDuck
 CyberDuck needs to enable `Show hidden files` from the `View` menu, then
 you can get old versions listed in grey underneath the latest active
 version.
 
-![Cyberduck](/images/cyberduck+versions.png)
+![Cyberduck](../images/cyberduck+versions.png)
 
 ## Pros and Cons of versioning
 

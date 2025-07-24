@@ -21,11 +21,12 @@ This will get you the access-key and secret-key that can be used to create your 
 
 ## Where can I fetch IBM TSM client software?
 
-- See our [TSM installation guide](Installation)
+- See our [TSM installation guide](../backup/install/overview.md)
 
 ## How do I install TBMR (Bare machine recovery for TSM)
 
-- See our [TBMR installation guide](TBMR)
+- For Windows see our [Windows TBMR installation guide](../backup/recovery/windows-recovery.md)
+- For Linux see our [Linux TBMR installation guide](../backup/recovery/linux-recovery.md)
 
 ## When will Operating System X version Y be fully supported by TSM?
 

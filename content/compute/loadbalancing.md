@@ -1,6 +1,6 @@
-# Elastic IP
+# Load Balancing - Elastic IP
 
-Safespring Elastic IP allows projects to announce anycast IP addresses within a
+Safespring Elastic IP is our load balancing solution that allows projects to announce anycast IP addresses within a
 site and enables potential for load balancing and/or failover for your services.
 You may advertise extra addresses for project instances via [Border Gateway
 Protocol (BGP)](https://en.wikipedia.org/wiki/Border_Gateway_Protocol), either
@@ -11,6 +11,9 @@ be created in the Safespring infrastructure.
 
 Example usecases for the Safespring Elastic IP feature include MetalLB for
 container clusters and failover-handling haproxy servers.
+
+!!! note "Availability"
+    Elastic IP is available in all Safespring sites but can currently only be requested through [support](../service/support.md).
 
 ## How it works
 

@@ -5,9 +5,6 @@ We are working on implementing audit logging of user actions in our platforms.
 
 Currently this is what is implemented:
 
-compute
--------
-
 s3
 --
 
@@ -20,12 +17,7 @@ For each s3 request the following is logged:
 
 This data is written to a log server and kept for 90 days.
 
-This log format is available in the following sites:
 
-* sto1 (2024-05-03)
-
-backup?
--------
 
 Retrieving log data
 -------------------
