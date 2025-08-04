@@ -134,7 +134,7 @@ mail client for offline reading.
     When users want their own data; it can be easier to allow them to export 
     it themselves by enabling the export option for the 
     ReCenter portal. 
-    This should _reduce_ the need for a backup administrator to export the data 
+    This _should_ reduce the need for a backup administrator to export the data 
     for them. Although, sometimes you still have to, for example, when the user 
     cannot sign in to their organization account.
     <p>

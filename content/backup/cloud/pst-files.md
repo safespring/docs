@@ -53,7 +53,8 @@ Make sure to install it, and then scroll down to the bottom and install the
 
 ![evolution-fedore-install-pst-addon.png](../images/evolution-fedore-install-pst-addon.png)
 
-Alternately, to do the same thing quicker, use the **Terminal** and run:
+Alternately, you can do the same thing quicker by using the **Terminal** and 
+running:
 
 ```shell
 sudo dnf install evolution evolution-pst
