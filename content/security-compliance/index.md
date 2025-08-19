@@ -4,9 +4,13 @@ Safespring's cloud services are built on a foundation of internationally recogni
 
 ## Overview
 
-In this chapter we outline the standards that Safespring uses to implement it's services. 
+In this chapter we outline the standards that Safespring uses to implement it's services.
 
-Because we run a variety of services each 
+Because we run a variety of services each with their own compliance and security implementations.
+
+For that reason you can find a chapter 'Security and Compliance' in every service's documentation.
+
+Our internal 'DevOps Guidelines' are the reference material for all our services. They set out the minimal guidelines for all our services.
 
 ## FR2000 certified
 

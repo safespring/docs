@@ -55,7 +55,14 @@ nav:
   - Security and Compliance: "security-compliance/index.md"
   - Backup:
       - Quick-Start Guide: "backup/quickstart-guide.md"
-      - Security and Compliance: "backup/security-compliance/index.md"
+      - Security and Compliance:
+          - Overview: "backup/security-compliance/index.md"
+          - System Protection and Maintenance: "backup/security-compliance/system-protection-maintenance.md"
+          - Data Management: "backup/security-compliance/data-management.md"
+          - Logging and Monitoring: "backup/security-compliance/logging-monitoring.md"
+          - Network Security: "backup/security-compliance/network-security.md"
+          - Secure Development: "backup/security-compliance/secure-development.md"
+          - Development and Operations Management: "backup/security-compliance/development-operations-management.md"
       - Installation:
           - Overview: "backup/install/overview.md"
           - Linux: "backup/install/linux.md"
@@ -99,7 +106,14 @@ nav:
       - Legacy Backup: "legacy-backup/index.md"
   - Compute:
       - Getting Started: "compute/getting-started.md"
-      - Security and Compliance: "compute/security-compliance/index.md"
+      - Security and Compliance:
+          - Overview: "compute/security-compliance/index.md"
+          - System Protection and Maintenance: "compute/security-compliance/system-protection-maintenance.md"
+          - Data Management: "compute/security-compliance/data-management.md"
+          - Logging and Monitoring: "compute/security-compliance/logging-monitoring.md"
+          - Network Security: "compute/security-compliance/network-security.md"
+          - Secure Development: "compute/security-compliance/secure-development.md"
+          - Development and Operations Management: "compute/security-compliance/development-operations-management.md"
       - VPN options: "compute/vpn.md"
       - API Access: "compute/api.md"
       - Flavors: "compute/flavors.md"
@@ -114,7 +128,14 @@ nav:
           - Taking snapshots of instances: "compute/howto/snapshotting-instances.md"
   - Storage:
       - Getting Started: "storage/getting-started.md"
-      - Security and Compliance: "storage/security-compliance/index.md"
+      - Security and Compliance:
+          - Overview: "storage/security-compliance/index.md"
+          - System Protection and Maintenance: "storage/security-compliance/system-protection-maintenance.md"
+          - Data Management: "storage/security-compliance/data-management.md"
+          - Logging and Monitoring: "storage/security-compliance/logging-monitoring.md"
+          - Network Security: "storage/security-compliance/network-security.md"
+          - Secure Development: "storage/security-compliance/secure-development.md"
+          - Development and Operations Management: "storage/security-compliance/development-operations-management.md"
       - S3 Quotas: "storage/quota.md"
       - S3 Advanced Features: "storage/s3-advanced.md"
       - S3 Usage Report: "storage/usage-statistics.md"
@@ -132,6 +153,26 @@ nav:
       - Tips and Tricks: "storage/tips-n-tricks.md"
       - Backup Exec and Safespring Storage: "storage/backup-exec.md"
       - Other Backends: "storage/other-backends.md"
+  - On-demand Kubernetes:
+      - Getting Started: "kubernetes/getting-started.md"
+      - Security and Compliance:
+          - Overview: "kubernetes/security-compliance/index.md"
+          - System Protection and Maintenance: "kubernetes/security-compliance/system-protection-maintenance.md"
+          - Data Management: "kubernetes/security-compliance/data-management.md"
+          - Logging and Monitoring: "kubernetes/security-compliance/logging-monitoring.md"
+          - Network Security: "kubernetes/security-compliance/network-security.md"
+          - Secure Development: "kubernetes/security-compliance/secure-development.md"
+          - Development and Operations Management: "kubernetes/security-compliance/development-operations-management.md"
+  - Self-service Portal & API:
+      - Getting Started: "portal-api/getting-started.md"
+      - Security and Compliance:
+          - Overview: "portal-api/security-compliance/index.md"
+          - System Protection and Maintenance: "portal-api/security-compliance/system-protection-maintenance.md"
+          - Data Management: "portal-api/security-compliance/data-management.md"
+          - Logging and Monitoring: "portal-api/security-compliance/logging-monitoring.md"
+          - Network Security: "portal-api/security-compliance/network-security.md"
+          - Secure Development: "portal-api/security-compliance/secure-development.md"
+          - Development and Operations Management: "portal-api/security-compliance/development-operations-management.md"
   - Status and support:
       - Status information: "service/status.md"
       - Audit Logging: "service/audit_logging.md"
