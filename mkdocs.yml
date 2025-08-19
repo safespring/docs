@@ -52,8 +52,10 @@ markdown_extensions:
 # Pages layout
 nav:
   - Overview: "index.md"
+  - Security and Compliance: "security-compliance/index.md"
   - Backup:
       - Quick-Start Guide: "backup/quickstart-guide.md"
+      - Security and Compliance: "backup/security-compliance/index.md"
       - Installation:
           - Overview: "backup/install/overview.md"
           - Linux: "backup/install/linux.md"
@@ -97,6 +99,7 @@ nav:
       - Legacy Backup: "legacy-backup/index.md"
   - Compute:
       - Getting Started: "compute/getting-started.md"
+      - Security and Compliance: "compute/security-compliance/index.md"
       - VPN options: "compute/vpn.md"
       - API Access: "compute/api.md"
       - Flavors: "compute/flavors.md"
@@ -111,6 +114,7 @@ nav:
           - Taking snapshots of instances: "compute/howto/snapshotting-instances.md"
   - Storage:
       - Getting Started: "storage/getting-started.md"
+      - Security and Compliance: "storage/security-compliance/index.md"
       - S3 Quotas: "storage/quota.md"
       - S3 Advanced Features: "storage/s3-advanced.md"
       - S3 Usage Report: "storage/usage-statistics.md"
