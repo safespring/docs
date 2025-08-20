@@ -4,7 +4,16 @@ This document outlines the logging and monitoring requirements and practices for
 
 ## 3.1 System Logging
 
-*Information about system-level logging, log collection, and log management for storage infrastructure will be documented here.*
+Logs are collected per site in the shared Loki system.
+
+
+External and internal API calls are logged. This allows for detailed tracking of API usage and potential security incidents.
+
+API and application logs can be provided to the customer on a case by case basis. Please request access through support, and include the site and relevent access IDs.
+
+### Audit logging
+
+auditd is being implemented on all physical storage machines, providing full security and audit logging.
 
 ## 3.2 Security Monitoring
 
@@ -12,4 +21,6 @@ This document outlines the logging and monitoring requirements and practices for
 
 ## 3.3 Time Synchronization
 
-*Information about time synchronization requirements, NTP configuration, and timestamp accuracy for audit and security purposes will be described here.*
+All servers have `systemd-timesyncd` enabled and configured to synchronize time. The timezone is set to UTC to ensure consistency across all servers.
+
+Clock drift is monitored by the Ceph control plane and alerts are generated if drift exceeds the default Ceph thresholds.

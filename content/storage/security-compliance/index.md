@@ -2,6 +2,10 @@
 
 This chapter covers security and compliance aspects specific to Safespring Storage services.
 
+## Scope
+
+This section covers all public and private cloud services offered by Safespring Storage.
+
 ## Overview
 
 *This section is under development and will be populated with detailed security and compliance information for storage services.*
