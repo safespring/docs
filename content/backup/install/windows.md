@@ -64,7 +64,7 @@ reinstall the same CA Root certificate every time.
    Files\Tivoli\TSM\Baclient`
     Start the `dsmc.exe` and it will now ask you to confirm the *User ID* that is the same as your node name, and copy and paste the password from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/)
 
-    ![Copy Password from Safespring Backup Portal](../images/baas-portal-backup-node-setup-information.png) ![Paste Password to the Password Feild](../images/SPBAC-cli-login.png)
+    ![Copy Password from Safespring Backup Portal](../images/baas-portal-backup-node-setup-information.png) ![Paste Password to the Password Field](../images/SPBAC-cli-login.png)
 
     Run `quit` to exit Storage Protect Backup-Archive Client CLI.
 
@@ -80,7 +80,7 @@ reinstall the same CA Root certificate every time.
     These can be copied 
     and pasted from the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/).
 
-    ![Copy Password from Safespring Backup Portal](../images/baas-portal-backup-node-setup-information.png) ![Paste Password to Password Feild](../images/SPBAC-GUI-login.png)
+    ![Copy Password from Safespring Backup Portal](../images/baas-portal-backup-node-setup-information.png) ![Paste Password to Password Field](../images/SPBAC-GUI-login.png)
 
     If the application starts, it has logged in successfully, and will save 
    the password (encrypted) for future use.
@@ -91,16 +91,20 @@ reinstall the same CA Root certificate every time.
    regularly to see when it should back up your data next time.
    To assign a predefined schedule, open [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) 
    and go to the _consumption unit_ you want to define a schedule too and 
-   click on _schedule_<br/>
+   click on _schedule_.<br/>
    ![Consumption Unit Schedule](../images/baas-portal-consumption-unit-schedule.png)<br/>
    Here can you schedule the backup for your consumption unit.
-1. Setup IBM Storage Protect Backup-Archive Client schedule polling.
-    1. **Setup schedule via Command-Line**
+1. Set up the IBM Storage Protect Backup-Archive Client schedule polling.<br/>
+   <br/>
+   There are two ways to do it, either via command line, or the GUI. 
+   You may pick the method that you're the most comfortable with. <br/>
+   <br/>
+   **Setup schedule via Command-Line**
 
      Start a Command-Line window in _Administrator Mode_ and change to the Backup-Archive Client directory e.g `cd C:\Program Files\Tivoli\TSM\Baclient`.
      Run the following commands to set up your schedule.
 
-    ```sh
+    ```shell
     dsmcutil install scheduler /name:"TSM Client Scheduler" /node:<NODENAME> /optfile:"<PATH TO DSM.OPT>" /password:<TSM PASSWORD> /autostart:no /startnow:no
 
     dsmcutil install cad /name:"TSM Client Acceptor" /node:<NODENAME> /password:<TSM PASSWORD> /optfile:"<PATH TO DSM.OPT>" /autostart:yes /startnow:no
@@ -109,14 +113,13 @@ reinstall the same CA Root certificate every time.
 
     net start "TSM Client Acceptor"
     ```
+   **Setup schedule via GUI**
 
-    1. **Setup schedule via GUI**
-
-    The GUI icon can you find in the start-menu, search for Backup-Archive GUI 
+    The GUI icon can you find in the start-menu, search for Backup-Archive GUI.
 
     ![GUI via Start-Menu](../images/SPBAC-startmenu-GUI.png)
 
-    Click on *Utilities -> Setup Wizard* to start the Configuraton Wizard.
+    Click on *Utilities -> Setup Wizard* to start the Configuration Wizard.
 
     ![Start the Schedule Setup Wizard](../images//SPBAC-GUI-Schedule-wizard-mainmenu.png)
 
@@ -130,11 +133,11 @@ reinstall the same CA Root certificate every time.
 
     ![Install a new or addition scheduler](../images/SPBAC-GUI-Schedule-wizard-new-schedule.png)
 
-    Make sure you enable *[X] Use the client acceptor to manage the scheduler* 
+    Make sure you enable *[X] Use the client acceptor to manage the scheduler*.
 
     ![Enable Client Acceptor to Manage Scheduler](../images/SPBAC-GUI-Schedule-wizard-enable-client-acceptor.png)
 
-    Confirm the name of the *TSM Client Acceptor* and press *Next*
+    Confirm the name of the *TSM Client Acceptor* and press *Next*.
 
     ![Client Acceptor Configuration File Path](../images/SPBAC-GUI-Client-Acceptor-Config-file.png)
 
@@ -147,12 +150,12 @@ reinstall the same CA Root certificate every time.
 
     ![Insert Node name and Password](../images/SPBAC-GUI-Client-Acceptor-node-n-pwd.png)
 
-    Click on _(o) Automatic when Windows boots_ to automatic start the TSM Client Acceptor Services
+    Click on _(o) Automatic when Windows boots_ to automatic start the TSM Client Acceptor Services.
 
     ![Client Acceptor Services](../images/SPBAC-GUI-Client-Acceptor-services.png)
 
     Confirm the location where you want to save the TSM Schedule and Error Logs,
-   and if you want to log to Windows Event Logger
+   and if you want to log to Windows Event Logger.
 
     ![TSM Client Logs Files](../images/SPBAC-GUI-Client-Acceptor-logfiles.png)
 
