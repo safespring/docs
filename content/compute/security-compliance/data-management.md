@@ -6,7 +6,7 @@ This document outlines the data management requirements and practices for Safesp
 
 Safespring does not handle data retention or data deletion for customers. It is the responsibility of the customer to manage their data retention and deletion policies.
 
-After contract expiration, Safespring will delete any leftover data associated with the customer's account within the period specified in the contracts.
+After contract expiration, Safespring will delete any leftover data associated with the customer's account within 6 months or the contractually specified period.
 
 ## 2.2 Backup and Recovery
 
