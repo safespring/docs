@@ -8,11 +8,32 @@ This document outlines the system protection and maintenance requirements and pr
 
 ## 1.2 Vulnerability Management
 
-*Details about vulnerability assessment, patch management, and security updates for compute infrastructure will be outlined here.*
+Security patches are installed automatically using the Ubuntu unattended upgrades feature.
+A high level inventory of software assets is maintained using our Netbox instance. Versions of major components are automatically registered and maintained using the `ansible/roles/SBOM` role.
+
+The compute service team monitors various data sources for security alerts and advisories.
+These and more data sources are monitored:
+
+* [Ubuntu CVE reports](https://ubuntu.com/security/cves)
+* [NIST NVD](https://nvd.nist.gov/)
+* [Opensource Vulnerability Database](https://osv.dev/list)
+
+Critical patches are applied within 7 days of release. Non-critical patches are applied within 30 days of release.
+
+Generally critical patches are applied within 24-48 hours of release. An emergency maintenance window will be scheduled when needed.
+
 
 ## 1.3 Configuration Management
 
-*Information about secure configuration standards, baseline configurations, and configuration drift detection for compute services will be described here.*
+The internal `compute service baseline` defines the system architecture, automation design and forms the basis of our architecture design records(ADRs).
+
+Based on this baseline the service automation is implemented using Ansible. All configuration changes are tracked and approved using a GitOps workflow, see [#change management in Development and Operations](development-operations-management.md#62-change-management).
+
+Ansible roles and default settings are captured in the `ansible/roles` internal repository/path. Inventory data is stored in the `seter/inventory` internal repository/path.
+
+Sensitive values and credentials are stored inside the `seter` repository, they are encrypted using a SOPS keyring. The SOPS keyring itself is protected by GPG keys from compute team members, the GPG keys are backed by yubikeys. When credentials for a component are missing, the component will fail at deployment. This ensures possible default credentials set in the roles are always overwritten.
+
+Each site has it's own private SSH keypair and GPG key. Those are used for automating deployments and configuration changes. The site keys are rotated regularly.
 
 ## 1.4 Cryptography
 
