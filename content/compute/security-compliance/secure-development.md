@@ -4,24 +4,36 @@ This document outlines the secure development requirements and practices for Saf
 
 ## 5.1 Development Lifecycle Security
 
-*Information about secure development lifecycle processes, security requirements integration, and development security standards for compute services will be documented here.*
+Software developed for the Safespring Compute service adheres to the internal "DevOps guidelines" for secure development. The service architecture and design is defined in an internal service baseline.
+
+Otherwise Safespring relies on the upstream community for maintaining security during the development lifecycle
+
 
 ## 5.2 Application Security Requirements
 
-*Details about application security requirements, security controls, and compliance requirements for applications running on compute infrastructure will be outlined here.*
+The Safespring Compute service relies on the secured common infrastructure layer used by Safespring services and on the upstream community for defining and implementing application security requirements.
 
 ## 5.3 Secure System Architecture
 
-*Information about secure architecture principles, design patterns, and security architecture requirements for compute systems will be described here.*
+The Safespring Compute service is operated on the secured common infrastructure layer used by Safespring services. The internal `compute service baseline` defines the system architecture, automation design and forms the basis of our architecture design records(ADRs).
+
+
 
 ## 5.4 Secure Coding Standards
 
-*Details about secure coding practices, code review processes, and coding standards for compute service development will be documented here.*
+Software developed for the Safespring Compute service adheres to the internal "DevOps guidelines" for secure development.
+
+The service itself is based on Openstack, Openstack has it's own guidelines and practices. Some of those can be found in various places, including:
+
+* [contributor guidelines](https://docs.openstack.org/contributors/code-and-documentation/index.html).
+* [security guidelines](https://wiki.openstack.org/wiki/Security/Guidelines)
 
 ## 5.5 Security Testing
 
-*Information about security testing methodologies, penetration testing, vulnerability assessments, and security validation for compute services will be outlined here.*
+Software developed for the Safespring Compute service adheres to the internal "DevOps guidelines" for secure development.
+
+Safespring does not implement any additional security testing for Openstack, instead we rely on the upstream community to provide this role.
 
 ## 5.6 Outsourced Development
 
-*Details about security requirements for outsourced development, third-party security assessments, and vendor security management for compute services will be described here.*
+Safespring does not currently outsource any development work for the compute services other than relying on the upstream community for Openstack development.

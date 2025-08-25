@@ -23,4 +23,6 @@ auditd runs on all hypervisors, providing full security and audit logging.
 
 ## 3.3 Time Synchronization
 
-*Information about time synchronization requirements, NTP configuration, and timestamp accuracy for audit and security purposes will be described here.*
+All servers have `systemd-timesyncd` enabled and configured to synchronize time. The timezone is set to UTC to ensure consistency across all servers.
+
+Clock drift is monitored by prometheus node exporter and alerted on when exceeding the thresholds defined in the seter site configuration: `prometheus/rules/ntp.rules`.
