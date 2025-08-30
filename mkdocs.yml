@@ -52,7 +52,11 @@ markdown_extensions:
 # Pages layout
 nav:
   - Overview: "index.md"
-  - Security and Compliance: "security-compliance/index.md"
+  - Security and Compliance:
+      - Overview: "security-compliance/index.md"
+      - Asset Management: "security-compliance/asset-management.md"
+      - Logging and Monitoring: "security-compliance/logging-monitoring.md"
+      - System Protection and Maintenance: "security-compliance/system-protection-maintenance.md"
   - Backup:
       - Quick-Start Guide: "backup/quickstart-guide.md"
       - Security and Compliance:
