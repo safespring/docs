@@ -4,8 +4,7 @@ This document outlines the logging and monitoring requirements and practices for
 
 ## 3.1 System Logging
 
-Logs are collected per site in the shared Loki system.
-
+Logs are collected per site in the [shared logging system](../../security-compliance/logging-monitoring.md).
 
 External and internal API calls are logged. This allows for detailed tracking of API usage and potential security incidents.
 
