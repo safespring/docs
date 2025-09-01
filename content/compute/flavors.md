@@ -98,3 +98,28 @@ To spread capacity fairly over instances the IOPS quota on them are linear to th
 ## Flavors and Pricing
 
 The full Safespring pricing list and associated public flavors can be found at [Price list and Calculator](https://www.safespring.com/en/price/). You do not need to enter your e-mail address, you can scroll to the bottom of the page to see the pricing list.
+
+## Resizing
+
+Thanks to improvements in the underlying software that powers our compute
+service, we can now offer self-service resizing between flavor sizes, without
+the need to contact support. However, to avoid data loss or leaving your VM in a
+broken or unrecoverable state, a few precautions are necessary:
+
+- b2 flavors cannot be converted to l2 flavors (and vice versa)
+- Non-GPU flavors cannot be converted to GPU flavors (and vice versa)
+- Special flavors cannot be converted to standard flavors (and vice versa)
+
+Currently, the software does not prevent these conversions. It is therefore the
+customer’s responsibility to ensure flavor compatibility before initiating a
+resize.
+
+We strongly recommend creating a backup before resizing, even between compatible
+flavors. The safest approach remains recreating the server and reattaching the
+volume containing the operating system. Resize should only be used if this is
+not feasible.
+
+Please also note that resizing is an offline operation, meaning the instance will be
+shut down before the process begins. The duration of the resize depends on the
+configuration, and can be significantly longer for l2 flavors with large disk
+sizes.
