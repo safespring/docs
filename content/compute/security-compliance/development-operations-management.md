@@ -33,4 +33,6 @@ Branch protection is implemented to ensure only team members can review pull req
 
 ## 6.5 Audit and Testing Protection
 
-*Information about protecting audit trails, testing environment security, and maintaining data integrity during security assessments and compliance testing will be outlined here.*
+Audits done against the production environment always happen without elevated permissions.
+
+For more details please contact [support](../../../service/support)
