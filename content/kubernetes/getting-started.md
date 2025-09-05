@@ -7,7 +7,7 @@ This guide will help you get started with Safespring's On-demand Kubernetes serv
 
 ## Overview
 
-on-demand Kubernetes allows users to create, scale and use Kubernetes clusters. A [portal and api](../../portal-api/getting-started) are used to manage the clusters.
+on-demand Kubernetes allows users to create, scale and use Kubernetes clusters. A [portal and API](../../portal-api/getting-started) are used to manage the clusters.
 
 It is build on top of the [Safespring Compute](../compute/getting-started.md) service.
 
@@ -23,8 +23,7 @@ Worker nodes can be used with L2 or B2 flavors, see [flavors](../../compute/flav
 
 Access to the clusters is handled through the accounts you've been provided with for onboarding in the [self-service portal](../../portal-api/getting-started).
 
-Clusters are integrated with the oidc compatible identity provider that is integrated with the portal. Detailed instructions on how to authenticate with Kubernetes using your portal account will be provided at a later stage.
-
+Clusters are integrated with the OIDC compatible identity provider that is integrated with the portal. Detailed instructions on how to authenticate with Kubernetes using your portal account will be provided at a later stage.
 
 ## Networking
 
@@ -37,10 +36,9 @@ Cilium is used as the default CNI. Cilium is configured with the following setti
 
 ### loadbalancing
 
-Dedicated loadbalancers maneged by Safespring are used to direct traffic to the controlplane api and worker nodes. The cluster is provisioned with dedicated IPv4 addresses, ensuring controlplane traffic stays isolated from workernode traffic.
+Dedicated loadbalancers maneged by Safespring are used to direct traffic to the controlplane api and worker nodes. The cluster is provisioned with [dedicated IPv4 addresses](../compute/loadbalancing.md), ensuring controlplane traffic stays isolated from workernode traffic.
 
 When nodes get added or removed from the cluster, the loadbalancers will automatically be updated.
-
 
 ## Storage
 
