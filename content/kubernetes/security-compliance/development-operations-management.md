@@ -8,15 +8,21 @@ This document outlines the development and operations management requirements an
 
 ## 6.2 Change Management
 
-*Details about change management processes, approval workflows, and change tracking for Kubernetes infrastructure and services will be outlined here.*
+Change management is implemented as a GitOps workflow. Changes are made into feature branches and merged into the main branch after approval.
+
+Branch protection is implemented to ensure only team members can review pull requests. A minimum of one approval from a team member that is not the author of the pull request is required and enforced.
 
 ## 6.3 Data Masking
 
-*Information about data masking techniques, sensitive data protection, and anonymization procedures for Kubernetes environments will be described here.*
+!!! note "Data Masking"
+
+    Data masking is not implemented. We never transfer customer data to other environments than the production environment.
 
 ## 6.4 Production data in acceptance environments
 
-*Details about policies and procedures for handling production data in acceptance/testing environments, including data sanitization and privacy protection measures will be documented here.*
+!!! note "Production data in acceptance environments"
+
+    Production data is never transferred to acceptance environments.
 
 ## 6.5 Audit and Testing Protection
 
