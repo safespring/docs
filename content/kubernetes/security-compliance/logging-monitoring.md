@@ -4,7 +4,13 @@ This document outlines the logging and monitoring requirements and practices for
 
 ## 3.1 System Logging
 
-*Information about system-level logging, log collection, and log management for Kubernetes infrastructure will be documented here.*
+Logs are collected per site in a shared logging system using[grafana Loki](https://grafana.com/oss/loki/). The service runs on the operations cluster and monitor applications and clusters on each site.The infrastructure and configuration is fully automated using our internal git repositories and ArgoCD.
+
+API and application logs can be provided to the customer on a case by case basis. Please request access through support, and include the site and relevent access IDs.
+
+!!! note "On-demand Kubernetes Logs"
+
+    For On-demand Kubernetes clusters we do not store or monitor the logs.
 
 ## 3.2 Security Monitoring
 
@@ -12,4 +18,4 @@ This document outlines the logging and monitoring requirements and practices for
 
 ## 3.3 Time Synchronization
 
-*Information about time synchronization requirements, NTP configuration, and timestamp accuracy for audit and security purposes will be described here.*
+We make use of Talos linux as an underlying OS for our operational infrastructure and by default, Talos Linux uses `time.cloudflare.com` as the NTP server.
