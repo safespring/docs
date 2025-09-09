@@ -9,13 +9,13 @@ Safespring On-Demand Kubentes operational infrastructure is currently devided in
 - Ops Cluster - necessary for having a centralized view (logging, monitoring) or the infrastructure and the operations performed on it, as well as acting as the controller (via ArgoCD) for application setup both in Ops Cluster as well as Management Cluster(s).
 - Management Cluster(s) - needs to be at least 1 per [datacenter](../../index.md#services) (e.g. osl2, sto2 etc.) with the purpose of acting as both the Management cluster for creating Workload Clusters, as well as any necessary site specific components for enabling cluster creation
 
-We also make use of 2 types environments: stage and production.
+We also make use of 2 types environments: staging and production.
 
 Customers always run their workloads from the production Management Clusters.
 
 The dedicated staging environment that runs within the same production security measures as the production environments. This environment is used for upgrade testing, bug fixing, etc.
 
-Safespring never transfers customer data to other environments.
+Customer data from the on-demand Kubernetes service is never transferred to other environments than the production environment.
 
 ## 6.2 Change Management
 

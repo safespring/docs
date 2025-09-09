@@ -4,24 +4,37 @@ This document outlines the secure development requirements and practices for Saf
 
 ## 5.1 Development Lifecycle Security
 
-*Information about secure development lifecycle processes, security requirements integration, and development security standards for Kubernetes services will be documented here.*
+Applications developed for on-demand Kubernetes implement multiple layers to ensure a secure development lifecycle.
+
+* Code reviews are mandatory, access control is enforced. See [change management](../development-operations-management#62-change-management) for implementation details.
+* Static Application Security Analysis tools are implemented in CI/CD pipelines
+* Vulnerability scanning of code is performed in CI/CD pipelines
+* Docker images are scanned upon upload to the container registry and at regular intervals
 
 ## 5.2 Application Security Requirements
 
-*Details about application security requirements, security controls, and compliance requirements for applications running on Kubernetes infrastructure will be outlined here.*
+* Multi-Factor Authentication (MFA) is implemented for all administrator accounts
+* RBAC is used to enforce access control for all resources
+* Extensive input validation is used to minimize fallout from wrong input
 
 ## 5.3 Secure System Architecture
 
-*Information about secure architecture principles, design patterns, and security architecture requirements for Kubernetes systems will be described here.*
+Service architecture is set out during regular roadmap, strategy and design sessions. This includes defining the architecture, identifying potential security risks, and implementing security controls.
+
+ADRs are used to document decisions and show rationale for design choices. ADRs are documented in the team repository, they are tracked in version control.
+
+A default ADR template is used that includes mandatory sections for security controls and threat modeling.
+Existing ADRs are reviewed regularly and updated as needed.
 
 ## 5.4 Secure Coding Standards
 
-*Details about secure coding practices, code review processes, and coding standards for Kubernetes service development will be documented here.*
+Industry best practices and resources are used to ensure secure coding standards for Kubernetes service development. This includes following secure coding guidelines, conducting code reviews, and training developers on secure coding practices.
 
 ## 5.5 Security Testing
 
-*Information about security testing methodologies, penetration testing, vulnerability assessments, and security validation for Kubernetes services will be outlined here.*
+* Automated security testing and Vulnerability scanning is implemented in CI/CD pipelines.
 
 ## 5.6 Outsourced Development
 
-*Details about security requirements for outsourced development, third-party security assessments, and vendor security management for Kubernetes services will be described here.*
+When development is outsourced to third parties, this is done under strict security requirements.
+Security requirements are part of outsourced contracts and contractors always follow the same security standards as our own teams.
