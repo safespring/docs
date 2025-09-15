@@ -10,7 +10,7 @@ After contract expiration, Safespring will delete any leftover data associated w
 
 ## 2.2 Backup and Recovery
 
-Automatic backups are created of the controlplane etcd, as well as [Zitadel IAM](https://zitadel.com/) database, and [Harbor Registry](https://goharbor.io/) database.
+Automatic backups are created of the control-plane etcd, as well as [Zitadel IAM](https://zitadel.com/) database, and [Harbor Registry](https://goharbor.io/) database.
 
 Regular restore tests are done during upgrades and during disaster recovery simulations.
 

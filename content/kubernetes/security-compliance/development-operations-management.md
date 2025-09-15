@@ -4,7 +4,7 @@ This document outlines the development and operations management requirements an
 
 ## 6.1 Environment Separation
 
-Safespring On-Demand Kubentes operational infrastructure is currently devided into two types of clusters:
+Safespring On-Demand Kubentes operational infrastructure is currently divided into two types of clusters:
 
 - Ops Cluster - necessary for having a centralized view (logging, monitoring) or the infrastructure and the operations performed on it, as well as acting as the controller (via ArgoCD) for application setup both in Ops Cluster as well as Management Cluster(s).
 - Management Cluster(s) - needs to be at least 1 per [datacenter](../../index.md#services) (e.g. osl2, sto2 etc.) with the purpose of acting as both the Management cluster for creating Workload Clusters, as well as any necessary site specific components for enabling cluster creation

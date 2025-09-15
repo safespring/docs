@@ -21,7 +21,6 @@ All communication between Operational services, clients and APIs is encrypted, e
 - **TLS version: The system enforces TLS 1.2 or later**
 - **Cipher suite: AES-GCM 128/256 / CHACHA20-POLY1305**
 
-
 ### 1.4.2 Information at Rest
 
 Talos secrets  are encrypted at rest  using [secretbox](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#providers) **XSalsa20 and Poly1305**.

@@ -9,7 +9,10 @@ Applications developed for on-demand Kubernetes implement multiple layers to ens
 * Code reviews are mandatory, access control is enforced. See [change management](../development-operations-management#62-change-management) for implementation details.
 * Static Application Security Analysis tools are implemented in CI/CD pipelines
 * Vulnerability scanning of code is performed in CI/CD pipelines
-* Docker images are scanned upon upload to the container registry and at regular intervals
+* Docker images are scanned upon upload to the container registry and at regular intervals using:
+
+  * [trivy vulnerability scanner](https://goharbor.io/docs/2.13.0/administration/vulnerability-scanning/) from Harbor
+  * [Kubescape scanner](https://kubescape.io/docs/operator/vulnerabilities/#scanning-images-pulled-from-private-registries) for private registries
 
 ## 5.2 Application Security Requirements
 
