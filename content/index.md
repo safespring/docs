@@ -20,12 +20,13 @@ in the Oslo region,
 *sto1* and *sto2* at two different locations in the Stockholm region,
 and *dco1* in Kalix.
 
-|                    | osl2  | sto1  | sto2  | dco1  |
-|:-------------------|:-----:|:-----:|:-----:|:-----:|
-| Safespring Compute |   X   |   X   |   X   |   -   |
-| Safespring Storage |   X   |   X   |   X   |   -   |
-| Safespring Archive |   -   |   -   |   X   |   -   |
-| Safespring Backup  |   -   |   -   |   -   |   X   |
+|                                  | osl2  | sto1  | sto2  | dco1  |
+|:---------------------------------|:-----:|:-----:|:-----:|:-----:|
+| Safespring Compute               |   X   |   X   |   X   |   -   |
+| Safespring Storage               |   X   |   X   |   X   |   -   |
+| Safespring Archive               |   -   |   -   |   X   |   -   |
+| Safespring Backup                |   -   |   -   |   -   |   X   |
+| Safespring On-demand Kubernetes  |   X   |   -   |   X   |   -   |
 
 
 ### Safespring Compute
@@ -41,6 +42,11 @@ information](storage/getting-started.md)
 
 To get started with the Backup service,
 see the [quickstart guide](backup/quickstart-guide.md)
+
+### Safespring On-demand Kubernetes
+
+To get started with the On-demand Kubernetes service,
+we have a page with [general information](kubernetes/getting-started.md)
 
 ## Roadmap
 
