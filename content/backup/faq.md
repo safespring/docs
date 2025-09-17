@@ -89,7 +89,7 @@ please contact our [support](../service/support.md) to enable the feature tempor
 
 To get credentials for the [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/) you need to talk to 
 your backup admin to invite you. 
-If you are the first one in your organisation, 
+If you are the first one in your organization, 
 please open a ticket with our [support](../service/support.md).
 
 [ransomware]:https://web.archive.org/web/20200218233114/http://www.backupcentral.com/forum/5/254427/ransomware_deleted_tsm_backups_from_node

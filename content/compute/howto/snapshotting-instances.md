@@ -1,8 +1,8 @@
 
-This document describes how to take snapshot of an instance in Safesprings platform and then how to start a copy of the instance from the snapshot. The way of doing this varies a bit depending on how the instance was created in the first place.
+This document describes how to take snapshot of an instance on Safespring's platform and then how to start a copy of the instance from the snapshot. The way of doing this varies a bit depending on how the instance was created in the first place.
 
 ## Create a snapshot
-There is mainly two variants to create an instance in Safesprings platform:
+There is mainly two variants to create an instance on Safespring's platform:
 
 1. You create the instance from an image Safespring provides in the platform.
 2. You create the instance from a volume. When doing this you will be able to alter the standard 40 GB size of the root filesystem. This option is also common if you have migrated the instance from another platform into Safespring.

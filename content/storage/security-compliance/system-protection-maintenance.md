@@ -64,7 +64,7 @@ customer data stored on disk is protected using full disk encryption with dm-cry
 
 ### 1.4.3 Authentication and Key Management
 
-Authentication for S3 services can be done locally or with Opnestack integration(through keystone).
+Authentication for S3 services can be done locally or with Openstack integration(through keystone).
 Keystone provides identity and access management, enforcing:
 
 * Token-based authentication with Fernet or JWT tokens, ensuring signed and encrypted authentication flows.
