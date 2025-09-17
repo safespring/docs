@@ -5,7 +5,7 @@
 Safespring Compute has two volume types available, *fast* and *large*. It is
 possible to migrate between these volume types using the API or the UI.
 
-### Prerequisities
+### Prerequisites
 
 * The volume has to be *detached* from any instance for the migration to work.
 

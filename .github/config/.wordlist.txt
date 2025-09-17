@@ -23,7 +23,6 @@ addr
 addresslist
 addresstype
 addtion
-administative
 adoptopenjdk
 adr
 adrs
@@ -198,12 +197,10 @@ cmt
 cname
 cni
 commandline
-commmand
 commmethod
 communicatewait
 compat
 compressalways
-comsuming
 conf
 config
 configfile
@@ -217,7 +214,6 @@ containsvmfilespaces
 contractcount
 contractsubscription
 controlplane
-coompletely
 costcenter
 covereed
 cp
@@ -225,8 +221,6 @@ cpucount
 cpus
 crds
 createddate
-credentail
-cretentials
 criste
 cristie
 cristie's
@@ -251,7 +245,6 @@ datablocks
 datacenter
 datacenters
 datalogiska
-dataloss
 datamover
 datasource
 datasourceid
@@ -292,11 +285,9 @@ delpolicy
 dentry
 der
 deregister
-descibes
 dev
 devel
 devicename
-devided
 devops
 dhcp
 dhcpv
@@ -363,7 +354,6 @@ enu
 env
 eof
 epel
-ephepmeral
 eq
 eqcpe
 erp
@@ -386,7 +376,6 @@ ethx
 eui
 eventreason
 eventstatus
-everytime
 ewggeima
 ewhhcnmtgwmjiwmje
 ewlk
@@ -597,7 +586,6 @@ kfpq
 kib
 kopia
 kube
-kubentes
 kubernetes
 kyltlcxxjkk
 labelled
@@ -621,11 +609,9 @@ ldf
 libaio
 libpst
 lic
-licence
 licmgr
 lifecycle
 lifecycles
-likevise
 limithighstorage
 linprocfs
 lisasws
@@ -659,9 +645,7 @@ mailaddress
 majf
 makecache
 managedservices
-maneged
 manpage
-manuall
 maxprocesses
 mazovia
 mbega
@@ -796,11 +780,9 @@ openstack's
 openstackclient
 openstackrc
 operatingsystem
-opnestack
 optfile
 oqwgygga
 orderdesc
-organisation
 orgname
 os'es
 oscli
@@ -816,7 +798,6 @@ oybsfdlyr
 paas
 pagefile
 parallelize
-paramters
 parentbusinessunit
 parentid
 passvd
@@ -840,7 +821,6 @@ percentageutilized
 percentoftotalstorageofbusinessunit
 performant
 periodunit
-personell
 peu
 physicalmegabytes
 pid
@@ -860,19 +840,15 @@ powershell
 ppb
 pqwbci
 pre
-precented
 pregenerated
 preinstallation
 prepayconsumption
-prerequisities
 preschedcommand
 preschedulecmd
 preservepath
 presigned
 previousstart
-priviledges
 proc
-processs
 productcode
 productlist
 programdata
@@ -931,7 +907,6 @@ refreshtokengrant
 registeredtime
 registrationnumber
 rekey
-rembered
 remotea
 remoteactivities
 remoteb
@@ -984,12 +959,9 @@ runnable
 ruyki
 rw
 safedc
-safepspring
 safespring
 safespring's
 safespringca
-safesprings
-safesprings's
 saml
 sandybridge
 sanitization
@@ -1019,7 +991,6 @@ secretkey
 secretkeygoeshere
 secrettoken
 sed
-segementation
 sendtobillingaddress
 servergroup
 serverid
@@ -1084,7 +1055,6 @@ statusreportid
 stdev
 sth
 sto
-storag
 storagelimit
 storagemegabytes
 storagepool
@@ -1109,7 +1079,6 @@ sudo
 supportednodetypes
 supportresponsible
 supportstatus
-suppported
 surpress
 sv
 sverige
@@ -1172,7 +1141,6 @@ transferredgigabytes
 transferredmegabytes
 transferredmegabytespersecond
 transferredrestoremegabytes
-troubleshoting
 trscavo
 tsm
 tsmclient

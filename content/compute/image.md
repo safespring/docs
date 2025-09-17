@@ -64,7 +64,7 @@ Horizon webui.
 
         glance image-list
 
-3.  Use the following commmand to download the image to local storage:
+3.  Use the following command to download the image to local storage:
     ```
     glance image-download _uuid_of_previously_created_snapshot_ \
         --file _local_filename_to_save_raw_image_to_ \

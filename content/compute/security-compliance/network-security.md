@@ -26,4 +26,4 @@ Management related traffic relies on the segmentation of the infrastructure netw
 
 Customer related traffic is isolated from management traffic with firewalls and access controls.
 
-Customers can implement their own network segementation by using Openstack security groups.
+Customers can implement their own network segmentation by using Openstack security groups.
