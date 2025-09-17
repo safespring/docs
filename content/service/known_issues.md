@@ -52,7 +52,7 @@ We have identified a problem where security group rules that have unspecified
 or empty string as `remote_ip_prefix` will unexpectedly ignore the specified
 port range in the rule and instead opens up all ports.
 
-The workaround to avoid this rather astonishing behaviour is to always specify
+The workaround to avoid this rather astonishing behavior is to always specify
 an IP range even when the range is `0.0.0.0/0` (aka "the world") and similarly
 `::/0` for IPv6.
 
@@ -69,7 +69,7 @@ and we will implement the fix as soon as possible and then update the status
 here.
 
 ## Rebuild of Debian 11 breaks DHCPv6 address assignment
-This bug is described [here](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=991613). The Debian 11 image comes up just fine with IPv4 and IPv6 when creating it from the image but if one tries to rebuild the instance with the "Rebuild"-command DHCPv6 will fail to provide an IPv6 address. This has to do with that the instance the first time created generates a DUID which is used to calculate the last part of the IPv6 adress. When the instance is rebuilt another DUID is calculated which does no match the former DUID and therefore the DHCPv6 services will not provide the address. The solution is to save the old DUID in /var/lib/dhcp/dhclient6.ens3.leases and insert the same value into the same file after the rebuild.
+This bug is described [here](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=991613). The Debian 11 image comes up just fine with IPv4 and IPv6 when creating it from the image but if one tries to rebuild the instance with the "Rebuild"-command DHCPv6 will fail to provide an IPv6 address. This has to do with that the instance the first time created generates a DUID which is used to calculate the last part of the IPv6 address. When the instance is rebuilt another DUID is calculated which does no match the former DUID and therefore the DHCPv6 services will not provide the address. The solution is to save the old DUID in `/var/lib/dhcp/dhclient6.ens3.leases` and insert the same value into the same file after the rebuild.
 
 
 ## Create volumes from image sometimes fails
