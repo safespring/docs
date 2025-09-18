@@ -1,6 +1,6 @@
 # Logging and Monitoring
 
-This document outlines the logging and monitoring requirements and practices for Safespring On-demand Kubernetes services.
+This document outlines the logging and monitoring requirements and practices for Safespring on-demand Kubernetes services.
 
 ## 3.1 System Logging
 
@@ -10,7 +10,7 @@ API and application logs can be provided to the customer on a case by case basis
 
 !!! note "On-demand Kubernetes Logs"
 
-    For On-demand Kubernetes clusters we do not store or monitor the logs.
+    For on-demand Kubernetes clusters we do not store or monitor the logs.
 
 ## 3.2 Security Monitoring
 

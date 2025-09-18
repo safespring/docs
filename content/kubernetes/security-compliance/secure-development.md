@@ -1,6 +1,6 @@
 # Secure Development
 
-This document outlines the secure development requirements and practices for Safespring On-demand Kubernetes services.
+This document outlines the secure development requirements and practices for Safespring on-demand Kubernetes services.
 
 ## 5.1 Development Lifecycle Security
 

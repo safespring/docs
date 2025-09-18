@@ -1,6 +1,6 @@
 # Data Management
 
-This document outlines the data management requirements and practices for Safespring On-demand Kubernetes services.
+This document outlines the data management requirements and practices for Safespring on-demand Kubernetes services.
 
 ## 2.1 Data Retention and Deletion
 

@@ -1,6 +1,6 @@
 # Development and Operations Management
 
-This document outlines the development and operations management requirements and practices for Safespring On-demand Kubernetes services.
+This document outlines the development and operations management requirements and practices for Safespring on-demand Kubernetes services.
 
 ## 6.1 Environment Separation
 

@@ -1,10 +1,10 @@
 # Security and Compliance
 
-This chapter covers security and compliance aspects specific to Safespring On-demand Kubernetes services.
+This chapter covers security and compliance aspects specific to Safespring on-demand Kubernetes services.
 
 ## Overview
 
-Safespring’s On-demand Kubernetes services are designed with security and compliance as core principles. The platform leverages modern, immutable infrastructure with **Talos Linux**, enforces **policy-driven governance with Kyverno**, ensures **supply chain integrity with GitOps and age-encrypted secrets**, provides **identity and access management through Zitadel with RBAC and MFA**, and offers **observability and compliance monitoring through Grafana and Kubescape**.
+Safespring’s on-demand Kubernetes services are designed with security and compliance as core principles. The platform leverages modern, immutable infrastructure with **Talos Linux**, enforces **policy-driven governance with Kyverno**, ensures **supply chain integrity with GitOps and age-encrypted secrets**, provides **identity and access management through Zitadel with RBAC and MFA**, and offers **observability and compliance monitoring through Grafana and Kubescape**.
 
 The following sections detail the different layers of security and compliance.
 
@@ -50,7 +50,6 @@ The following sections detail the different layers of security and compliance.
 
 * **Isolation**:
 
-  * Dedicated VPCs and private networking for cluster nodes.
   * Separation of tenant workloads where required.
 
 ### Identity and Access Management

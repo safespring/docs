@@ -26,7 +26,7 @@ and *dco1* in Kalix.
 | Safespring Storage               |   X   |   X   |   X   |   -   |
 | Safespring Archive               |   -   |   -   |   X   |   -   |
 | Safespring Backup                |   -   |   -   |   -   |   X   |
-| Safespring On-demand Kubernetes  |   X   |   -   |   X   |   -   |
+| Safespring on-demand Kubernetes  |   X   |   -   |   X   |   -   |
 
 
 ### Safespring Compute
@@ -43,9 +43,9 @@ information](storage/getting-started.md)
 To get started with the Backup service,
 see the [quickstart guide](backup/quickstart-guide.md)
 
-### Safespring On-demand Kubernetes
+### Safespring on-demand Kubernetes
 
-To get started with the On-demand Kubernetes service,
+To get started with the on-demand Kubernetes service,
 we have a page with [general information](kubernetes/getting-started.md)
 
 ## Roadmap
