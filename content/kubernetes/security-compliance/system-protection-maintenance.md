@@ -6,20 +6,20 @@ This document outlines the system protection and maintenance requirements and pr
 
 Safespring implements layered malware protection measures to safeguard Kubernetes infrastructure and containerized workloads:
 
-* **Immutable Host OS (Talos Linux)**:
+**Immutable Host OS (Talos Linux)**:
 
-  * Talos Linux is an immutable, API-driven operating system with no package manager or SSH access, eliminating the risk of malware persistence at the node level.
-  * Nodes are deployed from clean, verified images and are automatically hardened.
+* Talos Linux is an immutable, API-driven operating system with no package manager or SSH access, eliminating the risk of malware persistence at the node level.
+* Nodes are deployed from clean, verified images and are automatically hardened.
 
-* **Container Image Security**:
+**Container Image Security**:
 
-  * Only **privates registries** are permitted for pulling own manage software images.
-  * Images are **scanned for malware and vulnerabilities**
+* Only **privates registries** are permitted for pulling own manage software images.
+* Images are **scanned for malware and vulnerabilities**
 
-* **Continuous Monitoring**:
+**Continuous Monitoring**:
 
-  * Kubescape scans cluster workloads for known misconfigurations and suspicious patterns.
-  * Grafana dashboards with Prometheus and Loki provide anomaly detection and alerting for unusual container activity.
+* Kubescape scans cluster workloads for known misconfigurations and suspicious patterns.
+* Grafana dashboards with Prometheus and Loki provide anomaly detection and alerting for unusual container activity.
 
 ---
 
@@ -27,24 +27,24 @@ Safespring implements layered malware protection measures to safeguard Kubernete
 
 Vulnerability management is a continuous process to identify, prioritize, and remediate risks across infrastructure, container images, and workloads.
 
-* **Infrastructure Vulnerabilities**:
+**Infrastructure Vulnerabilities**:
 
-  * Talos Linux nodes are rebuilt with updated base images instead of being patched in place, ensuring consistent, up-to-date systems without configuration drift.
-  * Cluster components (Kubernetes, etcd, CNI) follow a regular update cycle managed by Safespring operations on a monthly basis as well as high risk CVE.
+* Talos Linux nodes are rebuilt with updated base images instead of being patched in place, ensuring consistent, up-to-date systems without configuration drift.
+* Cluster components (Kubernetes, etcd, CNI) follow a regular update cycle managed by Safespring operations on a monthly basis as well as high risk CVE.
 
-* **Container Image Vulnerabilities**:
+**Container Image Vulnerabilities**:
 
-  * Automated **static code checks** and **vulnerability scanning** during CI/CD pipeline execution are performed.
+* Automated **static code checks** and **vulnerability scanning** during CI/CD pipeline execution are performed.
 
-* **Cluster Vulnerability Scanning**:
+**Cluster Vulnerability Scanning**:
 
-  * Kubescape continuously evaluates cluster compliance with **CIS Kubernetes Benchmarks** and reports potential vulnerabilities.
-  * Integration with vulnerability databases ensures fast detection of newly disclosed CVEs.
+* Kubescape continuously evaluates cluster compliance with **CIS Kubernetes Benchmarks** and reports potential vulnerabilities.
+* Integration with vulnerability databases ensures fast detection of newly disclosed CVEs.
 
-* **Patch and Update Management**:
+**Patch and Update Management**:
 
-  * Regular maintenance windows ensure that clusters are kept up-to-date.
-  * GitOps-driven workflows apply patches consistently across environments, with change history tracked in Git.
+* Regular maintenance windows ensure that clusters are kept up-to-date.
+* GitOps-driven workflows apply patches consistently across environments, with change history tracked in Git.
 
 ---
 
@@ -52,19 +52,19 @@ Vulnerability management is a continuous process to identify, prioritize, and re
 
 Safespring ensures that Kubernetes clusters remain securely configured and aligned with best practices through strong configuration management.
 
-* **Baseline Configurations**:
+**Baseline Configurations**:
 
-  * All clusters are provisioned using **Talos Linux declarative configurations**.
-  * Security baselines follow CIS Kubernetes Benchmarks and industry standards.
+* All clusters are provisioned using **Talos Linux declarative configurations**.
+* Security baselines follow CIS Kubernetes Benchmarks and industry standards.
 
-* **Configuration as Code**:
+**Configuration as Code**:
 
-  * GitOps is the authoritative source of truth for all Kubernetes manifests and Talos configurations.
-  * Sensitive data is managed with **AGE encrypted secrets**, ensuring secure version control.
+* GitOps is the authoritative source of truth for all Kubernetes manifests and Talos configurations.
+* Sensitive data is managed with **AGE encrypted secrets**, ensuring secure version control.
 
-* **Drift Detection and Remediation**: Continuous reconciliation ensures that running clusters match their GitOps configuration state.
+**Drift Detection and Remediation**: Continuous reconciliation ensures that running clusters match their GitOps configuration state.
 
-* **Audit and Monitoring**: Grafana dashboards provide visibility into configuration compliance and highlight deviations.
+**Audit and Monitoring**: Grafana dashboards provide visibility into configuration compliance and highlight deviations.
 
 ## 1.4 Cryptography
 
