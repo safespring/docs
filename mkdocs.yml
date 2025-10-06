@@ -160,6 +160,9 @@ nav:
       - Other Backends: "storage/other-backends.md"
   - On-demand Kubernetes:
       - Getting Started: "kubernetes/getting-started.md"
+      - Authentication: "kubernetes/authentication.md"
+      - Traffic Management: "kubernetes/manage-traffic.md"
+      - GPU: "kubernetes/gpu.md"
       - Security and Compliance:
           - Overview: "kubernetes/security-compliance/index.md"
           - System Protection and Maintenance: "kubernetes/security-compliance/system-protection-maintenance.md"
@@ -168,6 +171,7 @@ nav:
           - Network Security: "kubernetes/security-compliance/network-security.md"
           - Secure Development: "kubernetes/security-compliance/secure-development.md"
           - Development and Operations Management: "kubernetes/security-compliance/development-operations-management.md"
+      - Trouble Shooting: "kubernetes/troubleshooting.md"
   - Self-service Portal & API:
       - Getting Started: "portal-api/getting-started.md"
       - Security and Compliance:

@@ -39,23 +39,24 @@ Branch protection is implemented to ensure only team members can review pull req
 
 ### Audit Trail Protection
 
-- **Immutable Audit Logs**:
+**Immutable Audit Logs**:
 
-  - Kubernetes audit logs are stored in an **append-only*- format to prevent tampering.
-  - Logs can be exported to external SIEM platforms for long-term secure retention.
-- **Access Controls**:
+* Kubernetes audit logs are stored in an **append-only*- format to prevent tampering.
+* Logs can be exported to external SIEM platforms for long-term secure retention.
 
-  - Access to audit logs is restricted via RBAC and Zitadel integration with MFA.
-  - Only authorized personnel can view or query audit data.
-  - Auditors are provided **read-only* - credentials when accessing monitoring dashboards, logs, or cluster state.
+**Access Controls**:
+
+* Access to audit logs is restricted via RBAC and Zitadel integration with MFA.
+* Only authorized personnel can view or query audit data.
+* Auditors are provided **read-only* - credentials when accessing monitoring dashboards, logs, or cluster state.
 
 ### Testing Environment Security
 
-- **Isolated Testing Environments**:
+**Isolated Testing Environments**:
 
-  - Security assessments and compliance testing occur a **dedicated clusters** to avoid risk to production workloads.
-  - Openstack Security Groups segmentation ensures no cross-contamination between test and production environments.
+* Security assessments and compliance testing occur a **dedicated clusters** to avoid risk to production workloads.
+* Openstack Security Groups segmentation ensures no cross-contamination between test and production environments.
 
-- **Controlled Test Data Usage**:
+**Controlled Test Data Usage**:
 
-  - Synthetic or anonymized datasets are used in test environments to comply with GDPR and reduce data exposure risks.
+* Synthetic or anonymized datasets are used in test environments to comply with GDPR and reduce data exposure risks.

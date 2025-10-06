@@ -14,21 +14,21 @@ API and application logs can be provided to the customer on a case by case basis
 
 ## 3.2 Security Monitoring
 
-* **Monitoring with Grafana**:
+**Monitoring with Grafana**:
 
-  * Metrics, logs, and alerts are centralized in Grafana.
-  * Integration with Prometheus and Loki ensures full observability of operational infrastructure.
-  * Integration with slack for monitoring of relevant alerts.
+* Metrics, logs, and alerts are centralized in Grafana.
+* Integration with Prometheus and Loki ensures full observability of operational infrastructure.
+* Integration with slack for monitoring of relevant alerts.
 
-* **Threat Detection with Kubescape**:
+**Threat Detection with Kubescape**:
 
-  * Each Operations cluster has enabled continuous Kubernetes cluster posture scanning.
-  * Compliance checks against frameworks (CIS, NSA, MITRE).
-  * Reports deviations from security best practices.
+* Each Operations cluster has enabled continuous Kubernetes cluster posture scanning.
+* Compliance checks against frameworks (CIS, NSA, MITRE).
+* Reports deviations from security best practices.
 
-* **Audit Logging**:
+**Audit Logging**:
 
-  * Kubernetes audit logs captured for compliance and incident response.
+* Kubernetes audit logs captured for compliance and incident response.
 
 ## 3.3 Time Synchronization
 
