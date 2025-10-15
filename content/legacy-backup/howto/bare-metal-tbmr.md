@@ -51,7 +51,7 @@ To restore a machine, the following preparatory steps need to be taken:
 
  1. **Retrieve the bootable ISO image**
 
-    In the case of Windows, the bootable ISOs of TBMR are _not_ available at Safesprings's [distribution site](https://archive.service.safedc.net/tbmr/Windows/). The bootable images are based on WinPE 2 for 32-bit Windows and WinPE 4 for 64-bit Windows. This is due to Microsoft Licensing restrictions.
+    In the case of Windows, the bootable ISOs of TBMR are _not_ available at Safespring's [distribution site](https://archive.service.safedc.net/tbmr/Windows/). The bootable images are based on WinPE 2 for 32-bit Windows and WinPE 4 for 64-bit Windows. This is due to Microsoft Licensing restrictions.
 
     The solution is that each customer site creates its own 32-bit and 64-bit TBMR WinPE images.
     Cristie has a tool called **CRISP** that assists with this.

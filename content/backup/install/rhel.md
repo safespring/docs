@@ -184,7 +184,7 @@ the Portal, or via the API directly.
 ### 4) Activation of TBMR and generation of machine restore configuration
 
 The ```safespring-backup-tbmr``` package provides a simple script to request a
-new TBMR licence and generate a bare metal restore machine configuration:
+new TBMR license and generate a bare metal restore machine configuration:
 
 ```shell
 /usr/bin/safespring-backup-tbmr
