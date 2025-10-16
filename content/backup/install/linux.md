@@ -2,9 +2,9 @@
 
 ## Manual Installation
 
-_This document describes how to **manually** install IBM Storage Protect 
+This document describes how to **manually** install IBM Storage Protect 
 Backup-Archive Client on Linux operating systems like Ubuntu and 
-Red Hat Enterprise Linux (64-bit)._
+Red Hat Enterprise Linux (64-bit).
 
 Required files:
 

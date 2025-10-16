@@ -1,13 +1,9 @@
-/*
-primary color #417da5
-     or #195F8C
-*/
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-@import url('https://fonts.googleapis.com/css?family=Hind:300|Montserrat');
-
-body {
-  font-family: Montserrat;
+.md-typeset {
+  font-family: "Montserrat";
   color: #323232;
+  font: 400 1.125rem !important;
 }
 
 h2 {
@@ -41,12 +37,20 @@ img {
 
 label, nav {
   font-family: Hind;
-  font-weight: 300 !important;
+  font-weight: 400 !important;
 }
 
+.md-nav__title {
+  background: none !important;
+}
+.md-sidebar {
+  position: relative;
+}
 .md-nav--secondary {
   border: none !important;
   padding: 10px !important;
+}
+/*.md-sidebar--primary {
 }
 
 
@@ -54,7 +58,6 @@ label, nav {
   font-size: 1.5em;
   padding: 0 0 20px 0;
 }
-
 
 .md-sidebar--primary li {
   font-size: 1.3em;
@@ -72,7 +75,7 @@ label, nav {
 
 .md-nav__list {
   padding-top: 0;
-}
+}*/
 
 /* START - notes, warning, information cards */
 
@@ -188,9 +191,9 @@ button.md-clipboard:before {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
 }
 
-.md-sidebar__scrollwrap {
+/*.md-sidebar__scrollwrap {
   min-height: min-content;
-}
+}*/
 
 
 
@@ -203,10 +206,10 @@ blockquote {
   margin: 10px 0;
 }
 
-.md-sidebar--primary .md-sidebar__inner {
+/*.md-sidebar--primary .md-sidebar__inner {
   border-right: 0.5px solid #EBF1F5;
   border-bottom: 0.5px solid #EBF1F5;
-}
+}*/
 
 ::-webkit-scrollbar {
   width: 1px;
@@ -217,9 +220,9 @@ blockquote {
 }
 
 .md-nav__list .md-nav__list {
+  font-family: Hind;
+  font-weight: 400 !important;
   color: #323232;
-  font-weight: 400;
-  font-family: Montserrat;
 }
 
 .md-typeset .md-content__icon {
@@ -227,9 +230,9 @@ blockquote {
 }
 
 .md-typeset a {
-  color: #195f8c;
-  font-family: Hind;
-  font-weight: 600 !important;
+  color: #323232;
+  font-family: Montserrat;
+  text-decoration: underline;
 }
 
 .md-header {
@@ -281,10 +284,6 @@ blockquote {
 /*
 accent color #fa690f
 */
-
-.md-typeset {
-  font-size: 1.4em;
-}
 .md-typeset a:active, .md-typeset a:hover {
   color: #fa690f
 }
@@ -326,3 +325,81 @@ accent color #fa690f
 .md-footer-meta {
   display: none;
 }
+
+re > code {
+  padding:10px 0 18px 0;
+}
+
+p>code {
+  white-space: nowrap;
+  font-size: 1rem;
+}
+
+@media only screen and (max-width:900px) {
+  p>code {
+    white-space: wrap;
+  }
+}
+
+code {
+  font-style:normal !important;
+  font-size: 0.7rem !important;
+  background:#EAF0F4 !important;
+  padding:0 8px 2px 8px !important;
+  border-radius:7px !important;
+  color:#195F8C !important;
+  overflow: auto !important;
+  font-family: "Intel One Mono", monospace !important;
+  line-height: 1 !important;
+}
+
+code>span {
+  font-size: 0.9rem;
+}
+
+/* === CODE BLOCK  === */
+
+.md-typeset pre {
+  position:relative;
+  background:#EAF0F4 !important;
+  max-width:800px !important;
+  padding:30px 5px 30px 30px !important;
+  border-radius:10px !important;
+  overflow: auto;
+  font-family: "Intel One Mono";
+  font-size: 0.8rem !important;
+  scrollbar-width: thin;
+  scrollbar-color: var(--main-color) var(--cloud-blue-color);
+}
+
+.md-typeset pre[data-lang]::before {
+  content:attr(data-lang);
+  font-weight:599;
+  font-size: 0.9rem;
+  background-color:#195F8C10;
+  color:#195F8C;
+  padding:15px 0px 15px 30px;
+  position:absolute;
+  width:calc(100% - 30px);
+  top:0;
+  left:0;
+  z-index:1;
+  font-family: "Intel One Mono";
+}
+
+.md-typeset pre::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.md-typeset pre::-webkit-scrollbar-track {
+  background: var(--middle-blue-color); /* Bakgrundsfärg i spåret */
+}
+
+.md-typeset pre::-webkit-scrollbar-thumb {
+  background-color: var(--main-color); /* Färg på "tummen" */
+  border-radius: 50px;     /* Rundade hörn */
+  border: 2px solid var(--cloud-blue-color); /* Ger lite space runt tummen */
+}
+
+/* === END: CODE BLOCK === */
