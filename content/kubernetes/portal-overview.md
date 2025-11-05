@@ -1,0 +1,99 @@
+# Getting Started
+
+## I just got a Safespring Portal account, what now?
+
+As the first user for your domain you should have recieved three acitvation emails:
+
+* **The portal** url: https://portal.safespring.com
+* **IDM in sto2** url: https://sto2.idm.paas.safedc.net/
+* **IDM in osl2** url: https://sto2.idm.paas.safedc.net/
+
+You should click the activation links in each and every one of the email to ensure that you have all accounts you need in order to provision your services.
+
+## Logging into the portal
+
+You are now ready to go to https://portal.safespring.com:
+
+
+![image](../images/portal-sign-in.png)
+
+You click the "Sign in button" and you see this:
+
+
+![image](../images/portal-sign-in-zitadel.png)
+
+You click the "Continue with ZITADEL" and log in.
+
+## Viewing you environments
+Once you have logged in you will be greeted with you "Environments Overview". If this is the first time you login that listing will be empty: 
+
+![image](../images/portal-environments.png)
+Environments is a way to group your resources into different separate enviroments in which you can run several clusters, compute projects or storage accounts. 
+
+You click "Create New" to create a new enviroment.
+
+![image](../images/portal-create-environment.png)
+
+You give you enviroment a name and the click "Create environment".
+
+
+![image](../images/portal-new-environment.png)
+You now see you new environment, where you can start resources.
+
+## Create you first cluster
+Click the button "Add Cluster" and give it a name:
+
+![image](../images/portal-name-cluster.png)
+
+In the next step you pick which site you want to start your cluster in:
+
+![image](../images/portal-choose-site.png)
+
+Now it is time to choose the specifications of the control nodes in the cluster:
+
+![image](../images/portal-choose-control-nodes.png)
+
+You can now choose how many worker nodes and how much resources each worker node should have:
+
+![image](../images/portal-choose-worker-nodes.png)
+
+In the last step you review the cluster configuration for the cluster you are about to create. You can also download the cluster configuration JSON file for later reference:
+
+![image](../images/portal-review-cluster-config.png)
+
+Your cluster is now creating. 
+
+![image](../images/portal-creating-cluster.png)
+
+Wait a few minutes and then click the "Show Credentials" button. If you get a kubeconfig file back you cluster is ready to use:
+
+![image](../images/portal-show-credentials.png)
+
+You can copy the file to a directory to a file named ".kubeconfig" in the environment where you have kubectl installed and run:
+
+```shell
+$ export KUBECONFIG=$(pwd)/.kubeconfig
+$ kubectl get nodes
+```
+
+You will get redirected to the IDP of the datacenter where you provisioned your cluster:
+
+![image](../images/portal-show-credentials.png)
+
+You enter your password:
+
+![image](../images/portal-enter-password.png)
+
+You will get a message that you have authenticated and if you go back to the terminal you will see the output of the command:
+
+```shell
+NAME                                     STATUS   ROLES           AGE     VERSION
+my-cluster-control-plane-9pdn5           Ready    control-plane   8m35s   v1.33.5
+my-cluster-control-plane-clrzd           Ready    control-plane   8m35s   v1.33.5
+my-cluster-control-plane-rhx58           Ready    control-plane   8m17s   v1.33.5
+my-cluster-vf9wj-md-worker-26bx9-fwlqn   Ready    worker          8m32s   v1.33.5
+my-cluster-vf9wj-md-worker-26bx9-nf7x9   Ready    worker          8m31s   v1.33.5
+my-cluster-vf9wj-md-worker-26bx9-qzjd2   Ready    worker          8m35s   v1.33.5
+```
+
+You can now start creating namespaces and start using your cluster.
