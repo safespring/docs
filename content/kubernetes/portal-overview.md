@@ -2,13 +2,13 @@
 
 ## I just got a Safespring Portal account, what now?
 
-As the first user for your domain you should have recieved three acitvation emails:
+As the first user for your domain you should have received three activation emails:
 
-* **The portal** url: https://portal.safespring.com
-* **IDM in sto2** url: https://sto2.idm.paas.safedc.net/
-* **IDM in osl2** url: https://sto2.idm.paas.safedc.net/
+* **The portal** URL: https://portal.safespring.com
+* **IDM in sto2** URL: https://sto2.idm.paas.safedc.net/
+* **IDM in osl2** URL: https://osl2.idm.paas.safedc.net/
 
-You should click the activation links in each and every one of the email to ensure that you have all accounts you need in order to provision your services.
+You should click the activation links in each and every one of the emails to ensure that you have all accounts you need in order to provision your services.
 
 ## Logging into the portal
 
@@ -17,7 +17,7 @@ You are now ready to go to https://portal.safespring.com:
 
 ![image](../images/portal-sign-in.png)
 
-You click the "Sign in button" and you see this:
+You click the "Sign in" button and you see this:
 
 
 ![image](../images/portal-sign-in-zitadel.png)
@@ -25,22 +25,22 @@ You click the "Sign in button" and you see this:
 You click the "Continue with ZITADEL" and log in.
 
 ## Viewing you environments
-Once you have logged in you will be greeted with you "Environments Overview". If this is the first time you login that listing will be empty: 
+Once you have logged in you will be greeted with your "Environments Overview". If this is the first time you login that listing will be empty: 
 
 ![image](../images/portal-environments.png)
-Environments is a way to group your resources into different separate enviroments in which you can run several clusters, compute projects or storage accounts. 
+Environments is a way to group your resources into different separate environments in which you can run several clusters, compute projects or storage accounts. 
 
-You click "Create New" to create a new enviroment.
+You click "Create New" to create a new environment.
 
 ![image](../images/portal-create-environment.png)
 
-You give you enviroment a name and the click "Create environment".
+You give your environment a name and then click "Create environment".
 
 
 ![image](../images/portal-new-environment.png)
-You now see you new environment, where you can start resources.
+You now see your new environment, where you can start resources.
 
-## Create you first cluster
+## Create your first cluster
 Click the button "Add Cluster" and give it a name:
 
 ![image](../images/portal-name-cluster.png)
@@ -65,7 +65,7 @@ Your cluster is now creating.
 
 ![image](../images/portal-creating-cluster.png)
 
-Wait a few minutes and then click the "Show Credentials" button. If you get a kubeconfig file back you cluster is ready to use:
+Wait a few minutes and then click the "Show Credentials" button. If you get a kubeconfig file back your cluster is ready to use:
 
 ![image](../images/portal-show-credentials.png)
 
@@ -76,9 +76,9 @@ $ export KUBECONFIG=$(pwd)/.kubeconfig
 $ kubectl get nodes
 ```
 
-You will get redirected to the IDP of the datacenter where you provisioned your cluster:
+You will get redirected to the IDP of the data center where you provisioned your cluster:
 
-![image](../images/portal-show-credentials.png)
+![image](../images/portal-login-idp.png)
 
 You enter your password:
 
@@ -96,4 +96,4 @@ my-cluster-vf9wj-md-worker-26bx9-nf7x9   Ready    worker          8m31s   v1.33.
 my-cluster-vf9wj-md-worker-26bx9-qzjd2   Ready    worker          8m35s   v1.33.5
 ```
 
-You can now start creating namespaces and start using your cluster.
+You can now start creating name spaces and start using your cluster.
