@@ -1,4 +1,4 @@
-# Getting Started
+# Portal overview 
 
 ## I just got a Safespring Portal account, what now?
 
@@ -24,7 +24,7 @@ You click the "Sign in" button and you see this:
 
 You click the "Continue with ZITADEL" and log in.
 
-## Viewing you environments
+## Viewing your environments
 Once you have logged in you will be greeted with your "Environments Overview". If this is the first time you login that listing will be empty: 
 
 ![image](../images/portal-environments.png)
@@ -96,4 +96,4 @@ my-cluster-vf9wj-md-worker-26bx9-nf7x9   Ready    worker          8m31s   v1.33.
 my-cluster-vf9wj-md-worker-26bx9-qzjd2   Ready    worker          8m35s   v1.33.5
 ```
 
-You can now start creating name spaces and start using your cluster.
+You can now start creating namespaces and start using your cluster.
