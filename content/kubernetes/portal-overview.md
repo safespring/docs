@@ -10,6 +10,13 @@ As the first user for your domain you should have received three activation emai
 
 You should click the activation links in each and every one of the emails to ensure that you have all accounts you need in order to provision your services.
 
+## Prerequisites
+
+Before you begin working with your Safespring Portal clusters, you need to have the following tools installed:
+
+* **kubectl** - The Kubernetes command-line tool. See [Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/)
+* **kubelogin** - A kubectl plugin for OIDC authentication. This is required to authenticate to your clusters. See the [kubelogin setup guide](https://github.com/int128/kubelogin?tab=readme-ov-file#setup) for installation instructions.
+
 ## Logging into the portal
 
 You are now ready to go to https://portal.safespring.com:
