@@ -23,8 +23,9 @@ We make use of [Talos Linux](https://www.talos.dev) and follow its [Support Matr
 
 | **Talos Version**            | **Supported Kubernetes Versions**                     |
 | ---------------------------- | ----------------------------------------------------- |
-| 1.10.7 (Default)             | 1.33.5                                                |
-| 1.11.2 (Planned)             | 1.34.1 (Planned)                                      |
+| 1.10.7                       | 1.33.5                                                |
+| 1.11.2                       | 1.34.1                                                |
+| 1.11.5                       | 1.34.1                                                |
 
 ## Access and Authentication
 
