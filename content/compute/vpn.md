@@ -38,7 +38,7 @@ account.$
 ## Automatic installation on Debian and RedHat based distributions
 
 Start with creating a new instance with the “Launch instance” dialogue in
-Safesprings platform. Under “Network” you can pick either “public” or
+Safespring platform. Under “Network” you can pick either “public” or
 “default”. The public-network will assign a public IP-address to the instance
 and “default” will assign a private IP-address with dynamic NAT to the outside.
 The reason for you using Zerotier in the first place is probably that you do

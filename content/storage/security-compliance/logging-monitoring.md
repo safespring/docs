@@ -8,7 +8,7 @@ Logs are collected per site in the [shared logging system](../../security-compli
 
 External and internal API calls are logged. This allows for detailed tracking of API usage and potential security incidents.
 
-API and application logs can be provided to the customer on a case by case basis. Please request access through support, and include the site and relevent access IDs.
+API and application logs can be provided to the customer on a case by case basis. Please request access through support, and include the site and relevant access IDs.
 
 ### Audit logging
 

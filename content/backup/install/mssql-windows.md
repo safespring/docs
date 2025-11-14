@@ -27,7 +27,7 @@ Required files:
 1. Install all dependencies and follow the standard installation.
 
 #### Configuration
-1. Login on [Safepspring Backup Portal](https://portal.backup.sto2.safedc.net/)
+1. Login on [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/)
 1. Create a Microsoft SQL Backup Consumption Unit.
 ![Create SQL Consumption Unit](../images/TDP4SQL-Create-Node.png)
     1. If you use an **AlwaysOn** cluster, you need to create a consumption unit per host and one AlwaysOn Consumption Unit
@@ -40,8 +40,8 @@ Required files:
     1. If you use an **AlwaysOn** cluster, you need to run the configuration on all the nodes.
 1. Start the IBM Data Protection for Microsoft SQL Agent on your SQL Server 
 ![DP for Microsoft SQL](../images/TDP4SQL-icon.png)
-1. Run a **Manuall Full Backup** to verify your password.
-![Manuall Backup](../images/TDP4SQL-Full-Backup.png)
+1. Run a **Manual Full Backup** to verify your password.
+![Manual Backup](../images/TDP4SQL-Full-Backup.png)
 
 #### Schedule Backups
 1. Download the required backup scripts and save them to `C:\Safespring`
@@ -50,7 +50,7 @@ Required files:
       - [Differential Backup Script](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/sqldiff.ps1) (Right-click and Save)
       - [Install Backup Schedule Services](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/windows/mssql/tdpsql-install-windows.cmd) (Right-click and Save)
 1. Open PowerShell and run `Unblock-File C:\Safespring\*` to make the scripts runnable.
-1. Login on the <a href="https://portal.backup.sto2.safedc.net/" target="_blank">Safepspring Backup Portal</a>
+1. Login on the <a href="https://portal.backup.sto2.safedc.net/" target="_blank">Safespring Backup Portal</a>
 1. Select on the Microsoft SQL Backup Consumption Unit
     1. If you are using an **AlwaysOn** cluster, you need to do all the steps on 
        all the cluster nodes and not on the AlwaysOn Node.

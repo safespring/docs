@@ -1,7 +1,7 @@
 # Windows installation
 ## Auto installation
 
-This installer installs the TSM BA Client and services and the TBMR client and licenses. It detects 32-bit or 64-bit platforms and contains both versions. Administative priviledges is required for all installations.
+This installer installs the TSM BA Client and services and the TBMR client and licenses. It detects 32-bit or 64-bit platforms and contains both versions. Administrative privileges is required for all installations.
 
 It can be run in two modes. The first mode requires that the administrator of the service has created a node and checked out the config file, `dsm-nodenamexyz.zip`, and have the password to this node.
 Any user with administrative permissions can then install the services on their computer using the installer, zip and password.
@@ -85,7 +85,7 @@ $b = [System.Text.Encoding]::UTF8.GetBytes("<access-key>:<secret-key>")
 echo -n "<access-key>:<secret-key>" | openssl enc -base64 -e
 ```
 
-Mode two requires a few more parameters in order to create the node. `TOKEN` is the credential for the API, `FQDN` is a unique name for the node within your organisation, `MAIL` to a mailbox that is read and `COST` is the node costcenter.
+Mode two requires a few more parameters in order to create the node. `TOKEN` is the credential for the API, `FQDN` is a unique name for the node within your organization, `MAIL` to a mailbox that is read and `COST` is the node costcenter.
 `DEDUP` and `COMP` is default enabled but can be disabled by setting them `"=0"`. `ENCR` can be set but not in combination with `DEDUP=1`.
 For updates when already running UPDATE=1 can be used. It is not possible to downgrade.
 To rerun the TBMR part only and because of TBMR license failures you can run with TBMRONLY=1.
@@ -138,13 +138,13 @@ TBMRONLY argument. `safespring-baas.2.6.1.exe TBMRONLY=1`. This method can also 
     * Accepts node configfile from portal and API.
     * Better errorhandling and cleanup on failures.
     * Space requirement check and dialogue to force install if requirement not met. (5000000000 bytes)
-    * Unique exitcodes from each step for faster troubleshoting.
-    * Dialogue for node config failures on file and credentail problems.
+    * Unique exitcodes from each step for faster troubleshooting.
+    * Dialogue for node config failures on file and credentials problems.
 * **1.3.2** Fix for overwriting dsm.opt if it already exists.
 * **1.3.3** Fix for more robust handling of configuration zip file. Can be run from shared and read-only media.
 * **2.0.1**
     * RESTinTBMR license API used handle TBMR license.
-    * Allow update of old installations and without cretentials, UPDATE=1.
+    * Allow update of old installations and without credentials, UPDATE=1.
     * Allow running TBMR only through modify/repair, TBMRONLY=1.
     * Modifies dsm.opt, adding a PRESCHEDULECMD
     * Creates and updates C:\Program Files\Cristie\TBMR\TBMRcfgWrapper.cmd script to secure running tbmr BEFORE each backup by above PRESCHEDULECMD.
@@ -182,7 +182,7 @@ TBMRONLY argument. `safespring-baas.2.6.1.exe TBMRONLY=1`. This method can also 
     * New TSM x64 version, 8.1.0.0.
     * New TBMR version, 8.1.1.
 * **2.3.2**
-    * Prevent installation on non-suppported Windows versions.
+    * Prevent installation on non-supported Windows versions.
     * Logname typo.
 * **2.3.3**
     * New TSM x32 version, 7.1.6.5.
@@ -242,7 +242,7 @@ TBMRONLY argument. `safespring-baas.2.6.1.exe TBMRONLY=1`. This method can also 
 
 !!! warning "Things to look out for."
 
-    * Make sure you have no spaces in the path from where you run the installer. The path cannot be escaped by the Wix installer so it will be an offset in the input paramters.
+    * Make sure you have no spaces in the path from where you run the installer. The path cannot be escaped by the Wix installer so it will be an offset in the input parameters.
     * When installing with Anti-Malware program running it may delete installer files since they are wrapped with 7-Zip SFX maker. This may trigger false positve on anti malware. Solution, temporary disable your AM software.
     * If a faulty node configuration zip is detected or lack of credentials the installer will abort with this message. The installer will accept zip's from both the API and the portal.
     ![dsm.opt Dialogue](../../images/dsm.opt.png)

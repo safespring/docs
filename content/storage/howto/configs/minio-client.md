@@ -1,4 +1,4 @@
-# How to setup mc for use with Safesprings S3
+# How to setup mc for use with Safespring S3
 
 ## Installing minio
 
