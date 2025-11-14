@@ -201,6 +201,7 @@ cloudberry
 cloudinit
 cloutility
 cloutility's
+clrzd
 clusterip
 clusterissuer
 cmd
@@ -461,6 +462,7 @@ fstab
 fstatat
 fullversion
 futu
+fwlqn
 fxdwttjwezaeqm
 gatewayclass
 gatewayclassname
@@ -532,6 +534,7 @@ icmp
 ics
 identitylocation
 identityprovider
+idm
 idp
 idx
 idxxxxxxxxxxxxx
@@ -879,6 +882,7 @@ pbqcgh
 pbvsxgbicoqzribifh
 pci
 pcnet
+pdn
 peeraddress
 peerasn
 pem
@@ -958,6 +962,7 @@ quickstart
 qvvwghyawmtcuzdhhoveqgv
 qwaq
 qzezapydxmmaly
+qzjd
 racklayout
 randread
 ransomwares
@@ -1022,6 +1027,7 @@ rgs
 rgw
 rhceph
 rhel
+rhx
 rmdir
 roadmap
 rootdrive
