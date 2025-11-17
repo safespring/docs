@@ -2,7 +2,7 @@
 
 Application credentials are credentials (id and secret) a user can create in a
 project. These credentials are non-personal but cease to exist when the user
-that created them is deleted/disabled. Application credentials in Safespring
+that created them is deleted/disabled. Application credentials on Safespring
 compute platform gives the same permissions as the user creating them, but only
 in the project the credentials is created.
 
@@ -18,7 +18,7 @@ Application credentials enables better security in two ways:
 
 Examples:
 
-* A super user at an organisation may have access to a number of different
+* A super user at an organization may have access to a number of different
   projects at different sites. If other users only need access to a subset of
   all the projects that the superuser have access to, they can create application
   credentials in these projects, and hand out to users. When access
@@ -57,7 +57,7 @@ secret.
 1. Configure the environment variables and/or `clouds.yaml` file with your user
    credentials and correct site and project.
 1. Run `openstack application credential create <name-of-credential>`.
-1. Securely record and transfer the `id` and the `secret` to the comsuming app
+1. Securely record and transfer the `id` and the `secret` to the consuming app
    or usage scenario.
 
 Related openstack cli commands:

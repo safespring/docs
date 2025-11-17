@@ -7,7 +7,7 @@ This document describes how to restore an instance from Safespring Backup using 
 
 1. The machine we are going to restore must be protected with the Safespring Backup service
 2. Your quota must be set high enough in order to set up a new machine as the same as you will restore
-3. In order to make the restored machine you will need API access to Safesprings platform. Instructions for how to set that up can be found [here](../../compute/api.md).
+3. In order to make the restored machine you will need API access to Safespring's platform. Instructions for how to set that up can be found [here](../../compute/api.md).
 
 ## Method
 
@@ -121,17 +121,17 @@ Click "Finish" to start the process and then "Close".
 ### 10. Install the needed drivers
 
 Now it is time for TBMR to install the needed drivers. Click "Next" in the "Dissimilar Hardware" dialogue and the "Next" again. If the backup was made from an instance
-running in Safespring Compute you will get a message saying, "No new devices were found in your system". Click "Finish".
+running on Safespring Compute you will get a message saying, "No new devices were found in your system". Click "Finish".
 
 ### 11. Detach the volume
 
-Now you get back to the TBMR Recovery Environment. We should not reboot since we now will create a new instance which will be the actual restored instance. Head to "Volumes" in Safespring Compute and detach the volume from the TBMR instance and then go to instances and delete the TBMR-instance after the volume has been detached.
+Now you get back to the TBMR Recovery Environment. We should not reboot since we now will create a new instance which will be the actual restored instance. Head to "Volumes" on Safespring Compute and detach the volume from the TBMR instance and then go to instances and delete the TBMR-instance after the volume has been detached.
 
 ![image](../../images/restore-detach-volumes.png)
 
 ### 12. Make the restored C: drive bootable
 
-Now it is time to make the volume for the restored C: drive bootable. In order to do this, you will need API access to Safesprings Compute setup correctly. Instruction for how to do that
+Now it is time to make the volume for the restored C: drive bootable. In order to do this, you will need API access to Safespring's Compute setup correctly. Instruction for how to do that
 can be found [here](../../compute/api.md). Type these two commands. In the second command you should copy the ID of your volume from the first command:
 
 ``` shell

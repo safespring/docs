@@ -8,7 +8,7 @@ You as a customer only pays for resources you are using in the platform. With us
 - Storage of volume snapshots
 - Uploaded images (if you have uploaded your own)
 - Snapshots of instances
-- Instances not coompletely deleted from the platform. **Even if an instance it is turned off, Safespring still reserves the capacity so that you can turn it on at any time. Therefore the instance is still billed even when turned off.** To deregister an instance from billing the instance needs to be **deleted** completely from the platform. 
+- Instances not completely deleted from the platform. **Even if an instance it is turned off, Safespring still reserves the capacity so that you can turn it on at any time. Therefore the instance is still billed even when turned off.** To deregister an instance from billing the instance needs to be **deleted** completely from the platform. 
 
 ## Cleaning up projects
 As a cloud provider Safespring does not know what is running inside of an instance, nor the data stored there. To avoid problems with responsibility of accidental loss of data Safespring will never delete anything for you. Once you have cleaned up a project Safespring can delete it, but only if the project is completely empty. Therefore the procedure for cleaning up a project is the following:
@@ -58,4 +58,4 @@ Is case you want to delete an instance completely, do the following:
 This concludes a complete removal of a single instance, either booting from image or volume. 
 
 ## Summary
-Safepspring gives you full freedom regarding how much you want to spend on our services. We will only bill you for the resources you are using. By following the steps above for the different use cases you will be able to only run exactly what you intend to in Safespring platform.  
+Safespring gives you full freedom regarding how much you want to spend on our services. We will only bill you for the resources you are using. By following the steps above for the different use cases you will be able to only run exactly what you intend to on Safespring platform.  

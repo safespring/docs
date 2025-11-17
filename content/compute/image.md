@@ -18,7 +18,7 @@ Safespring make sure the following either works directly, or provide documentati
 
 1. The checkssum provided by the upstream provider should match the checksom of the image uploaded to the platform
 2. The the images can boot on a new instance
-3. A new instance booted from the image gets an IPv4 and IPv6 adress
+3. A new instance booted from the image gets an IPv4 and IPv6 address
 4. The the SSH-key provided at creation of a new instance gets properly injected into the "authorized_keys"-file of the instance
 5. The the instance can connect to a network with one interface.
 
@@ -64,7 +64,7 @@ Horizon webui.
 
         glance image-list
 
-3.  Use the following commmand to download the image to local storage:
+3.  Use the following command to download the image to local storage:
     ```
     glance image-download _uuid_of_previously_created_snapshot_ \
         --file _local_filename_to_save_raw_image_to_ \

@@ -42,7 +42,7 @@ After the fourth retry, the `audit.log` file was skipped due to constant
 changes. In this case, we know the answer to why it changes, it is
 because the access of all files is logged on this particular machine.
 
-So everytime dsmc tries to read `audit.log`, the local auditing system
+So every time dsmc tries to read `audit.log`, the local auditing system
 will log, into that very file, that "dsmc tried to read `audit.log`, and
 we allowed it". So when dsmc had read the file and sent it to the
 server, it checks the last-changed-date and size, noticing those have

@@ -13,6 +13,17 @@ docker run --rm -it -p 8000:8000 -v $PWD:/docs:z squidfunk/mkdocs-material
 ```
 and open http://localhost:8000 in your favorite browser
 
+## Spellchecking
+
+We make use of [pyspelling](https://facelessuser.github.io/pyspelling/):
+
+```bash
+pip install pyspelling
+pyspelling
+```
+
+Modify `.pyspelling.yml` for configuration and `.github/config/.wordlist.txt` for adjusting configuration.
+
 ## Contributions
 
 We're open to contributions from anyone. If you need help trying to add or

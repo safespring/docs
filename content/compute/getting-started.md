@@ -40,7 +40,7 @@ The pie charts show how much of the resources compared to the set quota. In the 
 
 Openstack calls VMs "instances" so in order to start running a few machines, you go to the Instances category, and use Launch Instance(s) to get your first VM up.
 
-**VCPUs**: Virtual CPU cores are allocated per instance. Each VCPU corresponds to a processor core in Safespring's platform. Your quota limits how many VCPUs you can use across all instances.
+**VCPUs**: Virtual CPU cores are allocated per instance. Each VCPU corresponds to a processor core on Safespring's platform. Your quota limits how many VCPUs you can use across all instances.
 
 **RAM**: Memory is allocated to each instance based on the chosen flavor. The dashboard shows total RAM usage across all running instances in your project.
 
@@ -76,7 +76,7 @@ Also, while we try to keep the public images up-to-date when publishing them, ke
 
 Using snapshots to freeze volumes is a useful technique for being able to back out of tests, but do mind to clean out unused snapshots when they are no longer of interest, since they count against your storage quota.
 
-All flavors in Safesprings platform come with a 40 GB root disk. In the case you would want another size on the root disk you first create a volume under "Volumes" and pick Volume Source as Image and  then pick the image that corresponds to the operating system you want to run on the instance.
+All flavors on Safespring's platform come with a 40 GB root disk. In the case you would want another size on the root disk you first create a volume under "Volumes" and pick Volume Source as Image and  then pick the image that corresponds to the operating system you want to run on the instance.
 
 ![image](../images/create_volume.png)
 
@@ -91,13 +91,13 @@ You can read more about the different flavors and what they mean [here](flavors.
 
 
 ## Boot from image
-The simplest way of booting an instance is to boot it directly from the image service. By doing so you will use the ephepmeral storage. Ephemeral storage means that the storage lifetime is tied to the instance. It will persist as long as the instance exists but will automatically be deleted if the instance is deleted. If the instance you're starting is of a stateless type, with maybe any more persistent data is stored on a separate volume this is a good option.
+The simplest way of booting an instance is to boot it directly from the image service. By doing so you will use the ephemeral storage. Ephemeral storage means that the storage lifetime is tied to the instance. It will persist as long as the instance exists but will automatically be deleted if the instance is deleted. If the instance you're starting is of a stateless type, with maybe any more persistent data is stored on a separate volume this is a good option.
 
 To boot an instance from image, use the regular "Launch instance" wizard in the GUI. In the "Source" tab make sure the dropdown menu at the top is "Image" and also make sure that the "Create New Volume" is set to "No".
 
 In the flavor tab it is now important to pick a flavor with lokal storage in order for the image to be put somewhere. These flavors start with an "l", example lb.small which has a root disk on lokal disk of 20 GB.
 
-Continue the wizard to create the server. Now you have created an image based instance which is backed by local storage on the compute node where it is running. The upsides with this is that local storage is much faster than central storage. The downside is that the local storage only is stored in one copy on the compute node which means that if the hard drive on that compute node fails, dataloss will occur. If all the persistent datat is stored on a separate volume this is not a problem, but it is important to know the implications.
+Continue the wizard to create the server. Now you have created an image based instance which is backed by local storage on the compute node where it is running. The upsides with this is that local storage is much faster than central storage. The downside is that the local storage only is stored in one copy on the compute node which means that if the hard drive on that compute node fails, data loss will occur. If all the persistent datat is stored on a separate volume this is not a problem, but it is important to know the implications.
 
 ## Boot from volume
 By booting from volume the instance root file system instead will be stored on persistent storage in the central storage solution. This means that the lifetime of the volume is separate from the lifetime of the instance, It is therefore possible to remove the instance and still keep the boot volume and at a later point boot up another instance with the same backing persistent storage which means that it is possible to recreate a removed instance in a later stage as long as the volume containing the root file system is not removed.
@@ -124,7 +124,7 @@ In the new platform, there is 3 networks to choose from (attach only one network
 1. **public**: This network will give you a public IPv4 address, public IPv6 address, dns setup and default gateway so it is reachable directly to/from Internet.
 2. **default**: This network will give you a private IPv4 on a RFC 1918 network,
    dns setup and default gateway with Network Address Translation (NAT) for outgoing traffic so instances can reach
-   services on the Internet, in addtion to instances on other networks in Safespring Compute (provided it is allowed by means of security groups).
+   services on the Internet, in addtion to instances on other networks on Safespring Compute (provided it is allowed by means of security groups).
 3. **private**: This network will give you a private IPv4 on a RFC 1918 network that is routed to/from other
    Safespring networks (including public) but not anywhere else.
 

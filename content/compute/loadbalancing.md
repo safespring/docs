@@ -148,7 +148,7 @@ ip route add 185.189.29.0/32 dev lo
 ip -6 route add 2a0a:bcc0:40:4::/128 dev lo
 ```
 
-Likevise, the advertisement will stop as soon as you delete the routes.
+Likewise, the advertisement will stop as soon as you delete the routes.
 In our example, we can check which prefixes we are announcing with
 
 ```code

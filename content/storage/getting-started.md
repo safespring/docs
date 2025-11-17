@@ -7,14 +7,14 @@ accessibility.
 ## Get S3 credentials
 
 !!! note
-    Every project in Safespring Compute has one S3 account connected to it but one project can have several users. This means
-    that when different users press the "View Credentials" button in Safespring Compute they will get different key pairs of access and secret
+    Every project on Safespring Compute has one S3 account connected to it but one project can have several users. This means
+    that when different users press the "View Credentials" button on Safespring Compute they will get different key pairs of access and secret
     keys. Important to understand is that these different key pairs will give access to the SAME S3 account, tied to the project.
 
-S3 credentials are mapped to projects in Safesprings Compute platform.
+S3 credentials are mapped to projects on Safespring's Compute platform.
 This means that if you want to get credentials for S3 you will have to login into
-version 2 of Safesprings Compute platform and then choose "Project" up to the right and then API Access.
-You will now see a button which says "View Credentials" and if you click that you will be precented with an
+version 2 of Safespring's Compute platform and then choose "Project" up to the right and then API Access.
+You will now see a button which says "View Credentials" and if you click that you will be presented with an
 information screen:
 
 1. S3 URL: this is the service point URL to which to direct your S3 Client.

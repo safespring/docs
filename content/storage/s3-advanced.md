@@ -1,15 +1,17 @@
 # Advanced S3 features
 
 ## Access Control Lists in S3
-This chapter descibes how you can set up specific Access Control Lists (from now on called ACLs)
+
+This chapter describes how you can set up specific Access Control Lists (from now on called ACLs)
 to control access to specific buckets or objects from other S3 users in the platform.
 
-Reasons for doing this could be: 
+Reasons for doing this could be:
 
 1. Give public access to a specific bucket or object
 2. Give another S3 user read or read/write access to a specific bucket, objects or subfolder of a bucket.
 
 ### Naming Convention in this document
+
 * Bucket Owner is a S3 account holder which has an object storage bucket intended for sharing to another S3 account holder in the same platform. 
 * Bucket User which is a S3 account holder who wants to gain access to the Bucket Owner's bucket
 * Buckets Owner's Project - the Bucket Owner's Project ID
@@ -306,7 +308,7 @@ signurl_use_https = True
 
 ```
 These variables are important now when we want to create those pre-signed URLs to an object. They force the
-signing mechanism to use HTTPS instead of HTTP which you need in Safespring's platform since HTTP is not allowed.
+signing mechanism to use HTTPS instead of HTTP which you need on Safespring's platform since HTTP is not allowed.
 
 Let's say that the owner has a configuration file called owner-s3.cfg where those variables are set and wants
 to create a pre-signed url for the object **s3://bucket/testfile** which is valid for 24 hours (or 86400 seconds). 

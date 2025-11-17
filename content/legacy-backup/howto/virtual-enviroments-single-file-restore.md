@@ -6,7 +6,7 @@ TSM4VE single file restore
 Since the software used for file level restore doesn't support SSL we have to use stunnel to encrypt the traffic to/from the TSM server.
 
 * **Download stunnel**  - It can be found here https://www.stunnel.org/downloads.html
-* **Install stunnel** - Use the default values to start with. It will ask you for details about your organisation. Since we only use stunnel for outgoing traffic it has little importance what you say.  Make sure you answer localhost on the last question though.
+* **Install stunnel** - Use the default values to start with. It will ask you for details about your organization. Since we only use stunnel for outgoing traffic it has little importance what you say.  Make sure you answer localhost on the last question though.
 
 !!! note "Example"
     You are about to be asked to enter information that will be incorporated into your certificate request.
@@ -39,7 +39,7 @@ Since the software used for file level restore doesn't support SSL we have to us
 
 ## Usage
 
-The restore process is a 2-step processs.  
+The restore process is a 2-step process.  
 
 * One system mounts restore image from the TSM server and presents it as an ISCSI disk. This is in most cases the physical host.
 * The virtual machine will then mount the ISCSI disk from the server above.
@@ -49,7 +49,7 @@ The restore process is a 2-step processs.
 
 The iSCSI initiator name is shown in the iSCSI initiator configuration window of the Control Panel. For example: _iqn.1991-05.com.microsoft:hypervtest.rantila.local_
 
-* Start the "Tivoli Storage Manager Recovery Agent" (on physical host) and give some basic communications information- After the first run most of these are rembered and you don't have to fill in them next time:
+* Start the "Tivoli Storage Manager Recovery Agent" (on physical host) and give some basic communications information- After the first run most of these are remembered and you don't have to fill in them next time:
     ```
     Server address:       localhost
     Server port:          1800
