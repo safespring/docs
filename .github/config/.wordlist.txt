@@ -320,6 +320,7 @@ direntries
 disksize
 diskstats
 diskutil
+disp
 displayname
 disrdi
 disrec
@@ -359,6 +360,7 @@ eb
 eba
 ebd
 ebpf
+ecc
 ecmp
 eea
 eedd
@@ -726,6 +728,7 @@ metallb
 mgmt
 mgmtclass
 mhrhcd
+mib
 miiebtccau
 minf
 minio
@@ -866,6 +869,7 @@ oscli
 osl
 oslevel
 osquery
+oss
 ostype
 outdir
 outputdir
@@ -900,6 +904,7 @@ peerasn
 pem
 percentageutilized
 percentoftotalstorageofbusinessunit
+perf
 performant
 periodunit
 persistentvolume
@@ -965,6 +970,7 @@ pv
 pvcs
 pwauth
 pwd
+pwr
 pyn
 pyspelling
 qcow
@@ -1136,6 +1142,7 @@ sktxlg
 sla
 slaac
 smalloc
+smi
 snapshotname
 snapshotted
 snapshotting
@@ -1286,6 +1293,7 @@ uecwwvrgf
 ufw
 ui
 uikb
+uncorr
 unencrypted
 unicast
 unices
@@ -1319,6 +1327,7 @@ usessettlementmethod
 usestotp
 usr
 utf
+util
 utils
 uuid
 uvh

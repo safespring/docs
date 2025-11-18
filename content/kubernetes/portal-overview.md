@@ -80,8 +80,8 @@ Wait a few minutes and then click the **Show Credentials** button. If you get a 
 You can copy the file to a directory to a file named `.kubeconfig` in the environment where you have kubectl installed and run:
 
 ```shell
-export KUBECONFIG=$(pwd)/.kubeconfig
-kubectl get nodes
+➜ export KUBECONFIG=$(pwd)/.kubeconfig
+➜ kubectl get nodes
 ```
 
 You will get redirected to the IDP of the data center where you provisioned your cluster:
@@ -95,6 +95,7 @@ You enter your password:
 You will get a message that you have authenticated and if you go back to the terminal you will see the output of the command:
 
 ```shell
+➜ kubectl get nodes
 NAME                                     STATUS   ROLES           AGE     VERSION
 my-cluster-control-plane-9pdn5           Ready    control-plane   8m35s   v1.33.5
 my-cluster-control-plane-clrzd           Ready    control-plane   8m35s   v1.33.5

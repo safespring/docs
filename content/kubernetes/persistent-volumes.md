@@ -32,7 +32,7 @@ To replicate the example make sure:
 - `kubeconf-demo` is [obtained](portal-overview.md#accessing-kubernetes-cluster) for that specific cluster
 - `test` namespace exists or created using `kubectl --kubeconfig=kubeconf-demo create ns test`
 
-```bash
+```shell
 ➜ cat <<EOF | kubectl --kubeconfig=kubeconf-demo apply -f -
 
 apiVersion: v1
@@ -53,7 +53,7 @@ EOF
 
 Result can be verified with
 
-```bash
+```shell
 ➜ kubectl --kubeconfig=kubeconf-demo get pvc -n test 
 NAME                   STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
 csi-pvc-cinderplugin   Bound    pvc-019cff07-4a0f-4e62-b80b-e9d390500ad3   1Gi        RWO            fast           <unset>                 17s
@@ -61,7 +61,7 @@ csi-pvc-cinderplugin   Bound    pvc-019cff07-4a0f-4e62-b80b-e9d390500ad3   1Gi  
 ```
 And the resulting persistent volume
 
-```bash
+```shell
 ➜ kubectl --kubeconfig=kubeconf-demo get pv                                                                                                                                
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                       STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
 pvc-019cff07-4a0f-4e62-b80b-e9d390500ad3   1Gi        RWO            Delete           Bound    test/csi-pvc-cinderplugin   fast           <unset>                          11s
@@ -73,8 +73,7 @@ To extend the persistent volume created above we can make use of: `kubectl --kub
 
 The result can be monitored using:
 
-
-```bash
+```shell
 
 ➜ kubectl --kubeconfig=kubeconf-demo get pv                                                                                           
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                       STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
@@ -83,7 +82,7 @@ pvc-019cff07-4a0f-4e62-b80b-e9d390500ad3   5Gi        RWO            Delete     
 
 While the volume has been resized the persistent volume is waiting for
 
-```bash
+```shell
 ➜ kubectl --kubeconfig=kubeconf-demo describe pvc -n test csi-pvc-cinderplugin 
 Name:          csi-pvc-cinderplugin
 Namespace:     test
