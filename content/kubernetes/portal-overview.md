@@ -1,4 +1,4 @@
-# Portal overview 
+# Portal overview
 
 ## I just got a Safespring Portal account, what now?
 
@@ -21,21 +21,20 @@ Before you begin working with your Safespring Portal clusters, you need to have 
 
 You are now ready to go to https://portal.safespring.com:
 
-
 ![image](../images/portal-sign-in.png)
 
 You click the "Sign in" button and you see this:
-
 
 ![image](../images/portal-sign-in-zitadel.png)
 
 You click the "Continue with ZITADEL" and log in.
 
 ## Viewing your environments
-Once you have logged in you will be greeted with your "Environments Overview". If this is the first time you login that listing will be empty: 
+
+Once you have logged in you will be greeted with your "Environments Overview". If this is the first time you login that listing will be empty:
 
 ![image](../images/portal-environments.png)
-Environments is a way to group your resources into different separate environments in which you can run several clusters, compute projects or storage accounts. 
+Environments is a way to group your resources into different separate environments in which you can run several clusters, compute projects or storage accounts.
 
 You click "Create New" to create a new environment.
 
@@ -43,11 +42,11 @@ You click "Create New" to create a new environment.
 
 You give your environment a name and then click "Create environment".
 
-
 ![image](../images/portal-new-environment.png)
 You now see your new environment, where you can start resources.
 
 ## Create your first cluster
+
 Click the button "Add Cluster" and give it a name:
 
 ![image](../images/portal-name-cluster.png)
@@ -68,19 +67,21 @@ In the last step you review the cluster configuration for the cluster you are ab
 
 ![image](../images/portal-review-cluster-config.png)
 
-Your cluster is now creating. 
+Your cluster is now creating.
 
 ![image](../images/portal-creating-cluster.png)
 
-Wait a few minutes and then click the "Show Credentials" button. If you get a kubeconfig file back your cluster is ready to use:
+### Accessing Kubernetes Cluster
+
+Wait a few minutes and then click the **Show Credentials** button. If you get a [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file back your cluster is ready to use:
 
 ![image](../images/portal-show-credentials.png)
 
-You can copy the file to a directory to a file named ".kubeconfig" in the environment where you have kubectl installed and run:
+You can copy the file to a directory to a file named `.kubeconfig` in the environment where you have kubectl installed and run:
 
 ```shell
-$ export KUBECONFIG=$(pwd)/.kubeconfig
-$ kubectl get nodes
+export KUBECONFIG=$(pwd)/.kubeconfig
+kubectl get nodes
 ```
 
 You will get redirected to the IDP of the data center where you provisioned your cluster:

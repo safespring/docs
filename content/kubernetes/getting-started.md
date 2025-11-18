@@ -7,7 +7,7 @@ This guide will help you get started with Safespring's on-demand Kubernetes serv
 
 ## Overview
 
-on-demand Kubernetes allows users to create, scale and use Kubernetes clusters. A [portal and API](portal-overview.md) are used to manage the clusters.
+On-demand Kubernetes allows users to create, scale and use Kubernetes clusters. Such a functionality is made available through a [portal and API](portal-overview.md), where users can manage the clusters.
 
 It is build on top of the [Safespring Compute](../compute/getting-started.md) service.
 

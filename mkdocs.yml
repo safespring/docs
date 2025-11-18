@@ -159,8 +159,8 @@ nav:
       - Backup Exec and Safespring Storage: "storage/backup-exec.md"
       - Other Backends: "storage/other-backends.md"
   - On-demand Kubernetes:
-      - Portal Overview: "kubernetes/portal-overview.md"
       - Getting Started: "kubernetes/getting-started.md"
+      - Portal Overview: "kubernetes/portal-overview.md"
       - Authentication: "kubernetes/authentication.md"
       - Traffic Management: "kubernetes/manage-traffic.md"
       - GPU: "kubernetes/gpu.md"
