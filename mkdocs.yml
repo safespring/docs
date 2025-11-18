@@ -163,6 +163,7 @@ nav:
       - Portal Overview: "kubernetes/portal-overview.md"
       - Authentication: "kubernetes/authentication.md"
       - Traffic Management: "kubernetes/manage-traffic.md"
+      - Persistent Volumes: "kubernetes/persistent-volumes.md"
       - GPU: "kubernetes/gpu.md"
       - Security and Compliance:
           - Overview: "kubernetes/security-compliance/index.md"

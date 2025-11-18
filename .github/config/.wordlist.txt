@@ -4,6 +4,8 @@ abcdef
 abcdefghij
 acceptor
 accesskey
+accessmode
+accessmodes
 accesstoken
 acckeygoeshere
 acd
@@ -40,6 +42,7 @@ alloc
 allowedroutes
 allowlists
 allownoactivity
+allowvolumeexpansion
 allusers
 alwayson
 amz
@@ -169,6 +172,7 @@ certificatename
 certificaterefs
 certutil
 cest
+cff
 cfg
 cfxxxxxxxxxxxxt
 chacha
@@ -186,6 +190,7 @@ chmod
 chown
 chpasswd
 cidr
+cinderplugin
 cirros
 ckkba
 clat
@@ -414,6 +419,8 @@ exclusionprocess
 exe
 exitcodes
 expirydate
+externalexpanding
+externalprovisioning
 externalreference
 failedfiles
 failedloginattempts
@@ -440,8 +447,11 @@ filespaceoccupancytype
 filespacepaths
 filespaces
 filesystem
+filesystemresizepending
+filesystemresizerequired
 filesystems
 finaldeleterequestapprover
+finalizers
 findstr
 fio
 firewalled
@@ -644,7 +654,9 @@ lastcommenttime
 lastcommenttypeid
 lastlogindate
 lastpasswordchange
+lastprobetime
 lastsuccessful
+lasttransitiontime
 lastupdated
 lastupdatedby
 latestrestorepoint
@@ -890,6 +902,8 @@ percentageutilized
 percentoftotalstorageofbusinessunit
 performant
 periodunit
+persistentvolume
+persistentvolumeclaim
 peu
 physicalmegabytes
 pid
@@ -931,6 +945,8 @@ protect's
 protectedmegabytes
 proto
 provideclusterinfo
+provisioner
+provisioningsucceeded
 proxyagentid
 proxyagents
 proxynodereports
@@ -945,6 +961,7 @@ pulldown
 puprose
 putobject
 puttygen
+pv
 pvcs
 pwauth
 pwd
@@ -973,9 +990,11 @@ rdp
 readme
 readonly
 readpst
+readwriteonce
 realtime
 receivecommentnotifications
 receivedeleterequestnotifications
+reclaimpolicy
 recognise
 recomended
 recv
@@ -1004,6 +1023,7 @@ requestid
 requestredirect
 requiredapproversofdeleterequest
 resends
+resizer
 resolv
 resolvers
 resourceutilization
@@ -1043,6 +1063,7 @@ runnable
 runtimeclassname
 ruyki
 rw
+rwo
 safedc
 safespring
 safespring's
@@ -1144,6 +1165,8 @@ statusreportid
 stdev
 sth
 sto
+storageclass
+storageclassname
 storagelimit
 storagemegabytes
 storagepool
@@ -1331,6 +1354,9 @@ vms
 vmware
 vnc
 volbacked
+volumeattributesclass
+volumebindingmode
+volumemode
 volumemounts
 vpn
 vsphere
