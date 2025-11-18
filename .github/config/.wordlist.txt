@@ -533,6 +533,7 @@ gynyr
 hana
 haproxy
 hbshsda
+headlmap
 healthcecker
 healthcheck
 hgtqjqugayngyfanpul
@@ -1150,6 +1151,7 @@ servering
 servername
 serverside
 servertype
+serviceaccount
 servicehost
 servicemonitor
 servicemonitornamespaceselector
