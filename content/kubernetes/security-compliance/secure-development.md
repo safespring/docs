@@ -6,7 +6,7 @@ This document outlines the secure development requirements and practices for Saf
 
 Applications developed for on-demand Kubernetes implement multiple layers to ensure a secure development lifecycle.
 
-* Code reviews are mandatory, access control is enforced. See [change management](../development-operations-management#62-change-management) for implementation details.
+* Code reviews are mandatory, access control is enforced. See [change management](../development-operations-management.md#62-change-management) for implementation details.
 * Static Application Security Analysis tools are implemented in CI/CD pipelines
 * Vulnerability scanning of code is performed in CI/CD pipelines
 * Docker images are scanned upon upload to the container registry and at regular intervals using:

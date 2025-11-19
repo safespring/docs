@@ -2,7 +2,12 @@
 
 We recommend leveraging the [kubectl OIDC plugin](https://github.com/int128/kubelogin) (`kubelogin`) for handling OIDC-based logins seamlessly from the command line by installing it in your environment.
 
-Use the script `make-kubeconfig.sh` script (referenced below) to generate a kubeconfig that supports OIDC login via `kubelogin`.
+!!! note "Accessing Kubernetes Cluster"
+    We recommend making use of [portal generated Kubeconfig](portal-overview.md#accessing-kubernetes-cluster) for generating an up to date `.kubeconfig`.
+
+## Alternative Scripted Kubeconfig
+
+Use the script `make-kubeconfig.sh` script (referenced below) to generate a kubeconfig that supports OIDC login via `kubelogin`. Note that for this method the certificate that will be retrieved will be per control plane node.
 
 Example:
 
