@@ -1,7 +1,7 @@
 # Getting Started with on-demand Kubernetes
 
 !!! note "on-demand Kubernetes"
-    The on-demand kubernetes service is currently still in development. A beta-launch is planned for October 2025.
+    The on-demand kubernetes service is currently still in development. A beta-launch is planned for December 2025.
 
 This guide will help you get started with Safespring's on-demand Kubernetes service.
 
