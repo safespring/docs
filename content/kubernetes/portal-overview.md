@@ -106,3 +106,5 @@ my-cluster-vf9wj-md-worker-26bx9-qzjd2   Ready    worker          8m35s   v1.33.
 ```
 
 You can now start creating namespaces and start using your cluster.
+
+For a graphical user interface for accessing the cluster please consult the [Kubernetes Dashboard guide](dashboard.md).

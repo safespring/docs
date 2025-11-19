@@ -1,10 +1,10 @@
 # Kubernetes Dashboard
 
-Whilst most of the interaction with the newly provided cluster can be done through the [kubectl](https://kubernetes.io/docs/reference/kubectl/) command line tool. There are graphical user interfaces that can be used with the cluster such as the [web UI (Kubernetes Dashboard)](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) and [Headlmap](https://headlamp.dev/), out of which we will be focusing on the latter.
+Whilst most of the interaction with the newly provided cluster can be done through the [kubectl](https://kubernetes.io/docs/reference/kubectl/) command line tool. There are graphical user interfaces that can be used with the cluster such as the [web UI (Kubernetes Dashboard)](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) and [Headlmap](https://headlamp.dev/), out of which we will be focusing.
 
 ## Headlamp
 
-Headlamp can be run as a desktop application as well as in-cluster.
+Headlamp can be run as a desktop application as well as in-cluster. Some of the main advantages of using Headlamp include a [plugin system](https://headlamp.dev/plugins) with the option to [customize](https://headlamp.dev/docs/latest/development/plugins/getting-started) with your own brand and theme.
 
 ### Desktop Application
 
@@ -43,15 +43,13 @@ helm repo update
 Install Headlamp in the `kube-system` namespace:
 
 ```bash
-helm install my-headlamp headlamp/headlamp --namespace kube-system
+helm --kubeconfig=kubeconf-demo install my-headlamp headlamp/headlamp --namespace kube-system
 ```
 
-#### 3. Enable Service Account Token
+#### 3. Create Service Account Token
 
 ```bash
-helm install my-headlamp headlamp/headlamp \
-  --namespace kube-system \
-  --set serviceAccount.create=true
+kubectl --kubeconfig=kubeconf-demo create token my-headlamp --namespace kube-system
 ```
 
 #### 4. Port Forwarding (Quick Access)
@@ -59,7 +57,10 @@ helm install my-headlamp headlamp/headlamp \
 For immediate access without setting up ingress:
 
 ```bash
-kubectl port-forward -n kube-system service/headlamp 8080:80
+kubectl port-forward -n kube-system service/my-headlamp 8080:80
 ```
 
-Then access Headlamp at `http://localhost:8080`
+Then access Headlamp at `http://localhost:8080` and use the token created at step 3 to access the UI.
+
+![image](../images/headlamp-web.png)
+

@@ -162,7 +162,7 @@ nav:
       - Getting Started: "kubernetes/getting-started.md"
       - Portal Overview: "kubernetes/portal-overview.md"
       - Authentication: "kubernetes/authentication.md"
-      - Dashboard: "kubernetes/dashboard.md"
+      - Kubernetes Dashboard: "kubernetes/dashboard.md"
       - Traffic Management: "kubernetes/manage-traffic.md"
       - Persistent Volumes: "kubernetes/persistent-volumes.md"
       - Observability: "kubernetes/observability.md"
