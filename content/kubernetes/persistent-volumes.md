@@ -69,7 +69,13 @@ pvc-019cff07-4a0f-4e62-b80b-e9d390500ad3   1Gi        RWO            Delete     
 
 ### Extending Persistent Volumes
 
-To extend the persistent volume created above we can make use of: `kubectl --kubeconfig=kubeconf-demo patch pvc -n test csi-pvc-cinderplugin -p '{"spec":{"resources":{"requests":{"storage":"5Gi"}}}}'`, which would extend the volume to `5Gi`
+To extend the persistent volume created above we can make use of:
+
+```shell
+kubectl --kubeconfig=kubeconf-demo patch pvc -n test csi-pvc-cinderplugin -p '{"spec":{"resources":{"requests":{"storage":"5Gi"}}}}'
+```
+
+which would extend the volume to `5Gi`.
 
 The result can be monitored using:
 
