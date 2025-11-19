@@ -17,8 +17,8 @@ To add a cluster:
 1. Add Cluster
 2. Load from KubeConfig, where we need to add the kubeconfig [obtained from portal](portal-overview.md#accessing-kubernetes-cluster)
 3. Finalize adding the cluster
-4. (optional) You will be redirected to login
-5. Access the cluster resources and overview 
+4. You will be redirected to login
+5. Access the cluster resources and browse available resources
 
 ![image](../images/headlmap-overview-desktop.png)
 

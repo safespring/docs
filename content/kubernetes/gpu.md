@@ -211,7 +211,13 @@ spec:
 EOF
 ```
 
-Enter the pod `kubectl --kubeconfig=kubeconf-demo -n test exec --stdin --tty pods/gpu-pod-example -- /bin/bash` and run the necessary commands to install packages, check the GPU is recognize and start the training.
+Enter the pod:
+
+```shell
+kubectl --kubeconfig=kubeconf-demo -n test exec --stdin --tty pods/gpu-pod-example -- /bin/bash
+```
+
+and run the necessary commands to install packages, check the GPU is recognized and start the training.
 
 ```shell
 root@gpu-pod-example:/# pip3 install tensorflow[and-cuda]==2.15.1
