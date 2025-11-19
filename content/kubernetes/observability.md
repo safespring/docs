@@ -36,7 +36,7 @@ graph TB
         end
         
         subgraph "Metrics Collection"
-            NE[Node Exporter<br/>Hardware & OS Metrics]
+            NE[Node Exporter<br/>Metrics]
             KSM[Kube-State-Metrics<br/>K8s Resource Metrics]
             SM[Service Monitors<br/>Custom App Metrics]
         end
@@ -120,7 +120,9 @@ graph TB
 
 ### Step 1: Add Helm Repositories
 
-```bash
+Make sure kubeconfig is [obtained from portal](portal-overview.md#accessing-kubernetes-cluster) and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for `helm` and `kubectl` command line tools.
+
+```shell
 # Add Prometheus Community repository
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 
@@ -133,7 +135,7 @@ helm repo update
 
 ### Step 2: Create Monitoring Namespace
 
-```bash
+```shell
 kubectl create namespace monitoring
 ```
 
@@ -141,12 +143,12 @@ kubectl create namespace monitoring
 
 #### Quick Installation (Default Settings)
 
-```bash
+```shell
 helm install kube-prom-stack prometheus-community/kube-prometheus-stack \
   --namespace monitoring
 ```
 
-#### Production Installation (With Custom Values)
+#### Example Production Installation
 
 Create a `prometheus-values.yaml` file:
 
@@ -238,7 +240,7 @@ kubeStateMetrics:
 
 Install with custom values:
 
-```bash
+```shell
 helm install kube-prom-stack prometheus-community/kube-prometheus-stack \
   --namespace monitoring \
   -f prometheus-values.yaml
@@ -312,7 +314,7 @@ minio:
 
 Install Loki:
 
-```bash
+```shell
 helm install loki grafana/loki \
   --namespace monitoring \
   -f loki-values.yaml
@@ -349,7 +351,7 @@ resources:
 
 Install Promtail:
 
-```bash
+```shell
 helm install promtail grafana/promtail \
   --namespace monitoring \
   -f promtail-values.yaml
@@ -357,7 +359,7 @@ helm install promtail grafana/promtail \
 
 ### Step 6: Verify Installation
 
-```bash
+```shell
 # Check all pods in monitoring namespace
 kubectl get pods -n monitoring
 
@@ -405,7 +407,7 @@ grafana:
 
 Update the installation:
 
-```bash
+```shell
 helm upgrade kube-prom-stack prometheus-community/kube-prometheus-stack \
   --namespace monitoring \
   -f prometheus-values.yaml \
@@ -460,7 +462,7 @@ alertmanager:
 
 Apply the configuration:
 
-```bash
+```shell
 helm upgrade kube-prom-stack prometheus-community/kube-prometheus-stack \
   --namespace monitoring \
   -f prometheus-values.yaml \
@@ -499,7 +501,7 @@ spec:
 
 Apply the rule:
 
-```bash
+```shell
 kubectl apply -f custom-alerts.yaml
 ```
 
@@ -529,51 +531,37 @@ spec:
 
 ## Accessing the Stack
 
-### Access Grafana
+### Access Grafana Port Forwarding (Quick Access)
 
-#### Method 1: Port Forwarding (Quick Access)
-
-```bash
+```shell
 kubectl port-forward -n monitoring svc/kube-prom-stack-grafana 3000:80
 ```
 
 Access at: `http://localhost:3000`
 
 Default credentials:
+
 - Username: `admin`
 - Password: Check the secret or use what you set in values
 
 Get password:
-```bash
+
+```s
 kubectl get secret -n monitoring kube-prom-stack-grafana \
   -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
 ```
 
-#### Method 2: LoadBalancer Service
+#### Access Prometheus
 
-```bash
-kubectl patch svc kube-prom-stack-grafana -n monitoring \
-  -p '{"spec": {"type": "LoadBalancer"}}'
-
-# Get external IP
-kubectl get svc -n monitoring kube-prom-stack-grafana
-```
-
-#### Method 3: Ingress (Recommended for Production)
-
-Already configured in the prometheus-values.yaml example above.
-
-### Access Prometheus
-
-```bash
+```shell
 kubectl port-forward -n monitoring svc/kube-prom-stack-prometheus 9090:9090
 ```
 
 Access at: `http://localhost:9090`
 
-### Access AlertManager
+#### Access AlertManager
 
-```bash
+```shell
 kubectl port-forward -n monitoring svc/kube-prom-stack-alertmanager 9093:9093
 ```
 
