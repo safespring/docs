@@ -257,6 +257,7 @@ cristie
 cristie's
 critcial
 cron
+crossentropy
 crypto
 cryptographic
 cryptolockers
@@ -313,6 +314,7 @@ dedupstats
 dedupstatuptodate
 defaultdatasourceenabled
 defaultgw
+defaultmode
 defaultserver
 defg
 deleteassociations
@@ -367,6 +369,7 @@ dsmj
 dsmsched
 dss
 dt
+dtype
 duid
 dummytest
 durationunit
@@ -739,6 +742,7 @@ manpage
 matchlabels
 maxlines
 maxprocesses
+maxval
 mazovia
 mbega
 mbg
@@ -804,6 +808,7 @@ nameservers
 namespace
 namespaces
 natively
+naverage
 nbd
 nbgqnwsdmtg
 ndf
@@ -862,6 +867,7 @@ nptdagmbaagjgcswgcgwdwydvr
 nsastbxpchz
 ntfs
 ntp
+num
 nvd
 nvme
 oauth
@@ -940,6 +946,7 @@ periodunit
 persistentvolume
 persistentvolumeclaim
 peu
+physicaldevice
 physicalmegabytes
 pid
 pidfile
@@ -1007,6 +1014,7 @@ pvcs
 pwauth
 pwd
 pwr
+py
 pyn
 pyspelling
 qcow
@@ -1067,6 +1075,7 @@ requestredirect
 requiredapproversofdeleterequest
 resends
 resizer
+resnet
 resolv
 resolvers
 resourceutilization
@@ -1105,6 +1114,7 @@ ruleset
 runcmd
 runnable
 runtimeclassname
+runtimeerror
 ruyki
 rw
 rwo
@@ -1215,6 +1225,7 @@ statuscode
 statuspage
 statusreportid
 stdev
+stdin
 sth
 sto
 storageclass
@@ -1287,6 +1298,7 @@ tfstate
 threadstacksize
 timedelta
 timeformatinitialized
+timehistory
 timeoutboot
 timesyncd
 timezoneid
@@ -1325,6 +1337,7 @@ tsmservername
 tsmsql
 tsmsync
 ttcihjigm
+tty
 tunable
 txnbytelimit
 txt
