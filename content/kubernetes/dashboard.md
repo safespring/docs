@@ -63,4 +63,3 @@ kubectl port-forward -n kube-system service/my-headlamp 8080:80
 Then access Headlamp at `http://localhost:8080` and use the token created at step 3 to access the UI.
 
 ![image](../images/headlamp-web.png)
-
