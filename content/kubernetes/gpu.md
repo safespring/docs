@@ -7,10 +7,11 @@ In order to make use of GPU, one must add or already have worker nodes with [GPU
 
 ## Validate Nvidia Runtime available
 
-To replicate the example make sure`kubeconf-demo` is [obtained](portal-overview.md#accessing-kubernetes-cluster) for that specific cluster
+To replicate the example make sure`kubeconf-demo` is [obtained](portal-overview.md#accessing-kubernetes-cluster) for that specific cluster and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for helm and kubectl command line tools.
+
 
 ```shell
-➜ kubectl --kubeconfig=kubeconf-demo get runtimeclasses.node.k8s.io -A
+➜ kubectl get runtimeclasses.node.k8s.io -A
 NAME     HANDLER   AGE
 nvidia   nvidia    5h42m
 ```
@@ -18,7 +19,7 @@ nvidia   nvidia    5h42m
 We can make use of [NVIDIA System Management Interface](https://docs.nvidia.com/deploy/nvidia-smi/index.html) to list current gpu capabilities, where the `nvcr.io/nvidia/cuda:12.9.1-base-ubuntu24.04` is available through [Nvidia Container registry](https://catalog.ngc.nvidia.com/search).
 
 ```shell
-➜ kubectl --kubeconfig=kubeconf-demo run -n nvidia nvidia-test --restart=Never -ti --rm  --image nvcr.io/nvidia/cuda:12.9.1-base-ubuntu24.04 --overrides '{"spec": {"runtimeClassName": "nvidia"}}' nvidia-smi 
+➜ kubectl run -n nvidia nvidia-test --restart=Never -ti --rm  --image nvcr.io/nvidia/cuda:12.9.1-base-ubuntu24.04 --overrides '{"spec": {"runtimeClassName": "nvidia"}}' nvidia-smi 
 Tue Nov 18 16:12:48 2025       
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 570.172.08             Driver Version: 570.172.08     CUDA Version: 12.9     |
@@ -45,7 +46,7 @@ pod "nvidia-test" deleted
 ## Example job
 
 ```shell
-➜ cat <<EOF | kubectl --kubeconfig=kubeconf-demo apply -f -   
+➜ cat <<EOF | kubectl apply -f -   
 apiVersion: v1                
 kind: Pod          
 metadata:
@@ -70,7 +71,7 @@ EOF
 The result of the above pod would be:
 
 ```shell
-➜ kubectl --kubeconfig=kubeconf-demo get pods -n nvidia gpu-pod 
+➜ kubectl get pods -n nvidia gpu-pod 
 NAME      READY   STATUS      RESTARTS   AGE
 gpu-pod   0/1     Completed   0          19s
 ```
@@ -78,7 +79,7 @@ gpu-pod   0/1     Completed   0          19s
 with the output looking like:
 
 ```shell
-➜ kubectl --kubeconfig=kubeconf-demo logs -f -n nvidia gpu-pod 
+➜ kubectl logs -f -n nvidia gpu-pod 
 [Vector addition of 50000 elements]
 Copy input data from the host memory to the CUDA device
 CUDA kernel launch with 196 blocks of 256 threads
@@ -91,7 +92,7 @@ Done
 
 Let us start by creating a python script `tensor_test.py` that makes use of [Tensorflow](https://www.tensorflow.org/) for training.
 
-Once the `tensor_test.py` file has been created with the content below we will add it as [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) `kubectl --kubeconfig=kubeconf-demo create configmap tensor -n test --from-file=tensor_test.py`
+Once the `tensor_test.py` file has been created with the content below we will add it as [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) `kubectl create configmap tensor -n test --from-file=tensor_test.py`
 
 ```python
 import os
@@ -180,7 +181,7 @@ model.fit(
 The next step involves creating a pod with the tensorflow image and installing the correct package namely `tensorflow[and-cuda]==2.15.1` so that GPU can be recognized.
 
 ```shell
-➜ cat <<EOF | kubectl --kubeconfig=kubeconf-demo apply -f -   
+➜ cat <<EOF | kubectl apply -f -   
 apiVersion: v1
 kind: Pod
 metadata:
@@ -214,7 +215,7 @@ EOF
 Enter the pod:
 
 ```shell
-kubectl --kubeconfig=kubeconf-demo -n test exec --stdin --tty pods/gpu-pod-example -- /bin/bash
+kubectl -n test exec --stdin --tty pods/gpu-pod-example -- /bin/bash
 ```
 
 and run the necessary commands to install packages, check the GPU is recognized and start the training.
