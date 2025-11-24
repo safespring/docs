@@ -24,6 +24,8 @@ To add a cluster:
 
 ### In-cluster Install
 
+Make sure kubeconfig is obtained from portal and active in current shell via KUBECONFIG environment variable or specified via --kubeconfig flag for helm and kubectl command line tools.
+
 #### 1. Add the Headlamp Helm Repository
 
 First, add the official Headlamp Helm repository:
@@ -43,13 +45,13 @@ helm repo update
 Install Headlamp in the `kube-system` namespace:
 
 ```bash
-helm --kubeconfig=kubeconf-demo install my-headlamp headlamp/headlamp --namespace kube-system
+helm install my-headlamp headlamp/headlamp --namespace kube-system
 ```
 
 #### 3. Create Service Account Token
 
 ```bash
-kubectl --kubeconfig=kubeconf-demo create token my-headlamp --namespace kube-system
+kubectl create token my-headlamp --namespace kube-system
 ```
 
 #### 4. Port Forwarding (Quick Access)
