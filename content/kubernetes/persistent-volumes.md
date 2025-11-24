@@ -27,13 +27,16 @@ large (default)   cinder.csi.openstack.org   Delete          Immediate          
 
 We are going to create a [persistent volume claim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) in the `test` namespace.
 
+
+
 To replicate the example make sure:
 
-- `kubeconf-demo` is [obtained](portal-overview.md#accessing-kubernetes-cluster) for that specific cluster
-- `test` namespace exists or created using `kubectl --kubeconfig=kubeconf-demo create ns test`
+- `kubeconf-demo` is [obtained](portal-overview.md#accessing-kubernetes-cluster) for that specific cluster and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for helm and kubectl command line tools.
+
+- `test` namespace exists or created using `kubectl create ns test`
 
 ```shell
-➜ cat <<EOF | kubectl --kubeconfig=kubeconf-demo apply -f -
+➜ cat <<EOF | kubectl apply -f -
 
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -54,7 +57,7 @@ EOF
 Result can be verified with
 
 ```shell
-➜ kubectl --kubeconfig=kubeconf-demo get pvc -n test 
+➜ kubectl get pvc -n test 
 NAME                   STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
 csi-pvc-cinderplugin   Bound    pvc-019cff07-4a0f-4e62-b80b-e9d390500ad3   1Gi        RWO            fast           <unset>                 17s
 
@@ -62,7 +65,7 @@ csi-pvc-cinderplugin   Bound    pvc-019cff07-4a0f-4e62-b80b-e9d390500ad3   1Gi  
 And the resulting persistent volume
 
 ```shell
-➜ kubectl --kubeconfig=kubeconf-demo get pv                                                                                                                                
+➜ kubectl get pv                                                                                                                                
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                       STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
 pvc-019cff07-4a0f-4e62-b80b-e9d390500ad3   1Gi        RWO            Delete           Bound    test/csi-pvc-cinderplugin   fast           <unset>                          11s
 ```
@@ -72,7 +75,7 @@ pvc-019cff07-4a0f-4e62-b80b-e9d390500ad3   1Gi        RWO            Delete     
 To extend the persistent volume created above we can make use of:
 
 ```shell
-kubectl --kubeconfig=kubeconf-demo patch pvc -n test csi-pvc-cinderplugin -p '{"spec":{"resources":{"requests":{"storage":"5Gi"}}}}'
+kubectl patch pvc -n test csi-pvc-cinderplugin -p '{"spec":{"resources":{"requests":{"storage":"5Gi"}}}}'
 ```
 
 which would extend the volume to `5Gi`.
@@ -81,7 +84,7 @@ The result can be monitored using:
 
 ```shell
 
-➜ kubectl --kubeconfig=kubeconf-demo get pv                                                                                           
+➜ kubectl get pv                                                                                           
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                       STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
 pvc-019cff07-4a0f-4e62-b80b-e9d390500ad3   5Gi        RWO            Delete           Bound    test/csi-pvc-cinderplugin   fast           <unset>                          5m10s
 ```
@@ -89,7 +92,7 @@ pvc-019cff07-4a0f-4e62-b80b-e9d390500ad3   5Gi        RWO            Delete     
 While the volume has been resized the persistent volume is waiting for
 
 ```shell
-➜ kubectl --kubeconfig=kubeconf-demo describe pvc -n test csi-pvc-cinderplugin 
+➜ kubectl describe pvc -n test csi-pvc-cinderplugin 
 Name:          csi-pvc-cinderplugin
 Namespace:     test
 StorageClass:  fast

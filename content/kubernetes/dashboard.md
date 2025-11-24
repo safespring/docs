@@ -24,7 +24,7 @@ To add a cluster:
 
 ### In-cluster Install
 
-Make sure kubeconfig is obtained from portal and active in current shell via KUBECONFIG environment variable or specified via --kubeconfig flag for helm and kubectl command line tools.
+Make sure kubeconfig is [obtained from portal](portal-overview.md#accessing-kubernetes-cluster) and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for helm and kubectl command line tools.
 
 #### 1. Add the Headlamp Helm Repository
 
