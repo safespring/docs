@@ -45,6 +45,51 @@ Tue Nov 18 16:12:48 2025
 pod "nvidia-test" deleted
 ```
 
+## Example job
+
+```shell
+➜ cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gpu-pod
+  namespace: nvidia
+spec:
+  restartPolicy: Never
+  runtimeClassName: nvidia
+  containers:
+    - name: cuda-container
+      image: nvcr.io/nvidia/k8s/cuda-sample:vectoradd-cuda12.5.0
+      resources:
+        limits:
+          nvidia.com/gpu: 1 # requesting 1 GPU
+  tolerations:
+  - key: nvidia.com/gpu
+    operator: Exists
+    effect: NoSchedule
+EOF
+```
+
+The result of the above pod would be:
+
+```shell
+➜ kubectl get pods -n nvidia gpu-pod
+NAME      READY   STATUS      RESTARTS   AGE
+gpu-pod   0/1     Completed   0          19s
+```
+
+with the output looking like:
+
+```shell
+➜ kubectl logs -f -n nvidia gpu-pod
+[Vector addition of 50000 elements]
+Copy input data from the host memory to the CUDA device
+CUDA kernel launch with 196 blocks of 256 threads
+Copy output data from the CUDA device to the host memory
+Test PASSED
+Done
+```
+
 ## Example vLLM Deployment with DeepSeek
 
 This example demonstrates deploying a [vLLM](https://docs.vllm.ai/) inference server running the [DeepSeek-R1-Distill-Qwen-1.5B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B) model.
@@ -64,7 +109,7 @@ kubectl create secret generic hf-secret \
 ### Deploy vLLM with DeepSeek
 
 ```shell
-➜ cat <<YAML | kubectl apply -f -
+➜ cat <<EOF | kubectl apply -f -
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -134,7 +179,7 @@ spec:
     - protocol: TCP
       port: 8000
       targetPort: 8000
-YAML
+EOF
 ```
 
 ### Verify the Deployment
