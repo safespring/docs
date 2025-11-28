@@ -27,8 +27,6 @@ large (default)   cinder.csi.openstack.org   Delete          Immediate          
 
 We are going to create a [persistent volume claim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) in the `test` namespace.
 
-
-
 To replicate the example make sure:
 
 - `kubeconf-demo` is [obtained](portal-overview.md#accessing-kubernetes-cluster) for that specific cluster and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for helm and kubectl command line tools.
