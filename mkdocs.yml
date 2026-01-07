@@ -133,6 +133,7 @@ nav:
       - HOWTOs:
           - Using Keypairs: "compute/howto/keypairs.md"
           - Persistent IP address: "compute/howto/persistent-ip-address.md"
+          - How to tunnel console traffic with SSH: "compute/howto/novnc-tunneling.md"
           - Windows images: "compute/howto/windows.md"
           - Migrate instance to another project: "compute/howto/migrate-between-projects.md"
           - Taking snapshots of instances: "compute/howto/snapshotting-instances.md"
