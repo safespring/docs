@@ -164,8 +164,8 @@ helm install zot project-zot/zot \
 ### Accessing Zot Registry
 
 !!! info "Public Access"
-  It is important to be aware when exposing cluster services of the [traffic management](manage-traffic.md) available.
-  Examples below illustrate local [port forwarding access](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/).
+    It is important to be aware when exposing cluster services of the [traffic management](manage-traffic.md) available.
+    Examples below illustrate local [port forwarding access](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/).
 
 ### Port Forward (For Testing)
 

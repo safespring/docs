@@ -57,7 +57,7 @@ kubectl create token my-headlamp --namespace kube-system
 #### 4. Port Forwarding (Quick Access)
 
 !!! info "Public Access"
-  It is important to be aware when exposing cluster services of the [traffic management](manage-traffic.md) available.
+    It is important to be aware when exposing cluster services of the [traffic management](manage-traffic.md) available.
 
 For immediate access without setting up ingress and using [port forwarding access](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/):
 
