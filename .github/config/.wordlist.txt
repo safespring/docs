@@ -1,5 +1,4 @@
 
-
 abcd
 abcdef
 abcdefghij
@@ -272,8 +271,10 @@ cryptolockers
 csi
 csv
 csvdelimiter
+ctrl
 ctx
 cuda
+curlimages
 customiso
 customizable
 customizations
@@ -322,6 +323,7 @@ dedupstat
 dedupstatneeded
 dedupstats
 dedupstatuptodate
+deepseek
 defaultdatasourceenabled
 defaultgw
 defaultmode
@@ -370,6 +372,7 @@ dpkg
 dqebaquaa
 dranswer
 dropdown
+dshm
 dsm
 dsmc
 dsmcad
@@ -399,6 +402,7 @@ eg
 ehvgcgr
 el
 eml
+emptydir
 enablededupcache
 enableuseremail
 encr
@@ -573,6 +577,7 @@ htpasswd
 httproute
 https
 httpsport
+huggingface
 humanizepercentage
 hw
 hwf
@@ -671,6 +676,7 @@ json
 jsondata
 jsonpath
 jumphost
+jumphost’s
 jwt
 kalix
 kdb
@@ -715,6 +721,7 @@ lastupdatedby
 latestrestorepoint
 latestsamlassertion
 lcqtzwsarcaanklpxb
+ld
 ldcbsb
 lddeembwga
 ldf
@@ -730,6 +737,7 @@ linprocfs
 lisasws
 listbucket
 liveness
+llm
 lm
 lnejjf
 loadbalancer
@@ -886,6 +894,7 @@ nodewarningtypelist
 nodewarningtypes
 norestart
 noschedule
+novnc
 nptdagmbaagjgcswgcgwdwydvr
 nsastbxpchz
 ntfs
@@ -908,6 +917,7 @@ onedrive
 oneforall
 ons
 oob
+openai
 openbao
 opendir
 openjdk
@@ -1058,6 +1068,7 @@ queryable
 quickstart
 qvvwghyawmtcuzdhhoveqgv
 qwaq
+qwen
 qzezapydxmmaly
 qzjd
 racklayout
@@ -1088,7 +1099,6 @@ remotea
 remoteactivities
 remoteb
 repcnrx
-replicacount
 replicacount
 replicationaware
 replicationmode
@@ -1185,6 +1195,7 @@ secretaccesskey
 secretbox
 secretkey
 secretkeygoeshere
+secretkeyref
 secretmounts
 secretname
 secrettemplates
@@ -1219,6 +1230,7 @@ sgcg
 sha
 sharding
 sharealike
+shm
 shortname
 showcmd
 siem
@@ -1443,6 +1455,7 @@ uwzv
 uxezarbgnvbaomclnh
 uzjeh
 uzxqxhjacbgnvbasmfurhdgfjzw
+valuefrom
 vbxmhbzpjcfqwj
 vc
 vcenter
@@ -1461,6 +1474,7 @@ virtio
 virtualenv
 virtualenvwrapper
 virtualmountpoint
+vllm
 vm
 vm's
 vmdk
@@ -1546,6 +1560,5 @@ zm
 zmrswgqydvqqddbjt
 zmrswgqydvqqddbjtywzlzgmubmv
 zmvkyy
-zot
 zot
 zxigt
