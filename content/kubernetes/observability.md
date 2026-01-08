@@ -446,6 +446,10 @@ spec:
 
 ## Accessing the Stack
 
+!!! info "Public Access"
+  It is important to be aware when exposing cluster services of the [traffic management](manage-traffic.md) available.
+  Examples below illustrate local [port forwarding access](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/).
+
 ### Access Grafana Port Forwarding (Quick Access)
 
 ```shell

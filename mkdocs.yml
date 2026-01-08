@@ -172,6 +172,9 @@ nav:
       - Traffic Management: "kubernetes/manage-traffic.md"
       - Persistent Volumes: "kubernetes/persistent-volumes.md"
       - Observability: "kubernetes/observability.md"
+      - Database Solutions: "kubernetes/database.md"
+      - Secret Management: "kubernetes/secret-management.md"
+      - Container Registry: "kubernetes/registry.md"
       - GPU: "kubernetes/gpu.md"
       - Security and Compliance:
           - Overview: "kubernetes/security-compliance/index.md"
