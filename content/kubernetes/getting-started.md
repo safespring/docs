@@ -1,7 +1,7 @@
 # Getting Started with on-demand Kubernetes
 
 !!! note "on-demand Kubernetes"
-    The on-demand kubernetes service is currently still in development. A beta-launch is planned for December 2025.
+    The on-demand kubernetes service is currently still in development. Beta-launch December 2025 with public availability expected end of Q1 2026.
 
 This guide will help you get started with Safespring's on-demand Kubernetes service.
 
@@ -26,6 +26,7 @@ We make use of [Talos Linux](https://www.talos.dev) and follow its [Support Matr
 | 1.10.7                       | 1.33.5                                                |
 | 1.11.2                       | 1.34.1                                                |
 | 1.11.5                       | 1.34.1                                                |
+| 1.12.1 (planned)             | 1.35.0 (planned)                                      |
 
 ## Access and Authentication
 
