@@ -138,9 +138,10 @@ In the new platform, there is 3 networks to choose from (attach only one network
 Instances in different network will be able to communicate as long as your security groups allow it. Note that this also applies to instances in the public network with public IP-addresses and instances in the default and private networks.
 
 Thus, the right way to communicate between instances attached to the different networks is to
-just use security groups directly to control access. **Do NOT add a second
-interface on any instance. That will create problems with default gateways that
-compete, thus unstable network connection to the instance.**
+just use security groups directly to control access.
+
+!!! warning "Never attach more than one network interface to an instance"
+    Each network assigns a default gateway to the instance via DHCP. If an instance is attached to multiple networks, it will receive two default gateways, leading to asymmetrical routing and unstable network connectivity. Always attach exactly one network interface per instance. For a deeper understanding of how networking works on the Safespring platform, see the blog post [Networking at Safespring](https://www.safespring.com/blogg/2022/2022-03-network/).
 
 !!! info "Important note"
     Traffic between all instances in the platform (including RFC1918-subnets i.e. private and default) will be routed directly by the platform, thus the destination service will see the RFC1918 IP address as source address when traffic originates from them. This may have a subtle implication for tenants running public facing services that is contacted by instances on a Safespring RFC1918 subnet: If the public service (or operating system) filters out RFC1918-addresses (because they are not expected) it will effectively stop traffic originating form the Safespring RFC1918 subnets. Thus, you must ensure that these subnets is allowed to access your service. Most likely it will just work, but it is worth being aware of. You can use the openstack cli to list all v4 subnets with: `openstack subnet list |grep v4`
@@ -211,7 +212,7 @@ Security groups is the name for the basic network packet filtering option built 
 
 One instance can have several security groups attached to them, and default is to deny everything and then each added security group would add more exceptions that would be allowed so one group may allow inbound SSH (TCP port 22) for remote administration and another group allows outgoing HTTP and HTTPS (outbound port 80,443) in order for the instance to download OS updates.
 
-Before being able to reach outside networks, a floating IP needs to be associated with one of your network interfaces (ports), and a security group allowing this must be applied to your instance. You can create many different security groups and apply one or more to any instance you have. Applying a security group takes effect immediately on running instances. Running local firewalls is still recommended, since other machines on the same local network may still reach your instance.
+To make an instance reachable from the internet, attach it to the **public** network. Safespring uses Calico as its networking engine and does not use floating IP addresses. You can create many different security groups and apply one or more to any instance you have. Applying a security group takes effect immediately on running instances. Safespring recommends using security groups exclusively for network access control rather than combining them with local firewalls inside the instance, as having both tends to make debugging connectivity issues more difficult.
 
 ![image](../images/dash-security-groups.png)
 

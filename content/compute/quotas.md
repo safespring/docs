@@ -18,7 +18,15 @@ Each project has quotas for the following resource types:
 | Volume snapshots | Maximum number of volume snapshots |
 | Security groups | Maximum number of security groups |
 | Security group rules | Maximum number of rules across all security groups |
-| Floating IPs | Maximum number of floating IP addresses |
+
+## Public IP addresses and networking
+
+Safespring uses Calico as its networking engine, which does not use the floating IP concept found in traditional OpenStack deployments. To give an instance a public IP address, attach it to the **public** network when launching it. To remove public access, detach the instance from the public network and use the **default** network instead.
+
+!!! warning "Never attach more than one network interface to an instance"
+    Each network assigns a default gateway to the instance via DHCP. If an instance is attached to multiple networks (for example both **public** and **default**), it will receive two default gateways, leading to asymmetrical routing and unstable network connectivity. Always attach exactly one network interface per instance.
+
+For more details on the available networks, see the [Network section in Getting Started](getting-started.md#network). For a deeper understanding of how networking works on the Safespring platform, see the blog post [Networking at Safespring](https://www.safespring.com/blogg/2022/2022-03-network/).
 
 ## Viewing quotas in the dashboard
 
