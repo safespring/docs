@@ -2,6 +2,8 @@
 
 Server groups let you control how instances are placed on the underlying compute nodes. By assigning instances to a server group with a specific policy, you can either keep them together on the same host or spread them across different hosts.
 
+This page includes OpenStack CLI commands. See the [API Access documentation](api.md) for instructions on how to install and configure the command line client.
+
 ## Policies
 
 Safespring Compute supports the following server group policies:

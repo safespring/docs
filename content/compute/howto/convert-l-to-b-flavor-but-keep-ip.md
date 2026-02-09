@@ -1,5 +1,7 @@
 ## Converting a l. to a b. flavor while keeping the original ip address
 
+This page includes OpenStack CLI commands. See the [API Access documentation](../api.md) for instructions on how to install and configure the command line client.
+
 This guide show the steps to convert a localdisk-backed (l.) flavor to volume-backed (b.) while keeping the original ip address.
 
 A port that is created in the same process as creating an instance will automatically be deleted when detaching from an instance or when the instance is deleted. 

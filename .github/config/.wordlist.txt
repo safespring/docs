@@ -1596,3 +1596,16 @@ usermod
 unshelve
 hcl
 unassign
+plaintext
+sshuttle
+AlmaLinux
+LTS
+Numbat
+Trixie
+almalinux
+XFS
+growfs
+mkfs
+umount
+unmounting
+xfs

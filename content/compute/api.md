@@ -1,11 +1,49 @@
 # Access the compute service API
 
-!!! warning "API access is restricted"
-    For access to the Openstack API, contact support. See [Getting support](../service/support.md) for details.
-## Requirements
-
 For advanced use cases and automation it is necessary to use the
 Openstack API endpoints directly.
+
+## API access is IP-restricted
+
+Safespring restricts API access to whitelisted IP addresses for security reasons. This protects customer infrastructure since OpenStack API credentials often exist in plaintext in configuration files, and there is no multi-factor authentication between CLI tools or Terraform and the OpenStack APIs.
+
+There are two ways to get API access:
+
+1. **Contact support** to have your external IP address whitelisted. See [Getting support](../service/support.md) for details.
+2. **Use a jump host on the Safespring platform** (recommended).
+
+## Using a jump host for API access (recommended)
+
+All IP addresses within the Safespring platform are already whitelisted for API access. The simplest way to get started without contacting support is to create a small instance in the Horizon dashboard and use it as a jump host for running API commands.
+
+This approach has several advantages:
+
+- **Self-service** — you control which IP addresses can perform API commands by managing the SSH security group on the jump host
+- **No waiting** — no need to contact support when your IP address changes
+- **Centralized** — a single place to install CLI tools, store credentials, and run automation
+- **Access to private networks** — the jump host can reach instances on the default and private networks directly
+
+### Setting up a jump host
+
+1. Create a small instance (for example `b2.c1r2`) through the Horizon dashboard on the **public** network.
+2. Add an SSH security group to allow access from your IP address.
+3. SSH into the instance and install the OpenStack CLI client (see instructions below).
+4. Source your credentials and run API commands from there.
+
+### Accessing APIs from your local machine with sshuttle
+
+If you prefer to run CLI tools and Terraform on your local machine, you can use [sshuttle](https://github.com/sshuttle/sshuttle) to tunnel API traffic through the jump host. sshuttle works as a lightweight SSH-based VPN and requires no server-side configuration beyond a working SSH server.
+
+```shell
+sshuttle -r ubuntu@<jumphost-ip> <api-endpoint-ip>/32
+```
+
+Forward only the IP address that your OpenStack `auth_url` resolves to, rather than broad IP ranges.
+
+!!! info
+    sshuttle is available on macOS, Linux, and BSD. For Windows users, consider using the [VPN options](vpn.md) instead.
+
+For a more detailed walkthrough, see the blog post [Using a Jump Host for Persistent Access to Safespring's APIs](https://www.safespring.com/blogg/2022/2022-08-using-jumphost-for-safespring-apis/).
 
 ## Install the Openstack command line client
 

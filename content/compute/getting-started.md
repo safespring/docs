@@ -118,9 +118,16 @@ The second option is to use the "Launch Instance" dialogue but under the "Source
 
 ## Network
 
-**Security Groups Overview**: Security groups provide built-in firewall functionality in OpenStack. Each security group contains rules that define allowed ports and source IP addresses or networks. You can apply multiple security groups to an instance, and changes take effect immediately on running instances.
+Safespring uses [Calico](https://www.tigera.io/project-calico/) as its networking engine, which operates as a pure layer 3 network using BGP routing. This is fundamentally different from traditional OpenStack deployments that use layer 2 bridging with software-defined switches and floating IP addresses. The Calico model is simpler, more performant, and has a smaller attack surface. For a deeper understanding of how networking works on the Safespring platform, see the blog post [Networking at Safespring](https://www.safespring.com/blogg/2022/2022-03-network/).
 
-In the new platform, there is 3 networks to choose from (attach only one network):
+Each instance receives its own IP address from a shared pool via DHCP. The IP address remains static for the lifetime of the instance. Networks in this context are simply IP address allocation pools — the actual traffic between all instances is routed through the same layer 3 routing fabric.
+
+!!! warning "Never modify network configuration inside the instance"
+    Instances must use the DHCP-provided default gateway as their first routing hop. Adding alternative default gateways, static routes, or modifying the DHCP configuration will cause packets to be dropped by the platform. If you need custom layer 2 connectivity between instances, use tunneling protocols such as WireGuard on top of the platform's layer 3 infrastructure. See the [VPN options](vpn.md) documentation for more details.
+
+**Security Groups Overview**: Security groups provide built-in firewall functionality and are the sole mechanism for controlling network access between instances. Each security group contains rules that define allowed ports and source IP addresses or networks. You can apply multiple security groups to an instance, and changes take effect immediately on running instances.
+
+In the platform, there are 3 networks to choose from (attach only one network):
 
 1. **public**: This network will give you a public IPv4 address, public IPv6 address, dns setup and default gateway so it is reachable directly to/from Internet.
 2. **default**: This network will give you a private IPv4 on a RFC 1918 network,
@@ -131,6 +138,8 @@ In the new platform, there is 3 networks to choose from (attach only one network
 
 ![image](../images/np-networks.png)
 
+!!! tip "Use Network Ports to preserve IP addresses across instance recreation"
+    Instead of assigning a network directly to an instance, you can create a **Network Port** on the desired network and attach that port to the instance. The advantage is that the port — and its IP address — persists independently of the instance. If you need to recreate the instance (for example during an emergency, a restore process, or a flavor change), you can attach the same port to the new instance and keep the original IP address. See [Persistent IP addresses](howto/persistent-ip-address.md) for instructions on creating and using Network Ports.
 
 !!! info "Important note"
     You no longer have the ability to create your own networks. All networks has a separate DHCP-scope from which instances created in that network will get an IP-address from. This means that you will have less flexibility which IP-addresses your instances get, but you will instead gain in stability since the simpler network model in v2 has proven to be much more stable than that in v1.

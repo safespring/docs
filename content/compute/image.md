@@ -1,18 +1,31 @@
 # Image service
 
-!!! info
-    Some of these instructions require use of Openstack command line tools.
+This page includes OpenStack CLI commands. See the [API Access documentation](api.md) for instructions on how to install and configure the command line client.
    
 ## Images provided by Safespring in the platform
 
-Safespring provides images from the following distributions and operating systems:
+Safespring provides the following public images:
 
-1. Centos
-2. Debian
-3. Ubuntu
-4. Windows
+| Image | Description |
+| --- | --- |
+| `almalinux-8` | AlmaLinux 8 |
+| `debian-10` | Debian 10 (Buster) |
+| `debian-11` | Debian 11 (Bullseye) |
+| `debian-12` | Debian 12 (Bookworm) |
+| `debian-13` | Debian 13 (Trixie) |
+| `ubuntu-20.04` | Ubuntu 20.04 LTS (Focal Fossa) |
+| `ubuntu-22.04` | Ubuntu 22.04 LTS (Jammy Jellyfish) |
+| `ubuntu-24.04` | Ubuntu 24.04 LTS (Noble Numbat) |
+| `windows-server-2019` | Windows Server 2019 |
+| `windows-server-2022` | Windows Server 2022 |
+| `cirros` | Minimal test image, not for production use |
 
-Safespring does not make any modifications to the images but sources them from the upstream provider from the official OpenStack image repos. 
+The `talos-image-*` images are used internally by the [On-demand Kubernetes](../kubernetes/getting-started.md) service and are not intended for direct use.
+
+!!! warning "CirrOS is for testing only"
+    The CirrOS image is a minimal Linux distribution designed for testing cloud infrastructure. It should not be used for production workloads.
+
+Safespring does not make any modifications to the images but sources them from the upstream provider from the official OpenStack image repos.
 
 Safespring make sure the following either works directly, or provide documentation for how to make it work for the images uploaded to the platform:
 
