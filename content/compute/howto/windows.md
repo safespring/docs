@@ -1,5 +1,7 @@
 # Windows instances
 
+This page includes OpenStack CLI commands. See the [API Access documentation](../api.md) for instructions on how to install and configure the command line client.
+
 ## Cloudbase
 
 We use windows images from  [cloudbase](https://cloudbase.it/windows-cloud-images/). The image comes configured with [cloudbase-init](https://cloudbase.it/cloudbase-init/). This is similar to the cloud-init system we use for linux-based instances. The images also comes with RDP enabled.

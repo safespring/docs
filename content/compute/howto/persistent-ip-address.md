@@ -1,5 +1,7 @@
 # Obtaining persistent IP addresses to your instances
 
+This page includes OpenStack CLI commands. See the [API Access documentation](../api.md) for instructions on how to install and configure the command line client.
+
 It is possible to create a port without creating an instance. When you create a
 port in such a manner, the port will be allocated IP address(es) from the
 network you specify just like when you create an instance. Afterwards, when
@@ -22,13 +24,20 @@ the instance.
 !!! info "Important note"
          Even if you create one or more ports/interfaces you must only connect one port/interface to each instance.
 
-It is currently not possible to create a port through the GUI, so it needs to
-be done through the API directly or with tools utilizing the API, like the
-Openstack CLI or Terraform for instance.
+## Creating a port in the Horizon GUI
 
-Here is an example using the Openstack CLI:
+1. Navigate to **Network** → **Networks** and click the network you want to use (typically "public").
+2. Click the **Ports** tab.
+3. Click the **Create Port** button.
+4. Enter a **Name** for the port. No other fields need to be changed from their defaults.
+5. Click **Create** to finish.
+
+## Creating a port with the OpenStack CLI
+
+You can also create ports using the OpenStack CLI:
+
 ```
-$ openstack port create --network private dummytest
+$ openstack port create --network public dummytest
 $ openstack port list |grep dummy
 | aead4548-e41d-4724-acd5-6aeb8d9fbce8 | dummytest  | fa:16:3e:d5:bc:ef | ip_address='10.68.129.21', subnet_id='059d94a0-0fc1-40dd-9814-eb00571c6a4d'           | DOWN   |
 ```

@@ -26,6 +26,9 @@ Public IPv4 addresses are a billable resource. If an instance does not need to b
 
 If an instance currently on the public network no longer needs direct public access, you can detach it from the public network and attach it to the default network instead.
 
+!!! tip "Preserve your IP address with Network Ports"
+    If you assign a network directly when creating an instance, the IP address is lost when the instance is deleted. To keep the same IP address across instance recreation — useful in emergencies or restore scenarios — create a **Network Port** on the desired network and attach the port to the instance instead. See [Persistent IP addresses](howto/persistent-ip-address.md) for instructions.
+
 !!! note
     The **private** network does not provide internet access at all — it only allows communication with other Safespring instances. If your instance needs outgoing internet connectivity, the **default** network is the right choice.
 
