@@ -19,7 +19,7 @@ mc —with-lock mb ceph/mybucket
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint=https://s3.stoX s3api create-bucket --bucket=bucketnamehere --object-lock-enabled-for-bucket
+aws --endpoint=$S3_URL s3api create-bucket --bucket=bucketnamehere --object-lock-enabled-for-bucket
 ```
 
 !!! note
@@ -36,7 +36,7 @@ In COMPLIANCE mode, a locked object version cannot be deleted or overwritten by 
 To upload an object with COMPLIANCE retention:
 
 ```shell
-aws --endpoint=https://s3.stoX s3api put-object \
+aws --endpoint=$S3_URL s3api put-object \
   --bucket mybucket \
   --key myfile.txt \
   --body myfile.txt \
@@ -51,7 +51,7 @@ In GOVERNANCE mode, objects are protected from deletion and overwriting, but use
 To upload an object with GOVERNANCE retention:
 
 ```shell
-aws --endpoint=https://s3.stoX s3api put-object \
+aws --endpoint=$S3_URL s3api put-object \
   --bucket mybucket \
   --key myfile.txt \
   --body myfile.txt \
@@ -62,7 +62,7 @@ aws --endpoint=https://s3.stoX s3api put-object \
 To delete a GOVERNANCE-locked object before the retention period expires, use the `--bypass-governance-retention` flag:
 
 ```shell
-aws --endpoint=https://s3.stoX s3api delete-object \
+aws --endpoint=$S3_URL s3api delete-object \
   --bucket mybucket \
   --key myfile.txt \
   --version-id VERSION_ID \
@@ -74,7 +74,7 @@ aws --endpoint=https://s3.stoX s3api delete-object \
 Instead of specifying retention on each upload, you can set a default retention configuration on the bucket. All objects uploaded to the bucket will then automatically inherit this retention policy.
 
 ```shell
-aws --endpoint=https://s3.stoX s3api put-object-lock-configuration \
+aws --endpoint=$S3_URL s3api put-object-lock-configuration \
   --bucket mybucket \
   --object-lock-configuration '{"ObjectLockEnabled":"Enabled","Rule":{"DefaultRetention":{"Mode":"COMPLIANCE","Days":30}}}'
 ```
@@ -82,7 +82,7 @@ aws --endpoint=https://s3.stoX s3api put-object-lock-configuration \
 To check the current retention configuration:
 
 ```shell
-aws --endpoint=https://s3.stoX s3api get-object-lock-configuration \
+aws --endpoint=$S3_URL s3api get-object-lock-configuration \
   --bucket mybucket
 ```
 
@@ -93,7 +93,7 @@ In addition to retention periods, objects can be placed under a legal hold. A le
 To place a legal hold on an object:
 
 ```shell
-aws --endpoint=https://s3.stoX s3api put-object-legal-hold \
+aws --endpoint=$S3_URL s3api put-object-legal-hold \
   --bucket mybucket \
   --key myfile.txt \
   --legal-hold '{"Status":"ON"}'
@@ -102,7 +102,7 @@ aws --endpoint=https://s3.stoX s3api put-object-legal-hold \
 To remove a legal hold:
 
 ```shell
-aws --endpoint=https://s3.stoX s3api put-object-legal-hold \
+aws --endpoint=$S3_URL s3api put-object-legal-hold \
   --bucket mybucket \
   --key myfile.txt \
   --legal-hold '{"Status":"OFF"}'
@@ -111,7 +111,7 @@ aws --endpoint=https://s3.stoX s3api put-object-legal-hold \
 To check the legal hold status:
 
 ```shell
-aws --endpoint=https://s3.stoX s3api get-object-legal-hold \
+aws --endpoint=$S3_URL s3api get-object-legal-hold \
   --bucket mybucket \
   --key myfile.txt
 ```
@@ -121,7 +121,7 @@ aws --endpoint=https://s3.stoX s3api get-object-legal-hold \
 To check the retention mode and date of a specific object:
 
 ```shell
-aws --endpoint=https://s3.stoX s3api get-object-retention \
+aws --endpoint=$S3_URL s3api get-object-retention \
   --bucket mybucket \
   --key myfile.txt
 ```

@@ -45,7 +45,7 @@ can leave it blank. As for choosing json output, that is just a nice
 way  of  presenting  data  and  not  strictly  required  for  normal
 operations of aws-cli.
 
-You still will have to set the S3_URL variable, mentioned above, in order for the examples the documentation pages to work. 
+**You still will have to set the S3_URL variable, mentioned above, in order for the examples the documentation pages to work as aws configure does not set that variable. **
 
 ## Using aws-cli
 
@@ -55,20 +55,20 @@ Now that the credentials are saved, one can list buckets. Every aws-cli command 
     The `--endpoint-url` flag must be placed before the subcommand (e.g. `s3api` or `s3`), not after it.
 
 ```
-aws --endpoint-url $S3_URL s3api list-buckets
+aws --endpoint=$S3_URL s3api list-buckets
 ```
 
 Do note the subcommand "s3api" there.
 You can upload one or more files with
 
 ```
-aws --endpoint-url $S3_URL s3 cp DATETIME.txt s3://jj_demo
+aws --endpoint=$S3_URL s3 cp DATETIME.txt s3://jj_demo
 ```
 
 and list contents in a bucket:
 
 ```
-$ aws --endpoint-url $S3_URL s3 ls jj_demo
+$ aws --endpoint=$S3_URL s3 ls jj_demo
 2021-05-27 15:34:49         30 DATETIME.txt
 ```
 

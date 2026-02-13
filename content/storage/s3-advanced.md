@@ -1,4 +1,3 @@
-# Advanced S3 features
 
 ## Access Control Lists in S3
 
@@ -95,7 +94,7 @@ s3cmd -c owner-s3.cfg setpolicy policy.json s3://sharedbucket
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api put-bucket-policy --bucket sharedbucket --policy file://policy.json
+aws --endpoint=$S3_URL s3api put-bucket-policy --bucket sharedbucket --policy file://policy.json
 ```
 
 To view the current policies on the bucket issue the following:
@@ -105,7 +104,7 @@ s3cmd -c owner-s3.cfg info s3://sharedbucket
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api get-bucket-policy --bucket sharedbucket
+aws --endpoint=$S3_URL s3api get-bucket-policy --bucket sharedbucket
 ```
 
 To delete a policy from a bucket, use the following:
@@ -115,7 +114,7 @@ s3cmd -c owner-s3.cfg delpolicy s3://sharedbucket
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api delete-bucket-policy --bucket sharedbucket
+aws --endpoint=$S3_URL s3api delete-bucket-policy --bucket sharedbucket
 ```
 
 Now you are good to go to start writing your policies!
@@ -161,7 +160,7 @@ s3cmd -c owner-s3.cfg setpolicy rw-policy.json s3://sharedbucket
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api put-bucket-policy --bucket sharedbucket --policy file://rw-policy.json
+aws --endpoint=$S3_URL s3api put-bucket-policy --bucket sharedbucket --policy file://rw-policy.json
 ```
 
 The owner now has to send its Project ID, and the name of the bucket to the user.
@@ -173,7 +172,7 @@ s3cmd -c user-s3.cfg ls s3://BUCKET_OWNER_PROJECT_ID:sharedbucket
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api list-objects --bucket BUCKET_OWNER_PROJECT_ID:sharedbucket
+aws --endpoint=$S3_URL s3api list-objects --bucket BUCKET_OWNER_PROJECT_ID:sharedbucket
 ```
 
 The user now should see a listing of the contents of the bucket.
@@ -213,7 +212,7 @@ s3cmd -c owner-s3.cfg setpolicy all-read-policy.json s3://sharedbucket
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api put-bucket-policy --bucket sharedbucket --policy file://all-read-policy.json
+aws --endpoint=$S3_URL s3api put-bucket-policy --bucket sharedbucket --policy file://all-read-policy.json
 ```
 
 Users from other projects (which has the owners Project ID) now can access the contents of the bucket, for instance the file **testfile**.
@@ -223,7 +222,7 @@ s3cmd -c user-s3.cfg get s3://BUCKET_OWNER_PROJECT_ID:sharedbucket/testfile
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api get-object --bucket BUCKET_OWNER_PROJECT_ID:sharedbucket --key testfile testfile
+aws --endpoint=$S3_URL s3api get-object --bucket BUCKET_OWNER_PROJECT_ID:sharedbucket --key testfile testfile
 ```
 
 #### Grant one user full access and another read access
@@ -280,7 +279,7 @@ s3cmd -c first-user-project-s3cfg put productlist.db s3://BUCKET_OWNER_PROJECT_I
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api put-object --bucket BUCKET_OWNER_PROJECT_ID:mysharedbucket --key mysharedfolder/productlist.db --body productlist.db
+aws --endpoint=$S3_URL s3api put-object --bucket BUCKET_OWNER_PROJECT_ID:mysharedbucket --key mysharedfolder/productlist.db --body productlist.db
 ```
 
 The the second user can download the same file, but will not be able to upload anything:
@@ -290,7 +289,7 @@ s3cmd -c second-user-project-s3cfg get s3://BUCKET_OWNER_PROJECT_ID:mysharedbuck
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api get-object --bucket BUCKET_OWNER_PROJECT_ID:mysharedbucket --key mysharedfolder/productlist.db productlist.db
+aws --endpoint=$S3_URL s3api get-object --bucket BUCKET_OWNER_PROJECT_ID:mysharedbucket --key mysharedfolder/productlist.db productlist.db
 ```
 ## Accessing a publicly available file over HTTPS
 
@@ -310,16 +309,16 @@ s3cmd setacl --acl-public --recursive s3://mybucket-name/folder-name/object-name
 
 ```shell tab="aws-cli"
 # Set private ACL on a bucket
-aws --endpoint-url $S3_URL s3api put-bucket-acl --bucket mybucket-name --acl private
+aws --endpoint=$S3_URL s3api put-bucket-acl --bucket mybucket-name --acl private
 
 # Set public-read ACL on a bucket
-aws --endpoint-url $S3_URL s3api put-bucket-acl --bucket mybucket-name --acl public-read
+aws --endpoint=$S3_URL s3api put-bucket-acl --bucket mybucket-name --acl public-read
 
 # Set private ACL on an object
-aws --endpoint-url $S3_URL s3api put-object-acl --bucket mybucket-name --key object-name --acl private
+aws --endpoint=$S3_URL s3api put-object-acl --bucket mybucket-name --key object-name --acl private
 
 # Set public-read ACL on an object
-aws --endpoint-url $S3_URL s3api put-object-acl --bucket mybucket-name --key object-name --acl public-read
+aws --endpoint=$S3_URL s3api put-object-acl --bucket mybucket-name --key object-name --acl public-read
 ```
 
 The first three commands is to restrict public access, and the three last is to enable it. There are two variables you need to access a publicly available object
@@ -363,7 +362,7 @@ s3cmd -c owner-s3.cfg signurl s3://bucket/testfile +86400
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3 presign s3://bucket/testfile --expires-in 86400
+aws --endpoint=$S3_URL s3 presign s3://bucket/testfile --expires-in 86400
 ```
 
 The command will return an URL that you can send to anyone and will be valid for 24 hours from now.
@@ -433,7 +432,7 @@ s3cmd setcors cors.xml s3://mybucket
     ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api put-bucket-cors --bucket mybucket --cors-configuration file://cors.json
+aws --endpoint=$S3_URL s3api put-bucket-cors --bucket mybucket --cors-configuration file://cors.json
 ```
 
 To view the current CORS configuration:
@@ -443,7 +442,7 @@ s3cmd info s3://mybucket
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api get-bucket-cors --bucket mybucket
+aws --endpoint=$S3_URL s3api get-bucket-cors --bucket mybucket
 ```
 
 To delete the CORS configuration:
@@ -453,7 +452,7 @@ s3cmd delcors s3://mybucket
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api delete-bucket-cors --bucket mybucket
+aws --endpoint=$S3_URL s3api delete-bucket-cors --bucket mybucket
 ```
 
 ## Bucket and object tagging
@@ -469,7 +468,7 @@ s3cmd settagging s3://mybucket "env=production&department=finance"
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api put-bucket-tagging --bucket mybucket \
+aws --endpoint=$S3_URL s3api put-bucket-tagging --bucket mybucket \
   --tagging '{"TagSet":[{"Key":"env","Value":"production"},{"Key":"department","Value":"finance"}]}'
 ```
 
@@ -480,7 +479,7 @@ s3cmd gettagging s3://mybucket
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api get-bucket-tagging --bucket mybucket
+aws --endpoint=$S3_URL s3api get-bucket-tagging --bucket mybucket
 ```
 
 To remove all tags:
@@ -490,7 +489,7 @@ s3cmd deltagging s3://mybucket
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api delete-bucket-tagging --bucket mybucket
+aws --endpoint=$S3_URL s3api delete-bucket-tagging --bucket mybucket
 ```
 
 ### Object tagging
@@ -502,7 +501,7 @@ s3cmd settagging s3://mybucket/myfile.txt "classification=internal&retention=90d
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api put-object-tagging --bucket mybucket --key myfile.txt \
+aws --endpoint=$S3_URL s3api put-object-tagging --bucket mybucket --key myfile.txt \
   --tagging '{"TagSet":[{"Key":"classification","Value":"internal"},{"Key":"retention","Value":"90days"}]}'
 ```
 
@@ -513,7 +512,7 @@ s3cmd gettagging s3://mybucket/myfile.txt
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api get-object-tagging --bucket mybucket --key myfile.txt
+aws --endpoint=$S3_URL s3api get-object-tagging --bucket mybucket --key myfile.txt
 ```
 
 To delete object tags:
@@ -523,7 +522,7 @@ s3cmd deltagging s3://mybucket/myfile.txt
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api delete-object-tagging --bucket mybucket --key myfile.txt
+aws --endpoint=$S3_URL s3api delete-object-tagging --bucket mybucket --key myfile.txt
 ```
 
 ## Lifecycle management
@@ -552,7 +551,7 @@ s3cmd setlifecycle lifecycle.xml s3://mybucket
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api put-bucket-lifecycle-configuration --bucket mybucket \
+aws --endpoint=$S3_URL s3api put-bucket-lifecycle-configuration --bucket mybucket \
   --lifecycle-configuration '{"Rules":[{"ID":"DeleteOldLogs","Prefix":"logs/","Status":"Enabled","Expiration":{"Days":90}}]}'
 ```
 
@@ -563,7 +562,7 @@ s3cmd getlifecycle s3://mybucket
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api get-bucket-lifecycle-configuration --bucket mybucket
+aws --endpoint=$S3_URL s3api get-bucket-lifecycle-configuration --bucket mybucket
 ```
 
 To remove the lifecycle policy:
@@ -573,7 +572,7 @@ s3cmd dellifecycle s3://mybucket
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3api delete-bucket-lifecycle --bucket mybucket
+aws --endpoint=$S3_URL s3api delete-bucket-lifecycle --bucket mybucket
 ```
 
 !!! note
@@ -615,5 +614,5 @@ s3cmd del --recursive s3://mybucket/folder/
 ```
 
 ```shell tab="aws-cli"
-aws --endpoint-url $S3_URL s3 rm --recursive s3://mybucket/folder/
+aws --endpoint=$S3_URL s3 rm --recursive s3://mybucket/folder/
 ```

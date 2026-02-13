@@ -153,7 +153,7 @@ The following clients have been tested and documented for use with Safespring S3
 
 | Client | Status |
 |---|---|
-| AWS CLI | Supported (requires `--endpoint-url`) |
+| AWS CLI | Supported (requires `--endpoint` flag) |
 | s3cmd | Supported |
 | MinIO Client (mc) | Supported |
 | CyberDuck | Supported |
