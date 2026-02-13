@@ -160,6 +160,7 @@ nav:
           - Secure Development: "storage/security-compliance/secure-development.md"
           - Development and Operations Management: "storage/security-compliance/development-operations-management.md"
       - S3 Quotas: "storage/quota.md"
+      - S3 API Compatibility: "storage/s3-compatibility.md"
       - S3 Advanced Features: "storage/s3-advanced.md"
       - S3 Usage Report: "storage/usage-statistics.md"
       - HOWTOs:
