@@ -11,7 +11,10 @@ Install minio client (mc) from https://min.io/download
   mc alias set <ALIAS> <YOUR-S3-ENDPOINT> [YOUR-ACCESS-KEY] [YOUR-SECRET-KEY] [--api API-SIGNATURE]
 
 should produce a config like the one below, naming the alias sto2 and
-using S3v4 API
+using S3v4 API.
+
+!!! note
+    Replace the endpoint in the example below with the correct one for your site. See [General S3 information](../../getting-started.md#minimum-required-info-for-s3-access) for the full list of available endpoints.
 
 ```
   more $HOME/.minioc/config.json

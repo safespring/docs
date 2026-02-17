@@ -32,12 +32,7 @@ The examples in this document use both s3cmd and aws-cli. See the respective con
     ```
     this just means that said property is not set.
 
-To get the credentials needed for either tool, login to your Safespring account, click "API Access" and then "View Credentials". The important variables are:
-
-1. **Project ID**
-2. **S3 URL** (but without the https://)
-3. **EC2 Access Key**
-4. **EC2 Secret Key** (click the eye-icon to reveal it)
+To get the credentials needed for either tool, follow the steps in [Get S3 credentials](getting-started.md#get-s3-credentials). The important variables are **Project ID**, **S3 URL** (without the `https://` prefix), **EC2 Access Key**, and **EC2 Secret Key**.
 
 For the ACL and policy examples below, you will need credentials for both the bucket owner and the bucket user. With s3cmd, this means creating two separate configuration files. In the examples below we have named them **owner-s3.cfg** and **user-s3.cfg**.
 
