@@ -42,7 +42,7 @@ The `https` URLs to the service:
 !!! info "New URLs"
     + Norwegian site  - https://s3.osl2.safedc.net
     + Swedish site - https://s3.sto1.safedc.net
-    + New Swedish secondary site - https://s3-archive.sto2.safedc.net
+    + New Swedish secondary site - https://s3.sto2.safedc.net
 
 The URL change was due to the rename from IPNett to Safespring of our
 company.  The old IPNett URLs have now expired and all new client
@@ -89,7 +89,7 @@ have names with more variation of course.
 
 In earlier setups we were running with `rgw_relaxed_s3_bucket_names` set to
 `true`. This allowed a bit more characters but could cause issues with clients
-& solutions expecting the stricter standard bucket naming constraints. To avoid
+and solutions expecting the stricter standard bucket naming constraints. To avoid
 such issues in the future we are now running  with the default constraints
 which can be seen here
 <https://docs.ceph.com/en/octopus/radosgw/s3/bucketops/#constraints>.

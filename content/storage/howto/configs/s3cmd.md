@@ -13,6 +13,9 @@ s3cmd can be told to output a file containing all options in their
 current state, but it holds a lot of unneeded information so a simple
 start config could be as short as the following example and nothing else.
 
+!!! note
+    Replace the endpoint in the example below with the correct one for your site. See [General S3 information](../../getting-started.md#minimum-required-info-for-s3-access) for the full list of available endpoints.
+
 $HOME/.s3cfg:
 
 ```

@@ -11,10 +11,7 @@ should help you get it installed.
 
 ## Setting up credentials
 
-aws-cli will accept credentials in many ways. You can find your credentials by logging into the Safespring portal, clicking "API Access" and then "View Credentials". The values you need are:
-
-1. **EC2 Access Key** - used as AWS Access Key ID
-2. **EC2 Secret Key** - used as AWS Secret Access Key (click the eye-icon to reveal it)
+aws-cli will accept credentials in many ways. Follow the steps in [Get S3 credentials](../../getting-started.md#get-s3-credentials) to find your **EC2 Access Key** (used as AWS Access Key ID) and **EC2 Secret Key** (used as AWS Secret Access Key).
 
 ### Using environment variables
 
@@ -22,7 +19,7 @@ aws-cli will accept credentials in many ways. You can find your credentials by l
 export AWS_ACCESS_KEY_ID=<EC2 Access Key>
 export AWS_SECRET_ACCESS_KEY=<EC2 Secret Key>
 ```
-Also set the following variable to be able to easier copy and past the examples in the documentation:
+Also set the following variable to be able to easier copy and paste the examples in the documentation:
 
 ```
 export S3_URL=<S3 URL with https:// prefix>

@@ -11,11 +11,11 @@ The following AWS S3 features are **not available** in Safespring S3:
 | Static Website Hosting | Returns `405 MethodNotAllowed` |
 | Bucket Access Logging | Returns `405 MethodNotAllowed` |
 | Bucket Ownership Controls | Returns `InvalidArgument` |
-| Server-Side Encryption (SSE-S3, SSE-KMS, SSE-C) | Not supported. Uploads with encryption headers return `InvalidRequest`. Safespring provides encryption at rest using LUKS1 (aes-xts-plain64, 256-bit keys) at the disk level |
+| Server-Side Encryption (SSE-S3, SSE-KMS) | Not supported. These are AWS-specific key management integrations. SSE with Ceph's built-in key management and SSE-C (customer-provided keys) are supported. Safespring also provides encryption at rest using dm-crypt at the disk level |
 | Event Notifications (SNS/SQS/Lambda) | Returns `InvalidArgument` |
 | CloudFront / CDN integration | AWS-specific service |
 | S3 Transfer Acceleration | AWS-specific service |
-| S3 Storage Classes (Glacier, IA, etc.) | Only STANDARD class available. For long-term archival storage, contact Safespring support to apply for a separate S3 Archive account. Tools like [Rclone](https://rclone.org) can be used to sync data from S3 Storage to S3 Archive |
+| S3 Storage Classes (Glacier, IA, etc.) | Only STANDARD class available. For long-term archival storage, contact Safespring support to apply for a separate S3 Archive account. See [Quotas](quota.md) for details on the differences between S3 Storage and S3 Archive. Tools like [Rclone](https://rclone.org) can be used to sync data from S3 Storage to S3 Archive |
 | S3 Inventory | API responds but functionality is limited |
 | S3 Analytics | API responds but functionality is limited |
 | S3 Metrics (CloudWatch) | AWS-specific service |
@@ -90,6 +90,8 @@ The following AWS S3 features are **not available** in Safespring S3:
 
 ### Object Lock and Retention
 
+See [Object Locking](object-locking.md) for detailed usage examples.
+
 | Operation | AWS S3 | Safespring S3 | Notes |
 |---|---|---|---|
 | Create bucket with Object Lock | Yes | Yes | Must be enabled at bucket creation |
@@ -102,6 +104,8 @@ The following AWS S3 features are **not available** in Safespring S3:
 
 ### Lifecycle Management
 
+See [Lifecycle management](s3-advanced.md#lifecycle-management) for configuration examples.
+
 | Operation | AWS S3 | Safespring S3 | Notes |
 |---|---|---|---|
 | PutBucketLifecycleConfiguration | Yes | Yes | |
@@ -112,6 +116,8 @@ The following AWS S3 features are **not available** in Safespring S3:
 
 ### CORS
 
+See [CORS configuration](s3-advanced.md#cors-configuration) for configuration examples.
+
 | Operation | AWS S3 | Safespring S3 | Notes |
 |---|---|---|---|
 | PutBucketCors | Yes | Yes | |
@@ -119,6 +125,8 @@ The following AWS S3 features are **not available** in Safespring S3:
 | DeleteBucketCors | Yes | Yes | |
 
 ### Tagging
+
+See [Bucket and object tagging](s3-advanced.md#bucket-and-object-tagging) for usage examples.
 
 | Operation | AWS S3 | Safespring S3 | Notes |
 |---|---|---|---|
@@ -130,6 +138,8 @@ The following AWS S3 features are **not available** in Safespring S3:
 | DeleteObjectTagging | Yes | Yes | |
 
 ### S3 Select
+
+See [S3 Select](s3-advanced.md#s3-select) for a usage example.
 
 | Operation | AWS S3 | Safespring S3 | Notes |
 |---|---|---|---|
