@@ -8,7 +8,10 @@ We use windows images from  [cloudbase](https://cloudbase.it/windows-cloud-image
 
 ## Password for Administrator user
 
-The images comes with the Windows _Administrator_ user. In order to enable this user, the password must be changed by accessing the instance console (e.g. from the Horizon dashboard).
+The images comes with the Windows _Administrator_ user. In order to enable this user, the password must be set. There are two ways to do this:
+
+- **Horizon console** — open the instance console from the Horizon dashboard and set the password manually after first boot.
+- **Cloudbase-init script** — supply a PowerShell User Data script that sets the password automatically at launch, before you ever log in. See the [Set Administrator password snippet](cloud-init.md#important-always-set-the-administrator-password-first) for a ready-to-use example.
 
 ## Cloudbase-init admin user
 
