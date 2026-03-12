@@ -113,7 +113,33 @@ nav:
           - User Data Recovery: "backup/cloud/user-data-recovery.md"
           - Read PST files: "backup/cloud/pst-files.md"
       - FAQ: "backup/faq.md"
-      - Legacy Backup: "legacy-backup/index.md"
+      - Legacy Backup Service:
+          - Overview: "backup/legacy-backup-service/index.md"
+          - Introduction: "backup/legacy-backup-service/introduction.md"
+          - Getting Started: "backup/legacy-backup-service/getting-started.md"
+          - Installation:
+              - Overview: "backup/legacy-backup-service/install/overview.md"
+              - Windows: "backup/legacy-backup-service/install/windows.md"
+              - Red Hat Linux: "backup/legacy-backup-service/install/rhel.md"
+              - Debian/Ubuntu: "backup/legacy-backup-service/install/debian-ubuntu.md"
+              - macOS: "backup/legacy-backup-service/install/apple-macos.md"
+              - freeBSD: "backup/legacy-backup-service/install/freebsd-other.md"
+              - Application:
+                  - Microsoft SQL Server: "backup/legacy-backup-service/install/tdp-for-mssql.md"
+          - HOWTOs:
+              - Bare Metal TBMR: "backup/legacy-backup-service/howto/bare-metal-tbmr.md"
+              - Handling Changing Files: "backup/legacy-backup-service/howto/changing-files.md"
+              - Encrypted Backups: "backup/legacy-backup-service/howto/encrypted.md"
+              - Include/Exclude: "backup/legacy-backup-service/howto/includeexclude.md"
+              - Performance Tuning: "backup/legacy-backup-service/howto/performance-tuning.md"
+              - Restore Alternate: "backup/legacy-backup-service/howto/restore-alternate.md"
+              - Single File Restore in Virtual Environments: "backup/legacy-backup-service/howto/virtual-enviroments-single-file-restore.md"
+              - VMware vSphere: "backup/legacy-backup-service/howto/vsphere.md"
+              - Windows Restore: "backup/legacy-backup-service/howto/windows-restore.md"
+          - API: "backup/legacy-backup-service/api.md"
+          - FAQ: "backup/legacy-backup-service/faq.md"
+          - Performance: "backup/legacy-backup-service/performance.md"
+          - Status: "backup/legacy-backup-service/status.md"
   - Compute:
       - Getting Started: "compute/getting-started.md"
       - Security and Compliance:
