@@ -94,7 +94,7 @@ curl http://169.254.169.254/openstack/latest/user_data
 
 This is useful for debugging cloud-init issues or for scripts that need to re-read their configuration.
 
-For more on how to provide user data at launch time, see the [Cloud Init section in Getting Started](getting-started.md#cloud-init).
+For more on how to provide user data at launch time, see the [Cloud Init section in Getting Started](getting-started.md#cloud-init). For ready-to-use Linux and Windows examples, see the [Cloud-init and Cloudbase-init how-to](howto/cloud-init.md).
 
 ## Custom metadata
 
