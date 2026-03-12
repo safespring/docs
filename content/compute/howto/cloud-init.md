@@ -45,7 +45,7 @@ runcmd:
 
 ### Switch to Swedish mirrors, update all packages, and install NetBird
 
-A combined snippet that first optimises the mirror, performs a full system upgrade, and then joins a NetBird network.
+A combined snippet that first optimizes the mirror, performs a full system upgrade, and then joins a NetBird network.
 
 ```yaml
 #cloud-config
@@ -258,7 +258,7 @@ try {
 
 ---
 
-## Using instance metadata to parameterise scripts
+## Using instance metadata to parameterize scripts
 
 The scripts above require you to edit variables like `YOUR_SETUP_KEY_HERE` before pasting them into the Configuration window. A cleaner approach is to store those values as OpenStack **instance metadata properties** and have the cloud-init script fetch them at boot from the metadata service (`169.254.169.254`). The script itself then becomes fully generic and can be reused across any number of instances without modification.
 
@@ -298,4 +298,4 @@ runcmd:
     netbird up --setup-key "$SETUP_KEY"
 ```
 
-`python3` is used here instead of `jq` because it is available on all Ubuntu cloud images without any additional package installation. The same pattern works for any variable you want to externalise — domain names, environment tags, API tokens, and so on.
+`python3` is used here instead of `jq` because it is available on all Ubuntu cloud images without any additional package installation. The same pattern works for any variable you want to externalize — domain names, environment tags, API tokens, and so on.
