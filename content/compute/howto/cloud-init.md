@@ -201,8 +201,7 @@ try {
     Write-Host "NetBird network joined."
 
     # Reboot if required by Windows Update
-    $rebootPending = (Get-WmiObject -Class Win32_ComputerSystem).RebootPending
-    if ($rebootPending) {
+    if (Get-WURebootStatus -Silent) {
         Write-Host "Reboot required, restarting."
         Restart-Computer -Force
     }
