@@ -9,7 +9,7 @@ The content is written by Safespring and community contributors.
 
 To view a build of the site, run
 ```
-docker run --rm -it -p 8000:8000 -v $PWD:/docs:z squidfunk/mkdocs-material
+docker run --rm -it -p 8000:8000 -v $PWD:/docs:z squidfunk/mkdocs-material:4.3.1
 ```
 and open http://localhost:8000 in your favorite browser
 
