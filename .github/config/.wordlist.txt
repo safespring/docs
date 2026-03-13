@@ -1657,6 +1657,7 @@ passwordexpired
 propertytype
 pswindowsupdate
 rebootpending
+wurebootstatus
 securestring
 securityprotocol
 securityprotocoltype
