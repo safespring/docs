@@ -147,6 +147,7 @@ nav:
           - Persistent IP Address: "compute/howto/persistent-ip-address.md"
           - How to Tunnel Console Traffic with SSH: "compute/howto/novnc-tunneling.md"
           - Cloud-init and Cloudbase-init: "compute/howto/cloud-init.md"
+          - Configuration Drive: "compute/howto/config-drive.md"
           - Windows Images: "compute/howto/windows.md"
           - Migrate Instance to Another Project: "compute/howto/migrate-between-projects.md"
           - Taking Snapshots of Instances: "compute/howto/snapshotting-instances.md"

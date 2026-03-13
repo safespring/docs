@@ -144,7 +144,7 @@ When custom metadata has been set, the response will include a `meta` field:
 
 ## Config drive
 
-As an alternative to the network-based metadata service, OpenStack supports a **config drive** — a small read-only disk that is attached to the instance and contains the same metadata and user data.
+As an alternative to the network-based metadata service, OpenStack supports a **config drive** — a small read-only disk that is attached to the instance and contains the same metadata and user data. For a full how-to including practical examples, see the [Configuration Drive how-to](howto/config-drive.md).
 
 Config drives are useful in scenarios where:
 
