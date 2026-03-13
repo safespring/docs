@@ -18,7 +18,7 @@ Linux images on Safespring ship with cloud-init pre-installed. Scripts use the Y
 
 ### Switch to Swedish package mirrors
 
-Ubuntu images in Safespring come with a default mirror (`nova.clouds.archive.ubuntu.com`) that may be slower than the Swedish mirror when accessed from our Stockholm and Sundsvall regions. This snippet replaces the mirror and runs an initial package update.
+Ubuntu images in Safespring come with a default mirror (`nova.clouds.archive.ubuntu.com`) that may be slower than the Swedish mirror when accessed from our Swedish or Norwegian data centers. This snippet replaces the mirror and runs an initial package update.
 
 ```yaml
 #cloud-config
