@@ -79,7 +79,7 @@ See [Getting support](../service/support.md) for more information on how to cont
 
 ## Tips for managing quota usage
 
-- **Clean up unused snapshots** regularly, as they count against your storage quota. See the [Snapshots HOWTO](howto/snapshotting-instances.md) for more details.
-- **Delete volumes** that are no longer attached to any instance and no longer needed. Detached volumes still count against your quota.
 - **Remove unused security groups** and their rules if they are no longer in use.
 - Use `openstack limits show --absolute` to periodically check your usage before launching new instances, to avoid hitting a quota limit unexpectedly.
+
+For advice on cleaning up detached volumes, old snapshots, and other resources that accumulate over time and count against your quotas, see [Cost Optimization](cost-optimization.md#clean-up-unused-resources).
