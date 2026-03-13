@@ -32,7 +32,7 @@ If an instance currently on the public network no longer needs direct public acc
 !!! note
     The **private** network does not provide internet access at all — it only allows communication with other Safespring instances. If your instance needs outgoing internet connectivity, the **default** network is the right choice.
 
-See the [Network section in Getting Started](getting-started.md#network) for details on the available networks.
+See the [Networking documentation](networking.md) for details on the available networks.
 
 ## Clean up unused resources
 

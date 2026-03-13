@@ -133,6 +133,7 @@ nav:
           - Load Balancing: "compute/loadbalancing.md"
           - Sites and Data Locality: "compute/sites.md"
       - Networking and Access:
+          - Networking: "compute/networking.md"
           - VPN Options: "compute/vpn.md"
           - API Access: "compute/api.md"
           - Metadata Service: "compute/metadata.md"

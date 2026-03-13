@@ -28,7 +28,7 @@ Safespring uses Calico as its networking engine, which does not use the floating
 
 If you need the instance's IP address to survive instance recreation (for example during a restore process or a flavor change), consider creating a **Network Port** instead of assigning a network directly. The port retains its IP address independently of the instance. See [Persistent IP addresses](howto/persistent-ip-address.md) for details.
 
-For more details on the available networks, see the [Network section in Getting Started](getting-started.md#network). For a deeper understanding of how networking works on the Safespring platform, see the blog post [Networking at Safespring](https://www.safespring.com/blogg/2022/2022-03-network/).
+For more details on the available networks and how networking works on the platform, see the [Networking documentation](networking.md).
 
 ## Viewing quotas in the dashboard
 
