@@ -22,9 +22,9 @@ the instance.
 !!! info "Important note"
          Even if you create one or more ports/interfaces you must only connect one port/interface to each instance.
 
-It is currently not possible to create a port through the GUI, so it needs to
-be done through the API directly or with tools utilizing the API, like the
-Openstack CLI or Terraform for instance.
+Ports can be created both through the Horizon dashboard and through the
+OpenStack CLI. See the [Network Ports how-to](network-ports.md) for a full
+walkthrough of both methods.
 
 Here is an example using the Openstack CLI:
 ```
