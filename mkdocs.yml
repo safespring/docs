@@ -163,6 +163,7 @@ nav:
           - VPN Options: "compute/vpn.md"
           - API Access: "compute/api.md"
           - Metadata Service: "compute/metadata.md"
+          - Network Ports: "compute/howto/network-ports.md"
       - Management:
           - Instance Actions: "compute/instance-actions.md"
           - Application Credentials: "compute/app-creds.md"
@@ -171,7 +172,6 @@ nav:
           - Trouble Shooting: "compute/troubleshooting.md"
       - HOWTOs:
           - Using Keypairs: "compute/howto/keypairs.md"
-          - Persistent IP Address: "compute/howto/persistent-ip-address.md"
           - How to Tunnel Console Traffic with SSH: "compute/howto/novnc-tunneling.md"
           - Cloud-init and Cloudbase-init: "compute/howto/cloud-init.md"
           - Configuration Drive: "compute/howto/config-drive.md"
