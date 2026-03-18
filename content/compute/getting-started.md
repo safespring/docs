@@ -118,115 +118,22 @@ The second option is to use the "Launch Instance" dialogue but under the "Source
 
 ## Network
 
-**Security Groups Overview**: Security groups provide built-in firewall functionality in OpenStack. Each security group contains rules that define allowed ports and source IP addresses or networks. You can apply multiple security groups to an instance, and changes take effect immediately on running instances.
+Safespring uses [Calico](https://www.tigera.io/project-calico/) as its networking engine — a pure layer 3 network with BGP routing and no floating IP addresses. There are three networks to choose from. Attach exactly one network to each instance.
 
-In the new platform, there is 3 networks to choose from (attach only one network):
-
-1. **public**: This network will give you a public IPv4 address, public IPv6 address, dns setup and default gateway so it is reachable directly to/from Internet.
-2. **default**: This network will give you a private IPv4 on a RFC 1918 network,
-   dns setup and default gateway with Network Address Translation (NAT) for outgoing traffic so instances can reach
-   services on the Internet, in addtion to instances on other networks on Safespring Compute (provided it is allowed by means of security groups).
-3. **private**: This network will give you a private IPv4 on a RFC 1918 network that is routed to/from other
-   Safespring networks (including public) but not anywhere else.
+| Network | Use case |
+| --- | --- |
+| **public** | Public IPv4 and IPv6 address, directly reachable from the internet. Use for instances that need to be publicly accessible. |
+| **default** | Private RFC 1918 address with NAT for outbound internet access. Use for most instances — they can reach the internet and communicate with other Safespring instances, but are not directly reachable from outside. |
+| **private** | Private RFC 1918 address with no internet access. Use for instances that should only communicate with other Safespring instances. |
 
 ![image](../images/np-networks.png)
 
-
-!!! info "Important note"
-    You no longer have the ability to create your own networks. All networks has a separate DHCP-scope from which instances created in that network will get an IP-address from. This means that you will have less flexibility which IP-addresses your instances get, but you will instead gain in stability since the simpler network model in v2 has proven to be much more stable than that in v1.
-
-Instances in different network will be able to communicate as long as your security groups allow it. Note that this also applies to instances in the public network with public IP-addresses and instances in the default and private networks.
-
-Thus, the right way to communicate between instances attached to the different networks is to
-just use security groups directly to control access.
-
 !!! warning "Never attach more than one network interface to an instance"
-    Each network assigns a default gateway to the instance via DHCP. If an instance is attached to multiple networks, it will receive two default gateways, leading to asymmetrical routing and unstable network connectivity. Always attach exactly one network interface per instance. For a deeper understanding of how networking works on the Safespring platform, see the blog post [Networking at Safespring](https://www.safespring.com/blogg/2022/2022-03-network/).
+    Each network assigns a default gateway via DHCP. Attaching multiple networks causes conflicting default gateways, asymmetrical routing, and unstable connectivity.
 
-!!! info "Important note"
-    Traffic between all instances in the platform (including RFC1918-subnets i.e. private and default) will be routed directly by the platform, thus the destination service will see the RFC1918 IP address as source address when traffic originates from them. This may have a subtle implication for tenants running public facing services that is contacted by instances on a Safespring RFC1918 subnet: If the public service (or operating system) filters out RFC1918-addresses (because they are not expected) it will effectively stop traffic originating form the Safespring RFC1918 subnets. Thus, you must ensure that these subnets is allowed to access your service. Most likely it will just work, but it is worth being aware of. You can use the openstack cli to list all v4 subnets with: `openstack subnet list |grep v4`
+**Security groups** are the sole mechanism for controlling traffic between instances. All inbound traffic is denied by default. Security groups apply immediately to running instances without a restart. For instances that need to communicate with each other, security group rules must be in place even if they are on the same named network.
 
-### No layer 2 connectivity, only layer 3
-To clarify even further see the image below which shows 6 instances in the same project. Instances 1 and 2 are
-put in the public network. This does not mean that they are in the same network per se, public only tells that
-these two instances will get an IP address from the public range. Networking-wise instance 1 and 2 are in
-different networks. The same goes for 3 and 4 in the default network. They are in separate networks but both
-get and private IP address from the private pool with NAT enabled. Instance 5 and 6 are the same, two separate
-networks but instead IP-addresses from the private pool with no NAT enabled.
-
-![image](../images/v2-networking.svg)
-
-All connectivity between the different instances is routed in the same routing fabric, public or private.
-Instance 1 in the public network could act jumphost to reach the instance 3, 4, 5 or 6 without being connected to
-neither default nor private. As stated above you even **can't use more than ONE interface on a single instance**
-because the addresses are given out with DHCP which will cause a conflicting default gateway configuration if
-you use more than ONE network on each instance.
-
-
-### Security groups is what decides what goes where
-Since all the instances are connected to the same routing fabric, this means that it is possible to reach the
-instances in the private networks from the public networks and vice versa, should the right security groups be
-in place. Since all instances are in their own network connected to the router, you even need security groups
-to allow traffic between instances in the "same" network, for example between 1 and 2. This design makes the
-configuration simpler since all you have to consider when allowing traffic between instances are the security
-groups. No layer 2 "leaking" traffic can ever happen since all instances are in separate networks.
-
-
-
-
-As an example all instances from any network in the new platform will be able
-to communicate if they are members of the following computer security group in
-(as expressed in Terraform code):
-
-```code
-resource "openstack_compute_secgroup_v2" "instance_interconnect" {
-  name        = "interconnect"
-  description = "Full network access between members of this security group"
-
-  rule {
-    ip_protocol = "tcp"
-    from_port   = "1"
-    to_port     = "65535"
-    self        = true
-  }
-
-  rule {
-    ip_protocol = "udp"
-    from_port   = "1"
-    to_port     = "65535"
-    self        = true
-  }
-}
-```
-
-The keyword here is `self`. See: https://registry.terraform.io/providers/terraform-provider-openstack/openstack/latest/docs/resources/compute_secgroup_v2#self
-
-!!! note "IPv6 on the default network"
-         Before the v2 platform reaches production the default network will ALSO provide
-         a public v6 address. This means you can have public IPv6 for free, as the
-         public network will be priced per IPv4 address.
-
-### Security Groups
-
-Security groups is the name for the basic network packet filtering option built in to the Openstack/Contrail setup in use in the Safespring cloud. Security groups allow you to create lists of rules that can be applied to instances.
-
-One instance can have several security groups attached to them, and default is to deny everything and then each added security group would add more exceptions that would be allowed so one group may allow inbound SSH (TCP port 22) for remote administration and another group allows outgoing HTTP and HTTPS (outbound port 80,443) in order for the instance to download OS updates.
-
-To make an instance reachable from the internet, attach it to the **public** network. Safespring uses Calico as its networking engine and does not use floating IP addresses. You can create many different security groups and apply one or more to any instance you have. Applying a security group takes effect immediately on running instances. Safespring recommends using security groups exclusively for network access control rather than combining them with local firewalls inside the instance, as having both tends to make debugging connectivity issues more difficult.
-
-![image](../images/dash-security-groups.png)
-
-### Creating your own security groups
-
-First create a group, and give it a descriptive name. Security groups are per project, so you may name them as you like, they will not be visible to other projects.
-
-![image](../images/create-security-group.png)
-
-then add rules to it. Some of the common protocols have pregenerated defaults, and specifically SSH is at the bottom of the list, so it might require scrolling for it to be visible. If the program or protocol you want to open up isn't in that list, you will have to start by specifying TCP/UDP/ICMP manually and set which port(s) it uses. If you want to have it reachable from any IP, leave the CIDR field blank, even though the "?" help popup might suggest that "-1" indicates any. Otherwise, if you want to make the rule dependent on a certain source network or even a single IP, just add it with an appropriate netmask in the CIDR field.
-
-![image](../images/Manage-security-group.png)
-
-As soon as you apply the security group to an instance, it will take effect, no restart or rebuild will be necessary. Do note that the Default ruleset usually prevents all traffic, and that new security groups you place on instances should add permissions for only those protocols you want to allow.
+For a full explanation of the layer 3 architecture, RFC 1918 routing implications, security group management, and persistent IP addresses via Network Ports, see the [Networking documentation](networking.md).
 
 
 ## Cloud Init
@@ -239,7 +146,7 @@ Setting up a user, and/or setting up authorized\_keys for SSH becomes very impor
 
 The Windows images and the small CirrOS linux image will have a way to force you to set a password on the console, or tell you on the console what the password is, whereas the Ubuntu cloud images already have a user named 'ubuntu' prepared, but need you to add an SSH public key via cloud-init and from that account, let you elevate privileges to root via passwordless sudo.
 
-When launching an instance you can add a cloud init file up to 16k in size. That limit is somewhat arbitrary, but should be enough to either do all you want, or teach the instance where to get further instructions. In the dashboard Launch Instance wizard, this is in the Configuration step, where it's called Customization Script. You may upload a prepared file or paste it into the web form directly.
+When launching an instance you can add a cloud init file up to 16k in size. That limit is somewhat arbitrary, but should be enough to either do all you want, or teach the instance where to get further instructions. In the dashboard Launch Instance wizard, this is in the Configuration step, where it's called Customization Script. You may upload a prepared file or paste it into the web form directly. For ready-to-use examples for both Linux and Windows, see the [Cloud-init and Cloudbase-init how-to](howto/cloud-init.md).
 
 More advanced customizations can be added as a "configuration drive" which will appear as a separate disk to the guest which holds whatever data and software needed for post-install, preferably in a generic way so it can be reused for many instances. It is further possible to add per-instance specific metadata in the last step of the launch wizard, which the instance can ask for while starting up.
 

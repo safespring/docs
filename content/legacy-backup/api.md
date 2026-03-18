@@ -1,9 +1,5 @@
-# API
+<script>location.replace('/backup/legacy-backup-service/api/')</script>
+<meta http-equiv="refresh" content="0; url=/backup/legacy-backup-service/api/">
+<link rel="canonical" href="/backup/legacy-backup-service/api/">
 
-## Safespring Cloud Backup API
-
-Safespring has deployed a public API that can be used to automate TSM client (node) management. The API is implemented as a `RESTful` API, accessible via https://backup.sto2.safedc.net/tsm/.
-
-Usage examples can be found in https://github.com/IPnett/cloud-BaaS/blob/master/API.md.
-
-API access credentials are created out of band via the Safespring Cloud Service Portal.
+Redirecting to [Legacy Backup Service API](/backup/legacy-backup-service/api/).

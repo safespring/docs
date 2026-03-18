@@ -13,6 +13,9 @@ s3cmd can be told to output a file containing all options in their
 current state, but it holds a lot of unneeded information so a simple
 start config could be as short as the following example and nothing else.
 
+!!! note
+    Replace the endpoint in the example below with the correct one for your site. See [General S3 information](../../getting-started.md#minimum-required-info-for-s3-access) for the full list of available endpoints.
+
 $HOME/.s3cfg:
 
 ```
@@ -52,22 +55,7 @@ s3cmd sync  s3://unique-bucket-name local/
 
 ## Make files public
 
-If you want to make a certain file publicly available, you can
-either  add `-P` while uploading afterwards to publish the file.
-
-``` tab="Before uploading"
-s3cmd put -P file1 file2 s3://unique-bucket-name
-```
-
-``` tab="After uploading"
-s3cmd setacl -P s3://unique-bucket-name/file1
-```
-
-
-!!! warning "Change to https and inject project id if necessary"
-    The public upload will return a URL to the now-available file but with `http://...` which you should change to `https://`.
-    Also, if you use s3 with credentials obtained from an Openstack project you must inject the project id of that project into
-    the public url like this: `https://<site>/<project-id>:<bucket-name>/<object-name>`
+For instructions on making files publicly available, including ACL commands and how to construct public HTTPS URLs, see [Accessing a publicly available file over HTTPS](../../s3-advanced.md#accessing-a-publicly-available-file-over-https) in the S3 Advanced Features guide.
 
 
 ## Performance options in $HOME/.s3cfg

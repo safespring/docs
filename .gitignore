@@ -2,3 +2,5 @@ site/
 *~
 _dev/
 dictionary.dic
+*.docx
+.DS_Store

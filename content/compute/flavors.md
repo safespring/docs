@@ -1,4 +1,7 @@
 # Flavors
+
+This page includes OpenStack CLI commands. See the [API Access documentation](api.md) for instructions on how to install and configure the command line client.
+
 This chapter describes the different flavors and how they are used in the platform. It is important to understand what the different flavors imply and which combinations that is possible to boot a working instance.
 
 It is very important to understand the use cases for the different flavor types:

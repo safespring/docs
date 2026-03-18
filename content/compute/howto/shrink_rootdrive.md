@@ -1,5 +1,7 @@
 ## Shrinking the root drive of an instance
 
+This page includes OpenStack CLI commands. See the [API Access documentation](../api.md) for instructions on how to install and configure the command line client.
+
 In openstack you can resize an instance, ie change core count, add/remove ram and add local drive space relatively easily.
 
 Due to complexity issues what you can _not_ do is to shrink the local drive - for example from a l2.c2r4.1000 flavor down to a l2.c2r4.100 one.

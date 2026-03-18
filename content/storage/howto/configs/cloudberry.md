@@ -10,10 +10,9 @@ Start with adding an `S3 compatible gateway` config,
 
 ![Create config](../../../images/cloudberry1.png)
 
-and in the next menu, give it a name, add endpoint URL
-https://s3.sto2.safedc.net (if this is where your account is located)
+and in the next menu, give it a name, add the endpoint URL for your site
 and the `access_key` and `secret_key` you got while enrolling for the
-service.
+service. See [General S3 information](../../getting-started.md#minimum-required-info-for-s3-access) for the full list of available endpoints.
 
 ![Options](../../../images/cloudberry2.png)
 

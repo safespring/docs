@@ -26,7 +26,9 @@ Safespring uses Calico as its networking engine, which does not use the floating
 !!! warning "Never attach more than one network interface to an instance"
     Each network assigns a default gateway to the instance via DHCP. If an instance is attached to multiple networks (for example both **public** and **default**), it will receive two default gateways, leading to asymmetrical routing and unstable network connectivity. Always attach exactly one network interface per instance.
 
-For more details on the available networks, see the [Network section in Getting Started](getting-started.md#network). For a deeper understanding of how networking works on the Safespring platform, see the blog post [Networking at Safespring](https://www.safespring.com/blogg/2022/2022-03-network/).
+If you need the instance's IP address to survive instance recreation (for example during a restore process or a flavor change), consider creating a **Network Port** instead of assigning a network directly. The port retains its IP address independently of the instance. See [Persistent IP addresses](howto/persistent-ip-address.md) for details.
+
+For more details on the available networks and how networking works on the platform, see the [Networking documentation](networking.md).
 
 ## Viewing quotas in the dashboard
 
@@ -77,7 +79,7 @@ See [Getting support](../service/support.md) for more information on how to cont
 
 ## Tips for managing quota usage
 
-- **Clean up unused snapshots** regularly, as they count against your storage quota. See the [Snapshots HOWTO](howto/snapshotting-instances.md) for more details.
-- **Delete volumes** that are no longer attached to any instance and no longer needed. Detached volumes still count against your quota.
 - **Remove unused security groups** and their rules if they are no longer in use.
 - Use `openstack limits show --absolute` to periodically check your usage before launching new instances, to avoid hitting a quota limit unexpectedly.
+
+For advice on cleaning up detached volumes, old snapshots, and other resources that accumulate over time and count against your quotas, see [Cost Optimization](cost-optimization.md#clean-up-unused-resources).
