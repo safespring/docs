@@ -172,7 +172,6 @@ nav:
           - Trouble Shooting: "compute/troubleshooting.md"
       - HOWTOs:
           - Using Keypairs: "compute/howto/keypairs.md"
-          - Persistent IP Address: "compute/howto/persistent-ip-address.md"
           - How to Tunnel Console Traffic with SSH: "compute/howto/novnc-tunneling.md"
           - Cloud-init and Cloudbase-init: "compute/howto/cloud-init.md"
           - Configuration Drive: "compute/howto/config-drive.md"

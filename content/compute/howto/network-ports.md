@@ -4,10 +4,14 @@ A network port is a virtual network interface that exists independently of any i
 
 This is useful when you need a stable IP address for a service, such as a load balancer frontend, a database, or an instance you plan to replace with a newer image.
 
+When ports are created upfront and then attached, they will not be automatically deleted when the instance is deleted or when the port is detached. The IP address remains allocated to the port and can be attached to another instance. If you instead create an instance without a pre-created port, the port is deleted and the IP address returns to the pool when the instance is deleted or the interface is detached.
+
 !!! warning "Attach only one network interface per instance"
     Safespring uses Calico networking. Each network assigns a default gateway via DHCP. Attaching more than one network interface gives the instance multiple default gateways, causing asymmetric routing and unreliable connectivity. Always attach exactly one port or network per instance.
 
-For more details on how networking works on the Safespring platform, see [API Access](../api.md) and [Getting Started](../getting-started.md#network).
+For more details on how networking works on the Safespring platform, see [Networking](../networking.md).
+
+This page includes OpenStack CLI commands. See the [API Access documentation](../api.md) for instructions on how to install and configure the command line client.
 
 ## Creating a port in the dashboard
 
@@ -40,8 +44,6 @@ Click **Create** to create the port. The port now appears in the list and has an
 When creating a new instance, go to the **Network** step in the Launch Instance wizard. Instead of selecting a network, skip that step and proceed to **Network Ports**. Select the port you created. The instance will be attached to that port and will use its IP address.
 
 ## Creating a port with the CLI
-
-This page includes OpenStack CLI commands. See the [API Access documentation](../api.md) for instructions on how to install and configure the command line client.
 
 ### Create a port
 
