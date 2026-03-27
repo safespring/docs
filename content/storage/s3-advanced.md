@@ -573,6 +573,83 @@ aws --endpoint=$S3_URL s3api delete-bucket-lifecycle --bucket mybucket
 !!! note
     Lifecycle transition rules (moving objects between storage classes) are not supported on Safespring. Only expiration rules are available.
 
+## Versioning
+
+Versioning keeps multiple versions of an object in the same bucket. When enabled, uploading an object with an existing key creates a new version rather than overwriting the previous one. Deleted objects are replaced with a delete marker, leaving previous versions recoverable.
+
+!!! note
+    Versioning cannot be fully disabled once enabled — only suspended. A suspended bucket stops creating new versions but retains existing ones.
+
+### Enable versioning
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api put-bucket-versioning \
+  --bucket mybucket \
+  --versioning-configuration Status=Enabled
+```
+
+### Check versioning status
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api get-bucket-versioning --bucket mybucket
+```
+
+### List all versions of objects in a bucket
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api list-object-versions --bucket mybucket
+```
+
+To filter by prefix:
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api list-object-versions \
+  --bucket mybucket \
+  --prefix myfile.txt
+```
+
+### Retrieve a specific version
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api get-object \
+  --bucket mybucket \
+  --key myfile.txt \
+  --version-id VERSION_ID \
+  myfile.txt
+```
+
+### Delete a specific version permanently
+
+Deleting a specific version ID removes that version permanently with no delete marker.
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api delete-object \
+  --bucket mybucket \
+  --key myfile.txt \
+  --version-id VERSION_ID
+```
+
+### Restore a previous version
+
+There is no dedicated restore operation. To restore, copy the desired version back as the current version:
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api copy-object \
+  --bucket mybucket \
+  --copy-source "mybucket/myfile.txt?versionId=VERSION_ID" \
+  --key myfile.txt
+```
+
+### Suspend versioning
+
+Suspending versioning stops new versions from being created. Existing versions are preserved.
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api put-bucket-versioning \
+  --bucket mybucket \
+  --versioning-configuration Status=Suspended
+```
+
 ## S3 Select
 
 S3 Select allows you to run SQL queries directly on objects stored in S3 without downloading the entire object. This is useful for extracting specific data from large CSV, JSON, or Parquet files.
