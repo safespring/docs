@@ -42,7 +42,6 @@ The following AWS S3 features are **not available** in Safespring S3:
 | GetBucketLocation | Yes | Yes | |
 | ListObjects (GET Bucket, v1) | Yes | Yes | |
 | ListObjectsV2 | Yes | Yes | |
-| ListObjectVersions | Yes | Yes | |
 
 ### Object Operations
 
@@ -79,6 +78,8 @@ The following AWS S3 features are **not available** in Safespring S3:
 | Block Public Access | Yes | Yes | |
 
 ### Versioning
+
+See [Versioning](s3-advanced.md#versioning) for configuration examples.
 
 | Operation | AWS S3 | Safespring S3 | Notes |
 |---|---|---|---|
