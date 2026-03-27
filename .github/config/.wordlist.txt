@@ -1690,6 +1690,7 @@ volumebindingmode
 volumeclaimtemplate
 volumemode
 volumemounts
+versionId
 vpn
 vsphere
 vss
