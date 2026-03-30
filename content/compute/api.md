@@ -14,7 +14,7 @@ There are two ways to get API access:
 
 ## Using a jump host for API access (recommended)
 
-All IP addresses within the Safespring platform are already whitelisted for API access. The simplest way to get started without contacting support is to create a small instance in the Horizon dashboard and use it as a jump host for running API commands.
+All IP addresses within the Safespring platform are already whitelisted for API access. The simplest way to get started without contacting support is to create a small instance in the [Horizon dashboard](sites.md) and use it as a jump host for running API commands.
 
 This approach has several advantages:
 
@@ -25,7 +25,7 @@ This approach has several advantages:
 
 ### Setting up a jump host
 
-1. Create a small instance (for example `b2.c1r2`) through the Horizon dashboard on the **public** network.
+1. Create a small instance (for example `b2.c1r2`) through the [Horizon dashboard](sites.md) on the **public** network.
 2. Add an SSH security group to allow access from your IP address.
 3. SSH into the instance and install the OpenStack CLI client (see instructions below).
 4. Source your credentials and run API commands from there.
