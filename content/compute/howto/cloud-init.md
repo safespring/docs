@@ -2,7 +2,7 @@
 
 Cloud-init is the industry-standard tool for configuring cloud instances at first boot. When you launch an instance in Safespring Compute, cloud-init (Linux) or cloudbase-init (Windows) reads the **User Data** you provide and executes the configuration automatically — before you ever log in.
 
-You supply User Data in the **"Configuration"** tab of the Launch Instance dialog in Horizon, or via the `--user-data` flag with the OpenStack CLI:
+You supply User Data in the **"Configuration"** tab of the Launch Instance dialog in the [Horizon dashboard](../sites.md), or via the `--user-data` flag with the OpenStack CLI:
 
 ```bash
 openstack server create \

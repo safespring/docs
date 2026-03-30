@@ -62,7 +62,7 @@ Since all instances are connected to the same routing fabric, security groups mu
 
 ### Creating a security group
 
-In Horizon, go to **Network → Security Groups** and click **Create Security Group**. Give it a descriptive name — security groups are per project and not visible to other projects.
+In the [Horizon dashboard](sites.md), go to **Network → Security Groups** and click **Create Security Group**. Give it a descriptive name — security groups are per project and not visible to other projects.
 
 ![image](../images/create-security-group.png)
 

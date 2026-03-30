@@ -17,7 +17,7 @@ When none of the above apply, the [metadata service](../metadata.md) is simpler 
 
 ## Enabling the config drive at launch
 
-In the Horizon dashboard, check **Configuration Drive** in the **Configuration** tab of the **Launch Instance** wizard.
+In the [Horizon dashboard](../sites.md), check **Configuration Drive** in the **Configuration** tab of the **Launch Instance** wizard.
 
 Using the CLI:
 

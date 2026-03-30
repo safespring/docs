@@ -32,7 +32,7 @@ For more details on the available networks and how networking works on the platf
 
 ## Viewing quotas in the dashboard
 
-The **Overview** page in the Horizon dashboard shows your current resource usage as pie charts, with each chart comparing usage against the quota limit. This is the quickest way to check how much headroom you have in a project.
+The **Overview** page in the [Horizon dashboard](sites.md) shows your current resource usage as pie charts, with each chart comparing usage against the quota limit. This is the quickest way to check how much headroom you have in a project.
 
 For more details on the dashboard overview, see the [Getting Started documentation](getting-started.md).
 

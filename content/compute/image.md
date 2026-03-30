@@ -39,7 +39,7 @@ Safespring make sure the following either works directly, or provide documentati
 
 ### Size limit using the web interface
 
-While it is possible to upload images using the Horizon web interface
+While it is possible to upload images using the [Horizon](sites.md) web interface
 there is currently a 2G size limit. For larger images, using the command
 line tools will work or asking the openstack software to DL the image
 from an URL you supply.

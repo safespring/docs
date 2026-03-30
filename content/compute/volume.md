@@ -22,7 +22,7 @@ It is recommended to use **fast** for boot volumes since a large boot volume wil
 
 ## Creating a volume
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 1. Navigate to **Volumes** and click **Create Volume**.
 2. Give the volume a name.
@@ -47,7 +47,7 @@ openstack volume create --size 20 --type fast --image ubuntu-24.04 my-boot-volum
 
 ## Attaching a volume to an instance
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 In the **Volumes** listing, select **Manage Attachments** from the dropdown menu on the volume. Select the instance you want to attach it to and click **Attach Volume**.
 
@@ -83,7 +83,7 @@ umount /mnt/data
 
 Then detach the volume:
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 In the **Volumes** listing, select **Manage Attachments** from the dropdown menu and click **Detach Volume**.
 
@@ -97,7 +97,7 @@ openstack server remove volume my-instance my-data-volume
 
 You can increase the size of an existing volume. The volume must be detached from any instance before extending.
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 In the **Volumes** listing, select **Extend Volume** from the dropdown menu and enter the new size.
 
@@ -121,7 +121,7 @@ xfs_growfs /mnt/data
 
 A volume must be detached before it can be deleted.
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 In the **Volumes** listing, select **Delete Volume** from the dropdown menu.
 
