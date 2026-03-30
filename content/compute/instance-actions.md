@@ -28,7 +28,7 @@ The following actions are available for instances:
 
 Shutting off an instance performs a graceful shutdown of the operating system, similar to pressing the power button on a physical server. The instance stays allocated on its compute node and all resources (disk, network, IP address) are preserved.
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 In the instance list, select **Shut Off Instance** from the dropdown menu. To start it again, select **Start Instance**.
 
@@ -49,7 +49,7 @@ openstack server start my-instance
 
 Rebooting restarts the instance operating system. A **soft reboot** sends a shutdown signal to the OS and then boots it again. A **hard reboot** is the equivalent of a power cycle and should be used when the instance is unresponsive.
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 Select **Soft Reboot Instance** or **Hard Reboot Instance** from the dropdown menu in the instance list.
 
@@ -74,7 +74,7 @@ openstack server reboot --hard my-instance
 
 Pausing an instance freezes it in its current state in memory. The instance stops executing but its memory contents are preserved on the compute node. Unpausing restores execution immediately, making this the fastest way to temporarily stop and resume an instance.
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 Select **Pause Instance** from the dropdown menu. To resume, select **Resume Instance**.
 
@@ -92,7 +92,7 @@ openstack server unpause my-instance
 
 Suspending an instance saves its entire state (including memory) to disk, similar to hibernating a laptop. This frees up CPU and RAM on the compute node while allowing you to restore the instance to exactly the state it was in when suspended.
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 Select **Suspend Instance** from the dropdown menu. To restore, select **Resume Instance**.
 
@@ -114,7 +114,7 @@ Shelving is the only instance action that reduces your billing. While shelved, y
 
 Shelving works best for volume-based instances (b2 flavors), since the root disk already resides in the central storage and does not need to be uploaded to the image service. For l2-flavor instances with local disk, the shelve operation needs to upload the entire local disk as a snapshot to the image service, which can take a long time for large disks.
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 Select **Shelve Instance** from the dropdown menu. To restore, select **Unshelve Instance**.
 

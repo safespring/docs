@@ -105,7 +105,7 @@ You can attach arbitrary key-value metadata to an instance at launch time or aft
 
 ### Setting metadata at launch
 
-In the Horizon dashboard, custom metadata can be added in the **Metadata** tab of the **Launch Instance** wizard.
+In the [Horizon dashboard](sites.md), custom metadata can be added in the **Metadata** tab of the **Launch Instance** wizard.
 
 Using the CLI:
 
