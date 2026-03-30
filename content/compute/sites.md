@@ -10,7 +10,7 @@ This is especially important for customers with regulatory requirements around d
 
 ## Available sites
 
-Each site has its own dashboard and API endpoint:
+The Horizon dashboard is the web-based graphical interface for OpenStack. It lets you manage instances, volumes, networks, and other resources through your browser without using the command line. Each site has its own dashboard and API endpoint:
 
 | Site | Location | Dashboard |
 | --- | --- | --- |
