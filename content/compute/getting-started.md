@@ -1,5 +1,8 @@
 # Getting Started
 
+!!! tip "Prefer video?"
+    Safespring has a series of [video guides for Compute](https://www.safespring.com/demo/compute/) that walk through the most common tasks if you prefer to follow along visually.
+
 ## Log in to the dashboard
 
 Go to the [Horizon dashboard](sites.md) for your site and log in with your credentials. After login you land on the **Overview** page, which shows your current resource usage against your quota limits.
