@@ -99,11 +99,23 @@ Click **Launch Instance**. The instance will appear in the instances list and re
 
 ## Connect to the instance
 
-Connect via SSH using the default user for the image (for example `ubuntu` for Ubuntu images) and the IP address shown in the instances list:
+Connect via SSH using the default user for your image and the IP address shown in the instances list:
 
 ```bash
-ssh ubuntu@<ip-address>
+ssh <default-user>@<ip-address>
 ```
+
+The default username depends on the image:
+
+| Image | Default user |
+| --- | --- |
+| ubuntu-* | `ubuntu` |
+| debian-* | `debian` |
+| almalinux-* | `almalinux` |
+| rocky-* | `rocky` |
+| cirros | `cirros` |
+
+Password login is disabled — the SSH key you selected during launch is used for authentication.
 
 ## Next steps
 

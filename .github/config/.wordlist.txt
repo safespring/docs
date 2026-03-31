@@ -1302,6 +1302,7 @@ rhx
 rmdir
 ro
 roadmap
+routable
 rootdirectory
 rootdrive
 rootfs

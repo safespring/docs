@@ -82,4 +82,4 @@ ssh ubuntu@<ip-address>
 ![PuTTY key dialogue](../../images/putty-key.png)
 
 !!! note "Default username"
-    The default SSH username depends on the image: `ubuntu` for Ubuntu, `centos` for CentOS, `debian` for Debian. The root user is typically disabled.
+    The default SSH username depends on the image: `ubuntu` for Ubuntu, `debian` for Debian, `almalinux` for AlmaLinux, `rocky` for Rocky Linux, and `cirros` for CirrOS. The root user is typically disabled.
