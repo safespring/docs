@@ -2,6 +2,8 @@
 
 Safespring does not use OpenStack availability zones. Instead, each Safespring site is a fully separate installation with its own Horizon dashboard, API endpoints, and credentials.
 
+The Horizon dashboard is the web-based graphical interface for OpenStack. It lets you manage instances, volumes, networks, and other resources through your browser without using the command line.
+
 ## Account structure
 
 The platform uses OpenStack's structure of domains and projects:
@@ -19,7 +21,7 @@ This is especially important for customers with regulatory requirements around d
 
 ## Available sites
 
-The Horizon dashboard is the web-based graphical interface for OpenStack. It lets you manage instances, volumes, networks, and other resources through your browser without using the command line. Each site has its own dashboard and API endpoint:
+Each site has its own dashboard and API endpoint:
 
 | Site | Location | Dashboard |
 | --- | --- | --- |
