@@ -62,10 +62,12 @@ Attach exactly one network:
 | Network | Use case |
 | --- | --- |
 | **public** | Public IPv4 and IPv6, directly reachable from the internet |
-| **default** | Private address with NAT for outbound internet access (recommended for most instances) |
+| **default** | Private address with NAT for outbound internet access — not directly reachable from outside |
 | **private** | Private address, no internet access |
 
 ![Network selection](../images/np-networks.png)
+
+For your first instance, choose **public**. Instances on the **default** network have outbound internet access but cannot be reached directly from outside, so you will not be able to SSH in without first having a host on the public network to go through.
 
 !!! tip "No routers, subnets, or floating IPs needed"
     Safespring uses [Calico](https://www.tigera.io/project-calico/)-based pure layer 3 networking. Unlike a standard OpenStack setup, you do not need to create virtual routers, configure subnets, or assign floating IPs — just attach one network and the instance is reachable at its assigned IP address straight away.
