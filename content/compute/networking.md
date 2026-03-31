@@ -50,7 +50,7 @@ By default, when you attach a network to an instance directly, the IP address is
 
 To keep the same IP address across instance recreation — useful during restores, flavor changes, or emergencies — create a **Network Port** on the desired network and attach the port to the instance instead of the network directly. The port and its IP address persist independently of any instance.
 
-See [Persistent IP addresses](howto/persistent-ip-address.md) for step-by-step instructions.
+See [Network Ports](howto/network-ports.md) for step-by-step instructions.
 
 ## Security groups
 
