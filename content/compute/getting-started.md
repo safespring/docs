@@ -9,7 +9,7 @@ Go to the [Horizon dashboard](sites.md) for your site and log in with your crede
 
 ![Overview dashboard](../images/np-overview.png)
 
-Safespring organises resources into domains and projects. Each project is an isolated environment — a common setup is separate projects for test and production. See [Sites and account structure](sites.md) for details.
+Safespring organizes resources into domains and projects. Each project is an isolated environment — a common setup is separate projects for test and production. See [Sites and account structure](sites.md) for details.
 
 ## Preparations
 

@@ -6,7 +6,7 @@ Safespring does not use OpenStack availability zones. Instead, each Safespring s
 
 The platform uses OpenStack's structure of domains and projects:
 
-- **Domains** correspond to your organisation, typically in the form `company.com`
+- **Domains** correspond to your organization, typically in the form `company.com`
 - **Projects** are administrative environments under a domain, for example `test.company.com` and `prod.company.com`
 
 Resources (instances, volumes, networks, security groups) are scoped to a project and are not visible to other projects. A common setup is one project for test and one for production.
