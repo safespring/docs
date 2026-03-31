@@ -42,7 +42,7 @@ openstack subnet list | grep v4
 
 ## IPv6
 
-The public network provides both a public IPv4 and a public IPv6 address. The default network will also provide a public IPv6 address, meaning you can have public IPv6 connectivity without attaching to the paid public network. IPv6 is not available on the private network.
+The public network provides both a public IPv4 and a public IPv6 address. The default network will also provide a public IPv6 address, meaning you can have public IPv6 connectivity without attaching to the paid public network. The private network assigns a private IPv6 address, which is not routable on the internet — unlike the default and public networks, it cannot be used for public IPv6 connectivity.
 
 ## Network Ports and persistent IP addresses
 
