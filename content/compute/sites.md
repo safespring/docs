@@ -2,6 +2,15 @@
 
 Safespring does not use OpenStack availability zones. Instead, each Safespring site is a fully separate installation with its own Horizon dashboard, API endpoints, and credentials.
 
+## Account structure
+
+The platform uses OpenStack's structure of domains and projects:
+
+- **Domains** correspond to your organization, typically in the form `company.com`
+- **Projects** are administrative environments under a domain, for example `test.company.com` and `prod.company.com`
+
+Resources (instances, volumes, networks, security groups) are scoped to a project and are not visible to other projects. A common setup is one project for test and one for production.
+
 ## Why separate sites instead of availability zones
 
 In a traditional OpenStack deployment, availability zones let users select which datacenter to place instances in from a dropdown menu. Safespring has deliberately chosen not to use this model. The reason is data locality — by keeping each site as a completely separate environment, you always know exactly which physical location your data resides in. There is no risk of accidentally placing data in a different datacenter by selecting the wrong option from a dropdown.

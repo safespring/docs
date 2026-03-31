@@ -1144,6 +1144,7 @@ possibleproxynodes
 postgres
 powershell
 ppb
+ppk
 pqwbci
 pre
 pregenerated
