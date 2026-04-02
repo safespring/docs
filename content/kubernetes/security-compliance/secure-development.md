@@ -42,5 +42,4 @@ Industry best practices and resources are used to ensure secure coding standards
 
 ## 5.6 Outsourced Development
 
-When development is outsourced to third parties, this is done under strict security requirements.
-Security requirements are part of outsourced contracts and contractors always follow the same security standards as our own teams.
+Development is never outsourced for components developed for on-demand Kubernetes service.
