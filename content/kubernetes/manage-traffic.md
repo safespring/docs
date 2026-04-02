@@ -1,8 +1,7 @@
 # Kubernetes Cluster Traffic Management
 
-We provide current two means of managing traffic into a kubernetes cluster:
+The current means of managing traffic into a kubernetes cluster is:
 
-- [NGINX Ingress](https://github.com/kubernetes/ingress-nginx) when you need simple, Kubernetes-native routing of web traffic into services;
 - Cilium [Gateway API](https://gateway-api.sigs.k8s.io/) which offers full API lifecycle management, security, and governance.
 
 | Feature                        | **Ingress**                         | **API Gateway**                                           |
@@ -278,116 +277,5 @@ spec:
       requestRedirect:
         scheme: https
         statusCode: 301
-
-```
-
-### NGNIX Ingress
-
-We make use of [NGINX demo](https://github.com/nginxinc/NGINX-Demos/tree/master/nginx-hello-nonroot) containers to illustrate NGINX Ingress with a certificate generated using `letsencrypt-prod`.
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: coffee
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: coffee
-  template:
-    metadata:
-      labels:
-        app: coffee
-    spec:
-      containers:
-      - name: coffee
-        image: nginxdemos/nginx-hello:plain-text
-        ports:
-        - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: coffee-svc
-spec:
-  ports:
-  - port: 80
-    targetPort: 8080
-    protocol: TCP
-    name: http
-  selector:
-    app: coffee
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: tea
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: tea
-  template:
-    metadata:
-      labels:
-        app: tea
-    spec:
-      containers:
-      - name: tea
-        image: nginxdemos/nginx-hello:plain-text
-        ports:
-        - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: tea-svc
-  labels:
-    app: tea
-spec:
-  ports:
-  - port: 80
-    targetPort: 8080
-    protocol: TCP
-    name: http
-  selector:
-    app: tea
----
-```
-
-#### Ingress Configuration
-
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: cafe-ingress
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-spec:
-  ingressClassName: nginx
-  tls:
-  - hosts:
-    - cafe.apps.safesdemo.paas.safedc.net
-    secretName: cafe-secret
-  rules:
-  - host: cafe.apps.safesdemo.paas.safedc.net
-    http:
-      paths:
-      - path: /tea
-        pathType: Prefix
-        backend:
-          service:
-            name: tea-svc
-            port:
-              number: 80
-      - path: /coffee
-        pathType: Prefix
-        backend:
-          service:
-            name: coffee-svc
-            port:
-              number: 80
 
 ```
