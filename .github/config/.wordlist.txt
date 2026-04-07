@@ -1562,6 +1562,7 @@ totalbytes
 totalbytesrounded
 totalentries
 totalstoragemegabytes
+traefik
 transferlimit
 transferredbackupmegabytes
 transferredgigabytes
