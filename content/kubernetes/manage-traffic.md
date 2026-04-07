@@ -4,6 +4,8 @@ The current means of managing traffic into a kubernetes cluster is:
 
 - Cilium [Gateway API](https://gateway-api.sigs.k8s.io/) which offers full API lifecycle management, security, and governance.
 
+If you are migrating your service from an Ingress Controller (Nginx, Traefik or any other) a quick comparison of main advantages of using Gateway API:
+
 | Feature                        | **Ingress**                         | **API Gateway**                                           |
 | ------------------------------ | ----------------------------------- | --------------------------------------------------------- |
 | **Routing**                    | Host/path-based HTTP routing        | Advanced routing, multi-protocol (HTTP, gRPC, WebSockets) |
@@ -13,6 +15,13 @@ The current means of managing traffic into a kubernetes cluster is:
 | **Observability**              | Basic (via logs/metrics)            | Detailed API analytics                                    |
 | **Kubernetes-native**          | ✅                                 | Sometimes (can be external)                               |
 | **Best for**                   | Simple cluster ingress              | Full API management and security                          |
+
+## Networking Details
+
+Workload Clusters are deployed on top of **OpenStack infrastructure** where we orchestrate/harden traffic as follows:
+
+- **OpenStack Security Groups**: provide a Stateful virtual firewalls applied to cluster nodes as well granular filtering for API access and service ports as with explicit allowlists for Kubernetes control plane and worker node communication.
+- We make use of [Load Balancing - Elastic IP](../compute/loadbalancing.md) to forward traffic to respective Cluster Nodes based on L4 TCP ports: `80/443/6443/50000`. Additional ports can be provided on request.
 
 ## Examples
 
