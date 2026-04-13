@@ -19,14 +19,14 @@ All external traffic to the Kubernetes cluster is routed through a **dedicated H
 * Acts as a secure entry point to the Kubernetes control plane and ingress services.
 * Supports **high availability and redundancy** across multiple nodes.
 * Enforces **rate limiting, connection filtering, and DDoS protection** at the edge.
-* Access to Load Balancer is done via bastion.
+* Access to Load Balancer is done via jump host.
 
 On the cluster OS level, **Talos Linux** further reduces the attack surface by:
 
 * Disabling unnecessary services and network daemons.
 * Enforcing secure-by-default configurations with immutable networking settings.
 * Providing an API-driven firewall configuration mechanism.
-* Access to Cilium API is done via bastion.
+* Access to Cilium API is done via jump host.
 
 ## 4.2 Network Services Security
 
