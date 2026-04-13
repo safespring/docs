@@ -52,19 +52,35 @@ cd "C:\Program Files\Tivoli\TSM\baclient"
 dsmc ...
 ```
 
-Other than that, the `dsmc` will work mostly the same way on both operating 
-systems.
+Other than that, the `dsmc` will work _mostly_ the same way on both operating 
+systems. There are exceptions, for example how you specify paths.
 
-To perform an incremental backup, use the `dsmc incremental` subcommand:
+To perform an incremental backup, use the `dsmc incremental` subcommand.
+
+On **Windows**:
 ```shell
-dsmc incremental -subdir=yes /home
+dsmc incremental -subdir=yes 'C:\Users\*'
 ```
 
+!!! warning
+    Notice the trailing backslash followed by an asterix (`\*`).
+
+On **Linux**:
+```shell
+dsmc incremental -subdir=yes '/home'
+```
+
+!!! warning
+    Notice the lack of a trailing forward slash (`/`).
+
+
 ### Explanation
-This will back up everything under the `/home` directory recursively. 
+This will back up everything under the `/home` (or `C:\Users`) 
+directory recursively. 
 The `-subdir=yes` flag tells the client that it the backup process must be 
 recursive. 
-If this flag was omitted, only the `/home` directory (and nothing inside) would 
-have been backed up, which wouldn't have been very helpful.
+If this flag was omitted, only the `/home` directory 
+(and nothing inside) would have been backed up, 
+which wouldn't have been very helpful.
 
-More information about how this subcommand works can be found <a href="https://www.ibm.com/docs/en/storage-protect/8.1.26?topic=commands-incremental" target="_blank">here</a>.
+More information about how this subcommand works can be found <a href="https://www.ibm.com/docs/en/storage-protect/8.2.1?topic=commands-incremental" target="_blank">here</a>.
