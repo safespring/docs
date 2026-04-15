@@ -46,7 +46,7 @@ Workload Clusters configuration of managed apps, for each customer cluster is tr
 **Immutable Audit Logs**:
 
 * Kubernetes audit logs are stored in an **append-only** - format to prevent tampering.
-* Each of the infrastructure clusters (Management and Ops) has audit logging enabled and collected via Loki with a total retention of 3 months.
+* Each of the infrastructure clusters (Management and Ops) has audit logging enabled and collected via Loki with a total retention of 1 month.
 
 **Access Controls**:
 
