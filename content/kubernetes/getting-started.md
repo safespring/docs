@@ -1,15 +1,12 @@
 # Getting Started with on-demand Kubernetes
 
-!!! note "on-demand Kubernetes"
-    The on-demand kubernetes service is currently still in development. Beta-launch December 2025 with public availability expected end of Q1 2026.
-
 This guide will help you get started with Safespring's on-demand Kubernetes service.
 
 ## Overview
 
 On-demand Kubernetes allows users to create, scale and use Kubernetes clusters. Such a functionality is made available through a [portal and API](portal-overview.md), where users can manage the clusters.
 
-It is build on top of the [Safespring Compute](../compute/getting-started.md) service.
+It is built on top of the [Safespring Compute](../compute/getting-started.md) service.
 
 ## Cluster Management
 
