@@ -33,14 +33,14 @@ Clusters are integrated with the OIDC compatible identity provider that is integ
 
 ## Networking
 
-Cilium is used as the default CNI. Cilium is configured with the following settings:
+Cilium is used as the default CNI (Container Network Interface). Cilium is configured with the following settings:
 
 * Gateway API enabled
 * host routing
 * kube-proxy replacement
 * vxlan encapsulation
 
-### loadbalancing
+### Load balancing
 
 Dedicated load balancers managed by Safespring are used to direct traffic to the control plane api and worker nodes. The cluster is provisioned with [dedicated IPv4 addresses](../compute/loadbalancing.md), ensuring control plane traffic stays isolated from worker node traffic.
 
@@ -48,7 +48,7 @@ When nodes get added or removed from the cluster, the load balancers will automa
 
 ## Storage
 
-Clusters are configured with cinder csi during creation. The following [storage classes](persistent-volumes.md#storage-classes) are available if Cinder CSI component has been activated:
+Clusters are configured with Cinder CSI (Container Storage Interface) during creation. The following [storage classes](persistent-volumes.md#storage-classes) are available for Cinder CSI:
 
 * `large` - HDD based block storage
 * `fast` - NVMe based block storage
@@ -84,7 +84,7 @@ Additionally we consider Cilium CNI as necessary for running the Kubernetes clus
 | ---------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [**OpenStack Cloud Controller Manager**](https://github.com/kubernetes/cloud-provider-openstack)                             | Integrates with OpenStack to provide node metadata, load balancers, and storage support.                                                                                                                                                                                                                  |
 | [**Cert Manager**](https://cert-manager.io/)                                                                                 | Automates the management and issuance of TLS certificates for Kubernetes workloads. For Gateway API a cluster issuer will need to be [created](https://cert-manager.io/docs/usage/gateway/).                                                                                                                                                                                                                       |
-| [**Traffic Management**](manage-traffic.md)                                                                                                         | - [**Cilium API Gateway (Default)**](https://docs.cilium.io/en/stable/network/servicemesh/gateway-api/gateway-api/): eBPF-based ingress solution with advanced traffic management. We provide GatewayClass `cilium` by default. |
+| [**Traffic Management**](manage-traffic.md)                                                                                                         | [**Cilium API Gateway**](https://docs.cilium.io/en/stable/network/servicemesh/gateway-api/gateway-api/): eBPF-based ingress solution with advanced traffic management. We provide GatewayClass `cilium`. |
 | [**Cinder CSI (optional)**](https://github.com/kubernetes/cloud-provider-openstack/blob/master/docs/cinder-csi-plugin/using-cinder-csi-plugin.md) | Container Storage Interface (CSI) driver for provisioning and managing OpenStack Cinder volumes. [Making use of Cinder CSI](persistent-volumes.md) for persistent volumes.                                                                                                                                                                                      |
 | [**Cilium**](https://cilium.io/)                                                                                             | eBPF-based networking, security, and observability for Kubernetes clusters, providing advanced features like network policies and load balancing.                                                                                                                                                         |
 | [**NVIDIA Device Plugin**](https://github.com/NVIDIA/k8s-device-plugin)                                                      | Enables Kubernetes workloads to request and use GPUs for machine learning, AI, and high-performance compute applications. **Only available if worker nodes have GPU [flavors](../compute/flavors.md)**, see how to [run GPU workloads](gpu.md).                                                                                                            |

@@ -1,8 +1,6 @@
 # Kubernetes Cluster Traffic Management
 
-The current means of managing traffic into a kubernetes cluster is:
-
-- Cilium [Gateway API](https://gateway-api.sigs.k8s.io/) which offers full API lifecycle management, security, and governance.
+We are making use of Cilium [Gateway API](https://gateway-api.sigs.k8s.io/) as default means of managing traffic towards Routes defined in a Kubernetes Service, which offers full API lifecycle management, security, and governance.
 
 If you are migrating your service from an Ingress Controller (Nginx, Traefik or any other) a quick comparison of main advantages of using Gateway API:
 
@@ -22,12 +20,13 @@ Workload Clusters are deployed on top of **OpenStack infrastructure** where we o
 
 - **OpenStack Security Groups**: provide a Stateful virtual firewalls applied to cluster nodes as well granular filtering for API access and service ports as with explicit allowlists for Kubernetes control plane and worker node communication.
 - We make use of [Load Balancing - Elastic IP](../compute/loadbalancing.md) to forward traffic to respective Cluster Nodes based on L4 TCP ports: `80/443/6443/50000`. Additional ports can be provided on request.
+- The traffic is picked up by services exposed via Cilium Gateway API at ports `80` and `443`.
 
 ## Examples
 
 ### Gateway API
 
-In the following example we illustrate how to create a Gateway and corresponding HTTP routes, with HTTP redirecting to HTTPS. We create the Gateway `cilium-gateway`  which makes use of the GatewayClass `cilium`.
+In the following example we illustrate how to create a Gateway and corresponding HTTP routes, with HTTP redirecting to HTTPS. We create the Gateway `cilium-gateway` which makes use of the [`GatewayClass`](https://gateway-api.sigs.k8s.io/api-types/gatewayclass/) `cilium`.
 
 ```yaml
 ---
