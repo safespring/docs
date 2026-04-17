@@ -4,17 +4,17 @@ Container filesystems are ephemeral by default, meaning they reset after an appl
 
 Consider the following:
 
-- To use the feature the [optional Cinder CSI component](getting-started.md#additional-components) should be activated on your Safespring on-demand Kubernetes;
+- It makes use of [Cinder CSI](getting-started.md#additional-components) activated on your Safespring on-demand Kubernetes by default;
 - **Size:** Can be expanded, but not reduced;
-- **StorageClass:** Represents the "kind" of storage which are equivalent to the storage classes available on [Openstack Volume types](../compute/flavors.md);
+- **StorageClass:** Represents the "kind" of storage which are equivalent to the storage classes available on [OpenStack Volume types](../compute/flavors.md);
 - **AccessMode:** Typically, only one pod can mount a given PVC at a time, though some storage classes allow multiple pods to access it simultaneously.
 
-## Storage classes
+## Storage Classes
 
-Available storage classes are based Cinder block storage volumes - `ReadWriteOnce` mode is possible at the moment and the retention policy is `Delete`.
+Available storage classes are based on Cinder block storage volumes. The retention policy is `Delete`.
 
-- `large` - well suited for most common use case and recommended for long term storage
-- `fast` (default) - best for application that require fast random RW capabilities where performance is very important
+- `large` - well suited for most common use cases and recommended for long-term storage;
+- `fast` (default) - best for applications that require fast random read/write capabilities where performance is important.
 
 ```shell
 ➜ kubectl get storageclasses.storage.k8s.io
@@ -30,7 +30,6 @@ We are going to create a [persistent volume claim](https://kubernetes.io/docs/co
 To replicate the example make sure:
 
 - `kubeconf-demo` is [obtained](portal-overview.md#accessing-kubernetes-cluster) for that specific cluster and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for helm and kubectl command line tools.
-
 - `test` namespace exists or created using `kubectl create ns test`
 
 ```shell

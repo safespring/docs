@@ -1,6 +1,6 @@
 # Secret Management
 
-Whilst secrets inside Safespring On-demand Kubernetes are [encrypted at rest](security-compliance/index.md#secrets-management) the ecosystem of secret management inside a Kubernetes cluster is diverse with solutions each with various features:
+Whilst secrets inside Safespring On-demand Kubernetes are [encrypted at rest](security-compliance/index.md#secrets-management) the ecosystem of secret management inside a Kubernetes cluster is diverse with solutions each with various features, for example:
 
 - [Kubernetes external secrets](https://github.com/external-secrets/external-secrets)
 - [Vault Secrets Operator](https://github.com/ricoberger/vault-secrets-operator) with [OpenBao](https://openbao.org/docs/platform/k8s/) OSS alternative
@@ -16,7 +16,7 @@ An alternative implementation of SOPS is presented by [Sops Operator](https://gi
 
 For following this guide it is required:
 
-- `kubeconf-demo` is [obtained](portal-overview.md#accessing-kubernetes-cluster) for that specific cluster and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for helm and kubectl command line tools.
+- `kubeconf-demo` is [obtained from the portal](portal-overview.md#accessing-kubernetes-cluster) for that specific cluster and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for helm and kubectl command line tools.
 - `age` CLI tool [installed locally](https://github.com/FiloSottile/age?tab=readme-ov-file#installation)
 - `sops` CLI tool [installed locally](https://github.com/getsops/sops?tab=readme-ov-file#1download)
 
