@@ -21,7 +21,7 @@ Applications developed for on-demand Kubernetes implement multiple layers to ens
 * Multi-Factor Authentication (MFA) is implemented for all administrator accounts;
 * RBAC is used to enforce access control for all resources;
 * Input validation in custom defined resources or components is used to minimize fallout from wrong input;
-* Unified Packaging and Deployment ensure version control and rollback strategies for 
+* Unified Packaging and Deployment ensure version control and rollback strategies. 
 
 ## 5.3 Secure System Architecture
 
