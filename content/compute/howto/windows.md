@@ -17,7 +17,7 @@ The images comes with the Windows _Administrator_ user. In order to enable this 
 
 Generally, we recommend leaving the _Administrator_ user disabled, and instead using Cloudbase-init to generate an admin user.
 
-Cloudbase-init generates an user named _Admin_. The _Admin_ user is added to the Administrators group.
+Cloudbase-init generates a user named _Admin_. The _Admin_ user is added to the Administrators group.
 
 The _Admin_ user is assigned a random password on installation, which can be retrieved by the following method:
 
@@ -27,7 +27,7 @@ Under the Compute > Access & Security menu, select the "Key Pairs" tab, press "+
 
 Give the key pair a describing name, for instance "windows-passwords". Press "Create Key Pair".
 
-A file called windows-passwords.pem should be dowloaded to your computer. Take good care of this file as it is used to decrypt your admin passwords.
+A file called windows-passwords.pem should be downloaded to your computer. Take good care of this file as it is used to decrypt your admin passwords.
 
 ### Creating a Windows instance via webui
 
@@ -50,7 +50,7 @@ nova get-password winbox1 ~/keys/windows-passwords.pem
 
 ## Setting the Administrator password (and other things) under instance creation
 
-Cloudbase can run powershell scripts under instance creation. This can for instance be used to set the Administrator user password. The script can either be written directly into the "Customization Sctipt" field under "Configuration" or uploaded as a file in the same dialog box.
+Cloudbase can run powershell scripts under instance creation. This can for instance be used to set the Administrator user password. The script can either be written directly into the "Customization Script" field under "Configuration" or uploaded as a file in the same dialog box.
 
 For some reason it seems impossible to set the password for the "admin" user using this method, although setting it for "Administrator" seems to work just fine.
 
