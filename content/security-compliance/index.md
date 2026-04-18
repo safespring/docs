@@ -16,16 +16,16 @@ Our internal 'DevOps Guidelines' are the reference material for all our services
 
 Safespring is currently FR2000 certified. FR2000 combines requirements from ISO 9001 (quality), ISO 14001 (environment), ISO 45001 (work environment), ISO 27001 (information security), and systematic fire safety. This means customers benefit from a holistic approach where quality, security, sustainability, and safety are all managed within one framework. Customers can trust that products and services are delivered according to well-defined processes, minimizing risks of errors, delays, or inconsistencies. Continuous improvement is built into the system, ensuring ongoing enhancements in quality and efficiency.
 
-## ISO 27001 certification process
+## ISO 27001 certified
 
-Safespring aims to achieve ISO 27001 certification for Information Security Management Systems, providing:
+Safespring is ISO 27001 certified for Information Security Management Systems, providing:
 
 - Systematic approach to managing sensitive information
 - Comprehensive security controls and risk management
 - Regular third-party audits and continuous improvement
 - Documented security policies and procedures
 
-We're aiming to achieve ISO 27001 certification during 2025Q4-2026Q1.
+See [safespring.com/en/compliance](https://www.safespring.com/en/compliance/) for more details.
 
 ## GDPR Compliant
 
