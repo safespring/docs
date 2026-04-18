@@ -2,7 +2,7 @@
 This document describes how to take snapshot of an instance on Safespring's platform and then how to start a copy of the instance from the snapshot. The way of doing this varies a bit depending on how the instance was created in the first place.
 
 ## Create a snapshot
-There is mainly two variants to create an instance on Safespring's platform:
+There are mainly two variants to create an instance on Safespring's platform:
 
 1. You create the instance from an image Safespring provides in the platform.
 2. You create the instance from a volume. When doing this you will be able to alter the standard 40 GB size of the root filesystem. This option is also common if you have migrated the instance from another platform into Safespring.
@@ -32,7 +32,7 @@ When it is time to pick a source for the instance - use the dropdown and either 
 ### 2. Pick the same network
 You fill in the other things that are needed, and put the new instance in the same network as the original and launch the instance.
 
-* If it is a linux instance, you will now have a copy of you former instance and can check that the copy works as intended.
+* If it is a linux instance, you will now have a copy of your former instance and can check that the copy works as intended.
 * If it is a Windows instance, you have to reconfigure the network in order to make the copy reachable and to be able to manage it over RDP.
 
 You start by clicking the name of your new instance started from the snapshot and the click "Console". You will notice that the instance does not have working networking connectivity but you log in just like you normally do in the web console.
