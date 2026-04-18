@@ -1,4 +1,4 @@
-# Trouble Shooting
+# Troubleshooting
 
 ## Cluster Authentication
 
@@ -9,7 +9,7 @@
 
 ## Debugging Resources: **Deployments**, **StatefulSets**, **Pods**
 
-We offer a few pointes on how to identify issues with core Kubernetes resources in an kubernetes cluster:
+We offer a few pointers on how to identify issues with core Kubernetes resources in a Kubernetes cluster:
 
 - Checking pod status and logs;
 - Describing Deployments, StatefulSets and pods to identify issues;

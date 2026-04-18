@@ -12,7 +12,7 @@ It is built on top of the [Safespring Compute](../compute/getting-started.md) se
 
 Clusters can be created using the Safespring portal or API. Once created, clusters can be scaled up or down as needed.
 
-We support using 3 or 5 control plane nodes. When Kubernetes API uptime is critical for you business operations, we recommend using 5 control plane nodes.
+We support using 3 or 5 control plane nodes. When Kubernetes API uptime is critical for your business operations, we recommend using 5 control plane nodes.
 
 Worker nodes can be used with L2 or B2 flavors, see [flavors](../compute/flavors.md) for more details and trade-offs. Generally B2 provides better uptime and L2 with local disk provides better disk performance.
 

@@ -62,7 +62,7 @@ The output, formatted, should look:
   "verb": "list",
   "user":
     {
-      "username": "zitadel:user@company.coeum",
+      "username": "zitadel:user@company.com",
       "groups": ["zitadel:admin", "system:authenticated"],
     },
   "sourceIPs": ["ip"],
