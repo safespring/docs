@@ -1,6 +1,6 @@
 # Persistent Volumes
 
-Container filesystems are ephemeral by default, meaning they reset after an application restart. If your app needs persistent data storage (e.g., for a database such PostgreSQL), use a PersistentVolumeClaim (PVC). This PVC can be mounted to any path within your container.
+Container filesystems are ephemeral by default, meaning they reset after an application restart. If your app needs persistent data storage (e.g., for a database such as PostgreSQL), use a PersistentVolumeClaim (PVC). This PVC can be mounted to any path within your container.
 
 Consider the following:
 

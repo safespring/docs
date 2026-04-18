@@ -9,7 +9,7 @@ Given that we use Talos Linux, we cannot make use of [NVIDIA GPU Operator](https
 
 ## Validate Nvidia Runtime available
 
-To replicate the example make sure`kubeconf-demo` is [obtained](portal-overview.md#accessing-kubernetes-cluster) for that specific cluster and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for helm and kubectl command line tools.
+To replicate the example make sure `kubeconf-demo` is [obtained](portal-overview.md#accessing-kubernetes-cluster) for that specific cluster and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for helm and kubectl command line tools.
 
 
 ```shell

@@ -18,7 +18,7 @@ If you are migrating your service from an Ingress Controller (Nginx, Traefik or 
 
 Workload Clusters are deployed on top of **OpenStack infrastructure** where we orchestrate/harden traffic as follows:
 
-- **OpenStack Security Groups**: provide a Stateful virtual firewalls applied to cluster nodes as well granular filtering for API access and service ports as with explicit allowlists for Kubernetes control plane and worker node communication.
+- **OpenStack Security Groups**: provides a Stateful virtual firewall applied to cluster nodes as well granular filtering for API access and service ports as with explicit allowlists for Kubernetes control plane and worker node communication.
 - We make use of [Load Balancing - Elastic IP](../compute/loadbalancing.md) to forward traffic to respective Cluster Nodes based on L4 TCP ports: `80/443/6443/50000`. Additional ports can be provided on request.
 - The traffic is picked up by services exposed via Cilium Gateway API at ports `80` and `443`.
 
