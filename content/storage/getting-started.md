@@ -12,7 +12,7 @@ accessibility.
     keys. Important to understand is that these different key pairs will give access to the SAME S3 account, tied to the project.
 
 S3 credentials are mapped to projects on Safespring's Compute platform.
-This means that if you want to get credentials for S3 you will have to login into
+This means that if you want to get credentials for S3 you will have to log in to
 version 2 of Safespring's Compute platform and then choose "Project" up to the right and then API Access.
 You will now see a button which says "View Credentials" and if you click that you will be presented with an
 information screen:

@@ -35,7 +35,7 @@ input[1]: <hit return>
 
 ## Replace the cert store that comes with Backup Exec
 Backup Exec uses Curl as HTTP-client to communicate to a S3 provider. The
-cert-store file that comes with Backup Exec is outdated which make connections
+cert-store file that comes with Backup Exec is outdated which makes connections
 to Safespring Storage impossible. To remedy this one must replace the cert-store
 file with the official file from Curls webpage.
 
@@ -62,7 +62,7 @@ In this dialogue you should pick the  option in the first dropdown and the accou
 
 ![Choose provider and account](../images/create-cloud-storage-03.png)
 
-If you haven't configured the account to the Safespring Storage service yet, press `Add` and you will be presented with the following dialogue. Fill in you account credentials and press OK. When both dropdown in the Cloud storage dialogue is filled in press Next.
+If you haven't configured the account to the Safespring Storage service yet, press `Add` and you will be presented with the following dialogue. Fill in your account credentials and press OK. When both dropdown in the Cloud storage dialogue is filled in press Next.
 
 ![Create account](../images/create-cloud-storage-04.png)
 
@@ -74,7 +74,7 @@ Now it is time to pick a bucket where your backups should end up. If you haven't
 ![Pick bucket](../images/create-cloud-storage-05.png)
 
 ### 6. Choose number of concurrent operations
-Here you configure how many concurrent operations that should be allowed to this cloud storage. Depending on you needs (if you know that you will have to run multiple backup jobs simultaneously to the cloud storage set a suitable number here. If you start with 4 you know that you will be able to run 4 concurrent sessions to this specific cloud storage. If you get errors in the reports, you can try and decrease this number for debugging purposes.
+Here you configure how many concurrent operations that should be allowed to this cloud storage. Depending on your needs (if you know that you will have to run multiple backup jobs simultaneously to the cloud storage set a suitable number here. If you start with 4 you know that you will be able to run 4 concurrent sessions to this specific cloud storage. If you get errors in the reports, you can try and decrease this number for debugging purposes.
 
 ![Choose number of concurrent operations](../images/create-cloud-storage-06.png)
 
