@@ -42,7 +42,7 @@ Cilium is used as the default CNI (Container Network Interface). Cilium is confi
 
 ### Load balancing
 
-Dedicated load balancers managed by Safespring are used to direct traffic to the control plane api and worker nodes. The cluster is provisioned with [dedicated IPv4 addresses](../compute/loadbalancing.md), ensuring control plane traffic stays isolated from worker node traffic.
+Dedicated load balancers managed by Safespring are used to direct traffic to both the control plane API and worker nodes. The cluster is provisioned by default with a [single dedicated IPv4 addresses](../compute/loadbalancing.md) address shared across control plane and worker traffic.
 
 When nodes get added or removed from the cluster, the load balancers will automatically be updated.
 
