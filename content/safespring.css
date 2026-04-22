@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
 .md-typeset {
   font-family: "Montserrat";
@@ -519,3 +520,200 @@ code>span {
 }
 
 /* === END: CODE BLOCK === */
+
+
+
+/* === START: MERMAID VIEWER === */
+
+.mermaid-figure {
+  background: linear-gradient(180deg, #FAFEFE 0%, #F3F8FA 100%);
+  border: 1px solid #D6E5EC;
+  border-radius: 5px;
+  margin: 1.25rem 0;
+  overflow: auto;
+  padding: 2.65rem 1rem 1rem;
+  position: relative;
+}
+
+.mermaid-figure .mermaid {
+  min-width: min(42rem, 100%);
+  text-align: center;
+}
+
+.mermaid-figure svg {
+  height: auto;
+  max-width: 100%;
+}
+
+.mermaid-figure svg,
+.mermaid-viewer__content svg {
+  font-family: "Montserrat", Arial, sans-serif !important;
+}
+
+.mermaid-figure__expand,
+.mermaid-viewer__button {
+  appearance: none;
+  align-items: center;
+  background: #195F8C;
+  border: 1px solid #195F8C;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font: 600 0.7rem/1 "Montserrat" !important;
+  justify-content: center;
+  min-height: 1.9rem;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.mermaid-figure__expand:hover,
+.mermaid-viewer__button:hover {
+  background: #3C9BCD;
+  border-color: #3C9BCD;
+}
+
+.mermaid-figure__expand:focus-visible,
+.mermaid-viewer__button:focus-visible {
+  outline: 3px solid rgba(60, 155, 205, 0.34);
+  outline-offset: 2px;
+}
+
+.mermaid-figure__expand {
+  box-shadow: 0 2px 5px rgba(25, 95, 140, 0.16);
+  padding: 0 0.62rem;
+  position: absolute;
+  right: 0.6rem;
+  top: 0.6rem;
+  z-index: 1;
+}
+
+.mermaid-viewer-is-open {
+  overflow: hidden;
+}
+
+.mermaid-viewer {
+  background: transparent;
+  border: 0;
+  color: #323232;
+  height: 100dvh;
+  margin: 0;
+  max-height: none;
+  max-width: none;
+  padding: clamp(0.5rem, 1.5vw, 1rem);
+  width: 100vw;
+}
+
+.mermaid-viewer::backdrop {
+  background: rgba(8, 21, 32, 0.78);
+}
+
+.mermaid-viewer__panel {
+  background: #FAFEFE;
+  border: 1px solid rgba(214, 229, 236, 0.9);
+  border-radius: 6px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.34);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.mermaid-viewer__toolbar {
+  align-items: center;
+  background: #FAFEFE;
+  border-bottom: 1px solid #D6E5EC;
+  display: flex;
+  gap: 0.45rem;
+  justify-content: flex-end;
+  padding: 0.55rem;
+}
+
+.mermaid-viewer__button {
+  min-width: 2rem;
+  padding: 0 0.62rem;
+}
+
+.mermaid-viewer__button--text {
+  background: #FAFEFE;
+  color: #195F8C;
+  min-width: auto;
+}
+
+.mermaid-viewer__button--text:hover {
+  color: #fff;
+}
+
+.mermaid-viewer__canvas {
+  cursor: grab;
+  overflow: hidden;
+  position: relative;
+  touch-action: none;
+}
+
+.mermaid-viewer__canvas.is-panning {
+  cursor: grabbing;
+}
+
+.mermaid-viewer__content {
+  display: inline-block;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform-origin: 0 0;
+  user-select: none;
+  will-change: transform;
+}
+
+.mermaid-viewer__content svg {
+  display: block;
+  height: auto;
+  max-width: none !important;
+}
+
+.mermaid-viewer__fallback {
+  background: #fff;
+  padding: 1rem;
+}
+
+@media only screen and (max-width: 44em) {
+  .mermaid-figure {
+    margin-inline: -0.4rem;
+    padding: 2.75rem 0.85rem 0.85rem;
+  }
+
+  .mermaid-figure .mermaid {
+    min-width: 34rem;
+  }
+
+  .mermaid-figure__expand {
+    right: 0.4rem;
+    top: 0.4rem;
+  }
+
+  .mermaid-viewer {
+    padding: 0;
+  }
+
+  .mermaid-viewer__panel {
+    border: 0;
+    border-radius: 0;
+  }
+
+  .mermaid-viewer__toolbar {
+    bottom: 0;
+    justify-content: center;
+    left: 0;
+    padding: 0.65rem;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+  }
+
+  .mermaid-viewer__button {
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+  }
+}
+
+/* === END: MERMAID VIEWER === */
