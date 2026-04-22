@@ -108,12 +108,12 @@ graph TB
     USER -->|Configure| PO
     USER -->|Access UI| GRAFANA
     
-    style PROM fill:#195F8C,color:#fff,stroke:#195F8C
-    style GRAFANA fill:#FA690F,color:#fff,stroke:#FA690F
-    style LOKI fill:#3C9BCD,color:#fff,stroke:#195F8C
-    style PROMTAIL fill:#3C9BCD,color:#fff,stroke:#195F8C
-    style PO fill:#195F8C,color:#fff,stroke:#195F8C
-    style AM fill:#195F8C,color:#fff,stroke:#195F8C
+    style PROM fill:#195F8C,color:white,stroke:#195F8C
+    style GRAFANA fill:#FA690F,color:white,stroke:#FA690F
+    style LOKI fill:#195F8C,color:white,stroke:#195F8C
+    style PROMTAIL fill:#195F8C,color:white,stroke:#195F8C
+    style PO fill:#195F8C,color:white,stroke:#195F8C
+    style AM fill:#195F8C,color:white,stroke:#195F8C
 ```
 
 ## Installation
