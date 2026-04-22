@@ -42,7 +42,7 @@ openstack subnet list | grep v4
 
 ## IPv6
 
-The public network provides both a public IPv4 and a public IPv6 address. The default network will also provide a public IPv6 address, meaning you can have public IPv6 connectivity without attaching to the paid public network. IPv6 is not available on the private network.
+The public network provides both a public IPv4 and a public IPv6 address. The default network will also provide a public IPv6 address, meaning you can have public IPv6 connectivity without attaching to the paid public network. The private network assigns a private IPv6 address, which is not routable on the internet — unlike the default and public networks, it cannot be used for public IPv6 connectivity.
 
 ## Network Ports and persistent IP addresses
 
@@ -50,7 +50,7 @@ By default, when you attach a network to an instance directly, the IP address is
 
 To keep the same IP address across instance recreation — useful during restores, flavor changes, or emergencies — create a **Network Port** on the desired network and attach the port to the instance instead of the network directly. The port and its IP address persist independently of any instance.
 
-See [Persistent IP addresses](howto/persistent-ip-address.md) for step-by-step instructions.
+See [Network Ports](howto/network-ports.md) for step-by-step instructions.
 
 ## Security groups
 
@@ -62,7 +62,7 @@ Since all instances are connected to the same routing fabric, security groups mu
 
 ### Creating a security group
 
-In Horizon, go to **Network → Security Groups** and click **Create Security Group**. Give it a descriptive name — security groups are per project and not visible to other projects.
+In the [Horizon dashboard](sites.md), go to **Network → Security Groups** and click **Create Security Group**. Give it a descriptive name — security groups are per project and not visible to other projects.
 
 ![image](../images/create-security-group.png)
 

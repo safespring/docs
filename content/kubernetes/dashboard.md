@@ -1,6 +1,6 @@
 # Kubernetes Dashboard
 
-Whilst most of the interaction with the newly provided cluster can be done through the [kubectl](https://kubernetes.io/docs/reference/kubectl/) command line tool. There are graphical user interfaces that can be used with the cluster such as the [web UI (Kubernetes Dashboard)](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) and [Headlmap](https://headlamp.dev/), out of which we will be focusing.
+Whilst most of the interaction with the newly provided cluster can be done through the [kubectl](https://kubernetes.io/docs/reference/kubectl/) command line tool, you can also use graphical user interfaces such as [Headlamp](https://headlamp.dev/).
 
 ## Headlamp
 
@@ -15,16 +15,16 @@ To get started with Headlamp for desktop follow the [Desktop App](https://headla
 To add a cluster:
 
 1. Add Cluster
-2. Load from KubeConfig, where we need to add the kubeconfig [obtained from portal](portal-overview.md#accessing-kubernetes-cluster)
+2. Load from KubeConfig, where we need to add the kubeconfig [obtained from the portal](portal-overview.md#accessing-kubernetes-cluster)
 3. Finalize adding the cluster
 4. You will be redirected to login
 5. Access the cluster resources and browse available resources
 
-![image](../images/headlmap-overview-desktop.png)
+![image](../images/headlamp-overview-desktop.png)
 
 ### In-cluster Install
 
-Make sure kubeconfig is [obtained from portal](portal-overview.md#accessing-kubernetes-cluster) and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for helm and kubectl command line tools.
+Make sure kubeconfig is [obtained from the portal](portal-overview.md#accessing-kubernetes-cluster) and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for helm and kubectl command line tools.
 
 #### 1. Add the Headlamp Helm Repository
 
@@ -57,7 +57,7 @@ kubectl create token my-headlamp --namespace kube-system
 #### 4. Port Forwarding (Quick Access)
 
 !!! info "Public Access"
-    It is important to be aware when exposing cluster services of the [traffic management](manage-traffic.md) available.
+    Ensure appropriate [traffic management](manage-traffic.md) is configured when exposing cluster services.
 
 For immediate access without setting up ingress and using [port forwarding access](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/):
 

@@ -165,6 +165,7 @@ nav:
           - VPN Options: "compute/vpn.md"
           - API Access: "compute/api.md"
           - Metadata Service: "compute/metadata.md"
+          - Network Ports: "compute/howto/network-ports.md"
       - Management:
           - Instance Actions: "compute/instance-actions.md"
           - Application Credentials: "compute/app-creds.md"
@@ -173,7 +174,6 @@ nav:
           - Trouble Shooting: "compute/troubleshooting.md"
       - HOWTOs:
           - Using Keypairs: "compute/howto/keypairs.md"
-          - Persistent IP Address: "compute/howto/persistent-ip-address.md"
           - How to Tunnel Console Traffic with SSH: "compute/howto/novnc-tunneling.md"
           - Cloud-init and Cloudbase-init: "compute/howto/cloud-init.md"
           - Configuration Drive: "compute/howto/config-drive.md"
@@ -212,12 +212,13 @@ nav:
       - Getting Started: "kubernetes/getting-started.md"
       - Portal Overview: "kubernetes/portal-overview.md"
       - Authentication: "kubernetes/authentication.md"
+      - Audit Logging: "kubernetes/audit-logging.md"
       - Kubernetes Dashboard: "kubernetes/dashboard.md"
+      - Secret Management: "kubernetes/secret-management.md"
       - Traffic Management: "kubernetes/manage-traffic.md"
       - Persistent Volumes: "kubernetes/persistent-volumes.md"
       - Observability: "kubernetes/observability.md"
       - Database Solutions: "kubernetes/database.md"
-      - Secret Management: "kubernetes/secret-management.md"
       - Container Registry: "kubernetes/registry.md"
       - GPU: "kubernetes/gpu.md"
       - Security and Compliance:
