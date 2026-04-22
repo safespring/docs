@@ -210,7 +210,7 @@ any sysctl settings for `accept_ra`.
 Alternative configure all ipv6 settings static.
 
 !!! note "Set static ipv6."
-    Find your ipv6 address from Horizon or by CLI and insert it as `ipv6_address` and set `ipv6_gateway` to the same subnet but `::1` at the end.
+    Find your ipv6 address from the [Horizon dashboard](../compute/sites.md) or by CLI and insert it as `ipv6_address` and set `ipv6_gateway` to the same subnet but `::1` at the end.
 
 
 ``` shell tab="Debian or Ubuntu"

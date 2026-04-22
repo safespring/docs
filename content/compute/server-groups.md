@@ -40,7 +40,7 @@ Use affinity when instances need the lowest possible network latency between the
 
 ## Creating a server group
 
-### Using the Horizon web interface
+### Using the [Horizon](sites.md) web interface
 
 Server groups can be created directly in the Horizon dashboard. Navigate to **Compute** -> **Server Groups** and click **Create Server Group**. Give the group a name and select the desired policy from the dropdown. The group is then available when launching new instances through the **Server Groups** tab in the **Launch Instance** wizard.
 

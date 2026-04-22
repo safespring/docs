@@ -26,7 +26,7 @@ The examples in this document use both s3cmd and aws-cli. See the respective con
 - [aws-cli configuration guide](howto/configs/aws-cli.md)
 
 !!! note
-    **aws** CLI sometimes can be cryptic with error messsages. If querying a property with **aws** CLI and that specific query returns the following:
+    **aws** CLI sometimes can be cryptic with error messages. If querying a property with **aws** CLI and that specific query returns the following:
     ```shell
     argument of type 'NoneType' is not iterable
     ```
@@ -71,7 +71,7 @@ Bucket policies are expressed as JSON-files with a specific format:
 | Statement             | a list of statements                                                                  |
 | Statement.Sid         | arbitrary statement name                                                              |
 | Statement.Effect      | Allowed values: "Allow" or "Deny"                                                     |
-| Statement.Principal   | On or more accounts specified in Amazon arn format:                                   |
+| Statement.Principal   | One or more accounts specified in Amazon arn format:                                   |
 |                       | "AWS": ["arn:aws:iam::FIRST_PROJECT_ID:root","arn:aws:iam::SECOND_PROJECT_ID:root"]   |
 | Statement.Action      | One or more actions that the policy should apply to. For a complete list of actions   |
 |                       | see [here](https://docs.ceph.com/en/pacific/radosgw/bucketpolicy/#bucket-policies)    |
@@ -277,7 +277,7 @@ s3cmd -c first-user-project-s3cfg put productlist.db s3://BUCKET_OWNER_PROJECT_I
 aws --endpoint=$S3_URL s3api put-object --bucket BUCKET_OWNER_PROJECT_ID:mysharedbucket --key mysharedfolder/productlist.db --body productlist.db
 ```
 
-The the second user can download the same file, but will not be able to upload anything:
+The second user can download the same file, but will not be able to upload anything:
 
 ```shell tab="s3cmd"
 s3cmd -c second-user-project-s3cfg get s3://BUCKET_OWNER_PROJECT_ID:mysharedbucket/mysharedfolder/productlist.db
@@ -291,7 +291,7 @@ aws --endpoint=$S3_URL s3api get-object --bucket BUCKET_OWNER_PROJECT_ID:myshare
 It is possible to configure an object to be publicly available, and reachable over HTTPS.
 Below are the most common commands to alter the ACLs on an object or a bucket.
 
-You may choose to remove --recursive if is required only for the bucket or folder and not for objects within.
+You may choose to remove --recursive if it is required only for the bucket or folder and not for objects within.
 
 ```shell tab="s3cmd"
 s3cmd setacl --acl-private --recursive s3://mybucket-name
@@ -572,6 +572,83 @@ aws --endpoint=$S3_URL s3api delete-bucket-lifecycle --bucket mybucket
 
 !!! note
     Lifecycle transition rules (moving objects between storage classes) are not supported on Safespring. Only expiration rules are available.
+
+## Versioning
+
+Versioning keeps multiple versions of an object in the same bucket. When enabled, uploading an object with an existing key creates a new version rather than overwriting the previous one. Deleted objects are replaced with a delete marker, leaving previous versions recoverable.
+
+!!! note
+    Versioning cannot be fully disabled once enabled — only suspended. A suspended bucket stops creating new versions but retains existing ones.
+
+### Enable versioning
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api put-bucket-versioning \
+  --bucket mybucket \
+  --versioning-configuration Status=Enabled
+```
+
+### Check versioning status
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api get-bucket-versioning --bucket mybucket
+```
+
+### List all versions of objects in a bucket
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api list-object-versions --bucket mybucket
+```
+
+To filter by prefix:
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api list-object-versions \
+  --bucket mybucket \
+  --prefix myfile.txt
+```
+
+### Retrieve a specific version
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api get-object \
+  --bucket mybucket \
+  --key myfile.txt \
+  --version-id VERSION_ID \
+  myfile.txt
+```
+
+### Delete a specific version permanently
+
+Deleting a specific version ID removes that version permanently with no delete marker.
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api delete-object \
+  --bucket mybucket \
+  --key myfile.txt \
+  --version-id VERSION_ID
+```
+
+### Restore a previous version
+
+There is no dedicated restore operation. To restore, copy the desired version back as the current version:
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api copy-object \
+  --bucket mybucket \
+  --copy-source "mybucket/myfile.txt?versionId=VERSION_ID" \
+  --key myfile.txt
+```
+
+### Suspend versioning
+
+Suspending versioning stops new versions from being created. Existing versions are preserved.
+
+```shell tab="aws-cli"
+aws --endpoint=$S3_URL s3api put-bucket-versioning \
+  --bucket mybucket \
+  --versioning-configuration Status=Suspended
+```
 
 ## S3 Select
 

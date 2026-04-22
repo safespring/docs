@@ -26,13 +26,13 @@ Safespring uses Calico as its networking engine, which does not use the floating
 !!! warning "Never attach more than one network interface to an instance"
     Each network assigns a default gateway to the instance via DHCP. If an instance is attached to multiple networks (for example both **public** and **default**), it will receive two default gateways, leading to asymmetrical routing and unstable network connectivity. Always attach exactly one network interface per instance.
 
-If you need the instance's IP address to survive instance recreation (for example during a restore process or a flavor change), consider creating a **Network Port** instead of assigning a network directly. The port retains its IP address independently of the instance. See [Persistent IP addresses](howto/persistent-ip-address.md) for details.
+If you need the instance's IP address to survive instance recreation (for example during a restore process or a flavor change), consider creating a **Network Port** instead of assigning a network directly. The port retains its IP address independently of the instance. See [Network Ports](howto/network-ports.md) for details.
 
 For more details on the available networks and how networking works on the platform, see the [Networking documentation](networking.md).
 
 ## Viewing quotas in the dashboard
 
-The **Overview** page in the Horizon dashboard shows your current resource usage as pie charts, with each chart comparing usage against the quota limit. This is the quickest way to check how much headroom you have in a project.
+The **Overview** page in the [Horizon dashboard](sites.md) shows your current resource usage as pie charts, with each chart comparing usage against the quota limit. This is the quickest way to check how much headroom you have in a project.
 
 For more details on the dashboard overview, see the [Getting Started documentation](getting-started.md).
 

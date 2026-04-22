@@ -120,7 +120,7 @@ graph TB
 
 ### Step 1: Add Helm Repositories
 
-Make sure kubeconfig is [obtained from portal](portal-overview.md#accessing-kubernetes-cluster) and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for `helm` and `kubectl` command line tools.
+Make sure kubeconfig is [obtained from the portal](portal-overview.md#accessing-kubernetes-cluster) and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for `helm` and `kubectl` command line tools.
 
 ```shell
 # Add Prometheus Community repository
@@ -535,7 +535,7 @@ spec:
 ## Accessing the Stack
 
 !!! info "Public Access"
-    It is important to be aware when exposing cluster services of the [traffic management](manage-traffic.md) available.
+    Ensure appropriate [traffic management](manage-traffic.md) is configured when exposing cluster services.
     Examples below illustrate local [port forwarding access](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/).
 
 ### Access Grafana Port Forwarding (Quick Access)

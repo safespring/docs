@@ -53,7 +53,7 @@ The explicit configs are stored in the Safespring internal repository/path: `ans
 
 Openstack databases are encrypted using full disk encryption implemented by LUKS, with AES-256 encryption.
 
-Database, API, and other credentials are encrypted using a SOPS keyring that can only be accessed authorized personnel. During runtime these values get stored on disk with restricted permissions(chmod 600 or 700).
+Database, API, and other credentials are encrypted using a SOPS keyring that can only be accessed by authorized personnel. During runtime these values get stored on disk with restricted permissions(chmod 600 or 700).
 
 ### 1.4.3 Authentication and Key Management
 

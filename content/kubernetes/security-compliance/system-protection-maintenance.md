@@ -19,7 +19,6 @@ Safespring implements layered malware protection measures to safeguard Kubernete
 **Continuous Monitoring**:
 
 * Kubescape scans cluster workloads for known misconfigurations and suspicious patterns.
-* Grafana dashboards with Prometheus and Loki provide anomaly detection and alerting for unusual container activity.
 
 ---
 
@@ -64,7 +63,7 @@ Safespring ensures that Kubernetes clusters remain securely configured and align
 
 **Drift Detection and Remediation**: Continuous reconciliation ensures that running clusters match their GitOps configuration state.
 
-**Audit and Monitoring**: Grafana dashboards provide visibility into configuration compliance and highlight deviations.
+**Audit and Monitoring**: Configuration compliance and deviations are monitored via Argo CD dashboards, which highlight drift between the desired and actual system state.
 
 ## 1.4 Cryptography
 

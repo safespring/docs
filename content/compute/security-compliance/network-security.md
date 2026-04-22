@@ -14,7 +14,7 @@ Default settings for the firewall are included in the internal ansible role `ufw
 
 Access control is implemented with role based access control (RBAC) and firewalls.
 
-All administrative access is monitored and and logged as documented in [Logging and Monitoring](logging-monitoring.md).
+All administrative access is monitored and logged as documented in [Logging and Monitoring](logging-monitoring.md).
 
 
 

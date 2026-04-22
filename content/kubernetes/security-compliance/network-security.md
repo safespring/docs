@@ -1,6 +1,6 @@
 # Network Security
 
-This document outlines the network security requirements and practices for Safespring on-demand Kubernetes services.
+This document outlines the network security requirements and practices for Safespring on-demand Kubernetes services with a focus on [operational infrastructure](development-operations-management.md).
 
 ## 4.1 Network Protection
 
@@ -17,15 +17,16 @@ All external traffic to the Kubernetes cluster is routed through a **dedicated H
 **HAProxy Load Balancer**:
 
 * Acts as a secure entry point to the Kubernetes control plane and ingress services.
-* Provides **TLS termination** for incoming traffic.
 * Supports **high availability and redundancy** across multiple nodes.
 * Enforces **rate limiting, connection filtering, and DDoS protection** at the edge.
+* Access to Load Balancer is done via jump host.
 
 On the cluster OS level, **Talos Linux** further reduces the attack surface by:
 
 * Disabling unnecessary services and network daemons.
 * Enforcing secure-by-default configurations with immutable networking settings.
 * Providing an API-driven firewall configuration mechanism.
+* Access to Cilium API is done via jump host.
 
 ## 4.2 Network Services Security
 
@@ -33,12 +34,14 @@ On the cluster OS level, **Talos Linux** further reduces the attack surface by:
 
 * All internal Kubernetes communication is encrypted with TLS.
 * Mutual TLS (mTLS) can be enabled for pod-to-pod and service-to-service traffic using service mesh integrations.
+* Core managed services traffic is restricted using **NetworkPolicies**.
 
 **Service Hardening**:
 
 * Kubernetes API server access is restricted via Zitadel RBAC + MFA authentication.
 * Node-to-node and pod-to-pod traffic flows are minimized using **default-deny NetworkPolicies**.
 * Talos Linux ensures minimal exposure by running no general-purpose services on cluster nodes.
+* Management cluster(s) do not expose any services outside of the clusters via a Ingress or Gateway API.
 
 **Ingress and Egress Control**:
 

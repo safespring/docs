@@ -4,6 +4,35 @@ Volumes are persistent block storage devices that can be attached to instances. 
 
 This page includes OpenStack CLI commands. See the [API Access documentation](api.md) for instructions on how to install and configure the command line client.
 
+## Boot storage options
+
+When launching an instance you choose where the root disk lives. There are two options:
+
+**Ephemeral storage** — the root disk is stored on the compute node's local disk and is tied to the instance lifecycle. It is automatically deleted when the instance is deleted. This is suitable for stateless instances or short-lived workloads where no persistent state is kept on the root disk.
+
+To boot from image with ephemeral storage, set **Select Boot Source** to **Image** in the Launch Instance wizard and set **Create New Volume** to **No**. Pick a flavor starting with **l2**, which includes local storage.
+
+**Volume-backed boot** — the root disk is a persistent volume in the central storage. It survives instance deletion and can be used to recreate the instance later. This is the recommended option for most workloads.
+
+There are two ways to launch a volume-backed instance:
+
+*Option 1 — create the volume first:*
+
+1. Go to **Volumes** and click **Create Volume**.
+2. Set **Volume Source** to **Image** and select your OS image.
+3. Set the volume type to **fast** (recommended for boot disks) and set the size.
+4. Click **Create Volume**, then select **Launch as Instance** from the volume's dropdown menu.
+
+![Create volume from image](../images/create_volume.png)
+
+*Option 2 — let the wizard create the volume:*
+
+In the Launch Instance wizard, set **Select Boot Source** to **Image**, set **Create New Volume** to **Yes**, and set **Delete Volume on Instance Delete** to **No**. The volume is created automatically when the instance launches.
+
+![Launch instance with volume](../images/launch_with_volume.png)
+
+In both cases, pick a flavor starting with **b2** under the **Flavor** tab — these flavors have no local disk, since the root disk is already covered by the volume.
+
 ## Volume types
 
 Safespring Compute offers two volume types:
@@ -22,7 +51,7 @@ It is recommended to use **fast** for boot volumes since a large boot volume wil
 
 ## Creating a volume
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 1. Navigate to **Volumes** and click **Create Volume**.
 2. Give the volume a name.
@@ -47,7 +76,7 @@ openstack volume create --size 20 --type fast --image ubuntu-24.04 my-boot-volum
 
 ## Attaching a volume to an instance
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 In the **Volumes** listing, select **Manage Attachments** from the dropdown menu on the volume. Select the instance you want to attach it to and click **Attach Volume**.
 
@@ -83,7 +112,7 @@ umount /mnt/data
 
 Then detach the volume:
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 In the **Volumes** listing, select **Manage Attachments** from the dropdown menu and click **Detach Volume**.
 
@@ -97,7 +126,7 @@ openstack server remove volume my-instance my-data-volume
 
 You can increase the size of an existing volume. The volume must be detached from any instance before extending.
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 In the **Volumes** listing, select **Extend Volume** from the dropdown menu and enter the new size.
 
@@ -121,7 +150,7 @@ xfs_growfs /mnt/data
 
 A volume must be detached before it can be deleted.
 
-### Using the Horizon dashboard
+### Using the [Horizon dashboard](sites.md)
 
 In the **Volumes** listing, select **Delete Volume** from the dropdown menu.
 

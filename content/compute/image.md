@@ -29,17 +29,17 @@ Safespring does not make any modifications to the images but sources them from t
 
 Safespring make sure the following either works directly, or provide documentation for how to make it work for the images uploaded to the platform:
 
-1. The checkssum provided by the upstream provider should match the checksom of the image uploaded to the platform
-2. The the images can boot on a new instance
+1. The checksum provided by the upstream provider should match the checksum of the image uploaded to the platform
+2. The images can boot on a new instance
 3. A new instance booted from the image gets an IPv4 and IPv6 address
-4. The the SSH-key provided at creation of a new instance gets properly injected into the "authorized_keys"-file of the instance
-5. The the instance can connect to a network with one interface.
+4. The SSH-key provided at creation of a new instance gets properly injected into the "authorized_keys"-file of the instance
+5. The instance can connect to a network with one interface.
 
 ## Uploading an image by customer
 
 ### Size limit using the web interface
 
-While it is possible to upload images using the Horizon web interface
+While it is possible to upload images using the [Horizon](sites.md) web interface
 there is currently a 2G size limit. For larger images, using the command
 line tools will work or asking the openstack software to DL the image
 from an URL you supply.
