@@ -26,7 +26,95 @@ The monitoring stack follows this data flow:
 5. **Visualization**: Grafana queries both Prometheus and Loki for unified dashboards
 6. **Alerting**: Prometheus evaluates rules and sends alerts to AlertManager
 
-[![image](../images/observability-diagram.png)](../images/observability-diagram.png)
+```mermaid
+graph TB
+    subgraph "Kubernetes Cluster"
+        subgraph "Applications"
+            APP1[Application Pods]
+            APP2[System Pods]
+            APP3[Kubernetes Components]
+        end
+        
+        subgraph "Metrics Collection"
+            NE[Node Exporter<br/>Metrics]
+            KSM[Kube-State-Metrics<br/>K8s Resource Metrics]
+            SM[Service Monitors<br/>Custom App Metrics]
+        end
+        
+        subgraph "Log Collection"
+            PROMTAIL[Promtail<br/>DaemonSet<br/>Collects Logs]
+        end
+        
+        subgraph "Kube-Prometheus-Stack"
+            PO[Prometheus Operator<br/>Manages CRDs]
+            PROM[Prometheus<br/>Time-Series DB]
+            AM[AlertManager<br/>Alert Routing]
+            GRAFANA[Grafana<br/>Visualization]
+        end
+        
+        subgraph "Loki Stack"
+            LOKI[Loki<br/>Log Aggregation]
+            DISTRIBUTOR[Distributor]
+            INGESTER[Ingester]
+            QUERIER[Querier]
+        end
+        
+        subgraph "Storage"
+            PROMSTORAGE[(Prometheus<br/>Storage<br/>PV)]
+            LOKISTORAGE[(Loki Storage<br/>S3/MinIO)]
+        end
+    end
+    
+    subgraph "Users"
+        USER[DevOps Engineer]
+        ALERT[Alert Receivers<br/>Email/Slack/PagerDuty]
+    end
+    
+    APP1 -->|Metrics| SM
+    APP2 -->|Metrics| SM
+    APP3 -->|Metrics| KSM
+    
+    APP1 -.->|Logs| PROMTAIL
+    APP2 -.->|Logs| PROMTAIL
+    APP3 -.->|Logs| PROMTAIL
+    
+    NE -->|Node Metrics| PROM
+    KSM -->|Resource State| PROM
+    SM -->|Scrape Targets| PROM
+    
+    PO -->|Manages| PROM
+    PO -->|Manages| AM
+    
+    PROM -->|Stores Metrics| PROMSTORAGE
+    PROM -->|Triggers Alerts| AM
+    PROM -->|Metrics Data| GRAFANA
+    
+    PROMTAIL -->|Push Logs| DISTRIBUTOR
+    DISTRIBUTOR -->|Write| INGESTER
+    INGESTER -->|Store| LOKISTORAGE
+    QUERIER -->|Query| LOKISTORAGE
+    QUERIER -->|Read| INGESTER
+    
+    LOKI -->|Manages| DISTRIBUTOR
+    LOKI -->|Manages| INGESTER
+    LOKI -->|Manages| QUERIER
+    
+    GRAFANA -->|Query Logs| QUERIER
+    GRAFANA -->|Dashboards| USER
+    
+    AM -->|Send Alerts| ALERT
+    AM -->|Alert Status| GRAFANA
+    
+    USER -->|Configure| PO
+    USER -->|Access UI| GRAFANA
+    
+    style PROM fill:#195F8C,color:white,stroke:#195F8C
+    style GRAFANA fill:#FA690F,color:white,stroke:#FA690F
+    style LOKI fill:#195F8C,color:white,stroke:#195F8C
+    style PROMTAIL fill:#195F8C,color:white,stroke:#195F8C
+    style PO fill:#195F8C,color:white,stroke:#195F8C
+    style AM fill:#195F8C,color:white,stroke:#195F8C
+```
 
 ## Installation
 
