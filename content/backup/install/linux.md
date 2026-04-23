@@ -8,7 +8,7 @@ Red Hat Enterprise Linux (64-bit).
 
 Required files:
 
-- <a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/" target="_blank">IBM Storage Protect Backup-Archive Client</a>
+- <a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r2/Linux/" target="_blank">IBM Storage Protect Backup-Archive Client</a>
 - [SafeDC Root CA PEM File](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem) (Right-click and Save)
 - [SafeDC Default Option file dsm.opt](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.opt.sample) (Right-click and Save)
 - [SafeDC Default Configuration file dsm.sys](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/unix/dsm.sys.sample) (Right-click and Save)
@@ -21,24 +21,24 @@ Required files:
 
     1. Ubuntu / Debian
        ```shell
-       wget https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86_DEB/BA/v81xx/8.x.xx.x-TIV-TSMBAC-LinuxX86_DEB.tar
+       wget https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r2/Linux/LinuxX86_DEB/BA/v82xx/8.x.xx.x-TIV-TSMBAC-LinuxX86_DEB.tar
        ```
     
     2. RHEL / RPM-based distros
        ```shell
-       wget https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Linux/LinuxX86/BA/v81xx/8.x.xx.x-TIV-TSMBAC-LinuxX86.tar
+       wget https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r2/Linux/LinuxX86/BA/v82xx/8.x.xx.x-TIV-TSMBAC-LinuxX86.tar
        ```
 
 2. Extract the package `8.x.x.x-TIV-TSMBAC-LinuxX86.tar` for RPM-based Linux distros or `8.x.x.x-TIV-TSMBAC-LinuxX86_DEB.tar` for Debian based Linux distros
 
       1. Ubuntu / Debian
          ```shell
-         tar xvf 8.1.xx.x-TIVBAC-LinuxX86_DEB.tar
+         tar xvf 8.2.xx.x-TIVBAC-LinuxX86_DEB.tar
          ```
 
       2. RHEL / RPM-based distros
          ```shell
-         tar xvf 8.1.xx.x-TIVBAC-LinuxX86.tar
+         tar xvf 8.2.xx.x-TIVBAC-LinuxX86.tar
          ```
 
 3. Install the minimum requirement packages, `gskcrypt64`, `gskssl64`, `tivsm-api64`, `tivsm-ba`. All other packages have other functionalities like journaling.
