@@ -27,17 +27,56 @@ Alternatively, you can issue S3 credentials from the command line by
 authenticating with an Application Credential — see
 [Issue S3 credentials with the openstack CLI](howto/openstack-cli-credentials.md).
 
+## S3 credentials, users, and project lifecycle
+
+S3 credentials are issued per user, but the S3 account they unlock is bound
+to the project (see the note at the top of this section). A few less
+obvious consequences are worth keeping in mind:
+
+* **Removing a user does not remove the data.** When a user is removed
+  from the project, other users keep their access to the S3 account and
+  its buckets unchanged.
+* **A re-added user inherits existing data.** If every user is removed
+  from a project and a new user is later added, the new user can see the
+  buckets and objects created by the previous users — the data is bound
+  to the project, not to any individual user.
+* **Removing a user only invalidates that user's keys.** Their personal
+  access/secret key pair stops working immediately, but keys held by
+  other users in the same project are unaffected. Disabling a user's SSO
+  sign-in without removing the underlying account leaves their
+  credentials in place.
+
+### Personal vs. shared credentials
+
+When an application needs S3 credentials, it can be tempting to issue a
+single shared key pair from a dedicated service account and reuse it
+across the team. We recommend the opposite: keep credentials personal,
+and let each user issue their own.
+
+The reason is rotation blast radius. Consider two scenarios when someone
+leaves the team:
+
+1. **Termination for cause.** Every credential the leaving user had
+   access to needs to be rotated. With personal credentials, that scope
+   is limited to the keys that user issued. With a shared service-account
+   credential, every application and team member that used the shared
+   credential is affected.
+1. **Amicable departure.** Whether to rotate is a policy decision, but
+   the scope is the same as above — fewer credentials are in play when
+   they are bound to individual users.
+
+In both cases, personal credentials limit how much has to change when
+someone leaves.
+
 ## Minimum required info for S3 access
 
 Many clients will assume you are talking to AWS S3, in which case they might
 want you to add region and country and other information. This information isn't
 used by our endpoint, so you should be able to get many clients going with only
-`access_key`, `secret_key`.  The access- and secret keys are not personal, so
-you should store them securely and share them within a project.
-
-!!! note
-    In a future update, we will offer personal S3 credentials that are
-    valid within a project.
+`access_key`, `secret_key`. Each user has their own access/secret key pair;
+store them securely and do not share them with other users — see
+[S3 credentials, users, and project lifecycle](#s3-credentials-users-and-project-lifecycle)
+for the rationale.
 
 The `https` URLs to the service:
 
