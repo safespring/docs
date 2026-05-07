@@ -111,3 +111,9 @@ export OS_APPLICATION_CREDENTIAL_SECRET=<secret of the noted credential>
 
 !!! note "Make sure none of the user or project related environment variables are set, since that can prevent application credentials to work."
 
+## See also
+
+* [Issue S3 credentials with the openstack CLI](../storage/howto/openstack-cli-credentials.md)
+  — use an Application Credential to create, list, rotate or revoke S3 (EC2)
+  credentials from the command line.
+
