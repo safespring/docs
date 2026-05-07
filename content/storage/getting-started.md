@@ -23,7 +23,9 @@ information screen:
 
 ![View Credentials](../images/view-credentials.png)
 
-
+Alternatively, you can issue S3 credentials from the command line by
+authenticating with an Application Credential — see
+[Issue S3 credentials with the openstack CLI](howto/openstack-cli-credentials.md).
 
 ## Minimum required info for S3 access
 

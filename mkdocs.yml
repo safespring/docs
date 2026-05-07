@@ -194,6 +194,7 @@ nav:
       - S3 Usage Report: "storage/usage-statistics.md"
       - HOWTOs:
           - Object Locking: "storage/object-locking.md"
+          - Issue S3 credentials with the openstack CLI: "storage/howto/openstack-cli-credentials.md"
           - Example config for tools:
               - Example s3fs config: "storage/howto/configs/s3fs.md"
               - Example s3cmd config: "storage/howto/configs/s3cmd.md"
