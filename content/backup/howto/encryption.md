@@ -149,7 +149,7 @@ If you have chosen to store the encryption key password on the machine
 (using the option `ENCRYPTKEY save`), 
 then this password will be stored in a keystore located
 at `/etc/adsm/TSM.KDB` (on Unix, Linux or macOS) 
-or `C:\ProgramData\Tivoli\TSM\baclient\Nodes\[your node name]\DCO1-BACKUP-SERVER-2\TSM.KDB` 
+or `C:\ProgramData\Tivoli\TSM\baclient\Nodes\[your node name]\[server name]\TSM.KDB` 
 (on Windows).
 
 In such a case, the keystore `TSM.KDB` along with `TSM.sth` and `TSM.IDX` 
@@ -175,15 +175,16 @@ INCLUDE.ENCRYPT "/etc/adsm/.../*"
 ### On Windows
 Exclude the keystore:
 ```
-EXCLUDE.DIR "C:\ProgramData\Tivoli\TSM\baclient\Nodes\[your node name]\DCO1-BACKUP-SERVER-2"
+EXCLUDE.DIR "C:\ProgramData\Tivoli\TSM\baclient\Nodes\[your node name]\[server name]"
 ```
 
 Or, encrypt it:
 ```
-INCLUDE.ENCRYPT "C:\ProgramData\Tivoli\TSM\baclient\Nodes\[your node name]\DCO1-BACKUP-SERVER-2\...\*"
+INCLUDE.ENCRYPT "C:\ProgramData\Tivoli\TSM\baclient\Nodes\[your node name]\[server name]\...\*"
 ```
 
-Remember to replace `[your node name]` with your actual node name.
+Remember to replace `[your node name]` with your actual node name, and `[server name]` with the name of the 
+backup server.
 
 ## Read more on IBMs site
 
