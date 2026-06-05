@@ -7,7 +7,7 @@ since recent macOS requires a recent TSM to work, this folder holds 7.1.8.x.:
     [Mac TSM client 7.1.8.11](https://public.dhe.ibm.com/storage/tivoli-storage-management/patches/client/v7r1/Mac/v718/7.1.8.11-TIV-TSMBAC-Mac.dmg)
 
 !!! note "Latest V8 release"
-    [Mac TSM client 8.1.26.0](https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/Mac/v8126/8.1.26.0-TIV-TSMBAC-Mac.dmg)
+    [Mac TSM client 8.2.1](https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r2/Mac/v821/8.2.1.0-TIV-TSMBAC-Mac.dmg)
 
 Install it as usual on Mac by attaching the DMG as a disk and then click on the installer icon.
 
