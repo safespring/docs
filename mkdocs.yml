@@ -10,40 +10,95 @@ edit_uri: "edit/master/content/"
 # Safespring theme
 theme:
   name: "material"
-  feature:
-    tabs: false
+  custom_dir: "overrides"
   logo: "safespring_symbol_white_svg.svg"
   favicon: "favicon.ico"
-extra_css:
-  - "safespring.css"
-extra_javascript:
-  - "https://lbpj80qtys85.statuspage.io/embed/script.js"
-extra:
   font:
     text: "Montserrat"
-    code: "Ubuntu Mono"
+    code: "Intel One Mono"
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.footer
+extra_css:
+  - "safespring.css"
+extra:
+  generator: false
+  safespring_services:
+    - "Backup"
+    - "Compute"
+    - "Storage"
+    - "On-demand Kubernetes"
+    - "Self-service Portal & API"
+    - "Status and support"
+  safespring_services_menu:
+    - "Backup"
+    - "Compute"
+    - "Storage"
+    - "On-demand Kubernetes"
+    - "Status and support"
+  safespring_top_nav:
+    - "On-demand Kubernetes"
+    - "Compute"
+    - "Storage"
+    - "Backup"
+  safespring_top_nav_labels:
+    On-demand Kubernetes: "Kubernetes"
+  safespring_more_menu_exclude:
+    - "Overview"
+    - "On-demand Kubernetes"
+    - "Compute"
+    - "Storage"
+    - "Backup"
+    - "Self-service Portal & API"
+extra_javascript:
+  - "https://lbpj80qtys85.statuspage.io/embed/script.js"
+  - "javascripts/mermaid-viewer.js"
+  - "safespring-codeblocks.js"
 
-# https://squidfunk.github.io/mkdocs-material/getting-started/#extensions
+hooks:
+  - hooks/legacy_tabbed_fences.py
+
+# https://squidfunk.github.io/mkdocs-material/setup/extensions/
 markdown_extensions:
   - admonition
-  - codehilite:
+  - pymdownx.highlight:
       guess_lang: false
+  - pymdownx.tabbed:
+      alternate_style: true
   - meta
   - toc:
       permalink: true
-  - pymdownx.arithmatex
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.betterem:
       smart_enable: all
   - pymdownx.caret
   - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
@@ -51,7 +106,7 @@ markdown_extensions:
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
-          class: mermaid
+          class: safespring-mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
 
 # Pages layout
@@ -65,14 +120,6 @@ nav:
       - System Protection and Maintenance: "security-compliance/system-protection-maintenance.md"
   - Backup:
       - Quick-Start Guide: "backup/quickstart-guide.md"
-      - Security and Compliance:
-          - Overview: "backup/security-compliance/index.md"
-          - System Protection and Maintenance: "backup/security-compliance/system-protection-maintenance.md"
-          - Data Management: "backup/security-compliance/data-management.md"
-          - Logging and Monitoring: "backup/security-compliance/logging-monitoring.md"
-          - Network Security: "backup/security-compliance/network-security.md"
-          - Secure Development: "backup/security-compliance/secure-development.md"
-          - Development and Operations Management: "backup/security-compliance/development-operations-management.md"
       - Installation:
           - Overview: "backup/install/overview.md"
           - Linux: "backup/install/linux.md"
@@ -140,16 +187,16 @@ nav:
           - FAQ: "backup/legacy-backup-service/faq.md"
           - Performance: "backup/legacy-backup-service/performance.md"
           - Status: "backup/legacy-backup-service/status.md"
+      - Security and Compliance:
+          - Overview: "backup/security-compliance/index.md"
+          - System Protection and Maintenance: "backup/security-compliance/system-protection-maintenance.md"
+          - Data Management: "backup/security-compliance/data-management.md"
+          - Logging and Monitoring: "backup/security-compliance/logging-monitoring.md"
+          - Network Security: "backup/security-compliance/network-security.md"
+          - Secure Development: "backup/security-compliance/secure-development.md"
+          - Development and Operations Management: "backup/security-compliance/development-operations-management.md"
   - Compute:
       - Getting Started: "compute/getting-started.md"
-      - Security and Compliance:
-          - Overview: "compute/security-compliance/index.md"
-          - System Protection and Maintenance: "compute/security-compliance/system-protection-maintenance.md"
-          - Data Management: "compute/security-compliance/data-management.md"
-          - Logging and Monitoring: "compute/security-compliance/logging-monitoring.md"
-          - Network Security: "compute/security-compliance/network-security.md"
-          - Secure Development: "compute/security-compliance/secure-development.md"
-          - Development and Operations Management: "compute/security-compliance/development-operations-management.md"
       - Infrastructure:
           - Flavors: "compute/flavors.md"
           - GPU Flavors: "compute/gpu.md"
@@ -178,16 +225,16 @@ nav:
           - Windows Images: "compute/howto/windows.md"
           - Migrate Instance to Another Project: "compute/howto/migrate-between-projects.md"
           - Taking Snapshots of Instances: "compute/howto/snapshotting-instances.md"
+      - Security and Compliance:
+          - Overview: "compute/security-compliance/index.md"
+          - System Protection and Maintenance: "compute/security-compliance/system-protection-maintenance.md"
+          - Data Management: "compute/security-compliance/data-management.md"
+          - Logging and Monitoring: "compute/security-compliance/logging-monitoring.md"
+          - Network Security: "compute/security-compliance/network-security.md"
+          - Secure Development: "compute/security-compliance/secure-development.md"
+          - Development and Operations Management: "compute/security-compliance/development-operations-management.md"
   - Storage:
       - Getting Started: "storage/getting-started.md"
-      - Security and Compliance:
-          - Overview: "storage/security-compliance/index.md"
-          - System Protection and Maintenance: "storage/security-compliance/system-protection-maintenance.md"
-          - Data Management: "storage/security-compliance/data-management.md"
-          - Logging and Monitoring: "storage/security-compliance/logging-monitoring.md"
-          - Network Security: "storage/security-compliance/network-security.md"
-          - Secure Development: "storage/security-compliance/secure-development.md"
-          - Development and Operations Management: "storage/security-compliance/development-operations-management.md"
       - S3 Quotas: "storage/quota.md"
       - S3 API Compatibility: "storage/s3-compatibility.md"
       - S3 Advanced Features: "storage/s3-advanced.md"
@@ -207,6 +254,14 @@ nav:
       - Tips and Tricks: "storage/tips-n-tricks.md"
       - Backup Exec and Safespring Storage: "storage/backup-exec.md"
       - Other Backends: "storage/other-backends.md"
+      - Security and Compliance:
+          - Overview: "storage/security-compliance/index.md"
+          - System Protection and Maintenance: "storage/security-compliance/system-protection-maintenance.md"
+          - Data Management: "storage/security-compliance/data-management.md"
+          - Logging and Monitoring: "storage/security-compliance/logging-monitoring.md"
+          - Network Security: "storage/security-compliance/network-security.md"
+          - Secure Development: "storage/security-compliance/secure-development.md"
+          - Development and Operations Management: "storage/security-compliance/development-operations-management.md"
   - On-demand Kubernetes:
       - Getting Started: "kubernetes/getting-started.md"
       - Portal Overview: "kubernetes/portal-overview.md"
@@ -220,6 +275,7 @@ nav:
       - Database Solutions: "kubernetes/database.md"
       - Container Registry: "kubernetes/registry.md"
       - GPU: "kubernetes/gpu.md"
+      - Trouble Shooting: "kubernetes/troubleshooting.md"
       - Security and Compliance:
           - Overview: "kubernetes/security-compliance/index.md"
           - System Protection and Maintenance: "kubernetes/security-compliance/system-protection-maintenance.md"
@@ -228,7 +284,6 @@ nav:
           - Network Security: "kubernetes/security-compliance/network-security.md"
           - Secure Development: "kubernetes/security-compliance/secure-development.md"
           - Development and Operations Management: "kubernetes/security-compliance/development-operations-management.md"
-      - Trouble Shooting: "kubernetes/troubleshooting.md"
   - Self-service Portal & API:
       - Getting Started: "portal-api/getting-started.md"
       - Security and Compliance:

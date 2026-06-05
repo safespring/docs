@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block header %}
+  {{ super() }}
+  {% set more_exclude = config.extra.safespring_more_menu_exclude | d([]) %}
+  <nav class="safespring-services-menu" id="safespring-services-menu" aria-label="More">
+    <div class="safespring-services-menu__heading">More</div>
+    <ul class="safespring-services-menu__list">
+      {% for nav_item in nav.items %}
+        {% if nav_item.title not in more_exclude %}
+          {% set first = nav_item.children | first %}
+          {% set href = first.url if first else nav_item.url %}
+          <li class="safespring-services-menu__item">
+            <a class="safespring-services-menu__link{% if nav_item.active %} safespring-services-menu__link--active{% endif %}" href="{{ href | url }}">
+              {{ nav_item.title }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+{% endblock %}
+
+{% block site_nav %}
+  {% if nav %}
+    {% if page.meta and page.meta.hide %}
+      {% set hidden = "hidden" if "navigation" in page.meta.hide %}
+    {% endif %}
+    <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" {{ hidden }}>
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+          {% include "partials/nav.html" %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if "toc.integrate" not in features %}
+    {% if page.meta and page.meta.hide %}
+      {% set hidden = "hidden" if "toc" in page.meta.hide %}
+    {% endif %}
+    <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" {{ hidden }}>
+      {% if config.repo_url %}
+        <aside class="safespring-source-card" aria-label="{{ lang.t('source') }}">
+          <div class="safespring-source-card__label">Repository</div>
+          {% include "partials/source.html" %}
+        </aside>
+      {% endif %}
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+          {% include "partials/toc.html" %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}

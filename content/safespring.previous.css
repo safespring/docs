@@ -1,0 +1,588 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --main-color: #195f8c;
+  --middle-blue-color: #E7EFF3;
+  --cloud-blue-color: #FAFEFE;
+  --md-primary-fg-color: #195f8c;
+  --md-accent-fg-color: #fa690f;
+  --md-text-font: "Montserrat";
+  --md-code-font: "Intel One Mono";
+}
+
+.md-typeset {
+  font-family: "Montserrat", sans-serif;
+  color: #323232;
+  font: 400 1.125rem !important;
+  line-height: 1.2;
+}
+
+h2 {
+  color: #195f8c;
+  font-family: Hind, sans-serif;
+  font-weight: 300 !important;
+  margin: 2rem 0 -0.8rem !important;
+}
+
+h1 {
+  font-family: Hind, sans-serif;
+  font-weight: 300 !important;
+  color: #000 !important;
+}
+
+h3, h4, h5, h6 {
+  color: #3C9BCD;
+  font-family: Hind, sans-serif;
+  font-weight: 300 !important;
+  margin: 1.5rem 0 -0.8rem !important;
+}
+
+.codehilite,
+.codehilite pre,
+.highlight,
+.highlight pre,
+.md-typeset .highlighttable,
+.md-typeset .highlighttable .linenos,
+.superfences-content,
+.superfences-content .codehilite,
+.superfences-content .codehilite pre {
+  background-color: #E7EFF3 !important;
+  border-radius: 0.6rem !important;
+}
+
+.codehilite pre {
+  margin: 0;
+}
+
+.md-typeset code {
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+img {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+.md-nav,
+.md-nav .md-nav__link,
+.md-nav .md-nav__title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link,
+.md-nav--primary > .md-nav__list > .md-nav__item > label.md-nav__link,
+.md-nav__title--site,
+.md-header__title {
+  font-family: Hind, sans-serif;
+  font-weight: 300 !important;
+}
+
+.md-nav--primary .md-nav[data-md-level="1"] .md-nav__link,
+.md-nav--primary .md-nav[data-md-level="1"] .md-nav__title,
+.md-nav--primary .md-nav[data-md-level="2"] .md-nav__link,
+.md-nav--primary .md-nav[data-md-level="2"] .md-nav__title,
+.md-nav--primary .md-nav[data-md-level="3"] .md-nav__link,
+.md-nav--primary .md-nav[data-md-level="3"] .md-nav__title {
+  font-size: 0.6rem;
+  line-height: 1.25;
+}
+
+.md-nav--primary .md-nav[data-md-level="1"],
+.md-nav--primary .md-nav[data-md-level="2"],
+.md-nav--primary .md-nav[data-md-level="3"],
+.md-nav--primary .md-nav[data-md-level="4"] {
+  border-left: solid 1px #E7EFF3;
+  margin-left: 3px;
+}
+
+.md-nav__title {
+  background: none !important;
+}
+.md-sidebar {
+}
+.md-nav--secondary {
+  border: none !important;
+  padding: 10px !important;
+}
+/*.md-sidebar--primary {
+}
+
+
+.md-nav__title--site {
+  font-size: 1.5em;
+  padding: 0 0 20px 0;
+}
+
+.md-sidebar--primary li {
+  font-size: 1.3em;
+  border-top: 0.5px solid #EBF1F5;
+  padding: 6px 10px 10px 10px;
+  margin: 0;
+}
+
+.md-sidebar--primary li li{
+  font-size: 1.1em;
+  border-top: none;
+  padding: 0 0 0 20px;
+  margin: 0;
+}
+
+.md-nav__list {
+  padding-top: 0;
+}*/
+
+/* START - notes, warning, information cards */
+
+.admonition.note {
+  border-left: .4rem solid #3C9BCD !important;
+}
+
+.admonition.info {
+  border-left: .4rem solid #32CD32 !important;
+}
+
+.admonition.warning {
+  border-left: .4rem solid #FA690F !important;
+}
+
+.warning .admonition-title::before {
+  color: #FA690F !important;
+}
+
+.info .admonition-title::before {
+  color: #32CD32 !important;
+}
+
+.info .admonition-title {
+  background-color: rgba(50, 205, 5, 0.1) !important;
+  color: #32CD32;
+}
+
+.warning .admonition-title {
+  background-color: rgba(250, 105, 15, 0.1) !important;
+  color: #FA690F;
+}
+
+.note .admonition-title {
+  background-color: #EBF1F5 !important;
+  color: #195F8C;
+}
+
+.admonition-title::before {
+  color: #3C9BCD !important;
+}
+
+/* END - notes, warning, information cards */
+
+/* START - tables */
+
+thead>tr>th {
+  background-color: #fafefe !important;
+  color: #3C9BCD !important;
+  font-family: Hind !important;
+  font-weight: 300 !important;
+  border-bottom: 1px dotted #3C9BCD !important;
+}
+
+table {
+  box-shadow: none !important;
+  border-bottom: 1px dotted #3C9BCD !important;
+}
+
+.md-typeset table:not([class]) td {
+  border: 0;
+}
+
+.md-typeset table:not([class]) tr:nth-child(odd) {
+  background-color: #EBF1F5;
+}
+
+/* END - tables */
+
+.md-content ul {
+  list-style: none; /* Remove default bullets */
+}
+
+.md-content ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #3C9BCD; /* Change the color */
+  font-family: auto;
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+.md-content ul li ul li::before {
+  content: "–";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #FA690F; /* Change the color */
+  font-family: auto;
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+}
+
+.md-content ul li ul li ul li::before {
+  content: "+";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #32CD32; /* Change the color */
+  font-family: auto;
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+}
+
+button.md-clipboard:before {
+  color: rgba(25,95,140,.6) !important;
+}
+
+.md-container {
+  background-color: #FAFEFE;
+}
+
+.md-sidebar--secondary {
+  margin-top: 20px;
+  height: auto !important;
+  background-color: #FFF;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+}
+
+/*.md-sidebar__scrollwrap {
+  min-height: min-content;
+}*/
+
+
+
+.md-clipboard:hover:before {
+  color: rgba(25,95,140,1) !important;
+}
+
+blockquote {
+  text-indent: 0;
+  margin: 10px 0;
+}
+
+@media only screen and (min-width:76.25em) {
+  .md-sidebar--primary .md-sidebar__inner {
+    border-right: 1px solid #E7EFF3;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+.md-nav__list {
+  color: #195f8c;
+}
+
+.md-nav__list .md-nav__list {
+  font-family: Hind;
+  font-weight: 400 !important;
+  color: #323232;
+}
+
+.md-typeset .md-content__icon {
+  font-family: Material Icons;
+}
+
+.md-typeset a {
+  color: #323232;
+  font-family: Montserrat;
+  text-decoration: underline;
+}
+
+.md-header {
+  background-color: #195f8c;
+}
+
+.md-nav--secondary {
+  border-left: .4rem solid #195f8c
+}
+
+[data-md-component="toc"] .md-nav__title {
+  font-size: 0;
+}
+
+[data-md-component="toc"] .md-nav__title::after {
+  content: "On this page";
+  font-family: Hind, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+}
+
+.md-nav--secondary .md-nav__link--active {
+  color: #195f8c
+}
+
+.md-nav--primary .md-nav__item--active > .md-nav__link:not(.md-nav__link--active),
+.md-nav--primary .md-nav__item--active > label.md-nav__link {
+  color: #3C9BCD;
+}
+
+.md-nav--primary a.md-nav__link--active {
+  color: #195F8C;
+  background-color: #E7EFF3;
+  margin-left: -8px;
+  margin-top: 4px;
+  margin-bottom: -5px;
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+
+.md-tabs {
+  background: rgba(25, 95, 140, .9675);
+}
+
+.md-tabs[data-md-state=hidden] {
+  background: #195f8c;
+}
+
+@media only screen and (max-width:76.1875em) {
+  html .md-nav--primary .md-nav__title--site {
+    background-color: #195f8c;
+  }
+}
+
+@media only screen and (max-width:59.9375em) {
+  .md-nav__source {
+    background-color: rgba(25, 95, 140, .9675);
+  }
+}
+
+.superfences-tabs>label:hover {
+  color: #195f8c !important;
+}
+
+.superfences-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0 0.25rem;
+  background: none;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+
+.superfences-tabs > label {
+  background-color: transparent;
+  border: none;
+  border-radius: 0.65rem 0.65rem 0 0;
+  color: #4A5661;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0.38rem 0.8rem 0.42rem;
+  position: relative;
+  top: 0;
+  z-index: 1;
+}
+
+.superfences-tabs>input:checked+label {
+  color: #195f8c !important;
+  background-color: transparent;
+  font-weight: 600 !important;
+  z-index: 2;
+}
+
+.superfences-tabs > .superfences-content {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #E7EFF3 !important;
+  border: none;
+  border-radius: 0 0.65rem 0.65rem 0.65rem;
+  overflow: hidden;
+}
+
+.superfences-tabs > .superfences-content .codehilite,
+.superfences-tabs > .superfences-content .codehilite pre {
+  border-radius: inherit !important;
+}
+
+.superfences-tabs > .superfences-content .codehilite pre {
+  border-top-left-radius: 0 !important;
+}
+
+
+/*
+accent color #fa690f
+*/
+.md-typeset a:active, .md-typeset a:hover {
+  color: #fa690f
+}
+
+.md-typeset pre::-webkit-scrollbar-thumb:hover {
+  background-color: #fa690f
+}
+
+.md-nav__link:focus, .md-nav__link:hover {
+  color: #fa690f
+}
+
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover {
+  background-color: #fa690f;
+}
+
+.md-source-file:hover:before {
+  background: #fa690f;
+}
+
+.md-typeset .codehilite::-webkit-scrollbar-thumb:hover {
+  background-color: #fa690f;
+}
+
+.md-typeset .footnote li:hover .footnote-backref:hover, .md-typeset .footnote li:target .footnote-backref {
+  color: #fa690f;
+}
+
+.md-typeset [id] .headerlink:focus, .md-typeset [id]:hover .headerlink:hover, .md-typeset [id]:target .headerlink {
+  color: #fa690f;
+}
+
+@media only screen and (min-width:60em) {
+  .md-search__scrollwrap::-webkit-scrollbar-thumb:hover {
+    background-color: #fa690f;
+  }
+
+  .md-search:focus-within .md-search__form {
+    background-color: var(--md-default-bg-color);
+    border-radius: 0.1rem 0.1rem 0 0;
+    box-shadow: var(--md-shadow-z2);
+    color: var(--md-default-fg-color);
+  }
+
+  .md-search:focus-within .md-search__input {
+    text-overflow: clip;
+  }
+
+  .md-search:focus-within .md-search__input::placeholder {
+    color: rgba(0, 0, 0, 0);
+  }
+
+  .md-search:focus-within .md-search__input + .md-search__icon {
+    color: var(--md-default-fg-color--light);
+  }
+
+  .md-search:focus-within .md-search__input:valid ~ .md-search__options > .md-icon {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+
+  .md-search:focus-within .md-search__output {
+    box-shadow: var(--md-shadow-z3);
+    opacity: 1;
+  }
+
+  .md-search:focus-within .md-search__scrollwrap {
+    max-height: 75vh;
+  }
+}
+
+@media only screen and (min-width:60em) and (max-width:76.2344em) {
+  .md-search:focus-within .md-search__inner {
+    width: 23.4rem;
+  }
+}
+
+@media only screen and (min-width:76.25em) {
+  .md-search:focus-within .md-search__inner {
+    width: 34.4rem;
+  }
+}
+
+.md-footer-meta {
+  display: none;
+}
+
+pre > code {
+  padding:10px 0 18px 0;
+}
+
+p>code {
+  white-space: nowrap;
+  font-size: 1rem;
+}
+
+@media only screen and (max-width:900px) {
+  p>code {
+    white-space: normal;
+  }
+}
+
+code {
+  font-style:normal !important;
+  font-size: 0.7rem !important;
+  background:#EAF0F4 !important;
+  padding:0 8px 2px 8px !important;
+  border-radius:7px !important;
+  color:#195F8C !important;
+  overflow: auto !important;
+  font-family: "Intel One Mono", monospace !important;
+  line-height: 1 !important;
+}
+
+code>span {
+  font-size: 0.9rem;
+}
+
+/* === CODE BLOCK  === */
+
+.md-typeset pre {
+  position:relative;
+  background:#EAF0F4 !important;
+  color: #195F8C;
+  max-width:800px !important;
+  padding:30px 5px 30px 30px !important;
+  border-radius:10px;
+  overflow: auto;
+  font-family: "Intel One Mono";
+  font-size: 0.6rem !important;
+  font-weight: 500;
+  scrollbar-width: thin;
+  scrollbar-color: var(--main-color) var(--cloud-blue-color);
+}
+
+.md-typeset pre > code {
+  background: transparent !important;
+  border-radius: 0 !important;
+  color: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  padding: 0 !important;
+  white-space: pre;
+}
+
+.md-typeset pre[data-lang]::before {
+  content:attr(data-lang);
+  font-weight:599;
+  font-size: 0.9rem;
+  background-color:#195F8C10;
+  color:#195F8C;
+  padding:15px 0px 15px 30px;
+  position:absolute;
+  width:calc(100% - 30px);
+  top:0;
+  left:0;
+  z-index:1;
+  font-family: "Intel One Mono";
+}
+
+.md-typeset pre::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.md-typeset pre::-webkit-scrollbar-track {
+  background: var(--middle-blue-color); /* Bakgrundsfärg i spåret */
+}
+
+.md-typeset pre::-webkit-scrollbar-thumb {
+  background-color: var(--main-color); /* Färg på "tummen" */
+  border-radius: 50px;     /* Rundade hörn */
+  border: 2px solid var(--cloud-blue-color); /* Ger lite space runt tummen */
+}
+
+/* === END: CODE BLOCK === */

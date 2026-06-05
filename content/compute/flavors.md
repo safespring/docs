@@ -2,127 +2,198 @@
 
 This page includes OpenStack CLI commands. See the [API Access documentation](api.md) for instructions on how to install and configure the command line client.
 
-This chapter describes the different flavors and how they are used in the platform. It is important to understand what the different flavors imply and which combinations that is possible to boot a working instance.
+Flavors define the compute, memory, storage model, and performance profile of an instance. The most important distinction in Safespring Compute is whether you use:
 
-It is very important to understand the use cases for the different flavor types:
+- `b2` flavors for resilient, volume-backed instances
+- `l2` flavors for high local-disk performance with higher recovery responsibility
 
-1. b2-flavors use our shared cluster as storage. This means that in case of a disk failure, chances are high you as a customer will not even notice it. Safespring's operations team will detect the storage disk failure and will switch the disk as soon as possible. In the meantime the storage cluster itself will also detect the broken disk and will start copying data to another disk in the cluster to ensure the integrity of your data. In case of a compute hardware failure it is also a swift operation to migrate your instance to another compute host since your data is stored elsewhere and not affected by the compute hardware failure.
-2. l2 flavors are designed for applications where high read and write speeds (IOPS) are important. The image file that constitutes the root file system of the instance is stored in one copy on the local NVME-drive of the compute host. This means that the instance will get the highest possible performance for read and write speeds, which might be necessary for some applications such as etcd in Kubernetes or storage backends for database servers such as MySQL cluster members or MongoDB. The important note is that if the local NVME fails on the compute node, the data is lost and the operations team at Safespring can not restore the data in any way. You as a customer will be responsible for setting up the instance again, and add it to the application cluster you are running. <strong> It is really important to understand the implication of that you as a customer is responsible for the restoration of the instance in case of a hardware disk failure. This makes the l2 flavors really good for high IOPS demanding applications serving ephemeral instances in case the loss of a separate disk does not pose a problem and where the customer has good tooling for launching a new instance and adding it to an existing cluster. </strong> What l2-flavors should NOT be used for is regular servers which store a state on the disk and can not be restored by just launching a new empty instance.
+## What should I choose?
 
-## b2 flavors (block storage)
+- Choose `b2` if you want the safer default for general virtual machines, stateful services, and workloads where fast recovery matters.
+- Choose `l2` if you need very high local disk performance and your workload can tolerate loss of a node-local root disk or be recreated quickly.
 
-!!! info "versions"
-    The first number in the flavor name (l2 or b2) denotes a particular version of this flavor. We might introduce other versions in the future with different properties.
+## Quick comparison
 
-Instance created with these flavors need a volume to boot from. See below how to accomplish that.
+| Flavor type | Boot from | Storage location | Best for | Main trade-off |
+| ----------- | --------- | ---------------- | -------- | -------------- |
+| `b2` | Volume created from an image | Shared block storage | General-purpose servers, stateful workloads, safer recovery | Lower raw local-disk performance than `l2` |
+| `l2` | Image | Local NVMe disk on the compute host | High-IOPS workloads, clustered systems, ephemeral nodes | If the local disk fails, the instance cannot be restored by Safespring |
 
-| Flavor name    | Description                                                                  |
-| -------------- | ---------------------------------------------------------------------------- |
-| `b2.c1r2`      | ram: 2048, vcpus: 1, disk: 0             |
-| `b2.c1r4`  | ram: 4096, vcpus: 1, disk: 0             |
-| `b2.c2r4`  | ram: 4096, vcpus: 2, disk: 0                           |
-| `b2.c2r8`| ram: 8192, vcpus: 2, disk: 0                           |
-| `b2.c4r8`| ram: 8192, vcpus: 4, disk: 0 |
-| `b2.c4r16`| ram: 16384, vcpus: 4, disk: 0 |
-| `b2.c8r16`| ram: 16384, vcpus: 8, disk: 0 |
-| `b2.c8r32`| ram: 32768, vcpus: 8, disk: 0 |
-| `b2.c16r32`| ram: 32768, vcpus: 16, disk: 0 |
-| `b2.c16r64`| ram: 65536, vcpus: 16, disk: 0 |
+## Key limitations
 
-## l2 flavors (local disk)
+- `b2` flavors must be booted from a volume
+- `l2` flavors must be booted from an image
+- `b2` flavors cannot be resized to `l2` flavors, and `l2` flavors cannot be resized to `b2`
+- Non-GPU flavors cannot be resized to GPU flavors, and GPU flavors cannot be resized to non-GPU flavors
+- Special flavors cannot be resized to standard flavors, and vice versa
 
-Instances created with these flavors must be booted from an image and not a volume. See below how to accomplish that.
+## Flavor naming
 
-| Flavor name    | Description                                                                  |
-| -------------- | ---------------------------------------------------------------------------- |
-| `l2.c2r4.100`| ram: 4096, vcpus: 2, disk: 100, read_iops: 10000, write_iops: 5000 |
-| `l2.c2r4.500`| ram: 4096, vcpus: 2, disk: 500, read_iops: 50000, write_iops: 25000 |
-| `l2.c2r4.1000`| ram: 4096, vcpus: 2, disk: 1000, read_iops: 100000, write_iops: 50000 |
-| `l2.c4r8.100`| ram: 8192, vcpus: 4, disk: 100, read_iops: 10000, write_iops: 5000 |
-| `l2.c4r8.500`| ram: 8192, vcpus: 4, disk: 500, read_iops: 50000, write_iops: 25000 |
-| `l2.c4r8.1000`| ram: 8192, vcpus: 4, disk: 1000, read_iops: 100000, write_iops: 50000 |
-| `l2.c8r16.100`| ram: 16384, vcpus: 8, disk: 100, read_iops: 10000, write_iops: 5000 |
-| `l2.c8r16.500`| ram: 16384, vcpus: 8, disk: 500, read_iops: 50000, write_iops: 25000 |
-| `l2.c8r16.1000`| ram: 16384, vcpus: 8, disk: 1000, read_iops: 100000, write_iops: 50000 |
-| `l2.c16r32.100`| ram: 32768, vcpus: 16, disk: 100, read_iops: 10000, write_iops: 5000 |
-| `l2.c16r32.500`| ram: 32768, vcpus: 16, disk: 500, read_iops: 50000, write_iops: 25000 |
-| `l2.c16r32.1000`| ram: 32768, vcpus: 16, disk: 1000, read_iops: 100000, write_iops: 50000 |
+The first part of the flavor name, such as `b2` or `l2`, denotes a flavor generation. Safespring may introduce other generations in the future with different properties.
 
-## b2. and l2. flavors
+Examples:
 
-### b2. flavors
+- `b2.c4r16` means generation `b2`, `4` vCPUs, `16` GB RAM
+- `l2.c8r16.500` means generation `l2`, `8` vCPUs, `16` GB RAM, and `500` GB local disk
 
-![image](../images/np-storage-types.png)
-The flavors starting with b2 does not come with any disk space in the flavor. You can see this in the flavor listing when starting the instance that they have a zero in the "Root Disk" column. This means that in order to boot an instance with such a flavor the root disk must be created beforehand under "Volumes". The procedure is to create a new volume and choosing that it should contain an image that you pick in the drop down "Use Image as Source" which is visible if you pick "Image" under the drop down "Volume Source".
+## Available b2 flavors
 
-Once the boot volume is created you can choose that as you boot media when creating the instance by first choosing "Volume" under the "Select Boot Source" under the "Source"-tab in the "Launch instance"-dialogue.
+Use `b2` when you want instances backed by shared block storage.
 
-!!! info "PRO tip"
-    After creating the volume from the image you can also start from the "Volumes" view and click the "Launch as Instance" in the context menu at the end of the row of the volume you just have created. You will now be redirected to the "Launch Instance"-dialogue with the correct settings in the "Source"-tab to boot your instance from the volume.
+| Flavor | vCPU | RAM (MB) | Root disk |
+| ------ | ---: | -------: | --------: |
+| `b2.c1r2` | 1 | 2048 | 0 |
+| `b2.c1r4` | 1 | 4096 | 0 |
+| `b2.c2r4` | 2 | 4096 | 0 |
+| `b2.c2r8` | 2 | 8192 | 0 |
+| `b2.c4r8` | 4 | 8192 | 0 |
+| `b2.c4r16` | 4 | 16384 | 0 |
+| `b2.c8r16` | 8 | 16384 | 0 |
+| `b2.c8r32` | 8 | 32768 | 0 |
+| `b2.c16r32` | 16 | 32768 | 0 |
+| `b2.c16r64` | 16 | 65536 | 0 |
 
-When using b2 flavors, the IOPS quota is determined by the limits imposed on the
-volume type, rather than the flavor settings.
+## Available l2 flavors
 
-For "fast" volumes, the IOPS are set at a rate of 100 read operations and 50
-write operations per gigabyte. If a 10GB volume is used, the IOPS would be 1000
-for reads and 500 for writes. Similarly, a 20GB volume would provide 2000 read
-IOPS and 1000 write IOPS. The upper limit is 100000 read IOPS and 50000 write
-IOPS.
+Use `l2` when local NVMe performance matters more than recoverability of the node-local root disk.
 
-For "large" volumes there's 2 IOPS per gigabyte for both read and write
-operations. The lower limit for these volumes is set at 50 read IOPS and 50
-write IOPS, while the upper limit is capped at 4000 read IOPS and 4000 write
-IOPS. For instance, a 100GB volume would yield 200 read IOPS and 200 write IOPS,
-while volumes below 25GB would provide 50 read IOPS and 50 write IOPS.
+| Flavor | vCPU | RAM (MB) | Local disk (GB) | Read IOPS | Write IOPS |
+| ------ | ---: | -------: | --------------: | --------: | ---------: |
+| `l2.c2r4.100` | 2 | 4096 | 100 | 10000 | 5000 |
+| `l2.c2r4.500` | 2 | 4096 | 500 | 50000 | 25000 |
+| `l2.c2r4.1000` | 2 | 4096 | 1000 | 100000 | 50000 |
+| `l2.c4r8.100` | 4 | 8192 | 100 | 10000 | 5000 |
+| `l2.c4r8.500` | 4 | 8192 | 500 | 50000 | 25000 |
+| `l2.c4r8.1000` | 4 | 8192 | 1000 | 100000 | 50000 |
+| `l2.c8r16.100` | 8 | 16384 | 100 | 10000 | 5000 |
+| `l2.c8r16.500` | 8 | 16384 | 500 | 50000 | 25000 |
+| `l2.c8r16.1000` | 8 | 16384 | 1000 | 100000 | 50000 |
+| `l2.c16r32.100` | 16 | 32768 | 100 | 10000 | 5000 |
+| `l2.c16r32.500` | 16 | 32768 | 500 | 50000 | 25000 |
+| `l2.c16r32.1000` | 16 | 32768 | 1000 | 100000 | 50000 |
 
-It is important to note that these limits apply to all mounted volumes on an
-instance, not just boot drives.
+## Boot and storage model
 
-### l2. flavors
+### b2 flavors
 
-The flavors starting with l works a little bit different since they come with a root disk in the flavor. The l signals "local disk" and means that the instance will be created with a local disk coming with the flavor.
+Instances created with `b2` flavors do not include root disk in the flavor itself. In the Horizon interface, you will see `0` in the `Root Disk` column for these flavors.
 
-To boot these instance one should boot from "Image" under the "Source"-tab in the "Launch Instance"-dialogue. The image will be copied to the root disk of the instance before start.
+To boot a `b2` instance:
 
-!!! info "Important Note"
-    It is important to understand the implications of the local disk flavors. The performance of them will be higher but the virtual disk created will be a single point of failure. If the physical disk, on which the virtual disk is placed, crashes, the instance will not be restorable. **Therefore it is important that these instances either are stateless or backed up properly.** When setting up flavors with l2 flavors that are members of a cluster, it is recommended to use the feature "Server Groups" with a Anti-Affinity group associated with your cluster members to ensure that the local disks end up on different compute nodes. You do not want to end up with a cluster where all the members in the cluster use the same local storage, since a failure on that storage will affect all the cluster members.
+1. Create a volume
+2. Select `Image` as `Volume Source`
+3. Choose the desired image
+4. Launch the instance from that volume
 
+You can also start from the `Volumes` view and use `Launch as Instance` after the volume has been created from an image.
 
-To spread capacity fairly over instances the IOPS quota on them are linear to the amount of disk space they reserve. This means that an l-flavor ending with 500 has five times the amount of IOPS reserved than an l-flavor ending with 100. A flavor ending with 1000 has ten times IOPS quota compared to 100. This should be taken into consideration if IOPS is important for your application running in the instance even though you do not need a larger disk space. The higher amount of disk reserved the faster the disk will be. You can see this in the table above for the l2 flavors.
+![Horizon volume-backed boot flow for b2 flavors](../images/np-storage-types.png)
 
-    If you have API-access you can view the IOPS quota with the command:
+!!! info "Pro tip"
+    After creating the volume from the image, you can start from the `Volumes` view and click `Launch as Instance` in the context menu for the new volume. The `Launch Instance` dialog will open with the correct `Source` settings already selected.
 
-    openstack flavor list --long
+### l2 flavors
 
-!!! info "Conclusion"
-    Flavors starting with l2 should be booted from "Image". Flavors starting with b2 should be booted from a volume created from an image. Combinations such as booting a l2-flavor from volume or b2-flavor from image will not work and render an error.
+`l2` flavors include a root disk in the flavor itself. The `l` stands for `local disk`, meaning the instance boots with storage on the compute host’s local NVMe.
 
+To boot an `l2` instance:
 
-## Flavors and Pricing
+1. Open the `Launch Instance` dialog
+2. In the `Source` tab, choose `Image`
+3. Boot directly from the image
 
-The full Safespring pricing list and associated public flavors can be found at [Price list and Calculator](https://www.safespring.com/en/price/). You do not need to enter your e-mail address, you can scroll to the bottom of the page to see the pricing list.
+The image is copied to the local root disk before the instance starts.
+
+## Failure and recovery model
+
+### b2 flavors
+
+`b2` flavors use shared block storage. This means:
+
+- storage disk failures are typically handled in the storage layer
+- compute host failures are easier to recover from because the root disk lives outside the compute host
+- migrating an instance to another compute host is faster than with local-disk-backed instances
+
+In many cases, customers will not notice an underlying storage disk failure before Safespring operations has already started handling it. If a storage disk fails, Safespring operations detects and replaces the failed disk, while the storage cluster starts copying data to another disk to preserve data integrity.
+
+### l2 flavors
+
+`l2` flavors are designed for workloads where very high read and write performance matters, for example:
+
+- `etcd` in Kubernetes
+- clustered database members
+- storage-intensive ephemeral workloads
+
+!!! warning "Important note"
+    `l2` flavors deliver high performance, but the root disk is a single point of failure. If the local disk fails, the instance cannot be restored by Safespring. Use `l2` only for stateless workloads, well-backed-up systems, or clusters that can recreate failed nodes quickly.
+
+When using `l2` flavors as members of a cluster, Safespring recommends using [Server Groups](server-groups.md) with anti-affinity so that nodes are spread across different compute hosts.
+
+Do not use `l2` for ordinary stateful servers that cannot be restored by launching a new instance and reattaching or rebuilding the application state.
+
+## IOPS behavior
+
+### b2 flavors
+
+For `b2`, the IOPS quota is determined by the attached volume type, not by the flavor itself.
+
+For `fast` volumes:
+
+- `100` read IOPS and `50` write IOPS per GB
+- upper limit: `100000` read IOPS and `50000` write IOPS
+
+Examples:
+
+- `10 GB` volume -> `1000` read IOPS / `500` write IOPS
+- `20 GB` volume -> `2000` read IOPS / `1000` write IOPS
+
+For `large` volumes:
+
+- `2` IOPS per GB for both read and write
+- lower limit: `50` read IOPS and `50` write IOPS
+- upper limit: `4000` read IOPS and `4000` write IOPS
+
+Example:
+
+- `100 GB` volume -> `200` read IOPS / `200` write IOPS
+
+Volumes smaller than `25 GB` still receive the lower limit of `50` read IOPS and `50` write IOPS.
+
+These limits apply to all mounted volumes on the instance, not just the boot disk.
+
+### l2 flavors
+
+For `l2`, the reserved IOPS scale with the amount of local disk included in the flavor:
+
+- a flavor ending in `.500` reserves five times the IOPS of a flavor ending in `.100`
+- a flavor ending in `.1000` reserves ten times the IOPS of a flavor ending in `.100`
+
+That means larger `l2` disk sizes are not only larger, but also faster.
+
+If you have API access, you can inspect flavor metadata with:
+
+```bash
+openstack flavor list --long
+```
 
 ## Resizing
 
-Thanks to improvements in the underlying software that powers our compute
-service, we can now offer self-service resizing between flavor sizes, without
-the need to contact support. However, to avoid data loss or leaving your VM in a
-broken or unrecoverable state, a few precautions are necessary:
+Thanks to improvements in the underlying compute platform, self-service resizing between compatible flavor sizes is now supported. However, the platform does not prevent every invalid conversion.
 
-- b2 flavors cannot be converted to l2 flavors (and vice versa)
-- Non-GPU flavors cannot be converted to GPU flavors (and vice versa)
-- Special flavors cannot be converted to standard flavors (and vice versa)
+The customer is responsible for ensuring flavor compatibility before starting a resize.
 
-Currently, the software does not prevent these conversions. It is therefore the
-customer’s responsibility to ensure flavor compatibility before initiating a
-resize.
+!!! info "Conclusion"
+    Boot `l2` flavors from `Image`. Boot `b2` flavors from a volume created from an image. Invalid combinations, such as booting `l2` from volume or `b2` from image, will fail.
 
-We strongly recommend creating a backup before resizing, even between compatible
-flavors. The safest approach remains recreating the server and reattaching the
-volume containing the operating system. Resize should only be used if this is
-not feasible.
+We strongly recommend creating a backup before resizing, even between compatible flavors. The safest option is still to recreate the server and reattach the operating system volume when possible. Use resize only when recreate and reattach is not feasible.
 
-Please also note that resizing is an offline operation, meaning the instance will be
-shut down before the process begins. The duration of the resize depends on the
-configuration, and can be significantly longer for l2 flavors with large disk
-sizes.
+Please note:
+
+- resizing is an offline operation
+- the instance is shut down before the resize starts
+- resize duration depends on the instance configuration
+- large `l2` flavors can take significantly longer to resize
+
+## Pricing
+
+The full Safespring pricing list and associated public flavors can be found at [Price list and Calculator](https://www.safespring.com/en/price/). You do not need to enter your e-mail address; scroll to the bottom of the page to see the public pricing list.

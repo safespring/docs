@@ -26,7 +26,95 @@ The monitoring stack follows this data flow:
 5. **Visualization**: Grafana queries both Prometheus and Loki for unified dashboards
 6. **Alerting**: Prometheus evaluates rules and sends alerts to AlertManager
 
-[![image](../images/observability-diagram.png)](../images/observability-diagram.png)
+```mermaid
+graph TB
+    subgraph "Kubernetes Cluster"
+        subgraph "Applications"
+            APP1[Application Pods]
+            APP2[System Pods]
+            APP3[Kubernetes Components]
+        end
+
+        subgraph "Metrics Collection"
+            NE[Node Exporter<br/>Metrics]
+            KSM[Kube-State-Metrics<br/>K8s Resource Metrics]
+            SM[Service Monitors<br/>Custom App Metrics]
+        end
+
+        subgraph "Log Collection"
+            PROMTAIL[Promtail<br/>DaemonSet<br/>Collects Logs]
+        end
+
+        subgraph "Kube-Prometheus-Stack"
+            PO[Prometheus Operator<br/>Manages CRDs]
+            PROM[Prometheus<br/>Time-Series DB]
+            AM[AlertManager<br/>Alert Routing]
+            GRAFANA[Grafana<br/>Visualization]
+        end
+
+        subgraph "Loki Stack"
+            LOKI[Loki<br/>Log Aggregation]
+            DISTRIBUTOR[Distributor]
+            INGESTER[Ingester]
+            QUERIER[Querier]
+        end
+
+        subgraph "Storage"
+            PROMSTORAGE[(Prometheus<br/>Storage<br/>PV)]
+            LOKISTORAGE[(Loki Storage<br/>S3/MinIO)]
+        end
+    end
+
+    subgraph "Users"
+        USER[DevOps Engineer]
+        ALERT[Alert Receivers<br/>Email/Slack/PagerDuty]
+    end
+
+    APP1 -->|Metrics| SM
+    APP2 -->|Metrics| SM
+    APP3 -->|Metrics| KSM
+
+    APP1 -.->|Logs| PROMTAIL
+    APP2 -.->|Logs| PROMTAIL
+    APP3 -.->|Logs| PROMTAIL
+
+    NE -->|Node Metrics| PROM
+    KSM -->|Resource State| PROM
+    SM -->|Scrape Targets| PROM
+
+    PO -->|Manages| PROM
+    PO -->|Manages| AM
+
+    PROM -->|Stores Metrics| PROMSTORAGE
+    PROM -->|Triggers Alerts| AM
+    PROM -->|Metrics Data| GRAFANA
+
+    PROMTAIL -->|Push Logs| DISTRIBUTOR
+    DISTRIBUTOR -->|Write| INGESTER
+    INGESTER -->|Store| LOKISTORAGE
+    QUERIER -->|Query| LOKISTORAGE
+    QUERIER -->|Read| INGESTER
+
+    LOKI -->|Manages| DISTRIBUTOR
+    LOKI -->|Manages| INGESTER
+    LOKI -->|Manages| QUERIER
+
+    GRAFANA -->|Query Logs| QUERIER
+    GRAFANA -->|Dashboards| USER
+
+    AM -->|Send Alerts| ALERT
+    AM -->|Alert Status| GRAFANA
+
+    USER -->|Configure| PO
+    USER -->|Access UI| GRAFANA
+
+    style PROM fill:#195F8C,color:white,stroke:#195F8C
+    style GRAFANA fill:#FA690F,color:white,stroke:#FA690F
+    style LOKI fill:#195F8C,color:white,stroke:#195F8C
+    style PROMTAIL fill:#195F8C,color:white,stroke:#195F8C
+    style PO fill:#195F8C,color:white,stroke:#195F8C
+    style AM fill:#195F8C,color:white,stroke:#195F8C
+```
 
 ## Installation
 
@@ -75,7 +163,7 @@ prometheus:
     replicas: 2
     retention: 15d
     retentionSize: "45GB"
-    
+
     # Storage configuration
     storageSpec:
       volumeClaimTemplate:
@@ -85,7 +173,7 @@ prometheus:
           resources:
             requests:
               storage: 50Gi
-    
+
     # Resource limits
     resources:
       requests:
@@ -94,7 +182,7 @@ prometheus:
       limits:
         memory: 4Gi
         cpu: 2
-    
+
     # Enable ServiceMonitor discovery across all namespaces
     serviceMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelector: {}
@@ -115,13 +203,13 @@ alertmanager:
 grafana:
   enabled: true
   adminPassword: "ChangeMeStrongPassword"
-  
+
   # Persistence for Grafana
   persistence:
     enabled: true
     storageClassName: "fast"
     size: 10Gi
-  
+
   # Ingress configuration (optional)
   ingress:
     enabled: true
@@ -134,7 +222,7 @@ grafana:
       - secretName: grafana-tls
         hosts:
           - grafana.yourdomain.com
-  
+
   # Additional data sources will be added later
   sidecar:
     datasources:
@@ -170,7 +258,7 @@ Create a `loki-values.yaml` file:
 loki:
   commonConfig:
     replication_factor: 1
-  
+
   schemaConfig:
     configs:
       - from: "2024-04-01"
@@ -180,16 +268,16 @@ loki:
         index:
           prefix: loki_index_
           period: 24h
-  
+
   ingester:
     chunk_encoding: snappy
-  
+
   querier:
     max_concurrent: 4
-  
+
   pattern_ingester:
     enabled: true
-  
+
   limits_config:
     allow_structured_metadata: true
     volume_enabled: true
@@ -245,7 +333,7 @@ config:
   # Point to Loki service
   clients:
     - url: http://loki-gateway/loki/api/v1/push
-  
+
   snippets:
     pipelineStages:
       - cri: {}
@@ -340,7 +428,7 @@ alertmanager:
     global:
       resolve_timeout: 5m
       slack_api_url: 'https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK'
-    
+
     route:
       group_by: ['alertname', 'cluster', 'service']
       group_wait: 10s
@@ -354,20 +442,20 @@ alertmanager:
         - match:
             severity: warning
           receiver: 'slack-warnings'
-    
+
     receivers:
       - name: 'slack-notifications'
         slack_configs:
           - channel: '#monitoring'
             title: 'Kubernetes Alert'
             text: '{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}'
-      
+
       - name: 'slack-critical'
         slack_configs:
           - channel: '#critical-alerts'
             title: 'CRITICAL: Kubernetes Alert'
             text: '{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}'
-      
+
       - name: 'slack-warnings'
         slack_configs:
           - channel: '#warnings'
@@ -403,8 +491,8 @@ spec:
       rules:
         - alert: HighPodMemory
           expr: |
-            sum(container_memory_usage_bytes{pod!=""}) by (pod, namespace) 
-            / sum(container_spec_memory_limit_bytes{pod!=""}) by (pod, namespace) 
+            sum(container_memory_usage_bytes{pod!=""}) by (pod, namespace)
+            / sum(container_spec_memory_limit_bytes{pod!=""}) by (pod, namespace)
             > 0.9
           for: 5m
           labels:
