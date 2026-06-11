@@ -8,7 +8,7 @@ only be able to submit a request rather than delete the node on
 their own. Once the node has been deleted from Cloutility, it will be locked
 in the backup server, effectively decommissioning it for future backups. 
 The node will not be deleted immediately from the server, your backups will 
-remain throughout the retention time, and can be retrieved when 
+remain throughout their retention times, and can be retrieved when 
 a restore is needed until they expire.
 
 You as a backup administrator can assign new roles and 
