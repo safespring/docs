@@ -4,19 +4,30 @@ This document outlines the development and operations management requirements an
 
 ## 6.1 Environment Separation
 
-*Information about environment isolation, development/staging/production separation, and access controls between environments for backup services will be documented here.*
+Safespring runs Backup production and development services on separate environments.
+
+Customer files are never transferred to a development environment. For development purposes, 
+we use our own dedicated nodes to simulate various types of machines and data.
 
 ## 6.2 Change Management
 
-*Details about change management processes, approval workflows, and change tracking for backup infrastructure and services will be outlined here.*
+Installations and upgrades of production backup servers are always executed after the approval of multiple engineers.
+
+Backup documentation changes are submitted on a [public GitHub repository](https://github.com/safespring/docs/) 
+as pull requests, and are approved by a separate engineer from the author(s).
 
 ## 6.3 Data Masking
 
-*Information about data masking techniques, sensitive data protection, and anonymization procedures for backup environments will be described here.*
+!!! note "Data Masking"
+
+    Data masking is not implemented. We never transfer customer data to other environments than the
+    production environments.
 
 ## 6.4 Production data in acceptance environments
 
-*Details about policies and procedures for handling production data in acceptance/testing environments, including data sanitization and privacy protection measures will be documented here.*
+!!! note "Production data in acceptance environments"
+
+    Production data is never transferred to acceptance environments.
 
 ## 6.5 Audit and Testing Protection
 
