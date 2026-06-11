@@ -18,8 +18,8 @@ Required files:
 
 #### Installation
 1. Download the required files according to above into a temporary folder
-1. Run `8.1.xx.x-TIV-TSMSQL-Win.exe` to extract all installation files.
-1. Open the `8.1.xx.x-TIV-TSMSQL-Win` Installation directory that just get created and run `SetupFCM.exe` and accept the UAC pop-up that comes up.
+1. Run `8.2.xx.x-TIV-TSMSQL-Win.exe` to extract all installation files.
+1. Open the `8.2.xx.x-TIV-TSMSQL-Win` Installation directory that just get created and run `SetupFCM.exe` and accept the UAC pop-up that comes up.
 1. Follow the instructions on the screen, and if this is a new installation, 
    you maybe need to install a few requirements<br/>
    ![TDP Dependency](../images/TDPSQL-dependency.png)

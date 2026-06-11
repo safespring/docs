@@ -65,7 +65,7 @@ The next step is to install the IBM Storage Protect Backup-Archive Client.
 
 Install the IBM Storage Protect Backup-Archive Client. You can download the 
 latest client from 
-<a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/" target="_blank">
+<a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r2/" target="_blank">
 IBMs FTP Server</a>
 
 - <a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/patches/client/" target="_blank">Patch Version</a>
