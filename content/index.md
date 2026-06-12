@@ -20,14 +20,15 @@ in the Oslo region,
 *sto1* and *sto2* at two different locations in the Stockholm region,
 and *dco1* in Kalix.
 
-|                                  | osl2  | sto1  | sto2  | dco1  |
-|:---------------------------------|:-----:|:-----:|:-----:|:-----:|
-| Safespring Compute               |   X   |   X   |   X   |   -   |
-| Safespring Storage               |   X   |   X   |   X   |   -   |
-| Safespring Archive               |   -   |   -   |   X   |   -   |
-| Safespring Backup                |   -   |   -   |   -   |   X   |
-| Safespring on-demand Kubernetes  |   X   |   -   |   X   |   -   |
+| Service                         | osl2 | sto1 | sto2 | dco1 |
+| :------------------------------ | :--: | :--: | :--: | :--: |
+| Safespring Compute              |  X   |  X   |  X   |  -   |
+| Safespring Storage              |  X   |  X   |  X   |  -   |
+| Safespring Archive              |  -   |  -   |  X   |  -   |
+| Safespring Backup               |  X*  |  X*  |  X*  |  X   |
+| Safespring Kubernetes Engine    |  X   |  -   |  X   |  -   |
 
+* The Backup service is accessible from all data centers, but the data is stored off-site for geographic redundancy purposes.
 
 ### Safespring Compute
 
