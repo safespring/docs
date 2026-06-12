@@ -1,6 +1,6 @@
 # Making use of GPU
 
-In order to make use of GPU, one must add or already have worker nodes with [GPU flavors](../compute/flavors.md). Currently this means you can only use On-demand Kubernetes clusters in STO2 that have worker nodes with flavors that are suffixed with `gA2`.
+In order to make use of GPU, one must add or already have worker nodes with [GPU flavors](../compute/flavors.md). Currently this means you can only use Safespring Kubernetes Engine clusters in STO2 that have worker nodes with flavors that are suffixed with `gA2`.
 
 Given that we use Talos Linux, we cannot make use of [NVIDIA GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html) and instead we install [NVIDIA device plugin for Kubernetes](https://github.com/NVIDIA/k8s-device-plugin).
 

@@ -1,10 +1,10 @@
-# Getting Started with on-demand Kubernetes
+# Getting Started with Safespring Kubernetes Engine
 
-This guide will help you get started with Safespring's on-demand Kubernetes service.
+This guide will help you get started with Safespring Kubernetes Engine.
 
 ## Overview
 
-On-demand Kubernetes allows users to create, scale and use Kubernetes clusters. Such a functionality is made available through a [portal and API](portal-overview.md), where users can manage the clusters.
+Safespring Kubernetes Engine allows users to create, scale and use Kubernetes clusters. This functionality is made available through a [portal and API](portal-overview.md), where users can manage the clusters.
 
 It is built on top of the [Safespring Compute](../compute/getting-started.md) service.
 
@@ -57,10 +57,10 @@ Currently all available storage classes are based on networked storage.
 
 ## SLA and Availability
 
-Safespring on-demand Kubernetes is a highly available, reliable Kubernetes service.
-The clusters provisioned have a managed control plane with a 99.5% uptime SLA measured against the kubernetes API availability.
+Safespring Kubernetes Engine is a highly available, reliable Kubernetes service.
+The clusters provisioned have a managed control plane with a 99.5% uptime SLA measured against the Kubernetes API availability.
 
-The worker nodes that are part of the cluster are part of the default Compute service SLA and not included in the on-demand Kubernetes SLA.
+The worker nodes that are part of the cluster are part of the default Compute service SLA and not included in the Safespring Kubernetes Engine SLA.
 
 For any questions regarding the SLA please reach out to [support](../service/support.md).
 

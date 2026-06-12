@@ -20,7 +20,7 @@ Safespring provides the following public images:
 | `windows-server-2022` | Windows Server 2022 |
 | `cirros` | Minimal test image, not for production use |
 
-The `talos-image-*` images are used internally by the [On-demand Kubernetes](../kubernetes/getting-started.md) service and are not intended for direct use.
+The `talos-image-*` images are used internally by [Safespring Kubernetes Engine](../kubernetes/getting-started.md) and are not intended for direct use.
 
 !!! warning "CirrOS is for testing only"
     The CirrOS image is a minimal Linux distribution designed for testing cloud infrastructure. It should not be used for production workloads.

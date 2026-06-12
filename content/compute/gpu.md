@@ -141,4 +141,4 @@ Open `http://localhost:8080` in your browser to access the chat interface. All p
 
 ## GPU in Kubernetes
 
-If you are using Safespring's On-demand Kubernetes service, GPU support is available through worker nodes with GPU flavors. See the [Kubernetes GPU documentation](../kubernetes/gpu.md) for details on how to use GPUs in Kubernetes workloads.
+If you are using Safespring Kubernetes Engine, GPU support is available through worker nodes with GPU flavors. See the [Kubernetes GPU documentation](../kubernetes/gpu.md) for details on how to use GPUs in Kubernetes workloads.

@@ -1,10 +1,10 @@
 # Secure Development
 
-This document outlines the secure development requirements and practices for Safespring on-demand Kubernetes services.
+This document outlines the secure development requirements and practices for Safespring Kubernetes Engine.
 
 ## 5.1 Development Lifecycle Security
 
-Applications developed for on-demand Kubernetes implement multiple layers to ensure a secure development lifecycle.
+Applications developed for Safespring Kubernetes Engine implement multiple layers to ensure a secure development lifecycle.
 
 * Development is done in stages starting with the local environment and progressing to testing and stage before getting packaged and released to production;
 * Code reviews are mandatory, access control is enforced. See [change management](development-operations-management.md#62-change-management) for implementation details;
@@ -42,4 +42,4 @@ Industry best practices and resources are used to ensure secure coding standards
 
 ## 5.6 Outsourced Development
 
-Development is never outsourced for components developed for on-demand Kubernetes service.
+Development is never outsourced for components developed for Safespring Kubernetes Engine.

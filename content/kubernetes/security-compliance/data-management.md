@@ -1,6 +1,6 @@
 # Data Management
 
-This document outlines the data management requirements and practices for Safespring on-demand Kubernetes services.
+This document outlines the data management requirements and practices for Safespring Kubernetes Engine.
 
 ## 2.1 Data Retention and Deletion
 
@@ -10,7 +10,7 @@ After contract expiration, Safespring will delete any leftover data associated w
 
 ## 2.2 Backup and Recovery
 
-Automatic backups are created of the management infrastructure: control-plane etcd, as well as [Zitadel IAM](https://zitadel.com/) database, Safespring on-demand Kubernetes Load-balancer as well as the [Harbor Registry](https://goharbor.io/) database.
+Automatic backups are created of the management infrastructure: control-plane etcd, as well as [Zitadel IAM](https://zitadel.com/) database, Safespring Kubernetes Engine Load-balancer as well as the [Harbor Registry](https://goharbor.io/) database.
 
 Regular restore tests are done during upgrades and during disaster recovery simulations.
 
