@@ -1,10 +1,10 @@
 # Security and Compliance
 
-This chapter covers security and compliance aspects specific to Safespring Kubernetes Engine.
+This chapter covers security and compliance aspects specific to Safespring Kubernetes Engine (SKE).
 
 ## Overview
 
-Safespring Kubernetes Engine is designed with security and compliance as core principles. The platform leverages modern, immutable infrastructure with **Talos Linux**, enforces **policy-driven governance with Kyverno**, ensures **supply chain integrity with GitOps and age-encrypted secrets**, provides **identity and access management through Zitadel with RBAC and MFA**, and offers **observability and compliance monitoring through Grafana and Kubescape**.
+SKE is designed with security and compliance as core principles. The platform leverages modern, immutable infrastructure with **Talos Linux**, enforces **policy-driven governance with Kyverno**, ensures **supply chain integrity with GitOps and age-encrypted secrets**, provides **identity and access management through Zitadel with RBAC and MFA**, and offers **observability and compliance monitoring through Grafana and Kubescape**.
 
 The following sections detail the different layers of security and compliance.
 

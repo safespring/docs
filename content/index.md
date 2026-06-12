@@ -43,9 +43,9 @@ information](storage/getting-started.md)
 To get started with the Backup service,
 see the [quickstart guide](backup/quickstart-guide.md)
 
-### Safespring Kubernetes Engine
+### Safespring Kubernetes Engine (SKE)
 
-To get started with Safespring Kubernetes Engine,
+To get started with SKE,
 we have a page with [general information](kubernetes/getting-started.md)
 
 ## Roadmap
@@ -55,15 +55,15 @@ This section describes what we are working on right now
 ### 1 - 3 months
 
 * MFA features in Openstack for public cloud
-* Safespring Kubernetes Engine load balancing improvements (retain source IP address)
-* Private cloud Safespring Kubernetes Engine
+* SKE load balancing improvements (retain source IP address)
+* Private cloud SKE
 
 ## Recent changes in the platform
 
 ### 2026 Q1
 
 * STO1 migrated to new hardware, refreshed core network and major upgrades to Openstack
-* Introduced Safespring Kubernetes Engine and self-service portal
+* Introduced SKE and self-service portal
 * H100 flavors in STO1 on request
 
 
