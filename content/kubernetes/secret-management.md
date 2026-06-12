@@ -1,6 +1,6 @@
 # Secret Management
 
-Whilst secrets inside Safespring On-demand Kubernetes are [encrypted at rest](security-compliance/index.md#secrets-management) the ecosystem of secret management inside a Kubernetes cluster is diverse with solutions each with various features, for example:
+Whilst secrets inside Safespring Kubernetes Engine are [encrypted at rest](security-compliance/index.md#secrets-management), the ecosystem of secret management inside a Kubernetes cluster is diverse, with solutions each offering various features, for example:
 
 - [Kubernetes external secrets](https://github.com/external-secrets/external-secrets)
 - [Vault Secrets Operator](https://github.com/ricoberger/vault-secrets-operator) with [OpenBao](https://openbao.org/docs/platform/k8s/) OSS alternative

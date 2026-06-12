@@ -1,6 +1,6 @@
 # Network Security
 
-This document outlines the network security requirements and practices for Safespring on-demand Kubernetes services with a focus on [operational infrastructure](development-operations-management.md).
+This document outlines the network security requirements and practices for Safespring Kubernetes Engine with a focus on [operational infrastructure](development-operations-management.md).
 
 ## 4.1 Network Protection
 

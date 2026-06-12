@@ -26,7 +26,7 @@ and *dco1* in Kalix.
 | Safespring Storage               |   X   |   X   |   X   |   -   |
 | Safespring Archive               |   -   |   -   |   X   |   -   |
 | Safespring Backup                |   -   |   -   |   -   |   X   |
-| Safespring on-demand Kubernetes  |   X   |   -   |   X   |   -   |
+| Safespring Kubernetes Engine     |   X   |   -   |   X   |   -   |
 
 
 ### Safespring Compute
@@ -43,9 +43,9 @@ information](storage/getting-started.md)
 To get started with the Backup service,
 see the [quickstart guide](backup/quickstart-guide.md)
 
-### Safespring on-demand Kubernetes
+### Safespring Kubernetes Engine (SKE)
 
-To get started with the on-demand Kubernetes service,
+To get started with SKE,
 we have a page with [general information](kubernetes/getting-started.md)
 
 ## Roadmap
@@ -55,15 +55,15 @@ This section describes what we are working on right now
 ### 1 - 3 months
 
 * MFA features in Openstack for public cloud
-* On-demand Kubernetes loadbalancing improvements (retain source ip address)
-* Private cloud on-demand Kubernetes
+* SKE load balancing improvements (retain source IP address)
+* Private cloud SKE
 
 ## Recent changes in the platform
 
 ### 2026 Q1
 
 * STO1 migrated to new hardware, refreshed core network and major upgrades to Openstack
-* Introduced on-demand Kubernetes and self-service portal
+* Introduced SKE and self-service portal
 * H100 flavors in STO1 on request
 
 

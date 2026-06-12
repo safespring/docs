@@ -49,6 +49,7 @@ aggregationlength
 agreedlegalterms
 ahkfjpgewxzelmakga
 aj
+ake
 alertmanager
 alertmanagerspec
 alertname
@@ -198,6 +199,7 @@ capicmd
 catched
 cbb
 cbmr
+ccm
 cdn
 cdromdevice
 cdxgen
@@ -455,6 +457,7 @@ eba
 ebd
 ebpf
 ecc
+ecdhe
 ecmp
 eea
 eedd
@@ -691,6 +694,7 @@ ifjvb
 ignorepublicacls
 ignorereboot
 ignoretotp
+iis
 imagename
 imagepullbackoff
 img
@@ -1420,6 +1424,7 @@ simplebusinessunit
 simplescalable
 singlesignonurl
 sizemegabytes
+ske
 skippublishercheck
 sktxlg
 sla

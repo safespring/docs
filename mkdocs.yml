@@ -207,7 +207,7 @@ nav:
       - Tips and Tricks: "storage/tips-n-tricks.md"
       - Backup Exec and Safespring Storage: "storage/backup-exec.md"
       - Other Backends: "storage/other-backends.md"
-  - On-demand Kubernetes:
+  - Safespring Kubernetes Engine:
       - Getting Started: "kubernetes/getting-started.md"
       - Portal Overview: "kubernetes/portal-overview.md"
       - Authentication: "kubernetes/authentication.md"

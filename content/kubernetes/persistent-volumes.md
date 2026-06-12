@@ -4,7 +4,7 @@ Container filesystems are ephemeral by default, meaning they reset after an appl
 
 Consider the following:
 
-- It makes use of [Cinder CSI](getting-started.md#additional-components) activated on your Safespring on-demand Kubernetes by default;
+- It makes use of [Cinder CSI](getting-started.md#additional-components) activated on your Safespring Kubernetes Engine by default;
 - **Size:** Can be expanded, but not reduced;
 - **StorageClass:** Represents the "kind" of storage which are equivalent to the storage classes available on [OpenStack Volume types](../compute/flavors.md);
 - **AccessMode:** Typically, only one pod can mount a given PVC at a time, though some storage classes allow multiple pods to access it simultaneously.

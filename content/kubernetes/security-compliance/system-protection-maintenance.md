@@ -1,6 +1,6 @@
 # System Protection and Maintenance
 
-This document outlines the system protection and maintenance requirements and practices for Safespring on-demand Kubernetes services.
+This document outlines the system protection and maintenance requirements and practices for Safespring Kubernetes Engine.
 
 ## 1.1 Malware Protection
 
