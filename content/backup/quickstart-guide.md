@@ -46,9 +46,9 @@ will unconditionally make the client locally encrypt all data before transfer wi
 key you need to enter once. These two options are mutually exclusive. There is a
 None option that sets no client options.
 
-The Domain decides the retention time of your backups. 
+The Domain decides the retention time of your [_inactive_](howto/consumption-units.md#domain) backups. 
 For example, if you choose 60DAYS, 
-then previously backed-up files will remain on the backup server for 60 days. 
+then inactive backed-up file versions will remain on the backup server for 60 days. 
 STANDARD sets the retention time to 180 days.
 
 ![Consumption Unit New Node](images/baas-portal-consumption-unit-node.png)
@@ -65,11 +65,8 @@ The next step is to install the IBM Storage Protect Backup-Archive Client.
 
 Install the IBM Storage Protect Backup-Archive Client. You can download the 
 latest client from 
-<a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r1/" target="_blank">
+<a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/v8r2/" target="_blank">
 IBMs FTP Server</a>
-
-- <a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/patches/client/" target="_blank">Patch Version</a>
-- <a href="https://public.dhe.ibm.com/storage/tivoli-storage-management/maintenance/client/" target="_blank">Maintenance Version</a>
 
 Please follow the installation instructions for your operating system.
 

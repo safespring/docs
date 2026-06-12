@@ -120,8 +120,7 @@ Which backup server the backups will be stored in. There is
 currently only one backup server available, which is the default one.
 
 ### Domain
-This option decides the retention time of the backed-up data. The
-options are:
+This option decides the retention time of inactive backed up file versions. The options are:
 
 - 30DAYS: Objects are retained for 30 days.
 - 60DAYS: Objects are retained for 60 days.
@@ -130,6 +129,9 @@ options are:
 - 1YEAR: Objects are retained for 1 year.
 - 2YEAR: Objects are retained for 2 years.
 - STANDARD: Objects are retained for 180 days (same as 180DAYS).
+
+File versions that are seen on the machine during the latest backup session are marked as _active_, 
+all other file versions are marked as _inactive_. Active file versions never expire on their own.
 
 ### Client option set
 What set of options the server should tell the client 
