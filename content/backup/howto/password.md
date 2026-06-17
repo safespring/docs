@@ -97,7 +97,7 @@ Password encryption details: <a href="https://blog.sigterm.se/posts/the-joys-of-
 
 Changing the password
 -----------------------
-You can whenever you want to change the password of a backup node from Cloutility. This will enforce the new password and update it on the backup server. To do so, go to **Consumption Units -> [Your backup node] -> Basics**. Click on "Change" on the right side of "SP password".
+You can whenever you want to change the password of a backup node from Cloutility. This will enforce the new password and update it on the backup server. To do so, go to **Consumption Units → [Your backup node] → Basics**. Click on "Change" on the right side of "SP password".
 
 It is also possible to change the password directly from the backup-archive client. Keep in mind that this will make the password stored in Cloutility out of sync with the actual password. This is a technical limitation due to the backup server _only_ storing the hash digest of the password for security reasons. You will be the only one who can access the password in plain-text.
 
@@ -108,7 +108,7 @@ sudo dsmc set password 'old password' 'new password'
 ```
 
 ### On Windows - GUI
-Open the application "Backup-Archive GUI." Go to Utilities -> Change Password...
+Open the application "Backup-Archive GUI." Go to Utilities → Change Password...
 
 ![Changing Password in the GUI](../images/backup-archive-gui-change-password.png) 
 
@@ -154,7 +154,7 @@ You have just created and activated a new backup node. Because it is new, it is 
 You accidentally type the wrong password, and the server silently locks the node. Then you type in the password (correctly this time) and still end up with an authentication failure. **The backup-archive client made no mention of the node being locked, and only reported authentication failures regardless of what you typed.** Cloutility has not synced the lock-state with the backup server yet, and therefore does not show that the node is locked.
 
 #### Solution
-Go to **Cloutility -> Consumption Units -> [Your backup node] -> Basics**.
+Go to **Cloutility → Consumption Units → [Your backup node] → Basics**.
 
 If Cloutility hasn't synced the lock-state yet, the backup node will appear as "Unlocked." If so, click on "Unlocked" to change the state to "Locked," and hit Save.
 

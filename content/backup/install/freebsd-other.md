@@ -13,7 +13,7 @@ emulating operating system.
 
 The single most important part is
 that dsmc needs to be able to read the file `/etc/mtab`. 
-In my case, it had freebsd device names in it,
+In my case, it had FreeBSD device names in it,
 but the file must exist and cannot be zero bytes in size. 
 If it is missing or empty, then "dsmc incremental"
 will claim that the operating system denied it some memory allocation and exit,
@@ -50,7 +50,7 @@ in accordance with the manpage for linprocfs.
 
 Lastly, I had tsm unpacked under `/compat/linux/opt..` because I assumed that 
 it would look under `/compat/linux` first for files, 
-but I made a soft link from the freebsd filesystem 
+but I made a soft link from the FreeBSD filesystem 
 `/opt/tivoli into /compat/linux/opt/tivoli` for my own sake.
 
 We are currently running TSM 6.2.5.4 with gscrypt-8.0.14.43, where 

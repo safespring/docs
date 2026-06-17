@@ -157,9 +157,9 @@ Save both `dsm.sys` and `dsm.opt` in `/opt/tivoli/tsm/client/ba/bin/`
    open the <a href="https://portal.backup.sto2.safedc.net/" target="_blank">
    Safespring Backup Portal</a>
    and go to the _consumption unit_
-   you want to define a schedule too and click on _schedule_<br/>
+   you want to define a schedule too and click on _schedule_.<br/>
    ![Consumption Unit Schedule](../images/baas-portal-consumption-unit-schedule.png)<br/>
-   Here can you schedule the backup for your consumption unit.
+   Here you can schedule the backup for your consumption unit.
 2. Setup IBM Storage Protect Backup-Archive Client schedule polling.
     1. **Setup schedule via Linux Terminal**
 

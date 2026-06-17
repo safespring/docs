@@ -50,10 +50,10 @@ child business unit have access to them via Cloutility.
 
 ### Backup service contracts
 You can view your own business unit's contract by visiting 
-**Settings -> Contract**.
+**Settings → Contract**.
 
 To define a contract between your business unit and one of its children, 
-navigate to the child, and then go to **Settings -> Contract** from there. 
+navigate to the child, and then go to **Settings → Contract** from there. 
 It will look something like this:
 
 ![Contract](../images/baas-portal-contract.png)
@@ -67,9 +67,9 @@ software.
 ![Billing Codes](../images/baas-portal-billing-codes.png)
 
 These codes can be specified from the contract page, 
-at **[Child Business Unit] -> Settings -> Contract**. 
+at **[Child Business Unit] → Settings → Contract**. 
 They can also be associated with specific Payment Terms
-at **[Parent Business Unit] -> Settings -> Payment Terms**.
+at **[Parent Business Unit] → Settings → Payment Terms**.
 A payment term tells us the maximum amount of time that a payment has to be 
 made since the invoice date, for example, 30 days.
 
@@ -86,7 +86,7 @@ A neat feature is that every business unit can have its own branding.
 
 Above, we have an example of a fictive university with a nice green theme. 
 An administrator can change their business unit's color palette and logo by 
-visiting **Settings -> Identity -> Branding**. 
+visiting **Settings → Identity → Branding**. 
 
 ![Branding Settings](../images/baas-portal-branding-settings.png)
 
