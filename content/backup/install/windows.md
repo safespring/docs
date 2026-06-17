@@ -15,8 +15,8 @@ Required files:
 #### Installation of the software
 
 1. Download the required files according to above into a temporary folder.
-1. Run `8.x.x.x-TIV-TSMBAC-WinX64.exe` to extract all installation files.
-1. Open the `TSMClient` Installation directory that just got created and run
+2. Run `8.x.x.x-TIV-TSMBAC-WinX64.exe` to extract all installation files.
+3. Open the `TSMClient` Installation directory that just got created and run
    `spinstall.exe` and accept the UAC pop-up that comes up,
    "Setup Launcher Unicode". 
 ![UAC Pop-up](../images/UAC-popup.png) 
@@ -28,9 +28,9 @@ Follow the instructions on the screen,
 
     1. The installation process could sometimes require a reboot, 
        due to the installation of a couple of VC redistributables.
-    1. If a reboot is unpleasant, at the above decision point, jump to the _"Circumvent reboot during install"_ section below.
-    1. Resume the installation, choose Typical installation.
-    1. After installation, answer 'No' to the reboot question.
+    2. If a reboot is unpleasant, at the above decision point, jump to the _"Circumvent reboot during install"_ section below.
+    3. Resume the installation, choose Typical installation.
+    4. After installation, answer 'No' to the reboot question.
 
 #### Create Configuration File
 
@@ -94,7 +94,7 @@ reinstall the same CA Root certificate every time.
    click on _schedule_.<br/>
    ![Consumption Unit Schedule](../images/baas-portal-consumption-unit-schedule.png)<br/>
    Here can you schedule the backup for your consumption unit.
-1. Set up the IBM Storage Protect Backup-Archive Client schedule polling.<br/>
+2. Set up the IBM Storage Protect Backup-Archive Client schedule polling.<br/>
    <br/>
    There are two ways to do it, either via command line, or the GUI. 
    You may pick the method that you're the most comfortable with. <br/>
@@ -119,9 +119,9 @@ reinstall the same CA Root certificate every time.
 
     ![GUI via Start-Menu](../images/SPBAC-startmenu-GUI.png)
 
-    Click on *Utilities -> Setup Wizard* to start the Configuration Wizard.
+    Click on *Utilities → Setup Wizard* to start the Configuration Wizard.
 
-    ![Start the Schedule Setup Wizard](../images//SPBAC-GUI-Schedule-wizard-mainmenu.png)
+    ![Start the Schedule Setup Wizard](../images/SPBAC-GUI-Schedule-wizard-mainmenu.png)
 
     A wizard will help you to go through the process step-by-step of setting up
     the schedule.

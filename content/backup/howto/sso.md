@@ -21,7 +21,7 @@ There are two ways that you can allow users to log in:
 Configure SSO for your Business Unit
 --------------------------------
 
-Click on **Settings -> Sign-in options -> Identity providers -> Add**. Next, you will be asked to fill in some configurations for your Identity Provider (IdP) and how it should be used.
+Click on **Settings → Sign-in options → Identity providers → Add**. Next, you will be asked to fill in some configurations for your Identity Provider (IdP) and how it should be used.
 
 ### Inheritable
 This configuration decides whether users of descendant business units should be allowed to authenticate using this IdP.
@@ -64,8 +64,8 @@ For other IdP software, the sign-in page URL will differ.
 ### Entity ID
 In SAML terms, this is the identity of your IdP.
 
-If you are using AD FS, this value can be found in **AD FS Management -> 
-AD FS -> Edit Federation Service Properties -> Federation Service identifier**.
+If you are using AD FS, this value can be found in **AD FS Management → 
+AD FS → Edit Federation Service Properties → Federation Service identifier**.
 
 For other IdP software, the Entity ID will differ.
 
@@ -74,10 +74,10 @@ This is the certificate used to verify the SAML Assertion that is sent to
 Cloutility by the IdP (step 9 in the diagram).
 
 If you are using AD FS, this certificate can be retrieved from 
-**AD FS Management -> Certificates -> Token-signing**. 
+**AD FS Management → Certificates → Token-signing**. 
 
 1. Right-click the token-signing certificate and select View Certificate... 
-2. Go to **Details -> Copy to File...**
+2. Go to **Details → Copy to File...**
 3. Hit Next.
 4. Select "DER encoded binary X.509 (.CER)". Hit Next.
 5. Specify a location.

@@ -18,13 +18,13 @@ Required files:
 
 #### Installation
 1. Download the required files according to above into a temporary folder
-1. Run `8.2.xx.x-TIV-TSMSQL-Win.exe` to extract all installation files.
-1. Open the `8.2.xx.x-TIV-TSMSQL-Win` Installation directory that just get created and run `SetupFCM.exe` and accept the UAC pop-up that comes up.
-1. Follow the instructions on the screen, and if this is a new installation, 
+2. Run `8.2.xx.x-TIV-TSMSQL-Win.exe` to extract all installation files.
+3. Open the `8.2.xx.x-TIV-TSMSQL-Win` Installation directory that just get created and run `SetupFCM.exe` and accept the UAC pop-up that comes up.
+4. Follow the instructions on the screen, and if this is a new installation, 
    you maybe need to install a few requirements<br/>
    ![TDP Dependency](../images/TDPSQL-dependency.png)
-1. To make your configuration phase easier, we need to install one more package, under installation package directory, you need to open  `TSMSQL_WIN\fcm\x64\sql\81xxx\enu` and start installation program the `spinstall.exe`
-1. Install all dependencies and follow the standard installation.
+5. To make your configuration phase easier, we need to install one more package, under installation package directory, you need to open  `TSMSQL_WIN\fcm\x64\sql\82xxx\enu` and start installation program the `spinstall.exe`
+6. Install all dependencies and follow the standard installation.
 
 #### Configuration
 1. Login on [Safespring Backup Portal](https://portal.backup.sto2.safedc.net/)

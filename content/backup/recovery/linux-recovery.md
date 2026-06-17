@@ -93,7 +93,7 @@ you can upload your own images.
 
 To upload the `xbmr-for-safespring-x.x.x.x.linux.x86_64.iso` ISO 
 so that you can use it on the compute platform, 
-go to Compute -> Images and click on "Create Image."
+go to Compute → Images and click on "Create Image."
 Then:
 
 - Specify a descriptive name, such as `xbmr-x.x.x.x`. 
@@ -113,7 +113,7 @@ Once done, hit "Create Image."
 You need a new volume to restore the system to.
 It should be at least the same size as that of the original system.
 
-Go to Volumes -> Volumes, and click on "Create Volume."
+Go to Volumes → Volumes, and click on "Create Volume."
 Then:
 
 - Specify a descriptive "Volume Name."
@@ -136,7 +136,7 @@ To use the ISO image, you must create a compute instance for XBMR.
 only. 
 It can be safely discarded once the restoration is complete.**
 
-Go to Compute -> Instances and click on "Launch Instance."
+Go to Compute → Instances and click on "Launch Instance."
 
 1. Specify a descriptive "Instance Name", such as `XBMR`.
    ![Details](../images/compute-xbmr-instance-details.png)
@@ -163,14 +163,14 @@ Go to Compute -> Instances and click on "Launch Instance."
 ### Step 4: Perform the system recovery
 At this point, you should have everything ready to perform the system recovery.
 A secure way to interface with XBMR on the Safespring Compute platform is to use the Console (a web-based VNC client). 
-It can be accessed from Compute -> Instances -> [Your TBMR instance] -> Console.
+It can be accessed from Compute → Instances → [Your TBMR instance] → Console.
 
 ![Compute Console](../images/xbmr-on-compute-console.png)
 
 Perform all the obligatory steps described in the **System Recovery** section 
 below as you would on any other machine.
 
-Once done, go to Compute -> Instances and click on the arrow next to the 
+Once done, go to Compute → Instances and click on the arrow next to the 
 XBMR instance, and click on "Detach Volume." 
 Select the restored volume, and detach it. 
 Proceed to Step 5.

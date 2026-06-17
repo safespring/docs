@@ -44,7 +44,7 @@ Session established with server DCO1-BACKUP-SERVER-2: Linux/x86_64
 The command `dsmc query filespace` can be shortened to `dsmc q f`.
 
 You can also find this information in the Backup Portal by visiting 
-`Consumption units -> Your Node -> File spaces`.
+`Consumption units → Your Node → File spaces`.
 
 Listing backed-up files
 ---------------

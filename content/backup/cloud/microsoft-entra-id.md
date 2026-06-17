@@ -84,7 +84,7 @@ Back up manually
 -------------------
 
 Backup jobs run according to the schedule set in the backup scope. If you wish
-to run a backup job manually, click on **Backup -> Microsoft Entra ID**, then 
+to run a backup job manually, click on **Backup → Microsoft Entra ID**, then 
 select the backup scope on the table. A **Run backup now** button should appear.
 Click it to run a new backup job.
 
@@ -95,7 +95,7 @@ Reports
 
 A subscription has a limit on the number of user seats which depends on your 
 contract. To see this number and how many of them are in use, visit 
-**Report center -> Subscription consumption**.
+**Report center → Subscription consumption**.
 
 If you wish to increase the limit, contact [Support](../../service/support.md), 
 and we will help you do so.
@@ -103,13 +103,13 @@ and we will help you do so.
 ### Backup analysis
 
 To get an overview of how many objects of each category have been protected
-over the last week, visit **Report -> Backup analysis**.
+over the last week, visit **Report → Backup analysis**.
 
 ### Audit log
 
 The AvePoint portal has an audit log where sign-ins and administrative 
 operations are recorded.
-To see the audit log, visit **Report center -> System auditor**.
+To see the audit log, visit **Report center → System auditor**.
 
 The log (up to 30 days back) can be exported by clicking the **Export** button.
 
@@ -125,7 +125,7 @@ about jobs.
 ### E-mail notifications
 
 A backup administrator can subscribe to a finished and/or failed jobs by 
-visiting **Settings -> Notification Settings**. From there, select a 
+visiting **Settings → Notification Settings**. From there, select a 
 _notification profile_ and click on the revealed **Edit** button, or create a
 new profile. 
 
@@ -146,7 +146,7 @@ Restore
 ---------
 
 To restore objects from any point-in-time within your retention time, visit
-**Restore -> Microsoft Entra ID -> Recovery Point**. 
+**Restore → Microsoft Entra ID → Recovery Point**. 
 
 ![avepoint-iaas-entra-id-recovery-points.png](../images/avepoint-iaas-entra-id-recovery-points.png)
 

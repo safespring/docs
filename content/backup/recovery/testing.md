@@ -16,8 +16,8 @@ already one, create it in Cloutility and configure your test machine's
 backup-archive client to use it. You can follow the 
 [Quickstart Guide](../quickstart-guide.md).
 
-Next, in Cloutility, click on **Consumption Units -> [Your Test Node] -> 
-Basics -> Proxy configuration -> Targets -> Add**. 
+Next, in Cloutility, click on **Consumption Units → [Your Test Node] → 
+Basics → Proxy configuration → Targets → Add**. 
 Then select the production node that you wish to test the backups of.
 
 !!! note 

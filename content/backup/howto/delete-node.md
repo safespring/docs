@@ -26,7 +26,7 @@ Therefore, we will be using the terms "backup node" and
 Deleting a Backup Node
 ----------------------
 If you have the right permissions, you can delete a backup node by clicking on
-**[Your Business Unit] -> Consumption Units -> [Your Backup Node] -> Delete**.
+**[Your Business Unit] → Consumption Units → [Your Backup Node] → Delete**.
 A popup form will appear, asking if you would like to retain or remove schedules 
 from the backup node.
 
@@ -36,7 +36,7 @@ This field can be used to document the reason for the deletion.
 Relevant Role Permissions
 ------------------
 The following are the most relevant permissions for consumption unit deletion. 
-They can be adjusted for roles under **Settings (cogwheel, top-right corner) -> 
+They can be adjusted for roles under **Settings (cogwheel, top-right corner) → 
 Roles**.
 
 * `Deletion request - Create` - Can make deletion requests.
@@ -50,7 +50,7 @@ Roles**.
 
 Under each _Business Unit_ you can find settings for how Delete requests should 
 work. 
-They are found under **Settings -> Identity -> Deletion request settings**. 
+They are found under **Settings → Identity → Deletion request settings**. 
 The following permissions can be assigned to roles pertaining to these settings.
 
 * `Deletion request settings - View` - View this page. `Create`, `Edit`, 

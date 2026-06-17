@@ -138,7 +138,7 @@ Similar to the pre-defined images on the Compute platform such as
 windows-server-2022 or ubuntu-24.04, you can upload your own images.
 
 To upload the ISO so that you can use it on the Compute platform, go to 
-**Compute -> Images** and click on "Create Image."
+**Compute → Images** and click on "Create Image."
 Then:
 
 - Specify a descriptive name, such as `tbmr-x.y.z`. 
@@ -156,7 +156,7 @@ Once done, hit "Create Image."
 You need a new volume to restore the system to.
 It should be at least the same size as that of the original system.
 
-Go to **Volumes -> Volumes**, and click on "Create Volume."
+Go to **Volumes → Volumes**, and click on "Create Volume."
 Then:
 
 - Specify a descriptive "Volume Name."

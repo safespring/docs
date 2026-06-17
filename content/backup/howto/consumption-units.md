@@ -46,7 +46,7 @@ Backup Portal</a>.
      [FAQ](../faq.md#credentials-to-safespring-backup-portal) for information on
      how to get one.
 
-Once logged in to the Portal, click on **Consumption units -> Add**.
+Once logged in to the Portal, click on **Consumption units → Add**.
 
 ![New Consumption Unit](../images/baas-portal-new-consumption-unit.png)
 
@@ -243,7 +243,7 @@ clicking the **Jobs** tab.
 ### Progress chart
 
 The progress chart can be accessed at 
-**Consumption units -> [Your Consumption Unit] -> Progress charts**.
+**Consumption units → [Your Consumption Unit] → Progress charts**.
 
 It shows how much storage the backup node has used over a period of time, and
 how much data has been transferred.
@@ -254,7 +254,7 @@ All changes made to a consumption unit in the Backup Portal are logged in an
 Audit log.
 
 A consumption unit's Audit log can be found at 
-**Consumption units -> [Your Consumption Unit] -> Audit Log**.
+**Consumption units → [Your Consumption Unit] → Audit Log**.
 
 ![Audit Log](../images/baas-portal-audit-log.png)
 
@@ -263,7 +263,7 @@ Filespaces
 -----------
 All backup data is stored in filespaces. Information about your backup node's
 filespaces can be found at 
-**Consumption units -> [Your Consumption Unit] -> Filespaces**.
+**Consumption units → [Your Consumption Unit] → Filespaces**.
 
 ![Filespaces](../images/baas-portal-filespaces.png)
 

@@ -38,7 +38,7 @@ account has permissions to do!
 To get access tokens, you need a client ID. This client ID identifies 
 your program. 
 It can be generated in the Cloutility portal by clicking on 
-**Settings (cogwheel in the top-right corner) -> API access -> Add**. You will 
+**Settings (cogwheel in the top-right corner) → API access → Add**. You will 
 be asked to provide an app name, an origin and a choice whether to 
 allow token refreshing or not. The origin should be a URL, this is 
 relevant because the origin must be sent with every API call, or else the 
