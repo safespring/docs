@@ -26,7 +26,7 @@ and *dco1* in Kalix.
 | Safespring Storage               |   X   |   X   |   X   |   -   |
 | Safespring Archive               |   -   |   -   |   X   |   -   |
 | Safespring Backup                |   -   |   -   |   -   |   X   |
-| Safespring on-demand Kubernetes  |   X   |   -   |   X   |   -   |
+| Safespring Kubernetes Engine     |   X   |   -   |   X   |   -   |
 
 
 ### Safespring Compute
@@ -43,9 +43,9 @@ information](storage/getting-started.md)
 To get started with the Backup service,
 see the [quickstart guide](backup/quickstart-guide.md)
 
-### Safespring on-demand Kubernetes
+### Safespring Kubernetes Engine (SKE)
 
-To get started with the on-demand Kubernetes service,
+To get started with SKE,
 we have a page with [general information](kubernetes/getting-started.md)
 
 ## Roadmap
@@ -54,28 +54,18 @@ This section describes what we are working on right now
 
 ### 1 - 3 months
 
-* Migration of STO1 physical datacenter to a new location. This includes a major hardware refresh and new core network. The migration is expected to be completed by the end of the quarter and should mostly be transparent to customers.
-* [Safespring on-demand Kubernetes clusters](https://www.safespring.com/en/services/containerplatform/). We will introduce a self-service portal and API that will allow you to create and manage Kubernetes clusters on demand. This on-demand solution will provide managed control planes and easy customization options.
-
-### 3-9 months
-
-* self-service portal and capabilities for Compute and Storage services
-* Improved S3 authentication and authorization capabilities
-* Kubernetes based private cloud solutions
+* MFA features in Openstack for public cloud
+* SKE load balancing improvements (retain source IP address)
+* Private cloud SKE
 
 ## Recent changes in the platform
 
-### 2025 Q3
+### 2026 Q1
 
-* Refresh of documentation, removal of legacy references
-* Openstack upgrades started in other sites
+* STO1 migrated to new hardware, refreshed core network and major upgrades to Openstack
+* Introduced SKE and self-service portal
+* H100 flavors in STO1 on request
 
-### 2025 Q1
-
-* Increased S3 archive capacity in STO2
-* Added compute site in STO2
-* NVIDIA A2 GPU flavors in STO2
-* Major Openstack upgrades finished in STO1
 
 [ki]:service/known_issues.md
 [sup]:service/support.md

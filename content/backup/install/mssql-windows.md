@@ -41,7 +41,7 @@ Required files:
 1. Start the IBM Data Protection for Microsoft SQL Agent on your SQL Server 
 ![DP for Microsoft SQL](../images/TDP4SQL-icon.png)
 1. Run a **Manual Full Backup** to verify your password.
-![Manuall Backup](../images/TDP4SQL-Full-Backup.png)
+![Manual Backup](../images/TDP4SQL-Full-Backup.png)
 
 #### Schedule Backups
 1. Download the required backup scripts and save them to `C:\Safespring`

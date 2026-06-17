@@ -1,26 +1,85 @@
-#Handling SSH key pairs
-A key pair is needed to connect to your newly created instance over SSH. OpenStack gives you the option to either generate a key pair in OpenStack or import an already existing key pair.
-##Generate with OpenStack
-Under `Compute` -> `Access & Security` in the dashboard there is a tab called `Key Pairs`. There are two buttons at the top:
+# SSH key pairs
 
-- Create Key Pair
-- Import Key Pair
+A key pair is required to connect to an instance over SSH. You can either generate a key pair locally and import the public key, or let OpenStack generate one for you.
 
-By pressing `Create Key Pair` you will be presented with a dialogue where you can name your key pair. When that is done, you press `Create Key Pair` at the bottom. The browser will start downloading the private part of the key as a PEM-file. You should save this file in a secure place.
+Generating the key pair locally is recommended — the private key never leaves your machine.
 
-If you are using an operating system which runs OpenSSH you will be able to use the pem-file directly with the -i flag to the ssh command. If you are using PuTTY on Windows you will need to convert the pem-file to a format Putty understands. This is done with the PuTTYgen-program (that is installed alongside PuTTY if you are using the installer for PuTTY).
+## Generate a key pair locally
 
-When Puttygen has started go to the menu entry `File` -> `Load private key`. Since files ending with `.pem` is not recognized you pick `All files *.*` in the open dialogue and then open the key you downloaded from the dashboard. You should get a notification that PuTTYgen has imported the key. You are recommended to set a password for the key - otherwise anyone with access to your key file will be able to log in to you instance. Now you press `Save private key` and name file.
+### Linux and macOS
 
+Use `ssh-keygen` to generate a key pair:
 
-## Import already existing key
-This is fairly straight forward: If using a system that uses OpenSSH you only copy the public key (of you already existing key) into the text field in the `Import Key Pair` dialogue.
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
 
-If using PuTTY you start PuTTYgen and copy the public part of the key from the text-field at the top (once you have loaded you key).
+You will be prompted for a file location (the default `~/.ssh/id_rsa` is fine) and an optional passphrase. Using a passphrase is recommended — it protects the private key if your machine is compromised.
 
-##Once the key is installed
-If you start PuTTY you now will be able to go to `SSH` -> `Auth` in the session configuration dialogue and use the file picking window under `Private key file for authentication `to point to you converted key.
+This creates two files:
 
-![Putty key dialogue](../../images/putty-key.png)
+- `~/.ssh/id_rsa` — your private key. Keep this secure and never share it.
+- `~/.ssh/id_rsa.pub` — your public key. This is what you import into the dashboard.
 
-If you instance is connected to the "public" network (and updated the security groups to allow SSH-traffic) you now should be able to log in to you instance with you key and password that you set in the convert procedure.
+### Windows
+
+On Windows 10 and later, `ssh-keygen` is available in PowerShell:
+
+```powershell
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+The key pair is saved to `C:\Users\<username>\.ssh\` by default.
+
+If you prefer to use PuTTY:
+
+1. Open **PuTTYgen**.
+2. Select **RSA** as the key type and set the number of bits to **4096**.
+3. Click **Generate** and move the mouse over the blank area to generate randomness.
+4. Set a passphrase in the **Key passphrase** fields.
+5. Click **Save private key** and save the `.ppk` file to a secure location.
+6. Copy the public key text from the text field at the top of the PuTTYgen window — you will need this when importing into the dashboard.
+
+## Import your public key into the dashboard
+
+In the [Horizon dashboard](../sites.md), go to **Compute → Key Pairs** and click **Import Public Key**.
+
+Give the key pair a name and paste the contents of your public key file:
+
+- **Linux/macOS**: paste the contents of `~/.ssh/id_rsa.pub`
+- **Windows (ssh-keygen)**: paste the contents of `C:\Users\<username>\.ssh\id_rsa.pub`
+- **Windows (PuTTYgen)**: paste the public key text from the top of the PuTTYgen window
+
+## Generate a key pair in the dashboard
+
+Alternatively, go to **Compute → Key Pairs** and click **Create Key Pair**. Give it a name and click **Create Key Pair**. The browser will download the private key as a `.pem` file — save it securely, as it cannot be retrieved again.
+
+- **Linux/macOS**: use the `.pem` file directly with the `-i` flag: `ssh -i ~/Downloads/my-key.pem ubuntu@<ip-address>`
+- **Windows (PuTTY)**: convert the `.pem` file to PuTTY's `.ppk` format using PuTTYgen: go to **File → Load private key**, select **All files (*.*)** and open the `.pem` file, then click **Save private key**.
+
+## Connect to an instance
+
+### Linux and macOS
+
+```bash
+ssh -i ~/.ssh/id_rsa ubuntu@<ip-address>
+```
+
+If you are using the default key (`~/.ssh/id_rsa`) it is picked up automatically and the `-i` flag can be omitted.
+
+### Windows (OpenSSH)
+
+```powershell
+ssh ubuntu@<ip-address>
+```
+
+### Windows (PuTTY)
+
+1. Open PuTTY and enter the instance IP address under **Session → Host Name**.
+2. Go to **Connection → SSH → Auth → Credentials** and browse to your `.ppk` file under **Private key file for authentication**.
+3. Click **Open** to connect.
+
+![PuTTY key dialogue](../../images/putty-key.png)
+
+!!! note "Default username"
+    The default SSH username depends on the image: `ubuntu` for Ubuntu, `debian` for Debian, `almalinux` for AlmaLinux, `rocky` for Rocky Linux, and `cirros` for CirrOS. The root user is typically disabled.

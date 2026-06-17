@@ -1,4 +1,4 @@
-#Trouble Shooting
+# Troubleshooting
 This section contains practical tips on how to solve certain problems.
 
 ## Console access through the dashboard

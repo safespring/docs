@@ -1,16 +1,16 @@
 # Logging and Monitoring
 
-This document outlines the logging and monitoring requirements and practices for Safespring on-demand Kubernetes services.
+This document outlines the logging and monitoring requirements and practices for Safespring Kubernetes Engine (SKE).
 
 ## 3.1 System Logging
 
-Logs are collected per site in a shared logging system using[grafana Loki](https://grafana.com/oss/loki/). The service runs on the operations cluster and monitor applications and clusters on each site.The infrastructure and configuration is fully automated using our internal git repositories and ArgoCD.
+Logs are collected per site in a shared logging system using [Grafana Loki](https://grafana.com/oss/loki/). The service runs on the operations cluster and monitors applications and clusters on each site. The infrastructure and configuration is fully automated using our internal git repositories and ArgoCD.
 
 API and application logs can be provided to the customer on a case by case basis. Please request access through support, and include the site and relevant access IDs.
 
-!!! note "On-demand Kubernetes Logs"
+!!! note "SKE Logs"
 
-    For on-demand Kubernetes clusters we do not store or monitor the logs.
+    For SKE clusters we do not store or monitor the logs.
 
 ## 3.2 Security Monitoring
 

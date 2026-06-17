@@ -21,7 +21,7 @@ After adding the [json-file](https://raw.githubusercontent.com/ceph/ceph/master/
 call aws like this: (with correct endpoint and profile-name for your configuration)
 
 ```
-aws --endpoint-url https://s3.sto2.safedc.net --profile ceph-sto2 s3api get-usage-stats
+aws --endpoint-url $S3_URL --profile ceph-sto2 s3api get-usage-stats
 {
     "Summary": {
         "TotalBytes": 164595434499,

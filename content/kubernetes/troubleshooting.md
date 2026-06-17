@@ -1,17 +1,18 @@
-# Trouble Shooting
+# Troubleshooting
 
 ## Cluster Authentication
 
 1. Check `kubectl --kubeconfig=demo-kubeconfig cluster-info`
 2. If there is no response, [re-run the steps to authenticate](authentication.md).
-3. If there is no response contact `support@safespring.com`
+3. If problems persist with authentication prompts, try clearing the kubelogin cache directory: `rm -rf ~/.kube/cache/kubelogin/`
+4. If there is still no response, contact `support@safespring.com`
 
 ## Debugging Resources: **Deployments**, **StatefulSets**, **Pods**
 
-We offer a few pointes on how to identify issues with core Kubernetes resources in an kubernetes cluster:
+We offer a few pointers on how to identify issues with core Kubernetes resources in a Kubernetes cluster:
 
 - Checking pod status and logs;
-- Describing deployments, StatefulSets and pods to identify issues;
+- Describing Deployments, StatefulSets and pods to identify issues;
 - Reviewing events;
 - Inspecting image pulls, health probes, and network configurations.
 
@@ -133,7 +134,7 @@ If you are using a private registry, make sure the correct image pull secret is 
 kubectl get secrets -n <namespace>
 ```
 
-### 10. Debugging Using Remote Shell
+### Debugging Using Remote Shell
 
 You can open a remote shell to a running pod for more in-depth debugging:
 
@@ -143,7 +144,7 @@ kubectl rsh <pod-name> -n <namespace>
 
 This gives you direct access to the container’s shell, where you can inspect logs, files, or processes inside the pod.
 
-### 11. Check Health Probes (Liveness and Readiness)
+### Check Health Probes (Liveness and Readiness)
 
 If your pods are failing health checks, check the configured liveness and readiness probes in the pod spec.
 
@@ -155,7 +156,7 @@ kubectl describe pod <pod-name> -n <namespace>
 
 If the probes are misconfigured or the application takes too long to start, the pod may restart continuously or fail to become ready.
 
-### 12. Check Network Policies
+### Check Network Policies
 
 Network policies might block traffic to or from the pod. Ensure that your pod has the appropriate network policies to allow inbound/outbound traffic. You can check existing network policies with:
 
@@ -165,7 +166,7 @@ kubectl get networkpolicy -n <namespace>
 
 You can then describe specific network policies to see if they are impacting the pod’s networking.
 
-### 13. Inspect Persistent Volume Claims (PVCs)
+### Inspect Persistent Volume Claims (PVCs)
 
 If your application uses persistent storage, a pod might fail to start if it cannot mount a persistent volume. Check for PVCs that are not in the `Bound` state:
 

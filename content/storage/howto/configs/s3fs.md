@@ -1,4 +1,4 @@
-# How to setup s3fs for use with Safesprings S3
+# How to setup s3fs for use with Safespring S3
 
 ## Ubuntu 16.04
 
@@ -15,8 +15,11 @@ To set up credentials put your AWS key and secret in the file `~/.passwd-s3fs`:
 
 This file must have the permissions `0600`. It is also possible to put the contents in `/etc/passwd-s3fs`. The rights for this file must be set to `0640`.
 
-### 3. Mount the S3-storag
-To mount the S3-storage (and to set up cache in order to increase performance):
+### 3. Mount the S3-storage
+To mount the S3-storage (and to set up cache in order to increase performance).
+
+!!! note
+    Replace the endpoint in the example below with the correct one for your site. See [General S3 information](../../getting-started.md#minimum-required-info-for-s3-access) for the full list of available endpoints.
 
 ```
 $ sudo mkdir /tmp/cache

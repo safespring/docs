@@ -1,0 +1,23 @@
+matrix:
+- name: markdown
+  aspell:
+    lang: en
+    ignore-case: true
+    d: en_US
+    mode: markdown
+  dictionary:
+    wordlists:
+    - .github/config/.wordlist.txt
+    encoding: utf-8
+  pipeline:
+  - pyspelling.filters.context:
+      context_visible_first: true
+      delimiters:
+      # Ignore possessive endings
+      - open: '(?<=\w)’s(?!\w)'
+        close: '\b'
+  - pyspelling.filters.markdown:
+  sources:
+  - '**/*.md'
+  default_encoding: utf-8
+  

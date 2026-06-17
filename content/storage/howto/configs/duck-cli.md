@@ -25,6 +25,9 @@ The config should be in your home folder, under
 $HOME/.duck/profiles/safe.cyberduckprofile
 ```
 
+!!! note
+    Replace the endpoint in the example below with the correct one for your site. See [General S3 information](../../getting-started.md#minimum-required-info-for-s3-access) for the full list of available endpoints.
+
 The contents of this file should look like this for the Norwegian
 site:
 

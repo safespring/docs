@@ -99,7 +99,7 @@ are already compressed like `.zip`, `.jpg` and so on.
 
 We have no generic exclusions serverside for things like names of
 trashcan folders, Firefox caches, iTunes libraries, core files and so
-on. It is up to your organisation to select what is meant to go in
+on. It is up to your organization to select what is meant to go in
 backups and what isn't, especially across different operating systems,
 where one single filename might have vastly differing meanings.
 

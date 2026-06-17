@@ -1,9 +1,8 @@
 # Kubernetes Cluster Traffic Management
 
-We provide current two means of managing traffic into a kubernetes cluster:
+We are making use of Cilium [Gateway API](https://gateway-api.sigs.k8s.io/) as default means of managing traffic towards Routes defined in a Kubernetes Service, which offers full API lifecycle management, security, and governance.
 
-- [NGINX Ingress](https://github.com/kubernetes/ingress-nginx) when you need simple, Kubernetes-native routing of web traffic into services;
-- Cilium [Gateway API](https://gateway-api.sigs.k8s.io/) which offers full API lifecycle management, security, and governance.
+If you are migrating your service from an Ingress Controller (Nginx, Traefik or any other) a quick comparison of main advantages of using Gateway API:
 
 | Feature                        | **Ingress**                         | **API Gateway**                                           |
 | ------------------------------ | ----------------------------------- | --------------------------------------------------------- |
@@ -15,11 +14,19 @@ We provide current two means of managing traffic into a kubernetes cluster:
 | **Kubernetes-native**          | ✅                                 | Sometimes (can be external)                               |
 | **Best for**                   | Simple cluster ingress              | Full API management and security                          |
 
+## Networking Details
+
+Workload Clusters are deployed on top of **OpenStack infrastructure** where we orchestrate/harden traffic as follows:
+
+- **OpenStack Security Groups**: provides a Stateful virtual firewall applied to cluster nodes as well granular filtering for API access and service ports as with explicit allowlists for Kubernetes control plane and worker node communication.
+- We make use of [Load Balancing - Elastic IP](../compute/loadbalancing.md) to forward traffic to respective Cluster Nodes based on L4 TCP ports: `80/443/6443/50000`. Additional ports can be provided on request.
+- The traffic is picked up by services exposed via Cilium Gateway API at ports `80` and `443`.
+
 ## Examples
 
 ### Gateway API
 
-In the following example we illustrate how to create a Gateway and corresponding HTTP routes, with HTTP redirecting to HTTPS. We create the Gateway `cilium-gateway`  which makes use of the GatewayClass `cilium`.
+In the following example we illustrate how to create a Gateway and corresponding HTTP routes, with HTTP redirecting to HTTPS. We create the Gateway `cilium-gateway` which makes use of the [`GatewayClass`](https://gateway-api.sigs.k8s.io/api-types/gatewayclass/) `cilium`.
 
 ```yaml
 ---
@@ -278,116 +285,5 @@ spec:
       requestRedirect:
         scheme: https
         statusCode: 301
-
-```
-
-### NGNIX Ingress
-
-We make use of [NGINX demo](https://github.com/nginxinc/NGINX-Demos/tree/master/nginx-hello-nonroot) containers to illustrate NGINX Ingress with a certificate generated using `letsencrypt-prod`.
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: coffee
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: coffee
-  template:
-    metadata:
-      labels:
-        app: coffee
-    spec:
-      containers:
-      - name: coffee
-        image: nginxdemos/nginx-hello:plain-text
-        ports:
-        - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: coffee-svc
-spec:
-  ports:
-  - port: 80
-    targetPort: 8080
-    protocol: TCP
-    name: http
-  selector:
-    app: coffee
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: tea
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: tea
-  template:
-    metadata:
-      labels:
-        app: tea
-    spec:
-      containers:
-      - name: tea
-        image: nginxdemos/nginx-hello:plain-text
-        ports:
-        - containerPort: 8080
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: tea-svc
-  labels:
-    app: tea
-spec:
-  ports:
-  - port: 80
-    targetPort: 8080
-    protocol: TCP
-    name: http
-  selector:
-    app: tea
----
-```
-
-#### Ingress Configuration
-
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: cafe-ingress
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
-spec:
-  ingressClassName: nginx
-  tls:
-  - hosts:
-    - cafe.apps.safesdemo.paas.safedc.net
-    secretName: cafe-secret
-  rules:
-  - host: cafe.apps.safesdemo.paas.safedc.net
-    http:
-      paths:
-      - path: /tea
-        pathType: Prefix
-        backend:
-          service:
-            name: tea-svc
-            port:
-              number: 80
-      - path: /coffee
-        pathType: Prefix
-        backend:
-          service:
-            name: coffee-svc
-            port:
-              number: 80
 
 ```

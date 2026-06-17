@@ -54,7 +54,9 @@ After restart the bucket operations should work as expected.
 
 ## Setting ACLs on files
 
-Select the file and choose `Info from the File` menu (keyboard
+For command-line ACL management and constructing public HTTPS URLs, see [Accessing a publicly available file over HTTPS](../../s3-advanced.md#accessing-a-publicly-available-file-over-https).
+
+In CyberDuck, select the file and choose `Info from the File` menu (keyboard
 shortcut: Opt-I) or the cogwheel. Then add or remove permissions as
 you see fit.
 

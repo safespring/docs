@@ -77,7 +77,7 @@ Units of your account regardless of which permissions you have._
 Assume that you have two roles. 
 
 1. **Backup Administrator:** all the _organization-wide_ backup administrators.
-2. **Department IT Administrator:** IT personell for 
+2. **Department IT Administrator:** IT personnel for 
    _specific departments_.
 
 Then you may want to let administrators with Role #1 have the ability to delete 

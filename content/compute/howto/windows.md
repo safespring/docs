@@ -1,18 +1,23 @@
 # Windows instances
 
+This page includes OpenStack CLI commands. See the [API Access documentation](../api.md) for instructions on how to install and configure the command line client.
+
 ## Cloudbase
 
 We use windows images from  [cloudbase](https://cloudbase.it/windows-cloud-images/). The image comes configured with [cloudbase-init](https://cloudbase.it/cloudbase-init/). This is similar to the cloud-init system we use for linux-based instances. The images also comes with RDP enabled.
 
 ## Password for Administrator user
 
-The images comes with the Windows _Administrator_ user. In order to enable this user, the password must be changed by accessing the instance console (e.g. from the Horizon dashboard).
+The images comes with the Windows _Administrator_ user. In order to enable this user, the password must be set. There are two ways to do this:
+
+- **Horizon console** — open the instance console from the [Horizon dashboard](../sites.md) and set the password manually after first boot.
+- **Cloudbase-init script** — supply a PowerShell User Data script that sets the password automatically at launch, before you ever log in. See the [Set Administrator password snippet](cloud-init.md#important-always-set-the-administrator-password-first) for a ready-to-use example.
 
 ## Cloudbase-init admin user
 
 Generally, we recommend leaving the _Administrator_ user disabled, and instead using Cloudbase-init to generate an admin user.
 
-Cloudbase-init generates an user named _Admin_. The _Admin_ user is added to the Administrators group.
+Cloudbase-init generates a user named _Admin_. The _Admin_ user is added to the Administrators group.
 
 The _Admin_ user is assigned a random password on installation, which can be retrieved by the following method:
 
@@ -22,7 +27,7 @@ Under the Compute > Access & Security menu, select the "Key Pairs" tab, press "+
 
 Give the key pair a describing name, for instance "windows-passwords". Press "Create Key Pair".
 
-A file called windows-passwords.pem should be dowloaded to your computer. Take good care of this file as it is used to decrypt your admin passwords.
+A file called windows-passwords.pem should be downloaded to your computer. Take good care of this file as it is used to decrypt your admin passwords.
 
 ### Creating a Windows instance via webui
 
@@ -45,7 +50,7 @@ nova get-password winbox1 ~/keys/windows-passwords.pem
 
 ## Setting the Administrator password (and other things) under instance creation
 
-Cloudbase can run powershell scripts under instance creation. This can for instance be used to set the Administrator user password. The script can either be written directly into the "Customization Sctipt" field under "Configuration" or uploaded as a file in the same dialog box.
+Cloudbase can run powershell scripts under instance creation. This can for instance be used to set the Administrator user password. The script can either be written directly into the "Customization Script" field under "Configuration" or uploaded as a file in the same dialog box.
 
 For some reason it seems impossible to set the password for the "admin" user using this method, although setting it for "Administrator" seems to work just fine.
 

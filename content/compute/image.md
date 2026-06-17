@@ -1,32 +1,45 @@
 # Image service
 
-!!! info
-    Some of these instructions require use of Openstack command line tools.
+This page includes OpenStack CLI commands. See the [API Access documentation](api.md) for instructions on how to install and configure the command line client.
    
 ## Images provided by Safespring in the platform
 
-Safespring provides images from the following distributions and operating systems:
+Safespring provides the following public images:
 
-1. Centos
-2. Debian
-3. Ubuntu
-4. Windows
+| Image | Description |
+| --- | --- |
+| `almalinux-8` | AlmaLinux 8 |
+| `debian-10` | Debian 10 (Buster) |
+| `debian-11` | Debian 11 (Bullseye) |
+| `debian-12` | Debian 12 (Bookworm) |
+| `debian-13` | Debian 13 (Trixie) |
+| `ubuntu-20.04` | Ubuntu 20.04 LTS (Focal Fossa) |
+| `ubuntu-22.04` | Ubuntu 22.04 LTS (Jammy Jellyfish) |
+| `ubuntu-24.04` | Ubuntu 24.04 LTS (Noble Numbat) |
+| `windows-server-2019` | Windows Server 2019 |
+| `windows-server-2022` | Windows Server 2022 |
+| `cirros` | Minimal test image, not for production use |
 
-Safespring does not make any modifications to the images but sources them from the upstream provider from the official OpenStack image repos. 
+The `talos-image-*` images are used internally by [Safespring Kubernetes Engine](../kubernetes/getting-started.md) and are not intended for direct use.
+
+!!! warning "CirrOS is for testing only"
+    The CirrOS image is a minimal Linux distribution designed for testing cloud infrastructure. It should not be used for production workloads.
+
+Safespring does not make any modifications to the images but sources them from the upstream provider from the official OpenStack image repos.
 
 Safespring make sure the following either works directly, or provide documentation for how to make it work for the images uploaded to the platform:
 
-1. The checkssum provided by the upstream provider should match the checksom of the image uploaded to the platform
-2. The the images can boot on a new instance
-3. A new instance booted from the image gets an IPv4 and IPv6 adress
-4. The the SSH-key provided at creation of a new instance gets properly injected into the "authorized_keys"-file of the instance
-5. The the instance can connect to a network with one interface.
+1. The checksum provided by the upstream provider should match the checksum of the image uploaded to the platform
+2. The images can boot on a new instance
+3. A new instance booted from the image gets an IPv4 and IPv6 address
+4. The SSH-key provided at creation of a new instance gets properly injected into the "authorized_keys"-file of the instance
+5. The instance can connect to a network with one interface.
 
 ## Uploading an image by customer
 
 ### Size limit using the web interface
 
-While it is possible to upload images using the Horizon web interface
+While it is possible to upload images using the [Horizon](sites.md) web interface
 there is currently a 2G size limit. For larger images, using the command
 line tools will work or asking the openstack software to DL the image
 from an URL you supply.
@@ -64,7 +77,7 @@ Horizon webui.
 
         glance image-list
 
-3.  Use the following commmand to download the image to local storage:
+3.  Use the following command to download the image to local storage:
     ```
     glance image-download _uuid_of_previously_created_snapshot_ \
         --file _local_filename_to_save_raw_image_to_ \

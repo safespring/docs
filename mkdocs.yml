@@ -48,6 +48,11 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
   - tables
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 # Pages layout
 nav:
@@ -108,7 +113,33 @@ nav:
           - User Data Recovery: "backup/cloud/user-data-recovery.md"
           - Read PST files: "backup/cloud/pst-files.md"
       - FAQ: "backup/faq.md"
-      - Legacy Backup: "legacy-backup/index.md"
+      - Legacy Backup Service:
+          - Overview: "backup/legacy-backup-service/index.md"
+          - Introduction: "backup/legacy-backup-service/introduction.md"
+          - Getting Started: "backup/legacy-backup-service/getting-started.md"
+          - Installation:
+              - Overview: "backup/legacy-backup-service/install/overview.md"
+              - Windows: "backup/legacy-backup-service/install/windows.md"
+              - Red Hat Linux: "backup/legacy-backup-service/install/rhel.md"
+              - Debian/Ubuntu: "backup/legacy-backup-service/install/debian-ubuntu.md"
+              - macOS: "backup/legacy-backup-service/install/apple-macos.md"
+              - freeBSD: "backup/legacy-backup-service/install/freebsd-other.md"
+              - Application:
+                  - Microsoft SQL Server: "backup/legacy-backup-service/install/tdp-for-mssql.md"
+          - HOWTOs:
+              - Bare Metal TBMR: "backup/legacy-backup-service/howto/bare-metal-tbmr.md"
+              - Handling Changing Files: "backup/legacy-backup-service/howto/changing-files.md"
+              - Encrypted Backups: "backup/legacy-backup-service/howto/encrypted.md"
+              - Include/Exclude: "backup/legacy-backup-service/howto/includeexclude.md"
+              - Performance Tuning: "backup/legacy-backup-service/howto/performance-tuning.md"
+              - Restore Alternate: "backup/legacy-backup-service/howto/restore-alternate.md"
+              - Single File Restore in Virtual Environments: "backup/legacy-backup-service/howto/virtual-enviroments-single-file-restore.md"
+              - VMware vSphere: "backup/legacy-backup-service/howto/vsphere.md"
+              - Windows Restore: "backup/legacy-backup-service/howto/windows-restore.md"
+          - API: "backup/legacy-backup-service/api.md"
+          - FAQ: "backup/legacy-backup-service/faq.md"
+          - Performance: "backup/legacy-backup-service/performance.md"
+          - Status: "backup/legacy-backup-service/status.md"
   - Compute:
       - Getting Started: "compute/getting-started.md"
       - Security and Compliance:
@@ -119,18 +150,34 @@ nav:
           - Network Security: "compute/security-compliance/network-security.md"
           - Secure Development: "compute/security-compliance/secure-development.md"
           - Development and Operations Management: "compute/security-compliance/development-operations-management.md"
-      - VPN options: "compute/vpn.md"
-      - API Access: "compute/api.md"
-      - Flavors: "compute/flavors.md"
-      - Load Balancing: "compute/loadbalancing.md"
-      - Application credentials: "compute/app-creds.md"
-      - Trouble Shooting: "compute/troubleshooting.md"
+      - Infrastructure:
+          - Flavors: "compute/flavors.md"
+          - GPU Flavors: "compute/gpu.md"
+          - Images: "compute/image.md"
+          - Volumes: "compute/volume.md"
+          - Server Groups: "compute/server-groups.md"
+          - Load Balancing: "compute/loadbalancing.md"
+          - Sites and Data Locality: "compute/sites.md"
+      - Networking and Access:
+          - Networking: "compute/networking.md"
+          - VPN Options: "compute/vpn.md"
+          - API Access: "compute/api.md"
+          - Metadata Service: "compute/metadata.md"
+          - Network Ports: "compute/howto/network-ports.md"
+      - Management:
+          - Instance Actions: "compute/instance-actions.md"
+          - Application Credentials: "compute/app-creds.md"
+          - Quotas: "compute/quotas.md"
+          - Cost Optimization: "compute/cost-optimization.md"
+          - Trouble Shooting: "compute/troubleshooting.md"
       - HOWTOs:
           - Using Keypairs: "compute/howto/keypairs.md"
-          - Persistent IP address: "compute/howto/persistent-ip-address.md"
-          - Windows images: "compute/howto/windows.md"
-          - Migrate instance to another project: "compute/howto/migrate-between-projects.md"
-          - Taking snapshots of instances: "compute/howto/snapshotting-instances.md"
+          - How to Tunnel Console Traffic with SSH: "compute/howto/novnc-tunneling.md"
+          - Cloud-init and Cloudbase-init: "compute/howto/cloud-init.md"
+          - Configuration Drive: "compute/howto/config-drive.md"
+          - Windows Images: "compute/howto/windows.md"
+          - Migrate Instance to Another Project: "compute/howto/migrate-between-projects.md"
+          - Taking Snapshots of Instances: "compute/howto/snapshotting-instances.md"
   - Storage:
       - Getting Started: "storage/getting-started.md"
       - Security and Compliance:
@@ -142,10 +189,12 @@ nav:
           - Secure Development: "storage/security-compliance/secure-development.md"
           - Development and Operations Management: "storage/security-compliance/development-operations-management.md"
       - S3 Quotas: "storage/quota.md"
+      - S3 API Compatibility: "storage/s3-compatibility.md"
       - S3 Advanced Features: "storage/s3-advanced.md"
       - S3 Usage Report: "storage/usage-statistics.md"
       - HOWTOs:
           - Object Locking: "storage/object-locking.md"
+          - Issue S3 credentials with the openstack CLI: "storage/howto/openstack-cli-credentials.md"
           - Example config for tools:
               - Example s3fs config: "storage/howto/configs/s3fs.md"
               - Example s3cmd config: "storage/howto/configs/s3cmd.md"
@@ -158,10 +207,18 @@ nav:
       - Tips and Tricks: "storage/tips-n-tricks.md"
       - Backup Exec and Safespring Storage: "storage/backup-exec.md"
       - Other Backends: "storage/other-backends.md"
-  - On-demand Kubernetes:
+  - Safespring Kubernetes Engine:
       - Getting Started: "kubernetes/getting-started.md"
+      - Portal Overview: "kubernetes/portal-overview.md"
       - Authentication: "kubernetes/authentication.md"
+      - Audit Logging: "kubernetes/audit-logging.md"
+      - Kubernetes Dashboard: "kubernetes/dashboard.md"
+      - Secret Management: "kubernetes/secret-management.md"
       - Traffic Management: "kubernetes/manage-traffic.md"
+      - Persistent Volumes: "kubernetes/persistent-volumes.md"
+      - Observability: "kubernetes/observability.md"
+      - Database Solutions: "kubernetes/database.md"
+      - Container Registry: "kubernetes/registry.md"
       - GPU: "kubernetes/gpu.md"
       - Security and Compliance:
           - Overview: "kubernetes/security-compliance/index.md"
