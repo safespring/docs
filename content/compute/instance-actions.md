@@ -6,7 +6,7 @@ This page includes OpenStack CLI commands. See the [API Access documentation](ap
 
 ## Billing implications
 
-At Safespring, you are billed for an instance as long as its resources (CPU, RAM, compute node capacity) are reserved — even if the instance is shut off, paused, or suspended. The only way to reduce billing for an instance you want to keep is to **shelve** it. A shelved instance is removed from the compute node entirely and you are only billed for the storage used by its snapshot.
+At Safespring, you are billed for an instance for as long as it exists — even if it is shut off, paused, suspended, or shelved. Billing is based on the instance existing on a compute node, not on whether it is running. The only way to stop being billed for an instance is to delete it.
 
 ## Overview
 
@@ -21,7 +21,7 @@ The following actions are available for instances:
 | **Unpause** | Resumes a paused instance from memory. | Yes | N/A |
 | **Suspend** | Saves instance state to disk, similar to hibernation. | Yes | CPU and RAM freed |
 | **Resume** | Restores a suspended instance from disk. | Yes | N/A |
-| **Shelve** | Shuts down the instance and removes it from the compute node. A snapshot is stored. | **No** — only snapshot storage is billed | CPU, RAM, and compute node |
+| **Shelve** | Shuts down the instance and removes it from the compute node. A snapshot is stored. | Yes | CPU, RAM, and compute node |
 | **Unshelve** | Restores a shelved instance from its snapshot onto a compute node. | Yes | N/A |
 
 ## Shut off and start
@@ -43,7 +43,7 @@ openstack server start my-instance
 ```
 
 !!! note
-    A shut off instance still occupies resources on the compute node and you will continue to be billed for it. If you want to free up compute resources and reduce billing while keeping the instance for later use, consider shelving instead.
+    A shut off instance still occupies resources on the compute node and you will continue to be billed for it. Shutting off, pausing, suspending, and shelving do not reduce billing. The only way to stop being billed for an instance is to delete it.
 
 ## Reboot
 
@@ -108,11 +108,10 @@ openstack server resume my-instance
 
 ## Shelve and unshelve
 
-Shelving an instance shuts it down, takes a snapshot of it, and removes it from the compute node entirely. This frees up all compute resources (CPU, RAM, compute node capacity). The instance can be restored later from its snapshot using unshelve, though this takes longer than starting a shut off instance since it must be scheduled onto a compute node again.
+Shelving an instance shuts it down, takes a snapshot of it, and removes it from the compute node. The instance can be restored later from its snapshot using unshelve, though this takes longer than starting a shut off instance since it must be scheduled onto a compute node again.
 
-Shelving is the only instance action that reduces your billing. While shelved, you are only billed for the storage consumed by the instance snapshot — not for compute resources.
-
-Shelving works best for volume-based instances (b2 flavors), since the root disk already resides in the central storage and does not need to be uploaded to the image service. For l2-flavor instances with local disk, the shelve operation needs to upload the entire local disk as a snapshot to the image service, which can take a long time for large disks.
+!!! warning
+    Shelving does **not** reduce your billing. You are billed for an instance for as long as it exists, regardless of whether it is running, shut off, or shelved. The only way to stop being billed for an instance is to delete it.
 
 ### Using the [Horizon dashboard](sites.md)
 
@@ -127,9 +126,6 @@ openstack server shelve my-instance
 ```bash
 openstack server unshelve my-instance
 ```
-
-!!! info
-    Shelving is useful for instances you want to keep but do not need running for an extended period. Since the instance is removed from the compute node, it does not count against your compute quota while shelved.
 
 ## Rescue mode
 
