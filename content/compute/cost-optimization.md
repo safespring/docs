@@ -6,13 +6,11 @@ This page collects practical advice for keeping costs under control when using S
 
 Choose the smallest flavor that meets your workload requirements. Over-provisioning CPU and RAM means paying for resources that are not being used. Monitor your instances' actual resource utilization and consider resizing to a smaller flavor if usage is consistently low. See the [Flavors documentation](flavors.md) for available sizes and [resizing instructions](flavors.md#resizing).
 
-<!--## Shelve instances you are not using
+## Delete instances you no longer need
 
-Shutting off an instance does **not** reduce billing — you are still billed for the reserved compute resources as long as the instance exists on a compute node. If you have instances that are not needed for an extended period, **shelve** them instead. A shelved instance is removed from the compute node and you are only billed for the storage of its snapshot.
+Stopping an instance does not reduce billing. You are billed for an instance for as long as it exists on a compute node, regardless of its state — shut off, paused, suspended, and shelved instances are all billed in full. The only way to stop being billed for an instance is to delete it.
 
-Shelving works best for volume-based instances (b2 flavors), since the root disk already resides in central storage and does not need to be uploaded to the image service. For l2-flavor instances, the shelve operation needs to upload the entire local disk as a snapshot, which can take a long time for large disks.
-
-See the [Instance Actions documentation](instance-actions.md#shelve-and-unshelve) for details on how to shelve and unshelve.-->
+If you will not need an instance for an extended period, delete it rather than leaving it shut off or shelved. To preserve its data, take a snapshot or keep the data on a separate volume before deleting. See the [Instance Actions documentation](instance-actions.md) for the available actions and their billing implications.
 
 ## Choose the right volume type
 
