@@ -6,7 +6,7 @@ This page includes OpenStack CLI commands. See the [API Access documentation](ap
 
 ## Billing implications
 
-At Safespring, you are billed for an instance as long as its resources (CPU, RAM, compute node capacity) are reserved — even if the instance is shut off, paused, or suspended. The only way to reduce billing for an instance you want to keep is to **shelve** it. A shelved instance is removed from the compute node entirely and you are only billed for the storage used by its snapshot.
+At Safespring, you are billed for an instance as long as its resources (CPU, RAM, compute node capacity) are reserved — even if the instance is shut off, paused, or suspended. <!--The only way to reduce billing for an instance you want to keep is to **shelve** it. A shelved instance is removed from the compute node entirely and you are only billed for the storage used by its snapshot.-->
 
 ## Overview
 
@@ -21,8 +21,8 @@ The following actions are available for instances:
 | **Unpause** | Resumes a paused instance from memory. | Yes | N/A |
 | **Suspend** | Saves instance state to disk, similar to hibernation. | Yes | CPU and RAM freed |
 | **Resume** | Restores a suspended instance from disk. | Yes | N/A |
-| **Shelve** | Shuts down the instance and removes it from the compute node. A snapshot is stored. | **No** — only snapshot storage is billed | CPU, RAM, and compute node |
-| **Unshelve** | Restores a shelved instance from its snapshot onto a compute node. | Yes | N/A |
+<!--| **Shelve** | Shuts down the instance and removes it from the compute node. A snapshot is stored. | **No** — only snapshot storage is billed | CPU, RAM, and compute node |
+| **Unshelve** | Restores a shelved instance from its snapshot onto a compute node. | Yes | N/A |-->
 
 ## Shut off and start
 
@@ -106,7 +106,7 @@ openstack server suspend my-instance
 openstack server resume my-instance
 ```
 
-## Shelve and unshelve
+<!--## Shelve and unshelve
 
 Shelving an instance shuts it down, takes a snapshot of it, and removes it from the compute node entirely. This frees up all compute resources (CPU, RAM, compute node capacity). The instance can be restored later from its snapshot using unshelve, though this takes longer than starting a shut off instance since it must be scheduled onto a compute node again.
 
@@ -129,7 +129,7 @@ openstack server unshelve my-instance
 ```
 
 !!! info
-    Shelving is useful for instances you want to keep but do not need running for an extended period. Since the instance is removed from the compute node, it does not count against your compute quota while shelved.
+    Shelving is useful for instances you want to keep but do not need running for an extended period. Since the instance is removed from the compute node, it does not count against your compute quota while shelved.-->
 
 ## Rescue mode
 
