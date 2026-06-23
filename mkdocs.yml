@@ -18,6 +18,8 @@ extra_css:
   - "safespring.css"
 extra_javascript:
   - "https://lbpj80qtys85.statuspage.io/embed/script.js"
+  - "https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"
+  - "javascripts/mermaid-viewer.js"
 extra:
   font:
     text: "Montserrat"
