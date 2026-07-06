@@ -233,6 +233,7 @@ chown
 chpasswd
 cidr
 cinderplugin
+ciphertext
 cirros
 ckkba
 clat
@@ -360,6 +361,7 @@ ddsmapplet
 decimalmark
 decrypt
 decrypted
+decrypts
 dedup
 dedupcache
 dedupcachepath
@@ -484,6 +486,7 @@ entra
 entrypoint
 enu
 env
+envfrom
 eof
 epel
 eq
