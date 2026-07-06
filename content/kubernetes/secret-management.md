@@ -14,6 +14,19 @@ This guide walks you through setting up the SOPS operator in Kubernetes to autom
 
 An alternative implementation of SOPS is presented by [Sops Operator](https://github.com/peak-scale/sops-operator) which focuses on complex scenario most of which valid in a multi-tenant environment.
 
+!!! note "What SOPS is - and that you don't have to use it"
+    SOPS ("Secrets OPerationS") is a general-purpose file-encryption tool - not a Kubernetes
+    feature. It encrypts the *values* in a structured file (YAML/JSON) while leaving the keys and
+    overall structure readable, so an encrypted file is still safe to store and diff in Git.
+
+    You don't have to use it at all. A pod, Job, etc. that references a secret only cares that
+    the `Secret` object exists in the cluster - it is completely indifferent to how it got
+    there. You can create Secrets directly (for example `kubectl apply` an unencrypted Secret
+    against the cluster) and everything works. SOPS exists purely to give you a safe way to
+    **keep secrets in a Git repository**: it encrypts the values at rest in Git, and the
+    operator decrypts them back into normal Secrets in the cluster. If you are not committing
+    secrets to Git, you don't need any of this.
+
 For following this guide it is required:
 
 - `kubeconf-demo` is [obtained from the portal](portal-overview.md#accessing-kubernetes-cluster) for that specific cluster and active in current shell via `KUBECONFIG` environment variable or specified via `--kubeconfig` flag for helm and kubectl command line tools.
@@ -66,55 +79,32 @@ Save the **public key** (starts with `age1...`) for encrypting secrets and the *
 Create a secret containing your Age private key:
 
 ```bash
-kubectl create secret generic age-key -n sops-operator \
-     --from-file=keys.txt="${AGE_KEY_FILE}" \
+kubectl create secret generic sops-age-key -n sops-operator \
+     --from-file=age-key.txt="${AGE_KEY_FILE}" \
      --dry-run=client -o yaml | kubectl apply -f -
 ```
 
 ### Example Usage
 
-#### Configure SOPS to Use Age Key
+#### Configure SOPS to use your Age key
 
-Create a [`.sops.yaml` configuration file](https://github.com/getsops/sops?tab=readme-ov-file#using-sops-yaml-conf-to-select-kms-pgp-and-age-for-new-files) in your project directory:
+Create a [`.sops.yaml` configuration file](https://github.com/getsops/sops?tab=readme-ov-file#using-sops-yaml-conf-to-select-kms-pgp-and-age-for-new-files) in your project directory. Set `encrypted_regex` so SOPS encrypts **only the secret values** and leaves the rest of the manifest (`kind`, `metadata`, structure) readable - the operator needs that structure in clear text to decrypt:
 
 ```yaml
 creation_rules:
-  - age: age1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  - path_regex: '.*\.enc\.yaml$'
+    encrypted_regex: '^(data|stringData)$'
+    age: age1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-Replace the public key with your actual Age public key.
+Replace the public key with your actual Age public key. The `path_regex` scopes this rule to files whose names end in `.enc.yaml`. Naming your encrypted files that way is good practice - it makes them easy to spot and keeps them cleanly separated from plaintext. Note that SOPS matches `path_regex` against the file you encrypt, so the file must already be named `*.enc.yaml` for the rule to apply.
 
-#### Encrypt a Secret with SOPS
+#### Create and encrypt a SopsSecret
 
-Create a sample Kubernetes secret file:
+The operator watches for `SopsSecret` resources - **this is the only thing you deploy**. Write it with your values in clear text:
 
 ```yaml
-# secret.yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: my-secret
-  namespace: default
-type: Opaque
-stringData:
-  username: admin
-  password: supersecret123
-```
-
-Encrypt it with SOPS:
-
-```bash
-sops --encrypt --age age1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \
-  --encrypted-regex '^(data|stringData)$' \
-  secret.yaml > secret.enc.yaml
-```
-
-#### Create a SopsSecret Resource
-
-The SOPS operator uses custom `SopsSecret` resources. Convert your encrypted secret:
-
-```yaml
-# sops-secret.yaml
+# my-sops-secret.enc.yaml
 apiVersion: isindir.github.com/v1alpha3
 kind: SopsSecret
 metadata:
@@ -122,13 +112,34 @@ metadata:
   namespace: default
 spec:
   secretTemplates:
-    - name: my-secret
+    - name: my-secret          # name of the Secret the operator will create
       stringData:
-        username: ENC[AES256_GCM,data:xxxxx,type:str]
-        password: ENC[AES256_GCM,data:xxxxx,type:str]
+        username: admin
+        password: supersecret123
 ```
 
-Or simply point to your encrypted file and apply it directly if it's in the correct format.
+Encrypt it in place:
+
+```bash
+sops --encrypt --in-place my-sops-secret.enc.yaml
+```
+
+Because `.sops.yaml` sets `encrypted_regex`, SOPS encrypts only the `stringData`/`data` values and adds a `sops:` metadata block; `kind`, `metadata` and the template structure stay readable. **This encrypted file is what you commit to Git and/or apply - there is no separate plain-Secret file to deploy.**
+
+!!! warning
+    Do **not** apply a SOPS-encrypted plain `kind: Secret` to the cluster. Neither `kubectl`
+    nor your GitOps tool decrypt SOPS - they store the ciphertext as the value and Kubernetes
+    silently drops the `sops:` block, so the secret is unusable (and shows as permanently out
+    of sync in your GitOps tool). Always wrap secrets in a `SopsSecret`; the operator is what
+    decrypts.
+
+#### Apply it
+
+```bash
+kubectl apply -f my-sops-secret.enc.yaml
+```
+
+The operator decrypts it and creates a normal `kind: Secret` named `my-secret`, which your pods consume the usual way (`envFrom`, `secretKeyRef`, or a volume mount). Under GitOps, commit the encrypted file and let your GitOps tool sync it rather than applying by hand.
 
 #### Configure the Operator for SopsSecret
 
