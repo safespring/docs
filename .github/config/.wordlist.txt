@@ -1151,6 +1151,7 @@ pluginconfiguration
 pn
 png
 podinfo
+podinfo's
 podman
 pointes
 pointintime
