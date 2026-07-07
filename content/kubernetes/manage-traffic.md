@@ -1,8 +1,8 @@
 # Kubernetes Cluster Traffic Management
 
-We are making use of Cilium [Gateway API](https://gateway-api.sigs.k8s.io/) as default means of managing traffic towards Routes defined in a Kubernetes Service, which offers full API lifecycle management, security, and governance.
+Safespring uses the Cilium [Gateway API](https://gateway-api.sigs.k8s.io/) as the default means of routing traffic to services running in your cluster. It offers full API lifecycle management, security, and governance.
 
-If you are migrating your service from an Ingress Controller (Nginx, Traefik or any other) a quick comparison of main advantages of using Gateway API:
+If you are migrating your service from an Ingress controller (Nginx, Traefik, or any other), here is a quick comparison of the main advantages of using the Gateway API:
 
 | Feature                        | **Ingress**                         | **API Gateway**                                           |
 | ------------------------------ | ----------------------------------- | --------------------------------------------------------- |
@@ -18,15 +18,61 @@ If you are migrating your service from an Ingress Controller (Nginx, Traefik or 
 
 Workload Clusters are deployed on top of **OpenStack infrastructure** where we orchestrate/harden traffic as follows:
 
-- **OpenStack Security Groups**: provides a Stateful virtual firewall applied to cluster nodes as well granular filtering for API access and service ports as with explicit allowlists for Kubernetes control plane and worker node communication.
-- We make use of [Load Balancing - Elastic IP](../compute/loadbalancing.md) to forward traffic to respective Cluster Nodes based on L4 TCP ports: `80/443/6443/50000`. Additional ports can be provided on request.
-- The traffic is picked up by services exposed via Cilium Gateway API at ports `80` and `443`.
+- **OpenStack Security Groups**: provide a stateful virtual firewall applied to cluster nodes, plus granular filtering for API access and service ports, with explicit allowlists for Kubernetes control plane and worker node communication.
+- The Safespring load balancer forwards traffic to the cluster nodes on L4 TCP ports `80, 443, 6443 and 30000-32767`.
+- Ports `80`, `443` and the range `30000-32767` (all TCP) are available for exposing your own services. `80`/`443` are served by the Cilium Gateway API and `30000-32767` is the Kubernetes [NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport) range - and as covered below, the Gateway can listen on any of these ports.
+
+## How incoming traffic reaches your app
+
+Before the examples, here is the path a request takes and the Kubernetes objects involved. If you are new to the [Gateway API](https://gateway-api.sigs.k8s.io/docs/concepts/api-overview/), this is the high-level overview:
+
+```
+Client
+  |
+  v
+DNS resolves your hostname to the cluster's external IP
+  |
+  v
+Safespring load balancer  (forwards 80, 443 and 30000-32767 to the cluster nodes)
+  |
+  v
+Gateway  (terminates TLS; can listen on 80, 443 or any port in 30000-32767)
+  |
+  v
+HTTPRoute  (matches hostname/path)
+  |
+  v
+Service
+  |
+  v
+your Pods
+```
+
+You can expose a service on any port the load balancer forwards - `80`, `443`, or any port in `30000-32767` - and the Gateway can listen on all of them, so the same path applies. For a non-HTTP service you can instead skip the Gateway and expose it directly with a [`type: NodePort`](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport) Service on the `30000-32767` range, in which case TLS is your app's responsibility.
+
+You create a handful of standard Kubernetes objects. Our default Gateways use the `cilium` implementation:
+
+| Object | What it does | Official docs |
+| --- | --- | --- |
+| **GatewayClass** (`cilium`) | Selects *which* implementation runs your Gateways. Cilium provides this cluster-wide - you only reference it by name, you don't create it. | [Gateway API overview](https://gateway-api.sigs.k8s.io/docs/concepts/api-overview/), [Cilium Gateway API](https://docs.cilium.io/en/stable/network/servicemesh/gateway-api/gateway-api/) |
+| **Gateway** | The entry point: which ports/protocols to listen on, and where TLS is terminated. | [Gateway API overview](https://gateway-api.sigs.k8s.io/docs/concepts/api-overview/) |
+| **HTTPRoute** | The routing rules: match on hostname/path and forward to a Service. | [HTTP routing guide](https://gateway-api.sigs.k8s.io/guides/http-routing/) |
+| **Certificate** + **ClusterIssuer** | cert-manager obtains and renews the TLS certificate (via Let's Encrypt) that the Gateway serves. | [cert-manager + Gateway API](https://cert-manager.io/docs/usage/gateway/) |
+| **Service** | Your application - the destination the HTTPRoute forwards to. | [Kubernetes Services](https://kubernetes.io/docs/concepts/services-networking/service/) |
+
+!!! note "One Gateway per app vs. a shared Gateway"
+    The first example below is *self-contained* - the Gateway, Certificate and HTTPRoute all live in
+    one namespace (`allowedRoutes: from: Same`), the simplest way to expose a single service. To
+    expose several services, use the [shared Gateway](#shared-gateway-for-multiple-services) example
+    below instead: one Gateway that routes in any namespace attach to.
 
 ## Examples
 
-### Gateway API
+### Self-contained Gateway (single service)
 
-In the following example we illustrate how to create a Gateway and corresponding HTTP routes, with HTTP redirecting to HTTPS. We create the Gateway `cilium-gateway` which makes use of the [`GatewayClass`](https://gateway-api.sigs.k8s.io/api-types/gatewayclass/) `cilium`.
+In the following example we create a Gateway and its HTTP routes (with HTTP redirecting to HTTPS), using the [`GatewayClass`](https://gateway-api.sigs.k8s.io/docs/concepts/api-overview/) `cilium`. Everything - the app and its Service, the Certificate, and the Gateway with its routes - lives in one namespace, so it all appears together below.
+
+First, the application itself - a namespace, an nginx `Deployment` serving a demo page, and a `Service` in front of it:
 
 ```yaml
 ---
@@ -157,6 +203,8 @@ spec:
 
 #### ClusterIssuer for Let's Encrypt and Certificate
 
+Next, cert-manager obtains the TLS certificate: the `ClusterIssuer` defines how to get certificates from Let's Encrypt, and the `Certificate` requests one and stores it in a Secret the Gateway serves. See [cert-manager with Gateway API](https://cert-manager.io/docs/usage/gateway/).
+
 ```yaml
 ---
 # TLS Certificate using cert-manager
@@ -196,10 +244,12 @@ spec:
 
 #### Cilium Gateway Configuration
 
+Finally, the `Gateway` itself (the entry point, terminating TLS on port 443) and the `HTTPRoute`s (the routing rules) - one forwarding HTTPS traffic to the Service, and one redirecting plain HTTP to HTTPS. See the [HTTP routing guide](https://gateway-api.sigs.k8s.io/guides/http-routing/).
+
 ```yaml
 ---
 
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: cilium-gateway
@@ -232,7 +282,7 @@ spec:
 
 ---
 # HTTPRoute for HTTPS traffic
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   name: demo-https-route
@@ -267,7 +317,7 @@ spec:
 
 ---
 # HTTPRoute for HTTP to HTTPS redirect
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   name: demo-http-redirect
@@ -287,3 +337,122 @@ spec:
         statusCode: 301
 
 ```
+
+### Shared Gateway for multiple services
+
+Running a separate Gateway per service (as above) gets repetitive once you expose more than one or two. The more scalable pattern - and the one Safespring uses internally - is a single **shared Gateway** in its own namespace that every service attaches routes to. Each service then only ships its own `Certificate`, `HTTPRoute`, and a `ReferenceGrant`.
+
+The shared Gateway lives in a dedicated namespace and has one HTTPS listener per hostname, plus a single HTTP listener for redirects. `allowedRoutes.namespaces.from: All` lets routes in any namespace attach to it:
+
+```yaml
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gateway-system
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: gateway
+  namespace: gateway-system
+spec:
+  gatewayClassName: cilium
+  listeners:
+    # One HTTP listener covers redirects for every hostname
+    - name: http
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: All
+    # Add one HTTPS listener per hostname you expose
+    - name: https-my-app
+      port: 443
+      protocol: HTTPS
+      hostname: my-app.example.com
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: my-app-tls
+            namespace: my-app        # the cert lives in the service's namespace
+      allowedRoutes:
+        namespaces:
+          from: All
+```
+
+Because the TLS Secret lives in the service's namespace but the Gateway reads it from `gateway-system`, each service needs a [`ReferenceGrant`](https://gateway-api.sigs.k8s.io/guides/tls/) allowing that cross-namespace read. Per service you then apply a `Certificate`, the `ReferenceGrant`, and the `HTTPRoute`s (reusing the `letsencrypt-prod` ClusterIssuer from the previous example):
+
+```yaml
+---
+# TLS certificate for this service (cert-manager)
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: my-app-tls
+  namespace: my-app
+spec:
+  secretName: my-app-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - my-app.example.com
+---
+# Allow the shared Gateway to read the TLS secret from this namespace
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: ReferenceGrant
+metadata:
+  name: my-app-tls-from-gateway
+  namespace: my-app
+spec:
+  from:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      namespace: gateway-system
+  to:
+    - group: ""
+      kind: Secret
+      name: my-app-tls
+---
+# Route HTTPS traffic to the Service
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: my-app
+  namespace: my-app
+spec:
+  parentRefs:
+    - name: gateway
+      namespace: gateway-system
+      sectionName: https-my-app
+  hostnames:
+    - my-app.example.com
+  rules:
+    - backendRefs:
+        - name: my-app           # your Service
+          port: 80
+---
+# Redirect HTTP -> HTTPS
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: my-app-redirect
+  namespace: my-app
+spec:
+  parentRefs:
+    - name: gateway
+      namespace: gateway-system
+      sectionName: http
+  hostnames:
+    - my-app.example.com
+  rules:
+    - filters:
+        - type: RequestRedirect
+          requestRedirect:
+            scheme: https
+            statusCode: 301
+```
+
+For each additional service, add one HTTPS listener to the shared Gateway and repeat the per-service block (`Certificate` + `ReferenceGrant` + `HTTPRoute`s), pointing `sectionName` at that service's listener.
