@@ -232,10 +232,12 @@ chmod
 chown
 chpasswd
 cidr
+cilium
 cinderplugin
 ciphertext
 cirros
 ckkba
+claimname
 clat
 cleartext
 cli
@@ -582,6 +584,7 @@ frontendcapacitymegabytes
 frr
 fs
 fsck
+fsgroup
 fssl
 fstab
 fstatat
@@ -619,6 +622,7 @@ getobjectretention
 getobjecttagging
 getopts
 gettagging
+ghcr
 gib
 gitops
 gkg
@@ -655,6 +659,7 @@ headlmap
 headobject
 healthcecker
 healthcheck
+healthz
 hgtqjqugayngyfanpul
 hiberfile
 hidpi
@@ -669,6 +674,7 @@ howto
 howtos
 href
 htpasswd
+httpget
 httproute
 https
 httpsport
@@ -716,6 +722,7 @@ includepassword
 incr
 inet
 ingester
+ingressclass
 ingressclassname
 inheritedproductcode
 ini
@@ -853,6 +860,7 @@ listobjectsv
 listobjectversions
 listparts
 liveness
+livenessprobe
 llm
 llms
 lm
@@ -1142,6 +1150,7 @@ plaintext
 pluginconfiguration
 pn
 png
+podinfo
 podman
 pointes
 pointintime
@@ -1208,6 +1217,7 @@ putobjectlockconfiguration
 putobjecttagging
 puttygen
 pv
+pvc
 pvcs
 pwauth
 pwd
@@ -1239,10 +1249,12 @@ rcl
 rclone
 rdcert
 rdp
+readinessprobe
 readme
 readonly
 readpst
 readwriteonce
+readyz
 realtime
 rebootpending
 receivecommentnotifications
@@ -1325,6 +1337,9 @@ rtl
 rtt
 rubrik
 ruleset
+runasgroup
+runasnonroot
+runasuser
 runcmd
 runnable
 runtimeclassname
@@ -1375,6 +1390,7 @@ secrettoken
 sectionname
 securepassword
 securestring
+securitycontext
 securityprotocol
 securityprotocoltype
 sed
@@ -1474,6 +1490,7 @@ statusreportid
 stdev
 stdin
 stdout
+stefanprodan
 sth
 sto
 storageclass
