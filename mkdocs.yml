@@ -209,6 +209,7 @@ nav:
       - Other Backends: "storage/other-backends.md"
   - Safespring Kubernetes Engine:
       - Getting Started: "kubernetes/getting-started.md"
+      - Deploy Your First Application: "kubernetes/getting_started.md"
       - Portal Overview: "kubernetes/portal-overview.md"
       - Authentication: "kubernetes/authentication.md"
       - Audit Logging: "kubernetes/audit-logging.md"
