@@ -1006,6 +1006,7 @@ nodeoperatingsystems
 nodeoslevel
 nodepaths
 nodeplatform
+nodeport
 nodereport
 nodereportid
 nodereportlist
@@ -1253,6 +1254,7 @@ recomended
 recv
 redhat
 redistributables
+referencegrant
 refreshtokengrant
 registeredtime
 registrationnumber
@@ -1344,6 +1346,7 @@ sata
 sbom
 sbomclient
 sboms
+scalable
 sched
 schedcmddisabled
 schedcmdexception
