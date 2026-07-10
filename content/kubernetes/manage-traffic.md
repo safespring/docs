@@ -3,10 +3,9 @@
 Safespring uses the Cilium [Gateway API](https://gateway-api.sigs.k8s.io/) as the default means of routing traffic to services running in your cluster. It offers full API lifecycle management, security, and governance.
 
 !!! note "It's a default, not a requirement"
-    The Gateway API is pre-installed on every cluster, but you have full admin access. You're free
-    to remove it entirely and run whatever suits you better instead - for example an
-    [ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress/) such as
-    Traefik.
+    Cilium with Gateway API support enabled comes pre-installed on every newly provisioned
+    cluster, but you're free to remove it entirely and run whatever suits your needs better -
+    for example an [ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress/) such as Traefik.
 
 If you are migrating your service from an Ingress controller (Nginx, Traefik, or any other), here is a quick comparison of the main advantages of using the Gateway API:
 
