@@ -14,10 +14,6 @@ API and application logs can be provided to the customer on a case by case basis
 
 auditd is being implemented on all physical storage machines, providing full security and audit logging.
 
-## 3.2 Security Monitoring
-
-*Details about security event monitoring, threat detection, and incident response for storage services will be outlined here.*
-
 ## 3.3 Time Synchronization
 
 All servers have `systemd-timesyncd` enabled and configured to synchronize time. The timezone is set to UTC to ensure consistency across all servers.

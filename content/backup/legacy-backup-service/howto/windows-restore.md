@@ -12,7 +12,9 @@ This document describes how to restore an instance from Safespring Backup using 
 ## Method
 
 ### 1. Rekey the node
-Start with going to the backup portal and rekey the node that you want to restore. You need to do this to have a password to use to connect to the backup server:
+In the Backup Portal, select the node that you want to restore. Open
+**Basics → SP Password**, then select **Change** to rekey the node. You need the
+new password to connect to the backup server:
 
 ![image](../../../images/restore-rekey.png)
 

@@ -2,16 +2,24 @@
 
 ## How to get support
 
-All out customers can e-mail support@safespring.com for all the services.
+All Safespring customers can email support@safespring.com for help with any
+service.
 
-If you report issues with our services, please include as much information as
-possible as this will make it easier for our engineers to start troubleshooting.
+Include enough context for support to identify the affected service and begin
+troubleshooting:
 
-Relevant information could be:
+* Safespring service and site, such as Compute in *sto2*.
+* When the problem occurred, including the time zone.
+* Relevant resource identifiers, such as a Compute instance ID or Backup node
+  name.
+* Expected behavior, actual behavior, and steps that reproduce the problem.
+* Exact error messages and the relevant part of a log.
+* The operational impact and whether the problem is still occurring.
 
-* Instance IDs for compute instances,
-* Logs from the backup client
-* etc...
+Do not send passwords, private keys, access keys, secret keys, tokens, or
+unrelated personal data by email. Support will ask for additional diagnostic
+information when required.
 
-Also refer to our [policy](./policies.md) for important information about our SLA and
-support level.
+See [Policies and SLA](./policies.md) for the applicable service level and
+support terms. Check the [service status](https://status.safespring.com) and
+[known issues](./known_issues.md) before reporting a service incident.

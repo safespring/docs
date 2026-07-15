@@ -9,3 +9,8 @@ This section covers all public and private cloud services offered by Safespring 
 ## Overview
 
 The sections in this chapter outline how security and compliance aspects are addressed on Safespring Compute services. They provide evidence on how our internal DevOps guidelines are implemented and give an insight to our users on our security and compliance practices.
+
+!!! note "Control numbering"
+    Numbered headings follow Safespring's shared control taxonomy. A missing
+    number means that this site does not publish a Compute-specific statement
+    for that control.

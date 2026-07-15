@@ -1,6 +1,11 @@
-# Portal overview
+# Create and access your first SKE cluster
 
-## I just got a Safespring Portal account, what now?
+This guide is for users who have received a Safespring portal account for
+Safespring Kubernetes Engine (SKE). You will activate the required accounts,
+create an environment and cluster, download its `kubeconfig`, and verify access
+with `kubectl`.
+
+## Activate your portal and identity accounts
 
 As the first user for your domain you should have received three activation emails:
 
@@ -9,6 +14,10 @@ As the first user for your domain you should have received three activation emai
 * **IDM in osl2** URL: https://osl2.idm.paas.safedc.net/
 
 You should click the activation links in each and every one of the emails to ensure that you have all accounts you need in order to provision your services.
+
+If you did not receive all three activation emails, contact your organization's
+Safespring administrator or [Safespring support](../service/support.md) before
+continuing.
 
 ## Prerequisites
 

@@ -12,7 +12,7 @@ Start with adding an `S3 compatible gateway` config,
 
 and in the next menu, give it a name, add the endpoint URL for your site
 and the `access_key` and `secret_key` you got while enrolling for the
-service. See [General S3 information](../../getting-started.md#minimum-required-info-for-s3-access) for the full list of available endpoints.
+service. See [Connection details](../../getting-started.md#connection-details) for the full list of available endpoints.
 
 ![Options](../../../images/cloudberry2.png)
 
