@@ -2,13 +2,13 @@
 
 This page describes how networking works on the Safespring Compute platform in detail. For a quick overview of the available networks and how to choose between them, see the [Network section in Getting Started](getting-started.md#network).
 
-This page includes OpenStack CLI commands. See the [API Access documentation](api.md) for instructions on how to install and configure the command line client.
+This page also includes OpenStack CLI commands. See the [API Access documentation](api.md) for instructions on how to install and configure the command line client.
 
 ## Architecture: layer 3 routing with Calico
 
-Safespring uses [Calico](https://www.tigera.io/project-calico/) as its networking engine, which operates as a pure layer 3 network using BGP routing. This is fundamentally different from traditional OpenStack deployments that use layer 2 bridging with software-defined switches and floating IP addresses. The Calico model is simpler, more performant, and has a smaller attack surface.
+Safespring uses [Calico](https://www.tigera.io/project-calico/) as its networking engine, which operates as a pure layer 3 network using Border Gateway Protocol (BGP) routing. This is fundamentally different from traditional OpenStack deployments that use layer 2 bridging with software-defined switches and floating IP addresses. The Calico model is simpler, more performant, and has a smaller attack surface.
 
-Each instance receives its own IP address from a shared pool via DHCP. The IP address remains static for the lifetime of the instance. Networks in this context are simply IP address allocation pools — the actual traffic between all instances is routed through the same layer 3 routing fabric regardless of which network they are attached to.
+Each compute instance receives its own IP address from a shared pool via DHCP. The IP address remains static for the lifetime of the instance. Networks in this context are simply IP address allocation pools — the actual traffic between all instances is routed through the same layer 3 routing fabric regardless of which network they are attached to.
 
 For a deeper understanding, see the blog post [Networking at Safespring](https://www.safespring.com/blogg/2022/2022-03-network/).
 
