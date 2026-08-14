@@ -28,10 +28,6 @@ Vulnerabilities within the backup infrastructure are mitigated by:
   and acting accordingly.
 - Reporting vulnerabilities that we find to respective software maintainers.
 
-## 1.3 Configuration Management
-
-*Information about secure configuration standards, baseline configurations, and configuration drift detection for backup services will be described here.*
-
 ## 1.4 Cryptography
 
 ### Information in Transit
@@ -88,4 +84,3 @@ Non-TLS connections are rejected.
 **Notes on TLS 1.1 & TLS 1.0:**
 
 _Prevent the usage of TLS 1.1 or TLS 1.0 by keeping your browser up-to-date and avoiding Internet Explorer._
-

@@ -54,4 +54,4 @@ no inbound ports need to be configured, so installation and operations behind NA
 
 
 [ransomware]:http://www.backupcentral.com/forum/5/254427/ransomware_deleted_tsm_backups_from_node
-[supportpage]:https://docs.safespring.com/support/
+[supportpage]:../../service/support.md

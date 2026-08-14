@@ -2,10 +2,6 @@
 
 This document outlines the system protection and maintenance requirements and practices for Safespring Storage services.
 
-## 1.1 Malware Protection
-
-*Information about malware protection measures for storage instances will be documented here.*
-
 ## 1.2 Vulnerability Management
 
 Security patches are installed automatically using the Ubuntu unattended upgrades feature.

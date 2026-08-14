@@ -17,10 +17,6 @@ auditd runs on all hypervisors, providing full security and audit logging.
 
 
 
-## 3.2 Security Monitoring
-
-*Details about security event monitoring, threat detection, and incident response for compute services will be outlined here.*
-
 ## 3.3 Time Synchronization
 
 All servers have `systemd-timesyncd` enabled and configured to synchronize time. The timezone is set to UTC to ensure consistency across all servers.

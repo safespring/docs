@@ -28,7 +28,3 @@ as pull requests, and are approved by a separate engineer from the author(s).
 !!! note "Production data in acceptance environments"
 
     Production data is never transferred to acceptance environments.
-
-## 6.5 Audit and Testing Protection
-
-*Information about protecting audit trails, testing environment security, and maintaining data integrity during security assessments and compliance testing will be outlined here.*

@@ -1,4 +1,8 @@
-# Getting Started
+# Create your first Safespring Compute instance
+
+This guide is for users with credentials for a Safespring Compute project. You
+will sign in to its Horizon dashboard, launch a volume-backed virtual machine,
+and connect to it over SSH.
 
 !!! tip "Prefer video?"
     Safespring has a series of [video guides for Compute](https://www.safespring.com/demo/compute/) that walk through the most common tasks if you prefer to follow along visually.

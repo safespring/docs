@@ -19,7 +19,7 @@ This file must have the permissions `0600`. It is also possible to put the conte
 To mount the S3-storage (and to set up cache in order to increase performance).
 
 !!! note
-    Replace the endpoint in the example below with the correct one for your site. See [General S3 information](../../getting-started.md#minimum-required-info-for-s3-access) for the full list of available endpoints.
+    Replace the endpoint in the example below with the correct one for your site. See [Connection details](../../getting-started.md#connection-details) for the full list of available endpoints.
 
 ```
 $ sudo mkdir /tmp/cache

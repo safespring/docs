@@ -4,7 +4,7 @@ Back up Files or Directories
 !!! note "Recommendation"
     In general, it is recommended to schedule automatic backup jobs as 
     described in the 
-    [installation guide](../quickstart-guide.md#install-ibm-storage-protect-backup-archive-client) 
+    [installation and configuration guide](../quickstart-guide.md#2-install-and-configure-the-client)
     of your operating system.
     This guide explains how to back up data _manually_.
 

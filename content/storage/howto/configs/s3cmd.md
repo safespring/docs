@@ -14,7 +14,7 @@ current state, but it holds a lot of unneeded information so a simple
 start config could be as short as the following example and nothing else.
 
 !!! note
-    Replace the endpoint in the example below with the correct one for your site. See [General S3 information](../../getting-started.md#minimum-required-info-for-s3-access) for the full list of available endpoints.
+    Replace the endpoint in the example below with the correct one for your site. See [Connection details](../../getting-started.md#connection-details) for the full list of available endpoints.
 
 $HOME/.s3cfg:
 

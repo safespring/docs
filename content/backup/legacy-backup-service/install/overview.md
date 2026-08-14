@@ -9,9 +9,9 @@ Download TSM client software from the following repos. Safespring mirrors the so
 
 ## Manual Installation Instructions
 
-- [Windows](windows)
-- [Redhat Linux](rhel)
-- [Debian/Ubuntu 64-bit](debian-ubuntu)
+- [Windows](windows.md)
+- [Red Hat Linux](rhel.md)
+- [Debian/Ubuntu 64-bit](debian-ubuntu.md)
 
 ## Links to IBMs client installation guides
 

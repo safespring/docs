@@ -1,47 +1,32 @@
-# Getting Started with Self-service Portal & API
+# Safespring self-service portal and service API documentation
 
-This guide will help you get started with Safespring's Self-service Portal & API.
+The [Safespring self-service portal](https://portal.safespring.com) groups
+resources into environments. The published portal workflow currently covers
+creating and accessing Safespring Kubernetes Engine (SKE) clusters.
 
-## Overview
+## Use the portal with SKE
 
-*This section is under development and will be populated with detailed information about Safespring's Self-service Portal & API.*
+Before you start, you need the activation emails for your Safespring portal and
+site-specific identity accounts. To access a cluster after provisioning it,
+you also need `kubectl` and `kubelogin`.
 
-## Prerequisites
+Follow [Create and access your first SKE cluster](../kubernetes/portal-overview.md)
+to activate the accounts, sign in, create an environment, provision a cluster,
+download its `kubeconfig`, and verify access.
 
-*Information about prerequisites for using the portal and API services will be documented here.*
+## Find service API and automation documentation
 
-## Portal Access
+This documentation site does not currently publish a general API reference for
+the self-service portal. Use the service-specific documentation instead:
 
-*Step-by-step guide for accessing and using the self-service portal will be outlined here.*
+* [Compute API access](../compute/api.md) covers the OpenStack CLI, API access,
+  and Terraform.
+* [Backup REST API](../backup/automation/rest-api.md) covers Backup API
+  authentication and requests.
+* [Storage client configurations](../storage/getting-started.md#client-configuration-examples)
+  cover S3-compatible tools and libraries.
+* [SKE portal workflow](../kubernetes/portal-overview.md) covers cluster
+  provisioning and credentials.
 
-## API Authentication
-
-*Details about API authentication methods, API keys, and access tokens will be described here.*
-
-## API Documentation
-
-*Information about API endpoints, request/response formats, and SDK availability will be documented here.*
-
-## Account Management
-
-*Details about managing your account, billing, and service configurations through the portal will be outlined here.*
-
-## Resource Management
-
-*Information about creating and managing resources across Safespring services via the portal and API will be described here.*
-
-## Monitoring and Usage
-
-*Details about monitoring service usage, viewing metrics, and accessing reports will be documented here.*
-
-## Integration Examples
-
-*Example integrations and use cases for the API will be outlined here.*
-
-## Best Practices
-
-*Best practices for using the portal and API effectively will be documented here.*
-
-## Troubleshooting
-
-*Common issues and troubleshooting steps will be outlined here.*
+For portal or API access that is not covered above, [contact
+support](../service/support.md).

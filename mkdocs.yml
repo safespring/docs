@@ -1,5 +1,6 @@
 # Site and content
 site_name: "Safespring documentation"
+site_url: "https://docs.safespring.com/"
 docs_dir: "content"
 
 # Github integration
@@ -56,7 +57,7 @@ markdown_extensions:
 
 # Pages layout
 nav:
-  - Overview: "index.md"
+  - Start here: "index.md"
   - Security and Compliance:
       - Overview: "security-compliance/index.md"
       - Asset Management: "security-compliance/asset-management.md"
@@ -64,14 +65,12 @@ nav:
       - Logging and Monitoring: "security-compliance/logging-monitoring.md"
       - System Protection and Maintenance: "security-compliance/system-protection-maintenance.md"
   - Backup:
-      - Quick-Start Guide: "backup/quickstart-guide.md"
+      - Set up Safespring Backup: "backup/quickstart-guide.md"
       - Security and Compliance:
           - Overview: "backup/security-compliance/index.md"
           - System Protection and Maintenance: "backup/security-compliance/system-protection-maintenance.md"
           - Data Management: "backup/security-compliance/data-management.md"
-          - Logging and Monitoring: "backup/security-compliance/logging-monitoring.md"
           - Network Security: "backup/security-compliance/network-security.md"
-          - Secure Development: "backup/security-compliance/secure-development.md"
           - Development and Operations Management: "backup/security-compliance/development-operations-management.md"
       - Installation:
           - Overview: "backup/install/overview.md"
@@ -81,7 +80,7 @@ nav:
           - freeBSD: "backup/install/freebsd-other.md"
           - Application:
               - Microsoft SQL Server: "backup/install/mssql-windows.md"
-      - HOWTOs:
+      - How-to guides:
           - Back up Files: "backup/howto/back-up-files.md"
           - Consumption Units: "backup/howto/consumption-units.md"
           - Business Units: "backup/howto/business-units.md"
@@ -126,7 +125,7 @@ nav:
               - freeBSD: "backup/legacy-backup-service/install/freebsd-other.md"
               - Application:
                   - Microsoft SQL Server: "backup/legacy-backup-service/install/tdp-for-mssql.md"
-          - HOWTOs:
+          - How-to guides:
               - Bare Metal TBMR: "backup/legacy-backup-service/howto/bare-metal-tbmr.md"
               - Handling Changing Files: "backup/legacy-backup-service/howto/changing-files.md"
               - Encrypted Backups: "backup/legacy-backup-service/howto/encrypted.md"
@@ -141,7 +140,7 @@ nav:
           - Performance: "backup/legacy-backup-service/performance.md"
           - Status: "backup/legacy-backup-service/status.md"
   - Compute:
-      - Getting Started: "compute/getting-started.md"
+      - Create your first Compute instance: "compute/getting-started.md"
       - Security and Compliance:
           - Overview: "compute/security-compliance/index.md"
           - System Protection and Maintenance: "compute/security-compliance/system-protection-maintenance.md"
@@ -169,8 +168,8 @@ nav:
           - Application Credentials: "compute/app-creds.md"
           - Quotas: "compute/quotas.md"
           - Cost Optimization: "compute/cost-optimization.md"
-          - Trouble Shooting: "compute/troubleshooting.md"
-      - HOWTOs:
+          - Troubleshooting: "compute/troubleshooting.md"
+      - How-to guides:
           - Using Keypairs: "compute/howto/keypairs.md"
           - How to Tunnel Console Traffic with SSH: "compute/howto/novnc-tunneling.md"
           - Cloud-init and Cloudbase-init: "compute/howto/cloud-init.md"
@@ -179,7 +178,7 @@ nav:
           - Migrate Instance to Another Project: "compute/howto/migrate-between-projects.md"
           - Taking Snapshots of Instances: "compute/howto/snapshotting-instances.md"
   - Storage:
-      - Getting Started: "storage/getting-started.md"
+      - Access Safespring Storage: "storage/getting-started.md"
       - Security and Compliance:
           - Overview: "storage/security-compliance/index.md"
           - System Protection and Maintenance: "storage/security-compliance/system-protection-maintenance.md"
@@ -192,7 +191,7 @@ nav:
       - S3 API Compatibility: "storage/s3-compatibility.md"
       - S3 Advanced Features: "storage/s3-advanced.md"
       - S3 Usage Report: "storage/usage-statistics.md"
-      - HOWTOs:
+      - How-to guides:
           - Object Locking: "storage/object-locking.md"
           - Issue S3 credentials with the openstack CLI: "storage/howto/openstack-cli-credentials.md"
           - Example config for tools:
@@ -208,9 +207,9 @@ nav:
       - Backup Exec and Safespring Storage: "storage/backup-exec.md"
       - Other Backends: "storage/other-backends.md"
   - Safespring Kubernetes Engine:
-      - Getting Started: "kubernetes/getting-started.md"
+      - Create your first SKE cluster: "kubernetes/portal-overview.md"
+      - SKE service overview: "kubernetes/getting-started.md"
       - Deploy Your First Application: "kubernetes/getting_started.md"
-      - Portal Overview: "kubernetes/portal-overview.md"
       - Authentication: "kubernetes/authentication.md"
       - Audit Logging: "kubernetes/audit-logging.md"
       - Kubernetes Dashboard: "kubernetes/dashboard.md"
@@ -229,17 +228,9 @@ nav:
           - Network Security: "kubernetes/security-compliance/network-security.md"
           - Secure Development: "kubernetes/security-compliance/secure-development.md"
           - Development and Operations Management: "kubernetes/security-compliance/development-operations-management.md"
-      - Trouble Shooting: "kubernetes/troubleshooting.md"
-  - Self-service Portal & API:
-      - Getting Started: "portal-api/getting-started.md"
-      - Security and Compliance:
-          - Overview: "portal-api/security-compliance/index.md"
-          - System Protection and Maintenance: "portal-api/security-compliance/system-protection-maintenance.md"
-          - Data Management: "portal-api/security-compliance/data-management.md"
-          - Logging and Monitoring: "portal-api/security-compliance/logging-monitoring.md"
-          - Network Security: "portal-api/security-compliance/network-security.md"
-          - Secure Development: "portal-api/security-compliance/secure-development.md"
-          - Development and Operations Management: "portal-api/security-compliance/development-operations-management.md"
+      - Troubleshooting: "kubernetes/troubleshooting.md"
+  - Self-service Portal:
+      - Portal scope and service API documentation: "portal-api/getting-started.md"
   - Status and support:
       - Status information: "service/status.md"
       - Audit Logging: "service/audit_logging.md"

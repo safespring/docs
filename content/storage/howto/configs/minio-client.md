@@ -14,7 +14,7 @@ should produce a config like the one below, naming the alias sto2 and
 using S3v4 API.
 
 !!! note
-    Replace the endpoint in the example below with the correct one for your site. See [General S3 information](../../getting-started.md#minimum-required-info-for-s3-access) for the full list of available endpoints.
+    Replace the endpoint in the example below with the correct one for your site. See [Connection details](../../getting-started.md#connection-details) for the full list of available endpoints.
 
 ```
   more $HOME/.minioc/config.json
@@ -56,4 +56,3 @@ clients and makes it look like a local directory specifier.
 Complete (and long) guide available for mc here:
 
   https://docs.min.io/docs/minio-client-complete-guide.html
-

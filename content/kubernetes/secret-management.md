@@ -10,7 +10,10 @@ Whilst secrets inside Safespring Kubernetes Engine are [encrypted at rest](secur
 
 ## SOPS Operator with Age Key
 
-This guide walks you through setting up the SOPS operator in Kubernetes to automatically decrypt secrets encrypted with [SOPS](sops) using [Age encryption](https://github.com/FiloSottile/age).
+This guide walks you through setting up the SOPS operator in Kubernetes to
+automatically decrypt secrets encrypted with
+[SOPS](https://github.com/getsops/sops) using [Age
+encryption](https://github.com/FiloSottile/age).
 
 An alternative implementation of SOPS is presented by [Sops Operator](https://github.com/peak-scale/sops-operator) which focuses on complex scenario most of which valid in a multi-tenant environment.
 

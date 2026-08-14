@@ -1,6 +1,9 @@
-# Getting Started with Safespring Kubernetes Engine
+# Safespring Kubernetes Engine service overview
 
-This guide will help you get started with Safespring Kubernetes Engine (SKE).
+This page describes the architecture, supported versions, networking, storage,
+availability, and components of Safespring Kubernetes Engine (SKE). To
+provision a cluster, start with [Create and access your first SKE
+cluster](portal-overview.md).
 
 ## Overview
 
@@ -27,7 +30,9 @@ We make use of [Talos Linux](https://www.talos.dev) and follow its [Support Matr
 
 ## Access and Authentication
 
-Access to the clusters is handled through the accounts you've been provided with for onboarding in the [self-service portal](../portal-api/getting-started.md).
+Access to clusters uses the portal and identity accounts provided during
+onboarding. See [Create and access your first SKE cluster](portal-overview.md)
+for the complete portal and login workflow.
 
 Clusters are integrated with the OIDC compatible identity provider that is integrated with the portal. Use the following [instructions](authentication.md) on how to authenticate to a Kubernetes cluster with your account.
 
@@ -42,7 +47,10 @@ Cilium is used as the default CNI (Container Network Interface). Cilium is confi
 
 ### Load balancing
 
-Dedicated load balancers managed by Safespring are used to direct traffic to both the control plane API and worker nodes. The cluster is provisioned by default with a [single dedicated IPv4 addresses](../compute/loadbalancing.md) address shared across control plane and worker traffic.
+Dedicated load balancers managed by Safespring direct traffic to both the
+control plane API and worker nodes. By default, the cluster receives a [single
+dedicated IPv4 address](../compute/loadbalancing.md) shared by control plane and
+worker traffic.
 
 When nodes get added or removed from the cluster, the load balancers will automatically be updated.
 
