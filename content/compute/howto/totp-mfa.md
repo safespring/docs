@@ -1,6 +1,6 @@
 # Multi Factor Autentication (MFA)
 
-Time-based one-time password (TOTP) is a computer algorithm that generates a one-time password (OTP) using the current time as a source of uniqueness. You could either use a GUI app like "Google Autenticator" or a shell command like "oauthtool" to generate the passcode. The passcode will have a lifetime of 30 seconds.
+Time-based one-time password (TOTP) is a computer algorithm that generates a one-time password (OTP) using the current time as a source of uniqueness. You could either use a GUI app like "Google Autenticator" or a shell command like "oathtool" to generate the passcode. The passcode will have a lifetime of 30 seconds.
 
 ## Horizon
 ### Create user credentials
@@ -23,7 +23,7 @@ DT44TZIH5N45W6UPP6M3Y5ZSC3IZNHV7
 When you have saved the new credential you should get two confirmation popups. Now your user has MFA enabled and it must be used from now on.  
 
 ![create credential](../../images/mfa_created.png)
-If you didn't select a specific project but you want one you can edit the credental.
+If you didn't select a specific project but you want one you can edit the credential.
 
 ### Show QR-code
 You now need to copy and save your secret key if you would like to use and add it to your passcode generator. If you click on the ID URL you will be presented with a QR-code that you can scan with your favourite secutity app.  
@@ -145,7 +145,7 @@ You could then input your passcode directly to not get prompted for the passcode
 ```
 ~/.virtualenvs/OS/safespring                                                                                                                        
 > openstack --os-cloud=infra.docs.mfa user show \
---os-passcode=`oathtool --totp -b DT44TZIH5N45W6UPP6M3Y5ZSC3IZNHV7` \
+--os-passcode=$(oathtool --totp -b DT44TZIH5N45W6UPP6M3Y5ZSC3IZNHV7) \
 ac8840cd77d84341ac17bb3692dc1229
 +---------------------+----------------------------------------------------------------------------------------+
 | Field               | Value                                                                                  |
@@ -171,7 +171,7 @@ This is an important section if you are using application credentials.
 ```
 ~/.virtualenvs/OS/safespring
 > openstack --os-cloud=infra.docs.mfa \
---os-passcode=`oathtool --totp -b DT44TZIH5N45W6UPP6M3Y5ZSC3IZNHV7` \
+--os-passcode=$(oathtool --totp -b DT44TZIH5N45W6UPP6M3Y5ZSC3IZNHV7) \
 user set  --enable-multi-factor-auth \
 --multi-factor-auth-rule "password,totp" \
 --multi-factor-auth-rule "application_credential" \
@@ -183,7 +183,7 @@ This works on application credentials too. Then you need to add 'totp' to the ap
 ```
 ~/.virtualenvs/OS/safespring                                                                                                                        
 > openstack --os-cloud=infra.docs.mfa \
---os-passcode=`oathtool --totp -b DT44TZIH5N45W6UPP6M3Y5ZSC3IZNHV7` \
+--os-passcode=$(oathtool --totp -b DT44TZIH5N45W6UPP6M3Y5ZSC3IZNHV7) \
 user set  --enable-multi-factor-auth \
 --multi-factor-auth-rule "password,totp" \
 --multi-factor-auth-rule "application_credential,totp" \
@@ -209,7 +209,7 @@ Now you must expand your clouds.yaml with a new section using MFA and Applicatio
 Then you can use application credentials with MFA,
 ```
 ~/.virtualenvs/OS/safespring
-> openstack  --os-cloud=infra.docs.mfa.appcred --os-passcode=`oathtool --totp -b DT44TZIH5N45W6UPP6M3Y5ZSC3IZNHV7` server list
+> openstack  --os-cloud=infra.docs.mfa.appcred --os-passcode=$(oathtool --totp -b DT44TZIH5N45W6UPP6M3Y5ZSC3IZNHV7) server list
 +--------------------------------------+------+--------+-----------------------------------------+--------+-------------+
 | ID                                   | Name | Status | Networks                                | Image  | Flavor      |
 +--------------------------------------+------+--------+-----------------------------------------+--------+-------------+
