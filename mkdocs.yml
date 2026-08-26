@@ -172,6 +172,7 @@ nav:
           - Cost Optimization: "compute/cost-optimization.md"
           - Troubleshooting: "compute/troubleshooting.md"
       - How-to guides:
+          - Totp MFA: "compute/howto/totp-mfa.md"
           - Using Keypairs: "compute/howto/keypairs.md"
           - How to Tunnel Console Traffic with SSH: "compute/howto/novnc-tunneling.md"
           - Cloud-init and Cloudbase-init: "compute/howto/cloud-init.md"
