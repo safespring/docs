@@ -53,7 +53,7 @@ Set **Select Boot Source** to **Image** and pick an OS image from the list (for 
 
 ![Image selection](../images/dash-image-select.png)
 
-Leave **Create New Volume** set to **Yes** and **Delete Volume on Instance Delete** to **No** — this gives you a persistent root disk that survives instance deletion. For a full explanation of boot storage options (ephemeral vs. volume-backed), see the [Volume documentation](volume.md#boot-storage-options).
+Make sure to set the  **Create New Volume** to **Yes** (default is NO) and **Delete Volume on Instance Delete** to **No** — this gives you a persistent root disk that survives instance deletion. For a full explanation of boot storage options (ephemeral vs. volume-backed), see the [Volume documentation](volume.md#boot-storage-options).
 
 ### Flavor
 
