@@ -2,6 +2,10 @@
 
 Time-based one-time password (TOTP) is a computer algorithm that generates a one-time password (OTP) using the current time as a source of uniqueness. You could either use a GUI app like "Google Autenticator" or a shell command like "oathtool" to generate the passcode. The passcode will have a lifetime of 30 seconds.
 
+
+!!! warning "Do NOT enable MFA on your Swamid or Feide account. That will result in failed logins"
+MFA is only for local accounts i.e. "Safespring login", with domain "users" and application credentials. 
+
 ## Horizon
 ### Create user credentials
 
