@@ -20,7 +20,7 @@ Press the "Create User Credentail" button under "User Credentials" in the side m
 ### Generate security string
 *Shell command to generate security string.*
 ```
->  LC_ALL=C tr -dc 'A-Z2-7' </dev/urandom | head -c 32; echo 
+LC_ALL=C tr -dc 'A-Z2-7' </dev/urandom | head -c 32; echo 
 DT44TZIH5N45W6UPP6M3Y5ZSC3IZNHV7
 ```
 
