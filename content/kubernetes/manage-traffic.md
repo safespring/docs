@@ -16,8 +16,8 @@ Safespring Kubernetes Engine uses the Cilium [Gateway API](https://gateway-api.s
 Workload Clusters are deployed on top of **OpenStack infrastructure** where we orchestrate/harden traffic as follows:
 
 - **OpenStack Security Groups**: provide a stateful virtual firewall applied to cluster nodes, plus granular filtering for API access and service ports, with explicit allowlists for Kubernetes control plane and worker node communication.
-- The [Safespring load balancer](../compute/loadbalancing.md) forwards traffic to the cluster nodes on L4 TCP ports `80`, `443`, `6443` and `30000-32767`.
-- TCP ports `80`, `443` and the range `30000-32767` are available for exposing your own services. Ports `80` and `443` are served by the Cilium Gateway API, and ports `30000-32767` are the Kubernetes [NodePort](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport) range - and as covered below, the Gateway can listen on any of these ports.
+- The [Safespring load balancer](../compute/loadbalancing.md) forwards traffic to the cluster nodes on L4 TCP ports `80`, `443` and `6443`.
+- TCP ports `80` and `443` available for exposing your own services. Ports `80` and `443` are served by the Cilium Gateway API.
 
 ## How Incoming Traffic Reaches Your App
 
@@ -30,10 +30,10 @@ Client
 DNS resolves your hostname to the cluster's external IP
   |
   v
-Safespring load balancer  (forwards 80, 443 and 30000-32767 to the cluster nodes)
+Safespring load balancer  (forwards 80 and 443)
   |
   v
-Gateway  (terminates TLS; can listen on 80, 443 or any port in 30000-32767)
+Gateway  (terminates TLS; can listen on 80 and 443)
   |
   v
 HTTPRoute  (matches hostname/path)
@@ -45,7 +45,7 @@ Service
 your Pods
 ```
 
-You can expose a service on any port the load balancer forwards - `80`, `443`, or any port in `30000-32767` - and the Gateway can listen on all of them, so the same path applies. For a non-HTTP service you can instead skip the Gateway and expose it directly with a [`type: NodePort`](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport) Service on the `30000-32767` range, in which case TLS is your app's responsibility.
+You can expose a service on any port the load balancer forwards - `80` or `443.
 
 You create a handful of standard Kubernetes objects. Our default Gateways use the `cilium` implementation:
 
