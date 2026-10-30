@@ -54,6 +54,8 @@ You give your environment a name and then click "Create environment".
 ![image](../images/portal-new-environment.png)
 You now see your new environment, where you can start resources.
 
+To delete an environment, see [Manage environments](environments.md#delete-an-environment).
+
 ## Create your first cluster
 
 Click the button "Add Cluster" and give it a name:
@@ -82,11 +84,37 @@ Your cluster is now creating.
 
 ### Accessing Kubernetes Cluster
 
-Wait a few minutes and then click the **Show Credentials** button. If you get a [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file back your cluster is ready to use:
+Wait a few minutes until the cluster status is **Active**. Click the cluster to open it and then click the **Kubeconfig** button. The "Service Credentials" dialog shows two [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) files:
 
-![image](../images/portal-show-credentials.png)
+* **Browser Credential** logs you in through your web browser. Use it on your own computer.
+* **Device Credential** prints a login link and code instead of opening a browser. Use it on a machine without a browser, for example over SSH.
 
-You can copy the file to a directory to a file named `.kubeconfig` in the environment where you have kubectl installed and run:
+The Browser Credential looks like this:
+
+```yaml
+...
+  name: rh7gk6hod2xlymam
+contexts:
+- context:
+    cluster: rh7gk6hod2xlymam
+    user: oidc
+  name: oidc@rh7gk6hod2xlymam
+current-context: oidc@rh7gk6hod2xlymam
+kind: Config
+users:
+- name: oidc
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1
+      args:
+      - oidc-login
+      - get-token
+...
+```
+
+The cluster and context are named after the cluster ID shown on the cluster page. Click **Copy Value** to copy the whole file.
+
+Paste it into a file named `.kubeconfig` on the machine where you have kubectl installed and run:
 
 ```shell
 ➜ export KUBECONFIG=$(pwd)/.kubeconfig
@@ -105,14 +133,16 @@ You will get a message that you have authenticated and if you go back to the ter
 
 ```shell
 ➜ kubectl get nodes
-NAME                                     STATUS   ROLES           AGE     VERSION
-my-cluster-control-plane-9pdn5           Ready    control-plane   8m35s   v1.33.5
-my-cluster-control-plane-clrzd           Ready    control-plane   8m35s   v1.33.5
-my-cluster-control-plane-rhx58           Ready    control-plane   8m17s   v1.33.5
-my-cluster-vf9wj-md-worker-26bx9-fwlqn   Ready    worker          8m32s   v1.33.5
-my-cluster-vf9wj-md-worker-26bx9-nf7x9   Ready    worker          8m31s   v1.33.5
-my-cluster-vf9wj-md-worker-26bx9-qzjd2   Ready    worker          8m35s   v1.33.5
+NAME                                    STATUS   ROLES           AGE     VERSION
+rh7gk6hod2xlymam-cp-cf9z9               Ready    control-plane   8m35s   v1.36.5
+rh7gk6hod2xlymam-cp-grpmd               Ready    control-plane   8m35s   v1.36.5
+rh7gk6hod2xlymam-cp-mb7s4               Ready    control-plane   8m17s   v1.36.5
+rh7gk6hod2xlymam-jgjm-wkr-ww6ll-5bc44   Ready    worker          8m32s   v1.36.5
+rh7gk6hod2xlymam-jgjm-wkr-ww6ll-lrjl9   Ready    worker          8m31s   v1.36.5
+rh7gk6hod2xlymam-jgjm-wkr-ww6ll-pqbgz   Ready    worker          8m35s   v1.36.5
 ```
+
+Node names start with the cluster ID shown on the cluster page.
 
 You can now start creating namespaces and start using your cluster.
 
