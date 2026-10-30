@@ -1,6 +1,6 @@
 # Safespring cloud services documentation
 
-Use this site to set up, operate, and troubleshoot Safespring cloud services.
+Find instructions for setting up, operating, and troubleshooting Safespring cloud services.
 It is written for customer administrators and users who have, or are preparing
 to receive, access to one or more services.
 
