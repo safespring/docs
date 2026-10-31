@@ -19,14 +19,15 @@ We support using 3 or 5 control plane nodes. When Kubernetes API uptime is criti
 
 Worker nodes can be used with L2 or B2 flavors, see [flavors](../compute/flavors.md) for more details and trade-offs. Generally B2 provides better uptime and L2 with local disk provides better disk performance.
 
-We make use of [Talos Linux](https://www.talos.dev) and follow its [Support Matrix](https://www.talos.dev/v1.10/introduction/support-matrix) with the following currently supported versions:
+We make use of [Talos Linux](https://www.talos.dev) and follow its [Support Matrix](https://www.talos.dev/v1.14/introduction/support-matrix) with the following currently supported versions:
 
 | **Talos Version**            | **Supported Kubernetes Versions**                     |
 | ---------------------------- | ----------------------------------------------------- |
 | 1.10.7                       | 1.33.5                                                |
 | 1.11.2                       | 1.34.1                                                |
 | 1.11.5                       | 1.34.1                                                |
-| 1.12.1 (planned)             | 1.35.0 (planned)                                      |
+| 1.12.7                       | 1.35.4                                                |
+| 1.14.4                       | 1.36.5                                                |
 
 ## Access and Authentication
 
