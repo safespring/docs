@@ -1,6 +1,6 @@
-# Multi Factor Autentication (MFA)
+# Multi Factor Authentication (MFA)
 
-Time-based one-time password (TOTP) is a computer algorithm that generates a one-time password (OTP) using the current time as a source of uniqueness. You could either use a GUI app like "Google Autenticator" or a shell command like "oathtool" to generate the passcode. The passcode will have a lifetime of 30 seconds.
+Time-based one-time password (TOTP) is a computer algorithm that generates a one-time password (OTP) using the current time as a source of uniqueness. You could either use a GUI app like "Google Authenticator" or a shell command like "oathtool" to generate the passcode. The passcode will have a lifetime of 30 seconds.
 
 
 !!! warning "Do NOT enable MFA on your Swamid or Feide account. That will result in failed logins"
@@ -13,7 +13,7 @@ Goto the site where you would like to enable MFA,
 
 *`https://dashboard.<site>.safespring.com/horizon/identity/credentials/`*
 
-Press the "Create User Credentail" button under "User Credentials" in the side menu. Select type TOTP, specify any specific project, or leave as is with "No Project" to apply to all your projects. In the "Data" field you can either leave as is to generate a new secret or you could specify a specific one. It should be a minimum of 128 bits (16 bytes) encoded in base32. 32 bytes is default.
+Press the "Create User Credential" button under "User Credentials" in the side menu. Select type TOTP, specify any specific project, or leave as is with "No Project" to apply to all your projects. In the "Data" field you can either leave as is to generate a new secret or you could specify a specific one. It should be a minimum of 128 bits (16 bytes) encoded in base32. 32 bytes is default.
 
 ![create credential](../../images/mfa_create.png)
 
@@ -30,7 +30,7 @@ When you have saved the new credential you should get two confirmation popups. N
 If you didn't select a specific project but you want one you can edit the credential.
 
 ### Show QR-code
-You now need to copy and save your secret key if you would like to use and add it to your passcode generator. If you click on the ID URL you will be presented with a QR-code that you can scan with your favourite secutity app.  
+You now need to copy and save your secret key if you would like to use and add it to your passcode generator. If you click on the ID URL you will be presented with a QR-code that you can scan with your favorite security app.  
 
 ![QR-code](../../images/mfa_qrcode.png)
 
@@ -42,7 +42,7 @@ On next login you will get prompted for the TOTP passcode. It can then be obtain
 !!! warning "Deleting all your credentials will NOT disable MFA. You will not be able to login again until support has disabled it on your user."
 ## Openstack CLI
 
-### Prerequisits
+### Prerequisites
 To operate MFA with Openstack CLI you need to have a working environment. Please see [here](/compute/api/#install-the-openstack-command-line-client) how to set it up. 
 
 You also need to have your users ID and your projects ID. You can get them in Horizon.  
