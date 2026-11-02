@@ -15,21 +15,21 @@ welcome.
 Se detailed doc on: https://github.com/safespring-community/wireguard-gateway 
 
 
-# Overlay networking with NetBird
+## Overlay networking with NetBird
 
 If you don't want to maintain a WireGuard gateway, [NetBird](https://netbird.io/) is a managed overlay network built on top of WireGuard. It handles peer discovery, NAT traversal, and access control automatically, so you can connect instances to each other — and to on-premise hosts — without configuring tunnels manually.
 
-## How it works
+### How it works
 
 Each instance runs a lightweight NetBird agent. Agents connect to the NetBird control plane to discover peers and establish direct encrypted WireGuard tunnels between them. NetBird works across NAT boundaries without requiring any public IP addresses or open inbound firewall rules.
 
-## Getting started
+### Getting started
 
 1. Sign up at [netbird.io](https://netbird.io/) and create a network.
 2. In the NetBird dashboard, go to **Setup Keys** and create a key. The setup key is used to authenticate new instances joining your network.
 3. Launch a Safespring instance with the setup key passed via cloud-init or instance metadata.
 
-## Installing NetBird via cloud-init
+### Installing NetBird via cloud-init
 
 The [Cloud-init and Cloudbase-init how-to](howto/cloud-init.md) has ready-to-use snippets for installing NetBird on both Linux and Windows, including examples that read the setup key from instance metadata so the same User Data script can be reused across instances.
 

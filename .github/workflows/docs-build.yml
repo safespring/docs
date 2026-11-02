@@ -1,0 +1,35 @@
+name: Docs CI
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  docs-build:
+    name: Docs build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: '3.12'
+      - name: Install pinned dependencies
+        run: |
+          python -m pip install --disable-pip-version-check -r requirements.lock
+          python -m pip check
+      - name: Test build validation
+        run: python -B -m unittest discover -s tests -p 'test_validate_docs_build.py' -v
+      - name: Build documentation
+        run: python -B -m mkdocs build --strict --clean --site-dir "$RUNNER_TEMP/docs-site"
+      - name: Validate built documentation
+        run: python -B scripts/validate_docs_build.py --site-dir "$RUNNER_TEMP/docs-site"

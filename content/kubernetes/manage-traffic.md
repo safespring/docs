@@ -45,7 +45,7 @@ Service
 your Pods
 ```
 
-You can expose a service on any port the load balancer forwards - `80` or `443.
+You can expose a service on any port the load balancer forwards: `80` or `443`.
 
 You create a handful of standard Kubernetes objects. Our default Gateways use the `cilium` implementation:
 

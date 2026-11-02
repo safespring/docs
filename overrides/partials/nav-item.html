@@ -1,0 +1,243 @@
+{#-
+  Material nav item with Safespring mobile classification.
+
+  This keeps Material's drawer mechanics intact, but exposes the same grouping
+  as the desktop tabs so mobile can style primary tabs larger than More items.
+-#}
+{% macro render_status(nav_item, type) %}
+  {% set class = "md-status md-status--" ~ type %}
+  {% if config.extra.status and config.extra.status[type] %}
+    <span class="{{ class }}" title="{{ config.extra.status[type] }}">
+    </span>
+  {% else %}
+    <span class="{{ class }}"></span>
+  {% endif %}
+{% endmacro %}
+{% macro render_title(nav_item) %}
+  {% if nav_item.typeset %}
+    <span class="md-typeset">
+      {{ nav_item.typeset.title }}
+    </span>
+  {% else %}
+    {{ nav_item.title }}
+  {% endif %}
+{% endmacro %}
+{% macro render_content(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
+  {% if nav_item.meta and nav_item.meta.icon %}
+    {% include ".icons/" ~ nav_item.meta.icon ~ ".svg" %}
+  {% endif %}
+  <span class="md-ellipsis">
+    {{ render_title(ref) }}
+    {% if nav_item.meta and nav_item.meta.subtitle %}
+      <br>
+      <small>{{ nav_item.meta.subtitle }}</small>
+    {% endif %}
+  </span>
+  {% if nav_item.meta and nav_item.encrypted %}
+    {{ render_status(nav_item, "encrypted") }}
+  {% endif %}
+  {% if nav_item.meta and nav_item.meta.status %}
+    {{ render_status(nav_item, nav_item.meta.status) }}
+  {% endif %}
+{% endmacro %}
+{% macro render_mobile_content(nav_item, ref, level, role) %}
+  {% set top_labels = config.extra.safespring_top_nav_labels | d({}) %}
+  {% if level == 1 and role == "topbar" %}
+    <span class="md-ellipsis">
+      {{ top_labels.get(nav_item.title, nav_item.title) }}
+    </span>
+  {% else %}
+    {{ render_content(nav_item, ref) }}
+  {% endif %}
+{% endmacro %}
+{% macro render_mobile_title(nav_item, level, role) %}
+  {% set top_labels = config.extra.safespring_top_nav_labels | d({}) %}
+  {% if level == 1 and role == "topbar" %}
+    {{ top_labels.get(nav_item.title, nav_item.title) }}
+  {% else %}
+    {{ render_title(nav_item) }}
+  {% endif %}
+{% endmacro %}
+{% macro render_service_status(title, level) %}
+  {% set top_labels = config.extra.safespring_top_nav_labels | d({}) %}
+  {% set status = namespace(component=none, label=top_labels.get(title, title)) %}
+  {% if title == "On-demand Kubernetes" or title == "Safespring Kubernetes Engine" or title == "Kubernetes" %}
+    {% set status.component = "On-demand Kubernetes" %}
+  {% elif title == "Compute" %}
+    {% set status.component = "Safespring Compute" %}
+  {% elif title == "Storage" %}
+    {% set status.component = "Safespring Storage" %}
+  {% elif title == "Backup" %}
+    {% set status.component = "Safespring Backup" %}
+  {% endif %}
+  {% if level == 1 and status.component %}
+    <div class="safespring-service-status" data-safespring-status aria-label="{{ status.label }} service status">
+      <a class="safespring-service-status__chip" href="https://status.safespring.com" data-safespring-status-component="{{ status.component }}">
+        <span class="safespring-service-status__dot" aria-hidden="true"></span>
+        <span class="safespring-service-status__value" data-safespring-status-component-text>Loading</span>
+      </a>
+    </div>
+  {% endif %}
+{% endmacro %}
+{% macro render_pruned(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
+  {% set first = nav_item.children | first %}
+  {% if first and first.children %}
+    {{ render_pruned(first, ref) }}
+  {% else %}
+    <a href="{{ first.url | url }}" class="md-nav__link">
+      {{ render_content(ref) }}
+      {% if nav_item.children | length > 0 %}
+        <span class="md-nav__icon md-icon"></span>
+      {% endif %}
+    </a>
+  {% endif %}
+{% endmacro %}
+{% macro render(nav_item, path, level, parent) %}
+  {% set class = "md-nav__item" %}
+  {% set section_title = nav_item.title %}
+  {% set is_legacy_backup = nav_item.title == "Legacy Backup Service" %}
+  {% set is_getting_started = nav_item.title == "Getting Started" %}
+  {% set mobile = namespace(role="secondary", order=50) %}
+  {% if level == 1 %}
+    {% set top_titles = config.extra.safespring_top_nav | d([]) %}
+    {% set more_exclude = config.extra.safespring_more_menu_exclude | d([]) %}
+    {% if nav_item.title in top_titles %}
+      {% set mobile.role = "topbar" %}
+      {% set mobile.order = 10 %}
+      {% for title in top_titles %}
+        {% if nav_item.title == title %}
+          {% set mobile.order = loop.index %}
+        {% endif %}
+      {% endfor %}
+    {% elif nav_item.title not in more_exclude %}
+      {% set mobile.role = "more" %}
+      {% set mobile.order = 70 %}
+    {% endif %}
+    {% set class = class ~ " safespring-mobile-nav__item safespring-mobile-nav__item--" ~ mobile.role %}
+    {% if nav_item.title == "Overview" %}
+      {% set class = class ~ " safespring-mobile-nav__item--after-topbar" %}
+    {% endif %}
+  {% endif %}
+  {% if nav_item.active %}
+    {% set class = class ~ " md-nav__item--active" %}
+  {% endif %}
+  {% if is_legacy_backup %}
+    {% set class = class ~ " safespring-nav__item--legacy" %}
+  {% endif %}
+  {% if is_getting_started %}
+    {% set class = class ~ " safespring-nav__item--getting-started" %}
+  {% endif %}
+  {% if nav_item.pages %}
+    {% if page in nav_item.pages %}
+      {% set nav_item = page %}
+    {% endif %}
+  {% endif %}
+  {% if nav_item.children %}
+    {% set _ = namespace(index = none) %}
+    {% if "navigation.indexes" in features %}
+      {% for item in nav_item.children %}
+        {% if item.is_index and _.index is none %}
+          {% set _.index = item %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    {% set index = _.index %}
+    {% if "navigation.tabs" in features %}
+      {% if level == 1 and nav_item.active %}
+        {% set class = class ~ " md-nav__item--section" %}
+        {% set is_section = true %}
+      {% endif %}
+      {% if "navigation.sections" in features %}
+        {% if level == 2 and parent.active %}
+          {% set class = class ~ " md-nav__item--section" %}
+          {% set is_section = true %}
+        {% endif %}
+      {% endif %}
+    {% elif "navigation.sections" in features %}
+      {% if level == 1 %}
+        {% set class = class ~ " md-nav__item--section" %}
+        {% set is_section = true %}
+      {% endif %}
+    {% endif %}
+    {% if "navigation.prune" in features %}
+      {% if not is_section and not nav_item.active %}
+        {% set class = class ~ " md-nav__item--pruned" %}
+        {% set is_pruned = true %}
+      {% endif %}
+    {% endif %}
+    <li class="{{ class }} md-nav__item--nested"{% if level == 1 %} style="--safespring-mobile-nav-order: {{ mobile.order }}"{% endif %}>
+      {% if not is_pruned %}
+        {% set checked = "checked" if nav_item.active %}
+        {% if "navigation.expand" in features and not checked %}
+          {% set indeterminate = "md-toggle--indeterminate" %}
+        {% endif %}
+        <input class="md-nav__toggle md-toggle {{ indeterminate }}" type="checkbox" id="{{ path }}" {{ checked }}>
+        {% if not index %}
+          {% set tabindex = "0" if not is_section %}
+          <label class="md-nav__link" for="{{ path }}" id="{{ path }}_label" tabindex="{{ tabindex }}">
+            {{ render_mobile_content(nav_item, none, level, mobile.role) }}
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        {% else %}
+          {% set class = "md-nav__link--active" if index == page %}
+          <div class="md-nav__link md-nav__container">
+            <a href="{{ index.url | url }}" class="md-nav__link {{ class }}">
+              {{ render_mobile_content(nav_item, nav_item, level, mobile.role) }}
+            </a>
+            {% if nav_item.children | length > 1 %}
+              {% set tabindex = "0" if not is_section %}
+              <label class="md-nav__link {{ class }}" for="{{ path }}" id="{{ path }}_label" tabindex="{{ tabindex }}">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            {% endif %}
+          </div>
+        {% endif %}
+        <nav class="md-nav" data-md-level="{{ level }}" aria-labelledby="{{ path }}_label" aria-expanded="{{ nav_item.active | tojson }}">
+          <label class="md-nav__title" for="{{ path }}">
+            <span class="md-nav__icon md-icon"></span>
+            {{ render_mobile_title(nav_item, level, mobile.role) }}
+          </label>
+          {{ render_service_status(section_title, level) }}
+          <ul class="md-nav__list" data-md-scrollfix>
+            {% for item in nav_item.children %}
+              {% if not index or item != index %}
+                {{ render(item, path ~ "_" ~ loop.index, level + 1, nav_item) }}
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </nav>
+      {% else %}
+        {{ render_pruned(nav_item) }}
+      {% endif %}
+    </li>
+  {% elif nav_item == page %}
+    <li class="{{ class }}"{% if level == 1 %} style="--safespring-mobile-nav-order: {{ mobile.order }}"{% endif %}>
+      {% set toc = page.toc %}
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      {% set first = toc | first %}
+      {% if first and first.level == 1 %}
+        {% set toc = first.children %}
+      {% endif %}
+      {% if toc %}
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          {{ render_mobile_content(nav_item, none, level, mobile.role) }}
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      {% endif %}
+      <a href="{{ nav_item.url | url }}" class="md-nav__link md-nav__link--active">
+        {{ render_mobile_content(nav_item, none, level, mobile.role) }}
+      </a>
+      {% if toc %}
+        {% include "partials/toc.html" %}
+      {% endif %}
+    </li>
+  {% else %}
+    <li class="{{ class }}"{% if level == 1 %} style="--safespring-mobile-nav-order: {{ mobile.order }}"{% endif %}>
+      <a href="{{ nav_item.url | url }}" class="md-nav__link">
+        {{ render_mobile_content(nav_item, none, level, mobile.role) }}
+      </a>
+    </li>
+  {% endif %}
+{% endmacro %}

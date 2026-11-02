@@ -1284,6 +1284,7 @@ receivedeleterequestnotifications
 reclaimpolicy
 recognise
 recomended
+recoverability
 recv
 redhat
 redistributables
@@ -1475,6 +1476,8 @@ skippublishercheck
 sktxlg
 sla
 slaac
+slo
+slos
 smalloc
 smi
 snapshotname
@@ -1729,6 +1732,7 @@ vcredist
 vda
 ve
 veeam
+venv
 veritas
 versionid
 verylongsecretkeyhere

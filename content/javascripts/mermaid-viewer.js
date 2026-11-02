@@ -1,32 +1,77 @@
 (function () {
-  var diagramSelector = ".md-typeset .mermaid";
+  var diagramSelector = ".md-typeset .safespring-mermaid";
+  var mermaidScriptUrl = "https://cdn.jsdelivr.net/npm/mermaid@11.15.0/dist/mermaid.min.js";
+  var mermaidScriptIntegrity = "sha384-yQ4mmBBT+vhTAwjFH0toJXNYJ6O4usWnt6EPIdWwrRvx2V/n5lXuDZQwQFeSFydF";
+  var mermaidPromise = null;
   var viewer = null;
   var activeDiagram = null;
-  var mermaidConfig = {
-    startOnLoad: false,
-    securityLevel: "strict",
-    theme: "base",
-    themeVariables: {
+  var colorSchemeObserver = null;
+
+  function isDarkMode() {
+    var scheme = document.body.getAttribute("data-md-color-scheme") ||
+      document.documentElement.getAttribute("data-md-color-scheme");
+
+    return scheme === "slate";
+  }
+
+  function getMermaidConfig() {
+    var lightTheme = {
       background: "#FAFEFE",
-      primaryColor: "#E7EFF3",
-      primaryBorderColor: "#195F8C",
-      primaryTextColor: "#323232",
-      secondaryColor: "#195F8C20",
-      secondaryBorderColor: "#3C9BCD",
-      secondaryTextColor: "#323232",
-      tertiaryColor: "#FAFEFE",
-      tertiaryBorderColor: "#D6E5EC",
-      tertiaryTextColor: "#323232",
-      lineColor: "#195F8C",
-      textColor: "#323232",
-      mainBkg: "#FAFEFE",
-      nodeBorder: "#195F8C",
-      clusterBkg: "#19608c10",
-      clusterBorder: "#9EC6DB",
-      edgeLabelBackground: "#fafefe",
+      primaryColor: "#FFFFFF",
+      primaryBorderColor: "#BFD9E6",
+      primaryTextColor: "#123348",
+      secondaryColor: "#EAF5F9",
+      secondaryBorderColor: "#A8D4E8",
+      secondaryTextColor: "#123348",
+      tertiaryColor: "#F6FBFD",
+      tertiaryBorderColor: "#D5E8F0",
+      tertiaryTextColor: "#123348",
+      lineColor: "#2F83B2",
+      textColor: "#123348",
+      mainBkg: "#F6FBFD",
+      nodeBorder: "#BFD9E6",
+      clusterBkg: "#EFF7FA",
+      clusterBorder: "#C7E0EC",
+      edgeLabelBackground: "#F6FBFD",
+      fontSize: "15px",
       fontFamily: "Montserrat, Arial, sans-serif"
-    }
-  };
+    };
+    var darkTheme = {
+      background: "#0D1820",
+      primaryColor: "#112A3B",
+      primaryBorderColor: "#356D89",
+      primaryTextColor: "#EDF5F6",
+      secondaryColor: "#0F2635",
+      secondaryBorderColor: "#3F7B99",
+      secondaryTextColor: "#EDF5F6",
+      tertiaryColor: "#0A131B",
+      tertiaryBorderColor: "#284F65",
+      tertiaryTextColor: "#EDF5F6",
+      lineColor: "#66B7DF",
+      textColor: "#EDF5F6",
+      mainBkg: "#0A131B",
+      nodeBorder: "#356D89",
+      clusterBkg: "#0F2635",
+      clusterBorder: "#284F65",
+      edgeLabelBackground: "#0A131B",
+      fontSize: "15px",
+      fontFamily: "Montserrat, Arial, sans-serif"
+    };
+
+    return {
+      startOnLoad: false,
+      flowchart: {
+        curve: "basis",
+        htmlLabels: true,
+        nodeSpacing: 58,
+        padding: 18,
+        rankSpacing: 74
+      },
+      securityLevel: "strict",
+      theme: "base",
+      themeVariables: isDarkMode() ? darkTheme : lightTheme
+    };
+  }
 
   function clamp(value, min, max) {
     return Math.min(Math.max(value, min), max);
@@ -53,6 +98,47 @@
     }
 
     return diagram.dataset.mermaidSource || diagram.textContent || "";
+  }
+
+  function loadMermaid() {
+    if (window.mermaid && typeof window.mermaid.initialize === "function") {
+      return Promise.resolve(window.mermaid);
+    }
+
+    if (mermaidPromise) {
+      return mermaidPromise;
+    }
+
+    mermaidPromise = new Promise(function (resolve, reject) {
+      var script = document.querySelector("script[data-safespring-mermaid]");
+
+      function finish() {
+        if (window.mermaid && typeof window.mermaid.initialize === "function") {
+          resolve(window.mermaid);
+          return;
+        }
+
+        reject(new Error("Mermaid loaded without exposing window.mermaid."));
+      }
+
+      if (!script) {
+        script = document.createElement("script");
+        script.async = true;
+        script.dataset.safespringMermaid = "true";
+        script.integrity = mermaidScriptIntegrity;
+        script.crossOrigin = "anonymous";
+        script.src = mermaidScriptUrl;
+      }
+
+      script.addEventListener("load", finish, { once: true });
+      script.addEventListener("error", reject, { once: true });
+
+      if (!script.parentNode) {
+        document.head.appendChild(script);
+      }
+    });
+
+    return mermaidPromise;
   }
 
   function ensureViewer() {
@@ -216,13 +302,16 @@
       content.replaceChildren();
       activeDiagram = diagram;
 
-      if (!window.mermaid || typeof window.mermaid.render !== "function") {
+      try {
+        await loadMermaid();
+      } catch (error) {
         renderFallback(diagram);
+        console.error("Failed to load Mermaid for fullscreen viewer.", error);
         return;
       }
 
       try {
-        window.mermaid.initialize(mermaidConfig);
+        window.mermaid.initialize(getMermaidConfig());
         var result = await window.mermaid.render(uniqueId(), getDiagramSource(diagram));
         content.innerHTML = result.svg;
 
@@ -382,7 +471,7 @@
     });
   }
 
-  function renderMermaidBlocks() {
+  async function renderMermaidBlocks() {
     var diagrams = Array.from(document.querySelectorAll(diagramSelector)).filter(function (diagram) {
       return !diagram.closest(".mermaid-viewer");
     });
@@ -402,17 +491,20 @@
       diagram.textContent = diagram.dataset.mermaidSource;
     });
 
-    if (!window.mermaid || typeof window.mermaid.run !== "function") {
+    try {
+      await loadMermaid();
+    } catch (error) {
+      enhanceMermaidBlocks();
+      console.error("Failed to load Mermaid diagrams.", error);
+      return;
+    }
+
+    if (!window.mermaid || typeof window.mermaid.run !== "function" || unprocessedDiagrams.length === 0) {
       enhanceMermaidBlocks();
       return;
     }
 
-    if (unprocessedDiagrams.length === 0) {
-      enhanceMermaidBlocks();
-      return;
-    }
-
-    window.mermaid.initialize(mermaidConfig);
+    window.mermaid.initialize(getMermaidConfig());
 
     window.mermaid.run({ nodes: unprocessedDiagrams }).then(enhanceMermaidBlocks).catch(function (error) {
       enhanceMermaidBlocks();
@@ -420,7 +512,52 @@
     });
   }
 
+  function rerenderMermaidBlocks() {
+    document.querySelectorAll(diagramSelector).forEach(function (diagram) {
+      if (diagram.closest(".mermaid-viewer") || !diagram.dataset.mermaidSource) {
+        return;
+      }
+
+      diagram.removeAttribute("data-processed");
+      diagram.textContent = diagram.dataset.mermaidSource;
+    });
+
+    renderMermaidBlocks();
+  }
+
+  function watchColorScheme() {
+    if (colorSchemeObserver || typeof MutationObserver !== "function") {
+      return;
+    }
+
+    var currentScheme = document.body.getAttribute("data-md-color-scheme") ||
+      document.documentElement.getAttribute("data-md-color-scheme");
+
+    colorSchemeObserver = new MutationObserver(function () {
+      var nextScheme = document.body.getAttribute("data-md-color-scheme") ||
+        document.documentElement.getAttribute("data-md-color-scheme");
+
+      if (nextScheme === currentScheme) {
+        return;
+      }
+
+      currentScheme = nextScheme;
+      rerenderMermaidBlocks();
+    });
+
+    colorSchemeObserver.observe(document.body, {
+      attributeFilter: ["data-md-color-scheme"],
+      attributes: true
+    });
+    colorSchemeObserver.observe(document.documentElement, {
+      attributeFilter: ["data-md-color-scheme"],
+      attributes: true
+    });
+  }
+
   ready(function () {
+    watchColorScheme();
+
     if (window.document$ && typeof window.document$.subscribe === "function") {
       window.document$.subscribe(renderMermaidBlocks);
       return;

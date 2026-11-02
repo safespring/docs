@@ -667,7 +667,7 @@ aws --endpoint=$S3_URL s3api select-object-content \
   output.csv
 ```
 
-In Safesprings S3 solution S3 Select only supports the CSV format. **JSON** or **Parquet** are not supported.
+In Safespring's S3 solution S3 Select only supports the CSV format. **JSON** or **Parquet** are not supported.
 
 ## Batch delete
 

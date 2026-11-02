@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <style>
+    @media screen and (min-width: 76.25em) {
+      .md-header--lifted ~ .md-container .md-main .md-sidebar--primary {
+        top: 2.4rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="{{ 'safespring.css' | url }}?v={{ config.extra.safespring_css_version }}">
+{% endblock %}
+
+{% block header %}
+  {{ super() }}
+  {% set more_exclude = config.extra.safespring_more_menu_exclude | d([]) %}
+  <nav class="safespring-services-menu" id="safespring-services-menu" aria-label="More">
+    <div class="safespring-services-menu__heading">More</div>
+    <ul class="safespring-services-menu__list">
+      {% for nav_item in nav.items %}
+        {% if nav_item.title not in more_exclude %}
+          {% set first = nav_item.children | first %}
+          {% set href = first.url if first else nav_item.url %}
+          <li class="safespring-services-menu__item">
+            <a class="safespring-services-menu__link{% if nav_item.active %} safespring-services-menu__link--active{% endif %}" href="{{ href | url }}">
+              {{ nav_item.title }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+{% endblock %}
+
+{% block site_nav %}
+  {% if nav %}
+    {% if page.meta and page.meta.hide %}
+      {% set hidden = "hidden" if "navigation" in page.meta.hide %}
+    {% endif %}
+    <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" {{ hidden }}>
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+          {% if page.file and page.file.src_path == "index.md" %}
+            <aside class="safespring-status-card" data-safespring-status aria-label="Service status">
+              <a class="safespring-status-card__summary" href="https://status.safespring.com">
+                <span class="safespring-status-card__label">Service status</span>
+                <span class="safespring-status-card__overall" data-safespring-status-overall="loading">
+                  <span class="safespring-status-card__dot" aria-hidden="true"></span>
+                  <span data-safespring-status-overall-text>Loading</span>
+                </span>
+              </a>
+              <ul class="safespring-status-card__list">
+                <li data-safespring-status-component="On-demand Kubernetes">
+                  <span>Kubernetes</span>
+                  <span data-safespring-status-component-text>–</span>
+                </li>
+                <li data-safespring-status-component="Safespring Compute">
+                  <span>Compute</span>
+                  <span data-safespring-status-component-text>–</span>
+                </li>
+                <li data-safespring-status-component="Safespring Storage">
+                  <span>Storage</span>
+                  <span data-safespring-status-component-text>–</span>
+                </li>
+                <li data-safespring-status-component="Safespring Backup">
+                  <span>Backup</span>
+                  <span data-safespring-status-component-text>–</span>
+                </li>
+                <li data-safespring-status-component="Safespring Portal">
+                  <span>Portal</span>
+                  <span data-safespring-status-component-text>–</span>
+                </li>
+              </ul>
+              <a class="safespring-status-card__maintenance" href="https://status.safespring.com" data-safespring-status-maintenance hidden></a>
+            </aside>
+            <div class="safespring-home-mobile-nav">
+              {% include "partials/nav.html" %}
+            </div>
+          {% else %}
+            {% include "partials/nav.html" %}
+          {% endif %}
+          <aside class="safespring-mobile-status-link" data-safespring-status aria-label="Service status">
+            <a class="safespring-mobile-status-link__inner" href="https://status.safespring.com">
+              <span class="safespring-mobile-status-link__overall" data-safespring-status-overall="none">
+                <span class="safespring-mobile-status-link__dot" aria-hidden="true"></span>
+                <span data-safespring-status-overall-text>All Systems Operational</span>
+              </span>
+              <span class="safespring-mobile-status-link__action">Status page</span>
+            </a>
+          </aside>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if "toc.integrate" not in features %}
+    {% if page.meta and page.meta.hide %}
+      {% set hidden = "hidden" if "toc" in page.meta.hide %}
+    {% endif %}
+    <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" {{ hidden }}>
+      {% if config.repo_url %}
+        <aside class="safespring-source-card" aria-label="{{ lang.t('source') }}">
+          <div class="safespring-source-card__label">Repository</div>
+          {% include "partials/source.html" %}
+          {% if page.edit_url %}
+            <a class="safespring-source-card__edit" href="{{ page.edit_url }}" target="_blank" rel="edit noopener" aria-label="Edit this page on GitHub">
+              <svg class="safespring-source-card__edit-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M5 19h1.4L16.9 8.5l-1.4-1.4L5 17.6V19Zm-2 2v-4.25L16.9 2.85a1.93 1.93 0 0 1 1.4-.58c.27 0 .53.05.78.16.25.1.48.25.67.45l1.4 1.42c.2.18.35.4.45.66.1.25.15.51.15.78 0 .25-.05.51-.14.76-.1.25-.25.48-.46.68L7.25 21H3ZM19.7 5.75l-1.4-1.4 1.4 1.4ZM16.2 7.8l-.7-.7 1.4 1.4-.7-.7Z" />
+              </svg>
+              <span>Edit this page</span>
+            </a>
+          {% endif %}
+        </aside>
+      {% endif %}
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+          {% include "partials/toc.html" %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}

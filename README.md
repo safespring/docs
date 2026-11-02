@@ -7,11 +7,20 @@ The content is written by Safespring and community contributors.
 
 ## Building
 
-To view a build of the site, run
+To view a build of the site with Docker, run
 ```
-docker run --rm -it -p 8000:8000 -v $PWD:/docs:z squidfunk/mkdocs-material:4.3.1
+docker run --rm -it -p 8000:8000 -v "$PWD:/docs" squidfunk/mkdocs-material:9.7.6
 ```
 and open http://localhost:8000 in your favorite browser
+
+Alternatively, use Python 3.12 with the locked dependencies:
+
+```bash
+python3.12 -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.lock
+mkdocs serve
+```
 
 ## Spellchecking
 
