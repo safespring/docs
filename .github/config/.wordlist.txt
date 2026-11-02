@@ -137,10 +137,14 @@ baselining
 bauwaweb
 bbn
 bcc
+bccd
+bce
 bcguqspqvbxigwu
 bda
+bde
 becloudinstance
 bekopia
+bfcdad
 bgnvhq
 bgp
 bgpadvertisement
@@ -200,6 +204,7 @@ catched
 cbb
 cbmr
 ccm
+cdb
 cdn
 cdromdevice
 cdxgen
@@ -463,7 +468,9 @@ ebd
 ebpf
 ecc
 ecdhe
+ecec
 ecmp
+edce
 eea
 eedd
 ef
@@ -539,12 +546,14 @@ failedfiles
 failedloginattempts
 failover
 fb
+fba
 fbce
 fc
 fcm
 featureenvironment
 featurejarfilerunwith
 featuremain
+feide
 fernet
 fi
 filecount
@@ -643,6 +652,7 @@ groupname
 groupstatusreportbybusinessunits
 growfs
 grpc
+grpmd
 gsk
 gskcrypt
 gskssl
@@ -771,11 +781,14 @@ itemproperty
 itemsperpage
 iterable
 ixiupv
+iznhv
 jdk
 jennysws
 jens
+jgjm
 jj
 jjazpb
+jm
 joblist
 jobname
 jobseverity
@@ -885,6 +898,7 @@ lokistorage
 longdisplayname
 lookups
 loopback
+lrjl
 lsblk
 lts
 luks
@@ -955,6 +969,7 @@ mssql
 mtab
 mtls
 mtu
+multifactor
 multihop
 multipath
 multireq
@@ -1046,6 +1061,7 @@ num
 numbat
 nvd
 nvme
+oathtool
 oauth
 objectlockenabled
 objectref
@@ -1088,6 +1104,7 @@ oslevel
 osquery
 oss
 ostype
+otp
 ou
 oupath
 outdir
@@ -1106,6 +1123,7 @@ parentbusinessunit
 parentid
 parentrefs
 parquet
+passcode
 passthrough
 passvd
 passwd
@@ -1164,6 +1182,7 @@ postgres
 powershell
 ppb
 ppk
+pqbgz
 pqwbci
 pre
 pregenerated
@@ -1533,6 +1552,7 @@ surpress
 sv
 svc
 sverige
+swamid
 swd
 syncstate
 sys
@@ -1594,6 +1614,7 @@ totalbytes
 totalbytesrounded
 totalentries
 totalstoragemegabytes
+totp
 traefik
 transferlimit
 transferredbackupmegabytes
@@ -1621,6 +1642,7 @@ tty
 tunable
 txnbytelimit
 txt
+tzih
 uac
 ubyg
 uczebmbkga
@@ -1659,7 +1681,9 @@ uoruijsmamenw
 updatedtojob
 updateinterval
 uploadpart
+upp
 uptime
+urandom
 uri
 urlstyle
 urmqqo
@@ -1758,6 +1782,7 @@ wireguard
 wix
 wj
 wjbfmqswcqydvqqgewjtrtetmbega
+wkr
 wmiobject
 workernode
 worklog
@@ -1771,6 +1796,7 @@ xenial
 xerus
 xfs
 xideaetw
+xlymam
 xpath
 xsalsa
 xts
@@ -1812,4 +1838,5 @@ zmrswgqydvqqddbjt
 zmrswgqydvqqddbjtywzlzgmubmv
 zmvkyy
 zot
+zsc
 zxigt
