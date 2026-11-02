@@ -66,10 +66,13 @@ Currently all available storage classes are based on networked storage.
 
 ## SLA and Availability
 
-SKE is a highly available, reliable Kubernetes service.
-The clusters provisioned have a managed control plane with a 99.5% uptime SLA measured against the Kubernetes API availability.
+The SKE control plane has a monthly uptime target (SLO) of **99.95%**, measured
+against Kubernetes API availability under the
+[Safespring Service Level Agreement](https://www.safespring.com/compliance/service_level_agreement/).
 
-The worker nodes that are part of the cluster are part of the default Compute service SLA and not included in the SKE SLA.
+Worker nodes fall under the Compute SLO of **99.99%**, rather than the Kubernetes
+control plane SLO. The full SLA defines the measurement rules, exclusions, and
+financial credit terms.
 
 For any questions regarding the SLA please reach out to [support](../service/support.md).
 

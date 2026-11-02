@@ -10,7 +10,7 @@ This guide walks you through installing the [CloudNativePG operator](https://clo
 
 Add the CloudNativePG Helm repository:
 
-```bash
+```bash mascot=yes mascot-face=7
 helm repo add cnpg https://cloudnative-pg.github.io/charts
 helm repo update
 ```
@@ -59,7 +59,7 @@ spec:
 
 **Check cluster is ready:**
 
-```bash
+```bash mascot=sitting
 kubectl get cluster pg-cluster
 kubectl cnpg status pg-cluster
 ```

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="378.01" height="420" viewBox="0 0 378.01 420" role="img" aria-hidden="true">
+  <defs>
+    <style>
+      .pants-light{fill:#446989}
+      .pants-mid{fill:#426a8c}
+      .pants-dark{fill:#325679}
+      .shoe{fill:#e7edf1}
+      .sole{fill:#c37645}
+    </style>
+  </defs>
+  <g id="seated-legs">
+    <polygon class="pants-dark" points="72 274 184 274 184 316 140 316 140 338 92 338 92 306 72 306"/>
+    <polygon class="pants-light" points="184 274 306 274 306 306 286 306 286 338 238 338 238 316 184 316"/>
+    <polygon class="pants-mid" points="306 282 326 282 326 322 306 322"/>
+    <polygon class="pants-dark" points="94 330 142 330 142 392 116 392 116 362 94 362"/>
+    <polygon class="pants-mid" points="236 330 284 330 284 362 262 362 262 392 236 392"/>
+    <polygon class="shoe" points="86 392 142 392 142 408 76 408 76 400 86 400"/>
+    <polygon class="shoe" points="236 392 292 392 302 400 302 408 236 408"/>
+    <polygon class="sole" points="76 408 110 408 110 418 76 418"/>
+    <polygon class="sole" points="268 408 302 408 302 418 268 418"/>
+  </g>
+</svg>

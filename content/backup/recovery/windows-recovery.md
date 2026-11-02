@@ -119,7 +119,7 @@ is due to licensing restrictions.
 7. Hit "Next>" twice.
 8. Check "Select if you wish to include PowerShell in the ISO or bootable USB media".
 9. Check "Select if you wish to include an SSL/TLS certificate file in the 
-   ISO or bootable USB media." Download [SafeSpring's root CA certificate](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem), and browse
+   ISO or bootable USB media." Download [Safespring's root CA certificate](https://raw.githubusercontent.com/safespring/cloud-BaaS/master/pki/SafeDC-Net-Root-CA.pem), and browse
    to the `SafeDC-Net-Root-CA.pem` file.
 10. Hit "Next>" and wait until the ISO has been built. 
 

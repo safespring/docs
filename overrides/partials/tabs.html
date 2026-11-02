@@ -1,0 +1,47 @@
+{#-
+  Custom top navigation for Safespring Docs.
+
+  The MkDocs nav remains unchanged so service sidebars still come from the
+  normal navigation tree. This override only controls the desktop topbar order.
+-#}
+{% set top_titles = config.extra.safespring_top_nav | d([]) %}
+{% set top_labels = config.extra.safespring_top_nav_labels | d({}) %}
+{% set more_exclude = config.extra.safespring_more_menu_exclude | d([]) %}
+{% set ns = namespace(has_more=false, more_active=false) %}
+
+{% for nav_item in nav.items %}
+  {% if nav_item.title not in more_exclude %}
+    {% set ns.has_more = true %}
+    {% if nav_item.active %}
+      {% set ns.more_active = true %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<nav class="md-tabs" aria-label="{{ lang.t('tabs') }}" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      {% for top_title in top_titles %}
+        {% for nav_item in nav.items %}
+          {% if nav_item.title == top_title %}
+            {% set first = nav_item.children | first %}
+            {% set href = first.url if first else nav_item.url %}
+            <li class="md-tabs__item{% if nav_item.active %} md-tabs__item--active{% endif %}">
+              <a href="{{ href | url }}" class="md-tabs__link">
+                {{ top_labels.get(nav_item.title, nav_item.title) }}
+              </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+
+      {% if ns.has_more %}
+        <li class="md-tabs__item md-tabs__item--services{% if ns.more_active %} md-tabs__item--active{% endif %}">
+          <button class="md-tabs__link md-tabs__link--services" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="safespring-services-menu">
+            More
+          </button>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>

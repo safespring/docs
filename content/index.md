@@ -30,6 +30,11 @@ services](security-compliance/index.md) and within each service section.
 Do not send passwords, private keys, access keys, secret keys, or tokens by
 email.
 
+## Known issues
+
+Please review our list of [known issues][ki] to avoid spending time on issues
+we are already aware of.
+
 ## Service availability by site
 
 Safespring services run in four sites in Norway and Sweden. Site codes appear
@@ -44,8 +49,11 @@ in service URLs, credentials, and configuration:
 | Safespring Compute | Yes | Yes | Yes | — |
 | Safespring Storage, standard tier | Yes | Yes | Yes | — |
 | Safespring Storage, archive tier | — | — | Yes | — |
-| Safespring Backup | — | — | — | Yes |
+| Safespring Backup — data storage | — | — | — | Yes |
 | Safespring Kubernetes Engine | Yes | — | Yes | — |
+
+Safespring Backup can back up workloads in all Safespring datacenters. Backup
+data is physically stored in DCO1 (Kalix).
 
 ## Roadmap
 
