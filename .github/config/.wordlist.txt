@@ -107,6 +107,7 @@ auditd
 auditid
 auditlogs
 auth
+authenticator
 autocompletion
 autoconf
 autoremove
