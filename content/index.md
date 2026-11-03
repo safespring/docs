@@ -57,14 +57,22 @@ data is physically stored in DCO1 (Kalix).
 
 ## Roadmap
 
-These are the platform changes currently planned for the next one to three
-months. Plans and timing may change.
+Plans and timing may change.
 
-### 1 - 3 months
+### Q3 Roadmap
 
-* MFA features in OpenStack for public cloud
-* SKE load balancing improvements (retain source IP address)
-* Private cloud SKE
+* Implement customer environment deletion in SKE.
+* Introduce MFA for OpenStack user accounts.
+* Deploy a new archive cluster in STO2.
+* Finalize SKE delivery for private cloud environments.
+
+### Q4 Roadmap
+
+* Expand CPU and storage capacity in STO1.
+* Introduce A2 GPU capacity in STO1.
+* Upgrade the SKE load balancer functionality.
+* Implement cross-DC backup between STO1 and STO2.
+* Introduce change logging in the SKE portal.
 
 ## Recent changes in the platform
 
