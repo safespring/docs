@@ -9,7 +9,8 @@ The content is written by Safespring and community contributors.
 
 To view a build of the site with Docker, run
 ```
-docker run --rm -it -p 8000:8000 -v "$PWD:/docs" squidfunk/mkdocs-material:9.7.6
+docker run --rm -it -p 8000:8000 -v "$PWD:/docs" -w /docs python:3.12-slim \
+  sh -c 'pip install -r requirements.lock && mkdocs serve --dev-addr 0.0.0.0:8000'
 ```
 and open http://localhost:8000 in your favorite browser
 
@@ -21,6 +22,9 @@ python3.12 -m venv .venv
 pip install -r requirements.lock
 mkdocs serve
 ```
+
+Edit `content/safespring.css` as readable source. The build reduces the generated
+CSS file size and adds its content hash to the CSS URL, including local previews.
 
 ## Spellchecking
 

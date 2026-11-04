@@ -10,6 +10,8 @@ import gzip
 from urllib.parse import urljoin
 import xml.etree.ElementTree as ET
 
+from rcssmin import cssmin
+
 
 FENCE_OPEN_RE = re.compile(r"^(?P<indent>[ \t]*)(?P<fence>`{3,}|~{3,})(?P<attrs>.*)$")
 TAB_ATTR_RE = re.compile(r"(?:^|\s)tab=")
@@ -36,20 +38,10 @@ LEGACY_BACKUP_WARNING = """
 
 
 def on_config(config, **kwargs):
-    extra = config.get("extra") or {}
     docs_dir = Path(config["docs_dir"])
     if not docs_dir.is_absolute():
         config_file_path = Path(getattr(config, "config_file_path", "") or "mkdocs.yml")
         docs_dir = config_file_path.parent / docs_dir
-
-    if extra.get("safespring_css_version") == "auto":
-        css_file = docs_dir / "safespring.css"
-        try:
-            extra["safespring_css_version"] = hashlib.sha256(css_file.read_bytes()).hexdigest()[:16]
-        except FileNotFoundError:
-            extra["safespring_css_version"] = "missing"
-
-    config["extra"] = extra
 
     codeblocks_js = docs_dir / "safespring-codeblocks.js"
     try:
@@ -66,6 +58,16 @@ def on_config(config, **kwargs):
 
     config["extra_javascript"] = extra_javascript
     return config
+
+
+def on_files(files, config, **kwargs):
+    css = files.get_file_from_path("safespring.css")
+    if css is None:
+        raise FileNotFoundError("Required stylesheet safespring.css is missing")
+    # Transform only the generated file; keep the editable source intact.
+    css.content_string = cssmin(css.content_string, keep_bang_comments=True) + "\n"
+    config["extra"]["safespring_css_version"] = hashlib.sha256(css.content_bytes).hexdigest()[:16]
+    return files
 
 
 @dataclass
