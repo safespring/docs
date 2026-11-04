@@ -1,6 +1,18 @@
 (function () {
   var sidebarScrollKeyPrefix = "safespring:sidebar-scroll:";
   var codeBlockId = 0;
+  var articleViewStorageKey = "safespring:article-view:v1";
+  var articleTextSizes = [70, 80, 90, 100, 110, 120, 130];
+  var articleViewPreference = loadArticleViewPreference();
+  var articleHintStorageKey = "safespring:article-width-hint-dismissed:v1";
+  var articleHintDismissed = loadArticleHintDismissed();
+  var codeFocusEnabled = articleViewPreference.mode === "code";
+  var codeFocusScrollCleanup = null;
+  var articleView = {};
+  var articleResizeDrag = null;
+  var articleResizeThreshold = 8;
+  var articleResizeMedia = window.matchMedia("(min-width: 60em) and (pointer: fine)");
+  var articleHintIntroMedia = window.matchMedia("(min-width: 76.25em) and (pointer: fine)");
   var mascotAssetVersion = "20260701-mascot-12";
   var mascotImageUrl = resolveAssetUrl("images/mascot-white-t-shirt-alt1.svg?v=" + mascotAssetVersion);
   var sittingMascotImageUrl = resolveAssetUrl("images/mascot-white-t-shirt-sitting.svg?v=" + mascotAssetVersion);
@@ -869,7 +881,7 @@
   }
 
   function scheduleMascotBubblePositions() {
-    if (mascotBubbleFrame) return;
+    if (mascotBubbleFrame || !mascotBubbleItems.length) return;
     mascotBubbleFrame = window.requestAnimationFrame(positionMascotBubbles);
   }
 
@@ -1021,15 +1033,369 @@
     registerMascotBubble(host, image, sittingLegs, face, effect, bubble, debugZone, isSitting);
   }
 
+  function loadArticleViewPreference() {
+    var fallback = { version: 1, mode: "reading", width: null, textSize: 100 };
+    try {
+      var saved = JSON.parse(window.localStorage.getItem(articleViewStorageKey));
+      if (!saved || saved.version !== 1 || (saved.mode !== "reading" && saved.mode !== "code")) return fallback;
+      var width = saved.width;
+      if (width !== null && (typeof width !== "number" || !Number.isFinite(width) || width <= 0)) return fallback;
+      var textSize = articleTextSizes.includes(saved.textSize) ? saved.textSize : fallback.textSize;
+      return { version: 1, mode: saved.mode, width: saved.mode === "code" ? width : null, textSize: textSize };
+    } catch (error) {
+      return fallback;
+    }
+  }
+
+  function saveArticleViewPreference(mode, width, textSize = articleViewPreference.textSize) {
+    articleViewPreference = { version: 1, mode: mode, width: mode === "code" ? width : null, textSize: textSize };
+    try {
+      window.localStorage.setItem(articleViewStorageKey, JSON.stringify(articleViewPreference));
+    } catch (error) {
+      // Keep the selected view in memory when browser storage is unavailable.
+    }
+  }
+
+  function updateArticleSidebarInset(article, rect, limits) {
+    var main = articleView.main;
+    if (!main) return;
+    var inset = 0;
+    if (article && article.isConnected && article.classList.contains("sf-article-resizable") &&
+        document.body.classList.contains("sf-code-focus") && articleResizeMedia.matches) {
+      inset = Math.max(0, rect.left - limits.left);
+    }
+    main.style.setProperty("--sf-sidebar-inset", inset + "px");
+  }
+
+  function applyArticleViewPreference(article) {
+    if (!article) {
+      updateArticleSidebarInset(null);
+      return;
+    }
+    article.style.setProperty("--sf-article-text-scale", articleViewPreference.textSize / 100);
+    var width = articleViewPreference.width;
+    var limits;
+    if (codeFocusEnabled && articleResizeMedia.matches && article.classList.contains("sf-article-resizable") && width !== null) {
+      limits = articleResizeLimits(article);
+      article.style.setProperty("--sf-article-width", Math.max(limits.min, Math.min(width, limits.max)) + "px");
+    } else {
+      article.style.removeProperty("--sf-article-width");
+    }
+    updateArticleResizeHandle(article, limits);
+  }
+
+  function articleResizeLimits(article) {
+    var parent = articleView.content;
+    var parentStyle = window.getComputedStyle(parent);
+    var articleStyle = window.getComputedStyle(article);
+    var paddingLeft = parseFloat(parentStyle.paddingLeft) || 0;
+    var paddingRight = parseFloat(parentStyle.paddingRight) || 0;
+    var available = parent.clientWidth - paddingLeft - paddingRight;
+    var decoration = (parseFloat(articleStyle.paddingLeft) || 0) + (parseFloat(articleStyle.paddingRight) || 0) +
+      (parseFloat(articleStyle.borderLeftWidth) || 0) + (parseFloat(articleStyle.borderRightWidth) || 0);
+    var maximum = Math.max(1, Math.floor(available - decoration));
+    var left = parent.getBoundingClientRect().left;
+    return {
+      min: Math.min(320, maximum),
+      max: maximum,
+      decoration: decoration,
+      left: left,
+      center: left + parent.clientLeft + paddingLeft + available / 2
+    };
+  }
+
+  function updateArticleResizeHandle(article, limits) {
+    if (!article) {
+      updateArticleSidebarInset(null);
+      return;
+    }
+    var handle = articleView.handle;
+    var grip = articleView.grip;
+    // Read geometry once before updating sidebar positions and control attributes.
+    var rect = article.getBoundingClientRect();
+    limits = limits || articleResizeLimits(article);
+    var width = Math.max(limits.min, Math.min(limits.max, Math.round(rect.width - limits.decoration)));
+    updateArticleSidebarInset(article, rect, limits);
+    handle.hidden = !articleResizeMedia.matches;
+    grip.tabIndex = articleResizeMedia.matches ? 0 : -1;
+    if (!rect.width) return;
+    grip.setAttribute("aria-valuemin", String(limits.min));
+    grip.setAttribute("aria-valuemax", String(limits.max));
+    grip.setAttribute("aria-valuenow", String(width));
+    grip.setAttribute("aria-valuetext", width + " pixels; article width");
+    articleView.value.textContent = width + " px";
+    showArticleResizeIntro(handle);
+  }
+
+  function holdArticleLayout() {
+    var root = document.documentElement;
+    var properties = ["overflow-anchor", "scroll-behavior"];
+    var previous = properties.map(function (property) {
+      return { value: root.style.getPropertyValue(property), priority: root.style.getPropertyPriority(property) };
+    });
+    root.style.setProperty("overflow-anchor", "none");
+    root.style.setProperty("scroll-behavior", "auto");
+    return function () {
+      properties.forEach(function (property, index) {
+        if (previous[index].value) {
+          root.style.setProperty(property, previous[index].value, previous[index].priority);
+        } else {
+          root.style.removeProperty(property);
+        }
+      });
+    };
+  }
+
+  function articleReadingAnchor(article, pointerY) {
+    var dragging = pointerY !== undefined;
+    var header = document.querySelector(".md-header");
+    var top = dragging ? 0 : (header ? Math.max(0, header.getBoundingClientRect().bottom) : 0) + 8;
+    var anchor = null;
+    var distance = Infinity;
+    var selector = "h1, h2, h3, h4, h5, h6, pre";
+    var candidates = article.querySelectorAll(dragging ? selector + ", p" : selector);
+    for (var node of candidates) {
+      var rect = node.getBoundingClientRect();
+      if (!rect.width || !rect.height || rect.bottom <= top || rect.top >= window.innerHeight) continue;
+      if (!dragging) return { node: node, top: rect.top };
+      var nextDistance = Math.abs(rect.top - pointerY);
+      if (nextDistance < distance) {
+        anchor = { node: node, top: rect.top };
+        distance = nextDistance;
+      }
+    }
+    return anchor;
+  }
+
+  function changeArticleLayout(article, update, frames = 2) {
+    finishArticleResize(true);
+    if (codeFocusScrollCleanup) codeFocusScrollCleanup();
+    var anchor = articleReadingAnchor(article);
+    var restoreLayout = holdArticleLayout();
+    try {
+      update(anchor);
+      alignArticleResizeAnchor(anchor);
+    } finally {
+      settleArticleLayout(anchor, restoreLayout, frames);
+      scheduleMascotBubblePositions();
+    }
+  }
+
+  function alignArticleResizeAnchor(anchor) {
+    if (!anchor || !anchor.node.isConnected) return;
+    var delta = anchor.node.getBoundingClientRect().top - anchor.top;
+    if (Math.abs(delta) > 1) window.scrollBy({ top: delta, behavior: "instant" });
+  }
+
+  function settleArticleLayout(anchor, restoreLayout, frames) {
+    var frame;
+    codeFocusScrollCleanup = function () {
+      window.cancelAnimationFrame(frame);
+      restoreLayout();
+      codeFocusScrollCleanup = null;
+    };
+    function align() {
+      alignArticleResizeAnchor(anchor);
+      if (--frames > 0) frame = window.requestAnimationFrame(align);
+      else codeFocusScrollCleanup();
+    }
+    frame = window.requestAnimationFrame(align);
+  }
+
+  function applyArticleResizeWidth(article, width, anchor, limits) {
+    var value = Math.round(clamp(width, limits.min, limits.max)) + "px";
+    if (article.style.getPropertyValue("--sf-article-width") === value) return;
+    article.style.setProperty("--sf-article-width", value);
+    alignArticleResizeAnchor(anchor);
+    updateArticleResizeHandle(article, limits);
+    scheduleMascotBubblePositions();
+  }
+
+  function updateArticleResizeDrag() {
+    var drag = articleResizeDrag;
+    if (!drag || !drag.article.isConnected) return;
+    drag.animation = 0;
+    if (!drag.restoreLayout) {
+      // A click or slight pointer jitter should leave the current view intact.
+      if (Math.abs(drag.pointerX - drag.startX) < articleResizeThreshold) return;
+      dismissArticleResizeHint(drag.handle);
+      if (codeFocusScrollCleanup) codeFocusScrollCleanup();
+      drag.anchor = articleReadingAnchor(drag.article, drag.startY);
+      drag.startWidth = drag.article.style.getPropertyValue("--sf-article-width");
+      drag.startMode = codeFocusEnabled;
+      drag.restoreLayout = holdArticleLayout();
+      document.body.classList.add("sf-code-resizing");
+      updateCodeFocusToolbar(true);
+      // Wide changes the available space; measure after switching. A viewport
+      // resize cancels the drag, so these bounds stay valid until release.
+      drag.limits = articleResizeLimits(drag.article);
+    }
+    var width = 2 * (drag.pointerX - drag.grabOffset - drag.limits.center) - drag.limits.decoration;
+    applyArticleResizeWidth(drag.article, width, drag.anchor, drag.limits);
+  }
+
+  function finishArticleResize(cancel) {
+    var drag = articleResizeDrag;
+    if (!drag) return;
+    window.cancelAnimationFrame(drag.animation);
+    // Releasing the pointer can finish a drag, but cannot start one by itself.
+    if (!cancel && (drag.restoreLayout || drag.animation)) updateArticleResizeDrag();
+    articleResizeDrag = null;
+    if (drag.handle.hasPointerCapture(drag.pointerId)) drag.handle.releasePointerCapture(drag.pointerId);
+    if (!drag.restoreLayout) return;
+    if (cancel) {
+      if (drag.startWidth) drag.article.style.setProperty("--sf-article-width", drag.startWidth);
+      else drag.article.style.removeProperty("--sf-article-width");
+      codeFocusEnabled = drag.startMode;
+      if (drag.article.isConnected) updateCodeFocusToolbar();
+      alignArticleResizeAnchor(drag.anchor);
+    }
+    document.body.classList.remove("sf-code-resizing");
+    drag.restoreLayout();
+    if (!cancel) saveArticleViewPreference("code", parseFloat(drag.article.style.getPropertyValue("--sf-article-width")) || null);
+    updateArticleResizeHandle(drag.article);
+    scheduleMascotBubblePositions();
+  }
+
+  function startArticleResize(event, article, handle) {
+    if (!articleResizeMedia.matches || event.button !== 0 || !event.isPrimary) return;
+    if (article !== articleView.article || !article.isConnected) return;
+    event.preventDefault();
+    if (articleResizeDrag) finishArticleResize(true);
+    var rect = article.getBoundingClientRect();
+    articleResizeDrag = {
+      article: article,
+      handle: handle,
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      pointerX: event.clientX,
+      grabOffset: event.clientX - rect.right,
+      animation: 0,
+      restoreLayout: null
+    };
+    handle.setPointerCapture(event.pointerId);
+    articleView.grip.focus({ preventScroll: true });
+  }
+
+  function trackArticleResize(event) {
+    var drag = articleResizeDrag;
+    if (!drag || event.pointerId !== drag.pointerId) return;
+    if (event.type === "pointercancel") return finishArticleResize(true);
+    // Recover a missed release using the last held position, not a later hover.
+    if (event.type === "pointermove" && !(event.buttons & 1)) return finishArticleResize(false);
+    drag.pointerX = event.clientX;
+    if (event.type === "pointerup") return finishArticleResize(false);
+    if (!drag.restoreLayout && Math.abs(drag.pointerX - drag.startX) < articleResizeThreshold) return;
+    if (!drag.animation) drag.animation = window.requestAnimationFrame(updateArticleResizeDrag);
+  }
+
+  function resizeArticleFromKeyboard(event, article) {
+    if (!articleResizeMedia.matches || articleResizeDrag || event.altKey || event.ctrlKey || event.metaKey) return;
+    var direction = event.key === "ArrowRight" || event.key === "ArrowUp" ? 1 :
+      event.key === "ArrowLeft" || event.key === "ArrowDown" ? -1 : 0;
+    if (!direction && event.key !== "Home" && event.key !== "End") return;
+    if (article !== articleView.article || !article.isConnected) return;
+    event.preventDefault();
+    dismissArticleResizeHint(articleView.handle);
+    changeArticleLayout(article, function (anchor) {
+      var initialWidth = article.getBoundingClientRect().width - articleResizeLimits(article).decoration;
+      updateCodeFocusToolbar(true);
+      var limits = articleResizeLimits(article);
+      var width = event.key === "Home" ? limits.min : event.key === "End" ? limits.max :
+        initialWidth + direction * (event.shiftKey ? 80 : 20);
+      applyArticleResizeWidth(article, width, anchor, limits);
+      saveArticleViewPreference("code", parseFloat(article.style.getPropertyValue("--sf-article-width")) || null);
+    }, 1);
+  }
+
+  function loadArticleHintDismissed() {
+    try {
+      return window.localStorage.getItem(articleHintStorageKey) === "1";
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function rememberArticleHint() {
+    if (articleHintDismissed) return;
+    articleHintDismissed = true;
+    try {
+      window.localStorage.setItem(articleHintStorageKey, "1");
+    } catch (error) {
+      // Remember the introduction in memory when browser storage is unavailable.
+    }
+  }
+
+  function showArticleResizeIntro(handle) {
+    if (!handle) return;
+    if (!articleHintIntroMedia.matches) {
+      delete handle.dataset.hintIntro;
+      return;
+    }
+    if (articleHintDismissed || handle.hidden || !handle.isConnected) return;
+    var rect = articleView.grip.getBoundingClientRect();
+    if (!rect || !rect.width || !rect.height || rect.bottom <= 0 || rect.top >= window.innerHeight) return;
+    handle.dataset.hintIntro = "true";
+    var style = window.getComputedStyle(articleView.hint);
+    if (style && style.visibility !== "hidden" && style.display !== "none" && Number(style.opacity) > 0) rememberArticleHint();
+  }
+
+  function dismissArticleResizeHint(handle) {
+    delete handle.dataset.hintIntro;
+    handle.dataset.hintSuppressed = "true";
+    rememberArticleHint();
+  }
+
+  function enhanceArticleResize(article) {
+    article.classList.add("sf-article-resizable");
+    var handle = document.createElement("div");
+    handle.className = "sf-article-resize-handle";
+    handle.innerHTML = '<span class="sf-article-resize-control">' +
+      '<span class="sf-article-resize-grip" role="slider" aria-label="Article width" aria-orientation="horizontal" aria-describedby="sf-article-resize-help">' +
+      '<span class="sf-article-resize-value" aria-hidden="true"></span></span>' +
+      '<span class="sf-article-resize-hint"><span id="sf-article-resize-help">Drag to adjust article width</span>' +
+      '<button class="sf-article-resize-hint-close" type="button" aria-label="Dismiss width tip">×</button></span></span>';
+    handle.addEventListener("pointerdown", function (event) {
+      if (!event.target.closest(".sf-article-resize-hint")) startArticleResize(event, article, handle);
+    });
+    handle.querySelector(".sf-article-resize-hint-close").addEventListener("click", function (event) {
+      event.stopPropagation();
+      dismissArticleResizeHint(handle);
+      articleView.grip.focus({ preventScroll: true });
+    });
+    handle.addEventListener("pointerleave", function () { delete handle.dataset.hintSuppressed; });
+    handle.addEventListener("focusout", function (event) {
+      if (!handle.contains(event.relatedTarget)) delete handle.dataset.hintSuppressed;
+    });
+    handle.addEventListener("keydown", function (event) {
+      if (!event.target.closest(".sf-article-resize-hint")) resizeArticleFromKeyboard(event, article);
+    });
+    handle.addEventListener("focusin", function () { updateArticleResizeHandle(article); });
+    article.appendChild(handle);
+    return handle;
+  }
+
+  function refreshArticleWidth() {
+    if (articleResizeDrag) finishArticleResize(true);
+    var article = articleView.article;
+    if (!article || !article.isConnected) {
+      updateArticleSidebarInset(null);
+      return;
+    }
+    applyArticleViewPreference(article);
+  }
+
   function enhanceCodeBlocks() {
     document.querySelectorAll(".md-typeset pre > code").forEach(function (code) {
       var pre = code.parentElement;
-      if (!pre || pre.dataset.safespringEnhanced === "true") return;
+      if (!pre) return;
       if (isMermaidBlock(pre, code)) {
         pre.dataset.safespringEnhanced = "skip-mermaid";
         return;
       }
 
+      if (pre.dataset.safespringEnhanced === "true") return;
       pre.dataset.safespringEnhanced = "true";
       enhanceCodeBlockMascot(pre);
       var language = inferLanguage(code);
@@ -1066,11 +1432,125 @@
         });
       });
 
+      var actions = document.createElement("div");
+      actions.className = "safespring-code-actions";
+      actions.appendChild(button);
       header.appendChild(label);
-      header.appendChild(button);
+      header.appendChild(actions);
       pre.insertBefore(header, code);
       enhanceCodeBlockExpansion(pre, code);
     });
+  }
+
+
+
+
+  function updateCodeFocusToolbar(enabled = codeFocusEnabled) {
+    codeFocusEnabled = enabled;
+    articleView.modeButtons.forEach(function (button) {
+      button.setAttribute("aria-pressed", String((button.dataset.sfView === "code") === codeFocusEnabled));
+    });
+    document.body.classList.toggle("sf-code-focus", codeFocusEnabled);
+  }
+
+  function updateArticleTextSizeControls() {
+    var size = articleViewPreference.textSize;
+    var buttons = articleView.textButtons;
+    buttons[1].textContent = size + "%";
+    buttons[1].setAttribute("aria-label", "Reset article text size (currently " + size + "%)");
+    buttons[0].setAttribute("aria-disabled", String(size === articleTextSizes[0]));
+    buttons[2].setAttribute("aria-disabled", String(size === articleTextSizes[articleTextSizes.length - 1]));
+  }
+  function changeArticleView(event) {
+    var button = event.target.closest("button[data-sf-view], button[data-sf-text-size]");
+    var article = articleView.article;
+    if (!button || !articleView.toolbar.contains(button) || !article.isConnected) return;
+    var resizingText = button.hasAttribute("data-sf-text-size");
+    var size = articleViewPreference.textSize;
+    if (resizingText) {
+      var direction = Number(button.dataset.sfTextSize);
+      size = direction === 0 ? 100 : articleTextSizes[articleTextSizes.indexOf(size) + direction];
+      if (size === undefined || size === articleViewPreference.textSize) return;
+    }
+    finishArticleResize(true);
+    var mode = resizingText ? articleViewPreference.mode : button.dataset.sfView;
+    var width = mode === "code" ? articleViewPreference.width : null;
+    if (!resizingText && (mode === "code") === codeFocusEnabled) {
+      saveArticleViewPreference(mode, width, size);
+      applyArticleViewPreference(article);
+      return;
+    }
+    changeArticleLayout(article, function () {
+      saveArticleViewPreference(mode, width, size);
+      updateCodeFocusToolbar(mode === "code");
+      updateArticleTextSizeControls();
+      applyArticleViewPreference(article);
+      if (resizingText) articleView.status.textContent = "Article text size " + size + "%";
+    });
+  }
+
+  function createArticleToolbar() {
+    var toolbar = document.createElement("div");
+    toolbar.className = "sf-code-focus-toolbar";
+    toolbar.setAttribute("role", "group");
+    toolbar.setAttribute("aria-labelledby", "sf-code-focus-label");
+    toolbar.innerHTML = '<div class="sf-view-options-card"><span class="sf-code-focus-label" id="sf-code-focus-label">View options</span>' +
+      '<div class="sf-view-options-modes">' + ["reading", "code"].map(function (mode) {
+      return '<button class="sf-code-focus-toggle" type="button" data-sf-view="' + mode + '" aria-describedby="sf-code-focus-description">' +
+        '<span class="sf-code-focus-icon sf-code-focus-icon--' + mode + '" aria-hidden="true"></span>' +
+        '<span>' + (mode === "code" ? "Wide" : "Default") + '</span></button>';
+    }).join("") + '</div><span class="sf-code-focus-description" id="sf-code-focus-description">' +
+      'Default restores the standard layout. Wide uses your saved article width and expands code blocks.</span>' +
+      '<div class="sf-article-text-size" role="group" aria-labelledby="sf-article-text-size-label">' +
+      '<span id="sf-article-text-size-label">Text size</span>' +
+      '<div class="sf-article-text-stepper">' +
+      '<button class="sf-article-text-size-button" type="button" data-sf-text-size="-1" aria-label="Decrease article text size">−</button>' +
+      '<button class="sf-article-text-size-button" type="button" data-sf-text-size="0" aria-label="Reset article text size" title="Reset text size">100%</button>' +
+      '<button class="sf-article-text-size-button" type="button" data-sf-text-size="1" aria-label="Increase article text size">+</button></div>' +
+      '<span class="sf-code-focus-description" role="status"></span></div></div>';
+    toolbar.onclick = changeArticleView;
+    return toolbar;
+  }
+
+  function enhanceArticleCodeFocus() {
+    if (codeFocusScrollCleanup) codeFocusScrollCleanup();
+    var article = document.querySelector(".md-content article");
+    var scrollwrap = document.querySelector(".md-sidebar--secondary > .md-sidebar__scrollwrap");
+    var valid = article && article.querySelector("h1") && scrollwrap;
+    if (!valid || articleView.article !== article || articleView.path !== location.pathname || articleView.toolbar.parentElement !== scrollwrap) {
+      if (articleView.article) {
+        articleView.article.classList.remove("sf-article-resizable");
+        articleView.article.style.removeProperty("--sf-article-width");
+        articleView.main.style.removeProperty("--sf-sidebar-inset");
+        articleView.handle.remove();
+        articleView.toolbar.remove();
+      }
+      articleView = {};
+      if (valid) {
+        var toolbar = createArticleToolbar();
+        var handle = enhanceArticleResize(article);
+        scrollwrap.prepend(toolbar);
+        articleView = {
+          article: article,
+          path: location.pathname,
+          toolbar: toolbar,
+          handle: handle,
+          main: article.closest(".md-main__inner"),
+          content: article.closest(".md-content"),
+          grip: handle.querySelector(".sf-article-resize-grip"),
+          value: handle.querySelector(".sf-article-resize-value"),
+          hint: handle.querySelector(".sf-article-resize-hint"),
+          status: toolbar.querySelector('[role="status"]'),
+          modeButtons: toolbar.querySelectorAll("[data-sf-view]"),
+          textButtons: toolbar.querySelectorAll("[data-sf-text-size]")
+        };
+      }
+    }
+    document.body.classList.toggle("sf-code-focus", !!valid && codeFocusEnabled);
+    if (!valid) return;
+    updateCodeFocusToolbar();
+    updateArticleTextSizeControls();
+    applyArticleViewPreference(article);
   }
 
   function imageAverageLuminance(image) {
@@ -1327,11 +1807,13 @@
   }
 
   function enhancePage() {
+    if (articleResizeDrag) finishArticleResize(true);
     enhanceSidebarScroll();
     enhanceMobileNavState();
     enhanceContentLinks();
     cleanupMermaidCodeBlockEnhancements();
     enhanceCodeBlocks();
+    enhanceArticleCodeFocus();
     enhanceImages();
     enhanceMoreMenu();
   }
@@ -1349,22 +1831,49 @@
   });
 
   document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") closeMoreMenus();
+    if (event.key === "Escape") {
+      if (articleResizeDrag) {
+        event.preventDefault();
+        finishArticleResize(true);
+      }
+      closeMoreMenus();
+    }
+  });
+
+  articleResizeMedia.addEventListener("change", refreshArticleWidth);
+  articleHintIntroMedia.addEventListener("change", refreshArticleWidth);
+
+  // Keep following an active drag even if capture is lost or the handle moves.
+  ["pointermove", "pointerup", "pointercancel"].forEach(function (type) {
+    window.addEventListener(type, trackArticleResize, true);
+  });
+
+  window.addEventListener("blur", function () {
+    if (articleResizeDrag) finishArticleResize(true);
   });
 
   window.addEventListener("resize", function () {
+    refreshArticleWidth();
     closeMoreMenus();
     scheduleMascotBubblePositions();
   });
 
-  window.addEventListener("scroll", scheduleMascotBubblePositions, { passive: true });
+  window.addEventListener("scroll", function () {
+    scheduleMascotBubblePositions();
+    if (!articleHintDismissed && articleView.handle) {
+      showArticleResizeIntro(articleView.handle);
+    }
+  }, { passive: true });
   if (window.visualViewport) {
     window.visualViewport.addEventListener("resize", scheduleMascotBubblePositions, { passive: true });
     window.visualViewport.addEventListener("scroll", scheduleMascotBubblePositions, { passive: true });
   }
 
   if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(scheduleMascotBubblePositions).catch(function () {
+    document.fonts.ready.then(function () {
+      refreshArticleWidth();
+      scheduleMascotBubblePositions();
+    }).catch(function () {
       return;
     });
   }
