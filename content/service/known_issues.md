@@ -141,15 +141,6 @@ runcmd:
 
 ```
 
-## Resize operations disabled
-
-Due to different issues with resize operations, we have disabled user-initiated resize operations. If you need to resize instances, please contact [support](support.md).
-
-It is not possible to resize to an instance that has less disk space than the one you are resizing from.
-
-We expect to support user initiated resize operations after a future system upgrade.
-
-
 ## Instance operations
 
 "Create Snapshot" only works for smaller instances at the moment. In addition,
