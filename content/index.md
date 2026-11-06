@@ -48,7 +48,7 @@ in service URLs, credentials, and configuration:
 |:--------|:----:|:----:|:----:|:----:|
 | Safespring Compute | Yes | Yes | Yes | — |
 | Safespring Storage, standard tier | Yes | Yes | Yes | — |
-| Safespring Storage, archive tier | — | — | Yes | — |
+| Safespring Storage, archive tier | Yes | — | Yes | — |
 | Safespring Backup — data storage | — | — | — | Yes |
 | Safespring Kubernetes Engine | Yes | — | Yes | — |
 
