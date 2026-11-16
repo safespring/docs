@@ -7,11 +7,7 @@ access key and secret key.
 This page explains how to obtain those credentials, choose the endpoint for
 your site, configure a client, and understand buckets and objects.
 
-This guide covers the standard Storage tier. Every Safespring Compute project
-has a standard Storage account, and its users obtain personal credentials
-through Compute. The archive tier uses a separate account; [contact
-support](../service/support.md) to request one. See [S3 quotas](quota.md) for
-the differences between the tiers.
+This guide covers both Storage tiers: standard and archive. Every Safespring Compute project has a Storage account, and its users obtain personal credentials through Compute. The same credentials work for both tiers. You select the tier by connecting to its endpoint. See Service availability by site and [S3 quotas](quota.md) for the differences between the tiers.
 
 Before you start, you need access to the relevant Safespring Compute project
 and an S3-compatible client. If you do not have project access, [contact
@@ -92,10 +88,19 @@ for the rationale.
 
 Use the endpoint for the site that contains your project:
 
-!!! info "Service endpoints"
-    + Norwegian site  - https://s3.osl2.safedc.net
-    + Swedish site - https://s3.sto1.safedc.net
-    + Swedish secondary site - https://s3.sto2.safedc.net
+Standard tier service endpoints
+
+- OSL2 - `https://s3.osl2.safedc.net`
+- STO1 - `https://s3.sto1.safedc.net`
+- STO2 - `https://s3.sto2.safedc.net`
+
+Archive tier service endpoints
+
+- STO2 - `https://s3a3.sto2.safedc.net`
+- STO2 - `https://s3a4.sto2.safedc.net`
+- STO2 - `https://s3a5.sto2.safedc.net`
+
+Use the endpoint provided to you during onboarding. The archive endpoints use the same access key and secret key as the standard tier.
 
 See [S3 API compatibility](s3-compatibility.md) for supported request and
 addressing behavior.
