@@ -15,7 +15,7 @@ Safespring Storage has two tiers:
 1. Standard. The default tier, optimized for applications that need higher performance.
 2. Archive. Designed for archiving, with larger objects that are written once and read occasionally.
 
-Both tiers use the same credentials, which you get through Safespring Compute. You select the tier by connecting to its endpoint. See Connection details for the endpoints.
+Both tiers use the same credentials, which you get through Safespring Compute. You select the tier by connecting to its endpoint. See [Connection details](https://docs.safespring.com/storage/getting-started/#connection-details) for the endpoints.
 
 ## Quota defaults
 
