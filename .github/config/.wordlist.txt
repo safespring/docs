@@ -1847,3 +1847,5 @@ zsc
 zxigt
 NVL
 HBM
+HBM3
+GDDR6
