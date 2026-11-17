@@ -90,7 +90,7 @@ Use the endpoint for the site that contains your project:
 
 Standard tier service endpoints
 
-- OSL2 (Norwegian site)) - `https://s3.osl2.safedc.net`
+- OSL2 (Norwegian site) - `https://s3.osl2.safedc.net`
 - STO1 (Swedish site) - `https://s3.sto1.safedc.net`
 - STO2 (Swedish secondary site) - `https://s3.sto2.safedc.net`
 
