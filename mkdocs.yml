@@ -225,6 +225,7 @@ nav:
           - Windows Images: "compute/howto/windows.md"
           - Migrate Instance to Another Project: "compute/howto/migrate-between-projects.md"
           - Taking Snapshots of Instances: "compute/howto/snapshotting-instances.md"
+          - Set up an A2 GPU Instance: 'compute/howto/gpu-instance.md'
       - Security and Compliance:
           - Overview: "compute/security-compliance/index.md"
           - System Protection and Maintenance: "compute/security-compliance/system-protection-maintenance.md"
