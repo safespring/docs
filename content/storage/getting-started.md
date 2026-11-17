@@ -90,15 +90,15 @@ Use the endpoint for the site that contains your project:
 
 Standard tier service endpoints
 
-- OSL2 - `https://s3.osl2.safedc.net`
-- STO1 - `https://s3.sto1.safedc.net`
-- STO2 - `https://s3.sto2.safedc.net`
+- OSL2 (Norwegian site)) - `https://s3.osl2.safedc.net`
+- STO1 (Swedish site) - `https://s3.sto1.safedc.net`
+- STO2 (Swedish secondary site) - `https://s3.sto2.safedc.net`
 
 Archive tier service endpoints
 
-- STO2 - `https://s3a3.sto2.safedc.net`
-- STO2 - `https://s3a4.sto2.safedc.net`
-- STO2 - `https://s3a5.sto2.safedc.net`
+- STO2 (A3) - `https://s3a3.sto2.safedc.net`
+- STO2 (A4) - `https://s3a4.sto2.safedc.net`
+- STO2 (A5) - `https://s3a5.sto2.safedc.net`
 
 Use the endpoint provided to you during onboarding. The archive endpoints use the same access key and secret key as the standard tier.
 
