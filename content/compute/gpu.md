@@ -2,8 +2,6 @@
 
 Safespring Compute offers GPU-enabled flavors for workloads that require hardware-accelerated computing, such as machine learning inference, LLM hosting, and other GPU-intensive applications.
 
-This page includes OpenStack CLI commands. See the [API Access documentation](api.md) for instructions on how to install and configure the command line client.
-
 ## Available GPU hardware
 
 Safespring offers the following GPU models:
