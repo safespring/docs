@@ -1849,3 +1849,5 @@ NVL
 HBM
 procurements
 sanitised
+HBM3
+GDDR6
