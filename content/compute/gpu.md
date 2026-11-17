@@ -6,25 +6,30 @@ This page includes OpenStack CLI commands. See the [API Access documentation](ap
 
 ## Available GPU hardware
 
-GPU flavors on Safespring are equipped with the **NVIDIA A2** accelerator:
+Safespring offers the following GPU models:
 
-| Property | Specification |
-| --- | --- |
-| GPU model | NVIDIA A2 |
-| GPU memory | 16 GB GDDR6 |
-| Architecture | Ampere |
-| Use case | Inference, lightweight training, video encoding |
+| Property     | NVIDIA A2                                       | NVIDIA H100 NVL                      |
+| ------------ | ----------------------------------------------- | ------------------------------------ |
+| GPU memory   | 16 GB GDDR6                                     | 94 GB HBM3                           |
+| Architecture | Ampere                                          | Hopper                               |
+| Site         | STO2                                            | STO1                                 |
+| Use case     | Inference, lightweight training, video encoding | Inference with large language models |
+| Availability | Available to all projects                       | On request                           |
 
 ## GPU flavor naming
 
-GPU flavors follow the same naming convention as standard flavors, with an additional `gA2` suffix indicating the attached GPU. For example:
+GPU flavors follow the same naming convention as standard flavors, with an additional `gA2` suffix for NVIDIA A2. The following A2 flavors are available:
 
-| Flavor name | VCPUs | RAM | GPU |
-| --- | --- | --- | --- |
-| `b2.c4r8.gA2` | 4 | 8 GB | 1x NVIDIA A2 |
+| Flavor name        | VCPUs | RAM   | Local disk | GPU          |
+| ------------------ | ----- | ----- | ---------- | ------------ |
+| `b2.c4r8.gA2`      | 4     | 8 GB  | -          | 1x NVIDIA A2 |
+| `b2.c8r16.gA2`     | 8     | 16 GB | -          | 1x NVIDIA A2 |
+| `l2.c4r16.125.gA2` | 4     | 16 GB | 125 GB     | 1x NVIDIA A2 |
+| `l2.c8r32.250.gA2` | 8     | 32 GB | 250 GB     | 1x NVIDIA A2 |
 
-!!! info "Availability"
-    GPU flavors are currently available in the **STO2** site. Contact [support](../service/support.md) to verify availability and to get GPU flavors enabled for your project.
+A2 flavors are currently only available in STO2. Make sure you are logged in to the STO2 dashboard to see them.
+
+To use NVIDIA H100 NVL, contact [support](../service/support.md).
 
 ## Restrictions
 
