@@ -59,6 +59,9 @@ Make sure to set the  **Create New Volume** to **Yes** (default is NO) and **Del
 
 Pick a flavor that matches your workload. Flavors starting with **b2** use central persistent storage and pair well with volume-backed boot. Flavors starting with **l2** use fast local storage. See the [Flavors documentation](flavors.md) for a full breakdown.
 
+!!! tip "Need a GPU?"
+    Safespring offers GPU flavors for workloads such as machine learning and LLM inference. GPU flavors are available at some sites. See [GPU Flavors](gpu.md) for available GPUs, sites and setup guides.
+
 ### Networks
 
 Attach exactly one network:
@@ -129,3 +132,4 @@ Password login is disabled — the SSH key you selected during launch is used fo
 - **Flavors** — full breakdown of flavor types and storage implications: [Flavors documentation](flavors.md)
 - **API access** — manage instances with the OpenStack CLI or Terraform: [API documentation](api.md)
 - **Sites** — available sites, dashboard URLs, and account structure: [Sites documentation](sites.md)
+- **GPU** — available GPUs, sites and setup guides: [GPU Flavors](gpu.md)
