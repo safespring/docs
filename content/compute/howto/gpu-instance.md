@@ -27,7 +27,7 @@ Follow [Launch your first instance](../getting-started.md#launch-your-first-inst
 - **Networks:** choose **public**, so that you can connect with SSH.
 
 !!! warning "b2 or l2?"
-    Flavors starting with **l2** use local disk. The disk is deleted together with the instance and cannot be recovered. If you are unsure, choose a **b2** flavor and a volume-backed boot disk as described in [Flavors](../flavors/#what-should-i-choose).
+    Unsure on what to pick? See [Flavors: What should I choose](../flavors/#what-should-i-choose) for more information.
 
 When the instance has status **Running**, connect to it:
 
