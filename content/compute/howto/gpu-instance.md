@@ -26,8 +26,8 @@ Follow [Launch your first instance](../getting-started.md#launch-your-first-inst
 - **Flavor:** choose a flavor ending in `gA2`, for example `b2.c4r8.gA2`. See [GPU Flavors](../gpu.md#gpu-flavor-naming) for all A2 flavors.
 - **Networks:** choose **public**, so that you can connect with SSH.
 
-!!! warning "b2 or l2?"
-    Unsure on what to pick? See [Flavors: What should I choose](../flavors/#what-should-i-choose) for more information.
+!!! tip "b2 or l2?"
+    Not sure which to pick? See [Flavors: What should I choose?](../flavors.md#what-should-i-choose) for more information.
 
 When the instance has status **Running**, connect to it:
 
