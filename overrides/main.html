@@ -20,10 +20,8 @@
     <ul class="safespring-services-menu__list">
       {% for nav_item in nav.items %}
         {% if nav_item.title not in more_exclude %}
-          {% set first = nav_item.children | first %}
-          {% set href = first.url if first else nav_item.url %}
           <li class="safespring-services-menu__item">
-            <a class="safespring-services-menu__link{% if nav_item.active %} safespring-services-menu__link--active{% endif %}" href="{{ href | url }}">
+            <a class="safespring-services-menu__link{% if nav_item.active %} safespring-services-menu__link--active{% endif %}" href="{{ (nav_item.children | default([nav_item], true) | first).url | url }}">
               {{ nav_item.title }}
             </a>
           </li>
