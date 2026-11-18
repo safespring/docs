@@ -2,7 +2,6 @@
   var statusEndpoint = "https://lbpj80qtys85.statuspage.io/api/v2/summary.json";
   var statusRequest;
   var serviceLabels = {
-    "On-demand Kubernetes": "Kubernetes",
     "Safespring Kubernetes Engine": "Kubernetes",
     "Safespring Compute": "Compute",
     "Safespring Storage": "Storage",

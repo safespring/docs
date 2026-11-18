@@ -62,7 +62,7 @@
 {% macro render_service_status(title, level) %}
   {% set top_labels = config.extra.safespring_top_nav_labels | d({}) %}
   {% set status = namespace(component=none, label=top_labels.get(title, title)) %}
-  {% if title == "On-demand Kubernetes" or title == "Safespring Kubernetes Engine" or title == "Kubernetes" %}
+  {% if title == "Safespring Kubernetes Engine" or title == "Kubernetes" %}
     {% set status.component = "Safespring Kubernetes Engine" %}
   {% elif title == "Compute" %}
     {% set status.component = "Safespring Compute" %}
