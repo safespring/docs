@@ -59,7 +59,7 @@ data is physically stored in STO2 or DCO1 (Kalix).
 
 Plans and timing may change.
 
-### Q4 Roadmap
+### 2026 Q4
 
 * Expand CPU and storage capacity in STO1.
 * Introduce A2 GPU capacity in STO1.
