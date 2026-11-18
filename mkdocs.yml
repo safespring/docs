@@ -121,6 +121,7 @@ nav:
       - System Protection and Maintenance: "security-compliance/system-protection-maintenance.md"
   - Backup:
       - Getting Started: "backup/quickstart-guide.md"
+      - FAQ: "backup/faq.md"
       - Installation:
           - Overview: "backup/install/overview.md"
           - Linux: "backup/install/linux.md"
@@ -160,7 +161,6 @@ nav:
           - Microsoft Entra ID: "backup/cloud/microsoft-entra-id.md"
           - User Data Recovery: "backup/cloud/user-data-recovery.md"
           - Read PST files: "backup/cloud/pst-files.md"
-      - FAQ: "backup/faq.md"
       - Security and Compliance:
           - Overview: "backup/security-compliance/index.md"
           - System Protection and Maintenance: "backup/security-compliance/system-protection-maintenance.md"
@@ -196,6 +196,7 @@ nav:
           - Status: "backup/legacy-backup-service/status.md"
   - Compute:
       - Getting Started: "compute/getting-started.md"
+      - FAQ: "compute/faq.md"
       - Infrastructure:
           - Flavors: "compute/flavors.md"
           - GPU Flavors: "compute/gpu.md"
@@ -236,6 +237,7 @@ nav:
           - Development and Operations Management: "compute/security-compliance/development-operations-management.md"
   - Storage:
       - Getting Started: "storage/getting-started.md"
+      - FAQ: "storage/faq.md"
       - S3 Reference:
           - S3 Quotas: "storage/quota.md"
           - S3 API Compatibility: "storage/s3-compatibility.md"
@@ -270,6 +272,7 @@ nav:
       - Manage environments: "kubernetes/environments.md"
       - SKE service overview: "kubernetes/getting-started.md"
       - Deploy Your First Application: "kubernetes/getting_started.md"
+      - FAQ: "kubernetes/faq.md"
       - Portal and Access:
           - Authentication: "kubernetes/authentication.md"
           - Kubernetes Dashboard: "kubernetes/dashboard.md"
@@ -302,3 +305,4 @@ nav:
       - Policies and SLA: "service/policies.md"
       - Known issues: "service/known_issues.md"
       - Contributing: "contribute.md"
+  - FAQ: "content/faq.md"
