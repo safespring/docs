@@ -1,6 +1,15 @@
 (function () {
   var statusEndpoint = "https://lbpj80qtys85.statuspage.io/api/v2/summary.json";
   var statusRequest;
+  var serviceLabels = {
+    "On-demand Kubernetes": "Kubernetes",
+    "Safespring Kubernetes Engine": "Kubernetes",
+    "Safespring Compute": "Compute",
+    "Safespring Storage": "Storage",
+    "Safespring Backup": "Backup",
+    "Safespring Portal": "Portal",
+    "Safespring Private Cloud": "Private Cloud"
+  };
   var statusLabels = {
     degraded_performance: "Degraded",
     major_outage: "Major outage",
@@ -47,26 +56,50 @@
     if (text) text.textContent = componentLabel(status);
   }
 
+  function element(tag, properties, ...children) {
+    const node = Object.assign(document.createElement(tag), properties);
+    node.append(...children);
+    return node;
+  }
+
   function setMaintenance(card, maintenances) {
-    var link = card.querySelector("[data-safespring-status-maintenance]");
-    if (!link) return;
+    const section = card.querySelector("[data-safespring-status-maintenance]");
+    const list = card.querySelector("[data-safespring-status-maintenance-list]");
+    if (!section || !list) return;
 
-    var activeMaintenances = (maintenances || []).filter(function (maintenance) {
-      return maintenance.status && maintenance.status !== "completed";
-    });
+    const now = Date.now();
+    const upcoming = (Array.isArray(maintenances) ? maintenances : [])
+      .filter(m => m && m.status === "scheduled" && m.id && Date.parse(m.scheduled_for) > now)
+      .sort((a, b) => Date.parse(a.scheduled_for) - Date.parse(b.scheduled_for));
+    list.textContent = "";
+    const all = section.querySelector(".safespring-status-card__maintenance-all");
+    all.hidden = upcoming.length <= 3;
+    all.textContent = "View all maintenance (" + upcoming.length + ")";
+    section.hidden = !upcoming.length;
+    if (!upcoming.length) return;
 
-    if (!activeMaintenances.length) {
-      link.hidden = true;
-      link.textContent = "";
-      return;
-    }
-
-    link.hidden = false;
-    link.textContent = activeMaintenances.length === 1 ? "1 planned maintenance" : activeMaintenances.length + " planned maintenances";
+    const dateFormat = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Stockholm", year: "numeric", month: "2-digit", day: "2-digit" });
+    list.append(...upcoming.slice(0, 3).map(maintenance => {
+      const names = [...new Set((Array.isArray(maintenance.components) ? maintenance.components : [])
+        .map(c => c && typeof c.name === "string" ? c.name.trim() : "").filter(Boolean))];
+      const services = names.join(", ") || maintenance.name || "See maintenance details";
+      const date = dateFormat.format(new Date(maintenance.scheduled_for));
+      const label = [date, services, names.length && maintenance.name].filter(Boolean).join(" — ");
+      const link = element("a", {
+        className: "safespring-status-card__maintenance-link", title: label,
+        href: "https://status.safespring.com/incidents/" + encodeURIComponent(maintenance.id)
+      }, element("time", { dateTime: maintenance.scheduled_for, textContent: date }), element("span", {
+        className: "safespring-status-card__maintenance-services",
+        textContent: names.map(name => serviceLabels[name] || name).join(", ") || services
+      }));
+      link.setAttribute("aria-label", label);
+      return element("li", {}, link);
+    }));
   }
 
   function setUnavailable(card) {
     setOverall(card, { indicator: "unknown", description: "Unavailable" });
+    setMaintenance(card, []);
     card.querySelectorAll("[data-safespring-status-component]").forEach(function (row) {
       row.dataset.safespringStatusComponentState = "unknown";
       var text = row.querySelector("[data-safespring-status-component-text]");

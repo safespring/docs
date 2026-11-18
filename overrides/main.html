@@ -51,7 +51,7 @@
                 </span>
               </a>
               <ul class="safespring-status-card__list">
-                <li data-safespring-status-component="On-demand Kubernetes">
+                <li data-safespring-status-component="Safespring Kubernetes Engine">
                   <span>Kubernetes</span>
                   <span data-safespring-status-component-text>–</span>
                 </li>
@@ -72,7 +72,11 @@
                   <span data-safespring-status-component-text>–</span>
                 </li>
               </ul>
-              <a class="safespring-status-card__maintenance" href="https://status.safespring.com" data-safespring-status-maintenance hidden></a>
+              <section class="safespring-status-card__maintenance" data-safespring-status-maintenance aria-label="Planned Maintenance" hidden>
+                <h2 class="safespring-status-card__maintenance-heading">Planned Maintenance</h2>
+                <ul class="safespring-status-card__maintenance-list" data-safespring-status-maintenance-list role="list"></ul>
+                <a class="safespring-status-card__maintenance-link safespring-status-card__maintenance-all" href="https://status.safespring.com" hidden></a>
+              </section>
             </aside>
             <div class="safespring-home-mobile-nav">
               {% include "partials/nav.html" %}

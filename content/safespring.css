@@ -1901,7 +1901,7 @@ html:has(body[data-md-color-scheme="slate"]) {
 }
 
 .safespring-status-card__summary:is(:hover, :focus-visible),
-.safespring-status-card__maintenance:is(:hover, :focus-visible) {
+.safespring-status-card__maintenance-link:is(:hover, :focus-visible) {
   color: var(--safespring-accent);
   outline: none;
 }
@@ -2013,24 +2013,75 @@ html:has(body[data-md-color-scheme="slate"]) {
 }
 
 .safespring-status-card__maintenance {
-  align-items: center;
   border-top: 1px solid var(--safespring-border);
-  color: var(--safespring-blue);
-  display: flex;
-  font-size: 0.58rem;
-  font-weight: 700;
-  justify-content: space-between;
-  line-height: 1.25;
   margin-top: 0.44rem;
-  padding: 0.48rem 0 0;
-  text-decoration: none;
+  padding-top: 0.6rem;
 }
 
-.safespring-status-card__maintenance[hidden] {
+.safespring-status-card__maintenance[hidden],
+.safespring-status-card__maintenance-all[hidden] {
   display: none;
 }
 
-.safespring-status-card__maintenance::after {
+.safespring-status-card__maintenance-heading {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.56rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 0.3rem;
+}
+
+.safespring-status-card__maintenance-list {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.62rem;
+  line-height: 1.25;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.safespring-status-card__maintenance-list li {
+  margin: 0;
+  padding: 0;
+}
+
+.safespring-status-card__maintenance-link {
+  align-items: center;
+  color: var(--safespring-blue);
+  display: grid;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  gap: 0.4rem;
+  grid-template-columns: max-content minmax(0, 1fr) auto;
+  min-height: 1.4rem;
+  padding: 0.14rem 0;
+  text-decoration: none;
+}
+
+.safespring-status-card__maintenance-link time {
+  white-space: nowrap;
+}
+
+.safespring-status-card__maintenance-all {
+  font-size: 0.56rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.safespring-status-card__maintenance-services {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.56rem;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.safespring-status-card__maintenance-link:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 2px;
+}
+
+.safespring-status-card__maintenance-link::after {
   border: solid currentcolor;
   border-width: 0 0.08rem 0.08rem 0;
   content: "";
