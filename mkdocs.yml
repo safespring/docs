@@ -305,4 +305,5 @@ nav:
       - Policies and SLA: "service/policies.md"
       - Known issues: "service/known_issues.md"
       - Contributing: "contribute.md"
-  - FAQ: "faq.md"
+  - FAQ:
+      - FAQ: "faq.md"
