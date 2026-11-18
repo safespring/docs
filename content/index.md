@@ -49,22 +49,15 @@ in service URLs, credentials, and configuration:
 | Safespring Compute | Yes | Yes | Yes | — |
 | Safespring Storage, standard tier | Yes | Yes | Yes | — |
 | Safespring Storage, archive tier | — | — | Yes | — |
-| Safespring Backup — data storage | — | — | — | Yes |
+| Safespring Backup — data storage | — | — | Yes | Yes |
 | Safespring Kubernetes Engine | Yes | — | Yes | — |
 
 Safespring Backup can back up workloads in all Safespring datacenters. Backup
-data is physically stored in DCO1 (Kalix).
+data is physically stored in STO2 or DCO1 (Kalix).
 
 ## Roadmap
 
 Plans and timing may change.
-
-### Q3 Roadmap
-
-* Implement customer environment deletion in SKE.
-* Introduce MFA for OpenStack user accounts.
-* Deploy a new archive cluster in STO2.
-* Finalize SKE delivery for private cloud environments.
 
 ### Q4 Roadmap
 
@@ -81,6 +74,13 @@ Plans and timing may change.
 * STO1 migrated to new hardware, refreshed core network and major upgrades to OpenStack
 * Introduced SKE and self-service portal
 * H100 flavors in STO1 on request
+
+### Q3 Roadmap
+
+* Implemented customer environment deletion in SKE.
+* Introduced MFA for OpenStack user accounts.
+* Deployed a new archive cluster in STO2.
+* Finalized SKE delivery for private cloud environments.
 
 
 [ki]:service/known_issues.md
