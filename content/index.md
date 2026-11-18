@@ -75,7 +75,7 @@ Plans and timing may change.
 * Introduced SKE and self-service portal
 * H100 flavors in STO1 on request
 
-### Q3 Roadmap
+### 2026 Q3
 
 * Implemented customer environment deletion in SKE.
 * Introduced MFA for OpenStack user accounts.
