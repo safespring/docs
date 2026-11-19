@@ -306,9 +306,9 @@ nav:
       - Known issues: "service/known_issues.md"
       - Contributing: "contribute.md"
   - FAQ:
-      - FAQ: "faq.md"
-        - Safespring Compute: "compute/faq.md"
-        - Safespring Storage: "storage/faq.md"
-        - Safespring Backup: "backup/faq.md"
-        - Safespring Kubernetes Engine: "kubernetes/faq.md"
+      - Overview: "faq.md"
+      - Safespring Compute: "compute/faq.md"
+      - Safespring Storage: "storage/faq.md"
+      - Safespring Backup: "backup/faq.md"
+      - Safespring Kubernetes Engine: "kubernetes/faq.md"
         
