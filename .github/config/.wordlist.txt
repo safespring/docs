@@ -1849,3 +1849,5 @@ NVL
 HBM
 HBM3
 GDDR6
+exploitability
+mitigations

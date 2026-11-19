@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{# Index navigation pages once, at their original service address. #}
+{% for page in nav.pages if page.canonical_url and not page.meta.faq_source %}
+  <url>
+    <loc>{{ page.canonical_url | e }}</loc>
+    {% if page.update_date %}<lastmod>{{ page.update_date }}</lastmod>{% endif %}
+  </url>
+{% endfor %}
+</urlset>

@@ -76,6 +76,10 @@ extra_javascript:
 hooks:
   - hooks/legacy_tabbed_fences.py
 
+plugins:
+  - search
+  - include-markdown
+
 # https://squidfunk.github.io/mkdocs-material/setup/extensions/
 markdown_extensions:
   - admonition
@@ -307,3 +311,7 @@ nav:
       - Contributing: "contribute.md"
   - FAQ:
       - Overview: "faq.md"
+      - Compute: "faq/compute.md"
+      - Storage: "faq/storage.md"
+      - Kubernetes: "faq/kubernetes.md"
+      - Backup: "faq/backup.md"
