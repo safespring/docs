@@ -6,9 +6,6 @@ from dataclasses import dataclass
 from pathlib import Path
 import re
 import hashlib
-import gzip
-from urllib.parse import urljoin
-import xml.etree.ElementTree as ET
 
 from rcssmin import cssmin
 
@@ -301,29 +298,3 @@ def on_page_content(html: str, page: object | None = None, **kwargs) -> str:
 def on_post_page(output: str, page: object | None = None, **kwargs) -> str:
     return add_legacy_backup_warning(output, page or kwargs.get("page"))
 
-
-def on_nav(nav, config, **kwargs):
-    """Keep sitemap scope aligned with navigation without removing any pages."""
-    config.extra["safespring_sitemap_urls"] = sorted(
-        {urljoin(config.site_url, page.url) for page in nav.pages}
-    )
-    return nav
-
-
-def on_post_build(config, **kwargs):
-    namespace = "http://www.sitemaps.org/schemas/sitemap/0.9"
-    site = Path(config.site_dir)
-    sitemap = site / "sitemap.xml"
-    tree = ET.fromstring(sitemap.read_bytes())
-    allowed = set(config.extra["safespring_sitemap_urls"])
-    for node in list(tree):
-        location = node.find(f"{{{namespace}}}loc")
-        if location is None or location.text not in allowed:
-            tree.remove(node)
-    actual = {node.find(f"{{{namespace}}}loc").text for node in tree}
-    if not allowed or actual != allowed:
-        raise RuntimeError("Sitemap does not match navigation")
-    ET.register_namespace("", namespace)
-    data = ET.tostring(tree, encoding="utf-8", xml_declaration=True)
-    sitemap.write_bytes(data)
-    (site / "sitemap.xml.gz").write_bytes(gzip.compress(data, mtime=0))

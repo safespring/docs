@@ -1,5 +1,16 @@
 {% extends "base.html" %}
 
+{# Collection views retain the original service page's canonical and edit URLs. #}
+{% set faq_source = (nav.pages | selectattr("file.src_uri", "equalto", page.meta.faq_source) | first) if page and page.meta.faq_source else none %}
+
+{% block site_meta %}
+  {% if faq_source %}
+    {{ super() | replace(page.canonical_url | e, faq_source.canonical_url | e) }}
+  {% else %}
+    {{ super() }}
+  {% endif %}
+{% endblock %}
+
 {% block extrahead %}
   {{ super() }}
   <style>
@@ -20,10 +31,8 @@
     <ul class="safespring-services-menu__list">
       {% for nav_item in nav.items %}
         {% if nav_item.title not in more_exclude %}
-          {% set first = nav_item.children | first %}
-          {% set href = first.url if first else nav_item.url %}
           <li class="safespring-services-menu__item">
-            <a class="safespring-services-menu__link{% if nav_item.active %} safespring-services-menu__link--active{% endif %}" href="{{ href | url }}">
+            <a class="safespring-services-menu__link{% if nav_item.active %} safespring-services-menu__link--active{% endif %}" href="{{ (nav_item.children | default([nav_item], true) | first).url | url }}">
               {{ nav_item.title }}
             </a>
           </li>
@@ -106,8 +115,9 @@
         <aside class="safespring-source-card" aria-label="{{ lang.t('source') }}">
           <div class="safespring-source-card__label">Repository</div>
           {% include "partials/source.html" %}
-          {% if page.edit_url %}
-            <a class="safespring-source-card__edit" href="{{ page.edit_url }}" target="_blank" rel="edit noopener" aria-label="Edit this page on GitHub">
+          {% set edit_url = (faq_source or page).edit_url %}
+          {% if edit_url %}
+            <a class="safespring-source-card__edit" href="{{ edit_url }}" target="_blank" rel="edit noopener" aria-label="Edit this page on GitHub">
               <svg class="safespring-source-card__edit-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path d="M5 19h1.4L16.9 8.5l-1.4-1.4L5 17.6V19Zm-2 2v-4.25L16.9 2.85a1.93 1.93 0 0 1 1.4-.58c.27 0 .53.05.78.16.25.1.48.25.67.45l1.4 1.42c.2.18.35.4.45.66.1.25.15.51.15.78 0 .25-.05.51-.14.76-.1.25-.25.48-.46.68L7.25 21H3ZM19.7 5.75l-1.4-1.4 1.4 1.4ZM16.2 7.8l-.7-.7 1.4 1.4-.7-.7Z" />
               </svg>

@@ -24,10 +24,8 @@
       {% for top_title in top_titles %}
         {% for nav_item in nav.items %}
           {% if nav_item.title == top_title %}
-            {% set first = nav_item.children | first %}
-            {% set href = first.url if first else nav_item.url %}
             <li class="md-tabs__item{% if nav_item.active %} md-tabs__item--active{% endif %}">
-              <a href="{{ href | url }}" class="md-tabs__link">
+              <a href="{{ (nav_item.children | default([nav_item], true) | first).url | url }}" class="md-tabs__link">
                 {{ top_labels.get(nav_item.title, nav_item.title) }}
               </a>
             </li>

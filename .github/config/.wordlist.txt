@@ -1672,6 +1672,7 @@ unices
 unintuitive
 uniquename
 unitprice
+unittest
 unmount
 unmounting
 unpause

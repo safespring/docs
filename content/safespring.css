@@ -1555,6 +1555,117 @@ html:has(body[data-md-color-scheme="slate"]) {
   color: var(--safespring-notice-foreground);
 }
 
+/* Opt-in FAQ rows: ??? question faq "Question" */
+.md-typeset details.faq,
+.md-typeset details.faq:not([open]) {
+  background: transparent;
+  border: 0 !important;
+  border-bottom: 1px solid var(--safespring-border) !important;
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--safespring-text);
+  font-size: inherit;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.md-typeset h1 + details.faq {
+  border-top: 1px solid var(--safespring-border) !important;
+}
+
+.md-typeset details.faq[open] {
+  background: color-mix(in srgb, var(--safespring-blue) 4%, var(--safespring-bg));
+  padding-bottom: 0.75rem;
+}
+
+.md-typeset details.faq:focus-within {
+  box-shadow: none;
+}
+
+.md-typeset details.faq::before,
+.md-typeset details.faq::after,
+.md-typeset details.faq > summary::before {
+  display: none;
+}
+
+.md-typeset details.faq > summary {
+  background: transparent;
+  border: 0;
+  color: var(--safespring-text);
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: 600;
+  line-height: 1.5;
+  list-style: none;
+  margin: 0;
+  min-height: 3rem;
+  padding: 0.85rem 2.5rem 0.85rem 0.8rem;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.md-typeset details.faq > summary::-webkit-details-marker {
+  display: none;
+}
+
+.md-typeset details.faq > summary:hover {
+  background: var(--safespring-blue-soft);
+  color: var(--safespring-blue);
+}
+
+.md-typeset details.faq[open] > summary {
+  color: var(--safespring-blue);
+}
+
+.md-typeset details.faq > summary:focus-visible,
+.md-typeset details.faq > summary.focus-visible {
+  border-radius: 0.2rem;
+  outline: 2px solid var(--safespring-blue);
+  outline-offset: -3px;
+}
+
+.md-typeset details.faq > summary::after {
+  background: none;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  color: var(--safespring-blue);
+  content: "";
+  height: 0.4rem;
+  left: auto;
+  -webkit-mask: none;
+  mask: none;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform 160ms ease;
+  width: 0.4rem;
+}
+
+.md-typeset details.faq[open] > summary::after {
+  transform: translateY(-20%) rotate(225deg);
+}
+
+.md-typeset details.faq > :not(summary) {
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+}
+
+.md-typeset details.faq > p:has(> span[id]:only-child) {
+  margin-block: 0;
+}
+
+.md-typeset details.faq > :last-child:not(summary) {
+  margin-bottom: 0.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset details.faq > summary,
+  .md-typeset details.faq > summary::after {
+    transition: none;
+  }
+}
+
 .md-typeset img {
   background: var(--safespring-surface-elevated);
   border: 1px solid var(--safespring-border);
