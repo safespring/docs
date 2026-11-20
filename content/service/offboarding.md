@@ -1,64 +1,82 @@
-# Offboarding services
+# Deleting Instances and Offboarding of service
 
-Safespring believes in the idea that you as a customer stay with us because you want to and not because you have to. With our open APIs and self-service portal you can manage resources by yourself.
+We want you to stay with Safespring because you choose to, not because you have to. The self-service portal and open APIs let you manage, and remove, all your resources yourself.
 
-## How does billing work?
-You as a customer only pay for the resources you are using in the platform. With used resources we mean the following:
+Safespring never deletes anything on your behalf, to avoid accidental loss of data. You delete your own resources, and you are billed for them until they are deleted.
 
-- Storage by created volumes
-- Storage of volume snapshots
-- Uploaded images (if you have uploaded your own)
-- Snapshots of instances
-- Instances not completely deleted from the platform.
+## How billing works
 
-**Even if an instance is shut down, Safespring still reserves the capacity so that you can turn it back on at any time, therefore the instance is still billed even when turned off.** To deregister an instance from billing the instance needs to be **deleted** completely from the platform.
+You are billed for:
 
-## Cleaning up projects
-As a cloud provider Safespring does not know what is running inside of an instance, nor the data stored there. To avoid problems with responsibility of accidental loss of data Safespring will never delete anything for you. Once you have cleaned up a project Safespring can delete it, but only if the project is completely empty. Therefore the procedure for cleaning up a project is the following:
+- Storage used by volumes
+- Storage used by volume snapshots
+- Images you uploaded yourself
+- Instance snapshots
+- Instances that are not completely deleted
 
-- Delete all instances (Compute->Instances)
-- Delete all snapshots (Compute->Images)
-- Delete all volume snapshots (Volumes->Snapshots)
-- Delete all volumes (Volumes->Volumes)
-- Email support@safespring.com and ask to remove the project.
+!!! warning
+    A shut-down instance is still billed, because Safespring keeps its capacity reserved. To stop billing, delete the instance.
 
-## Is my instance booting from image or from volume?
-The tasks described below differs depending on if the instance you want to delete is booting from image or from volume.
+## Is my instance booting from an image or a volume?
 
-To see if you instance is booting from image or volume do the following:
+Click the instance name, choose **Overview** and look at **Volumes Attached** at the bottom.
 
-- Go to the "Volumes Attached"  under the instance Overview. You reach this page by clicking the instance name and then choose the Overview pane. At the bottom you see "Volumes Attached" where you find which volume the instance is booting from.
-- If there is no volume attached to /dev/sda or /dev/vda this means that your instance is booting from image. Note that you can have other volumes attached to other devices such as /dev/sdb. This does NOT mean that you are booting from image, as long as there is no volume attached to an device ending with the letter “a”, your instance is booting from image.
-- If you have a volume mounted to either /dev/sda or /dev/vda your instance is booting from volume. Also take not of which volume you instance is booting from as it will be needed later.
+- **No volume on /dev/sda or /dev/vda:** the instance boots from an image. Volumes on other devices, such as /dev/sdb, don't change this.
+- **A volume on /dev/sda or /dev/vda:** the instance boots from that volume. Note which one; you'll need it later.
 
-## Keeping instances ready to start
-Sometimes you do not want to pay for an instance but be able to start it at anytime. In order to do that you will have to keep a snapshot of the instance (if it is booting from image with l2 flavor), or keep the booting volume (if the instance is booting from volume with a b2 flavor).
+## Keeping an instance ready to start
 
-You will then only be billed for the storage of the instance, but not the cpu and memory allocations.
+To stop paying for CPU and memory but keep the instance available, keep only its storage. You are then billed only for the snapshot or volume.
 
-For an instance booting from image (l2 flavor) the procedure is the following:
+**Image-booted instances (l2 flavors):**
 
-- Create a snapshot of the instance (Compute->Instances)
-- Wait for the creation of the snapshot to succeed, it might take up to half an hour. Once the snapshot is marked as "Active" under Compute->Images the snapshot is finished.
-- Delete the instance (Compute->Instances)
-- When you want to start the instance again, go to "Launch Instance" and choose "Snapshot" under Source and then pick the snapshot taken earlier to start and instance from the snapshot.
+1. Create a snapshot of the instance under **Compute → Instances**.
+2. Wait until the snapshot shows **Active** under **Compute → Images**. This can take up to 30 minutes.
+3. Delete the instance.
+4. To start it again, choose **Launch Instance**, select **Snapshot** under **Source**, and pick your snapshot.
 
-For an instance booting from volume (b2 flavor) do the following:
+**Volume-booted instances (b2 flavors):**
 
-- Delete the instance
-- When you want to start the instance again, go to Volumes and choose "Launch as instance" from the dropdown menu of the volume reached by clicking the arrow down button at the end of the row.
+1. Delete the instance. The boot volume is kept.
+2. To start it again, go to **Volumes**, open the dropdown at the end of the volume's row and choose **Launch as Instance**.
 
 ## Deleting an instance completely
-Is case you want to delete an instance completely, do the following:
 
-- Delete the instance.
-- Delete all snapshots taken of the instance under Compute->Images..
-- Note if the instance is booting from volume (mounted to /dev/sda or /dev/vda) under the instance Overview. You reach this page by clicking the instance name and then choose the Overview pane. At the bottom you see "Volumes Attached" where you find which volume the instance is booting from.
-- Delete the instance.
-- Delete all snapshots taken of the instance under Volumes->Snapshots.
-- Remove the booting volume from Volumes->Volumes.
+Deleting an instance does not delete its volumes, snapshots or images. To remove everything:
 
-This concludes a complete removal of a single instance, either booting from an image or volume.
+1. Note the instance's volumes: click the instance name, choose **Overview** and check **Volumes Attached**.
+2. Delete the instance.
+3. Delete its snapshots under **Compute → Images**.
+4. Delete its volume snapshots under **Volumes → Snapshots**. A volume can't be deleted while it has snapshots.
+5. Delete its volumes, both boot and data volumes, under **Volumes → Volumes**.
+6. Delete any images you uploaded for the instance.
 
-## Summary
-Safespring gives you full freedom regarding how much you want to spend on our services. We will only bill you for the resources you are using. By following the steps above for the different use cases you will be able to only run exactly what you intend to on Safespring platform.  
+## Removing a project
+
+A project can be removed only when it is completely empty:
+
+1. Delete all instances completely, as described in [Deleting an instance completely](#deleting-an-instance-completely).
+2. Check that **Compute → Images**, **Volumes → Snapshots** and **Volumes → Volumes** are empty, and that no object storage buckets remain.
+3. Email support@safespring.com and ask for the project to be removed.
+
+## Secure erasure of data
+
+Some contracts and procurements require secure erasure based on a standard such as NIST SP 800-88 or DoD 5220.22-M.
+
+### How deleted data is handled
+
+Deleted resources are removed from our storage immediately and can't be reached by you or any other customer. The freed storage is not overwritten at the moment of deletion; it is reused over time.
+
+All disks that store customer data are encrypted with dm-crypt. When a disk is retired, the disk is sanitised or destroyed according to NIST SP 800-88.
+
+### What you need to do
+
+1. **Encrypt your data with keys you control.** Use LUKS on data volumes, and client-side encryption or SSE-C (customer-provided keys) for object storage.
+2. **Destroy the keys** when the data should be erased. This is cryptographic erase, which NIST SP 800-88 accepts as a Purge method.
+3. **Delete all resources**, as described in [Deleting an instance completely](#deleting-an-instance-completely) and [Removing a project](#removing-a-project).
+4. **Keep a record** of what was erased, how, when and by whom.
+
+!!! note
+    DoD 5220.22-M (overwriting) can't be applied in a cloud, because your data is spread across many disks. Cryptographic erase is the method NIST SP 800-88 accepts for this kind of storage.
+
+For a written statement on how we handle disks, for a procurement or audit, contact support@safespring.com.
